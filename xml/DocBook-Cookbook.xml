@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?oxygen RNGSchema="5.1/docbook.rnc" type="compact"?>
-<book version="5.1" xml:lang="en"
-  xmlns="http://docbook.org/ns/docbook"
-    xmlns:xlink="http://www.w3.org/1999/xlink">
+<?oxygen RNGSchema="5.1/dbref.rnc" type="compact"?>
+<book version="5.1" xml:lang="en" xml:id="dbcookbook"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>The DocBook Cookbook</title>
   <info>
     <author>
@@ -10,7 +10,62 @@
         <firstname>Thomas</firstname>
         <surname>Schraitle</surname>
       </personname>
-      <email>tom_schr@web.de</email>
+      <email><ref name="author.email"/></email>
     </author>
+    <definitions>
+      <def name="author.email">tom_schr@web.de</def>
+    </definitions>
   </info>
+  
+  <!--
+       Introduction
+    
+    1. Working with DocBook Files
+      - Splitting up into smaller Pieces
+      - Combining 
+    
+    1. Customization Methods
+      - 
+      
+    2. Common Customizations
+      
+    2. Print Customizations
+      - Designing Pages
+      - Title Pages
+      - Headers and Footers
+      - Table of Contents
+      - Adapting Chapter and Sections Titles
+      - Choosing Fonts
+      - Make Font Sizes Consistent
+      - Index
+      
+    3. (X)HTML Customizations
+      - Alt Text for Images
+      - Syntax Highlighting
+      
+  -->
+  <chapter xml:id="dbc.printcustomization">
+    <title>Print Customizations</title>
+    <info>
+      <abstract>
+        <para>FIXME</para>
+      </abstract>
+    </info>
+    <para></para>
+    <ref fileref=""/>
+    <!--  -->
+  </chapter>
+  
+  <chapter xml:id="dbc.htmlcustomization">
+    <title>(X)HTML Customizations</title>
+    <info>
+      <abstract>
+        <para>FIXME</para>
+      </abstract>
+    </info>
+    <para></para>
+    
+  </chapter>
+  
+  
 </book>
