@@ -3,7 +3,7 @@
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 default namespace db = "http://docbook.org/ns/docbook"
 
-include "docbook.rnc"
+include "docbookxi.rnc"
 
 db.ref = 
   ## Element for referencing content
