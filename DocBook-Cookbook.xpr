@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="12.0">
+    <meta>
+        <filters directoryPatterns="" filePatterns=""
+            positiveFilePatterns="" showHiddenFiles="false"/>
+        <options>
+            <serialized version="12.0">
+                <map>
+                    <entry>
+                        <String xml:space="preserve">validation.scenario.associations</String>
+                        <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="name">
+                                    <String xml:space="preserve">DocBook-Cookbook</String>
+                                </field>
+                                <field name="type">
+                                    <String xml:space="preserve">text/xml</String>
+                                </field>
+                                <field name="url">
+                                    <String xml:space="preserve">xml/DocBook-Cookbook.xml</String>
+                                </field>
+                            </scenarioAssociation>
+                        </scenarioAssociation-array>
+                    </entry>
+                    <entry>
+                        <String xml:space="preserve">validation.scenarios</String>
+                        <validationScenario-array>
+                            <validationScenario>
+                                <field name="pairs">
+                                    <list>
+                                    <validationUnit>
+                                    <field name="validationType">
+                                    <validationUnitType>
+                                    <field name="validationInputType">
+                                    <String xml:space="preserve">text/xml</String>
+                                    </field>
+                                    </validationUnitType>
+                                    </field>
+                                    <field name="url">
+                                    <String xml:space="preserve">DocBook-Cookbook.xml</String>
+                                    </field>
+                                    <field name="validationEngine">
+                                    <validationEngine>
+                                    <field name="engineType">
+                                    <String xml:space="preserve">&lt;Default engine&gt;</String>
+                                    </field>
+                                    <field
+                                    name="allowsAutomaticValidation">
+                                    <Boolean xml:space="preserve">true</Boolean>
+                                    </field>
+                                    </validationEngine>
+                                    </field>
+                                    <field
+                                    name="allowAutomaticValidation">
+                                    <Boolean xml:space="preserve">true</Boolean>
+                                    </field>
+                                    <field name="extensions">
+                                    <null/>
+                                    </field>
+                                    <field name="validationSchema">
+                                    <null/>
+                                    </field>
+                                    </validationUnit>
+                                    </list>
+                                </field>
+                                <field name="type">
+                                    <String xml:space="preserve">text/xml</String>
+                                </field>
+                                <field name="name">
+                                    <String xml:space="preserve">DocBook-Cookbook</String>
+                                </field>
+                            </validationScenario>
+                        </validationScenario-array>
+                    </entry>
+                    <entry>
+                        <String xml:space="preserve">validation.scenarios.load.from.project</String>
+                        <Boolean xml:space="preserve">true</Boolean>
+                    </entry>
+                </map>
+            </serialized>
+        </options>
+    </meta>
+    <projectTree name="DocBook-Cookbook.xpr">
+        <file name="xml/DocBook-Cookbook.xml"/>
+    </projectTree>
+</project>
