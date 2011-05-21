@@ -18,11 +18,16 @@
   </info>
   
   <!-- 
-    - Splitting up into smaller Pieces
-    - Combining 
+    * Transforming DocBook Version 4 into Version 5.x
+    * Transforming DocBook Version 5 into Version 4
+    * Extracting Structural Element from a DocBook Document
+    * Splitting up into smaller Pieces
+    * Combining two 
   -->
+  <xi:include href="structure/topic.db4-to-db5.xml"/>
   <xi:include href="structure/topic.sectX-to-section.xml"/>
   <xi:include href="structure/topic.section-to-sectX.xml"/>
   <xi:include href="structure/topic.bridgehead-to-section.xml"/>
-   
+  
+  
 </chapter>
