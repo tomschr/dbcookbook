@@ -18,14 +18,13 @@
     <para>This problem is solved through a XSLT stylesheet
       transformation:</para>
     <example>
-      <title>Transforms every <tag>sectX</tag> Elements into
-          <tag>section</tag> Elements with the following
-        stylesheet:</title>
+      <title>Transforms every <tag>sectX</tag> Element into a
+          <tag>section</tag> Element</title>
       <programlisting language="xslt"><xi:include href="../xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
     </example>
   </section>
   <section>
     <title>Discussion</title>
-    <para/>
+    <para></para>
   </section>
 </topic>
