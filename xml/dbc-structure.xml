@@ -4,13 +4,14 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Manipulating <ref name="db"/> Document Structure</title>
+  <title>Manipulating DocBook Document Structure</title>
+  
   <info>
     <definitions definitionfile="defs.xml"/>
     <abstract>
-      <para>DocBook can be created manually or through tools.
+      <para>DocBook files can be created manually or through tools.
         Sometimes tools create a structure which is inconvenient for
-        some reasons or legacy documents contain the
+        some reasons or you have legacy documents which contain the
         <quote>wrong</quote> structure. This chapter shows how to 
         restructure your DocBook document.</para>
     </abstract>
