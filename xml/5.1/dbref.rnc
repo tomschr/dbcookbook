@@ -3,7 +3,13 @@
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
 default namespace db = "http://docbook.org/ns/docbook"
 
-include "docbookxi.rnc"
+include "docbookxi.rnc" 
+{
+  db.component.contentmodel =
+    db.navigation.components*,
+    (db.toplevel.blocks.or.sections|db.topic)*,
+    db.navigation.components*
+}
 
 db.ref = 
   ## Element for referencing content
