@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xml:id="dbc.structure.sectX-to-section"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Creating <tag>section</tag> Elements from <tag>sectX</tag>
+    Elements</title>
+  <section>
+    <title>Problem</title>
+    <para>You need to transform any <tag>sectX</tag> into
+        <tag>section</tag>.</para>
+  </section>
+  <section>
+    <title>Solution</title>
+    <para>This problem is solved through a XSLT stylesheet
+      transformation:</para>
+    <example>
+      <title>Transforms every <tag>sectX</tag> Elements into
+          <tag>section</tag> Elements with the following
+        stylesheet:</title>
+      <programlisting language="xslt"><xi:include href="../xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
+    </example>
+  </section>
+  <section>
+    <title>Discussion</title>
+    <para/>
+  </section>
+</topic>
