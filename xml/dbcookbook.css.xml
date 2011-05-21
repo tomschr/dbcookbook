@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<style>
+div.book div.titlepage
+{
+  text-align: center;
+}
+
+div.book div.titlepage .title
+{
+  font-size:330%;
+}
+
+div.book div.titlepage div.legalnotice
+{
+  text-align:left;
+  font-size:small;
+}
+
+div.abstract
+{
+  margin-left:4em;
+  margin-right:4em;
+}
+
+div.abstract-title, 
+div.toc-title
+{
+  font-weight:bold;
+  padding-bottom:0em;
+  margin-bottom:-.5em;
+}
+
+div.chapter div.titlepage 
+{
+  text-align:left;
+}
+
+div.chapter div.titlepage .title
+{
+  border-left: 1pt solid black;
+  padding-left:0.5em;
+  text-align:left;
+  font-size:220%;
+}
+  
+div.topic div.titlepage .title
+{
+  border-top:1pt solid gray;
+  border-left:none;
+  padding-top:5pt;
+  padding-left:0em;
+  font-size:180%;
+}
+
+div.topic div.section div.titlepage .title
+{
+  border:none;
+  text-align:left;
+  font-size: 140%;
+  margin-bottom:-.5em;
+}
+
+/* formal */
+div.procedure-title {
+  font-weight: bold;
+  margin-bottom:-.5em;
+}
+
+</style>
