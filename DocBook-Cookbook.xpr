@@ -3011,7 +3011,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                 </field>
                                 <field name="xmlCatalogs">
                                     <String-array>
-                                        <String>${frameworks}/docbook/5.0/catalog.xml</String>
+                                        <String>${pdu}/frameworks/catalog.xml</String>
                                     </String-array>
                                 </field>
                                 <field name="description">
@@ -5435,6 +5435,92 @@ The value of this parameter specifies profiles which should be included in the o
                                                 </String-array>
                                             </field>
                                         </antScenario>
+                                        <scenario>
+                                            <field name="advancedOptionsMap">
+                                                <null/>
+                                            </field>
+                                            <field name="name">
+                                                <String>DocBook Cookbook (HTML single)</String>
+                                            </field>
+                                            <field name="baseURL">
+                                                <String></String>
+                                            </field>
+                                            <field name="footerURL">
+                                                <String></String>
+                                            </field>
+                                            <field name="fOPMethod">
+                                                <String>pdf</String>
+                                            </field>
+                                            <field name="fOProcessorName">
+                                                <String>Apache FOP</String>
+                                            </field>
+                                            <field name="headerURL">
+                                                <String></String>
+                                            </field>
+                                            <field name="inputXSLURL">
+                                                <String>${pdu}/frameworks/xslt/html/docbook.xsl</String>
+                                            </field>
+                                            <field name="inputXMLURL">
+                                                <String>${pdu}/xml/DocBook-Cookbook.xml</String>
+                                            </field>
+                                            <field name="defaultScenario">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="isFOPPerforming">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="type">
+                                                <String>XSL</String>
+                                            </field>
+                                            <field name="saveAs">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="openInBrowser">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="outputFile">
+                                                <File>${pd}/${cfn}.html</File>
+                                            </field>
+                                            <field name="openOtherLocationInBrowser">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="locationToOpenInBrowserURL">
+                                                <null/>
+                                            </field>
+                                            <field name="openInEditor">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="showInHTMLPane">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="showInXMLPane">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="showInSVGPane">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="showInResultSetPane">
+                                                <Boolean>false</Boolean>
+                                            </field>
+                                            <field name="useXSLTInput">
+                                                <Boolean>true</Boolean>
+                                            </field>
+                                            <field name="xsltParams">
+                                                <list/>
+                                            </field>
+                                            <field name="cascadingStylesheets">
+                                                <String-array/>
+                                            </field>
+                                            <field name="xslTransformer">
+                                                <String>Saxon6.5.5</String>
+                                            </field>
+                                            <field name="extensionURLs">
+                                                <String-array>
+                                                    <String>${frameworks}/docbook/xsl/extensions/xslthl-2.0.1.jar</String>
+                                                    <String>${frameworks}/docbook/xsl/extensions/saxon65.jar</String>
+                                                </String-array>
+                                            </field>
+                                        </scenario>
                                     </scenario-array>
                                 </field>
                                 <field name="validationScenarios">
@@ -5701,7 +5787,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ncx/ncx.framework/NCX</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5709,7 +5795,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ocf/ocf.framework/OCF</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5717,7 +5803,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>opf/opf.framework/OPF</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5725,7 +5811,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ant/ant.framework/ANT</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5733,7 +5819,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>tei/teip5.framework/TEI P5</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5741,7 +5827,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>tei/teip4.framework/TEI P4</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5757,7 +5843,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>dita/dita.framework/DITA</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5765,7 +5851,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>xmlspec/xmlspec.framework/XMLSpec</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5781,7 +5867,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>internal/Novdoc</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5813,7 +5899,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>docbook/docbook4.framework/DocBook 4</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5821,7 +5907,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>dita/ditamap.framework/DITA Map</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5829,7 +5915,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>dita/ditaval.framework/DITAVAL</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5845,7 +5931,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>odf/odf.framework/ODF</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5877,7 +5963,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>nvdl/nvdl.framework/NVDL</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5909,7 +5995,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>widgets/widgets.framework/Widgets</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5917,7 +6003,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>xmlschema/xmlschema.framework/XML Schema</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5933,7 +6019,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ead/ead.framework/EAD</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5949,14 +6035,14 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>kml/kml.framework/KML</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                         </documentTypeEntry-array>
                     </entry>
                     <entry>
                         <String>editor.font</String>
-                        <String>DejaVu Sans Mono,0,13</String>
+                        <String>Droid Sans Mono,0,13</String>
                     </entry>
                     <entry>
                         <String>editor.print.margin.columns</String>
@@ -5968,19 +6054,19 @@ The value of this parameter specifies profiles which should be included in the o
                     </entry>
                     <entry>
                         <String>font.for.author.v12</String>
-                        <String>DejaVu Serif,0,16</String>
+                        <String>Droid Serif,0,15</String>
                     </entry>
                     <entry>
                         <String>font.for.gui</String>
-                        <String>DejaVu Sans,1,13</String>
+                        <String>DejaVu Sans Condensed,0,13</String>
                     </entry>
                     <entry>
                         <String>font.for.schema</String>
-                        <String>DejaVu Sans,0,15</String>
+                        <String>Droid Sans,0,15</String>
                     </entry>
                     <entry>
                         <String>font.for.text</String>
-                        <String>DejaVu Sans,0,14</String>
+                        <String>Droid Sans,0,14</String>
                     </entry>
                     <entry>
                         <String>key.editor.document.type.association.option.pane</String>
@@ -5996,6 +6082,26 @@ The value of this parameter specifies profiles which should be included in the o
                     </entry>
                     <entry>
                         <String>key.text.editor.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>scenario.associations</String>
+                        <scenarioAssociation-array>
+                            <scenarioAssociation>
+                                <field name="name">
+                                    <String>internal/DocBook Cookbook/DocBook Cookbook (HTML single)</String>
+                                </field>
+                                <field name="type">
+                                    <String>XSL</String>
+                                </field>
+                                <field name="url">
+                                    <String>xml/DocBook-Cookbook.xml</String>
+                                </field>
+                            </scenarioAssociation>
+                        </scenarioAssociation-array>
+                    </entry>
+                    <entry>
+                        <String>scenarios.load.from.project</String>
                         <Boolean>true</Boolean>
                     </entry>
                     <entry>
