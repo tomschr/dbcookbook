@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<topic xml:id="dbc.structure.bridgehead-to-section"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Transforming <tag>bridgehead</tag> Elements into <tag>section</tag> Elements</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a DocBook document which contains several
+      <tag>bridgehead</tag> elements. The <tag>bridgehead</tag> has to
+      be transformed into the correct <tag>section</tag> structure.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>This problem is solved through a XSLT stylesheet
+      transformation:</para>
+    <example>
+      <title>Transforms every <tag>bridgehead</tag> Element into
+         a <tag>section</tag> Element</title>
+      <programlisting language="xslt"><xi:include href="../xslt/db-bridgehead-to-section.xsl" parse="text"/></programlisting>
+    </example>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para></para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>
+</topic>

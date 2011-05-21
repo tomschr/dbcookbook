@@ -23,8 +23,6 @@
   -->
   <xi:include href="structure/topic.sectX-to-section.xml"/>
   <xi:include href="structure/topic.section-to-sectX.xml"/>
+  <xi:include href="structure/topic.bridgehead-to-section.xml"/>
    
-  <!-- Converting <tag>bridgehead</tag> Elements to <tag>section</tag>
-    Elements-->
-  
 </chapter>
