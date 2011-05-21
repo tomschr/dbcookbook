@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
-<!DOCTYPE book 
-[
-]>
+<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
 <book version="5.1" xml:lang="en" xml:id="dbcookbook"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -25,7 +23,6 @@
     </author>    
   </info>
   
-
   <xi:include href="dbc-structure.xml"/>
   
   <xi:include href="dbc-fo.xml"/>
