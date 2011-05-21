@@ -7,7 +7,7 @@ div.book div.titlepage
 
 div.book div.titlepage .title
 {
-  font-size:330%;
+  font-size:350%;
 }
 
 div.book div.titlepage div.legalnotice
@@ -37,7 +37,7 @@ div.chapter div.titlepage
 
 div.chapter div.titlepage .title
 {
-  border-left: 1pt solid black;
+  border-left: 5pt solid black;
   padding-left:0.5em;
   text-align:left;
   font-size:220%;
