@@ -7,7 +7,14 @@
 
   <xsl:import
     href="http://docbook.sourceforge.net/release/xsl-ns/current/html/docbook.xsl"/>
-  <xsl:include href="topic.titlepage.xsl"/>
+  <xsl:include href="param.xsl"/>
+  <xsl:include href="../common/common.xsl"/>
+  <xsl:include href="../common/labels.xsl"/>
+  <xsl:include href="../common/titles.xsl"/>
+  <xsl:include href="../common/subtitles.xsl"/>
+  <xsl:include href="../common/gentext.xsl"/>
+  <xsl:include href="autotoc.xsl"/>
+  <xsl:include href="topic-titlepage.xsl"/>
 
   <xsl:template match="d:topic">
     <xsl:variable name="depth" select="1"/>
@@ -39,8 +46,7 @@
   </xsl:template>
 
   <xsl:template match="d:topic/d:title|d:topic/d:info/d:title"
-                mode="titlepage.mode"
-                priority="2">
+    mode="titlepage.mode" priority="2">
     <!-- the context node should be the title of a section when called -->
     <xsl:variable name="section" select="ancestor::d:topic"/>
 
@@ -58,4 +64,5 @@
 
   <xsl:template match="d:topic/d:title"/>
 
+ 
 </xsl:stylesheet>
