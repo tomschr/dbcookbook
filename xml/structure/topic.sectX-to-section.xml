@@ -11,14 +11,13 @@
   
   <section>
     <title>Problem</title>
-    <para>You need to transform any <tag>sectX</tag> into
-        <tag>section</tag>.</para>
+    <para>You need to transform every <tag>sectX</tag> element into a
+        <tag>section</tag> element.</para>
   </section>
   <section>
     <title>Solution</title>
-    <para>This problem is solved through a XSLT stylesheet
-      transformation:</para>
-    <example>
+    <para>This problem is solved through the following XSLT stylesheet:</para>
+    <example xml:id="ex.structure.sectX-to-section">
       <title>Transforms every <tag>sectX</tag> Element into a
           <tag>section</tag> Element</title>
       <programlisting language="xslt"><xi:include href="../xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
@@ -26,6 +25,12 @@
   </section>
   <section>
     <title>Discussion</title>
-    <para/>
+    <para>The stylesheet from <xref
+        linkend="ex.structure.sectX-to-section"/> is very easy: it
+      imports the standard rules to copy every node from
+        <filename>copy.xsl</filename> and create special rules for all
+        <tag>sectX</tag> elements. As every <tag>sectX</tag> element
+      creates the same structure, we can collect it in one template
+      rule. </para>
   </section>
 </topic>
