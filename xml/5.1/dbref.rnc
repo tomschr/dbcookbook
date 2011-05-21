@@ -1,15 +1,66 @@
-# TODO
+# Customization Layer for DocBook 5.1 Beta
 # - use DocBook schema coding style
 namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace s = "http://purl.oclc.org/dsdl/schematron"
 default namespace db = "http://docbook.org/ns/docbook"
 
 include "docbookxi.rnc" 
 {
-  db.component.contentmodel =
-    db.navigation.components*,
-    (db.toplevel.blocks.or.sections|db.topic)*,
-    db.navigation.components*
+  db.chapter =
+    ## A chapter, as of a book
+    [
+      s:pattern [
+        name = "Root must have version"
+        "\x{a}" ~
+        "          "
+        s:rule [
+          context = "/db:chapter"
+          "\x{a}" ~
+          "            "
+          s:assert [
+            test = "@version"
+            "If this element is the root element, it must have a version attribute."
+          ]
+          "\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+    ]
+    element chapter {
+      db.chapter.attlist, db.chapter.info, db.chapter.contentmodel
+    }
+  db.appendix = 
+    ## An appendix in a book or article
+    [
+      s:pattern [
+        name = "Root must have version"
+        "\x{a}" ~
+        "          "
+        s:rule [
+          context = "/db:appendix"
+          "\x{a}" ~
+          "            "
+          s:assert [
+            test = "@version"
+            "If this element is the root element, it must have a version attribute."
+          ]
+          "\x{a}" ~
+          "          "
+        ]
+        "\x{a}" ~
+        "        "
+      ]
+    ]
+    element appendix {
+      db.appendix.attlist, db.appendix.info, db.appendix.contentmodel
+    }
 }
+
+db.appendix.contentmodel = db.component.contentmodel | db.topic+
+db.chapter.contentmodel = db.component.contentmodel | db.topic+
+
 
 db.ref = 
   ## Element for referencing content
