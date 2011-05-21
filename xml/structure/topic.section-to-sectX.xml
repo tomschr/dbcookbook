@@ -17,7 +17,7 @@
   <section>
     <title>Solution</title>
     <para>This problem is solved through the following XSLT stylesheet:</para>
-    <example xml:id="ex.structure.sectX-to-section">
+    <example xml:id="ex.structure.section-to-sectX">
       <title>Transforms every <tag>sectX</tag> Element into a
           <tag>section</tag> Element</title>
       <programlisting language="xslt"><xi:include
