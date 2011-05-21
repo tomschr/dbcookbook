@@ -18,10 +18,10 @@
   <section role="solution">
     <title>Solution</title>
     <para>A <tag>bridgehead</tag> element is a <quote>free-floating
-      heading</quote>. Usually it's a bad idea as it is difficult to
-      handle in XSLT. To create the correct section hierarchy, a
-      stylesheet need to collect all nodes between a
-      <tag>bridgehead</tag> element and the next one. The following
+        heading</quote>. In most cases it is a bad idea as it is
+      difficult to handle in XSLT. To create the correct section
+      hierarchy, a stylesheet need to collect all nodes between a
+        <tag>bridgehead</tag> element and the next one. The following
       stylesheet uses a set difference method:</para>
     <example>
       <title>Transforms every <tag>bridgehead</tag> Element into
