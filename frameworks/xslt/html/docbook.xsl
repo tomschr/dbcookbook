@@ -38,5 +38,23 @@
     </div>
   </xsl:template>
 
-  
+  <xsl:template match="d:topic/d:title" mode="titlepage.mode"
+    priority="2">
+    <!-- the context node should be the title of a section when called -->
+    <xsl:variable name="section" select="ancestor::d:topic"/>
+
+    <xsl:call-template name="section.heading">
+      <xsl:with-param name="section" select="$section"/>
+      <xsl:with-param name="level" select="1"/>
+      <xsl:with-param name="title">
+        <xsl:apply-templates select="$section"
+          mode="object.title.markup">
+          <xsl:with-param name="allow-anchors" select="1"/>
+        </xsl:apply-templates>
+      </xsl:with-param>
+    </xsl:call-template>
+  </xsl:template>
+
+  <xsl:template match="d:topic/d:title"/>
+
 </xsl:stylesheet>
