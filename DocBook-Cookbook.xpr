@@ -5955,8 +5955,116 @@ The value of this parameter specifies profiles which should be included in the o
                         </documentTypeEntry-array>
                     </entry>
                     <entry>
+                        <String>editor.font</String>
+                        <String>DejaVu Sans Mono,0,13</String>
+                    </entry>
+                    <entry>
+                        <String>editor.print.margin.columns</String>
+                        <Integer>78</Integer>
+                    </entry>
+                    <entry>
+                        <String>editor.show.print.margin</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>font.for.author.v12</String>
+                        <String>DejaVu Serif,0,16</String>
+                    </entry>
+                    <entry>
+                        <String>font.for.gui</String>
+                        <String>DejaVu Sans,1,13</String>
+                    </entry>
+                    <entry>
+                        <String>font.for.schema</String>
+                        <String>DejaVu Sans,0,15</String>
+                    </entry>
+                    <entry>
+                        <String>font.for.text</String>
+                        <String>DejaVu Sans,0,14</String>
+                    </entry>
+                    <entry>
                         <String>key.editor.document.type.association.option.pane</String>
                         <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.fonts.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.spellcheck.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>key.text.editor.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>spell.check.options</String>
+                        <spellCheckOptions>
+                            <field name="automaticSpellCheck">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="spellCheckInComments">
+                                <Boolean>false</Boolean>
+                            </field>
+                            <field name="spellCheckInAttributeValues">
+                                <Boolean>false</Boolean>
+                            </field>
+                            <field name="spellCheckInText">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="spellCheckInCDATA">
+                                <Boolean>false</Boolean>
+                            </field>
+                            <field name="language">
+                                <String>en_US</String>
+                            </field>
+                            <field name="caseSensitive">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="ignoreMixedCase">
+                                <Boolean>false</Boolean>
+                            </field>
+                            <field name="ignoreAcronyms">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="ignoreDigits">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="ignoreDuplicates">
+                                <Boolean>false</Boolean>
+                            </field>
+                            <field name="ignoreURL">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="checkPunctuation">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="allowCompound">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="allowPrefixes">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="allowFileExtensions">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="obeyLangAttributes">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="langAttrMissingUseDefault">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="ignoreSpellCheckElements">
+                                <String-array>
+                                    <String>d:screen</String>
+                                    <String>d:programlisting</String>
+                                </String-array>
+                            </field>
+                            <field name="preferredChecker">
+                                <Integer>1</Integer>
+                            </field>
+                        </spellCheckOptions>
                     </entry>
                     <entry>
                         <String>user.role</String>
