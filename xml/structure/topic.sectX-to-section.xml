@@ -4,8 +4,11 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Creating <tag>section</tag> Elements from <tag>sectX</tag>
-    Elements</title>
+  <title>Creating <tag>section</tag> Elements from <tag>sectX</tag> Elements</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
   <section>
     <title>Problem</title>
     <para>You need to transform any <tag>sectX</tag> into
