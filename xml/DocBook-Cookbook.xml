@@ -1,117 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?oxygen RNGSchema="5.1/dbref.rnc" type="compact"?>
+<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 <!DOCTYPE book 
 [
 ]>
-<!-- 
-  This work is licensed as Creative Commons 
-  Attribution-NonCommercial-ShareAlike 3.0 Germany License
-  (CC by-nc-sa 3.0 DE)
-  For more information, see http://creativecommons.org/licenses/by-nc-sa/3.0/de/
--->
-
 <book version="5.1" xml:lang="en" xml:id="dbcookbook"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>The DocBook Cookbook</title>
   <info>
+    <legalnotice>
+      <para>This work is licensed as Creative Commons
+        Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
+        by-nc-sa 3.0 DE). For more information, see <link
+          xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"
+        /></para>
+    </legalnotice>
     <author>
       <personname>
         <firstname>Thomas</firstname>
         <surname>Schraitle</surname>
       </personname>
-      <email><ref name="author.email"/></email>
-    </author>
-    <definitions>
-      <def name="author.email">tom_schr@web.de</def>
-      <def name="db">DocBook</def>
-    </definitions>
+      <email>docbook@online.ms</email>
+    </author>    
   </info>
   
-  <!--
-       Introduction
-    
-    1. Working with DocBook Files
-      - Splitting up into smaller Pieces
-      - Combining 
-    
-    1. Customization Methods
-      - 
-      
-    2. Common Customizations
-      
-    2. Print Customizations
-      - Designing Pages
-      - Title Pages
-      - Headers and Footers
-      - Table of Contents
-      - Adapting Chapter and Sections Titles
-      - Choosing Fonts
-      - Make Font Sizes Consistent
-      - Index
-      
-    3. (X)HTML Customizations
-      - Alt Text for Images
-      - Syntax Highlighting
-      
-  -->
 
-  <chapter xml:id="dbc.structure">
-    <title>Manipulating <ref name="db"/> Document Structure</title>
-    <info>
-      <abstract>
-        <para><ref name="db"/> can be created manually or through tools.
-        Sometimes tools create a structure which is inconvenient for
-        some reasons or legacy documents contain the
-          <quote>wrong</quote> structure. This chapter shows how to 
-          restructure your <ref name="db"/> document.</para>
-      </abstract>
-    </info>
-    
-    <topic xml:id="dbc.structure.sectX-to-section">
-      <title>Creating <tag>sectX</tag> Element into a <tag>section</tag> Element</title>
-      <section>
-        <title>Problem</title>
-        <para>You need to transform any <tag>sectX</tag> into
-          <tag>section</tag>.</para>
-      </section>
-      <section>
-        <title>Solution</title>
-        <para>This problem is solved through a XSLT stylesheet
-        transformation:</para>
-        <example>
-          <title>Transforms every <tag>sectX</tag> Elements into
-            <tag>section</tag> Elements with the following stylesheet:</title>
-          <programlisting><xi:include
-            href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
-        </example>
-      </section>
-      <section>
-        <title>Discussion</title>
-        <para></para>
-      </section>
-    </topic>
-    <!-- Creating <tag>sectX</tag> from <tag>secttion</tag> Elements -->
-    
-    <!-- Converting <tag>bridgehead</tag> Elements to <tag>section</tag>
-    Elements-->
-    
-  </chapter>
-   
-  <chapter xml:id="dbc.printcustomization">
-    <title>Print Customizations</title>
-    <para></para>
-    <section>
-      <title>Foo</title>
-      <para></para>
-    </section>
-  </chapter>
+  <xi:include href="dbc-structure.xml"/>
   
-  <chapter xml:id="dbc.htmlcustomization">
-    <title>(X)HTML Customizations</title>
-    <para></para>
-  </chapter>
+  <xi:include href="dbc-fo.xml"/>
   
+  <xi:include href="dbc-html.xml"/>
   
 </book>

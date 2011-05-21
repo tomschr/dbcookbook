@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<chapter xml:id="dbc.fo" version="5.1"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Print Customizations</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <abstract>
+      <para></para>
+    </abstract>
+  </info>
+  
+  <!-- 
+  Print Customizations
+    - Designing Pages
+    - Title Pages
+    - Headers and Footers
+    - Table of Contents
+    - Adapting Chapter and Sections Titles
+    - Choosing Fonts
+    - Make Font Sizes Consistent
+    - Index
+  -->
+  <para>FIXME</para>
+</chapter>

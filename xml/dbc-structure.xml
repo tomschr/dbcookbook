@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<chapter xml:id="dbc.structure"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Manipulating <ref name="db"/> Document Structure</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <abstract>
+      <para>DocBook can be created manually or through tools.
+        Sometimes tools create a structure which is inconvenient for
+        some reasons or legacy documents contain the
+        <quote>wrong</quote> structure. This chapter shows how to 
+        restructure your DocBook document.</para>
+    </abstract>
+  </info>
+  
+  <!-- 
+    - Splitting up into smaller Pieces
+    - Combining 
+  -->
+  
+  <topic xml:id="dbc.structure.sectX-to-section">
+    <title>Creating <tag>section</tag> Elements from <tag>sectX</tag> Elements</title>
+    <section>
+      <title>Problem</title>
+      <para>You need to transform any <tag>sectX</tag> into
+        <tag>section</tag>.</para>
+    </section>
+    <section>
+      <title>Solution</title>
+      <para>This problem is solved through a XSLT stylesheet
+        transformation:</para>
+      <example>
+        <title>Transforms every <tag>sectX</tag> Elements into
+          <tag>section</tag> Elements with the following stylesheet:</title>
+        <programlisting><xi:include
+            href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
+      </example>
+    </section>
+    <section>
+      <title>Discussion</title>
+      <para></para>
+    </section>
+  </topic>
+  
+  <topic xml:id="dbc.structure.section-to-sectX">
+    <title>Creating <tag>sectX</tag> Elements from <tag>section</tag> Elements</title>
+    <section>
+      <title>Problem</title>
+      <para>You need to transform any <tag>sectX</tag> into
+        <tag>section</tag>.</para>
+    </section>
+    <section>
+      <title>Solution</title>
+      <para>This problem is solved through a XSLT stylesheet
+        transformation:</para>
+      <example>
+        <title>Transforms every <tag>section</tag> element into
+          <tag>sectX</tag> element with the following stylesheet:</title>
+        <programlisting><xi:include
+            href="xslt/db-section-to-sectX.xsl" parse="text"/></programlisting>
+      </example>
+    </section>
+    <section>
+      <title>Discussion</title>
+      <para></para>
+    </section>
+  </topic>
+  
+  <!-- Converting <tag>bridgehead</tag> Elements to <tag>section</tag>
+    Elements-->
+  
+</chapter>
