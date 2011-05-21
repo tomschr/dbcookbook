@@ -20,55 +20,9 @@
     - Splitting up into smaller Pieces
     - Combining 
   -->
-  
-  <topic xml:id="dbc.structure.sectX-to-section">
-    <title>Creating <tag>section</tag> Elements from <tag>sectX</tag> Elements</title>
-    <section>
-      <title>Problem</title>
-      <para>You need to transform any <tag>sectX</tag> into
-        <tag>section</tag>.</para>
-    </section>
-    <section>
-      <title>Solution</title>
-      <para>This problem is solved through a XSLT stylesheet
-        transformation:</para>
-      <example>
-        <title>Transforms every <tag>sectX</tag> Elements into
-          <tag>section</tag> Elements with the following stylesheet:</title>
-        <programlisting><xi:include
-            href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
-      </example>
-    </section>
-    <section>
-      <title>Discussion</title>
-      <para></para>
-    </section>
-  </topic>
-  
-  <topic xml:id="dbc.structure.section-to-sectX">
-    <title>Creating <tag>sectX</tag> Elements from <tag>section</tag> Elements</title>
-    <section>
-      <title>Problem</title>
-      <para>You need to transform any <tag>sectX</tag> into
-        <tag>section</tag>.</para>
-    </section>
-    <section>
-      <title>Solution</title>
-      <para>This problem is solved through a XSLT stylesheet
-        transformation:</para>
-      <example>
-        <title>Transforms every <tag>section</tag> element into
-          <tag>sectX</tag> element with the following stylesheet:</title>
-        <programlisting><xi:include
-            href="xslt/db-section-to-sectX.xsl" parse="text"/></programlisting>
-      </example>
-    </section>
-    <section>
-      <title>Discussion</title>
-      <para></para>
-    </section>
-  </topic>
-  
+  <xi:include href="structure/topic.sectX-to-section.xml"/>
+  <xi:include href="structure/topic.section-to-sectX.xml"/>
+   
   <!-- Converting <tag>bridgehead</tag> Elements to <tag>section</tag>
     Elements-->
   
