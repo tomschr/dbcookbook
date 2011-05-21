@@ -41,8 +41,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="d:preface|d:chapter|d:appendix|d:article|d:topic"
-    mode="toc">
+  <xsl:template match="d:topic"  mode="toc">
     <xsl:param name="toc-context" select="."/>
 
     <xsl:call-template name="subtoc">
@@ -56,16 +55,7 @@
       />
     </xsl:call-template>
   </xsl:template>
-
-  <!--<xsl:template match="d:topic" mode="toc">
-    <xsl:param name="toc-context" select="."/>
-    <xsl:call-template name="subtoc">
-      <xsl:with-param name="toc-context" select="$toc-context"/>
-      <xsl:with-param name="nodes"
-        select="d:sect1|d:bridgehead[$bridgehead.in.toc != 0]"
-      />
-    </xsl:call-template>
-  </xsl:template>-->
+  
 
   <xsl:template name="section.toc">
     <xsl:param name="toc-context" select="."/>
@@ -75,8 +65,9 @@
       <xsl:with-param name="toc-context" select="$toc-context"/>
       <xsl:with-param name="toc.title.p" select="$toc.title.p"/>
       <xsl:with-param name="nodes"
-        select="d:topic|d:section|d:sect1|d:sect2|d:sect3|d:sect4|d:sect5|d:refentry
-                           |d:bridgehead[$bridgehead.in.toc != 0]"/>
+        select="d:topic[$topic.in.toc != 0]
+               |d:section|d:sect1|d:sect2|d:sect3|d:sect4|d:sect5|d:refentry
+               |d:bridgehead[$bridgehead.in.toc != 0]"/>
 
     </xsl:call-template>
   </xsl:template>
