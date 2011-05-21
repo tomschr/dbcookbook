@@ -20,9 +20,12 @@
   <!-- 
     * Transforming DocBook Version 4 into Version 5.x
     * Transforming DocBook Version 5 into Version 4
-    * Extracting Structural Element from a DocBook Document
+    * Extracting a Structural Element from a DocBook Document
     * Splitting up into smaller Pieces
-    * Combining two 
+    * Combining two DocBook documents
+    * Resolving XInclude Elements
+    * Adding Indexterms Automatically
+    * Including a Revision List from Version Control Systems
   -->
   <xi:include href="structure/topic.db4-to-db5.xml"/>
   <xi:include href="structure/topic.db5-to-db4.xml"/>
