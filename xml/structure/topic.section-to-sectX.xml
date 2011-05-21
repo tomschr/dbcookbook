@@ -21,7 +21,7 @@
       <title>Transforms every <tag>sectX</tag> Element into a
           <tag>section</tag> Element</title>
       <programlisting language="xslt"><xi:include
-        href="../xslt/db-section-to-sectX.xsl" parse="text"/></programlisting>
+        href="xslt/db-section-to-sectX.xsl" parse="text"/></programlisting>
     </example>
   </section>
   <section>

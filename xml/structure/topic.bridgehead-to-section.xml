@@ -26,7 +26,7 @@
     <example>
       <title>Transforms every <tag>bridgehead</tag> Element into
          a <tag>section</tag> Element</title>
-      <programlisting language="xslt"><xi:include href="../xslt/db-bridgehead-to-section.xsl" 
+      <programlisting language="xslt"><xi:include href="xslt/db-bridgehead-to-section.xsl" 
         parse="text"/></programlisting>
     </example>
   </section>
