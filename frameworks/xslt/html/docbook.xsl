@@ -38,8 +38,9 @@
     </div>
   </xsl:template>
 
-  <xsl:template match="d:topic/d:title" mode="titlepage.mode"
-    priority="2">
+  <xsl:template match="d:topic/d:title|d:topic/d:info/d:title"
+                mode="titlepage.mode"
+                priority="2">
     <!-- the context node should be the title of a section when called -->
     <xsl:variable name="section" select="ancestor::d:topic"/>
 
