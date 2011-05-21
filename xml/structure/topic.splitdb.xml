@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xml:id="dbc.structure.splitdb"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Splitting DocBook Documents</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a big DocBook document, like a book, and you want to
+      split each <tag>chapter</tag>, <tag>appendix</tag> etc. into a
+      separate file.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The solution explained</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some discussion about problem and solution.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>
+</topic>
