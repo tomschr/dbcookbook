@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 <chapter xml:id="dbc.structure"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -12,8 +12,8 @@
       <para>DocBook files can be created manually or through tools.
         Sometimes tools create a structure which is inconvenient for
         some reasons or you have legacy documents which contain the
-        <quote>wrong</quote> structure. This chapter shows how to 
-        restructure your DocBook document.</para>
+        <quote>wrong</quote> structure. This chapter is merely <quote>XSLT for
+        DocBook</quote> and shows how to restructure your DocBook document.</para>
     </abstract>
   </info>
   
@@ -25,6 +25,7 @@
     * Combining two 
   -->
   <xi:include href="structure/topic.db4-to-db5.xml"/>
+  <xi:include href="structure/topic.db5-to-db4.xml"/>
   <xi:include href="structure/topic.sectX-to-section.xml"/>
   <xi:include href="structure/topic.section-to-sectX.xml"/>
   <xi:include href="structure/topic.bridgehead-to-section.xml"/>
