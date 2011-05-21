@@ -5,3 +5,4 @@ syntax: glob
 # Temporary files used by the vim editor.
 .*.swp
 
+*.html
