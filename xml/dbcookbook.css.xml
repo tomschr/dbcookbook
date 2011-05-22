@@ -51,15 +51,27 @@ div.topic div.titlepage .title
   border-left:none;
   padding-top:5pt;
   padding-left:0em;
-  font-size:180%;
+  font-size:200%;
 }
 
 div.topic div.section div.titlepage .title
 {
   border:none;
   text-align:left;
-  font-size: 140%;
+  font-size: 180%;
   margin-bottom:-.5em;
+}
+
+div.section div.titlepage .title
+{
+  text-align:left;
+  font-size: 160%; 
+}
+
+div.section div.section div.titlepage .title
+{
+  text-align:left;
+  font-size: 140%;
 }
 
 /* formal */
