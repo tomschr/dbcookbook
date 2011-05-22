@@ -23,7 +23,46 @@
     
     <section xml:id="sec.structure.revision-list.bazaar">
       <title>Bazaar</title>
-      <para><application xlink:href="http://bazaar.canonical.com">Bazaar</application></para>
+      <para><application
+        xlink:href="http://bazaar.canonical.com">Bazaar</application>
+        does not come with a predefined XML output. If you need this
+        functionality, you have to install the
+        <package>xmloutput</package> first. This brings the
+        <option>--xml</option> option to the <command>log</command>
+        subcommand. Proceed as follows:</para>
+      <procedure>
+        <title>Installing the Bazaar Plugin xmloutput</title>
+        <step>
+          <para>Download the tar archive from <link xlink:href="http://wiki.bazaar.canonical.com/XMLOutput"/>.</para>
+        </step>
+        <step>
+          <para>Unpack the archive.</para>
+        </step>
+        <step>
+          <para>Change to the extension directory (usually something
+            like
+            <filename>bzr-xmloutput-<replaceable>VERSION</replaceable></filename>)
+            and run:</para>
+          <screen><command>python</command> setup build_ext</screen>
+        </step>
+        <step>
+          <para>Copy the result directory
+            <filename>build/lib/bzrlib/plugins/</filename> to your
+            plugin directory. For Linux it is something like
+            <filename>$HOME/.bazaar/plugins/</filename>, for Windows
+            copy it to <filename>$APPDATA/bazaar/<replaceable>VERSION</replaceable>/plugins</filename></para>
+        </step>
+        <step>
+          <para>Check if the plugin is correctly detected:</para>
+          <screen><command>bzr</command> plugins</screen>
+          <para>You should see the following line:</para>
+          <screen>xmloutput <replaceable>VERSION</replaceable>
+    This plugin adds an option (--xml) to log and provides an xml version of 
+    some builtin commands.</screen>
+        </step>
+      </procedure>
+      <para>To create the log output in XML, use the following command:</para>
+      <screen><command>bzr</command> log --xml <replaceable>REPO</replaceable></screen>
     </section>
     <section xml:id="sec.structure.revision-list.git">
       <title>Git</title>
