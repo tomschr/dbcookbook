@@ -67,7 +67,9 @@
         <title>Stylesheet <filename>hg2revhistory.xsl</filename> to Convert Mercurial XML Log Files into
           DocBook's <tag>revhistory</tag></title>
         <titleabbrev><filename>hg2revhistory.xsl</filename></titleabbrev>
-        <programlisting language="xslt"><xi:include href="xslt/hg2revhistory.xsl" parse="text"/></programlisting>
+        <programlisting linenumbering="numbered" language="xslt"
+          ><xi:include href="xslt/hg2revhistory.xsl" parse="text"
+          /></programlisting>
       </example>
     </section>
     <section>

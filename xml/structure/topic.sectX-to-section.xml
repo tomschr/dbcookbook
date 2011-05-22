@@ -20,7 +20,7 @@
     <example xml:id="ex.structure.sectX-to-section">
       <title>Transforms every <tag>sectX</tag> Element into a
           <tag>section</tag> Element</title>
-      <programlisting language="xslt"><xi:include href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
+      <programlisting linenumbering="numbered" language="xslt"><xi:include href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
     </example>
   </section>
   <section>
