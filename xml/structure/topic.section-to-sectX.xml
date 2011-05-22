@@ -42,22 +42,22 @@
     <example xml:id="ex.structure.sectX-to-section.check">
       <title>Error Checking of Section Levels</title>
       <programlisting linenumbering="numbered" language="xml">&lt;xsl:template match="d:section">
-    &lt;xsl:variable name="level" select="count(ancestor::*)"/>
-    &lt;xsl:choose>
-      &lt;xsl:when test="$level &amp;lt;= 5">
-        &lt;xsl:element name="sect{$level}"
+  &lt;xsl:variable name="level" select="count(ancestor::*)"/>
+  &lt;xsl:choose>
+    &lt;xsl:when test="$level &amp;lt;= 5">
+      &lt;xsl:element name="sect{$level}"
           namespace="http://docbook.org/ns/docbook">
-          &lt;xsl:copy-of select="@*"/>
-          &lt;xsl:apply-templates/>
-        &lt;/xsl:element>
-      &lt;/xsl:when>
-      &lt;xsl:otherwise>
-        &lt;xsl:message>ERROR: section &lt;xsl:value-of
+        &lt;xsl:copy-of select="@*"/>
+        &lt;xsl:apply-templates/>
+      &lt;/xsl:element>
+    &lt;/xsl:when>
+    &lt;xsl:otherwise>
+      &lt;xsl:message>ERROR: section &lt;xsl:value-of
           select="normalize-space(d:title)"/> to deep&lt;/xsl:message>
-        &lt;!-- What to do if the section is too deeply nested? -->
-      &lt;/xsl:otherwise>
-    &lt;/xsl:choose>    
-  &lt;/xsl:template></programlisting>
+      &lt;!-- What to do if the section is too deeply nested? -->
+    &lt;/xsl:otherwise>
+  &lt;/xsl:choose>    
+&lt;/xsl:template></programlisting>
     </example>
     <para>Amend the stylesheet when the section is too
       deeply nested (see above comment). You could avoid the section
