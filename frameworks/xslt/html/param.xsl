@@ -17,5 +17,11 @@
   <xsl:param name="toc.max.depth">1</xsl:param>
   
   <xsl:param name="topic.in.toc" select="0"/>
+  <xsl:param name="use.id.as.filename" select="1"/>
+  <xsl:param name="use.extensions" select="1"/>
   
+  <xsl:param name="linenumbering.everyNth" select="1"/>
+  
+  <xsl:param name="highlight.source" select="1"/>
+  <xsl:param name="highlight.xslthl.config">xslthl-config.xml</xsl:param>
 </xsl:stylesheet>
