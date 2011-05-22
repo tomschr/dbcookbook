@@ -21,15 +21,15 @@
       output its log into its specific XML output and transform it with
       XSLT into a <tag>revhistory</tag> element. </para>
     
-    <section>
+    <section xml:id="sec.structure.revision-list.bazaar">
       <title>Bazaar</title>
       <para><application xlink:href="http://bazaar.canonical.com">Bazaar</application></para>
     </section>
-    <section>
+    <section xml:id="sec.structure.revision-list.git">
       <title>Git</title>
       <para>TBD</para>
     </section>
-    <section>
+    <section xml:id="sec.structure.revision-list.mercurial">
       <title>Mercurial</title>
       <para><application
         xlink:href="http://mercurial.selenic.com">Mercurial</application>
@@ -37,7 +37,7 @@
         XML:</para>
       <screen><command>hg</command> log --style xml > log.xml</screen>
       <para>The XML file of the Mercurial log looks like this:</para>
-      <example>
+      <example xml:id="ex.mercurial-logfile">
         <title>Mercurial Log File in XML</title>
         <programlisting linenumbering="numbered" language="xml">&lt;log>
   &lt;logentry revision="69"
@@ -62,17 +62,18 @@
   &lt;!-- Many more entries ... -->
 &lt;/log</programlisting>
       </example>
-      <para>With </para>
+      <para>The following stylesheet converts the log file from <xref 
+        linkend="ex.mercurial-logfile"/> into DocBook's
+        <tag>revhistory</tag>:</para>
       <example xml:id="ex.hg2revhistory.xsl">
-        <title>Stylesheet <filename>hg2revhistory.xsl</filename> to Convert Mercurial XML Log Files into
-          DocBook's <tag>revhistory</tag></title>
-        <titleabbrev><filename>hg2revhistory.xsl</filename></titleabbrev>
+        <title>Stylesheet <filename>hg2revhistory.xsl</filename> to Convert
+          Mercurial XML Log Files into  DocBook's <tag>revhistory</tag></title>
         <programlisting linenumbering="numbered" language="xml"
           ><xi:include href="xslt/hg2revhistory.xsl" parse="text"
           /></programlisting>
       </example>
     </section>
-    <section>
+    <section xml:id="sec.structure.revision-list.svn">
       <title>Subversion</title>
       <para><application
         xlink:href="http://subversion.tigris.org">Subversion</application>
