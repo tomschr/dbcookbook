@@ -31,10 +31,16 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para>This solution cuts off the element with the corresponding ID
+      and its children. As such it does not correct any <tag>xref</tag>
+      tags pointing to a different chapter. If the resulting file
+      contains such cross references, it will not be valid anymore.</para>
+    <para>It is possible to convert such cross references into the
+      <quote>resolved form</quote> by using the following code:</para>
+    <programlisting>TBD</programlisting>
   </section>
-  <section role="seealso">
+  <!--<section role="seealso">
     <title>See Also</title>
     <para></para>
-  </section>
+  </section>-->
 </topic>
