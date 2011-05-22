@@ -58,7 +58,7 @@ do
       #echo "Single Option: $1"
       ARGS="$ARGS $1"
       ;;
-    # These are options which holds a second argument:
+    # These are options which hold a second argument:
     -o|-m|-r|-TL|-x|-y)
       #echo "Double Option: $1=$2"
       ARGS="$ARGS $1 $2"
@@ -68,25 +68,20 @@ do
   shift
 done
 
-echo "Arguments: $ARGS"
-echo "The rest: $@"
 XMLIN=$1
 XSLT=$2
 shift 2
+# The rest are only parameters:
 PARAMS=$@
 
 XMLDIR=${XMLIN%/*}
+# Construct our resolved XML filename:
 BASEXML=${XMLDIR}/.${XMLIN#*/}
 
-# Resolve XInclude
-xmllint --xinclude --output $BASEXML $XMLIN
-
-echo "XML: $XMLIN"
-echo "Stylesheet: $XSLT"
-echo "Params: $PARAMS"
-echo "BASEXML: $BASEXML"
-
-# exit 100
+# Resolve XInclude and save it into the dot file:
+if [ "$1" != "-h" ]; then
+  xmllint --xinclude --output $BASEXML $XMLIN
+fi
 
 # Set parameters
 set_jvm
