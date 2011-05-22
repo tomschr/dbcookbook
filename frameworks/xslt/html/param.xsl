@@ -8,7 +8,7 @@
                    use-attribute-sets="section.titlepage.verso.style"/>
 
   <!--<xsl:param name="css.decoration" select="0"/>-->
-  <!--<xsl:param name="base.dir">html/</xsl:param>-->
+  <xsl:param name="base.dir">html/</xsl:param>
   <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
   <!--<xsl:param name="generate.css.header" select="0"/>-->
   <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
