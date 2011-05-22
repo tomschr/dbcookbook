@@ -26,6 +26,7 @@
     * Resolving XInclude Elements
     * Adding Indexterms Automatically
     * Including a Revision List from Version Control Systems
+    * Pretty-print DocBook Documents
   -->
   <xi:include href="structure/topic.db4-to-db5.xml"/>
   <xi:include href="structure/topic.db5-to-db4.xml"/>
@@ -34,6 +35,6 @@
   <xi:include href="structure/topic.sectX-to-section.xml"/>
   <xi:include href="structure/topic.section-to-sectX.xml"/>
   <xi:include href="structure/topic.bridgehead-to-section.xml"/>
-  
+  <xi:include href="structure/topic.revision-list.xml"/>
   
 </chapter>
