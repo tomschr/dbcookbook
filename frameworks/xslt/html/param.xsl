@@ -23,5 +23,6 @@
   <xsl:param name="linenumbering.everyNth" select="1"/>
   
   <xsl:param name="highlight.source" select="1"/>
-  <xsl:param name="highlight.xslthl.config">xslthl-config.xml</xsl:param>
+  <!--<xsl:param name="highlight.xslthl.config"/>-->
+  
 </xsl:stylesheet>
