@@ -63,18 +63,29 @@
         </step>
       </procedure>
       <para>To create the log output in XML, use the following command:</para>
-      <screen><command>bzr</command> log --xml <replaceable>REPO</replaceable></screen>
+      <screen><command>bzr</command> log --xml <replaceable
+        >REPO</replaceable> > bzr-log.xml</screen>
     </section>
     <section xml:id="sec.structure.revision-list.git">
       <title>Git</title>
-      <para>TBD</para>
+      <para><application xlink:href="http://git-scm.com"
+          >Git</application> does not have any options to turn the log
+        into XML. However, with the <option>--pretty</option> option you
+        can collect the information and wrap it into any XML elements
+        you wish. The following command uses this option and
+          <command>sed</command> to insert the <tag class="starttag"
+          >logs</tag> start tag in the first line and <tag
+          class="endtag">logs</tag> end tag in the last line:</para>
       <screen><command>git</command> log --date=iso<!--
        --> --pretty=format:"&lt;logentry revision='%h'>%n<!--
         --> &lt;author email='%ae'>%an&lt;/author>%n<!--
         --> &lt;date>%ad&lt;/date>%n<!-- 
         --> &lt;msg xml:space='preserve'>%s&lt;/msg>%n<!-- 
         -->&lt;/logentry>" \
-  | sed -e '1i&lt;logs>' -e '$a&lt;/logs>' > log.xml</screen>
+  | sed -e '1i&lt;logs>' -e '$a&lt;/logs>' > git-log.xml</screen>
+      <para>As the element names can be freely chosen, we use the same
+        names as in <xref linkend="ex.mercurial-logfile"/>. This allows
+        us to use the stylesheet from <xref linkend="ex.hg2revhistory.xsl"/>. </para>
     </section>
     <section xml:id="sec.structure.revision-list.mercurial">
       <title>Mercurial</title>
@@ -82,7 +93,7 @@
         xlink:href="http://mercurial.selenic.com">Mercurial</application>
         has the option <option>--style</option> to output its log into
         XML:</para>
-      <screen><command>hg</command> log --style xml > log.xml</screen>
+      <screen><command>hg</command> log --style xml > hg-log.xml</screen>
       <para>The XML file of the Mercurial log looks like this:</para>
       <example xml:id="ex.mercurial-logfile">
         <title>Mercurial Log File in XML</title>
@@ -126,7 +137,7 @@
         xlink:href="http://subversion.tigris.org">Subversion</application>
         is similar like Mercurial: It has an option
         <option>--xml</option> to turn the log output into XML:</para>
-      <screen><command>svn</command> log --xml</screen>
+      <screen><command>svn</command> log --xml > svn-log.xml</screen>
       <para>With the option <option>-v</option> (verbose) you get
         additional path informations. As the output is very similar to
         Mercurial, you can apply the stylesheet shown in <xref linkend="ex.hg2revhistory.xsl"/>
