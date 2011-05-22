@@ -13,12 +13,21 @@
     <title>Problem</title>
     <para>You have a big DocBook document and you need to extract one
       structural element like a <tag>chapter</tag>, <tag>appendix</tag>
-      etc.</para>
+      etc. to edit it separately from the main document.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
     <para>To make the solution work, the structural element needs an ID
-      attribute.</para>
+    attribute. If this is available, use the following stylesheet:</para>
+    <example xml:id="ex.rootid.xsl">
+      <title>Extracting Stylesheet</title>
+      <programlisting linenumbering="numbered"
+        language="xml"><xi:include href="xslt/rootid.xsl" parse="text"/></programlisting>
+    </example>
+    <para>Pass the <parameter>rootid</parameter> parameter to your XSLT
+    processor with the corresponding ID, for example:</para>
+    <screen><command>xsltproc</command> --stringparam rootid intro <!-- 
+    --> rootid.xsl <replaceable>XML_FILE</replaceable></screen>
   </section>
   <section role="discussion">
     <title>Discussion</title>
