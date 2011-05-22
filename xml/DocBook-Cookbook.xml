@@ -23,6 +23,8 @@
     </author>    
   </info>
   
+  <xi:include href="dbc-preface.xml"/>
+  
   <xi:include href="dbc-structure.xml"/>
   
   <xi:include href="dbc-fo.xml"/>
