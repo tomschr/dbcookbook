@@ -46,11 +46,12 @@
           <screen><command>python</command> setup build_ext</screen>
         </step>
         <step>
-          <para>Copy the result directory
-            <filename>build/lib/bzrlib/plugins/</filename> to your
-            plugin directory. For Linux it is something like
-            <filename>$HOME/.bazaar/plugins/</filename>, for Windows
-            copy it to <filename>$APPDATA/bazaar/<replaceable>VERSION</replaceable>/plugins</filename></para>
+          <para>Copy the result directory <filename class="directory"
+              >build/lib/bzrlib/plugins/xmloutput/</filename> to your
+            plugin directory. For Linux it is something like <filename
+              class="directory">$HOME/.bazaar/plugins/</filename>, for
+            Windows copy it to <filename class="directory"
+                >$APPDATA/bazaar/<replaceable>VERSION</replaceable>/plugins</filename></para>
         </step>
         <step>
           <para>Check if the plugin is correctly detected:</para>
@@ -67,6 +68,13 @@
     <section xml:id="sec.structure.revision-list.git">
       <title>Git</title>
       <para>TBD</para>
+      <screen><command>git</command> log --date=iso<!--
+       --> --pretty=format:"&lt;logentry revision='%h'>%n<!--
+        --> &lt;author email='%ae'>%an&lt;/author>%n<!--
+        --> &lt;date>%ad&lt;/date>%n<!-- 
+        --> &lt;msg xml:space='preserve'>%s&lt;/msg>%n<!-- 
+        -->&lt;/logentry>" \
+  | sed -e '1i&lt;logs>' -e '$a&lt;/logs>' > log.xml</screen>
     </section>
     <section xml:id="sec.structure.revision-list.mercurial">
       <title>Mercurial</title>
