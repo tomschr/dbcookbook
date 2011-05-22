@@ -11,7 +11,7 @@
   exclude-result-prefixes="d xlink">
 
   <xsl:import href="&db;/docbook.xsl"/>
-  <xsl:import href="highlight.xsl"/>
+  <xsl:import href="&db;/highlight.xsl"/>
   
   <xsl:include href="param.xsl"/>
   <xsl:include href="../common/common.xsl"/>
@@ -22,5 +22,5 @@
   <xsl:include href="autotoc.xsl"/>
   <xsl:include href="topic-titlepage.xsl"/>
   <xsl:include href="topic.xsl"/>
- 
+  
 </xsl:stylesheet>
