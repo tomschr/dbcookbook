@@ -30,12 +30,14 @@ div.toc-title
   margin-bottom:-.5em;
 }
 
-div.chapter div.titlepage 
+div.chapter div.titlepage,
+div.preface div.titlepage
 {
   text-align:left;
 }
 
-div.chapter div.titlepage .title
+div.chapter div.titlepage .title,
+div.preface div.titlepage .title
 {
   border-left: 5pt solid black;
   padding-left:0.5em;
