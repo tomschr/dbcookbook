@@ -20,7 +20,7 @@
     <example xml:id="ex.structure.section-to-sectX">
       <title>Transforms every <tag>sectX</tag> Element into a
           <tag>section</tag> Element</title>
-      <programlisting linenumbering="numbered" language="xslt"><xi:include
+      <programlisting linenumbering="numbered" language="xml"><xi:include
         href="xslt/db-section-to-sectX.xsl" parse="text"/></programlisting>
     </example>
   </section>
@@ -41,7 +41,7 @@
       mistakes, it is better to check the level:</para>
     <example xml:id="ex.structure.sectX-to-section.check">
       <title>Error Checking of Section Levels</title>
-      <programlisting linenumbering="numbered" language="xslt">&lt;xsl:template match="d:section">
+      <programlisting linenumbering="numbered" language="xml">&lt;xsl:template match="d:section">
     &lt;xsl:variable name="level" select="count(ancestor::*)"/>
     &lt;xsl:choose>
       &lt;xsl:when test="$level &amp;lt;= 5">

@@ -39,7 +39,7 @@
       <para>The XML file of the Mercurial log looks like this:</para>
       <example>
         <title>Mercurial Log File in XML</title>
-        <programlisting language="xml">&lt;log>
+        <programlisting linenumbering="numbered" language="xml">&lt;log>
   &lt;logentry revision="69"
     node="dfadd024594c4083362fe6919264362803dcd285">
     &lt;tag>tip&lt;/tag>
@@ -67,7 +67,7 @@
         <title>Stylesheet <filename>hg2revhistory.xsl</filename> to Convert Mercurial XML Log Files into
           DocBook's <tag>revhistory</tag></title>
         <titleabbrev><filename>hg2revhistory.xsl</filename></titleabbrev>
-        <programlisting linenumbering="numbered" language="xslt"
+        <programlisting linenumbering="numbered" language="xml"
           ><xi:include href="xslt/hg2revhistory.xsl" parse="text"
           /></programlisting>
       </example>
