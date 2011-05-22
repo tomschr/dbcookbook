@@ -5479,7 +5479,7 @@ The value of this parameter specifies profiles which should be included in the o
                                                 <Boolean>true</Boolean>
                                             </field>
                                             <field name="outputFile">
-                                                <File>${pd}/${cfn}.html</File>
+                                                <File>${pd}/html/${cfn}.html</File>
                                             </field>
                                             <field name="openOtherLocationInBrowser">
                                                 <Boolean>false</Boolean>
@@ -5494,7 +5494,7 @@ The value of this parameter specifies profiles which should be included in the o
                                                 <Boolean>false</Boolean>
                                             </field>
                                             <field name="showInXMLPane">
-                                                <Boolean>true</Boolean>
+                                                <Boolean>false</Boolean>
                                             </field>
                                             <field name="showInSVGPane">
                                                 <Boolean>false</Boolean>
