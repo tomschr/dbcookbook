@@ -26,6 +26,10 @@
       <para><application xlink:href="http://bazaar.canonical.com">Bazaar</application></para>
     </section>
     <section>
+      <title>Git</title>
+      <para>TBD</para>
+    </section>
+    <section>
       <title>Mercurial</title>
       <para><application
         xlink:href="http://mercurial.selenic.com">Mercurial</application>
@@ -65,10 +69,6 @@
         <titleabbrev><filename>hg2revhistory.xsl</filename></titleabbrev>
         <programlisting language="xslt"><xi:include href="xslt/hg2revhistory.xsl" parse="text"/></programlisting>
       </example>
-    </section>
-    <section>
-      <title>Git</title>
-      <para>TBD</para>
     </section>
     <section>
       <title>Subversion</title>
