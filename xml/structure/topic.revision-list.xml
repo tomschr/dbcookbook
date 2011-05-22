@@ -65,6 +65,12 @@
       <para>To create the log output in XML, use the following command:</para>
       <screen><command>bzr</command> log --xml <replaceable
         >REPO</replaceable> > bzr-log.xml</screen>
+      <para>To convert the previous log file into DocBook's
+        <tag>revhistory</tag>, use the following stylesheet:</para>
+      <example>
+        <title>Stylesheet to Convert Bazaar's Log File</title>
+        <programlisting>TBD</programlisting>
+      </example>
     </section>
     <section xml:id="sec.structure.revision-list.git">
       <title>Git</title>
