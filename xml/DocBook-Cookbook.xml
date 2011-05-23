@@ -5,7 +5,8 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>The DocBook Cookbook</title>
+  <title>The DocCookbook</title>
+  <subtitle>Solutions for DocBook Developers</subtitle>
   <info>
     <legalnotice>
       <para>This work is licensed as Creative Commons
