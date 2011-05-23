@@ -1,27 +1,34 @@
 <?xml version="1.0"?>
 <style>
+body
+{
+  margin-left:1em;
+  margin-right:1em;
+}
 div.book div.titlepage
 {
   text-align: center;
 }
-
 div.book div.titlepage .title
 {
   font-size:350%;
+  margin-bottom:12pt;
 }
-
+div.book div.titlepage .title
+{
+  font-size:350%;
+  margin-bottom:12pt;
+}
 div.book div.titlepage div.legalnotice
 {
   text-align:left;
   font-size:small;
 }
-
 div.abstract
 {
   margin-left:4em;
   margin-right:4em;
 }
-
 div.abstract-title, 
 div.toc-title
 {
@@ -29,13 +36,11 @@ div.toc-title
   padding-bottom:0em;
   margin-bottom:-.5em;
 }
-
 div.chapter div.titlepage,
 div.preface div.titlepage
 {
   text-align:left;
 }
-
 div.chapter div.titlepage .title,
 div.preface div.titlepage .title
 {
@@ -44,7 +49,6 @@ div.preface div.titlepage .title
   text-align:left;
   font-size:220%;
 }
-  
 div.topic div.titlepage .title
 {
   border-top:1pt solid gray;
@@ -53,7 +57,6 @@ div.topic div.titlepage .title
   padding-left:0em;
   font-size:200%;
 }
-
 div.topic div.section div.titlepage .title
 {
   border:none;
@@ -61,23 +64,19 @@ div.topic div.section div.titlepage .title
   font-size: 180%;
   margin-bottom:-.5em;
 }
-
 div.section div.titlepage .title
 {
   text-align:left;
   font-size: 160%; 
 }
-
 div.section div.section div.titlepage .title
 {
   text-align:left;
   font-size: 140%;
 }
-
 /* formal */
 div.procedure-title {
   font-weight: bold;
   margin-bottom:-.5em;
 }
-
 </style>
