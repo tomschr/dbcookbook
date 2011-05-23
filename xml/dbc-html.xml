@@ -18,5 +18,8 @@
     - Adding Permalinks
     - Breadcrumbs (simple, sophisticated)
   -->
-  <para>FIXME</para>
+  <remark>FIXME</remark>
+  
+  <xi:include href="html/topic.permalinks.xml"/>
+  
 </chapter>
