@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<topic xml:id="dbc.html.permalinks"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Creating Permalinks</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>Your need for every appendix, chapter, section, etc. a small
+      hint (often depicted as <quote>¶</quote>) which points to the
+      division itself. This <quote>permalink</quote> simplies the
+      retrieval and indentification of such a division.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>You need an ID attribute on your division (chapter, section,
+      examples, etc.) to make it work. The
+        <filename>permalinks.xsl</filename> stylesheet is a named
+      template which expects an <parameter>id</parameter>
+      parameter.</para>
+    <example xml:id="ex.html.permalinks">
+      <title>Permalink Stylesheet (<filename>permalinks.xsl</filename>)</title>
+      <programlisting language="xml"><xi:include href="xslt/permalinks.xsl" parse="text"/></programlisting>
+    </example>
+    <para>This is of course not enough. Use the following steps to
+    include it into your customization layers:</para>
+    <procedure>
+      <step>
+        <para>Create a customization layer <remark>as described in xref:
+        ???</remark></para>
+      </step>
+      <step>
+        <para>Include the stylesheet from <xref
+            linkend="ex.html.permalinks"/> into your customization
+            layer:</para>
+        <programlisting language="xml"
+>&lt;xsl:stylesheet version="1.0"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  &lt;!-- ... -->
+  <emphasis role="bold">&lt;xsl:include href="permalinks.xsl"/></emphasis>
+&lt;/xsl:stylesheet></programlisting>
+      </step>
+      <step>
+        <para>Insert one or all of the following codes to include
+            <function>permalink</function> in their respective
+          elements:</para>
+        <itemizedlist>
+          <listitem>
+            <para>For appendices, chapters, prefaces, etc. use the
+              <function>component.title</function> template:
+            </para>
+            <programlisting language="xml">&lt;xsl:template name="component.title">
+  &lt;xsl:param name="node" select="."/>
+  &lt;!-- Some code omitted -->
+  &lt;xsl:element name="h{$level+1}">
+    &lt;xsl:attribute name="class">title&lt;/xsl:attribute>
+    &lt;xsl:if test="$generate.id.attributes = 0">
+      &lt;xsl:call-template name="anchor">
+        &lt;xsl:with-param name="node" select="$node"/>
+        &lt;xsl:with-param name="conditional" select="0"/>
+      &lt;/xsl:call-template>
+    &lt;/xsl:if>
+    &lt;xsl:apply-templates select="$node" mode="object.title.markup">
+      &lt;xsl:with-param name="allow-anchors" select="1"/>
+    &lt;/xsl:apply-templates>
+    <emphasis role="bold">&lt;xsl:call-template name="permalink">
+      &lt;xsl:with-param name="id" select="$id"/>
+      &lt;xsl:with-param name="title" select="title"/>
+    &lt;/xsl:call-template></emphasis>
+  &lt;/xsl:element>
+&lt;/xsl:template></programlisting>
+          </listitem>
+          <listitem>
+            <para>For figures, examples, procedures, tables, etc. use
+              the <function>formal.object.heading</function>
+              template:</para>
+            <programlisting language="xml">&lt;xsl:template name="formal.object.heading">
+  &lt;xsl:param name="object" select="."/>
+  &lt;xsl:param name="title">
+    &lt;xsl:apply-templates select="$object" mode="object.title.markup">
+      &lt;xsl:with-param name="allow-anchors" select="1"/>
+    &lt;/xsl:apply-templates>
+  &lt;/xsl:param>
+  &lt;p class="title">
+    &lt;b>
+      &lt;xsl:copy-of select="$title"/>
+    &lt;/b>
+    &lt;xsl:if test="@id">
+      <emphasis role="bold">&lt;xsl:call-template name="permalink">
+        &lt;xsl:with-param name="title" select="$title"/>
+        &lt;xsl:with-param name="id" select="@id"/>
+      &lt;/xsl:call-template></emphasis>
+    &lt;/xsl:if>
+  &lt;/p>   
+&lt;/xsl:template></programlisting>
+          </listitem>
+          <listitem>
+            <para><remark>FIXME: What about parts?</remark></para>
+          </listitem>
+        </itemizedlist>
+      </step>
+     <step>
+       <para>Use your customization layer to transform your DocBook
+         document into (X)HTML.</para>
+     </step>
+    </procedure>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some discussion about problem and solution.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>
+</topic>
