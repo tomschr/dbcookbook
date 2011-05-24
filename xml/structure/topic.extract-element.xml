@@ -20,7 +20,7 @@
     <para>To make the solution work, the structural element needs an ID
     attribute. If this is available, use the following stylesheet:</para>
     <example xml:id="ex.rootid.xsl">
-      <title>Extracting Stylesheet</title>
+      <title>Extracting Stylesheet <filename>rootid.xsl</filename></title>
       <programlisting linenumbering="numbered"
         language="xml"><xi:include href="xslt/rootid.xsl" parse="text"/></programlisting>
     </example>
