@@ -28,6 +28,7 @@
     * Including a Revision List from Version Control Systems
     * Pretty-print DocBook Documents
   -->
+  <xi:include href="structure/topic.pretty-print.xml"/>
   <xi:include href="structure/topic.db4-to-db5.xml"/>
   <xi:include href="structure/topic.db5-to-db4.xml"/>
   <xi:include href="structure/topic.splitdb.xml"/>
