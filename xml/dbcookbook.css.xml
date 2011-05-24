@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
-<style>
-body
+<style>body
 {
   margin-left:1em;
   margin-right:1em;
@@ -41,42 +40,50 @@ div.preface div.titlepage
 {
   text-align:left;
 }
-div.chapter div.titlepage .title,
-div.preface div.titlepage .title
+div.appendix div.titlepage h2.title,
+div.chapter div.titlepage h2.title,
+div.preface div.titlepage h2.title
 {
   border-left: 5pt solid black;
-  padding-left:0.5em;
+  padding-left:0.25em;
   text-align:left;
   font-size:220%;
 }
-div.topic div.titlepage .title
+
+div.appendix div.section div.titlepage .title,
+div.chapter div.section div.titlepage .title,
+div.preface div.section div.titlepage .title
 {
-  border-top:1pt solid gray;
+  border-top:1pt dotted gray;
   border-left:none;
-  padding-top:5pt;
-  padding-left:0em;
-  font-size:200%;
-}
-div.topic div.section div.titlepage .title
-{
-  border:none;
+  padding-top:0.4em;
+  padding-left:0pt;
   text-align:left;
   font-size: 180%;
   margin-bottom:-.5em;
 }
 div.section div.titlepage .title
 {
+  border:none;
   text-align:left;
-  font-size: 160%; 
+  font-size: 160%;
 }
 div.section div.section div.titlepage .title
 {
+  border:none;
   text-align:left;
   font-size: 140%;
 }
+
+div.section div.section div.section div.titlepage .title
+{
+  border:none;
+  text-align:left;
+  font-size: 120%;
+}
+
 /* formal */
 div.procedure-title {
   font-weight: bold;
   margin-bottom:-.5em;
-}
-</style>
+}</style>
