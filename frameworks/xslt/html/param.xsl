@@ -13,8 +13,8 @@
   <!--<xsl:param name="generate.css.header" select="0"/>-->
   <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
   <xsl:param name="make.clean.html" select="1"/>
-  <!--<xsl:param name="toc.section.depth">2</xsl:param>-->
-  <xsl:param name="toc.max.depth">1</xsl:param>
+  <xsl:param name="toc.section.depth">1</xsl:param>
+  <xsl:param name="toc.max.depth">2</xsl:param>
   
   <xsl:param name="topic.in.toc" select="0"/>
   <xsl:param name="use.id.as.filename" select="1"/>
