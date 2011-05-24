@@ -37,6 +37,7 @@
   <xi:include href="structure/topic.sectX-to-section.xml"/>
   <xi:include href="structure/topic.section-to-sectX.xml"/>
   <xi:include href="structure/topic.bridgehead-to-section.xml"/>
+  <xi:include href="structure/topic.remove-blocks-in-para.xml"/>
   <xi:include href="structure/topic.revision-list.xml"/>
   
 </chapter>
