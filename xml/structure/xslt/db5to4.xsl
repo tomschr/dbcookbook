@@ -42,6 +42,7 @@
       </xsl:attribute>
     </xsl:if>
     <xsl:apply-templates select="$node/@*[local-name() !='id' or
+                                          local-name() != 'version' or
                                           local-name() != 'lang']"/>
   </xsl:template>
   
