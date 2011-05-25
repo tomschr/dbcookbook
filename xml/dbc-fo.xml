@@ -8,22 +8,30 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <abstract>
-      <para></para>
+      <para>FIXME</para>
     </abstract>
   </info>
   
   <!-- 
   Print Customizations
-    - Designing Pages
-    - Title Pages
-    - Headers and Footers
-    - Table of Contents
+    - Designing Pages for Novels
+    - Designing Pages for Lexicons, Referene Book and Catalogs
+    - Designing Pages for Magazines and News Papers
+    - Designing Pages for Technical Books
     - Adapting Chapter and Sections Titles
-    - Choosing Fonts
     - Make Font Sizes Consistent
     - Index
     - Hyphenating URLs
     - Designing TOCs
+    - Colorizing Table Rows
+    - Adding Logos in Title Page
+    - Adding Logos in Header or Footer
+    - Adding Current Time and Date Information
+    - Separating Chapter Number from Titel
+    - Footnotes
+    - Customizing Titles
+    - Choosing Fonts
+    - Standardizing Font Sizes (Le Corbusier)
   -->
   <para>FIXME</para>
 </chapter>
