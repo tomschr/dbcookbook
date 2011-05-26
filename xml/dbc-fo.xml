@@ -38,5 +38,7 @@
     - Standardizing Font Sizes (Le Corbusier)
     - Adding Change Bars
   -->
-  <para>FIXME</para>
+  
+  <xi:include href="fo/topic.hyphenating-urls.xml"/>
+  
 </chapter>
