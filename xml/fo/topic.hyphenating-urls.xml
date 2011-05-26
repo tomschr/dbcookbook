@@ -37,6 +37,11 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>Some discussion about problem and solution.</para>
+    <example xml:id="ex.hyphenate-url.xsl">
+      <title><filename>hyphenate-url.xsl</filename></title>
+      <programlisting language="xml"><xi:include parse="text" 
+        href="xslt/hyphenate-url.xsl"/></programlisting>
+    </example>
   </section>
   <section role="seealso">
     <title>See Also</title>
