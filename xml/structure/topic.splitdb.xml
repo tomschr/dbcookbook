@@ -19,13 +19,30 @@
     <para>There are two solution to this problems:</para>
     <itemizedlist>
       <listitem>
-        <para>Apply a XSLT stylesheet which uses the
-          <function>exsl:document</function> extension element</para>
+        <para>Apply a XSLT stylesheet which uses an extension element
+          like <function>exsl:document</function></para>
       </listitem>
       <listitem>
-        <para>Run the command <command>dbsplit</command></para>
+        <para>Run the command <command>dbautosplit</command></para>
       </listitem>
     </itemizedlist>
+    
+    <section xml:id="sec.structure.splitdb.xsl">
+      <title>Splitting with XSLT</title>
+      <para>The stylesheet in <xref linkend="ex.dbsplit.xsl"/> uses 
+        extension elements to create separate documents from the main
+        output.</para>
+      <example xml:id="ex.dbsplit.xsl">
+        <title><filename>dbsplit.xsl</filename></title>
+        <programlisting language="xml"><xi:include
+          href="xslt/dbsplit.xsl" parse="text"/></programlisting>
+      </example>
+      <para>It can be customized with several parameters.</para>
+    </section>
+    <section xml:id="sec.structure.splitdb.dbsplit">
+      <title>Splitting with the <command>dbautosplit</command></title>
+      <para>TBD</para>
+    </section>
   </section>
   <section role="discussion">
     <title>Discussion</title>
