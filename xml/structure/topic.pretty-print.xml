@@ -49,7 +49,9 @@
     </section>
     <section xml:id="sec.struct.pretty-print.xmlformat">
       <title>Command <command>xmlformat</command></title>
-      <para>FIXME</para>
+      <para>The tool <command>xmlformat</command> is a Perl script which
+      is available from the Web site <link
+        xlink:href="http://www.kitebird.com/software/xmlformat/"/>. </para>
     </section>
   </section>
   <section role="discussion">
