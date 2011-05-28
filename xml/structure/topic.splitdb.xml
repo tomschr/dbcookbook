@@ -16,7 +16,16 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para>There are two solution to this problems:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Apply a XSLT stylesheet which uses the
+          <function>exsl:document</function> extension element</para>
+      </listitem>
+      <listitem>
+        <para>Run the command <command>dbsplit</command></para>
+      </listitem>
+    </itemizedlist>
   </section>
   <section role="discussion">
     <title>Discussion</title>
