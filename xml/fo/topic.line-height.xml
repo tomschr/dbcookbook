@@ -7,6 +7,12 @@
   <title>Influencing the Leading</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>line height</keyword>
+      <keyword>leading</keyword>
+      <keyword>half-leading</keyword>
+      <keyword>font size</keyword>
+    </keywordset>
     <collab>
       <personname>
         <firstname>Tony</firstname>
