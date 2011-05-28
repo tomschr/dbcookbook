@@ -6,6 +6,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Hyphenating URLs</title>
   <info>
+    <keywordset>
+      <keyword>hyphenation</keyword>
+      <keyword>URLs</keyword>
+      <keyword>zero width space</keyword>
+      <keyword>soft hyphen</keyword>
+    </keywordset>
     <definitions definitionfile="defs.xml"/>
   </info>
   
@@ -17,9 +23,12 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The hyphenation of URLs are controlled by two parameters:
-        <parameter>ulink.hyphenate</parameter> and
-        <parameter>ulink.hyphenate.chars</parameter>. The first
+    <para>The hyphenation of URLs in the DocBook stylesheets are
+      controlled by two parameters: <parameter
+        xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/fo/ulink.hyphenate.html"
+        xlink:show="new">ulink.hyphenate</parameter> and <parameter
+        xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/fo/ulink.hyphenate.chars.html"
+        xlink:show="new">ulink.hyphenate.chars</parameter>. The first
       parameter, if not empty, turns on hyphenation. Specify a
       hyphenation character, usually either a Unicode soft hyphen
       (U+00AD) or a Unicode zero-width space (U+200B). </para>
@@ -27,21 +36,48 @@
         <parameter>ulink.hyphenate.chars</parameter>, let you define
       your allowable hyphenation points. The default value is a slash
       (/), but URLs can contain more characters where it is desirable to
-      hyphenate. For this reason, the DocBook parameter reference on
-        <parameter
-        xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/fo/ulink.hyphenate.chars.html"
-        xlink:show="new">ulink.hyphenate.chars</parameter> recommends
+      hyphenate. For this reason, the DocBook parameter reference recommends the
       following value: </para>
     <screen>&lt;xsl:param name="ulink.hyphenate.chars">:/@&amp;?.#&lt;/xsl:param</screen>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para>The easiest way is to set the parameters
+        <parameter>ulink.hyphenate.chars</parameter> and
+        <parameter>ulink.hyphenate</parameter> to the values showed in
+      the last section and be happy. However, for professional needs,
+      this is not enough. The parameters and embedded algorithm
+      do not take into account protocols, for example <systemitem
+        class="protocol">http</systemitem>. Protocols begin with
+      the schema followed by <literal>://</literal> as in
+      <literal>http://</literal>. In some situations (although
+      rare), a hyphenation can occur between the double slashes or before
+      the colon. Furthermore, according to the <citetitle>Chicago
+        Manual of Style</citetitle>, it is desirable to distinguish
+      characters <emphasis>before</emphasis> and
+        <emphasis>after</emphasis> the hyphenation takes place.</para>
+    <para>All these requirements are implemented in stylesheet showed in
+      <xref linkend="ex.hyphenate-url.xsl"/>. It cuts off the protocol
+      with its <literal>://</literal> and iterates through each
+      characters and checks, if it needs to be inserted a hyphenation
+      point before or after it.</para>
     <example xml:id="ex.hyphenate-url.xsl">
       <title><filename>hyphenate-url.xsl</filename></title>
       <programlisting language="xml"><xi:include parse="text" 
         href="xslt/hyphenate-url.xsl"/></programlisting>
     </example>
+    <remark>HINT: Runtime behaviour O(n); should not be a problem as
+      URLs are short. Negligible?</remark>
+    
+    <para>Include the above stylesheet into your customization layer
+      with additionally the following parameters:</para>
+    <programlisting language="xml">&lt;!-- Insert breakpoint /before/ the following characters: -->
+&lt;xsl:param name="ulink.hyphenate.before.chars"
+  >.,%?&amp;amp;#\-+{_&lt;/xsl:param>
+&lt;!-- Insert breakpoint /after/ the following characters: -->
+&lt;xsl:param name="ulink.hyphenate.after.chars"
+  >/:@=};&lt;/xsl:param></programlisting>
+    
   </section>
   <!--<section role="seealso">
     <title>See Also</title>
