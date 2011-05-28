@@ -12,8 +12,8 @@
   <section role="problem">
     <title>Problem</title>
     <para>You want to include revision information into your DocBook
-      document from your version control systems, like Subversion,
-      Mercurial, Git, etc.</para>
+      document from your version control systems, like Bazaar, Subversion,
+      Mercurial, Git, and others.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -27,7 +27,7 @@
         xlink:href="http://bazaar.canonical.com">Bazaar</application>
         does not come with a predefined XML output. If you need this
         functionality, you have to install the
-        <package>xmloutput</package> first. This brings the
+        <package>xmloutput</package> plugin first. This brings the
         <option>--xml</option> option to the <command>log</command>
         subcommand. Proceed as follows:</para>
       <procedure>
@@ -62,7 +62,8 @@
     some builtin commands.</screen>
         </step>
       </procedure>
-      <para>To create the log output in XML, use the following command:</para>
+      <para>After you have successully installed the plugin, create the 
+        log output in XML with the following command:</para>
       <screen><command>bzr</command> log --xml <replaceable
         >REPO</replaceable> > bzr-log.xml</screen>
       <para>To convert the previous log file into DocBook's
