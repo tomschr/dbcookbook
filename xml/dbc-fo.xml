@@ -39,6 +39,7 @@
     - Adding Change Bars
     - Drop Caps
     - Influence Leading in Flow Text (=line-height in paras)
+    - Hyphenating in Verbatim Environments (long lines in screen, programlisting)
   -->
   
   <xi:include href="fo/topic.hyphenating-urls.xml"/>
