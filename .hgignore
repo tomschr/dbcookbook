@@ -8,5 +8,9 @@ syntax: glob
 *.html
 
 xml/.*.xml
+xml/fo/*.fo
+xml/fo/xslt/*.fo
+xml/fo/*.pdf
+xml/fo/xslt/*.pdf
 
 html/*
