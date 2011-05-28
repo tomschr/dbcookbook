@@ -31,8 +31,8 @@
     <title>Discussion</title>
     <para>Some discussion about problem and solution.</para>
   </section>
-  <section role="seealso">
+  <!--<section role="seealso">
     <title>See Also</title>
     <para></para>
-  </section>
+  </section>-->
 </section>
