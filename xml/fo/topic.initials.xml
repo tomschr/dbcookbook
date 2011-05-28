@@ -28,7 +28,8 @@
         <para>as floats, embedded between two or more lines,</para>
       </listitem>
       <listitem>
-        <para>besides the text on the left margin.</para>
+        <para>besides the left margin of the text block without
+          indentation.</para>
       </listitem>
     </itemizedlist>
     <para>Additionally you can design your initials as graphics, but we
@@ -36,19 +37,30 @@
     
     <section xml:id="sec.fo.initials.baseline">
       <title>Place Initials on the Same Baseline</title>
-      <para>This is the easiest method to implement. You normalize the
-        text node of the first paragraph, extract the first character
+      <para>This is the easiest method to implement. The stylesheet
+        normalizes the text node of the first paragraph, extract the first character
         and wrap it between an <tag>fo:inline</tag> element with font
-        size, family, and weight.</para>
+        size, family, and weight:</para>
       <example xml:id="ex.initials-baseline.xsl">
         <title><filename>initials-baseline.xsl</filename></title>
         <programlisting language="xml"><xi:include
           href="xslt/initials-baseline.xsl" parse="text"
         /></programlisting>
       </example>
+      <para>To use it, include it into your customization layer. It is
+        usually called in text nodes like the first paragraph from a
+        section which parent is an article:</para>
+      <programlisting language="xml"><xi:include 
+        href="xslt/db-initials.xsl" parse="text"
+      /></programlisting>
+      <para>It is easy to extend it to chapters, you just have to copy
+        the template and correct the content in the <tag
+          class="attribute">match</tag> attribute to:</para>
+      <programlisting>&lt;xsl:template<!--
+       --> match="d:chapter/d:section/d:para[1]/text()"></programlisting>
     </section>
     <section xml:id="sec.fo.initials.floats">
-      <title>Place Initials as Floats</title>
+      <title>Implement Initials as Floats</title>
       <para>FIXME</para>
     </section>
     <section xml:id="sec.fo.initials.margin">
@@ -58,7 +70,10 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para>The solution described in <xref
+      linkend="sec.fo.initials.baseline"/> is in most cases sufficient.
+      However, if the first character is <emphasis>not</emphasis> a
+      letter, any character is incorrectly made an initial.</para>
   </section>
   <section role="seealso">
     <title>See Also</title>
