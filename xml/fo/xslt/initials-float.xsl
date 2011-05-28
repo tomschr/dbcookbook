@@ -64,9 +64,12 @@
       </xsl:if>
       <xsl:call-template name="anchor"/>
       <fo:float float="start" margin-top="0pt" padding-top="0pt"
+        line-stacking-strategy="line-height"
+        line-height.conditionality="discard"
         intrusion-displace="line">
         <fo:block text-depth="0pt" margin-top="0pt" padding-top="0pt"
-          border=".5pt dotted blue"
+          border=".5pt dotted blue" line-stacking-strategy="line-height"
+          line-height.conditionality="discard"
         color="red" 
         line-height="{$initial-line-height}pt" 
         font-size="{$initial-font-size}pt"

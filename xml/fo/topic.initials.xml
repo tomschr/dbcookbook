@@ -62,6 +62,8 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <para>Find information about the property <tag class="attribute"
+        >line-height</tag> in <xref linkend="dbc.fo.line-height"
+      />.</para>
   </section>
 </section>
