@@ -37,8 +37,11 @@
     - Choosing Fonts
     - Standardizing Font Sizes (Le Corbusier)
     - Adding Change Bars
+    - Drop Caps
+    - Influence Leading in Flow Text (=line-height in paras)
   -->
   
   <xi:include href="fo/topic.hyphenating-urls.xml"/>
+  <xi:include href="fo/topic.initials.xml"/>
   
 </chapter>
