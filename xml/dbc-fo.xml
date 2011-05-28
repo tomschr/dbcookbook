@@ -42,6 +42,7 @@
     - Hyphenating in Verbatim Environments (long lines in screen, programlisting)
   -->
   
+  <xi:include href="fo/topic.line-height.xml"/>
   <xi:include href="fo/topic.hyphenating-urls.xml"/>
   <xi:include href="fo/topic.initials.xml"/>
   
