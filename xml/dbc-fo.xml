@@ -40,6 +40,8 @@
     - Initials/Drop Caps
     - Influence Leading in Flow Text (=line-height in paras)
     - Hyphenating in Verbatim Environments (long lines in screen, programlisting)
+    - Showing Cropmarks
+      http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/fo/advanced/bleed-and-crop-marks.fo?view=markup&pathrev=800143
   -->
   
   <xi:include href="fo/topic.line-height.xml"/>
