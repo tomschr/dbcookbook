@@ -7,12 +7,15 @@
   <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
   <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="img.src.path">images/png/</xsl:param>
+  <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="highlight.source" select="1"/>
   <!--<xsl:param name="highlight.xslthl.config"/>-->
   
   <xsl:param name="linenumbering.everyNth" select="1"/>
   <xsl:param name="make.clean.html" select="1"/>
+  <xsl:param name="table.borders.with.css" select="0"/>
+
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
   <xsl:param name="ulink.target" select="0"/>
