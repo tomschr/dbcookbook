@@ -20,14 +20,16 @@
     following input document:</para>
     <example xml:id="ex.profile-envar.xml">
       <title><filename>profile-envar.xml</filename></title>
-      <programlisting language="xml">TBD</programlisting>
+      <programlisting language="xml"><xi:include
+        href="xslt/profile-envar.xml" parse="text"/></programlisting>
     </example>
     
     <para>The following stylesheet adds automatically an
       <tag>indexterm</tag> to each <tag>envar</tag> element:</para>
     <example xml:id="ex.profile-tag.xsl">
       <title><filename>profile-tag.xsl</filename></title>
-      <programlisting language="xml">TBD<!--<xi:include href=""/>--></programlisting>
+      <programlisting language="xml"><xi:include
+        href="xslt/profile-tags.xsl" parse="text"/></programlisting>
     </example>
     
     <para>After applying the stylesheet from <xref
