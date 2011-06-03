@@ -132,8 +132,43 @@
       document rather than <emphasis>add</emphasis> something. In our
       case we use the special <literal>profile</literal> mode to
       customize the automatic index term addition.</para>
-    
-<!--
+    <para>With the above stylesheet, it is possible to influence how
+      your index terms appear. This is done with the
+      <tag class="attribute">condition</tag><footnote>
+        <para>Theoretically you could use any of the several common
+          attributes available on every DocBook element. The <tag
+            class="attribute">condition</tag> was the one attribute 
+          that has fitted the best in the authors mind.</para>
+      </footnote> attribute, demonstrated on our <tag>envar</tag>
+      example:</para>
+    <variablelist>
+      <varlistentry>
+        <term><tag class="starttag">envar</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Adds the <tag>indexterm</tag>s directly after the
+            <tag>envar</tag> element.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="starttag">envar condition="index"</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Same as the previous entry.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="starttag">envar condition="noindex"</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Suppresses any automatic generation of index entries.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="starttag">envar condition="pref"</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Adds an <emphasis>preferred</emphasis> index entry. </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <!--
   <itemizedlist>
       <listitem>
         <formalpara>
