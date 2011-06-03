@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xsl:stylesheet
 [
  <!ENTITY dbblocks "d:address|d:bibliolist|d:blockquote|d:bridgehead|d:calloutlist|d:caution|d:classsynopsis|d:cmdsynopsis|d:constraintdef|d:constructorsynopsis|d:destructorsynopsis|d:epigraph|d:equation|d:example|d:fieldsynopsis|d:figure|d:funcsynopsis|d:glosslist|d:important|d:informalexample|d:informalfigure|d:informaltable|d:itemizedlist|d:literallayout|d:mediaobject|d:methodsynopsis|d:msgset|d:note|d:orderedlist|d:procedure|d:procedure|d:productionset|d:programlisting|d:programlistingco|d:qandaset|d:revhistory|d:screen|d:screenco|d:screenshot|d:segmentedlist|d:sidebar|d:simplelist|d:synopsis|d:table|d:task|d:tip|d:variablelist|d:warning">
