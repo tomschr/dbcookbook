@@ -28,9 +28,10 @@
     <title>Solution</title>
     <para>The solution explained</para>
     <example xml:id="ex.">
-      <title><filename>move-blocks-in-para.xsl</filename></title>
+      <title><filename>move-blocks-outof-para.xsl</filename></title>
       <programlisting language="xml"
-        linenumbering="numbered"><xi:include href="xslt/move-blocks-in-para.xsl" 
+        linenumbering="numbered"><xi:include
+          href="xslt/move-blocks-outof-para.xsl" 
           parse="text"/></programlisting>
     </example>
   </section>
