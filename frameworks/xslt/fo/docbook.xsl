@@ -16,7 +16,7 @@
 
 <!--<xsl:include href="attributesets.xsl"/>-->
 <xsl:include href="param.xsl"/>
-<xsl:include href="fonts.xsl"/>
+<!--<xsl:include href="fonts.xsl"/>-->
 <xsl:include href="xep.xsl"/>
 
 </xsl:stylesheet>
