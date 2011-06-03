@@ -6,6 +6,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Moving Block Elements Outside of Paragraphs</title>
   <info>
+    <author>
+      <personname>
+        <firstname>Mr</firstname>
+        <surname>X</surname>
+      </personname>
+    </author>
     <definitions definitionfile="defs.xml"/>
   </info>
   
@@ -21,13 +27,19 @@
   <section role="solution">
     <title>Solution</title>
     <para>The solution explained</para>
+    <example xml:id="ex.">
+      <title><filename>move-blocks-in-para.xsl</filename></title>
+      <programlisting language="xml"
+        linenumbering="numbered"><xi:include href="xslt/move-blocks-in-para.xsl" 
+          parse="text"/></programlisting>
+    </example>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>Some discussion about problem and solution.</para>
   </section>
-  <section role="seealso">
+  <!--<section role="seealso">
     <title>See Also</title>
     <para></para>
-  </section>
+  </section>-->
 </section>
