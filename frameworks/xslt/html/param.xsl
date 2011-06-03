@@ -5,15 +5,18 @@
   <!--<xsl:param name="css.decoration" select="0"/>-->
   <xsl:param name="base.dir">build/html/</xsl:param>
   <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
-  <!--<xsl:param name="generate.css.header" select="0"/>-->
+  <xsl:param name="css.decoration" select="0"/>
+  <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="highlight.source" select="1"/>
   <!--<xsl:param name="highlight.xslthl.config"/>-->
-
+  
   <xsl:param name="linenumbering.everyNth" select="1"/>
   <xsl:param name="make.clean.html" select="1"/>
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
+  <xsl:param name="ulink.target" select="0"/>
   <xsl:param name="use.id.as.filename" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
+  <xsl:param name="use.viewport" select="0"/>
     
 </xsl:stylesheet>
