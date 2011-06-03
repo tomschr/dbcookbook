@@ -14,10 +14,9 @@
 <!-- Import the current version of the DocBook NS stylesheets  -->
 <xsl:import href="&db;/fo/docbook.xsl"/>
 
-<xsl:include href="attributesets.xsl"/>
+<!--<xsl:include href="attributesets.xsl"/>-->
 <xsl:include href="param.xsl"/>
 <xsl:include href="fonts.xsl"/>
-
 <xsl:include href="xep.xsl"/>
 
 </xsl:stylesheet>
