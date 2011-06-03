@@ -6,6 +6,7 @@
   <xsl:param name="base.dir">build/html/</xsl:param>
   <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
   <xsl:param name="css.decoration" select="0"/>
+  <xsl:param name="img.src.path">images/png/</xsl:param>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="highlight.source" select="1"/>
   <!--<xsl:param name="highlight.xslthl.config"/>-->
