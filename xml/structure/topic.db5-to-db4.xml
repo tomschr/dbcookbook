@@ -15,11 +15,21 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para>Generally, the difference between version 4 and version 5 are
+      minimal. Refer to the <link
+        xlink:href="http://www.docbook.org/tdg51/en/html/ch01.html#d6e550">The
+        Definitive Guide</link> for detailed information what has been
+        added, removed, or renamed.</para>
+    <para></para>
+    <example xml:id="ex.db5to4.xsl">
+      <title><filename>db5to4.xsl</filename></title>
+      <programlisting><xi:include href="xslt/db5to4.xsl" parse="text"/></programlisting>
+    </example>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>Some discussion about problem and solution.</para>
+    
   </section>
   <section role="seealso">
     <title>See Also</title>
