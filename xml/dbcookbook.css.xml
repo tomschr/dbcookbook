@@ -141,7 +141,22 @@ div.section div.section div.section div.titlepage .title
   text-align:left;
   font-size: 120%;
 }
-
+div.section div.titlepage div.author
+{
+  margin-top:1.5em;
+  font-family:'Maven Pro';
+  font-weight:normal;
+}
+div.section div.titlepage div.author .author
+{
+  display:inline;
+  font-weight:normal;
+}
+div.section div.titlepage div.author:before
+{
+  content:"Credits: ";
+  display:inline;
+}
 div.book div.toc div.toc-title,
 div.book div.list-of-examples div.toc-title
 {
