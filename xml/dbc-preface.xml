@@ -5,5 +5,33 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Preface</title>
-  <para>TBD</para>  
+  <para>TBD</para>
+
+  <section>
+    <title>Audience</title>
+    <para>I expect that you know at least some DocBook, have heard (and
+      even better have worked!) with CSS and XSLT. This book does not
+      attempt to teach you DocBook, XSLT, CSS, XSL-FO, or any other
+      related technology. </para>
+  </section>
+  
+  <section>
+    <title>Further Reading</title>
+    <para>TBD</para>
+  </section>
+  
+  <section>
+    <title>Typographical Conventions</title>
+    <para>TBD</para>
+  </section>
+  
+  <section>
+    <title>How to Contact Me</title>
+    <para>TBD</para>
+  </section>
+  
+  <section>
+    <title>Acknowledgments</title>
+    <para>TBD</para>
+  </section>
 </preface>
