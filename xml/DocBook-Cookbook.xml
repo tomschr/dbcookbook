@@ -9,10 +9,10 @@
   <subtitle>Receipies for DocBook Developers</subtitle>
   <info>
     <legalnotice>
-      <informaltable border="0" class="ccbox">
+      <informaltable border="0" style="ccbox" class="ccbox">
         <tgroup cols="2">
           <tbody>
-            <row>
+            <row valign="top">
               <entry><inlinemediaobject>
                 <imageobject>
                   <imagedata
