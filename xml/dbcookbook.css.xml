@@ -18,6 +18,13 @@ div.book div.titlepage div.legalnotice
 {
   text-align:left;
   font-size:small;
+  margin-top:3em;
+  margin-bottom:3em;
+  margin-left:10%;
+  margin-right:10%;
+  padding:1em;
+  border:2pt solid black;
+  background-color:#FFFDB7;
 }
 div.abstract
 {
