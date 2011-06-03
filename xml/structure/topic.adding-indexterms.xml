@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.adding-indexterms" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Adding Index Entries Automatically</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to add index entries (also known as
+        <tag>indexterm</tag>s) automatically into your document. </para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>To see how the automatical addition works, the following
+      procedure demonstrate this for the element <tag>envar</tag>.</para>
+    
+    <procedure>
+      <title>Adding <tag>indexterm</tag> Elements to <tag>envar</tag></title>
+      <step>
+        <para>Use the element <tag>envar</tag> in your document as usual. By
+          default all <tag>envar</tag> elements get an
+            <tag>indexterm</tag>. In cases you do not want this, suppress 
+          this automatism by adding the attribute <tag
+            class="attribute">condition</tag> with its value <tag
+            class="attvalue">noindex</tag>:</para>
+        <example xml:id="ex.profile-envar.xml">
+          <title><filename>profile-envar.xml</filename></title>
+          <programlisting language="xml"><xi:include
+            href="xslt/profile-envar.xml" parse="text"/></programlisting>
+        </example>
+      </step>
+      <step>
+        <para>Create a stylesheet <filename>profile-tags.xsl</filename>
+        with the following content:</para>
+        <example xml:id="ex.profile-tag.xsl">
+          <title><filename>profile-tag.xsl</filename></title>
+          <programlisting language="xml"><xi:include 
+            href="xslt/profile-tags.xsl" parse="text"/></programlisting>
+        </example>
+      </step>
+      <step>
+        <para>Create the stylesheet
+          <filename>add-indexterms.xsl</filename>.</para>
+        <example>
+          <title><filename>add-indexterms.xsl</filename></title>
+          <programlisting language="xml"><xi:include
+        href="xslt/add-indexterms.xsl" parse="text"/></programlisting>
+        </example>
+      </step>
+      <step>
+        <para>Transform your document:</para>
+        <screen><command>xsltproc</command> add-indexterms.xsl profile-envar.xml</screen>
+      </step>
+    </procedure>
+    
+    <para>After applying the stylesheet from <xref
+      linkend="ex.profile-tag.xsl"/> it creates the following output:</para>
+    <example>
+      <title>Output of the Transformation</title>
+      <programlisting language="xml"><xi:include
+        href="xslt/profile-envar-result.xml" parse="text"/></programlisting>
+    </example>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Assume you want to show up an environment variable in the
+      index. Normally you would mark up the text with the
+        <tag>envar</tag> element and add an <tag>indexterm</tag> right
+      after the first one. As is is useful to find the name of the
+      environment variable also under the primary term
+        <quote>environment variables</quote>, you add an additional
+        <tag>indexterm</tag>. This could look like this:</para>
+    <programlisting>&lt;para>Use the &lt;envar>PATH&lt;/envar>&lt;indexterm>
+        &lt;primary>PATH&lt;/primary>
+      &lt;/indexterm>&lt;indexterm>
+        &lt;primary>environment variables&lt;/primary>
+        &lt;secondary>PATH&lt;/secondary>
+      &lt;/indexterm>
+      to do ...
+&lt;/para></programlisting>
+    <para>Although this is the preferred method, it has some drawbacks:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>It is hard to read</title>
+          <para>If you are get used to read the bare XML code, it is
+            hard to read the text if it is cluttered with
+              <tag>indexterm</tag> elements all along.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>It may be inconsistent</title>
+          <para>If you forgot the <quote>s</quote> in the primary index
+            term it will lead to double entries (one with the singular,
+            one with the plural form). This can be painful if you have
+            to go through the complete document just to fix the singular
+            form into the plural form (or vice versa).</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Whitespace could matter</title>
+          <para>The <tag>indexterm</tag> element(s) start
+              <emphasis>directly</emphasis> after your term. If you or
+            your editor introduces one or more whitespaces, in the worst
+            case it could lead to a wrong page number in the index. This
+            mainly affects the PDF rather than any online formats. </para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    
+    <para>All of the above problems can be solved with the stylesheet
+      from <xref linkend="ex.profile-tag.xsl"/>.  It exploits the 
+      DocBook XSL stylesheet´s profiling mechanism. Normally profiling is a method to
+      <emphasis>remove</emphasis> certain structures from a document rather
+      than <emphasis>add</emphasis> something. In our case we can use
+      the special <literal>profile</literal> mode to check</para>
+<!--
+  <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Document Type</title>
+          <para>Technical documents are more applicable than novels as
+            the former contains usually a set of elements which are
+            consistently used. </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Consistent Elements</title>
+          <para>The document needs not only consistently use the same
+            elements for the same structure, it has to use a specific
+            element in the first place. For example, if you want to show up your
+            configuration files in your index, you need to mark it up
+            with <tag>filename</tag>, otherwise this method has no
+            chance.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Needed Elements</title>
+          <para>Similar to the previous point, you have to know which
+            elements you need to show up in the index. You have to
+            select from all possible inline elements only a handful
+            which you consider important enough.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Only for Inline Elements</title>
+          <para>This method works only for inline elements well.
+            DocBook´s inline elements occur usually inside a paragraph
+            but can also show up in a title.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+-->    
+  </section>
+  <!--<section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>-->
+</section>

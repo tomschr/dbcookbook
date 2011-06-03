@@ -1,0 +1,20 @@
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <title>Profiling Test</title>
+  <para>Environment variable <envar>XML_CATALOG_FILES</envar><indexterm>
+    <primary>XML_CATALOG_FILES</primary>
+  </indexterm><indexterm>
+    <primary>environment variables</primary>
+    <secondary>XML_CATALOG_FILES</secondary>
+    </indexterm></para>
+  <para>Environment variable <envar condition="noindex">FOO</envar></para>
+  <para>Environment variable <envar os="windows"
+        >Path</envar><indexterm><primary>Path</primary></indexterm><indexterm><primary>environment
+        variables</primary><secondary>Path</secondary></indexterm><envar
+      os="linux"
+      >PATH</envar><indexterm>
+        <primary>PATH</primary>
+      </indexterm><indexterm>
+        <primary>environment variables</primary>
+        <secondary>PATH</secondary>
+      </indexterm></para>
+</article>

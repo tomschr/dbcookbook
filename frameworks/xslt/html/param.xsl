@@ -3,7 +3,7 @@
   version="1.0">
   
   <!--<xsl:param name="css.decoration" select="0"/>-->
-  <xsl:param name="base.dir">html/</xsl:param>
+  <xsl:param name="base.dir">build/html/</xsl:param>
   <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
   <!--<xsl:param name="generate.css.header" select="0"/>-->
   <xsl:param name="highlight.source" select="1"/>
