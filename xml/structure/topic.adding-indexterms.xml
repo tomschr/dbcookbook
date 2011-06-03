@@ -16,18 +16,20 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>To see how the automatical addition works, the following
-      procedure demonstrate this for the element <tag>envar</tag>.</para>
+    <para>To see how the automatic addition works, the following
+      procedure demonstrate this for the element
+      <tag>envar</tag>.</para>
     
     <procedure>
       <title>Adding <tag>indexterm</tag> Elements to <tag>envar</tag></title>
       <step>
-        <para>Use the element <tag>envar</tag> in your document as usual. By
-          default all <tag>envar</tag> elements get an
-            <tag>indexterm</tag>. In cases you do not want this, suppress 
-          this automatism by adding the attribute <tag
+        <para>Use the element <tag>envar</tag> in your document as
+          usual. By default all <tag>envar</tag> elements get an
+            <tag>indexterm</tag>. In cases you do not want this,
+          suppress this automatism by adding the attribute <tag
             class="attribute">condition</tag> with its value <tag
-            class="attvalue">noindex</tag>:</para>
+            class="attvalue">noindex</tag>. This is done in the second
+            <tag>para</tag> element:</para>
         <example xml:id="ex.profile-envar.xml">
           <title><filename>profile-envar.xml</filename></title>
           <programlisting language="xml"><xi:include
@@ -45,7 +47,11 @@
       </step>
       <step>
         <para>Create the stylesheet
-          <filename>add-indexterms.xsl</filename>.</para>
+            <filename>add-indexterms.xsl</filename>. This stylesheet is
+          based on <filename>profile.xsl</filename> of the DocBook XSL
+          stylesheets. It contains the special mode
+            <literal>profile</literal> to process elements to observe
+          profiling conditions.</para>
         <example>
           <title><filename>add-indexterms.xsl</filename></title>
           <programlisting language="xml"><xi:include
@@ -68,11 +74,11 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Assume you want to show up an environment variable in the
-      index. Normally you would mark up the text with the
-        <tag>envar</tag> element and add an <tag>indexterm</tag> right
-      after the first one. As is is useful to find the name of the
-      environment variable also under the primary term
+    <para>Let´s go back first at the beginning. Assume you want to show
+      up an environment variable in the index. Normally you would mark
+      up the text with the <tag>envar</tag> element and add an
+        <tag>indexterm</tag> right after the first one. As is is useful
+      to find the index term also under the primary term
         <quote>environment variables</quote>, you add an additional
         <tag>indexterm</tag>. This could look like this:</para>
     <programlisting>&lt;para>Use the &lt;envar>PATH&lt;/envar>&lt;indexterm>
@@ -90,17 +96,19 @@
           <title>It is hard to read</title>
           <para>If you are get used to read the bare XML code, it is
             hard to read the text if it is cluttered with
-              <tag>indexterm</tag> elements all along.</para>
+              <tag>indexterm</tag> elements all along. The text gets
+            lost.</para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title>It may be inconsistent</title>
           <para>If you forgot the <quote>s</quote> in the primary index
-            term it will lead to double entries (one with the singular,
-            one with the plural form). This can be painful if you have
-            to go through the complete document just to fix the singular
-            form into the plural form (or vice versa).</para>
+            term it will lead to double entries (one singular and one
+            plural form). This leads to inconsistencies. It can be
+            painful if you have to go through the complete document just
+            to fix the singular form into the plural form (or vice
+            versa).</para>
         </formalpara>
       </listitem>
       <listitem>
@@ -108,19 +116,23 @@
           <title>Whitespace could matter</title>
           <para>The <tag>indexterm</tag> element(s) start
               <emphasis>directly</emphasis> after your term. If you or
-            your editor introduces one or more whitespaces, in the worst
-            case it could lead to a wrong page number in the index. This
-            mainly affects the PDF rather than any online formats. </para>
+            your editor introduces one or more whitespaces after your
+            dedicated index term, in the worst case it could lead to a
+            wrong page number in the index. This mainly affects the PDF
+            rather than any online formats but could confuse your
+            readers.</para>
         </formalpara>
       </listitem>
     </itemizedlist>
     
     <para>All of the above problems can be solved with the stylesheet
-      from <xref linkend="ex.profile-tag.xsl"/>.  It exploits the 
-      DocBook XSL stylesheet´s profiling mechanism. Normally profiling is a method to
-      <emphasis>remove</emphasis> certain structures from a document rather
-      than <emphasis>add</emphasis> something. In our case we can use
-      the special <literal>profile</literal> mode to check</para>
+      from <xref linkend="ex.profile-tag.xsl"/>. It exploits the DocBook
+      XSL stylesheet´s profiling mechanism. Normally, profiling is a
+      method to <emphasis>remove</emphasis> certain structures from a
+      document rather than <emphasis>add</emphasis> something. In our
+      case we use the special <literal>profile</literal> mode to
+      customize the automatic index term addition.</para>
+    
 <!--
   <itemizedlist>
       <listitem>
