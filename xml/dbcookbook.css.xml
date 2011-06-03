@@ -43,7 +43,7 @@ div.book div.titlepage .title
 {
   /* font-family:'Maven Pro'; */
   font-weight:900;
-  font-size:350%;
+  font-size:450%;
   margin-bottom:12pt;
 }
 
@@ -59,6 +59,12 @@ div.book div.titlepage div.legalnotice
   padding:1em;
   border:2pt solid black;
   background-color:#FFFDB7;
+}
+div.book div.titlepage div.legalnotice div.informaltable table,
+div.book div.titlepage div.legalnotice div.informaltable tr,
+div.book div.titlepage div.legalnotice div.informaltable td
+{
+  border:none;
 }
 div.abstract
 {
@@ -86,7 +92,7 @@ div.preface div.titlepage h2.title
   color:navy;
   padding-left:0.25em;
   text-align:left;
-  font-size:220%;
+  font-size:280%;
 }
 
 div.appendix div.section div.titlepage .title,
