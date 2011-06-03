@@ -23,7 +23,7 @@
     <para></para>
     <example xml:id="ex.db5to4.xsl">
       <title><filename>db5to4.xsl</filename></title>
-      <programlisting><xi:include href="xslt/db5to4.xsl" parse="text"/></programlisting>
+      <programlisting language="xml" linenumbering="numbered"><xi:include href="xslt/db5to4.xsl" parse="text"/></programlisting>
     </example>
   </section>
   <section role="discussion">
