@@ -1,23 +1,57 @@
 <?xml version="1.0"?>
-<style>body
+<style>/* Font definitions */
+body, 
+div.abstract
 {
-  margin-left:1em;
-  margin-right:1em;
+  font-family:'Maven Pro';
 }
+
+p
+{
+  font-family: 'PT Serif';
+}
+
+div.abstract p
+{
+  font-family:'Maven Pro';
+}
+
+/* Verbatim texts */
+div.programlisting, div.screen,
+.command,
+.option,
+.filename,
+.function,
+code, 
+a.link
+{
+  font-family:'Cousine';
+}
+
+/* ================== */
+body
+{
+  margin-left:2em;
+  margin-right:2em;  
+}
+
 div.book div.titlepage
 {
   text-align: center;
 }
 div.book div.titlepage .title
 {
+  /* font-family:'Maven Pro'; */
+  font-weight:900;
   font-size:350%;
   margin-bottom:12pt;
 }
 
 div.book div.titlepage div.legalnotice
 {
+  font-family: 'PT Serif';
   text-align:left;
-  font-size:small;
+  /*font-size:smaller;*/
   margin-top:3em;
   margin-bottom:3em;
   margin-left:10%;
@@ -47,7 +81,9 @@ div.appendix div.titlepage h2.title,
 div.chapter div.titlepage h2.title,
 div.preface div.titlepage h2.title
 {
+  text-rendering: optimizeLegibility;
   border-left: 5pt solid black;
+  color:navy;
   padding-left:0.25em;
   text-align:left;
   font-size:220%;
@@ -83,6 +119,36 @@ div.section div.section div.section div.titlepage .title
   border:none;
   text-align:left;
   font-size: 120%;
+}
+
+div.book div.toc div.toc-title,
+div.book div.list-of-examples div.toc-title
+{
+  font-size:large;
+}
+
+/* TOC */
+div.book > div.toc > dl > dt
+{
+  margin-top:1em;
+  font-weight:bold;
+  font-size:larger;
+}
+
+div.book > div.toc > dl > dd
+{
+  font-family: 'PT Serif';
+  font-weight:normal;
+}
+
+.procedure li
+{
+  font-weight:bold;
+}
+
+.procedure li > *
+{
+  font-weight:normal;
 }
 
 /* formal */
