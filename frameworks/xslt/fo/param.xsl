@@ -221,8 +221,8 @@ set       toc,title
 <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
 
 <xsl:param name="use.typo.xep.superior" select="1"/>
-<xsl:param name="typo.sup.xml" select="document('typo.superiors.xml')"/>
-
+<!--<xsl:param name="typo.sup.xml" select="document('typo.superiors.xml')"/>
+-->
 <!-- Controls fo:floats in formal titles and section titles -->
 <xsl:param name="use.float.in.formaltitles" select="1"/>
 <xsl:param name="use.float.in.sectiontitles" select="1"/>
