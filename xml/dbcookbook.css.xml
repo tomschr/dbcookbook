@@ -13,11 +13,7 @@ div.book div.titlepage .title
   font-size:350%;
   margin-bottom:12pt;
 }
-div.book div.titlepage .title
-{
-  font-size:350%;
-  margin-bottom:12pt;
-}
+
 div.book div.titlepage div.legalnotice
 {
   text-align:left;
