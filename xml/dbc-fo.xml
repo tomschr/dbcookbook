@@ -42,7 +42,8 @@
     - Hyphenating in Verbatim Environments (long lines in screen, programlisting)
     - Showing Cropmarks
       http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/fo/advanced/bleed-and-crop-marks.fo?view=markup&pathrev=800143
-    - Barcode  
+    - Barcode
+    - Add Typographical Superiors and Inferiors
   -->
   
   <xi:include href="fo/topic.line-height.xml"/>
