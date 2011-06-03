@@ -44,6 +44,7 @@
       http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/fo/advanced/bleed-and-crop-marks.fo?view=markup&pathrev=800143
     - Barcode
     - Add Typographical Superiors and Inferiors
+    - Adding Fonts to FO Formatter
   -->
   
   <xi:include href="fo/topic.line-height.xml"/>
