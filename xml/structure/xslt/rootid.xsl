@@ -44,10 +44,9 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <xsl:template match="node()" mode="process.root">
+  <xsl:template match="node() | @*" mode="process.root">
     <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates mode="process.root"/>
+      <xsl:apply-templates select="@* | node()" mode="process.root"/>
     </xsl:copy>
   </xsl:template>
 </xsl:stylesheet>
