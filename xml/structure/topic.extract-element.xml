@@ -98,19 +98,27 @@
         <para>The two node from the previous operation are compared
           through the <function>generate-id</function> function. That
           leaves two options:</para>
-        <formalpara>
-          <title>Both nodes are equal</title>
-          <para>The <tag>xref</tag> points somewhere inside the tree
-            under the <parameter>rootid</parameter> element. That means,
-          we can copy the <tag>xref</tag> element.</para>
-        </formalpara>
-        <formalpara>
-          <title>Both nodes are not equal</title>
-          <para>The <tag>xref</tag> points outside of the
-              <parameter>rootid</parameter> element. That means, you
-            need to <quote>resolve</quote> the <tag>xref</tag> element
-            to prevent validation errors.</para>
-        </formalpara>
+        <itemizedlist>
+          <listitem>
+            <formalpara>
+              <title>Both nodes are equal</title>
+              <para>The <tag>xref</tag> points somewhere inside the tree
+                under the <parameter>rootid</parameter> element. That
+                means, we can copy the <tag>xref</tag> element.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Both nodes are not equal</title>
+              <para>The <tag>xref</tag> points outside of the
+                  <parameter>rootid</parameter> element. That means, you
+                need to <quote>resolve</quote> the <tag>xref</tag>
+                element to prevent validation errors.</para>
+            </formalpara>
+          </listitem>
+        </itemizedlist>
+        
+        
       </listitem>
       <listitem>
         <para>If the <tag>xref</tag> needs to be revamped, we use the
