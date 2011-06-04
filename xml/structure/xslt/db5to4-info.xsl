@@ -6,6 +6,7 @@
   xmlns:exsl="http://exslt.org/common"
   exclude-result-prefixes="d xlink exsl">
   
+  <!-- Structural elements using info -->
   <xsl:template match="d:appendix[d:info]
                       |d:article[d:info]
                       |d:bibliography[d:info]
@@ -45,6 +46,7 @@
     </xsl:element>
   </xsl:template>
   
+  <!-- Block elements using info -->
   <xsl:template match="d:bibliolist[d:info]
                       |d:blockquote[d:info]
                       |d:equation[d:info]
