@@ -141,22 +141,34 @@ div.section div.section div.section div.titlepage .title
   text-align:left;
   font-size: 120%;
 }
-div.section div.titlepage div.author
+/* Author and authorgroup */
+div.section div.titlepage div.author .author
+{
+  font-weight:normal;
+}
+div.section div.titlepage div.authorgroup
 {
   margin-top:1.5em;
   font-family:'Maven Pro';
   font-weight:normal;
 }
-div.section div.titlepage div.author .author
+div.section div.titlepage div.authorgroup
 {
-  display:inline;
+  margin-top:1.5em;
+  font-family:'Maven Pro';
   font-weight:normal;
 }
-div.section div.titlepage div.author:before
+div.section div.titlepage div.authorgroup div.author .author,
+div.section div.titlepage div.authorgroup div.author
+{
+    margin-top:0;
+    margin-bottom:0;
+}
+div.section div.titlepage div.authorgroup:before
 {
   content:"Credits: ";
-  display:inline;
 }
+/* Tocs */
 div.book div.toc div.toc-title,
 div.book div.list-of-examples div.toc-title
 {
