@@ -4,7 +4,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Adding Index Entries Automatically</title>
+  <title>Adding Index Entries (Semi-)Automatically</title>
   <info>
     <definitions definitionfile="defs.xml"/>
   </info>
@@ -68,7 +68,7 @@
       linkend="ex.profile-tag.xsl"/> it creates the following output:</para>
     <example>
       <title>Output of the Transformation</title>
-      <programlisting language="xml"><xi:include
+      <programlisting language="xml" linenumbering="numbered"><xi:include
         href="xslt/profile-envar-result.xml" parse="text"/></programlisting>
     </example>
   </section>
@@ -164,10 +164,21 @@
       <varlistentry>
         <term><tag class="starttag">envar condition="pref"</tag>…<tag class="endtag">envar</tag></term>
         <listitem>
-          <para>Adds an <emphasis>preferred</emphasis> index entry. </para>
+          <para>Adds an <emphasis>preferred</emphasis> index entry. The
+            keyword <quote>pref</quote> can be customized through the 
+            <parameter>preferred</parameter> parameter. If the keyword
+            is added in the <tag class="attribute">condition</tag>
+            attribute, the following code is created:</para>
+          <programlisting language="xml">&lt;indexterm significance="preferred">...&lt;/indexterm></programlisting>
         </listitem>
       </varlistentry>
     </variablelist>
+    
+    <para>Although this method does not replace hand-written index
+      entries, it can ease the pain. Especially for those entries which
+      can be be inserted automatically it improves consistency. The
+      method described above can also implemented for other inline
+      elements, like persons, functions, etc.</para>
     <!--
   <itemizedlist>
       <listitem>
