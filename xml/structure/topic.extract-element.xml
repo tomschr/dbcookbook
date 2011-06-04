@@ -125,9 +125,10 @@
             <tag>phrase</tag> element, copy all attributes (except <tag
             class="attribute">linkend</tag> and <tag class="attribute"
             >xlink:href</tag>), and copy anything inside the title of
-          the target node. As the target node could not be a title in
+          the target node. As the target node could not be a title
           itself, we use again the <function>ancestor-or-self</function>
-        to climb up the tree and select the first emerging title.</para>
+          axis to climb up the tree and select the first emerging
+          title.</para>
       </listitem>
     </orderedlist>
     
