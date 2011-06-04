@@ -32,7 +32,7 @@
             <tag>para</tag> element:</para>
         <example xml:id="ex.profile-envar.xml">
           <title><filename>profile-envar.xml</filename></title>
-          <programlisting language="xml"><xi:include
+          <programlisting language="xml" linenumbering="numbered"><xi:include
             href="xslt/profile-envar.xml" parse="text"/></programlisting>
         </example>
       </step>
@@ -41,7 +41,7 @@
         with the following content:</para>
         <example xml:id="ex.profile-tag.xsl">
           <title><filename>profile-tag.xsl</filename></title>
-          <programlisting language="xml"><xi:include 
+          <programlisting language="xml" linenumbering="numbered"><xi:include 
             href="xslt/profile-tags.xsl" parse="text"/></programlisting>
         </example>
       </step>
@@ -54,7 +54,7 @@
           profiling conditions.</para>
         <example>
           <title><filename>add-indexterms.xsl</filename></title>
-          <programlisting language="xml"><xi:include
+          <programlisting language="xml" linenumbering="numbered"><xi:include
         href="xslt/add-indexterms.xsl" parse="text"/></programlisting>
         </example>
       </step>
@@ -81,7 +81,7 @@
       to find the index term also under the primary term
         <quote>environment variables</quote>, you add an additional
         <tag>indexterm</tag>. This could look like this:</para>
-    <programlisting>&lt;para>Use the &lt;envar>PATH&lt;/envar>&lt;indexterm>
+    <programlisting language="xml">&lt;para>Use the &lt;envar>PATH&lt;/envar>&lt;indexterm>
         &lt;primary>PATH&lt;/primary>
       &lt;/indexterm>&lt;indexterm>
         &lt;primary>environment variables&lt;/primary>
@@ -169,7 +169,8 @@
             <parameter>preferred</parameter> parameter. If the keyword
             is added in the <tag class="attribute">condition</tag>
             attribute, the following code is created:</para>
-          <programlisting language="xml">&lt;indexterm significance="preferred">...&lt;/indexterm></programlisting>
+          <programlisting language="xml"
+  >&lt;indexterm significance="preferred">...&lt;/indexterm></programlisting>
         </listitem>
       </varlistentry>
     </variablelist>
