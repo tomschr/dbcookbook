@@ -6,12 +6,21 @@
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Moving Block Elements Outside of Paragraphs</title>
   <info>
-    <author>
-      <personname>
-        <firstname>Mr</firstname>
-        <surname>X</surname>
-      </personname>
-    </author>
+    <authorgroup>
+      <author>
+        <personname>
+          <firstname>Jeni</firstname>
+          <surname>Tennison</surname>
+        </personname>
+      </author>
+      <author>
+        <personname>
+          <firstname>Dave</firstname>
+          <surname>Pawson</surname>
+        </personname>
+        <uri>http://www.dpawson.co.uk/xsl/sect2/N4486.html#d5509e529</uri>
+      </author>
+    </authorgroup>    
     <definitions definitionfile="defs.xml"/>
   </info>
   
