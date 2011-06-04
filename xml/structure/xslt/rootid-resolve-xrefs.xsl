@@ -52,7 +52,7 @@
       </xsl:when>
       <xsl:otherwise>
         <phrase xmlns="http://docbook.org/ns/docbook" 
-          remap="xref" role="{$xhref}">
+          remap="xref" role="{(@linkend|$xhref)[1]}">
           <xsl:apply-templates
             select="@*[local-name() != 'linkend']"
             mode="process.root"/>
