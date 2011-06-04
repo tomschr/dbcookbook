@@ -3,7 +3,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook">
 
-  <xsl:import href="db5to4-v1.xsl"/>
+  <xsl:import href="db5to4-core.xsl"/>
   <xsl:import href="db5to4-info.xsl"/>
   
   <xsl:output method="xml" indent="yes" 
