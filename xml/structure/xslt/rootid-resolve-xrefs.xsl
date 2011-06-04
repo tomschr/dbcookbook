@@ -27,10 +27,10 @@
     <xsl:variable name="target" select="($xlink.targets | $linkend.targets)[1]"/>
     <xsl:variable name="refelem" select="local-name($target)"/>
     
-    <xsl:variable name="target.div"
-      select="$target/ancestor-or-self::d:*[@xml:id = $rootid][1]"/>
     <xsl:variable name="this.div" 
       select="ancestor-or-self::d:*[@xml:id = $rootid][1]"/>
+    <xsl:variable name="target.div"
+      select="$target/ancestor-or-self::d:*[@xml:id = $rootid][1]"/>
 
     <xsl:choose>
       <xsl:when test="generate-id($this.div) = generate-id($target.div)">
