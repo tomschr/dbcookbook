@@ -95,16 +95,14 @@
   
   <xsl:template match="d:info">
     <xsl:variable name="parent" select="local-name(..)"/>
-    <xsl:variable name="node">
+    <xsl:variable name="rtf-node">
       <xsl:element name="{$parent}info">
       <xsl:apply-templates select="@*|node()"/>
     </xsl:element>
     </xsl:variable>
-    
-    <xsl:message>info: <xsl:value-of select="count(exsl:node-set($node)/*/*)"/></xsl:message>
     <xsl:choose>
-      <xsl:when test="count(exsl:node-set($node)/*/*) > 0">
-        <xsl:copy-of select="$node"/>
+      <xsl:when test="count(exsl:node-set($rtf-node)/*/*) > 0">
+        <xsl:copy-of select="$rtf-node"/>
       </xsl:when>
       <xsl:otherwise><!-- Don't copy, it's empty --></xsl:otherwise>
     </xsl:choose>
