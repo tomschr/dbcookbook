@@ -16,7 +16,21 @@
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space 
     elements="d:screen d:programlisting d:literallayout xi:*"/>
-  <xsl:variable name="inlines">application citetitle</xsl:variable>
+  <xsl:variable name="inlines">abbrev accel acronym alt anchor
+    annotation application author biblioref citation citebiblioid
+    citerefentry citetitle classname code command computeroutput
+    constant coref database date editor email emphasis envar errorcode
+    errorname errortext errortype exceptionname filename firstterm
+    footnote footnoteref foreignphrase function glossterm guibutton
+    guiicon guilabel guimenu guimenuitem guisubmenu hardware indexterm
+    initializer inlineequation inlinemediaobject interfacename jobtitle
+    keycap keycode keycombo keysym link literal markup menuchoice
+    methodname modifier mousebutton nonterminal olink ooclass
+    ooexception oointerface option optional org orgname package
+    parameter person personname phrase productname productnumber prompt
+    property quote remark replaceable returnvalue shortcut subscript
+    superscript symbol systemitem tag termdef token trademark type uri
+    userinput varname wordasword xref</xsl:variable>
   
   <!-- Overwrite standard template and create elements without 
        a namespace node
@@ -93,6 +107,19 @@
     </link>
   </xsl:template>
   
+  <xsl:template match="d:bibliography[d:info]
+                      |d:book[d:info]
+                      |d:colophon[d:info]
+                      |d:dedication[d:info]
+                      |d:glossary[d:info]
+                      |d:partintro[d:info]
+                      |d:refsynopsisdiv[d:info]
+                      |d:screenshot[d:info]
+                      |d:setindex[d:info]
+                      |d:sidebar[d:info]">
+    
+  </xsl:template>
+  
   <xsl:template match="d:info">
     <xsl:variable name="parent" select="local-name(..)"/>
     <xsl:variable name="rtf-node">
@@ -120,7 +147,7 @@
     </sgmltag>
   </xsl:template>
   
-  <!-- New DocBook v5.x and HTML elements, no mapping available -->
+  <!-- New DocBook v5.1 and HTML elements, no mapping available -->
   <xsl:template match="d:acknowledgements|d:annotation|d:arc
                        |d:cover
                        |d:definitions
