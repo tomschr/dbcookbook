@@ -6,55 +6,59 @@
   
   <xsl:import href="rootid.xsl"/>
   
-  <xsl:template name="xpointer.idref">
-    <xsl:param name="xpointer">http://...</xsl:param>
-    <xsl:choose>
-      <xsl:when test="starts-with($xpointer, '#xpointer(id(')">
-        <xsl:variable name="rest"
-          select="substring-after($xpointer, '#xpointer(id(')"/>
-        <xsl:variable name="quote" select="substring($rest, 1, 1)"/>
-        <xsl:value-of
-          select="substring-before(substring-after($xpointer, $quote), $quote)"
-        />
-      </xsl:when>
-      <xsl:when test="starts-with($xpointer, '#')">
-        <xsl:value-of select="substring-after($xpointer, '#')"/>
-      </xsl:when>
-      <!-- otherwise it's a pointer to some other document -->
-    </xsl:choose>
-  </xsl:template>
-  
   <xsl:template match="d:xref" mode="process.root">
-    <xsl:param name="xhref" select="@xlink:href"/>
+    <xsl:variable name="xhref" select="@xlink:href"/>
     <!-- is the @xlink:href a local idref link? -->
-    <xsl:param name="xlink.idref">
-      <xsl:if test="starts-with($xhref,'#')
-                    and (not(contains($xhref,'&#40;'))
-                    or starts-with($xhref, '#xpointer&#40;id&#40;'))">
-        <xsl:call-template name="xpointer.idref">
-          <xsl:with-param name="xpointer" select="$xhref"/>
-        </xsl:call-template>
-      </xsl:if>
-    </xsl:param>
-    <xsl:param name="xlink.targets" select="key('id',$xlink.idref)"/>
-    <xsl:param name="linkend.targets" select="key('id',@linkend)"/>
-    <xsl:param name="target" select="($xlink.targets | $linkend.targets)[1]"/>
-    <xsl:param name="refelem" select="local-name($target)"/>
+    <xsl:variable name="xlink.idref">
+      <xsl:choose>
+        <xsl:when test="starts-with($xhref,'#')">
+          <xsl:value-of select="substring($xhref, 2)"/>
+        </xsl:when>
+        <xsl:when test="contains($xhref, '://')">
+         <xsl:message>
+            <xsl:text>ERROR: Don't know what do do with @xlink:href: </xsl:text>
+            <xsl:value-of select="$xhref"/></xsl:message> 
+        </xsl:when>
+        <xsl:otherwise/>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="xlink.targets" select="key('id',$xlink.idref)"/>
+    <xsl:variable name="linkend.targets" select="key('id',@linkend)"/>
+    <xsl:variable name="target" select="($xlink.targets | $linkend.targets)[1]"/>
+    <xsl:variable name="refelem" select="local-name($target)"/>
     
     <xsl:variable name="target.div"
       select="$target/ancestor-or-self::d:*[@xml:id = $rootid][1]"/>
     <xsl:variable name="this.div" 
       select="ancestor-or-self::d:*[@xml:id = $rootid][1]"/>
-    
+
     <xsl:choose>
-      <xsl:when test="$this.div = $target.div">
+      <xsl:when test="generate-id($this.div) = generate-id($target.div)">
         <xsl:copy-of select="."/>
       </xsl:when>
       <xsl:otherwise>
         <phrase xmlns="http://docbook.org/ns/docbook" 
-          remap="xref" role="{(@linkend|$xhref)[1]}">
+          remap="xref">
+          <xsl:choose>
+            <xsl:when test="@linkend">
+              <xsl:attribute name="role">
+                <xsl:value-of select="@linkend"/>
+              </xsl:attribute>
+            </xsl:when>
+            <xsl:when test="$xlink.idref != ''">
+              <xsl:attribute name="role">
+                <xsl:value-of select="$xlink.idref"/>
+              </xsl:attribute>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:attribute name="role">
+                <xsl:value-of select="$xhref"/>
+              </xsl:attribute>
+            </xsl:otherwise>
+          </xsl:choose>
           <xsl:apply-templates
-            select="@*[local-name() != 'linkend']"
+            select="@*[local-name() != 'linkend' and
+                       local-name() != 'href']"
             mode="process.root"/>
           <xsl:apply-templates
             select="($target/ancestor-or-self::d:*[d:title])[last()]/d:title/node()"
