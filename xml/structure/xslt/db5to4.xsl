@@ -2,93 +2,137 @@
 <xsl:stylesheet version="1.0"
   xmlns:d="http://docbook.org/ns/docbook"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  exclude-result-prefixes="d">
-
-<!-- 
-  New elements:
-  * acknowledgements
-  * arc
-  * annotation
-  * cover
-  * extendedlink
-  * givenname
-  * info
-  * locator
-  * org
-  * tocdiv
-  * topic
--->
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns:exsl="http://exslt.org/common"
+  exclude-result-prefixes="d xi xlink exsl">
 
   <xsl:import href="copy.xsl"/>
   
-  <xsl:output method="xml" indent="yes"/>
+  <xsl:output method="xml" indent="yes" 
+    doctype-public="-//OASIS//DTD DocBook XML V4.5//EN"
+    doctype-system="http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"/>
   <xsl:strip-space elements="*"/>
-  <xsl:preserve-space elements="d:screen d:programlisting
-    d:literallayout"/>
+  <xsl:preserve-space 
+    elements="d:screen d:programlisting d:literallayout xi:*"/>
+  <xsl:variable name="inlines">application citetitle</xsl:variable>
   
-  
-  <xsl:template match="@xml:id|@xml:lang|@xmlns"/>
-  
-  <xsl:template name="create-attribute">
-    <xsl:param name="node" select="."/>
-    <xsl:if test="$node/@xml:id">
-      <xsl:attribute name="id">
-        <xsl:value-of select="$node/@xml:id"/>
-      </xsl:attribute>
-    </xsl:if>
-    <xsl:if test="$node/@xml:lang">
-      <xsl:attribute name="lang">
-        <xsl:value-of select="$node/@xml:lang"/>
-      </xsl:attribute>
-    </xsl:if>
-    <xsl:apply-templates select="$node/@*[local-name() !='id' or
-                                          local-name() != 'version' or
-                                          local-name() != 'lang']"/>
-  </xsl:template>
-  
+  <!-- Overwrite standard template and create elements without 
+       a namespace node
+  -->
   <xsl:template match="d:*">
     <xsl:element name="{local-name()}">
-      <xsl:call-template name="create-attribute"/>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="@*|node()"/>
     </xsl:element>
   </xsl:template>
-  
-  <xsl:template match="d:appendix/d:topic[d:section]
-                       |d:chapter/d:topic[d:section]
-                       |/d:topic[d:section]">
-    <section remap="topic">
-      <xsl:call-template name="create-attribute"/>
-      <xsl:apply-templates select="d:info"/>
-      <xsl:apply-templates select="node()[not(self::d:info)]"/>
-    </section>
+    
+  <xsl:template match="@xml:id|@xml:lang">
+    <xsl:attribute name="{local-name()}">
+      <xsl:apply-templates/>
+    </xsl:attribute>
   </xsl:template>
   
-  <xsl:template match="d:appendix/d:topic[d:section]/d:info
-                       |d:chapter/d:topic[d:section]/d:info
-                       |/d:topic[d:section]/d:info">
-    <xsl:variable name="parent" select="local-name(..)"/>
-    <sectioninfo remap="info">
-      <xsl:call-template name="create-attribute"/>
-      <xsl:apply-templates/>
-    </sectioninfo>
+  <!-- Suppress the following attributes: -->
+  <xsl:template match="@annotations|@version"/>
+  <xsl:template match="@xlink:*"/>
+  
+  <xsl:template match="@xlink:href">
+    <xsl:choose>
+      <xsl:when test="contains($inlines, local-name(..))">
+        <ulink url="{.}" remap="{local-name(..)}">
+          <xsl:value-of select=".."/>
+        </ulink>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:message>@xlink:href could not be processed!
+  parent element: <xsl:value-of select="local-name(..)"/>
+        </xsl:message>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template match="d:*[@xlink:href]">
+    <xsl:choose>
+      <xsl:when test="contains($inlines, local-name())">
+        <ulink url="{@xlink:href}" remap="{local-name(.)}">
+          <xsl:element name="{local-name()}">
+            <xsl:apply-templates 
+              select="@*[local-name() != 'href' and
+                         namespace-uri() != 'http://www.w3.org/1999/xlink']
+                      |node()"/>
+          </xsl:element>
+        </ulink>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:element name="{local-name()}">
+          <xsl:apply-templates 
+            select="@*[local-name() != 'href' and
+                       namespace-uri() != 'http://www.w3.org/1999/xlink']
+                    |node()"/>
+        </xsl:element>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template match="d:link/@xlink:href">
+    <xsl:attribute name="url">
+      <xsl:value-of select="."/>
+    </xsl:attribute>
+  </xsl:template>
+  
+  <xsl:template match="d:link[@xlink:href]">
+    <ulink>
+      <xsl:apply-templates select="@*|node()"/>
+    </ulink>
+  </xsl:template>
+  
+  <xsl:template match="d:link[@linkend]">
+    <link>
+      <xsl:apply-templates select="@*|node()"/>
+    </link>
   </xsl:template>
   
   <xsl:template match="d:info">
     <xsl:variable name="parent" select="local-name(..)"/>
-    <xsl:element name="{$parent}info">
-      <xsl:call-template name="create-attribute"/>
-      <xsl:apply-templates/>
+    <xsl:variable name="node">
+      <xsl:element name="{$parent}info">
+      <xsl:apply-templates select="@*|node()"/>
     </xsl:element>
+    </xsl:variable>
+    
+    <xsl:message>info: <xsl:value-of select="count(exsl:node-set($node)/*/*)"/></xsl:message>
+    <xsl:choose>
+      <xsl:when test="count(exsl:node-set($node)/*/*) > 0">
+        <xsl:copy-of select="$node"/>
+      </xsl:when>
+      <xsl:otherwise><!-- Don't copy, it's empty --></xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   
-  <!-- New DocBook v5.x elements -->
+  <!-- Renamed elements -->
+  <xsl:template match="d:personblurb">
+    <authorblurb>
+      <xsl:apply-templates select="@*|node()"/>
+    </authorblurb>
+  </xsl:template>
+  <xsl:template match="d:tag">
+    <sgmltag>
+      <xsl:apply-templates select="@*|node()"/>
+    </sgmltag>
+  </xsl:template>
+  
+  <!-- New DocBook v5.x and HTML elements, no mapping available -->
   <xsl:template match="d:acknowledgements|d:annotation|d:arc
                        |d:cover
                        |d:definitions
                        |d:extendedlink
                        |d:givenname
                        |d:locator
-                       |d:org|d:tocdiv">
-    <xsl:message>Don't know how to transfer <xsl:value-of select="local-name()"/></xsl:message>
+                       |d:org|d:tocdiv
+                       |html:*">
+    <xsl:message>Don't know how to transfer <xsl:value-of
+      select="local-name()"/> into DocBook 4</xsl:message>
   </xsl:template>
+  
 </xsl:stylesheet>
