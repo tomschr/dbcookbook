@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 <section xml:id="dbc.structure.db5-to-db4" remap="topic"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Converting DocBook Version 5 into Version 4</title>
+  <title>Converting DocBook From Version 5 into Version 4</title>
   <info>
     <definitions definitionfile="defs.xml"/>
   </info>
@@ -20,19 +20,28 @@
         xlink:href="http://www.docbook.org/tdg51/en/html/ch01.html#d6e550">The
         Definitive Guide</link> for detailed information what has been
         added, removed, or renamed.</para>
-    <para></para>
+    <para>In cases you have or get DocBook&#xa0;5 and need the former
+      version, the following stylesheet might help:</para>
     <example xml:id="ex.db5to4.xsl">
       <title><filename>db5to4.xsl</filename></title>
-      <programlisting language="xml" linenumbering="numbered"><xi:include href="xslt/db5to4.xsl" parse="text"/></programlisting>
+      <programlisting language="xml" linenumbering="numbered"><xi:include 
+        href="xslt/db5to4.xsl" parse="text"/></programlisting>
     </example>
+    <para>Use your favorite XSLT prozessor to transform your documents.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
-    
-  </section>
-  <section role="seealso">
-    <title>See Also</title>
+    <para>The <quote>usual</quote> structure can be handled fairly well
+      by the stylesheet from <xref linkend="ex.db5to4.xsl"/>.
+        <quote>Usual</quote> means in this context, your document must
+      be valid and no new DocBook&#xa0;5 elements are used. New elements
+      can not be handled correctly as there are no direct mappings
+      available. In such cases it is better to customize the mentioned
+      stylesheet to your needs. </para>
     <para></para>
   </section>
+  <!--<section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>-->
 </section>
