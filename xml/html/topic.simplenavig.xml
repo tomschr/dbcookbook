@@ -11,7 +11,8 @@
   <remark>TODO: Revise topic and make it more procedural</remark>
   <section role="problem">
     <title>Problem</title>
-    <para>You need a simple navigation for each chapter with a link to
+    <para>You need a simple navigation for your single HTML file. The
+      navigation should contain for each chapter a link to
       the next and previous chapters including an up link pointing to
       the enclosing part or book. This is depicted in the following
       graphic:</para>
@@ -126,10 +127,10 @@
       this:</para>
     <programlisting
 >&lt;xsl:variable name="prev" select="$node/preceding-sibling::d:*[1]"/>
-&lt;xsl:variable name="next"  select="$node/following-sibling::d:*[1]"/></programlisting>
+&lt;xsl:variable name="next" select="$node/following-sibling::d:*[1]"/></programlisting>
     <para>This works for the <varname>next</varname> variables. However,
-      our <varname>prev</varname> contains a bug. Consider the following
-      structure:</para>
+      our expression for the <varname>prev</varname> variable contains a
+      bug. Consider the following structure:</para>
     <screen>book
   title
   info
