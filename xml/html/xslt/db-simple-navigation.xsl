@@ -11,11 +11,11 @@
   <xsl:import href="&db;/xhtml/docbook.xsl"/>
   <xsl:import href="simple-navigation.xsl"/>
   
-  <xsl:param name="generate.simple.chapter.navigation" select="1"/>
+  <xsl:param name="generate.simple.navigation" select="1"/>
   <xsl:param name="html.stylesheet">book.css</xsl:param>
 
-  <xsl:template match="chapter.titlepage.before.recto">
-    <xsl:if test="$generate.simple.chapter.navigation != 0">
+  <xsl:template name="chapter.titlepage.before.recto">
+    <xsl:if test="$generate.simple.navigation != 0">
       <xsl:call-template name="generate.simple.navigation"/>
     </xsl:if>
   </xsl:template>
