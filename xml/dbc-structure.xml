@@ -54,6 +54,8 @@
     * Pretty-print DocBook Documents
     * Autogenerate indexterm ranges
     * Obtaining DocBook XML after Profiling
+    * Preserving Entities
+    * Renaming Image Filenames
   -->
   <xi:include href="structure/topic.pretty-print.xml"/>
   <xi:include href="structure/topic.db4-to-db5.xml"/>
