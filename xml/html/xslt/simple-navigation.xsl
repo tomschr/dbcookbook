@@ -9,7 +9,7 @@
     <xsl:param name="node" select="."/>
     <xsl:variable name="prev" select="$node/preceding-sibling::d:chapter"/>
     <xsl:variable name="next" select="$node/following-sibling::d:chapter"/>
-    <xsl:variable name="up" select="$node/parent::d:*"/>
+    <xsl:variable name="up"   select="$node/parent::d:*"/>
    
     <div class="chapter-navigation">
       <ul>
