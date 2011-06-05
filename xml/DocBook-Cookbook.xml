@@ -43,11 +43,10 @@
   </info>
   
   <xi:include href="dbc-preface.xml"/>
-  
-  <xi:include href="dbc-structure.xml"/>
-  
-  <xi:include href="dbc-fo.xml"/>
-  
+    
+  <xi:include href="dbc-common.xml"/>
+  <xi:include href="dbc-structure.xml"/> 
+  <xi:include href="dbc-fo.xml"/>  
   <xi:include href="dbc-html.xml"/>
   
 </book>
