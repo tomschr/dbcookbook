@@ -12,10 +12,35 @@
       <para>DocBook files can be created manually or through tools.
         Sometimes tools create a structure which is inconvenient for
         some reasons or you have legacy documents which contain the
-        <quote>wrong</quote> structure. This chapter is merely <quote>XSLT for
-        DocBook</quote> and shows how to restructure your DocBook document.</para>
+          <quote>wrong</quote> structure. This chapter shows how to
+        restructure your DocBook document in the way you want.</para>
     </abstract>
   </info>
+  
+  
+  <section xml:id="dbc.structure.intro">
+    <title>Introduction</title>
+    <para>The methods described in this chapter are mostly XSLT
+      solutions where you can find more or less in any XSLT book.
+      Actually, some ideas origin from
+          <personname><firstname>Sal</firstname>
+            <surname>Mangano</surname></personname>´s excellent
+        <citetitle>XSLT Cookbook</citetitle>. However, the solutions in
+      this chapter are targetted exclusively on DocBook.</para>
+    <para>Most of these solutions are based on an <emphasis>identity
+    transformation</emphasis> stylesheet which is shown in <xref 
+      linkend="ex.copy.xsl"/>.</para>
+    
+    <example xml:id="ex.copy.xsl">
+      <title><filename>copy.xsl</filename></title>
+      <programlisting><xi:include href="structure/xslt/copy.xsl" parse="text"/></programlisting>
+    </example>
+    
+    <para>This simple stylesheet copies everything from the input
+      document to the output document without any modifications.
+      Although it seems quite useless at a first glance, it reveals its
+      full power when combining it with customizations. </para>
+  </section>
   
   <!-- 
     * Transforming DocBook Version 4 into Version 5.x
