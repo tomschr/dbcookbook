@@ -8,6 +8,5 @@
 
   <xsl:strip-space elements="*"/>
   <xsl:preserve-space elements="d:screen d:literallayout
-    d:programlisting"/>
-    
+    d:programlisting d:address"/>
 </xsl:stylesheet>
