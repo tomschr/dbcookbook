@@ -13,6 +13,7 @@
   </info>
   
   <!-- 
+   * Generate localized text (e.g. gentext.nav.next, gentext.nav.prev,)
    * Getting an Overview -> maybe _before_ any of the topics?
    * DocBook customization (through parameters or customization layers)
    * Changing and Extending Language Entries
