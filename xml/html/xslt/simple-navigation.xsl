@@ -4,8 +4,6 @@
   xmlns:d="http://docbook.org/ns/docbook"
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d">
-
-  <xsl:param name="generate.simple.chapter.navigation" select="1"/>
     
   <xsl:template name="generate.simple.navigation">
     <xsl:param name="node" select="."/>
@@ -59,12 +57,6 @@
         </xsl:if>
       </ul>
     </div>
-    </xsl:if>
-  </xsl:template>
-
-  <xsl:template match="chapter.titlepage.before.recto">
-    <xsl:if test="$generate.simple.chapter.navigation != 0">
-      <xsl:call-template name="generate.simple.navigation"/>
     </xsl:if>
   </xsl:template>
 </xsl:stylesheet>
