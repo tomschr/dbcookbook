@@ -8,9 +8,12 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <abstract>
-      <para>FIXME</para>
+      <para>The DocBook XSL stylesheets has got more than 200 parameters
+      which can customize some aspects of the layout very easily. This
+      chapter shows you to go beyond simple parameter change.</para>
     </abstract>
   </info>
+
   
   <!-- 
   Print Customizations
