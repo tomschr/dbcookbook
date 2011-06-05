@@ -22,5 +22,6 @@
   <remark>FIXME</remark>
   
   <xi:include href="html/topic.permalinks.xml"/>
+  <xi:include href="html/topic.simplenavig.xml"/>
   
 </chapter>
