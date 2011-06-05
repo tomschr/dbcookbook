@@ -5,8 +5,8 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook"
-  xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
+  xmlns="http://www.w3.org/1999/xhtml" 
+  exclude-result-prefixes="d">
   
   <xsl:import href="&db;/xhtml/docbook.xsl"/>
   <xsl:import href="simple-navigation.xsl"/>
