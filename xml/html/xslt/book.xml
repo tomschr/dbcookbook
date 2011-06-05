@@ -18,6 +18,9 @@
   </preface>
   <part>
     <title>First Part</title>
+    <info>
+      <date>Today</date>
+    </info>
     <chapter xml:id="introduction">
     <title>Introduction</title>
     <para>This is an introducery chapter.</para>
@@ -30,6 +33,23 @@
     <title> Topic B</title>
     <para>Lore ipsum...</para>
   </chapter>
+    <glossary>
+      <title>Glossary</title>
+      <para>TBD</para>
+    </glossary>
+    <reference>
+      <title>Reference</title>
+      <refentry>
+        <refnamediv>
+          <refname>foo</refname>
+          <refpurpose>Make a foo</refpurpose>
+        </refnamediv>
+        <refsection>
+          <title>Foo</title>
+          <para>TBD</para>
+        </refsection>
+      </refentry>
+    </reference>
   </part>
   
 </book>
