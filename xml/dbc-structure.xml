@@ -43,17 +43,9 @@
   </section>
   
   <!-- 
-    * Transforming DocBook Version 4 into Version 5.x
-    * Transforming DocBook Version 5 into Version 4
-    * Extracting a Structural Element from a DocBook Document
-    * Splitting up into smaller Pieces
     * Combining two DocBook documents
     * Resolving XInclude Elements
-    * Adding Indexterms Automatically
-    * Including a Revision List from Version Control Systems
-    * Pretty-print DocBook Documents
     * Autogenerate indexterm ranges
-    * Obtaining DocBook XML after Profiling
     * Preserving Entities
     * Renaming Image Filenames
   -->
