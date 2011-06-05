@@ -20,13 +20,13 @@
     <para>There are different solution to this problem:</para>
     <itemizedlist>
       <listitem>
-        <para>A <quote>pretty-print</quote> stylesheet</para>
+        <para>a <quote>pretty-print</quote> stylesheet</para>
       </listitem>
       <listitem>
-        <para>The XML parser <command>xmllint</command></para>
+        <para>the XML parser <command>xmllint</command></para>
       </listitem>
       <listitem>
-        <para>The command <command>xmlformat</command></para>
+        <para>the command <command>xmlformat</command></para>
       </listitem>
     </itemizedlist>
     
@@ -51,16 +51,34 @@
       <title>Command <command>xmlformat</command></title>
       <para>The tool <command>xmlformat</command> is a Perl script which
       is available from the Web site <link
-        xlink:href="http://www.kitebird.com/software/xmlformat/"/>. </para>
+        xlink:href="http://www.kitebird.com/software/xmlformat/"/>. 
+      </para>
+      <para>The tool distinguish between block elements, inline
+        elements, and verbatim elements (similar to DocBook).
+        The difference between the types is the whitespace
+        normalization.</para>
+      <para>Block elements typically begin a new line and
+        childrens are indented. Spacing before and after can be
+        controlled too. </para>
+      <para>Inline elements occur in block elements. Normalization and 
+      line-wrapping occurs in regard to the enclosing block element.</para>
+      <para>Verbatim elements are not formatted at all. That means, the
+        content of the input element is the same as the content of the
+        output element including whitespaces.
+      </para>
     </section>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>The command <command>xmllint</command> with its option
-      <option>-format</option> is probably the easiest candidate but
-      lacks customization. The <filename>pretty.xsl</filename>
-      stylesheet is a pure XSLT solution. The most adaptable method is
-      <command>xmlformat</command>.</para>
+        <option>--format</option> is the easiest candidate but lacks
+      customization. This is useful if you do not have any other tools
+      at hand and you prefer a quick and rough reformatting.</para>
+    <para>The <filename>pretty.xsl</filename> stylesheet is a pure XSLT
+      solution. As such, it works on every platform which supports an
+      XSLT processor. It is adaptable to your needs, but mixed content
+      (like in <tag>para</tag>) are problematic.</para>
+    <para>The most adaptable method is <command>xmlformat</command>.</para>
   </section>
   <!--<section role="seealso">
     <title>See Also</title>
