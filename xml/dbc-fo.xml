@@ -49,7 +49,7 @@
     - Add Typographical Superiors and Inferiors
     - Adding Fonts to FO Formatter
     - Creating Page Definitions with Inkscape
-    - Styling Labels Different than Titles (Separating Labels and
+    - Styling Labels Differently than Titles (Separating Labels and
     Titles) 
     - Using Text Figures http://en.wikipedia.org/wiki/Text_figures
   -->
@@ -59,5 +59,6 @@
   <xi:include href="fo/topic.initials.xml"/>
   <xi:include href="fo/topic.opensource-fonts.xml"/>
   <xi:include href="fo/topic.number-titles.xml"/>
+  <xi:include href="fo/topic.sep-label-and-titles.xml"/>
   <xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>
 </chapter>
