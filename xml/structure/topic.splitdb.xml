@@ -31,13 +31,64 @@
       <title>Splitting with XSLT</title>
       <para>The stylesheet in <xref linkend="ex.dbsplit.xsl"/> uses 
         extension elements to create separate documents from the main
-        output.</para>
+        output. It uses code from
+        <filename>html/chunk-code.xsl</filename>.</para>
       <example xml:id="ex.dbsplit.xsl">
         <title><filename>dbsplit.xsl</filename></title>
         <programlisting language="xml"><xi:include
           href="xslt/dbsplit.xsl" parse="text"/></programlisting>
       </example>
-      <para>It can be customized with several parameters.</para>
+      <para>The filename <filename>chunker.xsl</filename> is more or
+        less a stripped down version of the file
+        <filename>html/chunker.xsl</filename> from the DocBook XSL
+        stylesheets. It is used separately to make 
+        <filename>dbsplit.xsl</filename> more independant from the
+        DocBook XSL stylesheets.</para>
+      <example>
+        <title><filename>chunker.xsl</filename></title>
+        <programlisting language="xml"><xi:include
+          href="xslt/chunker.xsl" parse="text"/></programlisting>
+      </example>
+      <para>It can be customized with several parameters:</para>
+      <variablelist>
+        <varlistentry>
+          <term><parameter>base.dir</parameter></term>
+          <listitem>
+            <para>Determines the output directory</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>dbsplit.chunk.depth</parameter></term>
+          <listitem>
+            <para>Controls the depth were to split </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>dbsplit.ext</parameter></term>
+          <listitem>
+            <para>Defines the file extension for each written filename.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>dbsplit.root.filename</parameter></term>
+          <listitem>
+            <para>Identifies the name of the root filename when splitted 
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>use.id.as.filename</parameter></term>
+          <listitem>
+            <para>Uses ID values as filenames</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>rootid</parameter></term>
+          <listitem>
+            <para>Specify the root element to split</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
     <section xml:id="sec.structure.splitdb.dbsplit">
       <title>Splitting with the <command>dbautosplit</command></title>
@@ -46,7 +97,9 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para>
+      
+    </para>
   </section>
   <!--<section role="seealso">
     <title>See Also</title>
