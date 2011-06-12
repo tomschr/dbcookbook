@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.fo.number-titles" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Numbering Part, Chapter, Appendix, and other Titles</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want a number in front of your structural elements like
+        <tag>appendix</tag>, <tag>chapter</tag>, <tag>section</tag>,
+      etc.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The most common use is numbering chapters. If you want to
+      automatically number chapter titles, set the
+        <parameter>chapter.autolabel</parameter> parameter either
+      manually or through a customization layer, for example: </para>
+    <programlisting language="xml"
+      >&lt;xsl:param name="chapter.autolabel" select="1"/></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The DocBook XSL stylesheets contain autolabel parameters for
+      the elements <tag>appendix</tag>, <tag>chapter</tag>,
+      <tag>part</tag>, <tag>preface</tag>, <tag>qandadiv</tag>, 
+      <tag>reference</tag>, and <tag>section</tag>. These can be set
+      individually to change the numbering of its element. Some have
+      already a default value (like a part), others need to be
+      explicitly be set (like a chapter.)</para>
+    <para>The following table lists all autolabel parameters, their
+      default values, and an example.</para>
+    <table>
+      <title>Autolabel Parameters and their Default Values</title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>Parameter</entry>
+            <entry>Default</entry>
+            <entry>Example</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><parameter>appendix.autolabel</parameter></entry>
+            <entry><literal>A</literal></entry>
+            <entry>Appendix A. Python 3</entry>
+          </row>
+          <row>
+            <entry><parameter>chapter.autolabel</parameter></entry>
+            <entry><literal>1</literal></entry>
+            <entry>Chapter 1. A Tutorial Introduction</entry>
+          </row>
+          <row>
+            <entry><parameter>part.autolabel</parameter></entry>
+            <entry><literal>I</literal></entry>
+            <entry>Part I. The Python Language</entry>
+          </row>
+          <row>
+            <entry><parameter>preface.autolabel</parameter></entry>
+            <entry><literal>0</literal></entry>
+            <entry>Prefaces are usually not numbered</entry>
+          </row>
+          <row>
+            <entry><parameter>qandadiv.autolabel</parameter></entry>
+            <entry><literal>1</literal></entry>
+            <entry>3.1 Installation Questions</entry>
+          </row>
+          <row>
+            <entry><parameter>reference.autolabel</parameter></entry>
+            <entry><literal>I</literal></entry>
+            <entry>I. Python Reference</entry>
+          </row>
+          <row>
+            <entry><parameter>section.autolabel</parameter></entry>
+            <entry><literal>0</literal></entry>
+            <entry>Not numbered by default</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para>The value in the autolabel parameters indicate if is used or
+      not: a value of <literal>1</literal> enables the numbering,
+        <literal>0</literal> disables it. Using different values creates
+      roman numerals, for example.</para>
+    <table>
+      <title>Formats for Autolabel Parameters</title>
+      <tgroup cols="4">
+        <thead>
+          <row>
+            <entry>Parameter</entry>
+            <entry>Alternative</entry>
+            <entry>Style</entry>
+            <entry>Example</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><literal>1</literal></entry>
+            <entry><literal>arabic</literal></entry>
+            <entry>Arabic numerals</entry>
+            <entry>1, 2, 3, 4, …</entry>
+          </row>
+          <row>
+            <entry><literal>I</literal></entry>
+            <entry><literal>upperroman</literal></entry>
+            <entry>Uppercase roman numerals</entry>
+            <entry>I, II, III, IV, …</entry>
+          </row>
+          <row>
+            <entry><literal>i</literal></entry>
+            <entry><literal>lowerroman</literal></entry>
+            <entry>Lowercase roman numerals</entry>
+            <entry>i, ii, iii, iv, …</entry>
+          </row>
+          <row>
+            <entry><literal>A</literal></entry>
+            <entry><literal>upperalpha</literal></entry>
+            <entry>Uppercase letters</entry>
+            <entry>A, B, C, D, …</entry>
+          </row>
+          <row>
+            <entry><literal>a</literal></entry>
+            <entry><literal>loweralpha</literal></entry>
+            <entry>Lowercase letters</entry>
+            <entry>a, b, c, d, …</entry>
+          </row>
+          <row>
+            <entry><tag class="numcharref">x661</tag></entry>
+            <entry><literal>arabicindic</literal></entry>
+            <entry>Arabic-Indic numerals</entry>
+            <entry>&#x661;, &#x662;, &#x663;, &#x664;, …</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <remark>What about Japanese, Chinese, etc. numbering?</remark>
+    <para>However, when dealing with other numbering systems, the above
+      table is not enough. To support, for example, Japanese numbering,
+      you need to customize the named template
+      <function>autolabel.format</function> from
+      <filename>common/labels.xsl</filename>.</para>
+    
+    <example>
+      <title>Extending <function>autolabel.format</function></title>
+      <programlisting language="xml">&lt;xsl:template name="autolabel.format">
+  &lt;xsl:param name="context" select="."/>
+  &lt;xsl:param name="format"/>
+
+  &lt;xsl:choose>
+    &lt;xsl:when test="string($format) != 0">
+      &lt;xsl:choose>
+        &lt;xsl:when test="string($format)='001'">
+          &lt;xsl:value-of select="$format"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='loweralpha' or $format='a'">
+          &lt;xsl:value-of select="'a'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='lowerroman' or $format='i'">
+          &lt;xsl:value-of select="'i'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='upperalpha' or $format='A'">
+          &lt;xsl:value-of select="'A'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='upperroman' or $format='I'">
+          &lt;xsl:value-of select="'I'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='arabicindic' or $format='&#x661;'">
+          &lt;xsl:value-of select="'&#x661;'"/>
+        &lt;/xsl:when>
+        <emphasis role="bold"
+        >&lt;xsl:when test="$format='japanese' or $format='&amp;#x4e00;'">
+          &lt;xsl:value-of select="'&amp;#x4e00;'"/>
+        &lt;/xsl:when></emphasis>
+        &lt;xsl:otherwise>
+          &lt;xsl:message>
+            &lt;xsl:text>Unexpected &lt;/xsl:text>
+            &lt;xsl:value-of select="local-name(.)"/>
+            &lt;xsl:text>.autolabel value: &lt;/xsl:text>
+            &lt;xsl:value-of select="$format"/>
+            &lt;xsl:text>; using default.&lt;/xsl:text>
+          &lt;/xsl:message>
+          &lt;xsl:call-template name="default.autolabel.format"/>
+        &lt;/xsl:otherwise>
+      &lt;/xsl:choose>
+    &lt;/xsl:when>
+  &lt;/xsl:choose>
+&lt;/xsl:template></programlisting>
+    </example>
+    
+    <para>Unfortunately, the <command>xsltproc</command> processor does
+      not support this currently (1.1.24). Only Saxon does it correct.</para>
+    <para>Unusual numbering needs further customization.</para>
+  </section>
+  
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/SectionNumbering.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://en.wikipedia.org/wiki/Category:Numerals"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
