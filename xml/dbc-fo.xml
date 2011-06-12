@@ -55,5 +55,6 @@
   <xi:include href="fo/topic.hyphenating-urls.xml"/>
   <xi:include href="fo/topic.initials.xml"/>
   <xi:include href="fo/topic.opensource-fonts.xml"/>
+  <xi:include href="fo/topic.number-titles.xml"/>
   <xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>
 </chapter>
