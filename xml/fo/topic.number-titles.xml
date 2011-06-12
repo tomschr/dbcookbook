@@ -17,25 +17,25 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The most common use is numbering chapters. If you want to
-      automatically number chapter titles, set the
-        <parameter>chapter.autolabel</parameter> parameter either
+    <para>The DocBook XSL stylesheets provide already a decent numbering
+      scheme for high level divisions like parts, appendices, chapters,
+      and references. The most common use is numbering section. If you want to
+      automatically number section titles, set the
+        <parameter>section.autolabel</parameter> parameter either
       manually or through a customization layer, for example: </para>
     <programlisting language="xml"
-      >&lt;xsl:param name="chapter.autolabel" select="1"/></programlisting>
+      >&lt;xsl:param name="section.autolabel" select="1"/></programlisting>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>The DocBook XSL stylesheets contain autolabel parameters for
-      the elements <tag>appendix</tag>, <tag>chapter</tag>,
-      <tag>part</tag>, <tag>preface</tag>, <tag>qandadiv</tag>, 
-      <tag>reference</tag>, and <tag>section</tag>. These can be set
-      individually to change the numbering of its element. Some have
-      already a default value (like a part), others need to be
-      explicitly be set (like a chapter.)</para>
-    <para>The following table lists all autolabel parameters, their
-      default values, and an example.</para>
-    <table>
+      the common elements <tag>appendix</tag>, <tag>chapter</tag>,
+        <tag>part</tag>, <tag>preface</tag>, <tag>qandadiv</tag>,
+        <tag>reference</tag>, and <tag>section</tag>. These can be set
+      individually to change the numbering of its element. The default
+      values are shown in <xref linkend="tab.fo.number-titles.autolabel"/>.
+    </para>
+    <table xml:id="tab.fo.number-titles.autolabel">
       <title>Autolabel Parameters and their Default Values</title>
       <tgroup cols="3">
         <thead>
@@ -84,62 +84,100 @@
         </tbody>
       </tgroup>
     </table>
-    <para>The value in the autolabel parameters indicate if is used or
-      not: a value of <literal>1</literal> enables the numbering,
-        <literal>0</literal> disables it. Using different values creates
-      roman numerals, for example.</para>
-    <table>
-      <title>Formats for Autolabel Parameters</title>
-      <tgroup cols="4">
-        <thead>
-          <row>
-            <entry>Parameter</entry>
-            <entry>Alternative</entry>
-            <entry>Style</entry>
-            <entry>Example</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry><literal>1</literal></entry>
-            <entry><literal>arabic</literal></entry>
-            <entry>Arabic numerals</entry>
-            <entry>1, 2, 3, 4, …</entry>
-          </row>
-          <row>
-            <entry><literal>I</literal></entry>
-            <entry><literal>upperroman</literal></entry>
-            <entry>Uppercase roman numerals</entry>
-            <entry>I, II, III, IV, …</entry>
-          </row>
-          <row>
-            <entry><literal>i</literal></entry>
-            <entry><literal>lowerroman</literal></entry>
-            <entry>Lowercase roman numerals</entry>
-            <entry>i, ii, iii, iv, …</entry>
-          </row>
-          <row>
-            <entry><literal>A</literal></entry>
-            <entry><literal>upperalpha</literal></entry>
-            <entry>Uppercase letters</entry>
-            <entry>A, B, C, D, …</entry>
-          </row>
-          <row>
-            <entry><literal>a</literal></entry>
-            <entry><literal>loweralpha</literal></entry>
-            <entry>Lowercase letters</entry>
-            <entry>a, b, c, d, …</entry>
-          </row>
-          <row>
-            <entry><tag class="numcharref">x661</tag></entry>
-            <entry><literal>arabicindic</literal></entry>
-            <entry>Arabic-Indic numerals</entry>
-            <entry>&#x661;, &#x662;, &#x663;, &#x664;, …</entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
-    <remark>What about Japanese, Chinese, etc. numbering?</remark>
+    
+    <para>The autolabel parameters can contain the following
+      values:</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term>Value <literal>0</literal></term>
+        <listitem>
+          <para>This disables the automatic numbering. For example, if
+            you want to disable automatic numbering for chapter
+            elements, use this:</para>
+          <programlisting language="xml"
+      >&lt;xsl:param name="chapter.autolabel" select="0"/></programlisting>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Value <literal>1</literal></term>
+        <listitem>
+          <para>This enables the automatic numbering and uses arabic
+            numerals. For example, section numbering is disabled by
+            default. Use the above </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>String</term>
+        <listitem>
+          <para>This value enables a different automatic numbering
+          schema, for example roman numerals. See the following table to
+          get an overview.
+          </para>
+          <table xml:id="tab.fo.">
+            <title>Possible Formats for Autolabel Parameters</title>
+            <tgroup cols="4">
+              <thead>
+                <row>
+                  <entry>Parameter</entry>
+                  <entry>Alternative</entry>
+                  <entry>Style</entry>
+                  <entry>Example</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry><literal>1</literal></entry>
+                  <entry><literal>arabic</literal></entry>
+                  <entry>Arabic numerals</entry>
+                  <entry>1, 2, 3, 4, …</entry>
+                </row>
+                <row>
+                  <entry><literal>I</literal></entry>
+                  <entry><literal>upperroman</literal></entry>
+                  <entry>Uppercase roman numerals</entry>
+                  <entry>I, II, III, IV, …</entry>
+                </row>
+                <row>
+                  <entry><literal>i</literal></entry>
+                  <entry><literal>lowerroman</literal></entry>
+                  <entry>Lowercase roman numerals</entry>
+                  <entry>i, ii, iii, iv, …</entry>
+                </row>
+                <row>
+                  <entry><literal>A</literal></entry>
+                  <entry><literal>upperalpha</literal></entry>
+                  <entry>Uppercase letters</entry>
+                  <entry>A, B, C, D, …</entry>
+                </row>
+                <row>
+                  <entry><literal>a</literal></entry>
+                  <entry><literal>loweralpha</literal></entry>
+                  <entry>Lowercase letters</entry>
+                  <entry>a, b, c, d, …</entry>
+                </row>
+                <row>
+                  <entry><tag class="numcharref">x661</tag></entry>
+                  <entry><literal>arabicindic</literal></entry>
+                  <entry>Arabic-Indic numerals</entry>
+                  <entry>&#x661;, &#x662;, &#x663;, &#x664;, …</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+    <para>Mostly you will probably want your sections be
+      numbered including its parent numbering. If you do not touch
+      <parameter>chapter.autolabel</parameter>, use the parameter 
+      <parameter>section.label.includes.component.label</parameter> and
+      set it to <literal>1</literal>:</para>
+    <programlisting language="xml"
+      >&lt;xsl:param name="section.autolabel" select="1"/>
+&lt;xsl:param name="section.label.includes.component.label" select="1"/></programlisting>
+    
     <para>However, when dealing with other numbering systems, the above
       table is not enough. To support, for example, Japanese numbering,
       you need to customize the named template
@@ -195,7 +233,6 @@
     
     <para>Unfortunately, the <command>xsltproc</command> processor does
       not support this currently (1.1.24). Only Saxon does it correct.</para>
-    <para>Unusual numbering needs further customization.</para>
   </section>
   
   <section role="seealso">
