@@ -33,7 +33,7 @@
     
     <example xml:id="ex.copy.xsl">
       <title><filename>copy.xsl</filename></title>
-      <programlisting><xi:include href="structure/xslt/copy.xsl" parse="text"/></programlisting>
+      <programlisting linenumbering="numbered"><xi:include href="structure/xslt/copy.xsl" parse="text"/></programlisting>
     </example>
     
     <para>This simple stylesheet copies everything from the input
