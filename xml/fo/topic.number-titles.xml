@@ -15,16 +15,15 @@
         <tag>appendix</tag>, <tag>chapter</tag>, <tag>section</tag>,
       etc.</para>
   </section>
-  <section role="solution">
+  <section role="solution" xml:id="sec.fo.number-titles.solution">
     <title>Solution</title>
     <para>The DocBook XSL stylesheets provide already a decent numbering
       scheme for high level divisions like parts, appendices, chapters,
-      and references. The most common use is numbering section. If you want to
-      automatically number section titles, set the
+      and references. The most common use is numbering section. If you
+      want to automatically number section titles, set the
         <parameter>section.autolabel</parameter> parameter either
       manually or through a customization layer, for example: </para>
-    <programlisting language="xml"
-      >&lt;xsl:param name="section.autolabel" select="1"/></programlisting>
+    <programlisting language="xml">&lt;xsl:param name="section.autolabel" select="1"/></programlisting>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -32,9 +31,9 @@
       the common elements <tag>appendix</tag>, <tag>chapter</tag>,
         <tag>part</tag>, <tag>preface</tag>, <tag>qandadiv</tag>,
         <tag>reference</tag>, and <tag>section</tag>. These can be set
-      individually to change the numbering of its element. The default
-      values are shown in <xref linkend="tab.fo.number-titles.autolabel"/>.
-    </para>
+      individually to change the numbering of for the same elements. The
+      default values are shown in <xref
+        linkend="tab.fo.number-titles.autolabel"/>. </para>
     <table xml:id="tab.fo.number-titles.autolabel">
       <title>Autolabel Parameters and their Default Values</title>
       <tgroup cols="3">
@@ -92,35 +91,35 @@
       <varlistentry>
         <term>Value <literal>0</literal></term>
         <listitem>
-          <para>This disables the automatic numbering. For example, if
-            you want to disable automatic numbering for chapter
-            elements, use this:</para>
-          <programlisting language="xml"
-      >&lt;xsl:param name="chapter.autolabel" select="0"/></programlisting>
+          <para>A value of zero disables the automatic numbering. For
+            example, if you want to disable automatic numbering for
+            appendix elements, use this:</para>
+          <programlisting language="xml">&lt;xsl:param name="appendix.autolabel" select="0"/></programlisting>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>Value <literal>1</literal></term>
         <listitem>
-          <para>This enables the automatic numbering and uses arabic
-            numerals. For example, section numbering is disabled by
-            default. Use the above </para>
+          <para>A value of one enables the automatic numbering and uses
+            arabic numerals. For example, section numbering is disabled
+            by default. Use the code in the <xref
+              xrefstyle="select:title"
+              linkend="sec.fo.number-titles.solution"/> section.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>String</term>
         <listitem>
-          <para>This value enables a different automatic numbering
-          schema, for example roman numerals. See the following table to
-          get an overview.
-          </para>
+          <para>A string enables a different automatic numbering schema,
+            for example roman numerals. See the following table to get
+            an overview. </para>
           <table xml:id="tab.fo.">
             <title>Possible Formats for Autolabel Parameters</title>
             <tgroup cols="4">
               <thead>
                 <row>
-                  <entry>Parameter</entry>
-                  <entry>Alternative</entry>
+                  <entry>Value</entry>
+                  <entry>Alternative Value</entry>
                   <entry>Style</entry>
                   <entry>Example</entry>
                 </row>
@@ -177,6 +176,13 @@
     <programlisting language="xml"
       >&lt;xsl:param name="section.autolabel" select="1"/>
 &lt;xsl:param name="section.label.includes.component.label" select="1"/></programlisting>
+    <para>Furthermore, with the parameter
+      <parameter>section.autolabel.max.depth</parameter> you can control
+      which sections get a number. By default, all sections are get
+      numbered (default value is <literal>8</literal>.) If you want to
+      number only sections at level 1, set the parameter to the value
+      <literal>1</literal>.
+    </para>
     
     <para>However, when dealing with other numbering systems, the above
       table is not enough. To support, for example, Japanese numbering,
