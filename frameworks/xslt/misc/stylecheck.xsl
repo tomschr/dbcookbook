@@ -217,6 +217,7 @@
   </xsl:template>
   
   <!-- ============================================================
+    Lonely section check
   -->
   <xsl:template match="text()" mode="lonely-divs"/>
   <xsl:template match="/" mode="lonely-divs">
@@ -240,10 +241,25 @@
           <xsl:text>Bad structure: </xsl:text>
           <xsl:value-of select="concat('Your ', 
             local-name(), 
-            ' contains only 1 section')"/>
+            ' contains only 1 chapter')"/>
         </xsl:with-param>
         <xsl:with-param name="solution">
           <xsl:text>Add more chapters to your </xsl:text>
+          <xsl:value-of select="local-name()"/>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:text>*</xsl:text>
+    </xsl:if>
+    <xsl:if test="count(d:appendix) = 1">
+      <xsl:call-template name="tip">
+        <xsl:with-param name="text">
+          <xsl:text>Bad structure: </xsl:text>
+          <xsl:value-of select="concat('Your ', 
+            local-name(), 
+            ' contains only 1 appendix')"/>
+        </xsl:with-param>
+        <xsl:with-param name="solution">
+          <xsl:text>Add more appendices to your </xsl:text>
           <xsl:value-of select="local-name()"/>
         </xsl:with-param>
       </xsl:call-template>
@@ -271,5 +287,27 @@
     <xsl:apply-templates mode="lonely-divs"/>
   </xsl:template>
 
+  <xsl:template match="d:section" mode="lonely-divs">
+    <xsl:if test="count(d:section) = 1">
+      <xsl:call-template name="warning">
+        <xsl:with-param name="text">
+          <xsl:text>Bad structure: </xsl:text>
+          <xsl:value-of select="concat('Your ', 
+            local-name(), 
+            ' contains only 1 section')"/>
+        </xsl:with-param>
+        <xsl:with-param name="solution">
+          <xsl:text>Add more sections to your </xsl:text>
+          <xsl:value-of select="local-name()"/>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:text>*</xsl:text>
+    </xsl:if>
+    <xsl:apply-templates mode="lonely-divs"/>
+  </xsl:template>
+
+  <!-- ============================================================
+    ID checks
+  -->
   
 </xsl:stylesheet>
