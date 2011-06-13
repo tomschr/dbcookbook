@@ -20,15 +20,27 @@
     <xsl:param name="node" select="."/>
     <xsl:param name="path" select="''"/>
 
+    <xsl:variable name="fo-sib"
+      select="count($node/following-sibling::*[local-name()=local-name($node)
+      and namespace-uri() = namespace-uri($node)])"/>
+    <xsl:variable name="prec-sib"
+      select="count($node/preceding-sibling::*[local-name()=local-name($node)
+      and namespace-uri() = namespace-uri($node)])"/>
+    
     <xsl:variable name="next.path">
       <xsl:value-of select="local-name($node)"/>
-      <xsl:if test="$path != ''">/</xsl:if>
+      <xsl:if test="$prec-sib >1 or $fo-sib >1">
+        <xsl:value-of select="concat('[', $prec-sib+1, ']')"/>
+      </xsl:if>
+      <xsl:if test="$path != ''">
+        <xsl:text>/</xsl:text>
+      </xsl:if>      
       <xsl:value-of select="$path"/>
     </xsl:variable>
-    <xsl:variable name="prev-siblings" 
-      select="count(preceding-sibling::*[self::*])"/>
-    <xsl:message>pos = <xsl:number/>
-    </xsl:message>
+    
+    <!--<xsl:message>pos = <xsl:value-of 
+      select="concat($prec-sib, ':', $fo-sib)"/>
+    </xsl:message>-->
     <xsl:choose>
       <xsl:when test="$node/parent::*">
         <xsl:call-template name="xpath.location">
@@ -56,12 +68,17 @@
     <xsl:param name="text"/>
     <xsl:param name="solution"/>
     <xsl:param name="with-xpath" select="1"/>
+    <xsl:param name="with-title" select="1"/>
     <xsl:message>
       <xsl:value-of select="concat($admon, ':&#10;')"/>
       <xsl:if test="$with-xpath != 0">
         <xsl:value-of select="concat($logger.indent, 'XPath:    ')"/>
         <xsl:call-template name="xpath.location"/>
         <xsl:text>&#10;</xsl:text>
+      </xsl:if>
+      <xsl:if test="$with-title != 0 and d:title">
+        <xsl:value-of select="concat($logger.indent, 'Title:    ',
+          normalize-space(d:title), '&#10;')"/>
       </xsl:if>
       <xsl:value-of select="concat($logger.indent, 'Problem:  ', 
             normalize-space($text),'&#10;')"/>
@@ -103,6 +120,7 @@
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
+  
   <!-- ============================================================
     Template Rules 
   -->  
@@ -111,6 +129,7 @@
   <xsl:template match="/">
     <xsl:apply-templates mode="root-element"/>
     <xsl:apply-templates select="/" mode="lonely-divs"/>
+    <!--<xsl:apply-templates select="/" mode="id-check"/>-->
   </xsl:template>
   
   <!-- ============================================================
@@ -214,32 +233,40 @@
     </xsl:call-template>
   </xsl:template>
   
-  <xsl:template match="d:book" mode="lonely-divs">
+  <xsl:template match="d:book|d:part" mode="lonely-divs">
     <xsl:if test="count(d:chapter) = 1">
       <xsl:call-template name="warning">
         <xsl:with-param name="text">
           <xsl:text>Bad structure: </xsl:text>
-          <xsl:text>Your book contains only 1 chapter</xsl:text>
+          <xsl:value-of select="concat('Your ', 
+            local-name(), 
+            ' contains only 1 section')"/>
         </xsl:with-param>
         <xsl:with-param name="solution">
-          <xsl:text>Add more chapters to your book</xsl:text>
+          <xsl:text>Add more chapters to your </xsl:text>
+          <xsl:value-of select="local-name()"/>
         </xsl:with-param>
       </xsl:call-template>
+      <xsl:text>*</xsl:text>
     </xsl:if>
     <xsl:apply-templates mode="lonely-divs"/>
   </xsl:template>
   
-  <xsl:template match="d:chapter" mode="lonely-divs">
+  <xsl:template match="d:appendix|d:chapter|d:prefix" mode="lonely-divs">
     <xsl:if test="count(d:section) = 1">
       <xsl:call-template name="warning">
         <xsl:with-param name="text">
           <xsl:text>Bad structure: </xsl:text>
-          <xsl:text>Your chapter contains only 1 section</xsl:text>
+          <xsl:value-of select="concat('Your ', 
+            local-name(), 
+            ' contains only 1 section')"/>
         </xsl:with-param>
         <xsl:with-param name="solution">
-          <xsl:text>Add more sections to your book</xsl:text>
+          <xsl:text>Add more sections to your </xsl:text>
+          <xsl:value-of select="local-name()"/>
         </xsl:with-param>
       </xsl:call-template>
+      <xsl:text>*</xsl:text>
     </xsl:if>
     <xsl:apply-templates mode="lonely-divs"/>
   </xsl:template>
