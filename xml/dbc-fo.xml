@@ -50,8 +50,9 @@
     - Adding Fonts to FO Formatter
     - Creating Page Definitions with Inkscape
     - Styling Labels Differently than Titles (Separating Labels and
-    Titles) 
+      Titles) 
     - Using Text Figures http://en.wikipedia.org/wiki/Text_figures
+    - Using MathML in Formulas
   -->
   
   <xi:include href="fo/topic.line-height.xml"/>
