@@ -99,8 +99,8 @@
     <xsl:param name="text"/>
     <xsl:param name="solution"/>
     <xsl:call-template name="logger">
-      <xsl:with-param name="text" 
-        select="concat($text, '&#10;', $solution)"/>
+      <xsl:with-param name="text" select="$text"/>
+      <xsl:with-param name="solution" select="$solution"/>
       <xsl:with-param name="admon">TIP</xsl:with-param>
     </xsl:call-template>
   </xsl:template>
@@ -129,7 +129,7 @@
   <xsl:template match="/">
     <xsl:apply-templates mode="root-element"/>
     <xsl:apply-templates select="/" mode="lonely-divs"/>
-    <!--<xsl:apply-templates select="/" mode="id-check"/>-->
+    <xsl:apply-templates select="/" mode="id-check"/>
   </xsl:template>
   
   <!-- ============================================================
@@ -309,5 +309,44 @@
   <!-- ============================================================
     ID checks
   -->
+  <xsl:template match="text()" mode="id-check"/>
+  <xsl:template match="/" mode="id-check">
+    <xsl:call-template name="create-div">
+      <xsl:with-param name="text">
+        <xsl:text>Check ID consistency</xsl:text>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:variable name="result">
+      <xsl:apply-templates mode="id-check"/>
+    </xsl:variable>
+    <xsl:call-template name="result.logger">
+      <xsl:with-param name="result" select="$result"/>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <xsl:template match="d:acknowledgements|d:appendix|d:article|
+                       d:book|d:bibliography|
+                       d:chapter|d:colophon|
+                       d:dedication|
+                       d:glossary|
+                       d:part|d:preface|
+                       d:reference|
+                       d:topic|
+                       d:sect1|
+                       d:section[not(parent::d:section)]" mode="id-check">
+    <xsl:if test="not(@xml:id)">
+      <xsl:call-template name="tip">
+        <xsl:with-param name="text">
+          <xsl:text>Missing ID in book</xsl:text>
+        </xsl:with-param>
+        <xsl:with-param name="solution">
+          <xsl:text>Add xml:id to </xsl:text>
+          <xsl:value-of select="local-name()"/>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:text>*</xsl:text>
+    </xsl:if>
+    <xsl:apply-templates mode="id-check"/>
+  </xsl:template>
   
 </xsl:stylesheet>
