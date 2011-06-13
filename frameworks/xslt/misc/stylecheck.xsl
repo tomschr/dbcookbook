@@ -129,7 +129,8 @@
   <xsl:template match="/">
     <xsl:apply-templates mode="root-element"/>
     <xsl:apply-templates select="/" mode="lonely-divs"/>
-    <xsl:apply-templates select="/" mode="id-check"/>
+    <xsl:apply-templates select="/" mode="available-xmlid"/>
+    <xsl:apply-templates select="/" mode="xmlid-consistency"/>
   </xsl:template>
   
   <!-- ============================================================
@@ -309,15 +310,15 @@
   <!-- ============================================================
     ID checks
   -->
-  <xsl:template match="text()" mode="id-check"/>
-  <xsl:template match="/" mode="id-check">
+  <xsl:template match="text()" mode="available-xmlid"/>
+  <xsl:template match="/" mode="available-xmlid">
     <xsl:call-template name="create-div">
       <xsl:with-param name="text">
-        <xsl:text>Check ID consistency</xsl:text>
+        <xsl:text>Check availability of xml:ids</xsl:text>
       </xsl:with-param>
     </xsl:call-template>
     <xsl:variable name="result">
-      <xsl:apply-templates mode="id-check"/>
+      <xsl:apply-templates mode="available-xmlid"/>
     </xsl:variable>
     <xsl:call-template name="result.logger">
       <xsl:with-param name="result" select="$result"/>
@@ -333,7 +334,7 @@
                        d:reference|
                        d:topic|
                        d:sect1|
-                       d:section[not(parent::d:section)]" mode="id-check">
+                       d:section[not(parent::d:section)]" mode="available-xmlid">
     <xsl:if test="not(@xml:id)">
       <xsl:call-template name="tip">
         <xsl:with-param name="text">
@@ -346,7 +347,64 @@
       </xsl:call-template>
       <xsl:text>*</xsl:text>
     </xsl:if>
-    <xsl:apply-templates mode="id-check"/>
+    <xsl:apply-templates mode="available-xmlid"/>
   </xsl:template>
+  
+  <!-- ============================================================
+    xml:id consistency
+  -->
+  <xsl:template match="text()" mode="xmlid-consistency"/>
+  <xsl:template match="/" mode="xmlid-consistency">
+    <xsl:call-template name="create-div">
+      <xsl:with-param name="text">
+        <xsl:text>Check ID consistency</xsl:text>
+      </xsl:with-param>
+    </xsl:call-template>
+    <xsl:variable name="result">
+      <xsl:apply-templates select="@*|*" mode="xmlid-consistency"/>
+    </xsl:variable>
+    <xsl:call-template name="result.logger">
+      <xsl:with-param name="result" select="$result"/>
+    </xsl:call-template>
+  </xsl:template>
+  
+  <xsl:template match="d:appendix[@xml:id]|
+                       d:article[@xml:id]|
+                       d:bibliography[@xml:id]|
+                       d:chapter[@xml:id]|
+                       d:glossary[@xml:id]|
+                       d:preface[@xml:id]|
+                       d:reference[@xml:id]" mode="xmlid-consistency">
+    <xsl:variable name="id" select="@xml:id"/>
+    <xsl:variable name="prefix">
+      <xsl:choose>
+        <xsl:when test="self::d:appendix">app.</xsl:when>
+        <xsl:when test="self::d:article">art.</xsl:when>
+        <xsl:when test="self::d:bibliography">bib.</xsl:when>
+        <xsl:when test="self::d:chapter">cha.</xsl:when>
+        <xsl:when test="self::d:glossary">glos.</xsl:when>
+        <xsl:when test="self::d:preface">pre.</xsl:when>
+        <xsl:when test="self::d:part">par.</xsl:when>
+        <xsl:when test="self::d:reference">ref.</xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    
+    <xsl:if test="not(starts-with($id, $prefix))">
+      <xsl:call-template name="tip">
+        <xsl:with-param name="text">
+          <xsl:text>ID starts with </xsl:text>
+          <xsl:value-of select="@xml:id"/>
+        </xsl:with-param>
+        <xsl:with-param name="solution">
+          <xsl:text>Start xml:id with </xsl:text>
+          <xsl:value-of select="concat('&quot;', $prefix, '&quot;')"/>
+        </xsl:with-param>
+      </xsl:call-template>
+      <xsl:text>*</xsl:text>
+    </xsl:if>
+    <xsl:apply-templates mode="xmlid-consistency"/>
+  </xsl:template>
+  
+  
   
 </xsl:stylesheet>
