@@ -109,7 +109,7 @@
     <xsl:param name="result"/>
     <xsl:choose>
       <xsl:when test="string-length($result) = 0">
-        <xsl:message>=> No problems.&#10;&#10;</xsl:message>
+        <xsl:message>=> No problems found.&#10;&#10;</xsl:message>
       </xsl:when>
       <xsl:otherwise>
         <xsl:message>
@@ -127,7 +127,7 @@
   <xsl:template match="text()"/>
 
   <xsl:template match="/">
-    <xsl:apply-templates mode="root-element"/>
+    <xsl:apply-templates select="/" mode="root-element"/>
     <xsl:apply-templates select="/" mode="lonely-divs"/>
     <xsl:apply-templates select="/" mode="available-xmlid"/>
     <xsl:apply-templates select="/" mode="xmlid-consistency"/>
