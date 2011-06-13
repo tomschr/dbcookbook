@@ -40,10 +40,11 @@
       </example>
       <para>The filename <filename>chunker.xsl</filename> is more or
         less a stripped down version of the file
-        <filename>html/chunker.xsl</filename> from the DocBook XSL
-        stylesheets. It is used separately to make 
-        <filename>dbsplit.xsl</filename> more independant from the
-        DocBook XSL stylesheets.</para>
+          <filename>html/chunker.xsl</filename> from the DocBook XSL
+        stylesheets. It is used to create processor independant writing
+        of our XML chunks. The file was integrated into
+          <filename>dbsplit.xsl</filename> to make it more independant
+        from the DocBook XSL stylesheets.</para>
       <example>
         <title><filename>chunker.xsl</filename></title>
         <programlisting language="xml"><xi:include
