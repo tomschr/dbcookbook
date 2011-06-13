@@ -11,18 +11,55 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>The problem explained.</para>
+    <para>You want to write a customization layer for the DocBook XSL
+      stylesheets, but you do not know how to do it.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para>A DocBook XSL customization layer comprised the following
+    components:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para>A XSLT stylesheet skeletton with the start tag <tag
+          class="starttag">xsl:stylesheet</tag> and the end tag
+          <tag class="endtag">xsl:stylesheet</tag></para>
+      </listitem>
+      <listitem>
+        <para>At least the namespaces for XSLT and DocBook&#xa0;5.
+          Depending on the output format, you need to add more (for
+          example, for FO or XHTML.)</para>
+      </listitem>
+      <listitem>
+        <para>An import statement which includes one of the several
+          output formats.</para>
+      </listitem>
+      <listitem>
+        <para>Your customizations.</para>
+      </listitem>
+    </itemizedlist>
+    <para>How this can look is shown in the following listing.</para>
+    <example>
+      <title>General Customization Layer</title>
+      <programlisting language="xml">&lt;xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:d="http://docbook.org/ns/docbook">
+  
+  &lt;xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/<replaceable
+    >FORMAT</replaceable>/docbook.xsl"/>
+  
+  &lt;!-- Your customizations go here -->
+  
+&lt;/xsl:stylesheet></programlisting>
+    </example>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para></para>
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <para><link
+      xlink:href="http://www.sagehill.net/docbookxsl/CustomMethods.html#CustomizationLayer"/></para>
   </section>
 </section>
