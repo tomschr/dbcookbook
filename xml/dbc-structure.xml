@@ -48,6 +48,7 @@
     * Autogenerate indexterm ranges
     * Preserving Entities
     * Renaming Image Filenames
+    * Checking Style Guide Issues with XSLT
   -->
   <xi:include href="structure/topic.pretty-print.xml"/>
   <xi:include href="structure/topic.db4-to-db5.xml"/>
