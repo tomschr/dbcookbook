@@ -4,7 +4,7 @@
   <loadproperties srcFile="${ant.file.dir}/build.properties"/>
   <property name="webhelp.include.search.tab" value="true"/>
 
-  <property name="extensions.dir" value="${ant.file.dir}/../extensions"/>
+  <property name="extensions.dir" value="/usr/share/xml/docbook/stylesheet/nwalsh5/current/extensions"/>
 
     <path id="classpath">
         <pathelement location="${extensions.dir}/webhelpindexer.jar"/>
@@ -35,7 +35,7 @@
 	  <param name="webhelp.include.search.tab" expression="${webhelp.include.search.tab}"
 		if="webhelp.include.search.tab"/>
 	  <param name="output_file_name" expression="${output_file_name}"/>
-	  <param name="webhelp.base.dir" expression="${output-dir}" if="output-dir"/>
+	  <param name="webhelp.base.dir" expression="." if="output-dir"/>
 	  <param name="webhelp.indexer.language" expression="${webhelp.indexer.language}" if="webhelp.indexer.language"/>
 	</xslt>
 	
