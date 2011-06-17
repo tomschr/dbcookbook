@@ -2,7 +2,9 @@
 <project>
   <property name="input-xml" value="../xml/.DocBook-Cookbook.xml"/>
   <property name="input-images-dirs" value="images/** figures/** graphics/**"/>
-  <property name="output-dir" value="../"/>
+  <property name="output-dir" value="../build/"/>
+  <property name="extensions.dir" value="/usr/share/xml/docbook/stylesheet/nwalsh5/current/extensions"/>
+  
   <property name="extensions.dir" 
     value="/usr/share/xml/docbook/stylesheet/nwalsh5/current/extensions"/>
   <import file="../frameworks/xslt/webhelp/build.xml"/>
