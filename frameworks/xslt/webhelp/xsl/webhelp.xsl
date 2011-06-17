@@ -17,7 +17,7 @@
     <!-- To be added to normal params file someday -->
     <xsl:param name="webhelp.include.search.tab">true</xsl:param>
     <xsl:param name="webhelp.start.filename">index.html</xsl:param>
-    <xsl:param name="webhelp.base.dir">docs</xsl:param>
+    <xsl:param name="webhelp.base.dir"></xsl:param>
     <xsl:param name="webhelp.tree.cookie.id" select="concat( 'treeview-', count(//node()) )"/>
     <xsl:param name="webhelp.indexer.language">en</xsl:param>
     <xsl:param name="webhelp.default.topic"/>
