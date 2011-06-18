@@ -203,4 +203,35 @@ div.book > div.toc > dl > dd
 div.procedure-title {
   font-weight: bold;
   margin-bottom:-.5em;
+}
+
+div.navheader
+{
+  top: 0;
+  left:0em;
+  right:0em;
+  min-height:3em;
+  padding-top:1em;
+  margin-bottom:1em;
+  position: fixed;
+  background-color:white;
+  margin-left:2em;
+  margin-right:2em;
+}
+
+div.navheader + div
+{
+  margin-top:7em;
+}
+
+div.navfooter hr,
+div.navheader hr
+{
+  border-bottom: 1px solid lightgray;
+}
+
+div.navfooter,
+div.navheader table tr td
+{
+  font-size:small; 
 }</style>
