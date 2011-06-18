@@ -13,8 +13,15 @@
   <!-- 
     http://docbook.sourceforge.net/release/xsl/current/doc/html/
   -->
+
   <xsl:import href="docbook.xsl"/>
   <xsl:import href="&db;/chunk-common.xsl"/>
   <xsl:include href="&db;/chunk-code.xsl"/>
+
+  <!-- Start here with my customization -->
+  <xsl:include href="navigation.xsl"/>
+
+  <xsl:param name="highlight.source" select="0"/>
+
 
 </xsl:stylesheet>
