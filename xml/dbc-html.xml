@@ -11,6 +11,12 @@
       <para></para>
     </abstract>
   </info>
+  
+  <section xml:id="dbc.html.intro">
+    <title>Introduction</title>
+    <para>FIXME</para>
+  </section>
+  
   <!-- 
   (X)HTML Customizations
     - Alt Text for Images
