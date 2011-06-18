@@ -5,6 +5,7 @@
   
   <!--<xsl:param name="css.decoration" select="0"/>-->
   <xsl:param name="base.dir">build/html/</xsl:param>
+  <!--<xsl:param name="chunk.tocs.and.lots" select="1"/>-->
   <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
   <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="img.src.path">images/</xsl:param>
@@ -28,11 +29,28 @@
   <xsl:param name="use.viewport" select="0"/>
   
   <!-- ================================================== -->
+  <xsl:param name="up.navigation">
+    <span> &#x2191; </span><!-- &#x25b5; -->
+  </xsl:param>
+  <xsl:param name="home.navigation">
+    <span> &#x2302; </span><!-- &#x273b; -->
+  </xsl:param>
+  <xsl:param name="toc.navigation">
+    <span> &#x2318; </span>
+  </xsl:param>
   <xsl:param name="next.navigation">
     <span> › </span>
   </xsl:param>
   <xsl:param name="prev.navigation">
     <span> ‹ </span>
   </xsl:param>
-  
+  <xsl:param name="nextdiv.navigation">
+    <span> » </span>
+  </xsl:param>
+  <xsl:param name="prevdiv.navigation">
+    <span> « </span>
+  </xsl:param>
+  <xsl:param name="breadcrumbs.separator">
+    <span> » </span>
+  </xsl:param>
 </xsl:stylesheet>
