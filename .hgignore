@@ -1,10 +1,12 @@
 syntax: glob
 # Temporary files used by the oXygen editor
 *.~
+*~
 
 # Temporary files used by the vim editor.
 .*.swp
 
+*.orig
 *.html
 
 xml/.*.xml
@@ -15,3 +17,4 @@ xml/fo/xslt/*.pdf
 
 html/*
 build/*
+test-output/*
