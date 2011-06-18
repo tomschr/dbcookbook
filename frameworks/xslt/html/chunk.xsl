@@ -20,7 +20,9 @@
 
   <!-- Start here with my customization -->
   <xsl:include href="navigation.xsl"/>
+  <xsl:include href="breadcrumbs.xsl"/>
 
+  <xsl:param name="chunk.fast" select="1"/>
   <xsl:param name="highlight.source" select="0"/>
 
 
