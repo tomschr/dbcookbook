@@ -102,9 +102,7 @@ div.chapter div.titlepage h2.title,
 div.preface div.titlepage h2.title
 {
   text-rendering: optimizeLegibility;
-  border-left: 5pt solid black;
-  color:navy;
-  padding-left:0.25em;
+  color:#369;/* navy */
   text-align:left;
   font-size:280%;
 }
@@ -205,23 +203,110 @@ div.procedure-title {
   margin-bottom:-.5em;
 }
 
+/* Header and Footer */
 div.navheader
 {
-  top: 0;
+  position: absolute;
+  top:0em;
   left:0em;
-  right:0em;
-  min-height:3em;
-  padding-top:1em;
-  margin-bottom:1em;
+  height:100%;
+  width:20em;
+  border:4px solid silver;
+  padding:0;
+  background-color:silver;
+  color:#333;
+  /* */
+  font-size:0.7em;
+  font-weight:bold;
+  border-right:4px solid #666;
+}
+html>body div.navheader,
+html>body div.breadcrumbs
+{
   position: fixed;
-  background-color:white;
-  margin-left:2em;
-  margin-right:2em;
+}
+
+div.navheader ul
+{
+  list-style:none;
+  margin:0;
+  padding:0;
+}
+div.navheader ul li
+{
+  margin:0pt;
+  border-top:1px solid #003;
+}
+div.navheader ul li a
+{
+  display:block;
+  padding:2px 2px 2px 0.5em;
+  border-left:10px solid #369;
+  /*border-right:1px solid #69c;*/
+  /*border-bottom:1px solid #369;*/
+  background-color:#036;
+  color:#fff;
+  text-decoration:none;
+  width:100%;
+}
+html>body div.navheader ul li a
+{
+  width:auto;
+}
+
+div.breadcrumbs
+{
+  position: absolute;
+  top:0em;
+  left:17em;
+  width:100%;
+  /*margin-top:.5em;*/
+  margin-left:.5em;
+  padding:6pt;
+  background-color:#036;
+  color:#fff;
+}
+
+div.breadcrumbs a
+{
+  background-color:#036;
+  color:#fff;
+  padding-left:2pt;
+  padding-right:2pt;
+  text-decoration:none;
+}
+
+div.breadcrumbs a:hover
+{
+  background-color:#69f;
+  color:#fff;
+  padding-left:2pt;
+  padding-right:2pt;
+  border-bottom:6pt solid #69f;
+  border-top:6pt solid #69f;
+}
+
+div.navheader ul li a:hover
+{
+  border-left:10px solid #036;
+  border-right:1px solid #69c;
+  border-bottom:1px solid #369;
+  background-color:#69f;
+  color:#fff;
+}
+
+div.navheader ul li a > span
+{
+  font-weight:bold;
+  font-size:medium;
 }
 
 div.navheader + div
 {
-  margin-top:7em;
+  margin-left: 14em;
+  margin-top:5em;
+  /*padding-left:1.5em;*/
+  /*background-color:#ffffe0;*/
 }
 
 div.navfooter hr,
@@ -231,7 +316,13 @@ div.navheader hr
 }
 
 div.navfooter,
-div.navheader table tr td
+div.navheader table tr td,
+div.breadcrumbs
 {
   font-size:small; 
+}
+
+div.navfooter
+{
+  display:none;
 }</style>
