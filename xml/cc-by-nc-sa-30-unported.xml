@@ -227,15 +227,15 @@
         whether now known or hereafter devised. The above rights include
         the right to make such modifications as are technically
         necessary to exercise the rights in other media and formats.
-        Subject to Section 8(f)<xref linkend="cc.misc.rightsgranted"/>,
+        Subject to Section <!--8(f)--><xref linkend="cc.misc.rightsgranted"/>,
         all rights not expressly granted by Licensor are hereby
         reserved, including but not limited to the rights described in
-        Section 4(e)<xref linkend="cc.restrictions.e"/>.</para>
+        Section <!--4(e)--><xref linkend="cc.restrictions.e"/>.</para>
     </listitem>
     <listitem xml:id="cc.restrictions">
       <formalpara>
         <title>Restrictions.</title>
-        <para>The license granted in Section 3<xref
+        <para>The license granted in Section <!--3--><xref
             linkend="cc.license-grant"/> above is expressly made subject
           to and limited by the following restrictions:</para>
       </formalpara>
@@ -257,17 +257,17 @@
             the Work that restrict the ability of a recipient of the
             Work from You to exercise the rights granted to that
             recipient under the terms of the License. This Section
-              4(a)<xref linkend="cc.restrictions.a"/> applies to the
+              <!--4(a)--><xref linkend="cc.restrictions.a"/> applies to the
             Work as incorporated in a Collection, but this does not
             require the Collection apart from the Work itself to be made
             subject to the terms of this License. If You create a
             Collection, upon notice from any Licensor You must, to the
             extent practicable, remove from the Collection any credit as
-            required by Section 4(d)<xref linkend="cc.restrictions.d"/>,
+            required by Section <!--4(d)--><xref linkend="cc.restrictions.d"/>,
             as requested. If You create an Adaptation, upon notice from
             any Licensor You must, to the extent practicable, remove
             from the Adaptation any credit as required by Section
-              4(d)<xref linkend="cc.restrictions.d"/>, as
+              <!--4(d)--><xref linkend="cc.restrictions.d"/>, as
             requested.</para>
         </listitem>
         <listitem xml:id="cc.restrictions.b">
@@ -293,7 +293,7 @@
             effective technological measures on the Adaptation that
             restrict the ability of a recipient of the Adaptation from
             You to exercise the rights granted to that recipient under
-            the terms of the Applicable License. This Section 4(b)<xref
+            the terms of the Applicable License. This Section <!--4(b)--><xref
               linkend="cc.restrictions.b"/> applies to the Adaptation as
             incorporated in a Collection, but this does not require the
             Collection apart from the Adaptation itself to be made
@@ -314,7 +314,7 @@
         <listitem xml:id="cc.restrictions.d">
           <para>If You Distribute, or Publicly Perform the Work or any
             Adaptations or Collections, You must, unless a request has
-            been made pursuant to Section 4(a)<xref
+            been made pursuant to Section <!--4(a)--><xref
               linkend="cc.restrictions.a"/>, keep intact all copyright
             notices for the Work and provide, reasonable to the medium
             or means You are utilizing: (i) the name of the Original
@@ -329,12 +329,12 @@
             Licensor specifies to be associated with the Work, unless
             such URI does not refer to the copyright notice or licensing
             information for the Work; and, (iv) consistent with Section
-              3(b)<xref linkend="cc.license-grant.b"/>, in the case of
+              <!--3(b)--><xref linkend="cc.license-grant.b"/>, in the case of
             an Adaptation, a credit identifying the use of the Work in
             the Adaptation (e.g., <quote>French translation of the Work
               by Original Author,</quote> or <quote>Screenplay based on
               original Work by Original Author</quote>). The credit
-            required by this Section 4(d)<xref
+            required by this Section <!--4(d)--><xref
               linkend="cc.restrictions.d"/> may be implemented in any
             reasonable manner; provided, however, that in the case of a
             Adaptation or Collection, at a minimum such credit will
@@ -376,7 +376,7 @@
                   exercise by You of the rights granted under this
                   License if Your exercise of such rights is for a
                   purpose or use which is otherwise than noncommercial
-                  as permitted under Section 4(c)<xref
+                  as permitted under Section <!--4(c)--><xref
                     linkend="cc.restrictions.c"/> and otherwise waives
                   the right to collect royalties through any statutory
                   or compulsory licensing scheme; and,</para>
@@ -392,7 +392,7 @@
                   society, from any exercise by You of the rights
                   granted under this License that is for a purpose or
                   use which is otherwise than noncommercial as permitted
-                  under Section 4(c)<xref linkend="cc.restrictions.c"
+                  under Section <!--4(c)--><xref linkend="cc.restrictions.c"
                   />.</para>
               </formalpara>
             </listitem>
@@ -407,7 +407,7 @@
             action in relation to the Work which would be prejudicial to
             the Original Author's honor or reputation. Licensor agrees
             that in those jurisdictions (e.g. Japan), in which any
-            exercise of the right granted in Section 3(b)<xref
+            exercise of the right granted in Section <!--3(b)--><xref
               linkend="cc.license-grant.b"/> of this License (the right
             to make Adaptations) would be deemed to be a distortion,
             mutilation, modification or other derogatory action
@@ -415,7 +415,7 @@
             the Licensor will waive or not assert, as appropriate, this
             Section, to the fullest extent permitted by the applicable
             national law, to enable You to reasonably exercise Your
-            right under Section 3(b)<xref linkend="cc.license-grant.b"/>
+            right under Section <!--3(b)--><xref linkend="cc.license-grant.b"/>
             of this License (right to make Adaptations) but not
             otherwise.</para>
         </listitem>
@@ -461,11 +461,12 @@
             Adaptations or Collections from You under this License,
             however, will not have their licenses terminated provided
             such individuals or entities remain in full compliance with
-            those licenses. Sections 1<xref linkend="cc.def"/>, 2<xref
-              linkend="cc.fair-dealing-rights"/>, 5<xref
+            those licenses. Sections <!--1--><xref linkend="cc.def"/>, 
+            <!--2--><xref
+              linkend="cc.fair-dealing-rights"/>, <!--5--><xref
               linkend="cc.representation-warranties-disclaimer"/>,
-              6<xref linkend="cc.limitation-on-liability"/>, 7<xref
-              linkend="cc.termination"/>, and 8<xref linkend="cc.misc"/>
+              <!--6--><xref linkend="cc.limitation-on-liability"/>, <!--7--><xref
+              linkend="cc.termination"/>, and <!--8--><xref linkend="cc.misc"/>
             will survive any termination of this License.</para>
         </listitem>
         <listitem>
