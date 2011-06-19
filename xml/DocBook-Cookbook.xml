@@ -26,7 +26,7 @@
               <entry><para>This work is licensed as Creative Commons
         Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
         by-nc-sa 3.0 DE). For more information, see <link xlink:show="new"
-          xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"
+          xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
         /></para></entry>
             </row>
           </tbody>
@@ -43,10 +43,11 @@
   </info>
   
   <xi:include href="dbc-preface.xml"/>
-    
+  
+  <xi:include href="dbc-markup.xml"/>
   <xi:include href="dbc-common.xml"/>
   <xi:include href="dbc-structure.xml"/> 
   <xi:include href="dbc-fo.xml"/>  
   <xi:include href="dbc-html.xml"/>
-  
+  <xi:include href="cc-by-nc-sa-30-unported.xml"/>
 </book>
