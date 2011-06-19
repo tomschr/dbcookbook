@@ -3,17 +3,19 @@
   "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" 
   "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <rewriteSystem
-    systemIdStartString="http://docbook.sourceforge.net/release/xsl-ns/1.76.1"
-    rewritePrefix="file:///usr/share/xml/docbook/stylesheet/nwalsh5/1.76.1"/>
-  <rewriteURI
-    uriStartString="http://docbook.sourceforge.net/release/xsl-ns/1.76.1"
-    rewritePrefix="file:///usr/share/xml/docbook/stylesheet/nwalsh5/1.76.1"/>
-  <rewriteSystem
-    systemIdStartString="http://docbook.sourceforge.net/release/xsl-ns/current"
-    rewritePrefix="file:///usr/share/xml/docbook/stylesheet/nwalsh5/1.76.1"/>
-  <rewriteURI
-    uriStartString="http://docbook.sourceforge.net/release/xsl-ns/current"
-    rewritePrefix="file:///usr/share/xml/docbook/stylesheet/nwalsh5/1.76.1"
-  />
+  <group id="docbook5-xsl-stylesheets" 
+    xml:base="file:///usr/share/xml/docbook/stylesheet/nwalsh5/current/">
+    <rewriteSystem
+      systemIdStartString="http://docbook.sourceforge.net/release/xsl-ns/1.76.1/"
+      rewritePrefix="."/>
+    <rewriteURI
+      uriStartString="http://docbook.sourceforge.net/release/xsl-ns/1.76.1/"
+      rewritePrefix="."/>
+    <rewriteSystem
+      systemIdStartString="http://docbook.sourceforge.net/release/xsl-ns/current/"
+      rewritePrefix="."/>
+    <rewriteURI
+      uriStartString="http://docbook.sourceforge.net/release/xsl-ns/current/"
+      rewritePrefix="."/>  
+  </group>  
 </catalog>
