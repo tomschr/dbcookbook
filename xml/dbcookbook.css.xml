@@ -166,6 +166,9 @@ div.section div.titlepage div.authorgroup:before
 }
 /* Tocs */
 div.book div.toc div.toc-title,
+div.book div.list-of-tables div.toc-title,
+div.book div.list-of-figures div.toc-title,
+div.book div.list-of-procedures div.toc-title,
 div.book div.list-of-examples div.toc-title
 {
   font-size:large;
