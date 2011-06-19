@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.markup.lists" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Using Lists</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to know what list types are available in DocBook.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>DocBook provides three basic lists for different purposes:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para><tag>orderedlist</tag> for numbered lists (like
+            <tag>ol</tag> in (X)HTML)</para>
+      </listitem>
+      <listitem>
+        <para><tag>itemizedlist</tag>, for unordered lists (like
+            <tag>ul</tag> in (X)HTML)</para>
+      </listitem>
+      <listitem>
+        <para><tag>variablelist</tag>, for lists containing terms and their
+          definition (like <tag>dl</tag>)</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>Additionally, for specific purposes DocBook provides special
+      lists:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para><tag>bibliolist</tag> is a wrapper for bibliographic
+          content. A <tag>bibliolist</tag> is usually inserted in
+          section-like elements where a <tag>bibliography</tag> is not
+          allowed.</para>
+      </listitem>
+      <listitem>
+        <para><tag>calloutlist</tag>, a usually numbered list which
+          points to a line in a listing</para>
+      </listitem>
+      <listitem>
+        <para><tag>glosslist</tag> is a wrapper for glossary content.
+          A <tag>glosslist</tag> is usually inserted in section-like
+          elements where a <tag>glossary</tag> is not allowed.</para>
+      </listitem>
+      <listitem>
+        <para><tag>segmentedlist</tag> is a list which can be used which
+          have a one-to-one dependence with its title. A
+          <tag>segmentedlist</tag> can be formatted in a number of ways
+          (tabular or as a list block).
+        </para>
+      </listitem>
+      <listitem>
+        <para><tag>simplelist</tag> is an unordered list for single
+          words or small phrases.</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>The previous lists are used to maintain their semantic
+    distinction.</para>
+    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some discussion about problem and solution.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/bibliolist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/calloutlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/glosslist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/itemizedlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/orderedlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/segmentedlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg5/en/html/simplelist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.sagehill.net/docbookxsl/Lists.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
