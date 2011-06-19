@@ -1,0 +1,2 @@
+* CSS Design: Taming Lists
+http://www.alistapart.com/articles/taminglists/
