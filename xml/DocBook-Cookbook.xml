@@ -49,5 +49,7 @@
   <xi:include href="dbc-structure.xml"/> 
   <xi:include href="dbc-fo.xml"/>  
   <xi:include href="dbc-html.xml"/>
+  <xi:include href="cc-by-nc-sa-30-de.xml"/>
   <xi:include href="cc-by-nc-sa-30-unported.xml"/>
+
 </book>
