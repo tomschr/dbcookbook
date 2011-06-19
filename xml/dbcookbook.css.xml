@@ -325,4 +325,10 @@ div.breadcrumbs
 div.navfooter
 {
   display:none;
+}
+
+/* orderedlist with inheritnum="inherit" */
+div.orderedlist > table.orderedlist > tbody > tr > td
+{
+  vertical-align:text-top;
 }</style>
