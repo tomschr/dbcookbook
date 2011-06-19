@@ -4,11 +4,13 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Knowing DocBook's Structure</title>
+  <title>Knowing DocBook´s Structure</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <abstract>
-      <para></para>
+      <para>DocBook has a wide variety of elements covering different
+        topics: from structural elements like chapter, appendix, parts
+        to lists, tables, figures, and more.</para>
     </abstract>
   </info>
   
@@ -23,6 +25,7 @@
    * Creating Assemblies (Future)
    * Sections
    * Lists
-   * Tables   
+   * Tables
+   * DocBook Derivates: Simple DocBook, Publishers Schema
   -->
 </chapter>
