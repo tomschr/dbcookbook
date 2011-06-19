@@ -50,11 +50,9 @@ div.book div.titlepage .title
 div.book div.titlepage .subtitle:before
 {
   content:"\2767";
-  position:relative;
-  left:25%;
-  top:-.5em;
+  display:block;
   text-align:center;
-  height:2em;
+  height:1.5em;
   font-size:2.5em;
 }
 div.book div.titlepage div.legalnotice
