@@ -15,5 +15,6 @@
   
   <xsl:include href="param.xsl"/>
   <xsl:include href="google-webfont.xsl"/>
+  <xsl:include href="sections.xsl"/>
   
 </xsl:stylesheet>
