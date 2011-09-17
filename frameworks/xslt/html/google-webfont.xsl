@@ -7,7 +7,7 @@
   exclude-result-prefixes="d xlink">
   
   
-  <xsl:template name="user.head.content">
+  <xsl:template name="google-fonts">
     <xsl:param name="node" select="."/>
     <link 
       href='http://fonts.googleapis.com/css?family=Maven+Pro:regular,500,bold,900' 
