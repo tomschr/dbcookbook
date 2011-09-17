@@ -68,8 +68,8 @@
     <!-- Add navigation to next and previous sections -->
     <xsl:if test="$level = 1 and $generate.section.navig != 0">
       <xsl:call-template name="generate.section.links">
-        <xsl:with-param name="next" select="following::d:section[1]"/>
-        <xsl:with-param name="prev" select="preceding::d:section[last()]"/>
+        <xsl:with-param name="next" select="$section/following-sibling::d:section[1]"/>
+        <xsl:with-param name="prev" select="$section/preceding-sibling::d:section[1]"/>
       </xsl:call-template>
     </xsl:if>
   </xsl:element>
