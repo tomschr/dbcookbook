@@ -14,7 +14,8 @@
   <xsl:import href="&db;/highlight.xsl"/>
   
   <xsl:include href="param.xsl"/>
-  <xsl:include href="google-webfont.xsl"/>
+  <!--<xsl:include href="google-webfont.xsl"/>-->
   <xsl:include href="sections.xsl"/>
+  <xsl:include href="usermeta.xsl"/>
   
 </xsl:stylesheet>
