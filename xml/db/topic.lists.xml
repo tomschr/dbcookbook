@@ -32,7 +32,7 @@
       </listitem>
     </itemizedlist>
     
-    <para>Additionally, for specific purposes DocBook provides special
+    <para>Additionally, for specific purposes, DocBook provides special
       lists (not explained in this topic):</para>
     
     <itemizedlist>
@@ -182,6 +182,10 @@
   &lt;/varlistentry>
 &lt;/variablelist></programlisting>
       </example>
+      <para>A <tag>varlistentry</tag> can contain more than one term.
+        How the terms are displayed depends usually on the output
+        formats. Per default, each <tag>term</tag> is printed on a
+        separate line.</para>
     </section>
   </section>
   <section role="seealso">
