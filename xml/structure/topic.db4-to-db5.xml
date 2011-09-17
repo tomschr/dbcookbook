@@ -4,7 +4,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Converting DocBook From Version 4 into Version 5</title>
+  <title>Converting DocBook From Version&#xa0;4 into Version&#xa0;5</title>
   <info>
     <definitions definitionfile="defs.xml"/>
   </info>
