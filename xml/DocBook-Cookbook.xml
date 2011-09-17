@@ -8,31 +8,7 @@
   <title>The DocCookBook</title>
   <subtitle>Receipies for DocBook Developers</subtitle>
   <info>
-    <legalnotice>
-      <informaltable border="0" style="ccbox" class="ccbox">
-        <tgroup cols="2">
-          <tbody>
-            <row valign="top">
-              <entry><inlinemediaobject>
-                <imageobject>
-                  <imagedata
-                    fileref="by-nc-sa-3.0-de-88x31.png"
-                    width="88px"/>
-                </imageobject>
-                <textobject>
-                  <phrase>Creative Commons License Agreement</phrase>
-                </textobject>
-              </inlinemediaobject></entry>
-              <entry><para>This work is licensed as Creative Commons
-        Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
-        by-nc-sa 3.0 DE). For more information, see <link xlink:show="new"
-          xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
-        /></para></entry>
-            </row>
-          </tbody>
-        </tgroup>
-      </informaltable>
-    </legalnotice>
+    <xi:include href="legalnotice.xml"/>
     <author>
       <personname>
         <firstname>Thomas</firstname>
