@@ -105,6 +105,17 @@ div.preface div.titlepage h2.title
   font-size:280%;
 }
 
+h2.title .section-prev
+{
+  margin-left:1em;
+}
+
+h2.title .section-prev, h2.title .section-next
+{
+  font-size:small;
+}
+
+
 div.appendix div.section div.titlepage .title,
 div.chapter div.section div.titlepage .title,
 div.preface div.section div.titlepage .title
