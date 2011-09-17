@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="12.2">
+<project version="13.0">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="12.2" xml:space="preserve">
+            <serialized version="13.0" xml:space="preserve">
                 <map>
                     <entry>
                         <String>document.types</String>
@@ -5649,6 +5649,9 @@ The value of this parameter specifies profiles which should be included in the o
                                 <field name="attributesValueEditor">
                                     <null/>
                                 </field>
+                                <field name="priority">
+                                    <Integer>3</Integer>
+                                </field>
                             </documentTypeDescriptor>
                             <documentTypeDescriptor>
                                 <field name="name">
@@ -5819,6 +5822,9 @@ The value of this parameter specifies profiles which should be included in the o
                                 <field name="attributesValueEditor">
                                     <null/>
                                 </field>
+                                <field name="priority">
+                                    <Integer>3</Integer>
+                                </field>
                             </documentTypeDescriptor>
                         </documentTypeDescriptor-array>
                     </entry>
@@ -5827,79 +5833,7 @@ The value of this parameter specifies profiles which should be included in the o
                         <documentTypeEntry-array>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>ncx/ncx.framework/NCX</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>ocf/ocf.framework/OCF</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>opf/opf.framework/OPF</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>ant/ant.framework/ANT</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>tei/teip5.framework/TEI P5</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>tei/teip4.framework/TEI P4</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>svg/svg.framework/SVG</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>dita/dita.framework/DITA</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>xmlspec/xmlspec.framework/XMLSpec</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>xhtml/xhtml.framework/XHTML</String>
+                                    <String>internal/DocBook Cookbook</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -5915,31 +5849,15 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>fo/fo.framework/FO</String>
+                                    <String>ant/ant.framework/ANT</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>true</Boolean>
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>internal/DocBook Cookbook</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>docbook/docbook5.framework/DocBook 5</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>docbook/docbook4.framework/DocBook 4</String>
+                                    <String>dita/dita.framework/DITA</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>false</Boolean>
@@ -5963,10 +5881,90 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
+                                    <String>docbook/docbook4.framework/DocBook 4</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>docbook/docbook5.framework/DocBook 5</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>docbook/targetset.framework/Docbook Targetset</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>ead/ead.framework/EAD</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>fo/fo.framework/FO</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>kml/kml.framework/KML</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
                                     <String>mathml2/mathml.framework/MathML</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>ncx/ncx.framework/NCX</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>nvdl/nvdl.framework/NVDL</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>xml/xmlcatalog.framework/OASIS XML Catalog</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>ocf/ocf.framework/OCF</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5987,23 +5985,7 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>xml/xmlcatalog.framework/OASIS XML Catalog</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>docbook/targetset.framework/Docbook Targetset</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>nvdl/nvdl.framework/NVDL</String>
+                                    <String>opf/opf.framework/OPF</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>false</Boolean>
@@ -6012,6 +5994,14 @@ The value of this parameter specifies profiles which should be included in the o
                             <documentTypeEntry>
                                 <field name="documentTypeID">
                                     <String>relaxng/relaxng.framework/Relax NG</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>svg/svg.framework/SVG</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -6035,10 +6025,34 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
+                                    <String>tei/teip4.framework/TEI P4</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>tei/teip5.framework/TEI P5</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
                                     <String>widgets/widgets.framework/Widgets</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>false</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>xhtml/xhtml.framework/XHTML</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6051,15 +6065,7 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>xslt/xslt.framework/XSLT</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>ead/ead.framework/EAD</String>
+                                    <String>xmlspec/xmlspec.framework/XMLSpec</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>false</Boolean>
@@ -6075,10 +6081,10 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>kml/kml.framework/KML</String>
+                                    <String>xslt/xslt.framework/XSLT</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                         </documentTypeEntry-array>
@@ -6450,14 +6456,6 @@ The value of this parameter specifies profiles which should be included in the o
                                     <xprocParameterPort-array>
                                         <xprocParameterPort>
                                             <field name="portName">
-                                                <String>*</String>
-                                            </field>
-                                            <field name="parameters">
-                                                <xprocParameter-array/>
-                                            </field>
-                                        </xprocParameterPort>
-                                        <xprocParameterPort>
-                                            <field name="portName">
                                                 <String>parameters</String>
                                             </field>
                                             <field name="parameters">
@@ -6585,7 +6583,7 @@ The value of this parameter specifies profiles which should be included in the o
                                 <Boolean>false</Boolean>
                             </field>
                             <field name="language">
-                                <String>en_US</String>
+                                <String>de_DE</String>
                             </field>
                             <field name="caseSensitive">
                                 <Boolean>true</Boolean>
@@ -6625,18 +6623,19 @@ The value of this parameter specifies profiles which should be included in the o
                             </field>
                             <field name="ignoreSpellCheckElements">
                                 <String-array>
-                                    <String>d:screen</String>
-                                    <String>d:programlisting</String>
+                                    <String>command</String>
+                                    <String>literal</String>
+                                    <String>filename</String>
+                                    <String>uri</String>
+                                    <String>menuchoice</String>
+                                    <String>screen</String>
+                                    <String>programlisting</String>
                                 </String-array>
                             </field>
                             <field name="preferredChecker">
                                 <Integer>1</Integer>
                             </field>
                         </spellCheckOptions>
-                    </entry>
-                    <entry>
-                        <String>user.role</String>
-                        <Integer>1</Integer>
                     </entry>
                     <entry>
                         <String>validation.scenario.associations</String>
