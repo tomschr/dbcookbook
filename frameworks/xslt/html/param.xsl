@@ -18,6 +18,7 @@
   <xsl:param name="generate.id.attributes" select="1"/>
   
   <xsl:param name="generate.user.meta" select="1"/>
+  <xsl:param name="generate.section.navig" select="1"/>
   
   <xsl:param name="linenumbering.everyNth" select="1"/>
   <xsl:param name="make.clean.html" select="1"/>
