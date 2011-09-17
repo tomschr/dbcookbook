@@ -31,8 +31,8 @@
           example, for FO or XHTML.)</para>
       </listitem>
       <listitem>
-        <para>An import statement which includes one of the several
-          output formats.</para>
+        <para>A <tag class="emptytag">xsl:import</tag> statement to 
+          incoporate the base format.</para>
       </listitem>
       <listitem>
         <para>Your customizations.</para>
