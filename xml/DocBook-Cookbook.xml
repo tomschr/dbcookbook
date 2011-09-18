@@ -15,7 +15,12 @@
         <surname>Schraitle</surname>
       </personname>
       <email>docbook@online.ms</email>
-    </author>    
+    </author>
+    <keywordset>
+      <keyword>DocBook</keyword>
+      <keyword>Customization</keyword>
+      <keyword>XSLT</keyword>
+    </keywordset>
   </info>
   
   <xi:include href="dbc-preface.xml"/>
