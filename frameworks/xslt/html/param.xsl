@@ -13,6 +13,8 @@
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
 
+  <xsl:param name="inherit.keywords" select="1"/>
+
   <xsl:param name="highlight.source" select="1"/>
   <!--<xsl:param name="highlight.xslthl.config"/>-->
   <xsl:param name="generate.id.attributes" select="1"/>
