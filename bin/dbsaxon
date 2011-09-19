@@ -76,7 +76,7 @@ PARAMS=$@
 
 XMLDIR=${XMLIN%/*}
 # Construct our resolved XML filename:
-BASEXML=${XMLDIR}/.${XMLIN#*/}
+BASEXML=${XMLDIR}/.${XMLIN##*/}
 
 # Resolve XInclude and save it into the dot file:
 if [ "$1" != "-h" ]; then
