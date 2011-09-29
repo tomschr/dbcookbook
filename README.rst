@@ -1,5 +1,5 @@
 ===================================
-README for "The Doc(Book)-CookBook"
+README for "The DocCookBook"
 ===================================
 
 License
