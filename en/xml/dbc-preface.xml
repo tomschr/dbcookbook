@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preface xml:id="dbc.preface"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Preface</title>
+  <para>TBD</para>
+
+  <section>
+    <title>Audience</title>
+    <para>I expect that you know at least some DocBook, have heard (and
+      even better have worked!) with CSS and XSLT. This book does not
+      attempt to teach you DocBook, XSLT, CSS, XSL-FO, or any other
+      related technology. </para>
+  </section>
+  
+  <section xml:id="dbc.preface.further-reading">
+    <title>Further Reading</title>
+    <para>TBD</para>
+  </section>
+  
+  <section xml:id="dbc.preface.typo">
+    <title>Typographical Conventions</title>
+    <para>TBD</para>
+  </section>
+  
+  <section xml:id="dbc.preface.contact">
+    <title>How to Contact Me</title>
+    <para>TBD</para>
+  </section>
+  
+  <section xml:id="dbc.preface.ack">
+    <title>Acknowledgments</title>
+    <para>TBD</para>
+  </section>
+</preface>

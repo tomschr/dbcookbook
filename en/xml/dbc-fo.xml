@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<chapter xml:id="dbc.fo" version="5.1"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Print Customizations</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <abstract>
+      <para>The DocBook XSL stylesheets has got more than 200 parameters
+      which can customize some aspects of the layout very easily. This
+      chapter shows you to go beyond simple parameter change.</para>
+    </abstract>
+  </info>
+
+  <section xml:id="dbc.fo.intro">
+    <title>Introduction</title>
+    <para>FIXME</para>
+  </section>
+  <!-- 
+  Print Customizations
+    - Designing Pages for Novels
+    - Designing Pages for Lexicons, Referene Book and Catalogs
+    - Designing Pages for Magazines and News Papers
+    - Designing Pages for Technical Books
+    - Adapting Chapter and Sections Titles
+    - Make Font Sizes Consistent
+    - Index
+    - Hyphenating URLs
+    - Designing TOCs
+    - Colorizing Table Rows
+    - Adding Logos in Title Page
+    - Adding Logos in Header or Footer
+    - Adding Current Time and Date Information
+    - Separating Chapter Number from Titel
+    - Footnotes
+    - Marginalia
+    - Endnotes
+    - Adorning Paragraphs with Initials (Openings)
+    - Formatting Titles
+    - Numbering Titles
+    - Choosing Open Source Fonts
+    - Standardizing Font Sizes (Le Corbusier)
+    - Adding Change Bars
+    - Initials/Drop Caps
+    - Influence Leading in Flow Text (=line-height in paras)
+    - Hyphenating in Verbatim Environments (long lines in screen, programlisting)
+    - Showing Cropmarks
+      http://svn.apache.org/viewvc/xmlgraphics/fop/trunk/examples/fo/advanced/bleed-and-crop-marks.fo?view=markup&pathrev=800143
+    - Barcode
+    - Add Typographical Superiors and Inferiors
+    - Adding Fonts to FO Formatter
+    - Creating Page Definitions with Inkscape
+    - Styling Labels Differently than Titles (Separating Labels and
+      Titles) 
+    - Using Text Figures http://en.wikipedia.org/wiki/Text_figures
+    - Using MathML in Formulas
+  -->
+  
+  <xi:include href="fo/topic.line-height.xml"/>
+  <xi:include href="fo/topic.hyphenating-urls.xml"/>
+  <xi:include href="fo/topic.initials.xml"/>
+  <xi:include href="fo/topic.opensource-fonts.xml"/>
+  <xi:include href="fo/topic.number-titles.xml"/>
+  <xi:include href="fo/topic.sep-label-and-titles.xml"/>
+  <xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>
+</chapter>

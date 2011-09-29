@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.markup.lists" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Using Lists</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to know what list types are available in DocBook.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>DocBook provides three basic lists which are used most often:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para><tag>itemizedlist</tag>, for unordered lists (like
+          <tag>ul</tag> in HTML)</para>
+      </listitem>
+      <listitem>
+        <para><tag>orderedlist</tag> for numbered lists (like
+            <tag>ol</tag> in HTML)</para>
+      </listitem>
+      <listitem>
+        <para><tag>variablelist</tag>, for lists containing terms and their
+          definition (like <tag>dl</tag> in HTML)</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>Additionally, for specific purposes, DocBook provides special
+      lists (not explained in this topic):</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para><tag>bibliolist</tag> is a wrapper for bibliographic
+          content. A <tag>bibliolist</tag> is usually inserted in
+          section-like elements where a <tag>bibliography</tag> is not
+          allowed.</para>
+      </listitem>
+      <listitem>
+        <para><tag>calloutlist</tag>, a usually numbered list which
+          points to a line in a listing</para>
+      </listitem>
+      <listitem>
+        <para><tag>glosslist</tag> is a wrapper for glossary content.
+          A <tag>glosslist</tag> is usually inserted in section-like
+          elements where a <tag>glossary</tag> is not allowed.</para>
+      </listitem>
+      <listitem>
+        <para><tag>segmentedlist</tag> is a list which can be used which
+          have a one-to-one dependence with its title. A
+          <tag>segmentedlist</tag> can be formatted in a number of ways
+          (tabular or as a list block).
+        </para>
+      </listitem>
+      <listitem>
+        <para><tag>simplelist</tag> is an unordered list for single
+          words or small phrases.</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>The previous lists are used to maintain semantic
+      distinction.</para>
+    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The list types <tag>orderedlist</tag> and <tag>itemizedlist</tag>
+    are structural identical (except for its initial element) as you will
+    see in the following subsections.</para>    
+    <para>The <tag>variablelist</tag> is slightly different and contains
+      the <tag>term</tag> element for its term.</para>
+   
+    <section>
+      <title>Features of <tag>itemizedlist</tag></title>
+      <para>An <tag>itemizedlist</tag> is a unordered list and can be
+        written as shown in the following example:</para>
+      <example>
+        <title>Unordered List with Three Entries</title>
+        <programlisting language="xml">&lt;itemizedlist>
+  &lt;listitem>
+    &lt;para>The first entry&lt;/para>
+  &lt;/listitem>
+  &lt;listitem>
+    &lt;para>The second entry&lt;/para>
+  &lt;/listitem>
+  &lt;listitem>
+    &lt;para>The third entry&lt;/para>
+  &lt;/listitem>
+&lt;/itemizedlist></programlisting>
+      </example>
+      <para>The <tag>itemizedlist</tag> list in DocBook uses by default
+        a disc symbol (• solid circle). If you nest an
+        <tag>itemizedlist</tag>, it will first start the disc (• solid
+        circle) and uses a circle (○ open circle) and finally a square
+        (■ solid square). If you nest your list deeper, the sequence is
+        repeated. The hierarchy looks like this:</para>
+      <screen>• • •         1. level
+  ○ ○ ○       2. level
+    ■ ■ ■     3. level</screen>
+      <para>The default bullet symbol can be overwritten with the <tag
+          class="attribute">mark</tag> attribute:</para>
+      <programlisting language="xml">&lt;itemizedlist mark="circle"></programlisting>
+      <para>It is even possible to deviate from its default symbol in a
+        <tag>listitem</tag> by using the <tag>overwrite</tag> attribute:</para>
+      <programlisting language="xml">&lt;itemizedlist>
+  &lt;listitem>
+    &lt;para>The first entry&lt;/para>
+  &lt;/listitem>
+  &lt;listitem overwrite="square">
+    &lt;para>The second entry&lt;/para>
+  &lt;/listitem>
+  &lt;listitem>
+    &lt;para>The third entry&lt;/para>
+  &lt;/listitem>
+&lt;/itemizedlist></programlisting>
+    </section>
+    <section>
+      <title>Features of <tag>orderedlist</tag></title>
+      <para>An <tag>orderedlist</tag> can be written as shown in the
+      following example:</para>
+      <example>
+        <title>Numbered List with Three Entries</title>
+        <programlisting language="xml">&lt;orderedlist>
+  &lt;listitem>
+    &lt;para>The first entry&lt;/para>
+  &lt;/listitem>
+  &lt;listitem>
+    &lt;para>The second entry&lt;/para>
+  &lt;/listitem>
+  &lt;listitem>
+    &lt;para>The third entry&lt;/para>
+  &lt;/listitem>
+&lt;/orderedlist></programlisting>
+      </example>
+      <para>The <tag>orderedlist</tag> in DocBook numbers as arabic
+        numbers by default. If you nest an <tag>orderedlist</tag>, it
+        will be automatically numbered as shown in the following
+        sequence:</para>
+      <screen>1, 2, 3              1. level
+  a, b, c            2. level
+    i, ii, iii       3. level
+      A, B, C        4. level
+        I, II, III   5. level</screen>
+      <para>The numbering style in an <tag>orderedlist</tag> can be
+        changed with the <tag class="attribute">numberation</tag>
+        attribute. Allowed values are <simplelist type="inline">
+          <?dbchoice choice="or"?>
+          <member>arabic</member>
+          <member>loweralpha</member>
+          <member>lowerroman</member>
+          <member>upperalpha</member>
+          <member>upperroman</member>
+          <member>arabicindic</member>
+        </simplelist>.</para>
+    </section>
+    <section>
+      <title>Features of <tag>variablelist</tag></title>
+      <para>An <tag>variablelist</tag>, despite its confusing name,
+        holds all sort of terms and their definition. It is not limited
+        to variables only. The following example shows how to mark a
+        <tag>variablelist</tag>.</para>
+      <example>
+        <title>Definition List with Two Entries</title>
+        <programlisting language="xml">&lt;variablelist>
+  &lt;varlistentry>
+    &lt;term>Hamburg&lt;/term>
+    &lt;listitem>
+       &lt;para>Town in the northern part of Germany&lt;/para>
+    &lt;/listitem>
+  &lt;/varlistentry>
+  &lt;varlistentry>
+    &lt;term>Nueremberg&lt;/term>
+    &lt;listitem>
+       &lt;para>Town in the south-eastern part of Germany&lt;/para>
+    &lt;/listitem>
+  &lt;/varlistentry>
+&lt;/variablelist></programlisting>
+      </example>
+      <para>A <tag>varlistentry</tag> can contain more than one term.
+        How the terms are displayed depends usually on the output
+        formats. Per default, each <tag>term</tag> is printed on a
+        separate line.</para>
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    
+    <itemizedlist>
+      <title>External Links</title>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/bibliolist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/calloutlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/glosslist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/itemizedlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/orderedlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg5/en/html/segmentedlist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg5/en/html/simplelist.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.sagehill.net/docbookxsl/Lists.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

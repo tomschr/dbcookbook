@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.remove-blocks-in-para" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Moving Block Elements Outside of Paragraphs</title>
+  <info>
+    <authorgroup>
+      <author>
+        <personname>
+          <firstname>Jeni</firstname>
+          <surname>Tennison</surname>
+        </personname>
+      </author>
+      <author>
+        <personname>
+          <firstname>Dave</firstname>
+          <surname>Pawson</surname>
+        </personname>
+        <uri>http://www.dpawson.co.uk/xsl/sect2/N4486.html#d5509e529</uri>
+      </author>
+    </authorgroup>    
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>DocBook allows to insert block elements like
+      <tag>example</tag>, <tag>figure</tag>, etc. to be inserted in
+      <tag>para</tag>s. This is sometimes hard to process with XSLT and
+      you want to move those block elements outside of your paragraph.
+      After this modification, the paragraph contains only text and
+      inline elements (like <tag>simpara</tag>).</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The solution explained</para>
+    <example xml:id="ex.">
+      <title><filename>move-blocks-outof-para.xsl</filename></title>
+      <programlisting language="xml"
+        linenumbering="numbered"><xi:include
+          href="xslt/move-blocks-outof-para.xsl" 
+          parse="text"/></programlisting>
+    </example>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some discussion about problem and solution.</para>
+  </section>
+  <!--<section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>-->
+</section>

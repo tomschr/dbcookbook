@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Customization Layer for DocBook 5.1 Beta
+  - use DocBook schema coding style
+-->
+<grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <include href="docbookxi.rng">
+    <define name="db.chapter">
+      <element name="chapter">
+        <a:documentation>A chapter, as of a book</a:documentation>
+        <s:pattern name="Root must have version">
+          <s:rule context="/db:chapter">
+            <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
+
+          </s:rule>
+
+        </s:pattern>
+        <ref name="db.chapter.attlist"/>
+        <ref name="db.chapter.info"/>
+        <ref name="db.chapter.contentmodel"/>
+      </element>
+    </define>
+    <define name="db.appendix">
+      <element name="appendix">
+        <a:documentation>An appendix in a book or article</a:documentation>
+        <s:pattern name="Root must have version">
+          <s:rule context="/db:appendix">
+            <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
+
+          </s:rule>
+
+        </s:pattern>
+        <ref name="db.appendix.attlist"/>
+        <ref name="db.appendix.info"/>
+        <ref name="db.appendix.contentmodel"/>
+      </element>
+    </define>
+  </include>
+  <define name="db.appendix.contentmodel">
+    <choice>
+      <ref name="db.component.contentmodel"/>
+      <oneOrMore>
+        <ref name="db.topic"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="db.chapter.contentmodel">
+    <choice>
+      <ref name="db.component.contentmodel"/>
+      <oneOrMore>
+        <ref name="db.topic"/>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="db.ref">
+    <element name="ref">
+      <a:documentation>Element for referencing content</a:documentation>
+      <choice>
+        <ref name="db.ref.inline"/>
+        <ref name="db.ref.external"/>
+      </choice>
+    </element>
+  </define>
+  <div>
+    <define name="db.linkscope.attribute">
+      <attribute name="linkscope">
+        <a:documentation>Adjust all corresponding references</a:documentation>
+        <choice>
+          <value>user</value>
+          <a:documentation>No IDREF adjustment is done</a:documentation>
+          <value>local</value>
+          <a:documentation>All IDREFs in transcluded content are prefixed by
+user specified prefix (when idfixup="prefix") or
+auto-generated prefix (when idfixup="auto")</a:documentation>
+          <value>near</value>
+          <a:documentation>All IDREFs in transcluded content are adjusted to
+point to the closest element which has a matching ID. </a:documentation>
+          <value>global</value>
+          <a:documentation> All IDREFs in transcluded content are adjusted to
+point to the first element in document order which has a matching ID </a:documentation>
+        </choice>
+      </attribute>
+    </define>
+    <define name="db.idfixup.attribute">
+      <attribute name="idfixup">
+        <a:documentation>Adjust xml:id's during transclusion</a:documentation>
+        <choice>
+          <value>none</value>
+          <a:documentation>No ID adjustment is done</a:documentation>
+          <value>strip</value>
+          <a:documentation>All IDs are stripped (except xml:id inherited from ref element)</a:documentation>
+          <value>prefix</value>
+          <a:documentation>All IDs are prefixed with a value specified in prefix attribute</a:documentation>
+          <value>auto</value>
+          <a:documentation>All IDs are prefixed with a value which is unique for each ref element</a:documentation>
+        </choice>
+      </attribute>
+    </define>
+    <define name="db.prefix.attribute">
+      <attribute name="prefix">
+        <a:documentation>Use prefix when idfixup="prefix"</a:documentation>
+        <data type="NCName"/>
+      </attribute>
+    </define>
+    <!-- common content -->
+    <define name="db.ref.common">
+      <ref name="db.effectivity.attributes"/>
+      <optional>
+        <ref name="db.xml.id.attribute"/>
+      </optional>
+      <optional>
+        <ref name="db.linkscope.attribute"/>
+      </optional>
+      <optional>
+        <ref name="db.idfixup.attribute"/>
+      </optional>
+      <optional>
+        <ref name="db.prefix.attribute"/>
+      </optional>
+      <zeroOrMore>
+        <ref name="db.transform"/>
+      </zeroOrMore>
+    </define>
+  </div>
+  <div>
+    <!-- inline content is grabed from local definitions or from external definitions file -->
+    <define name="db.definitionfile.attribute">
+      <attribute name="definitionfile">
+        <a:documentation>Points to a file with definitions</a:documentation>
+        <data type="anyURI"/>
+      </attribute>
+    </define>
+    <define name="db.name.attribute">
+      <attribute name="name">
+        <a:documentation>Points to the definition</a:documentation>
+        <data type="NCName"/>
+      </attribute>
+    </define>
+    <define name="db.ref.inline">
+      <optional>
+        <!-- Reference in an inline context -->
+        <ref name="db.definitionfile.attribute"/>
+      </optional>
+      <ref name="db.name.attribute"/>
+      <ref name="db.ref.common"/>
+    </define>
+  </div>
+  <div>
+    <!-- content from external sources -->
+    <define name="db.ref.encoding.attribute">
+      <ref name="db.textdata.encoding.attribute"/>
+    </define>
+    <define name="db.ref.fileref.attribute">
+      <attribute name="fileref">
+        <a:documentation>Identifies a link target with a URI</a:documentation>
+        <data type="anyURI"/>
+      </attribute>
+    </define>
+    <define name="db.ref.xpointer.attribute">
+      <attribute name="xpointer">
+        <a:documentation>XPointer expression</a:documentation>
+      </attribute>
+    </define>
+    <define name="db.ref.parse.attribute">
+      <attribute name="parse">
+        <a:documentation>Parse textfile as XML or text?</a:documentation>
+        <choice>
+          <value>xml</value>
+          <value>text</value>
+        </choice>
+      </attribute>
+    </define>
+    <define name="db.ref.external">
+      <ref name="db.ref.fileref.attribute">
+        <a:documentation>Reference in an block context</a:documentation>
+      </ref>
+      <optional>
+        <ref name="db.ref.xpointer.attribute"/>
+      </optional>
+      <optional>
+        <ref name="db.ref.encoding.attribute"/>
+      </optional>
+      <optional>
+        <ref name="db.ref.parse.attribute"/>
+      </optional>
+      <ref name="db.ref.common"/>
+    </define>
+  </div>
+  <div>
+    <!-- FIXME: specify all kinds of possible transformations -->
+    <define name="db.transform">
+      <empty/>
+    </define>
+  </div>
+  <div>
+    <define name="db.definitions">
+      <element name="definitions">
+        <a:documentation>A collection of definitions</a:documentation>
+        <optional>
+          <ref name="db.definitionfile.attribute"/>
+        </optional>
+        <zeroOrMore>
+          <ref name="db.def"/>
+        </zeroOrMore>
+      </element>
+    </define>
+  </div>
+  <div>
+    <define name="db.def">
+      <element name="def">
+        <a:documentation>A single definition</a:documentation>
+        <ref name="db.name.attribute"/>
+        <ref name="db.effectivity.attributes"/>
+        <interleave>
+          <text/>
+          <zeroOrMore>
+            <ref name="db._any"/>
+          </zeroOrMore>
+        </interleave>
+      </element>
+    </define>
+  </div>
+  <!-- hooks into standard schema -->
+  <!-- allow references to appear almost everywhere -->
+  <define name="db.ubiq.inlines" combine="choice">
+    <zeroOrMore>
+      <ref name="db.ref"/>
+    </zeroOrMore>
+  </define>
+  <define name="db.divisions" combine="choice">
+    <ref name="db.ref"/>
+  </define>
+  <define name="db.components" combine="choice">
+    <ref name="db.ref"/>
+  </define>
+  <define name="db.toplevel.sections" combine="choice">
+    <choice>
+      <oneOrMore>
+        <choice>
+          <ref name="db.section"/>
+          <ref name="db.ref"/>
+        </choice>
+      </oneOrMore>
+      <oneOrMore>
+        <choice>
+          <ref name="db.simplesect"/>
+          <ref name="db.ref"/>
+        </choice>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="db.recursive.sections" combine="choice">
+    <choice>
+      <oneOrMore>
+        <choice>
+          <ref name="db.section"/>
+          <ref name="db.ref"/>
+        </choice>
+      </oneOrMore>
+      <oneOrMore>
+        <choice>
+          <ref name="db.simplesect"/>
+          <ref name="db.ref"/>
+        </choice>
+      </oneOrMore>
+    </choice>
+  </define>
+  <define name="db.part.components" combine="choice">
+    <ref name="db.ref"/>
+  </define>
+  <define name="db.reference.components" combine="choice">
+    <ref name="db.ref"/>
+  </define>
+  <define name="db.all.blocks" combine="choice">
+    <ref name="db.ref"/>
+  </define>
+  <define name="db.info.elements" combine="choice">
+    <ref name="db.ref"/>
+  </define>
+  <!-- definitions can be only inside info elements -->
+  <define name="db.info.elements" combine="choice">
+    <ref name="db.definitions"/>
+  </define>
+  <!-- or they can be provided in a separate file -->
+  <start combine="choice">
+    <ref name="db.definitions"/>
+  </start>
+</grammar>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.sectX-to-section" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Transforming <tag>sectX</tag> Elements into <tag>section</tag> Elements</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section>
+    <title>Problem</title>
+    <para>You need to transform every <tag>sectX</tag> element into a
+        <tag>section</tag> element.</para>
+  </section>
+  <section>
+    <title>Solution</title>
+    <para>This problem is solved through the following XSLT stylesheet:</para>
+    <example xml:id="ex.structure.sectX-to-section">
+      <title>Transforms every <tag>sectX</tag> Element into a
+          <tag>section</tag> Element</title>
+      <programlisting linenumbering="numbered" language="xml"><xi:include href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
+    </example>
+  </section>
+  <section>
+    <title>Discussion</title>
+    <para>The stylesheet from <xref
+        linkend="ex.structure.sectX-to-section"/> is very easy: it
+      imports the standard rules to copy every node from
+        <filename>copy.xsl</filename> and create special rules for all
+        <tag>sectX</tag> elements. As every <tag>sectX</tag> element
+      creates the same structure, we can collect it in one template
+      rule. </para>
+  </section>
+</section>

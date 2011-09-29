@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<chapter xml:id="dbc.markup" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Knowing DocBook’s Structure</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <abstract>
+      <para>DocBook has a wide variety of elements covering different
+        topics: from structural elements like chapter, appendix, parts
+        to lists, tables, figures, and more.</para>
+    </abstract>
+  </info>
+  
+  <section xml:id="dbc.markup.intro">
+    <title>Introduction</title>
+    <para>TBD.</para>
+  </section>
+  
+  <!-- 
+   * Toplevel Elements
+   * Writing Topic-Oriented with DocBook
+   * Creating Assemblies (Future)
+   * Sections
+   * Lists
+   * Tables
+   * DocBook Derivates: Simple DocBook, Publishers Schema
+  -->
+  
+  <xi:include href="db/topic.lists.xml"/>
+  
+</chapter>

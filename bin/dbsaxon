@@ -1,0 +1,93 @@
+#!/bin/sh
+# 
+# saxon script
+# JPackage Project <http://www.jpackage.org/>
+
+. /usr/share/java-utils/java-functions
+
+MAIN_CLASS=com.icl.saxon.StyleSheet
+
+# Get the absolute path of this script:
+ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+# Cut the last directory part, as script is in .../bin
+ABSPATH=${ABSPATH%/*}
+
+FRAMEWORKSDIR=${ABSPATH}/frameworks
+
+BASE_JARS="saxon.jar xml-commons-apis.jar jaxp_parser_impl.jar"
+BASE_FLAGS="-Dxslthl.config=file://${FRAMEWORKSDIR}/xslt/html/xslthl-config.xml"
+
+# Optional jars
+CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon saxon-fop \
+  excalibur/avalon-logkit xml-commons-resolver 2>/dev/null) || :
+CLASSPATH="${CLASSPATH}:${ABSPATH}/lib/xslthl.jar"
+
+# If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
+# and tweak command line options so that it's used.
+args=
+if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
+  CLASSPATH="xml/:$CLASSPATH:/etc/java/resolver"
+  # Tune options to use resolver.
+  r=org.apache.xml.resolver.tools.ResolvingXMLReader
+  for opt in -x -y ; do
+    if ! echo $@ | grep "\\$opt " >/dev/null 2>&1 ; then
+      args="$args $opt $r"
+    fi
+  done
+  r=org.apache.xml.resolver.tools.CatalogResolver
+  if ! echo $@ | grep "\\-r " >/dev/null 2>&1 ; then
+    args="$args -r $r"
+  fi
+fi
+
+# Parse the possible options in Saxon to get the first argument as
+# the XML filename
+# Usage:  java com.icl.saxon.StyleSheet [options] source-doc style-doc {param=value}...
+ARGS=""
+while true
+do
+  #echo $# $1
+  case "$1" in
+    -h|-\?)
+     ARGS="-h"
+     shift
+     break
+     ;;
+    # These are single options:
+    -a|-ds|-dt|-l|-noext|-t|-T|-u|-w1|-w2)
+      #echo "Single Option: $1"
+      ARGS="$ARGS $1"
+      ;;
+    # These are options which hold a second argument:
+    -o|-m|-r|-TL|-x|-y)
+      #echo "Double Option: $1=$2"
+      ARGS="$ARGS $1 $2"
+      shift ;;
+    *) break ;;
+  esac
+  shift
+done
+
+XMLIN=$1
+XSLT=$2
+shift 2
+# The rest are only parameters:
+PARAMS=$@
+
+XMLDIR=${XMLIN%/*}
+# Construct our resolved XML filename:
+BASEXML=${XMLDIR}/.${XMLIN##*/}
+
+# Resolve XInclude and save it into the dot file:
+if [ "$1" != "-h" ]; then
+  xmllint --xinclude --output $BASEXML $XMLIN
+fi
+
+# Set parameters
+set_jvm
+set_classpath $BASE_JARS
+set_flags $BASE_FLAGS
+set_options $BASE_OPTIONS
+
+# Let's start
+run $args $ARGS $BASEXML $XSLT $PARAMS

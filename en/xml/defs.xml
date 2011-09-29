@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<definitions xmlns="http://docbook.org/ns/docbook">
+    <def name="author.email">docbook@online.ms</def>
+    <def name="db">DocBook</def>
+</definitions>
+

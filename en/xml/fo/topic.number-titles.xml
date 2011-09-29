@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.fo.number-titles" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Numbering Part, Chapter, Appendix, and other Titles</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want a number in front of your structural elements like
+        <tag>appendix</tag>, <tag>chapter</tag>, <tag>section</tag>,
+      etc.</para>
+  </section>
+  <section role="solution" xml:id="sec.fo.number-titles.solution">
+    <title>Solution</title>
+    <para>The DocBook XSL stylesheets provide already a decent numbering
+      scheme for high level divisions like parts, appendices, chapters,
+      and references. The most common use is numbering section. If you
+      want to automatically number section titles, set the
+        <parameter>section.autolabel</parameter> parameter either
+      manually or through a customization layer, for example: </para>
+    <programlisting language="xml">&lt;xsl:param name="section.autolabel" select="1"/></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The DocBook XSL stylesheets contain autolabel parameters for
+      the common elements <tag>appendix</tag>, <tag>chapter</tag>,
+        <tag>part</tag>, <tag>preface</tag>, <tag>qandadiv</tag>,
+        <tag>reference</tag>, and <tag>section</tag>. These can be set
+      individually to change the numbering of for the same elements. The
+      default values are shown in <xref
+        linkend="tab.fo.number-titles.autolabel"/>. </para>
+    <table xml:id="tab.fo.number-titles.autolabel">
+      <title>Autolabel Parameters and their Default Values</title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>Parameter</entry>
+            <entry>Default</entry>
+            <entry>Example</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><parameter>appendix.autolabel</parameter></entry>
+            <entry><literal>A</literal></entry>
+            <entry>Appendix A. Python 3</entry>
+          </row>
+          <row>
+            <entry><parameter>chapter.autolabel</parameter></entry>
+            <entry><literal>1</literal></entry>
+            <entry>Chapter 1. A Tutorial Introduction</entry>
+          </row>
+          <row>
+            <entry><parameter>part.autolabel</parameter></entry>
+            <entry><literal>I</literal></entry>
+            <entry>Part I. The Python Language</entry>
+          </row>
+          <row>
+            <entry><parameter>preface.autolabel</parameter></entry>
+            <entry><literal>0</literal></entry>
+            <entry>Prefaces are usually not numbered</entry>
+          </row>
+          <row>
+            <entry><parameter>qandadiv.autolabel</parameter></entry>
+            <entry><literal>1</literal></entry>
+            <entry>3.1 Installation Questions</entry>
+          </row>
+          <row>
+            <entry><parameter>reference.autolabel</parameter></entry>
+            <entry><literal>I</literal></entry>
+            <entry>I. Python Reference</entry>
+          </row>
+          <row>
+            <entry><parameter>section.autolabel</parameter></entry>
+            <entry><literal>0</literal></entry>
+            <entry>Not numbered by default</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    
+    <para>The autolabel parameters can contain the following
+      values:</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term>Value <literal>0</literal></term>
+        <listitem>
+          <para>A value of zero disables the automatic numbering. For
+            example, if you want to disable automatic numbering for
+            appendix elements, use this:</para>
+          <programlisting language="xml">&lt;xsl:param name="appendix.autolabel" select="0"/></programlisting>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Value <literal>1</literal></term>
+        <listitem>
+          <para>A value of one enables the automatic numbering and uses
+            arabic numerals. For example, section numbering is disabled
+            by default. Use the code in the <xref
+              xrefstyle="select:title"
+              linkend="sec.fo.number-titles.solution"/> section.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>String</term>
+        <listitem>
+          <para>A string enables a different automatic numbering schema,
+            for example roman numerals. See the following table to get
+            an overview. </para>
+          <table xml:id="tab.fo.">
+            <title>Possible Formats for Autolabel Parameters</title>
+            <tgroup cols="4">
+              <thead>
+                <row>
+                  <entry>Value</entry>
+                  <entry>Alternative Value</entry>
+                  <entry>Style</entry>
+                  <entry>Example</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry><literal>1</literal></entry>
+                  <entry><literal>arabic</literal></entry>
+                  <entry>Arabic numerals</entry>
+                  <entry>1, 2, 3, 4, …</entry>
+                </row>
+                <row>
+                  <entry><literal>I</literal></entry>
+                  <entry><literal>upperroman</literal></entry>
+                  <entry>Uppercase roman numerals</entry>
+                  <entry>I, II, III, IV, …</entry>
+                </row>
+                <row>
+                  <entry><literal>i</literal></entry>
+                  <entry><literal>lowerroman</literal></entry>
+                  <entry>Lowercase roman numerals</entry>
+                  <entry>i, ii, iii, iv, …</entry>
+                </row>
+                <row>
+                  <entry><literal>A</literal></entry>
+                  <entry><literal>upperalpha</literal></entry>
+                  <entry>Uppercase letters</entry>
+                  <entry>A, B, C, D, …</entry>
+                </row>
+                <row>
+                  <entry><literal>a</literal></entry>
+                  <entry><literal>loweralpha</literal></entry>
+                  <entry>Lowercase letters</entry>
+                  <entry>a, b, c, d, …</entry>
+                </row>
+                <row>
+                  <entry><tag class="numcharref">x661</tag></entry>
+                  <entry><literal>arabicindic</literal></entry>
+                  <entry>Arabic-Indic numerals</entry>
+                  <entry>&#x661;, &#x662;, &#x663;, &#x664;, …</entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+    <para>Mostly you will probably want sections to be numbered
+      including its parent numbering. If you do not touch
+        <parameter>chapter.autolabel</parameter>, use the parameter
+        <parameter>section.label.includes.component.label</parameter>
+      and set it to <literal>1</literal>:</para>
+    <programlisting language="xml"
+      >&lt;xsl:param name="section.autolabel" select="1"/>
+&lt;xsl:param name="section.label.includes.component.label" select="1"/></programlisting>
+    
+    <para>With the following parameters you can further customize your 
+      numbering:</para>
+    
+    <variablelist>
+      <varlistentry>
+        <term><parameter>component.label.includes.part.label</parameter></term>
+        <listitem>
+          <para>Controls if appendix or chapter number labels are
+          prefixed with their contained part label. </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>label.from.part</parameter></term>
+        <listitem>
+          <para>Defines if the components inside a part is renumbered or
+          not. A value of non-zero restarts the chapter number and
+          counts again from one. Use this numbering if you want
+          unambiguous numerals.</para>
+          <para>The value zero (the default) restarts the component
+          number throughout each book.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>section.autolabel.max.depth</parameter></term>
+        <listitem>
+          <para>Controls which sections get a number. By default, all
+            sections are get numbered (default value is
+              <literal>8</literal>.) If you want to number only sections
+            at level 1, set the parameter to the value
+              <literal>1</literal>.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+   
+    <para>Let us assume the following structure in a book:</para>
+    
+    <screen>Part: The Python Language
+  Chapter: A Tutorial Introduction
+     Section: Running Python
+     Section: Variables
+
+  Chapter: Lexical Conventions and Syntax
+     Section: Line Structure and Indentation
+     Section: Identifiers and Reserved Words
+
+Part: The Python Library
+  Chapter: Build-In Functions
+     Section: Build-In Functions and Types
+     Section: Build-In Exceptions
+  Chapter: Python Runtime Services
+     Section: atext
+     Section: copy</screen>
+    
+    <table>
+      <title>Parameter Combinations</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Parameters</entry>
+            <entry>Result</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>No parameters set, using the default settings</entry>
+            <entry><screen>I. The Python Language
+  1. A Tutorial Introduction
+      Running Python
+      Variables
+  2. Lexical Conventions and Syntax
+      Line Structure and Indentation
+      Identifiers and Reserved Words
+II. The Python Library
+  3. Build-In Functions
+      Build-In Functions and Types
+      Build-In Exceptions
+  4. Python Runtime Services
+      atext
+      copy</screen></entry>
+          </row>
+          <row>
+            <entry><simplelist type="vert">
+              <member><literal>section.autolabel=1</literal></member>
+            </simplelist></entry>
+            <entry><screen>I. The Python Language
+  1. A Tutorial Introduction
+      1. Running Python
+      2. Variables
+  2. Lexical Conventions and Syntax
+      1. Line Structure and Indentation
+      2. Identifiers and Reserved Words
+II. The Python Library
+  3. Build-In Functions
+      1. Build-In Functions and Types
+      2. Build-In Exceptions
+  4. Python Runtime Services
+      1. atexit
+      2. copy</screen></entry>
+          </row>
+          <row>
+            <entry><simplelist type="vert">
+              <member><literal>section.autolabel=1</literal></member>
+              <member><literal>section.label.includes.component.label=1</literal></member>
+            </simplelist></entry>
+            <entry><screen>I. The Python Language
+  1. A Tutorial Introduction
+      1.1. Running Python
+      1.2. Variables
+  2. Lexical Conventions and Syntax
+      2.1. Line Structure and Indentation
+      2.2. Identifiers and Reserved Words
+II. The Python Library
+  3. Build-In Functions
+      3.1. Build-In Functions and Types
+      3.2. Build-In Exceptions
+  4. Python Runtime Services
+      4.1. atexit
+      4.2. copy</screen></entry>
+          </row>
+          <row>
+            <entry><simplelist type="vert">
+              <member><literal>section.autolabel=1</literal></member>
+              <member><literal>section.label.includes.component.label=1</literal></member>
+              <member><literal>component.label.includes.part.label</literal></member>
+            </simplelist></entry>
+            <entry><screen>I. The Python Language
+  I.1. A Tutorial Introduction
+      I.1.1. Running Python
+      I.1.2. Variables
+  I.2. Lexical Conventions and Syntax
+      I.2.1. Line Structure and Indentation
+      I.2.2. Identifiers and Reserved Words
+II. The Python Library
+  II.3. Build-In Functions
+      II.3.1. Build-In Functions and Types
+      II.3.2. Build-In Exceptions
+  II.4. Python Runtime Services
+      II.4.1. atexit
+      II.4.2. copy</screen></entry>
+          </row>
+          <row>
+            <entry><simplelist type="vert">
+              <member><literal>section.autolabel=1</literal></member>
+              <member><literal>section.label.includes.component.label=1</literal></member>
+              <member><literal>component.label.includes.part.label</literal></member>
+              <member><literal>label.from.part=1</literal></member>
+            </simplelist></entry>
+            <entry><screen>I. The Python Language
+  I.1. A Tutorial Introduction
+      I.1.1. Running Python
+      I.1.2. Variables
+  I.2. Lexical Conventions and Syntax
+      I.2.1. Line Structure and Indentation
+      I.2.2. Identifiers and Reserved Words
+II. The Python Library
+  II.1. Build-In Functions
+      II.1.1. Build-In Functions and Types
+      II.1.2. Build-In Exceptions
+  II.2. Python Runtime Services
+      II.2.1. atexit
+      II.2.2. copy</screen></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+   
+    <para>However, when dealing with other numbering systems, the above
+      parameters are not enough. To support, for example, Japanese numbering,
+      you need to customize the named template
+      <function>autolabel.format</function> from
+      <filename>common/labels.xsl</filename>.</para>
+    
+    <example>
+      <title>Extending <function>autolabel.format</function></title>
+      <programlisting language="xml">&lt;xsl:template name="autolabel.format">
+  &lt;xsl:param name="context" select="."/>
+  &lt;xsl:param name="format"/>
+
+  &lt;xsl:choose>
+    &lt;xsl:when test="string($format) != 0">
+      &lt;xsl:choose>
+        &lt;xsl:when test="string($format)='001'">
+          &lt;xsl:value-of select="$format"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='loweralpha' or $format='a'">
+          &lt;xsl:value-of select="'a'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='lowerroman' or $format='i'">
+          &lt;xsl:value-of select="'i'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='upperalpha' or $format='A'">
+          &lt;xsl:value-of select="'A'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='upperroman' or $format='I'">
+          &lt;xsl:value-of select="'I'"/>
+        &lt;/xsl:when>
+        &lt;xsl:when test="$format='arabicindic' or $format='&#x661;'">
+          &lt;xsl:value-of select="'&#x661;'"/>
+        &lt;/xsl:when>
+        <emphasis role="bold"
+        >&lt;xsl:when test="$format='japanese' or $format='&amp;#x4e00;'">
+          &lt;xsl:value-of select="'&amp;#x4e00;'"/>
+        &lt;/xsl:when></emphasis>
+        &lt;xsl:otherwise>
+          &lt;xsl:message>
+            &lt;xsl:text>Unexpected &lt;/xsl:text>
+            &lt;xsl:value-of select="local-name(.)"/>
+            &lt;xsl:text>.autolabel value: &lt;/xsl:text>
+            &lt;xsl:value-of select="$format"/>
+            &lt;xsl:text>; using default.&lt;/xsl:text>
+          &lt;/xsl:message>
+          &lt;xsl:call-template name="default.autolabel.format"/>
+        &lt;/xsl:otherwise>
+      &lt;/xsl:choose>
+    &lt;/xsl:when>
+  &lt;/xsl:choose>
+&lt;/xsl:template></programlisting>
+    </example>
+    
+    <para>Unfortunately, the <command>xsltproc</command> processor does
+      not support this currently (as in version 1.1.24). Only Saxon does
+      it correct.</para>
+  </section>
+  
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/SectionNumbering.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://en.wikipedia.org/wiki/Category:Numerals"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

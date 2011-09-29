@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<book version="5.1" xml:lang="en" xml:id="dbcookbook"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>The DocCookBook</title>
+  <subtitle>Receipies for DocBook Developers</subtitle>
+  <info>
+    <xi:include href="legalnotice.xml"/>
+    <author>
+      <personname>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+      </personname>
+      <email>docbook@online.ms</email>
+    </author>
+    <keywordset>
+      <keyword>DocBook</keyword>
+      <keyword>Customization</keyword>
+      <keyword>XSLT</keyword>
+    </keywordset>
+  </info>
+  
+  <xi:include href="dbc-preface.xml"/>
+  
+  <xi:include href="dbc-markup.xml"/>
+  <xi:include href="dbc-common.xml"/>
+  <xi:include href="dbc-structure.xml"/> 
+  <xi:include href="dbc-fo.xml"/>  
+  <xi:include href="dbc-html.xml"/>
+  
+  <xi:include href="cc-by-nc-sa-30-de.xml"/>
+  <xi:include href="cc-by-nc-sa-30-unported.xml"/>
+
+</book>
