@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 <chapter xml:id="dbc.html" version="5.1"
   xmlns="http://docbook.org/ns/docbook"
   xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -14,7 +14,62 @@
   
   <section xml:id="dbc.html.intro">
     <title>Introduction</title>
-    <para>FIXME</para>
+    <para>Currently, there are several HTML derivates available as
+      target formats. As such, <quote>the</quote> HTML </para>
+    
+    <variablelist>
+      <varlistentry>
+        <term><filename class="directory">html</filename></term>
+        <listitem>
+          <para>HTML contains the <quote>classical</quote> version 4.x.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">htmlhelp</filename></term>
+        <listitem>
+          <para>HTMLHelp is the standard help system from Windows 3.0
+            through Windows XP. The main stylesheet
+              <filename>htmlhelp.xsl</filename> uses code from the
+            HTML&#xa0;4.x stylesheets.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">webhelp</filename></term>
+        <listitem>
+          <para>WebHelp is the result of the <acronym>GSOC<alt>Google
+                Summer of Code</alt></acronym> 2010.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">website</filename></term>
+        <listitem>
+          <para>Website is a set of stylesheets to create a <quote>Web
+            site</quote>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">xhtml</filename></term>
+        <listitem>
+          <para>The XHTML stylesheets create a
+            <quote>transitional</quote> version 1. 
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">xhtml-1_1</filename></term>
+        <listitem>
+          <para>TBD</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">xhtml5</filename></term>
+        <listitem>
+          <para>TBD</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
   </section>
   
   <!-- 
