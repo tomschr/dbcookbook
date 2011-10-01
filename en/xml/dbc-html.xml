@@ -25,7 +25,6 @@
     - Creating Breadcrumbs (simple, sophisticated)
     - Implementing Clickable TOCs
   -->
-  <remark>FIXME</remark>
   
   <xi:include href="html/topic.permalinks.xml"/>
   <xi:include href="html/topic.simplenavig.xml"/>
