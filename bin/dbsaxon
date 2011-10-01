@@ -13,14 +13,16 @@ ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 ABSPATH=${ABSPATH%/*}
 
 FRAMEWORKSDIR=${ABSPATH}/frameworks
+LIBDIR=${FRAMEWORKSDIR}/lib
+HLCONFIG=/usr/share/xml/docbook/stylesheet/nwalsh/current/highlighting/xslthl-config.xml
 
 BASE_JARS="saxon.jar xml-commons-apis.jar jaxp_parser_impl.jar"
-BASE_FLAGS="-Dxslthl.config=file://${FRAMEWORKSDIR}/xslt/html/xslthl-config.xml"
+BASE_FLAGS="-Dxslthl.config=file://${HLCONFIG}"
 
 # Optional jars
 CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon saxon-fop \
   excalibur/avalon-logkit xml-commons-resolver 2>/dev/null) || :
-CLASSPATH="${CLASSPATH}:${ABSPATH}/lib/xslthl.jar"
+CLASSPATH="${CLASSPATH}:${LIBDIR}/xslthl.jar"
 
 # If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
 # and tweak command line options so that it's used.
