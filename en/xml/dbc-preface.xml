@@ -54,8 +54,10 @@
   </section>
   
   <section xml:id="dbc.preface.further-reading">
-    <title>Further Reading</title>
-    <para>By no means is this complete. It</para>
+    <title>Further Readings</title>
+    <para>By no means is this book complete. As this book is based on
+      technologies like CSS, DocBook, (X)HTML, and XSLT, it is always a
+      good idea to seek other information.</para>
   </section>
   
   <section xml:id="dbc.preface.typo">
