@@ -25,7 +25,7 @@ div.programlisting, div.screen,
 code, 
 a.link
 {
-  font-family:'Cousine';
+  font-family:'Cousine',monospace;
 }
 
 /* ================== */
