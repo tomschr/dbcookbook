@@ -5,19 +5,57 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Preface</title>
-  <para>TBD</para>
+  <para>
+    DocBook is a XML format to write documentation mostly for hard-
+    and software, but is not limited to this domain. With the help of
+    the DocBook XSL stylesheets, text can be published into different
+    target formats. </para>
+  <para>
+    Although there are helpful and valuable documentation like the
+      <citetitle>DocBook The Definitive Guide</citetitle> from <personname>
+      <firstname>Norman</firstname>
+      <surname>Walsh</surname>
+    </personname> and <personname>
+      <firstname>Bob</firstname>
+      <surname>Stayton</surname>
+    </personname>'s <citetitle>DocBook XSL</citetitle> book, until now
+    nobody wrote a book that combines the <emphasis>best of both
+    worlds</emphasis>. My book is intented to be such a book. However, 
+    it <emphasis>does not</emphasis> want to replace the prior mentioned 
+    de facto standards. It aims for <emphasis>enhancing</emphasis> 
+    the world of DocBook.
+  </para>
+  <para>
+    My book is a collection of problem-and-solution scenarios
+    written in a cookbook style. It is the nature of such a topic that
+    there might be some overlap with the previous books above. However, 
+    I think, it is naturally and we always benefit from different
+    opinions and sights. 
+  </para>
+  <para>
+    The scenarios are mostly based on my own experiences with DocBook 
+    and the DocBook XSL stylesheets. However, it also includes questions 
+    and answers from the DocBook mailinglists, or interesting things
+    that I have found from different Web sites. When I was inspired from
+    other authors, I have included their names into it.
+  </para>
+  <para>
+    As I have learned a lot from the masters of DocBook, it is time to
+    give something back. This book is written under a Creative Commons
+    license. I hope the DocBook community will find it useful.
+  </para>
 
   <section>
     <title>Audience</title>
-    <para>I expect that you know at least some DocBook, have heard (and
-      even better have worked!) with CSS and XSLT. This book does not
+    <para>You should know at least DocBook, have heard (and
+      even better worked!) with CSS and XSLT. This book does not
       attempt to teach you DocBook, XSLT, CSS, XSL-FO, or any other
       related technology. </para>
   </section>
   
   <section xml:id="dbc.preface.further-reading">
     <title>Further Reading</title>
-    <para>TBD</para>
+    <para>By no means is this complete. It</para>
   </section>
   
   <section xml:id="dbc.preface.typo">
