@@ -65,4 +65,6 @@
   <xi:include href="fo/topic.number-titles.xml"/>
   <xi:include href="fo/topic.sep-label-and-titles.xml"/>
   <xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>
+  <xi:include href="fo/topic.empty-header-and-footer.xml"/>
+  
 </chapter>

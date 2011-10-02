@@ -29,5 +29,4 @@
    * Taking Advantage of Common Glossary
   -->
   <xi:include href="common/topic.dbxsl-customization.xml"/>
-  <xi:include href="common/topic.empty-header-and-footer.xml"/>
 </chapter>
