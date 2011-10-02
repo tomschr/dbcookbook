@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
 
 <book version="5.1" xml:lang="en" xml:id="dbcookbook"
    xmlns="http://docbook.org/ns/docbook"
@@ -8,6 +21,18 @@
   <title>The DocCookBook</title>
   <subtitle>Receipies for DocBook Developers</subtitle>
   <info>
+    <rdf:RDF xmlns="http://creativecommons.org/ns#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/3.0/de/">
+        <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+        <requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+        <prohibits rdf:resource="http://creativecommons.org/ns#CommercialUse"/>
+        <permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+        <requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+      </License>
+    </rdf:RDF>
     <xi:include href="legalnotice.xml"/>
     <author>
       <personname>
