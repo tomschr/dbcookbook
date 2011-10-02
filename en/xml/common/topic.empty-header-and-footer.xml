@@ -16,7 +16,7 @@ Von:	Mauritz Jeanson <mj@johanneberg.com>-->
     <para>Insert the following code to remove the header:</para>
     <screen>&lt;xsl:template name="header.content"/></screen>
     <para>The following code removes the footers:</para>
-    <screen>&lt;xsl:template name="footer.content"/>  </screen>
+    <screen>&lt;xsl:template name="footer.content"/></screen>
   </section>
   <section role="discussion">
     <title>Discussion</title>
