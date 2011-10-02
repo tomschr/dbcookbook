@@ -62,17 +62,28 @@
   
   <section xml:id="dbc.preface.audience">
     <title>Audience</title>
-    <para>You should know at least DocBook, have heard (and
-      even better worked!) with CSS and XSLT. This book does not
-      attempt to teach you DocBook, XSLT, CSS, XSL-FO, or any other
-      related technology. </para>
+    <para>This book does not attempt to teach you DocBook or any other
+      related technology (with the exception of <xref
+        linkend="dbc.markup"/>). It is targetted more for DocBook
+      developers who seek concise examples for their problems. However,
+      with some try-and-error it can also be useful for ordenary writers
+      who wants to customize their documents. Readers who want further
+      information, I have included some links in the <citetitle>See
+        Also</citetitle> section at the end of the topic. </para>
   </section>
   
   <section xml:id="dbc.preface.further-reading">
     <title>Further Readings</title>
     <para>By no means is this book complete. As this book is based on
-      technologies like CSS, DocBook, (X)HTML, and XSLT, it is always a
-      good idea to seek other information.</para>
+      technologies like CSS, XML, (X)HTML, and XSLT, it is always a good
+      idea to seek other information. I highly recommend to read the
+      books from <personname>
+        <firstname>Norman</firstname>
+        <surname>Walsh</surname>
+      </personname> and <personname>
+        <firstname>Bob</firstname>
+        <surname>Stayton</surname>
+      </personname> as mentioned above.</para>
   </section>
   
   <section xml:id="dbc.preface.typo">
