@@ -14,7 +14,7 @@ ABSPATH=${ABSPATH%/*}
 
 FRAMEWORKSDIR=${ABSPATH}/frameworks
 LIBDIR=${FRAMEWORKSDIR}/lib
-HLCONFIG=/usr/share/xml/docbook/stylesheet/nwalsh/current/highlighting/xslthl-config.xml
+HLCONFIG=/usr/share/xml/docbook/stylesheet/nwalsh5/current/highlighting/xslthl-config.xml
 
 BASE_JARS="saxon.jar xml-commons-apis.jar jaxp_parser_impl.jar"
 BASE_FLAGS="-Dxslthl.config=file://${HLCONFIG}"
