@@ -11,7 +11,8 @@ MAIN_CLASS=com.icl.saxon.StyleSheet
 ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 # Cut the last directory part, as script is in .../bin
 ABSPATH=${ABSPATH%/*}
-
+# 
+BUILDDIR="build"
 FRAMEWORKSDIR=${ABSPATH}/frameworks
 LIBDIR=${FRAMEWORKSDIR}/lib
 HLCONFIG=/usr/share/xml/docbook/stylesheet/nwalsh5/current/highlighting/xslthl-config.xml
@@ -78,7 +79,7 @@ PARAMS=$@
 
 XMLDIR=${XMLIN%/*}
 # Construct our resolved XML filename:
-BASEXML=${XMLDIR}/.${XMLIN##*/}
+BASEXML=${BUILDDIR}/${XMLIN##*/}
 
 # Resolve XInclude and save it into the dot file:
 if [ "$1" != "-h" ]; then
