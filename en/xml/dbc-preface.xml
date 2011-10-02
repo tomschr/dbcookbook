@@ -4,7 +4,17 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <xi:include href="defs.xml"/>
+  </info>
   <title>Preface</title>
+  <blockquote>
+    <title>Mission</title>
+    <para>The <citetitle>DocCookBook</citetitle> project aims to create
+      a collection of open source, professional solutions in a
+      cookbook-style for the international DocBook community.</para>
+  </blockquote>
+  
   <para>
     DocBook is a XML format to write documentation mostly for hard-
     and software, but is not limited to this domain. With the help of
@@ -28,24 +38,26 @@
   <para>
     My book is a collection of problem-and-solution scenarios
     written in a cookbook style. It is the nature of such a topic that
-    there might be some overlap with the previous books above. However, 
-    I think, it is naturally and we always benefit from different
-    opinions and sights. 
+    there might be some overlap with the books above. However, 
+    it also goes beyond them to get a better and deeper understanding
+    from the world of DocBook. I think, we benefit from different
+    opinions and sights.
   </para>
   <para>
     The scenarios are mostly based on my own experiences with DocBook 
     and the DocBook XSL stylesheets. However, it also includes questions 
-    and answers from the DocBook mailinglists, or interesting things
-    that I have found from different Web sites. When I was inspired from
-    other authors, I have included their names into it.
+    and answers from other sources: mostly the DocBook mailinglists, but
+    also other sites that I have found. When other authors inspired me, 
+    I have included their names. If you think your name is missing,
+    please let me know.
   </para>
   <para>
     As I have learned a lot from the masters of DocBook, it is time to
-    give something back. This book is written under a Creative Commons
-    license. I hope the DocBook community will find it useful.
+    give something back. This book is written and available under a 
+    Creative Commons license. I hope the DocBook community will find it useful.
   </para>
-
-  <section>
+  
+  <section xml:id="dbc.preface.audience">
     <title>Audience</title>
     <para>You should know at least DocBook, have heard (and
       even better worked!) with CSS and XSLT. This book does not
@@ -67,7 +79,16 @@
   
   <section xml:id="dbc.preface.contact">
     <title>How to Contact Me</title>
-    <para>TBD</para>
+    <para>The project is hosted on <link xlink:show="new"
+      xlink:href="https://sourceforge.net">SourceForge</link> under the
+      name <link xlink:show="new"
+        xlink:href="https://sourceforge.net/projects/doccookbook/">DocCookBook</link>.
+      Feel free to send me praise, constructive criticism, suggestions,
+      ideas, improvements, or anything else. If you want to contribute
+      to this book, I'm more than happy to give you commit rights. Send
+      me a mail to <email xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
+        >tom_schr(AT)users.sourceforge.net</email>.
+    </para>
   </section>
   
   <section xml:id="dbc.preface.ack">
