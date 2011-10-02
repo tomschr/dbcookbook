@@ -10,7 +10,8 @@
   <title>Preface</title>
   <blockquote>
     <title>Mission</title>
-    <para>The <citetitle>DocCookBook</citetitle> project aims to create
+    <para>The <citetitle xlink:href="https://sourceforge.net/projects/doccookbook/"
+      >DocCookBook</citetitle> project aims to create
       a collection of open source, professional solutions in a
       cookbook-style for the international DocBook community.</para>
   </blockquote>
@@ -22,13 +23,15 @@
     target formats. </para>
   <para>
     Although there are helpful and valuable documentation like the
-      <citetitle>DocBook The Definitive Guide</citetitle> from <personname>
+      <citetitle xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
+        >DocBook&#xa0;5: The Definitive Guide</citetitle> from <personname>
       <firstname>Norman</firstname>
       <surname>Walsh</surname>
     </personname> and <personname>
       <firstname>Bob</firstname>
       <surname>Stayton</surname>
-    </personname>'s <citetitle>DocBook XSL</citetitle> book, until now
+    </personname>'s <citetitle xlink:href="http://www.sagehill.net/docbookxsl/"
+      >DocBook XSL</citetitle> book, until now
     nobody wrote a book that combines the <emphasis>best of both
     worlds</emphasis>. My book is intented to be such a book. However, 
     it <emphasis>does not</emphasis> want to replace the prior mentioned 
@@ -86,8 +89,8 @@
       Feel free to send me praise, constructive criticism, suggestions,
       ideas, improvements, or anything else. If you want to contribute
       to this book, I'm more than happy to give you commit rights. Send
-      me a mail to <email xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
-        >tom_schr(AT)users.sourceforge.net</email>.
+      me a mail to <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
+        >tom_schr(AT)users.sourceforge.net</link>.
     </para>
   </section>
   
