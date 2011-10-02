@@ -9,7 +9,7 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <abstract>
-      <para>DocBook files can be created manually or through tools.
+      <para>DocBook files can be created manually or by tools.
         Sometimes tools create a structure which is inconvenient for
         some reasons or you have legacy documents which contain the
           <quote>wrong</quote> structure. This chapter shows how to
