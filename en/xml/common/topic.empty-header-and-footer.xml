@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.common.rm-header-and-footer" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Suppressing Header and Footer</title>
+   <!--How to remove headers
+Von:	Mauritz Jeanson <mj@johanneberg.com>-->
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to remove your header or footer completely.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Insert the following code to remove the header:</para>
+    <screen>&lt;xsl:template name="header.content"/></screen>
+    <para>The following code removes the footers:</para>
+    <screen>&lt;xsl:template name="footer.content"/>  </screen>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para></para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>
+</section>
