@@ -8,7 +8,9 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <abstract>
-      <para>FIXME</para>
+      <para>Some typical problems are independant from their target
+        formats like writing customization layers. This chapter gives
+        you some information what falls into this category.</para>
     </abstract>
   </info>
   
