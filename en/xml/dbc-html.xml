@@ -24,7 +24,9 @@
     <definitions definitionfile="defs.xml"/>
     <abstract>
       <para>HTML is a very important output format for the DocBook XSL
-        stylesheets. It comes in several derivates.</para>
+        stylesheets as it is not only displayed on Web sites, but also
+        used <quote>inside</quote> ebooks (<acronym>EPUB<alt>electronic
+          publication</alt></acronym>). It comes in several derivates.</para>
     </abstract>
   </info>
   
@@ -99,6 +101,8 @@
   
   <!-- 
   (X)HTML Customizations
+    - Control chunking 
+    - Attaching CSS (to your HTML)
     - Alt Text for Images
     - Syntax Highlighting
     - Adding Permalinks
