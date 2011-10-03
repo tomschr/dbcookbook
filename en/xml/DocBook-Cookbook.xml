@@ -21,7 +21,8 @@
   <title>The DocCookBook</title>
   <subtitle>Receipies for DocBook Developers</subtitle>
   <info>
-    <rdf:RDF xmlns="http://creativecommons.org/ns#"
+    <rdf:RDF
+      xmlns="http://creativecommons.org/ns#"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
       <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/3.0/de/">
         <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
@@ -34,6 +35,7 @@
       </License>
     </rdf:RDF>
     <xi:include href="legalnotice.xml"/>
+    <biblioid class="uri">https://sourceforge.net/projects/doccookbook/</biblioid>
     <author>
       <personname>
         <firstname>Thomas</firstname>
@@ -46,6 +48,7 @@
       <keyword>Customization</keyword>
       <keyword>XSLT</keyword>
     </keywordset>
+    <pubdate><?dbtimestamp?></pubdate>
   </info>
   
   <xi:include href="dbc-preface.xml"/>
