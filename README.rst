@@ -9,6 +9,13 @@ Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany License
 (CC by-nc-sa 3.0 DE)
 See http://creativecommons.org/licenses/by-nc-sa/3.0/de/
 
+
+Mission
+-------
+The DocCookBook project aims to create a collection of a cookbook-style
+solutions released under an open source license for the international 
+DocBook community.
+
 Concept
 -------
 This book is written in a cookbook style. There is always a problem,

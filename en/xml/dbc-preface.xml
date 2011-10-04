@@ -21,13 +21,14 @@
   <info>
     <xi:include href="defs.xml"/>
   </info>
-  <title>Preface</title>
+  <title>Welcome!</title>
   <blockquote>
     <title>Mission</title>
-    <para>The <citetitle xlink:href="https://sourceforge.net/projects/doccookbook/"
-      >DocCookBook</citetitle> project aims to create
-      a collection of open source, professional solutions in a
-      cookbook-style for the international DocBook community.</para>
+    <para>The <citetitle
+        xlink:href="https://sourceforge.net/projects/doccookbook/"
+        >DocCookBook</citetitle> project aims to create a collection of
+      cookbook-style solutions released under an open source license
+      for the international DocBook community.</para>
   </blockquote>
   
   <para>
@@ -117,6 +118,16 @@
       me a mail to <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
         >tom_schr(AT)users.sourceforge.net</link>.
     </para>
+  </section>
+  
+  <section xml:id="dbc.preface.contrib">
+    <title>Contribute to the Book</title>
+    <para>The source code of this book is published as a Mercurial
+      repository. Feel free to clone it, make improvements and send me
+      the changes. Getting a copy takes just a few seconds. If you have
+      Mercurial already installed on your system, </para>
+    <screen>hg clone https://hg.code.sf.net/p/doccookbook/code</screen>
+    <remark>Add further notice about comment system or Mercurial?</remark>
   </section>
   
   <section xml:id="dbc.preface.ack">
