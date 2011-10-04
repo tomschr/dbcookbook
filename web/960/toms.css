@@ -1,0 +1,54 @@
+/*
+  This CSS file is licensed under
+  Creative Commons Attribution-ShareAlike 3.0
+  see http://creativecommons.org/licenses/by-sa/3.0/
+
+  Author: Thomas Schraitle <tom_schr (AT) web DOT de>
+*/
+
+:lang(de)    { quotes:"\201E" "\201C" "\201A" "\2018"; }
+:lang(de-DE) { quotes:"\00BB" "\00AB" "\203A" "\2039"; }
+
+
+body {
+  /*background-image: url('stripe.png') repeat;*/
+  margin: 5em;
+  border:1pt solid black;
+  /*background-color: #f7f7f7;*/
+  background-image: linear-gradient(bottom, #171730 10%, #242454 72%);
+  background-image: -o-linear-gradient(bottom, #171730 10%, #242454 72%);
+  background-image: -moz-linear-gradient(bottom, #171730 10%, #242454 72%);
+  background-image: -webkit-linear-gradient(bottom, #171730 10%, #242454 72%);
+  background-image: -ms-linear-gradient(bottom, #171730 10%, #242454 72%);
+
+  background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.1, #171730),
+	color-stop(0.72, #242454));
+
+  color: #333;
+	font-size: 11pt;
+	font-family: "DejaVu Serif", "Liberation Serif", "Linux Libertine", "Charis SIL", "Georgia", serif;	
+}
+
+h1, h2, h3, h4, h5
+{
+  font-family:  "DejaVu Sans", "Liberation Sans", "Trebuchet MS", sans-serif;
+}
+
+
+/* Quotation */
+q:before { content:open-quote; }
+q:after { content:close-quote; }
+q q:before { content:open-quote; }
+q q:after { content:close-quote; }
+
+/* Links */
+a:link { font-weight:normal; color:darkblue; text-decoration:none;}
+a:visited { font-weight:normal; color:#800000; text-decoration:none;}
+a:focus { font-weight:normal; color:purple; text-decoration:underline; }
+a:hover { font-weight:normal; color:blue; text-decoration:underline; }
+a:active { font-weight:normal; color:#C05600; text-decoration:underline; }
+
