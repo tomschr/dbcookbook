@@ -36,96 +36,37 @@
     <meta name="DC.language" content="de" scheme="DCTERMS.RFC3066" />
     <meta name="DC.relation" content="http://dublincore.org/"
       scheme="DCTERMS.URI" />
-    <!-- CSS: -->
-     <!--<link rel="stylesheet" href="blueprint/screen.css" type="text/css" media="screen, projection"/>
-     <link rel="stylesheet" href="blueprint/print.css" type="text/css"  media="print"/> -->
-     <!--[if lt IE 8]><link rel="stylesheet" href="blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
-     <link rel="stylesheet" href="toms.css" type="text/css" media="screen, projection"/>
-    <!--  -->
+
+    <!-- FIXME: -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    
+    <!-- CSS: -->
+     <link rel="stylesheet" type="text/css" media="all" href="960/reset.css" />
+     <link rel="stylesheet" type="text/css" media="all" href="960/text.css" />
+     <link rel="stylesheet" type="text/css" media="all" href="960/960.css" />
+    
+     <!--<link rel="stylesheet" href="toms.css" type="text/css" media="screen, projection"/>-->
+    <link rel="stylesheet" type="text/css" media="all" href="site.css" />
   </head>
   <body>
-    <div id="title" class="span-24 last">
-      <h1>DocCookBook</h1>
+    <div class="container_12">
+      <div id="title" class="grid_12">
+        <h1 class="title">Welcome to the DocCookBook Project</h1>
+        <h2 class="subtitle">Receipes for DocBook Developers</h2>
+        <h3 class="author">Thomas Schraitle</h3>        
+      </div>
+      <div class="clear"></div>
+      <div class="grid_2">&nbsp;</div>
+      <div class="grid_8">
+        <p>»The DocCookBook project aims to create a collection of open
+          source, professional solutions in a cookbook-style for the
+          international DocBook community.«</p>
+      </div> 
+      <div class="grid_2">&nbsp;</div>
     </div>
-    <div class="container">      
-      <div id="subtitle" class="span-24 last">
-        <h2>Receipes for DocBook Developers</h2>
-      </div>
-      <div id="author" class="span-24 last">
-        <h3>Thomas Schraitle</h3>
-      </div>
-      <hr/>
-      <!--  -->
-      <div id="content">
-        <div class="span-16">
-          <p>The DocCookBook project aims to create a collection of open
-            source, professional solutions in a cookbook-style for the
-            international DocBook community.</p>
-        </div>
-        <div class="span-8 last">
-          <div>
-            <a class="button" href="en/index.html">Read HTML Single Version&nbsp;»</a>
-          </div>
-          <p></p>
-          <div>
-            <a class="button" href="en/index.html">Read HTML Chunked Version&nbsp;»</a>
-          </div>
-        </div>
-        <div class="span-24 last">
-          <h3>Translation</h3>
-          <p>Lore ipsum dolor sit amet.</p>
-        </div>
-      </div>
-      <!--  -->
-      <div class="column">
-        <p>Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed
-          diam voluptua. At vero eos et accusam et justo duo dolores et
-          ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-          est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam erat, sed diam
-          voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-          Lorem ipsum dolor sit amet.</p>
+    <div class="container_12">
+      <div class="grid_12 footer">
         <p>
-          Ut wisi enim ad minim veniam, quis
-          nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-          aliquip ex ea commodo consequat. Duis autem vel eum iriure
-          dolor in hendrerit in vulputate velit esse molestie consequat,
-          vel illum dolore eu feugiat nulla facilisis at vero eros et
-          accumsan et iusto odio dignissim qui blandit praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi.
-        </p>
-        <p class="colspan">Hello Span!</p>
-        <p>Lorem ipsum dolor sit
-          amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-          tempor invidunt ut labore et dolore magna aliquyam erat, sed
-          diam voluptua. At vero eos et accusam et justo duo dolores et
-          ea rebum. Stet clita kasd gubergren, no sea takimata sanctus
-          est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet,
-          consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-          invidunt ut labore et dolore magna aliquyam erat, sed diam
-          voluptua. At vero eos et accusam et justo duo dolores et ea
-          rebum. Stet clita kasd gubergren, no sea takimata sanctus est
-          Lorem ipsum dolor sit amet.</p>
-        <p class="colbreak"/>
-        <p>
-          Ut wisi enim ad minim veniam, quis
-          nostrud exerci tation ullamcorper suscipit lobortis nisl ut
-          aliquip ex ea commodo consequat. Duis autem vel eum iriure
-          dolor in hendrerit in vulputate velit esse molestie consequat,
-          vel illum dolore eu feugiat nulla facilisis at vero eros et
-          accumsan et iusto odio dignissim qui blandit praesent luptatum
-          zzril delenit augue duis dolore te feugait nulla facilisi.
-        </p>
-      </div>
-      <hr class="space"/>
-      <hr/>
-      <div id="footer" class="span-24 last">
-        <div><p>
             <a href="http://validator.w3.org/check?uri=referer">
               <img src="http://www.w3.org/Icons/valid-xhtml-rdfa"
                 alt="Valid XHTML + RDFa" height="31" width="88" />
@@ -133,9 +74,9 @@
             <a href="http://jigsaw.w3.org/css-validator/check/referer">
               <img width="88" height="31"
                 src="http://jigsaw.w3.org/css-validator/images/vcss"
-                alt="CSS ist valide!" />
+                alt="CSS is valid!" />
             </a>
-          </p></div>
+          </p>
       </div>
     </div>
   </body>
