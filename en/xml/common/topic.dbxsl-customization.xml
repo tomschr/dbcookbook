@@ -54,7 +54,7 @@
       </listitem>
     </itemizedlist>
     <para>How this can look is shown in the following listing.</para>
-    <example>
+    <example xml:id="ex.common.dbcustomize.general-cust-layer">
       <title>General Customization Layer</title>
       <programlisting language="xml">&lt;xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
