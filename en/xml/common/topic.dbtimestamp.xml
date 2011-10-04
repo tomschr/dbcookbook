@@ -80,6 +80,8 @@
          class="attribute">format</tag> pseudo-attribute:
       </para>
       <screen language="xml">&lt;?dbtimestamp format="Y"?></screen>
+      <para>More format-letters can be found in the reference page (see
+        link at the <citetitle>See Also</citetitle> section).</para>
     </section>
   </section>
   <section role="seealso">
@@ -91,7 +93,8 @@
       </listitem>
       <listitem>
         <para><link xlink:show="new" 
-          xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbtimestamp.html"/></para>
+          xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbtimestamp.html"/>,
+        the reference page for the PI</para>
       </listitem>
     </itemizedlist>
   </section>
