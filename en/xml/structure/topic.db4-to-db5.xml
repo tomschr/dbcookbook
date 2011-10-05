@@ -19,7 +19,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Converting DocBook From Version&#xa0;4 into Version&#xa0;5</title>
+  <title>Converting DocBook from Version&#xa0;4 to Version&#xa0;5</title>
   <info>
     <definitions definitionfile="defs.xml"/>
   </info>
@@ -30,7 +30,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>Generally, the difference between version 4 and version 5 are
+    <para>Generally, the difference between version 4 and version 5 is
       minimal. Refer to the <link
         xlink:href="http://www.docbook.org/tdg51/en/html/ch01.html#d6e550">The
         Definitive Guide</link> for detailed information what has been
@@ -56,7 +56,7 @@
     <para>The <citetitle
       xlink:href="http://docbook.org/docs/howto/#entities">DocBook
       Transition Guide</citetitle> recommends the following steps (cited
-      from the there):</para>
+      from there):</para>
     <procedure xml:id="pr.structure.db4-to-db5.preserving-entities">
       <title>Preserving Entities between DocBook Conversion</title>
       <step>
@@ -75,7 +75,7 @@
           in your document).</para>
       </step>
       <step>
-        <para>Copy the document type declaration off of your document
+        <para>Copy the document type declaration of your document
           and save it some place. The document type declaration is
           everything from “&lt;!DOCTYPE” to the closing “]>”. </para>
       </step>
@@ -96,7 +96,7 @@
       <step>
         <para>Remove the external identifier (the PUBLIC and/or SYSTEM
           keywords) from the document type declaration. A document that
-          begins:</para>
+          begins with:</para>
         <screen>&lt;!DOCTYPE book [
  &lt;!ENTITY someEntity "some replacement text">
 ]></screen>
@@ -109,7 +109,7 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para>For information can be found in <link
+    <para>Further information can be found in <link
       xlink:href="http://docbook.org/docs/howto/#convert4to5"/>.</para>
   </section>
 </section>
