@@ -19,7 +19,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Converting DocBook From Version 5 into Version 4</title>
+  <title>Converting DocBook from Version 5 to Version 4</title>
   <info>
     <definitions definitionfile="defs.xml"/>
   </info>
@@ -35,15 +35,15 @@
         xlink:href="http://www.docbook.org/tdg51/en/html/ch01.html#d6e550">The
         Definitive Guide</link> for detailed information what has been
         added, removed, or renamed.</para>
-    <para>In cases you have or get DocBook&#xa0;5 and need the former
-      version, the following stylesheet might help which supports the
-      core transformation:</para>
+    <para>In case you have or get DocBook&#xa0;5 and need the former
+      version, the following stylesheet which supports the
+      core transformation might help:</para>
     <example xml:id="ex.db5to4-core.xsl">
       <title><filename>db5to4-core.xsl</filename></title>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
         href="xslt/db5to4-core.xsl" parse="text"/></programlisting>
     </example>
-    <para>Use your favorite XSLT prozessor to transform your documents.</para>
+    <para>Use your favorite XSLT processor to transform your documents.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -56,11 +56,11 @@
       <tag>section</tag> element without the namespace.
     </para>
     <para>Where it gets difficult are the new elements which are
-      introduced in DocBook&#xa0;5. Whenever the stylesheet encounter
+      introduced in DocBook&#xa0;5. Whenever the stylesheet encounters
       those it will print a warning. These elements are not copied to
-      the output stream. If you have one of these elements you need to
+      the output stream. If you have one of those elements you need to
       customize the stylesheet yourself.</para>
-    <para>Another issue are the almost ubiquitary <tag>info</tag>
+    <para>Another issue is the almost ubiquitary <tag>info</tag>
       element which can appear in structual and block elements. The
       above stylesheet does it wrong and copies any <tag>info</tag>
       element straight into the output stream. However, DocBook&#xa0;4
@@ -90,7 +90,7 @@
       </listitem>
     </itemizedlist>
     
-    <para>Apart from the renaming, order of the renamed <tag>info</tag>
+    <para>Apart from the renaming, the order of the renamed <tag>info</tag>
       element is crucial. Consider the following DocBook&#xa0;5
       structure:</para>
     <screen>section
