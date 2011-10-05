@@ -41,7 +41,7 @@
           <personname><firstname>Sal</firstname>
             <surname>Mangano</surname></personname>´s excellent
         <citetitle>XSLT Cookbook</citetitle>. However, the solutions in
-      this chapter are targetted exclusively on DocBook.</para>
+      this chapter are targeted exclusively on DocBook.</para>
     <para>Most of these solutions are based on an <emphasis>identity
     transformation</emphasis> stylesheet which is shown in <xref 
       linkend="ex.copy.xsl"/>.</para>
