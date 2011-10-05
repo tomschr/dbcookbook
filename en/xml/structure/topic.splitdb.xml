@@ -31,14 +31,14 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>There are two solution to this problems:</para>
+    <para>There are two solutions to this problems:</para>
     <itemizedlist>
       <listitem>
         <para>Apply a XSLT stylesheet which uses an extension element
           like <function>exsl:document</function></para>
       </listitem>
       <listitem>
-        <para>Run the command <command>dbautosplit</command></para>
+        <para>Run the <command>dbautosplit</command> command</para>
       </listitem>
     </itemizedlist>
     
@@ -53,12 +53,12 @@
         <programlisting language="xml"><xi:include
           href="xslt/dbsplit.xsl" parse="text"/></programlisting>
       </example>
-      <para>The filename <filename>chunker.xsl</filename> is more or
-        less a stripped down version of the file
-          <filename>html/chunker.xsl</filename> from the DocBook XSL
-        stylesheets. It is used to create processor independant writing
+      <para>The <filename>chunker.xsl</filename> file is more or
+        less a stripped down version of the
+          <filename>html/chunker.xsl</filename> file from the DocBook XSL
+        stylesheets. It is used to create processor independent writing
         of our XML chunks. The file was integrated into
-          <filename>dbsplit.xsl</filename> to make it more independant
+          <filename>dbsplit.xsl</filename> to make it more independent
         from the DocBook XSL stylesheets.</para>
       <example>
         <title><filename>chunker.xsl</filename></title>
@@ -76,13 +76,13 @@
         <varlistentry>
           <term><parameter>dbsplit.chunk.depth</parameter></term>
           <listitem>
-            <para>Controls the depth were to split </para>
+            <para>Controls the depth where to split </para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><parameter>dbsplit.ext</parameter></term>
           <listitem>
-            <para>Defines the file extension for each written filename.</para>
+            <para>Defines the file extension for each filename written.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
