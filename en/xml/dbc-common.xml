@@ -42,6 +42,8 @@
    * Outputing Time and Dates
    * Taking Advantage of Common Bibliography
    * Taking Advantage of Common Glossary
+   * Colorising Profiled Text
+     http://lists.oasis-open.org/archives/docbook-apps/201108/msg00100.html
   -->
   <xi:include href="common/topic.dbxsl-customization.xml"/>
   <xi:include href="common/topic.dbtimestamp.xml"/>
