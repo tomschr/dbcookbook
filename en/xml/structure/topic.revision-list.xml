@@ -74,7 +74,7 @@
           <para>You should see the following line:</para>
           <screen>xmloutput <replaceable>VERSION</replaceable>
     This plugin adds an option (--xml) to log and provides an xml version of 
-    some builtin commands.</screen>
+    some built-in commands.</screen>
         </step>
       </procedure>
       <para>After you have successully installed the plugin, create the 
@@ -113,7 +113,7 @@
       <title>Mercurial</title>
       <para><application
         xlink:href="http://mercurial.selenic.com">Mercurial</application>
-        has the option <option>--style</option> to output its log into
+        has the <option>--style</option> option to output its log into
         XML:</para>
       <screen><command>hg</command> log --style xml > hg-log.xml</screen>
       <para>The XML file of the Mercurial log looks like this:</para>
@@ -157,11 +157,11 @@
       <title>Subversion</title>
       <para><application
         xlink:href="http://subversion.tigris.org">Subversion</application>
-        is similar like Mercurial: It has an option
-        <option>--xml</option> to turn the log output into XML:</para>
+        is similar to Mercurial: It has an
+        <option>--xml</option> option to turn the log output into XML:</para>
       <screen><command>svn</command> log --xml > svn-log.xml</screen>
-      <para>With the option <option>-v</option> (verbose) you get
-        additional path informations. As the output is very similar to
+      <para>With the <option>-v</option> option (verbose) you get
+        additional path information. As the output is very similar to
         Mercurial, you can apply the stylesheet shown in <xref linkend="ex.hg2revhistory.xsl"/>
         also for Subversion's log file.
       </para>

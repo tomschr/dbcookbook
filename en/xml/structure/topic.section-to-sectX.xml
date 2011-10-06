@@ -52,7 +52,7 @@
       limit is reached. Currently (with version 5.1), DocBook supports
       levels up to 5. If you nest your <tag>section</tag> elements too
       deep, you can end up with, let's say, <tag>sect8</tag> which
-      is not allowed in DocBook. If you want to protect you from any
+      is not allowed in DocBook. To avoid making 
       mistakes, it is better to check the level:</para>
     <example xml:id="ex.structure.sectX-to-section.check">
       <title>Error Checking of Section Levels</title>
@@ -79,7 +79,7 @@
       level (which is a bad idea) but it's better to rework the source
       document.</para>
     <para>If you want, you can stop the transformation if the section
-      level too high. Change the <tag>xsl:message</tag> as
+      level is too high. Change the <tag>xsl:message</tag> as
       follows:</para>
     <programlisting language="xslt">&lt;xsl:message <emphasis
       role="strong">terminate="yes"</emphasis>>...</programlisting>
