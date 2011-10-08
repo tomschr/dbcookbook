@@ -10,6 +10,8 @@
   darkrose  a67b77
 */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,200);
+
 html {
   margin:0;
   padding:0;
@@ -25,22 +27,44 @@ body {
 
 }
 
-h1, h2, h3, h4, h5 {
-  font-family:'Yanone Kaffeesatz', 'DejaVu Sans Condensed', sans;
+h1, h2, h3, h4, h5, h6 {
+  font-family:'Open Sans', 'Yanone Kaffeesatz', 'DejaVu Sans Condensed', sans;
+  font-weight:400;
 }
 
 h1 {
-  font-size:350%;
+  font-size:340%;
+  font-weight:700;
   text-shadow : 2px 2px 2px #CCC;
+  margin-bottom:10px;
+  padding-bottom:0;
+  /*letter-spacing:2px;*/
+}
+h2 {
+  font-size:244%;
+}
+h3 {
+  font-size:160%;
 }
 
-h3 {
-  font-size:220%;
+h4 {
+  font-size:136%;
+}
+
+p {
+  font-family:'Open Sans', 'Yanone Kaffeesatz', 'DejaVu Sans Condensed', sans;
+  font-weight:300;
 }
 
 #main {
   margin: 0 4em auto 4em;
   padding-top:0;
+}
+
+#main h3 {
+  text-shadow : 1px 1px 1px #CCC;
+  margin:.75em auto 3px auto;
+  padding-bottom:0;
 }
 
 /* Header and Footer */
@@ -54,11 +78,19 @@ h3 {
 
 #header {
   margin-top:-1em;
-  padding-top:4em;
+  padding-top:1em;
 }
 
+#header h1 {
+  padding-top:0;
+  margin-top:0;
+}
 #header h2 {
   line-height:1;
+}
+#header h3 {
+  padding-bottom:0;
+  margin-bottom:0;
 }
 
 #footer {
@@ -78,25 +110,74 @@ h3 {
 }
 
 
-#mission, #intro  {
+#mission, #intro, #feedback, #trans  {
   float:left;
   width:48%;
-  word-wrap:break-word;
 }
 
-#mission {
+#mission, #feedback {
   padding-right:6pt;
 }
-#intro {
+#intro, #trans {
   padding-left:6pt;
 }
 
-#formats {
+#availformats, #end {
   clear:both;
 }
 
-#formats h3 {
-  border-top: dotted #38485B 1pt;
+
+/* List */
+#formats {
+  width : 100%;
+  padding : 0;
+  margin : 0;
+  list-style : none;
+}
+.format {
+  display: inline-block;
+  margin-right:10px;
+  margin-bottom:10px;
+  width:48%;
+  /*font : bold 120% / 2.125 'Open Sans', 'DejaVu Sans Condensed', sans;*/
+}
+
+.format .title {
+  padding : 0;
+}
+.format p {
+  display : none;
+}
+.format .title a {
+  /*margin:30px 0 30px 0;*/
+  font : 400 120% 'Open Sans', sans;
+  /*text-transform : uppercase;*/
+  letter-spacing : 1px;
+  display : block;
+  color : #fff;
+  text-decoration : none;
+  text-align : center;
+  padding : 20px 10px 20px 10px;
+  background : #2c2c2c;
+  /* alte webkit-basierte Browser (Safari, Chrome, etc.) */
+  background : -webkit-gradient(linear, lefttop, leftbottom, from(#848487), to(#3c3c3c));
+  /* neue webkit-basierte Browser(Safari, Chrome, etc.) */
+  background : -webkit-linear-gradient(top, #848487, #3c3c3c);
+  /* Mozilla/Gecko (Firefox, Flock, etc) */
+  background : -moz-linear-gradient(top, #848487, #3c3c3c);
+  /* Für Presto (Opera ab Version 11.1) */
+  background : -o-linear-gradient(top, #848487, #3c3c3c);
+  /* IE10 Pre-Beta */
+  background : -ms-linear-gradient(top, #848487, #3c3c3c);
+  /* aktueller W3C working draft */
+  background : linear-gradient(top, #848487, #3c3c3c);
+  
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius:5px;
+}
+.format .title a:hover {
+  background: #2c2c2c url(background/applications-internet.png) no-repeat center center;
 }
 
 
@@ -115,7 +196,8 @@ h3 {
   display : inline-block;
   padding : 7px 0 0 0;
   margin : 0 4px 0 0;
-  font : bold 81.25% / 2.125Arial, Verdana, sans-serif;
+  font : 400 83% / 2.125 'Open Sans', 'DejaVu Sans Condensed', sans;
+  /*text-transform : uppercase;*/
 }
 #navi li a {
   display : block;
@@ -161,6 +243,6 @@ h3 {
 	left bottom,
 	left top,
 	color-stop(0, #38485B),
-	color-stop(0.72, #6682A1);
-  
+	color-stop(0.72, #6682A1); 
 }
+
