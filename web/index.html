@@ -24,7 +24,8 @@
     <meta name="DC.title" content="DocCookBook" />
     <meta name="DC.creator" content="Thomas Schraitle" />
     <meta name="DC.subject" content="Receipies for DocBook Developers" />
-    <meta name="DC.description"  content="Receipies for DocBook Developers" />
+    <meta name="DC.description"
+      content="Receipies for DocBook Developers" />
     <!--<meta name="DC.publisher" content=""/>-->
     <meta name="DC.date" content="2011-10-03T17:12:00+01:00"
       scheme="DCTERMS.W3CDTF" />
@@ -39,71 +40,105 @@
 
     <!-- FIXME: -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    
+    <link href="http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:regular,bold&amp;subset=latin" 
+          type="text/css" rel="stylesheet" />
     <!-- CSS: -->
-    <!--<link rel="stylesheet" type="text/css" media="all" href="960/reset.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="960/text.css" />
-    <link rel="stylesheet" type="text/css" media="all" href="960/960.css" />-->
-    
+
     <!--<link rel="stylesheet" href="toms.css" type="text/css" media="screen, projection"/>-->
-    <link rel="stylesheet" type="text/css" media="all" href="site.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="site.css"
+     />
   </head>
   <body>
-    <div class="main">
-      <h1 class="title">Welcome to the <span>DocCookBook</span> Project</h1>
-      <div id="header">        
-        <h2 class="subtitle">Receipes for DocBook Developers</h2>
-        <h3 class="author">Thomas Schraitle</h3>
+    <div id="main">
+      <div id="header">
+        <h3>Welcome to </h3>
+        <h1>The DocBook Project</h1>
+        <h2>Receipes for DocBook Developers and Writers</h2>
       </div>
-      <div id="navi"></div>
-      <div id="content">
-        <blockquote xml:lang="en" class="page">
-          <p><b>Mission</b></p>
-          <p>The DocCookBook project aims to create a collection of open
-          source, professional solutions in a cookbook-style for the
-          international DocBook community.</p>
-        </blockquote>
-        
-        <h2>Introduction</h2>
-        <p>This is the home of the DocCookBook, a free book about
-          <a href="http://www.docbook.org">DocBook</a>. It is written in
-        a cookbook-style which gives you lots of solutions to your
-        problems.</p>
-        <p>Currently, there is only a HTML version available. Other
-          formats are planned, but depends on <i>your</i> feedback.</p>
-        
-        
-        <h2>Feedback/Contributing</h2>
-        <p>There are lots of tasks where you can help:</p>
+      <div id="navi">
         <ul>
-          <li>Give feedback to existing topics</li>
-          <li>Send ideas for new topics</li>
-          <li>Open a ticket, if you think there is something wrong</li>
-          <li>Send patches for existing topics</li>
-          <li>Write completely new topics.</li>
-          <li>Improve the look-and-feel of the HTML page</li>
+          <li id="active"><a href="#mission">Home</a></li>
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#formats">Formats</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+          <li><a href="#trans">Translation</a></li>
         </ul>
-        
-        
-        <h2>Translations</h2>
-        <p>At the moment, the book is <i>work in progress</i>. Things
-          will change, new topics appear and old are removed, revised,
-          or moved to a different chapter. For this reason, I would
-          first like to create a beta version which is stable enough for
-          translation and do not introduce too much pain.</p>
+      </div>
+      <div id="content">
+        <div id="mission">
+          <blockquote>
+            <h3>Mission</h3>
+            <p>The DocCookBook project aims to create a collection of
+              open source, professional solutions in a cookbook-style
+              for the international <a href="http://www.docbook.org"
+                title="DocBook.org">DocBook</a> community.</p>
+          </blockquote>
+        </div>
+        <div id="intro">
+          <h3>Introduction</h3>
+          <p>This is the home of the DocCookBook, a free book about <a
+              href="http://www.docbook.org">DocBook</a>. It is written
+            in a cookbook-style which gives you lots of solutions to
+            your problems.</p>
+          <p>Currently, there is only a HTML version available. Other
+            formats are planned, but depends on <i>your</i>
+            feedback.</p>
+        </div>
+        <div id="formats">
+          <h3>Available Formats</h3>
+          <ul id="formats">
+            <li id="htmlchunks" class="format">
+              <div class="title"><a href="#">HTML Chunk</a></div>
+              <p>Read the HTML document in small pieces</p>
+            </li>
+            <li id="htmlsingle" class="format">
+              <div class="title"><a href="#">HTML Single</a></div>
+              <p>Read the HTML document in one file</p>
+            </li>
+            <li id="pdf" class="format">
+              <div class="title"><a href="#">PDF</a></div>
+              <p>Read it or print it</p>
+            </li>
+            <li id="epub" class="format">
+              <div class="title"><a href="#">EPUB</a></div>
+              <p>Read it on all EBook readers out there</p>
+            </li>
+          </ul>
+        </div>
+        <div id="feedback">
+          <h3>Feedback/Contribution</h3>
+          <p>There are lots of tasks where you can help:</p>
+          <ul>
+            <li>Give feedback to existing topics</li>
+            <li>Send ideas for new topics</li>
+            <li>Open a ticket, if you think there is something
+              wrong</li>
+            <li>Send patches for existing topics</li>
+            <li>Write completely new topics.</li>
+            <li>Improve the look-and-feel of the HTML page</li>
+          </ul>
+        </div>
+        <div id="trans">
+          <h3>Translations</h3>
+          <p>At the moment, the book is <i>work in progress</i>. Things
+            will change, new topics appear and old are removed, revised,
+            or moved to a different chapter. For this reason, I would
+            first like to create a beta version which is stable enough
+            for translation and do not introduce too much pain.</p>
+        </div>
       </div>
       <div id="footer">
         <p>
-          <a href="http://validator.w3.org/check?uri=referer"><img 
-            src="http://www.w3.org/Icons/valid-xhtml-rdfa"
-            alt="Valid XHTML + RDFa" height="31" width="88" /></a>
-          <a href="http://jigsaw.w3.org/css-validator/check/referer"><img 
-            src="http://jigsaw.w3.org/css-validator/images/vcss"
-            width="88" height="31" alt="CSS is valid!" /></a>
-          <a href="http://www.opensuse.org"><img 
-            src="icons/Opensuse_1.gif"
-            width="110" height="32" alt="openSUSE.org"/></a>
-          </p>
+          <a href="http://validator.w3.org/check?uri=referer"><img
+              src="http://www.w3.org/Icons/valid-xhtml-rdfa"
+              alt="Valid XHTML + RDFa" height="31" width="88" /></a>
+          <a href="http://jigsaw.w3.org/css-validator/check/referer"
+              ><img src="http://jigsaw.w3.org/css-validator/images/vcss"
+              width="88" height="31" alt="CSS is valid!" /></a>
+          <a href="http://www.opensuse.org"><img
+              src="icons/Opensuse_1.gif" width="110" height="32"
+              alt="openSUSE.org" /></a>
+        </p>
       </div>
     </div>
   </body>

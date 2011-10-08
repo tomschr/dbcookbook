@@ -1,88 +1,111 @@
 /*
+   CSS Stylesheet
+   By Thomas Schraitle <tom_schr AT sourceforge DOT net>
+   
+
   darkgray  8c8b84
   lightgray d9d8d2
   anthrazit 59514c
   brown     26130b
   darkrose  a67b77
-  
-
 */
 
-body {
-  /*background-color:#182617;*/
-}
-
-.main {
-  margin:10em 4em 2em 4em;
-  background-color:#d9d8d2;
-}
-
-.page {
-  background: #fcf59b;
-  color: #212121;
-  padding: 30px 0;
-  
-  -webkit-border-bottom-left-radius: 20px 500px;
-  -webkit-border-bottom-right-radius: 500px 30px;
-  -webkit-border-top-right-radius: 5px 100px;
-
-  -moz-border-radius-bottomleft: 20px 500px;
-  -moz-border-radius-bottomright: 500px 30px;
-  -moz-border-radius-topright: 5px 100px;
-  
-  border-radius-bottomleft: 20px 500px;
-  border-radius-bottomright: 500px 30px;
-  border-radius-topright: 5px 100px;
-  
-  -moz-box-shadow: 0.125em .125em .25em #202839;
-  -webkit-box-shadow: 0.125em .125em .25em #202839;
-  box-shadow: 0.125em .125em .25em #202839;
-}
-
-.page p {
-  padding:0 20px;
-}
-
-
-.title {
-  font:18pt Verdana, sans-serif;
-  position:absolute;
-  left:20%;
-  top:0;
-  width:200px;
-  padding:15px 15px 15px 15px;
+html {
   margin:0;
-  background-color:rgb(34,32,34);
-  color:d9d8d2;
-  line-height:1.5;
-  -moz-border-radius-bottomleft: 20px;
-  -moz-border-radius-bottomright: 20px;
-  -webkit-border-bottom-right-radius: 20px;
-  -webkit-border-bottom-left-radius: 20px;
-  border-bottom-right-radius:20px;
-  border-bottom-left-radius:20px;
-  text-align:center;
+  padding:0;
 }
 
-.title span {
-  padding: 7px 20px;
-  color:#fff;
-  font-weight:bold;
-  font-size:18px;
-  -moz-border-radius:5px;
-  -webkit-border-radius:5px;
-  background:#8eb0d9;
-  background: -moz-linear-gradient(top, #8eb0d9, #6293cb);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #8eb0d9), color-stop(1, #6293cb));
-  background: -webkit-linear-gradient(top, #8eb0d9, #6293cb);
-  background: -o-linear-gradient(top, #8eb0d9, #6293cb);
-  background: linear-gradient(top, #8eb0d9, #6293cb);
-  -moz-box-shadow:1px 1px 2px #ccc;
-  -webkit-box-shadow: 1px 1px 2px #ccc;
-  box-shadow: 1px 1px 2px #ccc;
-  
-  -moz-transform: rotate(-2.5deg);
-  -webkit-transform: rotate(-2.5deg);
-  -o-transform: rotate(-2.5deg);
-  transform:rotate(-2.5deg);
+body { 
+  color : #2c2c2c;
+  background : #01080b url(background/stripe.png) repeat;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family:'DejaVu Sans Condensed', 'Yanone Kaffeesatz', sans;
+}
+
+#main {
+  margin: 0 4em auto 4em;
+  padding-top:0;
+}
+
+/* Header and Footer */
+#header, #footer { 
+  padding: .5em 1.5em .5em 1.5em;
+  background-color : rgba(211, 211, 211, .6);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+
+#header {
+  margin-top:-1em;
+  padding-top:4em;
+}
+
+#header h2 {
+  line-height:.95;
+}
+
+#footer {
+  margin-top:3.5em;
+  margin-bottom:1em;
+}
+
+#content {
+  background-color : #FFF;
+  padding:.5em 1.5em;
+  -webkit-border-radius : 5px;
+  -moz-border-radius : 5px;
+  border-radius : 5px;
+  -webkit-border-top-left-radius : 0px;
+  -moz-border-radius-topleft : 0px;
+  border-top-left-radius : 0px;
+}
+
+
+/* */
+#navi {
+  text-align : left;
+  margin-top:2em;
+}
+#navi ul {
+  width : 100%;
+  padding : 0;
+  margin : 0;
+  list-style : none;
+}
+#navi li {
+  display : inline-block;
+  padding : 7px 0 0 0;
+  margin : 0 5px 0 0;
+  font : bold 81.25% / 2.125Arial, Verdana, sans-serif;
+}
+#navi li a {
+  display : block;
+  color : #fff;
+  text-decoration : none;
+  padding : 10px 20px 10px 20px;
+  background : #2c2c2c;
+  /* alte webkit-basierte Browser (Safari, Chrome, etc.) */
+  background : -webkit-gradient(linear, lefttop, leftbottom, from(#848487), to(#3c3c3c));
+  /* neue webkit-basierte Browser(Safari, Chrome, etc.) */
+  background : -webkit-linear-gradient(top, #848487, #3c3c3c);
+  /* Mozilla/Gecko (Firefox, Flock, etc) */
+  background : -moz-linear-gradient(top, #848487, #3c3c3c);
+  /* Für Presto (Opera ab Version 11.1) */
+  background : -o-linear-gradient(top, #848487, #3c3c3c);
+  /* IE10 Pre-Beta */
+  background : -ms-linear-gradient(top, #848487, #3c3c3c);
+  /* aktueller W3C working draft */
+  background : linear-gradient(top, #848487, #3c3c3c);
+}
+#navi li#active span,
+#navi li a {
+  -webkit-border-top-right-radius : 5px;
+  -webkit-border-top-left-radius : 5px;
+  -moz-border-radius-topright : 5px;
+  -moz-border-radius-topleft : 5px;
+  border-top-right-radius : 5px;
+  border-top-left-radius : 5px;
 }
