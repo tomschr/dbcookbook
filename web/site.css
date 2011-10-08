@@ -61,7 +61,7 @@ p {
   padding-top:0;
 }
 
-#main h3 {
+#main h2, #main h3 {
   text-shadow : 1px 1px 1px #CCC;
   margin:.75em auto 3px auto;
   padding-bottom:0;
@@ -131,7 +131,7 @@ p {
 #formats {
   width : 100%;
   padding : 0;
-  margin : 0;
+  margin-top: 10px;
   list-style : none;
 }
 .format {
@@ -158,26 +158,27 @@ p {
   text-decoration : none;
   text-align : center;
   padding : 20px 10px 20px 10px;
-  background : #2c2c2c;
+  background : #90A4BB;
+  /* 848487 -> 3c3c3c */
   /* alte webkit-basierte Browser (Safari, Chrome, etc.) */
-  background : -webkit-gradient(linear, lefttop, leftbottom, from(#848487), to(#3c3c3c));
+  background : -webkit-gradient(linear, lefttop, leftbottom, from(#90A4BB), to(#3B4D62));
   /* neue webkit-basierte Browser(Safari, Chrome, etc.) */
-  background : -webkit-linear-gradient(top, #848487, #3c3c3c);
+  background : -webkit-linear-gradient(top, #90A4BB, #3B4D62);
   /* Mozilla/Gecko (Firefox, Flock, etc) */
-  background : -moz-linear-gradient(top, #848487, #3c3c3c);
+  background : -moz-linear-gradient(top, #90A4BB, #3B4D62);
   /* Für Presto (Opera ab Version 11.1) */
-  background : -o-linear-gradient(top, #848487, #3c3c3c);
+  background : -o-linear-gradient(top, #90A4BB, #3B4D62);
   /* IE10 Pre-Beta */
-  background : -ms-linear-gradient(top, #848487, #3c3c3c);
+  background : -ms-linear-gradient(top, #90A4BB, #3B4D62);
   /* aktueller W3C working draft */
-  background : linear-gradient(top, #848487, #3c3c3c);
+  background : linear-gradient(top, #90A4BB, #3B4D62);
   
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius:5px;
 }
 .format .title a:hover {
-  background: #2c2c2c url(background/applications-internet.png) no-repeat center center;
+  background: #2c2c2c url(background/applications-internet.png) no-repeat center center fixed;
 }
 
 
@@ -233,12 +234,13 @@ p {
   /*outline:inset;*/
   /*text-decoration : underline;*/
   color: yellow;
-  background-image: linear-gradient(bottom, #38485B 0%, #6682A1 72%);
-  background-image: -o-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
-  background-image: -moz-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
-  background-image: -webkit-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
-  background-image: -ms-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
-  background-image: -webkit-gradient(
+  background: #90A4BB;
+  background: linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background: -o-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background: -moz-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background: -webkit-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background: -ms-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background: -webkit-gradient(
 	linear,
 	left bottom,
 	left top,
