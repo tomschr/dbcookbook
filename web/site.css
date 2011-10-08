@@ -16,8 +16,13 @@ html {
 }
 
 body { 
-  color : #2c2c2c;
-  background : #01080b url(background/stripe.png) repeat;
+  color: #2c2c2c;
+  background: #38485B url(background/bg-content-toms.png) repeat-y center center;
+  /*-webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+
 }
 
 h1, h2, h3, h4, h5 {
@@ -44,12 +49,12 @@ h1, h2, h3, h4, h5 {
 }
 
 #header h2 {
-  line-height:.95;
+  line-height:1;
 }
 
 #footer {
   margin-top:3.5em;
-  margin-bottom:1em;
+  margin-bottom:1.1em;
 }
 
 #content {
@@ -78,7 +83,7 @@ h1, h2, h3, h4, h5 {
 #navi li {
   display : inline-block;
   padding : 7px 0 0 0;
-  margin : 0 5px 0 0;
+  margin : 0 4px 0 0;
   font : bold 81.25% / 2.125Arial, Verdana, sans-serif;
 }
 #navi li a {
@@ -108,4 +113,23 @@ h1, h2, h3, h4, h5 {
   -moz-border-radius-topleft : 5px;
   border-top-right-radius : 5px;
   border-top-left-radius : 5px;
+}
+#navi li a:hover,
+#navi li a:active,
+#navi li a:focus {
+  /*outline:inset;*/
+  /*text-decoration : underline;*/
+  color: yellow;
+  background-image: linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background-image: -o-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background-image: -moz-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background-image: -webkit-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background-image: -ms-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
+  background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0, #38485B),
+	color-stop(0.72, #6682A1);
+  
 }
