@@ -19,7 +19,8 @@ html {
 
 body { 
   color: #2c2c2c;
-  background: #38485B url(background/bg-content-toms.png) repeat-y center center;
+  background: #01080b url(background/bg-content-toms.png) repeat-y center center;
+  /* #38485B */
   /*-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -120,7 +121,8 @@ p {
 }
 
 #content {
-  background-color : #FFF;
+  /*background-color : #FFF;*/
+  background-color : rgba(255, 255, 255, .95);
   padding:.5em 1.5em;
   -webkit-border-radius : 5px;
   -moz-border-radius : 5px;
@@ -143,7 +145,7 @@ p {
   padding-left:6pt;
 }
 
-#availformats, #end {
+#availformats, .end {
   clear:both;
 }
 
@@ -170,9 +172,7 @@ p {
   display : none;
 }
 .format .title a {
-  /*margin:30px 0 30px 0;*/
   font : 400 120% 'Open Sans', sans;
-  /*text-transform : uppercase;*/
   letter-spacing : 1px;
   display : block;
   color : #fff;
@@ -180,37 +180,29 @@ p {
   text-align : center;
   padding : 20px 10px 20px 10px;
   background : #90A4BB;
-  /* 848487 -> 3c3c3c */
-  /* alte webkit-basierte Browser (Safari, Chrome, etc.) */
   background : -webkit-gradient(linear, lefttop, leftbottom, from(#90A4BB), to(#3B4D62));
-  /* neue webkit-basierte Browser(Safari, Chrome, etc.) */
   background : -webkit-linear-gradient(top, #90A4BB, #3B4D62);
-  /* Mozilla/Gecko (Firefox, Flock, etc) */
   background : -moz-linear-gradient(top, #90A4BB, #3B4D62);
-  /* Für Presto (Opera ab Version 11.1) */
   background : -o-linear-gradient(top, #90A4BB, #3B4D62);
-  /* IE10 Pre-Beta */
   background : -ms-linear-gradient(top, #90A4BB, #3B4D62);
-  /* aktueller W3C working draft */
   background : linear-gradient(top, #90A4BB, #3B4D62);
-  
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
   border-radius:5px;
 }
 
 
-/*#htmlchunk .title a:hover, #htmlsingle .title a:hover {
+#htmlchunk:hover, #htmlsingle:hover {
   background-image: #2c2c2c url(icons/applications-internet.png) center bottom no-repeat;
 }
-#pdf .title a:hover {
+#pdf:hover {
   background-image: green url('icons/applications-pdf.png') center bottom no-repeat;
 }
 #epub .title a:hover {
   background-image: #2c2c2c url('icons/applications-epub+zip.png') center bottom no-repeat;
-}*/
+}
 .format .title a:hover {
-  background: #2c2c2c url(icons/applications-internet.png) center bottom no-repeat;
+  background: #2c2c2c url(icons/applications-internet.png) center center no-repeat;
 }
 
 /* */
@@ -237,17 +229,11 @@ p {
   text-decoration : none;
   padding : 10px 20px 10px 20px;
   background : #2c2c2c;
-  /* alte webkit-basierte Browser (Safari, Chrome, etc.) */
   background : -webkit-gradient(linear, lefttop, leftbottom, from(#848487), to(#3c3c3c));
-  /* neue webkit-basierte Browser(Safari, Chrome, etc.) */
   background : -webkit-linear-gradient(top, #848487, #3c3c3c);
-  /* Mozilla/Gecko (Firefox, Flock, etc) */
   background : -moz-linear-gradient(top, #848487, #3c3c3c);
-  /* Für Presto (Opera ab Version 11.1) */
   background : -o-linear-gradient(top, #848487, #3c3c3c);
-  /* IE10 Pre-Beta */
   background : -ms-linear-gradient(top, #848487, #3c3c3c);
-  /* aktueller W3C working draft */
   background : linear-gradient(top, #848487, #3c3c3c);
 }
 #navi li#active span,
@@ -262,8 +248,6 @@ p {
 #navi li a:hover,
 #navi li a:active,
 #navi li a:focus {
-  /*outline:inset;*/
-  /*text-decoration : underline;*/
   color: yellow;
   background: #90A4BB;
   background: linear-gradient(bottom, #38485B 0%, #6682A1 72%);
@@ -278,4 +262,3 @@ p {
 	color-stop(0, #38485B),
 	color-stop(0.72, #6682A1); 
 }
-
