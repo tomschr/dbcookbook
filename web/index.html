@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd"
-  xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
   <head profile="http://dublincore.org/documents/dc-html/">
     <title>The DocCookBook | Receipies for DocBook Developers</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="content-language" content="de" />
+    <meta http-equiv="content-language" content="en" />
     <meta name="date" content="2011-10-03T17:12:00+01:00" />
     <meta name="description" xml:lang="en"
       content="DocCookBook - Receipies for DocBook Developers" />
@@ -88,20 +86,20 @@
           <p>Please think of donating, see the section <a
             href="#support">Donating</a>.</p>
           <ul id="formats">
-            <li id="htmlchunks" class="format">
-              <div class="title"><a href="#">HTML Chunk</a></div>
+            <li id="htmlchunk" class="format">
+              <div><a href="#">HTML Chunk</a></div>
               <p>Read the HTML document in small pieces</p>
             </li>
             <li id="htmlsingle" class="format">
-              <div class="title"><a href="#">HTML Single</a></div>
+              <div><a href="#">HTML Single</a></div>
               <p>Read the HTML document in one file</p>
             </li>
             <li id="pdf" class="format">
-              <div class="title"><a href="#">PDF</a></div>
+              <div><a href="#">PDF</a></div>
               <p>Read it or print it</p>
             </li>
             <li id="epub" class="format">
-              <div class="title"><a href="#">EPUB</a></div>
+              <div><a href="#">EPUB</a></div>
               <p>Read it on all EBook readers out there</p>
             </li>
           </ul>
@@ -135,19 +133,21 @@
         </div>
         <div id="support" class="end">
           <h3>Donating</h3>
-          <p>Please support this project by donating a small amount:
+          <p>Please support this project by donating a small amount:</p>
           <form action="https://www.paypal.com/cgi-bin/webscr" 
-              method="post"><input type="hidden" name="cmd" 
+              method="post">
+            <div>
+              <input type="hidden" name="cmd" 
                 value="_s-xclick"/><input type="hidden" 
                   name="hosted_button_id" 
                   value="8XQXHPHCCWRQW"/><input type="image" 
                     src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" 
-                    border="0" name="submit" 
-                    alt="PayPal - The safer, easier way to pay online!"/><img alt="" 
-                      border="0" 
+                    name="submit" 
+                    alt="PayPal - The safer, easier way to pay online!"/><img alt=""
                       src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" 
-                      width="1" height="1"/></form>
-          </p>
+                      width="1" height="1"/>
+            </div>
+          </form>
         </div>
       </div>
       <div id="footer">
@@ -169,10 +169,18 @@
             alt="Creative Commons License" 
             style="border-width:0" 
             src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png" /></a>
+<!--          
           <span href="http://purl.org/dc/dcmitype/Text" 
-              property="dct:title" rel="dct:type">DocCookBook</span> by <a                
+              property="dct:title" rel="dct:type">
+-->
+            <span>DocCookBook</span> by
+<!--
+            <a                
                 href="http://doccookbook.sf.net/" property="cc:attributionName" 
-                rel="cc:attributionURL">Thomas Schraitle</a> is currently 
+                rel="cc:attributionURL">
+-->              
+              <a                
+                href="http://doccookbook.sf.net/">Thomas Schraitle</a> is currently 
           licensed under a <a rel="license" 
                   href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
                   >Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany License</a>.
