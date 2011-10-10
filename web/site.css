@@ -2,15 +2,9 @@
    CSS Stylesheet
    By Thomas Schraitle <tom_schr AT sourceforge DOT net>
    Released under Creative CommonsCC-BY
-
-  darkgray  8c8b84
-  lightgray d9d8d2
-  anthrazit 59514c
-  brown     26130b
-  darkrose  a67b77
 */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:700,400,300,200);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
 
 html {
   margin:0;
@@ -25,11 +19,10 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;*/
-
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family:'Open Sans', 'Yanone Kaffeesatz', 'DejaVu Sans Condensed', sans;
+  font-family:'Open Sans', 'DejaVu Sans Condensed', sans;
   font-weight:400;
 }
 
@@ -171,7 +164,7 @@ p {
 .format p {
   display : none;
 }
-.format .title a {
+.format a {
   font : 400 120% 'Open Sans', sans;
   letter-spacing : 1px;
   display : block;
@@ -192,14 +185,15 @@ p {
 }
 
 
-#htmlchunk:hover, #htmlsingle:hover {
-  background-image: #2c2c2c url(icons/applications-internet.png) center bottom no-repeat;
+#htmlchunk a:hover, #htmlsingle a:hover {
+  background: #2c2c2c url(icons/applications-internet.png) center bottom no-repeat;
 }
-#pdf:hover {
-  background-image: green url('icons/applications-pdf.png') center bottom no-repeat;
+#pdf a:hover {
+  background: #2c2c2c url(icons/application-pdf.png) center bottom no-repeat;
+  color: #000
 }
-#epub .title a:hover {
-  background-image: #2c2c2c url('icons/applications-epub+zip.png') center bottom no-repeat;
+#epub a:hover {
+  background: #2c2c2c url(icons/application-epub+zip.png) center bottom no-repeat;
 }
 .format .title a:hover {
   background: #2c2c2c url(icons/applications-internet.png) center center no-repeat;
