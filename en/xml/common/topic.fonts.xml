@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.fonts" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Finding Professional Fonts</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need to find professional fonts, preferebly released under
+      an open source license which can be used for print or Web formats.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>There are some very good fonts which can be used freely. Most
+      fonts are even released under the <link
+        xlink:href="http://scripts.sil.org/OFL">Open Font License</link>
+      or other license. The following list is a small overview which is
+      by no means complete (use also your favorite search enginge):</para>
+    <variablelist>
+      <varlistentry>
+        <term><link xlink:href="http://scripts.sil.org"/></term>
+        <listitem>
+          <para><acronym>SIL<alt>Summer Institute of
+            Linguistics</alt></acronym> is a nonprofit organization for
+            sustainable language development. On part is to <quote>support 
+            the use of non-Roman and complex scripts in language development.</quote>
+            <acronym>SIL</acronym> creates the Charis SIL, Doulos SIL,
+            Gentium, Andika, and other typefaces. All fonts are released
+            under the 
+            </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><link xlink:href="http://www.google.com/webfonts"/></term>
+        <listitem>
+          <para>Google Web Fonts is a huge collection of open source
+            fonts. They can be freely incorporated into your Web sites
+            using CSS or can be downloaded and embedded in PDF.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><link xlink:href="http://www.tug.org/tetex/"/></term>
+        <listitem>
+          <para>The TeTeX distribution and <acronym>CTAN<alt>Comprehensive 
+            TeX Archive Network</alt></acronym> contains also some high quality
+            fonts, however, more aimed at the print business and not for
+          the Web.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><link xlink:href="http://www.linuxlibertine.org"/></term>
+        <term><link xlink:href="http://dejavu-fonts.org"/></term>
+        <term><link xlink:href="http://www.stixfonts.org"/></term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para></para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Before you use a font, check the following list:</para>
+    <itemizedlist>
+      <itemizedlist>
+        <formalpara>
+          <title>Amount of Glyphs</title>
+          <para>Does your font support all your languages? Although modern
+            Unicode fonts support a wide range of glyphs they usually do not 
+            support every language.</para>
+        </formalpara>
+      </itemizedlist>
+      <itemizedlist>
+        <formalpara>
+          <title>Missing Styles</title>
+          <para>Some fonts are published in only one style, usually
+            <emphasis>regular</emphasis>. Such fonts makes it more difficult
+            to universally adopt them in different scenarios where more
+            styles (bold, italic, or a combination) are needed.
+          </para>
+        </formalpara>
+      </itemizedlist>
+      <itemizedlist>
+        <formalpara>
+          <title>Font Format</title>
+          <para>Modern fonts are usually Unicode fonts in <acronym>OTF<alt>OpenType 
+          Font</alt></acronym> or TrueType format. Older fonts are
+            mostly PostScript Type 1 fonts which have a limited amount
+            of glphys (theoretically 256) and can not be used on the
+            Web.</para>
+        </formalpara>
+      </itemizedlist>
+    </itemizedlist>
+  </section>
+</section>
