@@ -3,3 +3,6 @@ http://www.alistapart.com/articles/taminglists/
 
 * Nested list with inherited numbering
 http://www.student.oulu.fi/~laurirai/muuta/koulujutut/kalifornia.html
+
+* Logical Links
+http://de.selfhtml.org/html/verweise/typisierte.htm
