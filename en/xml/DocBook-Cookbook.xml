@@ -36,6 +36,7 @@
     </rdf:RDF>
     <xi:include href="legalnotice.xml"/>
     <biblioid class="uri">https://sourceforge.net/projects/doccookbook/</biblioid>
+    <biblioid class="uri">https://doccookbook.sourceforge.net</biblioid>
     <author>
       <personname>
         <firstname>Thomas</firstname>
@@ -62,5 +63,4 @@
   
   <xi:include href="cc-by-nc-sa-30-de.xml"/>
   <xi:include href="cc-by-nc-sa-30-unported.xml"/>
-
 </book>
