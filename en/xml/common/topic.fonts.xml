@@ -76,7 +76,7 @@
         </listitem>
       </varlistentry>
     </variablelist>
-    <para></para>
+    
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -85,9 +85,11 @@
       <itemizedlist>
         <formalpara>
           <title>Amount of Glyphs</title>
-          <para>Does your font support all your languages? Although modern
-            Unicode fonts support a wide range of glyphs they usually do not 
-            support every language.</para>
+          <para>Does your font support your language? Although modern
+            fonts use Unicode thesedays, nevertheless your language can
+            not be supported. Especially if you need
+              <quote>uncommon</quote> languages or rarely used glyphs.
+          </para>
         </formalpara>
       </itemizedlist>
       <itemizedlist>
@@ -110,6 +112,29 @@
             Web.</para>
         </formalpara>
       </itemizedlist>
+      <itemizedlist>
+        <formalpara>
+          <title>Font Combinations</title>
+          <para>For a non-designer, it is generally easier to use a
+            complete font family containing sans serif, serif and
+            monospaced typefaces. Mixing several serif or sans serif
+            typefaces should be avoided</para>
+        </formalpara>
+      </itemizedlist>
+      <itemizedlist>
+        <formalpara>
+          <title>Quality</title>
+          <para>This is a broad topic and it depends where you want to
+            use the font. Is it primarily used for Web content or only
+            for print? Or both? Some fonts looks only good in a Web
+            page, other work only for a book. Sometimes the
+            <emphasis>Hinting</emphasis> (adjustment of a font to a
+            certain resolution) may or may not work.
+          </para>
+        </formalpara>
+      </itemizedlist>
     </itemizedlist>
+    
+    
   </section>
 </section>
