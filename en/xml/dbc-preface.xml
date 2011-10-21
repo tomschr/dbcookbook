@@ -13,6 +13,13 @@
    http://creativecommons.org/licenses/by-nc-sa/3.0/
    
 -->
+<!DOCTYPE preface 
+[
+  <!ENTITY user.sf    "tom_schr">
+  <!ENTITY domain.sf  "users.sourceforge.net">
+  <!ENTITY mymail "&user.sf;&#064;&domain.sf;">
+  
+]>
 
 <preface xml:id="dbc.preface"
    xmlns="http://docbook.org/ns/docbook"
@@ -82,9 +89,9 @@
         linkend="dbc.markup"/>). It is targetted more for DocBook
       developers who seek concise examples for their problems. However,
       with some try-and-error it can also be useful for ordenary writers
-      who wants to customize their documents. Readers who want further
-      information, I have included some links in the <citetitle>See
-        Also</citetitle> section at the end of the topic. </para>
+      who wants to customize their documents. For readers who want further
+      information are some links included in the <citetitle>See
+        Also</citetitle> section at the end of each topic. </para>
   </section>
   
   <section xml:id="dbc.preface.further-reading">
@@ -115,20 +122,53 @@
       Feel free to send me praise, constructive criticism, suggestions,
       ideas, improvements, or anything else. If you want to contribute
       to this book, I'm more than happy to give you commit rights. Send
-      me a mail to <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
-        >tom_schr(AT)users.sourceforge.net</link>.
+      me a mail to <email>&user.sf;(AT)&domain.sf;</email> or use the
+      link <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
+      />.
     </para>
   </section>
   
   <section xml:id="dbc.preface.contrib">
     <title>Contribute to the Book</title>
-    <para>The source code of this book is published as a Mercurial
-      repository. Feel free to clone it, make improvements and send me
-      the changes. Getting a copy takes just a few seconds. If you have
-      Mercurial already installed on your system, </para>
+    <para>The source code of this book is published and maintained as a 
+      Mercurial repository. Feel free to clone it, make improvements and
+      send me your changes. Getting a copy takes just a few seconds. 
+      If you have  Mercurial already installed on your system, run the 
+      following command:</para>
     <screen>hg clone https://hg.code.sf.net/p/doccookbook/code</screen>
-    <remark>Add further notice about comment system or Mercurial?</remark>
+    <para>Mercurial is a free, distributed version control system and
+      available for Mac, Linux, and Windows. Download it from <link 
+        xlink:href="http://mercurial.selenic.com"/>.</para>
   </section>
+  
+  <!--<section xml:id="dbc.preface.faq">
+    <title>FAQ</title>
+    <qandaset>
+      <qandaentry>
+        <question>
+          <para>Why is my problem not covered?</para>
+        </question>
+        <answer>
+          <para>This can have several reasons: it is already planned but
+          not written yet or I was not aware of this issue. Probably it
+          is just a lack of time. If you think, you have covered or know
+          some topic, I would really appreciate it if you contribute
+          your ideas. Just fill out a ticket on <link 
+            xlink:href="https://sourceforge.net/p/doccookbook/tickets/"/>
+            or write me an email to <email>&mymail;</email>.
+          </para>
+        </answer>
+      </qandaentry>
+      <qandaentry>
+        <question>
+          <para>aaa</para>
+        </question>
+        <answer>
+          <para>bbb</para>
+        </answer>
+      </qandaentry>
+    </qandaset>
+  </section>-->
   
   <section xml:id="dbc.preface.ack">
     <title>Acknowledgments</title>
