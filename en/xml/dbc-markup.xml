@@ -43,7 +43,7 @@
    * Tables
    * DocBook Derivates: Simple DocBook, Publishers Schema
   -->
-  
+  <xi:include href="db/topic.toplevel.xml"/>
   <xi:include href="db/topic.lists.xml"/>
-  
+  <xi:include href="db/topic.section.vs.sectx.xml"/>
 </chapter>
