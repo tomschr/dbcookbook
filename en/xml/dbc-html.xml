@@ -25,8 +25,8 @@
     <abstract>
       <para>HTML is a very important output format for the DocBook XSL
         stylesheets as it is not only displayed on Web sites, but also
-        used <quote>inside</quote> ebooks (<acronym>EPUB<alt>electronic
-          publication</alt></acronym>). It comes in several derivates.</para>
+        used <quote>inside</quote> ebooks (<acronym>EPUB<alt>Electronic
+          PUBlication</alt></acronym>). It comes in several derivates.</para>
     </abstract>
   </info>
   
@@ -112,5 +112,5 @@
   
   <xi:include href="html/topic.permalinks.xml"/>
   <xi:include href="html/topic.simplenavig.xml"/>
-  
+  <xi:include href="html/topic.consistent-ids.xml"/>
 </chapter>
