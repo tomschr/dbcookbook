@@ -43,7 +43,7 @@
         <function>generate.simple.navigation</function>:</para>
     <example xml:id="ex.simple-navigation.xsl">
       <title><filename>simple-navigation.xsl</filename></title>
-      <programlisting><xi:include href="xslt/simple-navigation.xsl" parse="text"/></programlisting>
+      <programlisting language="xml"><xi:include href="xslt/simple-navigation.xsl" parse="text"/></programlisting>
     </example>
     <para>The <filename>simple-navigation-xsl</filename> stylesheet can
       not stand on its own, it needs to be imported into your
@@ -51,7 +51,7 @@
         linkend="ex.db-simple-navigation.xsl"/>:</para>
     <example xml:id="ex.db-simple-navigation.xsl">
       <title><filename>db-simple-navigation.xsl</filename></title>
-      <programlisting><xi:include href="xslt/db-simple-navigation.xsl" parse="text"/></programlisting>      
+      <programlisting language="xml"><xi:include href="xslt/db-simple-navigation.xsl" parse="text"/></programlisting>      
     </example>
     
     <para>The customization layer in <xref
