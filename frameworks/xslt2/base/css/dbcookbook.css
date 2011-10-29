@@ -127,8 +127,12 @@ div.preface div.section-titlepage h3
   /*margin-bottom:-.5em;*/
   text-shadow:2px 2px 4px rgba(0,0,0,0.15);
 }
+div.section-titlepage h4 {
+  font-size:140%;
+}
+
 div.section-titlepage h5 {
-  font-size:95%;
+  font-size:110%;
 }
 
 /* Lists */
