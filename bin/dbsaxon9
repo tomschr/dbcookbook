@@ -12,9 +12,10 @@ BUILDDIR=${ABSPATH}/build
 FRAMEWORKSDIR=${ABSPATH}/frameworks
 BASEXSLT=${FRAMEWORKSDIR}/xslt2/base
 
+# echo BASEXSLT=${BASEXSLT}
+
 #    -r:org.apache.xml.resolver.tools.CatalogResolver \
 bin/saxon9 -xi -s:en/xml/DocBook-Cookbook.xml -t \
-   -config:bin/dbconfig.xml \
    -xsl:${BASEXSLT}/html/docbook.xsl \
    -o:${BUILDDIR}/html/DocBook-Cookbook2.html
 
