@@ -21,10 +21,10 @@
   
   <sidebar>
     <title>Licensed under Creative Commons</title>
-    <informaltable border="0">
-      <tgroup cols="2" tgroupstyle="ccbox">
-        <colspec colnum="1" colwidth="1*"/>
-        <colspec colnum="2" colwidth="4*"/>
+    <informaltable border="0" frame="void" rules="none" class="ccbox">
+      <tgroup cols="2">
+        <colspec colnum="1" colwidth="1*" rowsep="0" colsep="0"/>
+        <colspec colnum="2" colwidth="4*" rowsep="0" colsep="0"/>
         <tbody>
           <row>
             <entry valign="top"><inlinemediaobject>
