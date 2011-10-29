@@ -17,30 +17,37 @@
 <legalnotice version="5.1" xml:lang="en"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns="http://docbook.org/ns/docbook">
-  <title>Licensed under Creative Commons</title>
-  <informaltable border="0" style="ccbox" class="ccbox">
-    <tgroup cols="2">
-      <tbody>
-        <row>
-          <entry valign="top"><inlinemediaobject>
-            <imageobject>
-              <imagedata
-                fileref="png/by-nc-sa-3.0-de-88x31.png"
-                width="88px"/>
-            </imageobject>
-            <textobject>
-              <phrase>Creative Commons License Agreement</phrase>
-            </textobject>
-          </inlinemediaobject></entry>
-          <entry valign="top">This work is licensed as Creative Commons
-            Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
-            by-nc-sa 3.0 DE). For more information, refer to <link xlink:show="new"
-              xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
-            />; see also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
-            and <xref linkend="cc-by-nc-sa-30-unported"/>.
-          </entry>
-        </row>
-      </tbody>
-    </tgroup>
-  </informaltable>
+  <title>License</title>
+  
+  <sidebar>
+    <title>Licensed under Creative Commons</title>
+    <informaltable border="0">
+      <tgroup cols="2">
+        <tbody>
+          <row>
+            <entry valign="top"><inlinemediaobject>
+              <imageobject>
+                <imagedata
+                  fileref="png/by-nc-sa-3.0-de-88x31.png"
+                  width="88px"/>
+              </imageobject>
+              <textobject>
+                <phrase>Creative Commons License Agreement</phrase>
+              </textobject>
+            </inlinemediaobject></entry>
+            <entry valign="top">This work is licensed as Creative Commons
+              Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
+              by-nc-sa 3.0 DE). For more information, refer to <link xlink:show="new"
+                xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
+              />; see also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
+              and <xref linkend="cc-by-nc-sa-30-unported"/>.
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+  </sidebar>
+  <para>Currently, this work is released under a CC BY-NC-SA 3.0 DE
+    license. After this book is finished, the license will be changed to
+    CC BY-SA 3.0 DE.</para>
 </legalnotice>
