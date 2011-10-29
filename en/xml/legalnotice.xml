@@ -22,9 +22,9 @@
   <sidebar>
     <title>Licensed under Creative Commons</title>
     <informaltable border="0">
-      <col width="1*"/>
-      <col width="4*"/>
       <tgroup cols="2" tgroupstyle="ccbox">
+        <colspec colnum="1" colwidth="1*"/>
+        <colspec colnum="2" colwidth="4*"/>
         <tbody>
           <row>
             <entry valign="top"><inlinemediaobject>
