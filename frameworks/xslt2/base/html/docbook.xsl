@@ -3,7 +3,10 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook"
   xmlns:xlink="http://www.w3.org/1999/xlink"
-  exclude-result-prefixes="d xlink"  >
+  xmlns:tmpl="http://docbook.org/xslt/titlepage-templates"
+  xmlns:t="http://docbook.org/xslt/ns/template"
+  xmlns:m="http://docbook.org/xslt/ns/mode"
+  exclude-result-prefixes="d xlink tmpl m t">
   
   <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>
   
@@ -24,4 +27,26 @@
   <xsl:param name="section.autolabel.max.depth" select="1"/>
   <xsl:param name="section.label.includes.component.label" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
+  
+  
+  <xsl:template name="t:user-titlepage-templates" as="element(tmpl:templates-list)?">
+    <tmpl:templates-list>
+      <tmpl:templates name="book">
+      <tmpl:recto>
+        <div tmpl:class="titlepage">
+          <d:title/>
+          <d:subtitle/>
+          <d:author/>
+          <d:legalnotice/>
+          <d:pubdate/>
+          <d:revision/>
+          <d:revhistory/>
+          <d:abstract/>
+        </div>
+        <hr tmpl:keep="true"/>
+      </tmpl:recto>
+      </tmpl:templates>
+    </tmpl:templates-list>
+  </xsl:template>
+  
 </xsl:stylesheet>
