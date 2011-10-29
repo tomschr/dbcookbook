@@ -71,6 +71,7 @@
       Titles) 
     - Using Text Figures http://en.wikipedia.org/wiki/Text_figures
     - Using MathML in Formulas
+    - Influencing the TOC Bookmark Levels in PDF
   -->
   
   <xi:include href="fo/topic.line-height.xml"/>
