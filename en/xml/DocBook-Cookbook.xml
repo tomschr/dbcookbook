@@ -35,8 +35,8 @@
       </License>
     </rdf:RDF>
     <xi:include href="legalnotice.xml"/>
-    <biblioid class="uri">https://sourceforge.net/projects/doccookbook/</biblioid>
-    <biblioid class="uri">https://doccookbook.sourceforge.net</biblioid>
+    <biblioid class="uri" role="project">https://sourceforge.net/projects/doccookbook/</biblioid>
+    <biblioid class="uri" role="home">https://doccookbook.sourceforge.net</biblioid>
     <author>
       <personname>
         <firstname>Thomas</firstname>
