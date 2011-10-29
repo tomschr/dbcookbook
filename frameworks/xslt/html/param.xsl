@@ -33,7 +33,7 @@
   <xsl:param name="use.extensions" select="1"/>
   <xsl:param name="use.viewport" select="0"/>
   
-  <xsl:param name="use.piwik" select="1"/>
+  <xsl:param name="use.piwik" select="0"/>
   
   <!-- ================================================== -->
   <xsl:param name="up.navigation">
