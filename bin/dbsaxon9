@@ -1,0 +1,24 @@
+#!/bin/bash
+# 
+# saxon script
+# JPackage Project <http://www.jpackage.org/>
+
+# Get the absolute path of this script:
+ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+# Cut the last directory part, as script is in .../bin
+ABSPATH=${ABSPATH%/*}
+# 
+BUILDDIR=${ABSPATH}/build
+FRAMEWORKSDIR=${ABSPATH}/frameworks
+BASEXSLT=${FRAMEWORKSDIR}/xslt2/base
+
+#    -r:org.apache.xml.resolver.tools.CatalogResolver \
+bin/saxon9 -xi -s:en/xml/DocBook-Cookbook.xml -t \
+   -config:bin/dbconfig.xml \
+   -xsl:${BASEXSLT}/html/docbook.xsl \
+   -o:${BUILDDIR}/html/DocBook-Cookbook2.html
+
+[ -e ${BUILDDIR}/html/css ] || cp -av ${BASEXSLT}/css/ ${BUILDDIR}/html/css
+
+
+echo "Done"
