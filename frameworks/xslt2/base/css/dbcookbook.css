@@ -77,9 +77,11 @@ div.preface-titlepage h2 {
 }
 
 div.legalnotice div.informaltable,
-div.legalnotice div.informaltable-wrapper div.informaltable,
+div.legalnotice div.informaltable-wrapper,
 div.legalnotice div.informaltable table {
-  border:none;
+  border-color: #CACACA;
+  border-width: 0px;
+  border-style:none;
 }
 
 /* TOC */
@@ -91,4 +93,11 @@ div.toc > dl.toc > dd > dl.toc > dt {
 }
 dl.toc {
   margin-top:2pt;
+}
+div.toc > p,
+div.list-of-tables > p,
+div.list-of-examples > p,
+div.list-of-figures > p {
+  margin-bottom:0px;
+  font-size:110%;
 }
