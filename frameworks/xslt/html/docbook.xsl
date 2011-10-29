@@ -18,5 +18,6 @@
   <xsl:include href="sections.xsl"/>
   <!-- <xsl:include href="usermeta.xsl"/> -->
   <xsl:include href="piwik.xsl"/>
+  <xsl:include href="footer.xsl"/>
   
 </xsl:stylesheet>
