@@ -17,7 +17,7 @@ jing.jar jython.jar saxon.jar saxon9-ant.jar saxon9he.jar xercesImpl.jar xml-api
 #CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon avalon-logkit xml-commons-resolver 2>/dev/null) || :
 # Extend the CLASSPATH variable
 CLASSPATH="$(build-classpath-directory ${FRAMEWORKSDIR}/db-xslt2/tools/lib/ 2>/dev/null)"
-CLASSPATH="$CLASSPATH:${FRAMEWORKSDIR}/xslt2/ext/build/lib/docbook-xsl2-saxon.jar"
+CLASSPATH="$CLASSPATH:${FRAMEWORKSDIR}/db-xslt2/ext/build/lib/docbook-xsl2-saxon.jar"
 
 # If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
 # and tweak command line options so that it's used.
@@ -36,6 +36,9 @@ args=
 #    args="$args -r:$r"
 #  fi
 #fi
+
+BASE_FLAGS="-Dpython.path=/usr/lib/python2.6/site-packages:/usr/lib64/python2.6/"
+BASE_FLAGS="$BASE_FLAGS -Dpython.cachedir=/tmp/jython/"
 
 # Set parameters
 set_jvm
