@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.l10n" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Extending Language Files with Own Text</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need a general solution to add localized text without
+      hard-coding it in your stylesheet. Depending on the language, it
+      should display the correct text.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use <emphasis>language files</emphasis> to add your text. The DocBook XSL
+      Stylesheets support several languages, all located under the
+      <filename class="directory">common</filename> directory.</para>
+    <para>The general method is to create a language file. A
+      language file is a XML format which contains all your
+      translated text as a key/value pair. The key is never
+      translated, is used for every language, and is only needed to
+      find and retrieve the translated text. </para>
+    <procedure>
+      <title>Adding Your Own Localized Text</title>
+      <step>
+        <para>Create a customization layer as shown in <xref linkend="dbc.common.dbcustomize"/>.</para>
+      </step>
+      <step>
+        <para>Add the parameter <parameter>local.l10n.xml</parameter> in
+        your customization layer and point to your language file:</para>        
+        <screen>&lt;xsl:param name="local.l10n.xml" select="document('myl10n.xml')"/></screen>
+      </step>
+      <step>
+        <para>Open the <filename>myl10n.xml</filename> file and insert
+        the following XML code as an example:</para>
+        <screen>&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
+  &lt;l:l10n language="en">
+    &lt;l:gentext key="Authors" text="Authors"/>
+    &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
+  &lt;/l:l10n>
+  &lt;l:l10n language="de">
+    &lt;l:gentext key="Authors" text="Authoren"/>
+    &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
+  &lt;/l:l10n>
+&lt;/l:i18n></screen>
+        <para>The above code shows two language, English and German.
+          Furthermore, it contains text two entries for each language
+            (<quote>Authors</quote> and
+          <quote>lastbuilt</quote>).</para>    
+      </step>
+      <step>
+        <para>Call the <function>gentext</function> template to retrieve
+        the translated text:</para>
+        <screen>&lt;xsl:call-template name="gentext">
+  &lt;xsl:with-param name="key" select="'Authors'"/>
+&lt;/xsl:call-template></screen>
+      </step>
+    </procedure>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The method of <quote>gentext</quote> is quite powerful. It
+      helps you to keep translateable text in one place and avoids
+      hard-coded locations in your stylesheets.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>
+</section>
