@@ -6,6 +6,7 @@ syntax: glob
 # Temporary files used by the vim editor.
 .*.swp
 frameworks/db-xslt2/tools/lib/cachedir/packages/*.pkc
+frameworks/db-xslt2/tools/lib/cachedir/packages/packages.idx
 *.orig
 *.html
 
