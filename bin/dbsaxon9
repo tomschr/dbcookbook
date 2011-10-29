@@ -15,9 +15,9 @@ BASEXSLT=${FRAMEWORKSDIR}/xslt2/base
 # echo BASEXSLT=${BASEXSLT}
 
 #    -r:org.apache.xml.resolver.tools.CatalogResolver \
-bin/saxon9 -xi -s:en/xml/DocBook-Cookbook.xml -t \
+bin/saxon9 -xi -s:en/xml/DocBook-Cookbook.xml \
    -xsl:${BASEXSLT}/html/docbook.xsl \
-   -o:${BUILDDIR}/html/DocBook-Cookbook2.html
+   -o:${BUILDDIR}/html/DocBook-Cookbook2.html $@
 
 [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 
