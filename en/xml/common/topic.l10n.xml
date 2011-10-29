@@ -53,7 +53,7 @@
       <step>
         <para>Open the <filename>myl10n.xml</filename> file and insert
         the following XML code as an example:</para>
-        <screen>&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
+        <programlisting language="xml">&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
   &lt;l:l10n language="en">
     &lt;l:gentext key="Authors" text="Authors"/>
     &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
@@ -62,7 +62,7 @@
     &lt;l:gentext key="Authors" text="Authoren"/>
     &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
   &lt;/l:l10n>
-&lt;/l:i18n></screen>
+&lt;/l:i18n></programlisting>
         <para>The above code shows two language, English and German.
           Furthermore, it contains text two entries for each language
             (<quote>Authors</quote> and
@@ -71,9 +71,9 @@
       <step>
         <para>Call the <function>gentext</function> template to retrieve
         the translated text:</para>
-        <screen>&lt;xsl:call-template name="gentext">
+        <programlisting language="xml">&lt;xsl:call-template name="gentext">
   &lt;xsl:with-param name="key" select="'Authors'"/>
-&lt;/xsl:call-template></screen>
+&lt;/xsl:call-template></programlisting>
       </step>
     </procedure>
   </section>
