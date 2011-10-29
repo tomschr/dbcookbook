@@ -84,7 +84,7 @@
       following output:</para>
     <example>
       <title>Output of the Transformation</title>
-      <programlisting  linenumbering="numbered"><xi:include
+      <programlisting language="xml" linenumbering="numbered"><xi:include
         href="xslt/profile-envar-result.xml" parse="text"/></programlisting>
     </example>
   </section>
