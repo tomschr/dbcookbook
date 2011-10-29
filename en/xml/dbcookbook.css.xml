@@ -57,9 +57,13 @@ div.book div.titlepage .subtitle:before
 }
 div.book div.titlepage div.legalnotice
 {
+ text-align:left;
+}
+div.book div.titlepage div.legalnotice div.sidebar
+{
   font-family: 'PT Serif';
   text-align:left;
-  /*font-size:smaller;*/
+  font-size:smaller;
   margin-top:3em;
   margin-bottom:3em;
   margin-left:10%;
