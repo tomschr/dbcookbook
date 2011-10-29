@@ -44,6 +44,13 @@
       </personname>
       <email>tom_schr@users.sourceforge.net</email>
     </author>
+    <othercredit class="proofreader">
+      <personname>
+        <firstname>Antje</firstname>
+        <surname>Faber</surname>
+      </personname>
+    </othercredit>
+    <edition>1</edition>
     <keywordset>
       <keyword>DocBook</keyword>
       <keyword>Customization</keyword>
