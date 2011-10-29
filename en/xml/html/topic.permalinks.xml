@@ -46,8 +46,8 @@
     include it into your customization layers:</para>
     <procedure>
       <step>
-        <para>Create a customization layer <remark>as described in xref:
-        ???</remark></para>
+        <para>Create a customization layer as shown in <xref
+          linkend="dbc.common.dbcustomize"/>.</para>
       </step>
       <step>
         <para>Include the stylesheet from <xref
