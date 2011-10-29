@@ -15,7 +15,8 @@
 
   <xsl:param name="inherit.keywords" select="1"/>
 
-  <xsl:param name="highlight.source" select="1"/>
+  <!--http://norman.walsh.name/2011/08/31/xsltPygments-->
+  <!--<xsl:param name="highlight.source" select="1"/>-->
   <!--<xsl:param name="highlight.xslthl.config"/>-->
   <xsl:param name="generate.id.attributes" select="1"/>
   
