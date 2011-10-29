@@ -101,3 +101,29 @@ div.list-of-figures > p {
   margin-bottom:0px;
   font-size:110%;
 }
+
+/* Sections */
+div.section-titlepage,
+div.section-titlepage h2,
+div.section-titlepage h3,
+div.section-titlepage h4,
+div.section-titlepage h5
+{
+  margin-bottom:2pt;
+}
+div.appendix div.section-titlepage h3,
+div.chapter div.section-titlepage h3,
+div.preface div.section-titlepage h3
+{
+  border-top:1pt dotted gray;
+  border-left:none;
+  padding-top:0.4em;
+  padding-left:0pt;
+  text-align:left;
+  font-size: 180%;
+  margin-bottom:-.5em;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.15);
+}
+div.section-titlepage h5 {
+  font-size:95%;
+}
