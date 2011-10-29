@@ -40,10 +40,10 @@
       <step>
         <para>Use the element <tag>envar</tag> in your document as
           usual. By default all <tag>envar</tag> elements get an
-            <tag>indexterm</tag>. In cases you do not want this,
-          suppress this automatism by adding the attribute <tag
-            class="attribute">condition</tag> with its value <tag
-            class="attvalue">noindex</tag>. This is done in the second
+            <tag>indexterm</tag>. In cases you do not want this, add the
+          attribute <tag class="attribute">condition</tag> with its
+          value <tag class="attvalue">noindex</tag> to suppress
+          indexterm generation. This is done in the second
             <tag>para</tag> element:</para>
         <example xml:id="ex.profile-envar.xml">
           <title><filename>profile-envar.xml</filename></title>
@@ -79,8 +79,9 @@
       </step>
     </procedure>
     
-    <para>After applying the stylesheet from <xref
-      linkend="ex.profile-tag.xsl"/> it creates the following output:</para>
+    <para>After applying the stylesheet
+        <filename>add-indexterms.xsl</filename> you will get the
+      following output:</para>
     <example>
       <title>Output of the Transformation</title>
       <programlisting  linenumbering="numbered"><xi:include
@@ -89,9 +90,9 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Let´s go back first at the beginning. Assume you want to show
-      up an environment variable in the index. Normally you would mark
-      up the text with the <tag>envar</tag> element and add an
+    <para>Let´s go back at the beginning first. Assume you want to show
+      an environment variable in the index. Usually you would mark up
+      the text with the <tag>envar</tag> element and add an
         <tag>indexterm</tag> right after the first one. As is is useful
       to find the index term also under the primary term
         <quote>environment variables</quote>, you add an additional
@@ -104,15 +105,16 @@
       &lt;/indexterm>
       to do ...
 &lt;/para></programlisting>
-    <para>Although this is the preferred method, it has some drawbacks:</para>
+    <para>Although this is the usual method, it has some
+      drawbacks:</para>
     <itemizedlist>
       <listitem>
         <formalpara>
           <title>It is hard to read</title>
           <para>If you are get used to read the bare XML code, it is
-            hard to read the text if it is cluttered with
-              <tag>indexterm</tag> elements all along. The text gets
-            lost.</para>
+            hard to read as the text is broken into pieces. The text is
+            cluttered with <tag>indexterm</tag> elements all
+            along.</para>
         </formalpara>
       </listitem>
       <listitem>
@@ -120,7 +122,7 @@
           <title>It may be inconsistent</title>
           <para>If you forgot the <quote>s</quote> in the primary index
             term it will lead to double entries (one singular and one
-            plural form). This leads to inconsistencies. It can be
+            plural form). This lead to inconsistencies. It can be
             painful if you have to go through the complete document just
             to fix the singular form into the plural form (or vice
             versa).</para>
@@ -189,14 +191,11 @@
         </listitem>
       </varlistentry>
     </variablelist>
+        
+    <para>This method can not solve all index problems. You should know
+      some of its limits:</para>
     
-    <para>Although this method does not replace hand-written index
-      entries, it can ease the pain. Especially for those entries which
-      can be be inserted automatically it improves consistency. The
-      method described above can also implemented for other inline
-      elements, like persons, functions, etc.</para>
-    <!--
-  <itemizedlist>
+    <itemizedlist>
       <listitem>
         <formalpara>
           <title>Document Type</title>
@@ -210,9 +209,9 @@
           <title>Consistent Elements</title>
           <para>The document needs not only consistently use the same
             elements for the same structure, it has to use a specific
-            element in the first place. For example, if you want to show up your
-            configuration files in your index, you need to mark it up
-            with <tag>filename</tag>, otherwise this method has no
+            element in the first place. For example, if you want to show
+            your configuration files in your index, you need to mark
+            it up with <tag>filename</tag>, otherwise this method has no
             chance.</para>
         </formalpara>
       </listitem>
@@ -233,8 +232,25 @@
             but can also show up in a title.</para>
         </formalpara>
       </listitem>
+      <listitem>
+        <formalpara>
+          <title>Hard-coded Primary Entry</title>
+          <para>It can be critized to add hard-coded text into the
+            stylesheet <filename>profile-tag.xsl</filename> (here:
+            <quote>environment variables</quote>). If you maintain 
+            different languages, you should replace it with a more
+            general solution and move the language specific text into
+            language files as described in <xref linkend="dbc.common.l10n"/>.</para>
+        </formalpara>
+      </listitem>
     </itemizedlist>
--->    
+     
+    <para>Although this method does not replace hand-written index
+      entries, it can ease the pain. Especially for those entries which
+      can be be inserted automatically it improves consistency. The
+      method described above can also implemented for other inline
+      elements, like persons, functions, etc.</para>
+    
   </section>
   <!--<section role="seealso">
     <title>See Also</title>
