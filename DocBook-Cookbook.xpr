@@ -1,16 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="13.0">
+<project version="13.1">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="13.0" xml:space="preserve">
+            <serialized version="13.1" xml:space="preserve">
                 <map>
                     <entry>
                         <String>document.types</String>
                         <documentTypeDescriptor-array>
                             <documentTypeDescriptor>
                                 <field name="name">
-                                    <String>DocBook Cookbook</String>
+                                    <String>Novdoc</String>
+                                </field>
+                                <field name="schemaDescriptor">
+                                    <null/>
+                                </field>
+                                <field name="classpath">
+                                    <null/>
+                                </field>
+                                <field name="authorExtensionDescriptor">
+                                    <authorExtension>
+                                        <field name="cssDescriptors">
+                                            <cssFile-array/>
+                                        </field>
+                                        <field name="mergeCSSsFromDocument">
+                                            <Boolean>false</Boolean>
+                                        </field>
+                                        <field name="actionDescriptors">
+                                            <action-array/>
+                                        </field>
+                                        <field name="menubarDescriptor">
+                                            <menu>
+                                                <field name="label">
+                                                    <String>Menu</String>
+                                                </field>
+                                                <field name="accessKey">
+                                                    <null/>
+                                                </field>
+                                                <field name="iconPath">
+                                                    <null/>
+                                                </field>
+                                                <field name="menuEntriesDescriptorList">
+                                                    <menuEntry-array/>
+                                                </field>
+                                            </menu>
+                                        </field>
+                                        <field name="popupMenuDescriptor">
+                                            <menu>
+                                                <field name="label">
+                                                    <String>Contextual menu</String>
+                                                </field>
+                                                <field name="accessKey">
+                                                    <null/>
+                                                </field>
+                                                <field name="iconPath">
+                                                    <null/>
+                                                </field>
+                                                <field name="menuEntriesDescriptorList">
+                                                    <menuEntry-array/>
+                                                </field>
+                                            </menu>
+                                        </field>
+                                        <field name="toolbarDescriptor">
+                                            <toolbar>
+                                                <field name="id">
+                                                    <String>Toolbar</String>
+                                                </field>
+                                                <field name="type">
+                                                    <Integer>2</Integer>
+                                                </field>
+                                                <field name="largeIconPath">
+                                                    <null/>
+                                                </field>
+                                                <field name="smallIconPath">
+                                                    <null/>
+                                                </field>
+                                                <field name="toolbarEntriesDescriptorList">
+                                                    <toolbarEntry-array/>
+                                                </field>
+                                            </toolbar>
+                                        </field>
+                                        <field name="additionalToolbarsDescriptors">
+                                            <null/>
+                                        </field>
+                                        <field name="contextualItems">
+                                            <null/>
+                                        </field>
+                                        <field name="tableSupportClassName">
+                                            <null/>
+                                        </field>
+                                        <field name="tableColWidthSupportClassName">
+                                            <null/>
+                                        </field>
+                                        <field name="customReferencesResolver">
+                                            <null/>
+                                        </field>
+                                        <field name="authorExtensionStateListener">
+                                            <null/>
+                                        </field>
+                                        <field name="attributesRecognizer">
+                                            <null/>
+                                        </field>
+                                    </authorExtension>
+                                </field>
+                                <field name="templatesLocations">
+                                    <null/>
+                                </field>
+                                <field name="xmlCatalogs">
+                                    <String-array>
+                                        <String>file:/local/repos/suse.svn/trunk/novdoc/etc/catalog.xml</String>
+                                    </String-array>
+                                </field>
+                                <field name="description">
+                                    <String>Novdoc DTD</String>
+                                </field>
+                                <field name="doctypeRules">
+                                    <documentTypeRule-array>
+                                        <documentTypeRule>
+                                            <field name="namespace">
+                                                <String>*</String>
+                                            </field>
+                                            <field name="rootElem">
+                                                <String>*</String>
+                                            </field>
+                                            <field name="fileName">
+                                                <String>*</String>
+                                            </field>
+                                            <field name="publicID">
+                                                <String>-//Novell//DTD NovDoc XML V1.0//EN</String>
+                                            </field>
+                                            <field name="javaRuleClass">
+                                                <null/>
+                                            </field>
+                                        </documentTypeRule>
+                                    </documentTypeRule-array>
+                                </field>
+                                <field name="scenarios">
+                                    <scenario-array/>
+                                </field>
+                                <field name="validationScenarios">
+                                    <null/>
+                                </field>
+                                <field name="defaultValidationScenarioName">
+                                    <null/>
+                                </field>
+                                <field name="defaultTransformationScenarioName">
+                                    <null/>
+                                </field>
+                                <field name="extensionsBundleClassName">
+                                    <null/>
+                                </field>
+                                <field name="useImposedInitialPage">
+                                    <Boolean>false</Boolean>
+                                </field>
+                                <field name="imposedInitialPage">
+                                    <String>Text</String>
+                                </field>
+                                <field name="elementLocatorExtension">
+                                    <null/>
+                                </field>
+                                <field name="schemaManagerFilterExtension">
+                                    <null/>
+                                </field>
+                                <field name="authorSWTDndExtension">
+                                    <null/>
+                                </field>
+                                <field name="textSWTDndExtension">
+                                    <null/>
+                                </field>
+                                <field name="authorSwingDndExtension">
+                                    <null/>
+                                </field>
+                                <field name="cssStylesFilterExtension">
+                                    <null/>
+                                </field>
+                                <field name="attributesValueEditor">
+                                    <null/>
+                                </field>
+                                <field name="priority">
+                                    <Integer>3</Integer>
+                                </field>
+                            </documentTypeDescriptor>
+                            <documentTypeDescriptor>
+                                <field name="name">
+                                    <String>Toms DocBook 5</String>
                                 </field>
                                 <field name="schemaDescriptor">
                                     <docTypeSchema>
@@ -81,7 +254,7 @@
                                                         <String>B</String>
                                                     </field>
                                                     <field name="accelerator">
-                                                        <String>ctrl shift B</String>
+                                                        <String>ctrl B</String>
                                                     </field>
                                                     <field name="actionModes">
                                                         <actionMode-array>
@@ -92,13 +265,13 @@
                                                                 <field name="argValues">
                                                                     <map>
                                                                         <entry>
-                                                                            <String>fragment</String>
+                                                                            <String>element</String>
                                                                             <String>&lt;emphasis xmlns="http://docbook.org/ns/docbook" role="bold"/></String>
                                                                         </entry>
                                                                     </map>
                                                                 </field>
                                                                 <field name="operationID">
-                                                                    <String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation</String>
                                                                 </field>
                                                             </actionMode>
                                                         </actionMode-array>
@@ -124,7 +297,7 @@
                                                         <String>I</String>
                                                     </field>
                                                     <field name="accelerator">
-                                                        <String>ctrl shift I</String>
+                                                        <String>ctrl I</String>
                                                     </field>
                                                     <field name="actionModes">
                                                         <actionMode-array>
@@ -135,13 +308,13 @@
                                                                 <field name="argValues">
                                                                     <map>
                                                                         <entry>
-                                                                            <String>fragment</String>
+                                                                            <String>element</String>
                                                                             <String>&lt;emphasis xmlns="http://docbook.org/ns/docbook" role="italic"/></String>
                                                                         </entry>
                                                                     </map>
                                                                 </field>
                                                                 <field name="operationID">
-                                                                    <String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation</String>
                                                                 </field>
                                                             </actionMode>
                                                         </actionMode-array>
@@ -167,7 +340,7 @@
                                                         <String>U</String>
                                                     </field>
                                                     <field name="accelerator">
-                                                        <String>ctrl shift U</String>
+                                                        <String>ctrl U</String>
                                                     </field>
                                                     <field name="actionModes">
                                                         <actionMode-array>
@@ -178,13 +351,13 @@
                                                                 <field name="argValues">
                                                                     <map>
                                                                         <entry>
-                                                                            <String>fragment</String>
+                                                                            <String>element</String>
                                                                             <String>&lt;emphasis xmlns="http://docbook.org/ns/docbook" role="underline"/></String>
                                                                         </entry>
                                                                     </map>
                                                                 </field>
                                                                 <field name="operationID">
-                                                                    <String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.ToggleSurroundWithElementOperation</String>
                                                                 </field>
                                                             </actionMode>
                                                         </actionMode-array>
@@ -390,6 +563,74 @@
                                                                         <entry>
                                                                             <String>insertLocation</String>
                                                                             <String>ancestor-or-self::*:varlistentry[namespace-uri() = "http://docbook.org/ns/docbook"][1]</String>
+                                                                        </entry>
+                                                                        <entry>
+                                                                            <String>insertPosition</String>
+                                                                            <String>After</String>
+                                                                        </entry>
+                                                                    </map>
+                                                                </field>
+                                                                <field name="operationID">
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+                                                                </field>
+                                                            </actionMode>
+                                                            <actionMode>
+                                                                <field name="xpathCondition">
+                                                                    <String>self::*:procedure[namespace-uri() = "http://docbook.org/ns/docbook"]</String>
+                                                                </field>
+                                                                <field name="argValues">
+                                                                    <map>
+                                                                        <entry>
+                                                                            <String>fragment</String>
+                                                                            <String>&lt;step  xmlns="http://docbook.org/ns/docbook">&lt;para/>&lt;/step></String>
+                                                                        </entry>
+                                                                        <entry>
+                                                                            <String>insertPosition</String>
+                                                                            <String>Inside as first child</String>
+                                                                        </entry>
+                                                                    </map>
+                                                                </field>
+                                                                <field name="operationID">
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.InsertOrReplaceFragmentOperation</String>
+                                                                </field>
+                                                            </actionMode>
+                                                            <actionMode>
+                                                                <field name="xpathCondition">
+                                                                    <String>ancestor-or-self::node()[namespace-uri() = "http://docbook.org/ns/docbook"][self::*:procedure | self::*:step][1][self::*:procedure]</String>
+                                                                </field>
+                                                                <field name="argValues">
+                                                                    <map>
+                                                                        <entry>
+                                                                            <String>fragment</String>
+                                                                            <String>&lt;step  xmlns="http://docbook.org/ns/docbook">&lt;para/>&lt;/step></String>
+                                                                        </entry>
+                                                                        <entry>
+                                                                            <String>insertLocation</String>
+                                                                            <String>ancestor-or-self::node()[namespace-uri() = "http://docbook.org/ns/docbook"][parent::*:procedure][1]</String>
+                                                                        </entry>
+                                                                        <entry>
+                                                                            <String>insertPosition</String>
+                                                                            <String>After</String>
+                                                                        </entry>
+                                                                    </map>
+                                                                </field>
+                                                                <field name="operationID">
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.InsertFragmentOperation</String>
+                                                                </field>
+                                                            </actionMode>
+                                                            <actionMode>
+                                                                <field name="xpathCondition">
+                                                                    <String>ancestor-or-self::node()[namespace-uri() = "http://docbook.org/ns/docbook"][self::*:variablelist | self::*:itemizedlist | self::*:orderedlist | self::*:procedure][1][self::*:procedure]</String>
+                                                                </field>
+                                                                <field name="argValues">
+                                                                    <map>
+                                                                        <entry>
+                                                                            <String>fragment</String>
+                                                                            <String>&lt;step   xmlns="http://docbook.org/ns/docbook">&lt;para/>&lt;/step></String>
+                                                                        </entry>
+                                                                        <entry>
+                                                                            <String>insertLocation</String>
+                                                                            <String>ancestor-or-self::*:step[namespace-uri() = "http://docbook.org/ns/docbook"][1]</String>
                                                                         </entry>
                                                                         <entry>
                                                                             <String>insertPosition</String>
@@ -1389,7 +1630,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                         <String>Insert Graphic</String>
                                                     </field>
                                                     <field name="description">
-                                                        <String>Browse for image</String>
+                                                        <String>Insert Image Reference</String>
                                                     </field>
                                                     <field name="largeIconPath">
                                                         <String>/images/Image20.gif</String>
@@ -2247,13 +2488,13 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 </action>
                                                 <action>
                                                     <field name="id">
-                                                        <String>id.generation.options</String>
+                                                        <String>id.options</String>
                                                     </field>
                                                     <field name="name">
-                                                        <String>ID Generation Options...</String>
+                                                        <String>ID Options...</String>
                                                     </field>
                                                     <field name="description">
-                                                        <String>Options for auto ID generation</String>
+                                                        <String>Options for IDs handling</String>
                                                     </field>
                                                     <field name="largeIconPath">
                                                         <String></String>
@@ -2370,6 +2611,99 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                         </actionMode-array>
                                                     </field>
                                                 </action>
+                                                <action>
+                                                    <field name="id">
+                                                        <String>procedure</String>
+                                                    </field>
+                                                    <field name="name">
+                                                        <String>Insert Procedure List</String>
+                                                    </field>
+                                                    <field name="description">
+                                                        <String>Insert a procedure at the caret position</String>
+                                                    </field>
+                                                    <field name="largeIconPath">
+                                                        <String>/images/ProcedureList20.gif</String>
+                                                    </field>
+                                                    <field name="smallIconPath">
+                                                        <String>/images/ProcedureList16.gif</String>
+                                                    </field>
+                                                    <field name="accessKey">
+                                                        <String></String>
+                                                    </field>
+                                                    <field name="accelerator">
+                                                        <null/>
+                                                    </field>
+                                                    <field name="actionModes">
+                                                        <actionMode-array>
+                                                            <actionMode>
+                                                                <field name="xpathCondition">
+                                                                    <String>(self::*:acknowledgements | self::*:annotation | self::*:answer | self::*:appendix | self::*:article | self::*:bibliodiv 
+| self::*:bibliography | self::*:bibliolist | self::*:blockquote | self::*:callout | self::*:calloutlist | self::*:caption
+| self::*:caution | self::*:chapter | self::*:colophon | self::*:constraintdef | self::*:cover | self::*:dedication
+| self::*:entry | self::*:example | self::*:figure | self::*:footnote | self::*:glossary | self::*:glossdef
+| self::*:glossdiv | self::*:glosslist | self::*:important | self::*:index | self::*:indexdiv | self::*:informalexample
+| self::*:informalfigure | self::*:itemizedlist | self::*:legalnotice | self::*:listitem | self::*:msgexplan
+| self::*:msgtext | self::*:note | self::*:orderedlist | self::*:para | self::*:partintro | self::*:preface
+| self::*:procedure | self::*:qandadiv | self::*:qandaset | self::*:question | self::*:refsect1 | self::*:refsect2
+| self::*:refsect3 | self::*:refsection | self::*:refsynopsisdiv | self::*:revdescription | self::*:sect1
+| self::*:sect2 | self::*:sect3 | self::*:sect4 | self::*:sect5 | self::*:section | self::*:setindex | self::*:sidebar
+| self::*:simplesect | self::*:step | self::*:task | self::*:taskprerequisites | self::*:taskrelated | self::*:tasksummary
+| self::*:td | self::*:textobject | self::*:th | self::*:tip | self::*:toc | self::*:tocdiv | self::*:variablelist
+| self::*:warning)[namespace-uri() = "http://docbook.org/ns/docbook"]</String>
+                                                                </field>
+                                                                <field name="argValues">
+                                                                    <map>
+                                                                        <entry>
+                                                                            <String>fragment</String>
+                                                                            <String>&lt;procedure xmlns="http://docbook.org/ns/docbook">&lt;step>&lt;para/>&lt;/step>&lt;/procedure></String>
+                                                                        </entry>
+                                                                    </map>
+                                                                </field>
+                                                                <field name="operationID">
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.SurroundWithFragmentOperation</String>
+                                                                </field>
+                                                            </actionMode>
+                                                        </actionMode-array>
+                                                    </field>
+                                                </action>
+                                                <action>
+                                                    <field name="id">
+                                                        <String>insert.xinclude</String>
+                                                    </field>
+                                                    <field name="name">
+                                                        <String>Insert XInclude</String>
+                                                    </field>
+                                                    <field name="description">
+                                                        <String>XInclude a new file in the document.</String>
+                                                    </field>
+                                                    <field name="largeIconPath">
+                                                        <String>/images/XInclude20.gif</String>
+                                                    </field>
+                                                    <field name="smallIconPath">
+                                                        <String>/images/XInclude16.gif</String>
+                                                    </field>
+                                                    <field name="accessKey">
+                                                        <String></String>
+                                                    </field>
+                                                    <field name="accelerator">
+                                                        <null/>
+                                                    </field>
+                                                    <field name="actionModes">
+                                                        <actionMode-array>
+                                                            <actionMode>
+                                                                <field name="xpathCondition">
+                                                                    <String></String>
+                                                                </field>
+                                                                <field name="argValues">
+                                                                    <map/>
+                                                                </field>
+                                                                <field name="operationID">
+                                                                    <String>ro.sync.ecss.extensions.commons.operations.InsertXIncludeOperation</String>
+                                                                </field>
+                                                            </actionMode>
+                                                        </actionMode-array>
+                                                    </field>
+                                                </action>
                                             </action-array>
                                         </field>
                                         <field name="menubarDescriptor">
@@ -2438,6 +2772,11 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                         <menuSeparator/>
                                                         <menuItem>
                                                             <field name="actionID">
+                                                                <String>insert.xinclude</String>
+                                                            </field>
+                                                        </menuItem>
+                                                        <menuItem>
+                                                            <field name="actionID">
                                                                 <String>section</String>
                                                             </field>
                                                         </menuItem>
@@ -2487,6 +2826,11 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                                     <menuItem>
                                                                         <field name="actionID">
                                                                             <String>variablelist</String>
+                                                                        </field>
+                                                                    </menuItem>
+                                                                    <menuItem>
+                                                                        <field name="actionID">
+                                                                            <String>procedure</String>
                                                                         </field>
                                                                     </menuItem>
                                                                 </menuEntry-array>
@@ -2577,7 +2921,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                         <menuSeparator/>
                                                         <menuItem>
                                                             <field name="actionID">
-                                                                <String>id.generation.options</String>
+                                                                <String>id.options</String>
                                                             </field>
                                                         </menuItem>
                                                     </menuEntry-array>
@@ -2638,6 +2982,11 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                             </field>
                                                         </menu>
                                                         <menuSeparator/>
+                                                        <menuItem>
+                                                            <field name="actionID">
+                                                                <String>insert.xinclude</String>
+                                                            </field>
+                                                        </menuItem>
                                                         <menuItem>
                                                             <field name="actionID">
                                                                 <String>section</String>
@@ -2823,6 +3172,11 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                         <toolbarSeparator/>
                                                         <toolbarItem>
                                                             <field name="actionID">
+                                                                <String>insert.xinclude</String>
+                                                            </field>
+                                                        </toolbarItem>
+                                                        <toolbarItem>
+                                                            <field name="actionID">
                                                                 <String>section</String>
                                                             </field>
                                                         </toolbarItem>
@@ -2860,6 +3214,11 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                         <toolbarItem>
                                                             <field name="actionID">
                                                                 <String>variablelist</String>
+                                                            </field>
+                                                        </toolbarItem>
+                                                        <toolbarItem>
+                                                            <field name="actionID">
+                                                                <String>procedure</String>
                                                             </field>
                                                         </toolbarItem>
                                                         <toolbarSeparator/>
@@ -2988,7 +3347,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                             </contextProvider>
                                         </field>
                                         <field name="tableSupportClassName">
-                                            <String>ro.sync.ecss.extensions.commons.table.spansupport.CALSTableCellSpanProvider</String>
+                                            <null/>
                                         </field>
                                         <field name="tableColWidthSupportClassName">
                                             <null/>
@@ -2997,16 +3356,15 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                             <null/>
                                         </field>
                                         <field name="authorExtensionStateListener">
-                                            <String>ro.sync.ecss.extensions.docbook.id.Docbook5UniqueAttributesRecognizer</String>
+                                            <null/>
                                         </field>
                                         <field name="attributesRecognizer">
-                                            <String>ro.sync.ecss.extensions.docbook.id.Docbook5UniqueAttributesRecognizer</String>
+                                            <null/>
                                         </field>
                                     </authorExtension>
                                 </field>
                                 <field name="templatesLocations">
                                     <String-array>
-                                        <String>${pd}/frameworks/oxygen</String>
                                         <String>${frameworksDir}/docbook/templates/Docbook 5</String>
                                     </String-array>
                                 </field>
@@ -3017,7 +3375,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                     </String-array>
                                 </field>
                                 <field name="description">
-                                    <String>DocBook 5.1 for Cookbook</String>
+                                    <String>DocBook is a markup language for technical documentation, originally intended for authoring technical documents</String>
                                 </field>
                                 <field name="doctypeRules">
                                     <documentTypeRule-array>
@@ -3065,7 +3423,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 <String></String>
                                             </field>
                                             <field name="inputXSLURL">
-                                                <String>${frameworks}/docbook/xsl/profiling/profile.xsl</String>
+                                                <String>${frameworks}/docbook/xsl/html/docbook_custom.xsl</String>
                                             </field>
                                             <field name="inputXMLURL">
                                                 <String>${currentFileURL}</String>
@@ -3222,9 +3580,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 </list>
                                             </field>
                                             <field name="cascadingStylesheets">
-                                                <String-array>
-                                                    <String>${frameworks}/docbook/xsl/html/docbook_custom.xsl</String>
-                                                </String-array>
+                                                <String-array/>
                                             </field>
                                             <field name="xslTransformer">
                                                 <String>Saxon6.5.5</String>
@@ -3259,7 +3615,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 <String></String>
                                             </field>
                                             <field name="inputXSLURL">
-                                                <String>${frameworks}/docbook/xsl/profiling/profile.xsl</String>
+                                                <String>${frameworks}/docbook/xsl/html/chunk_custom.xsl</String>
                                             </field>
                                             <field name="inputXMLURL">
                                                 <String>${currentFileURL}</String>
@@ -3458,9 +3814,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 </list>
                                             </field>
                                             <field name="cascadingStylesheets">
-                                                <String-array>
-                                                    <String>${frameworks}/docbook/xsl/html/chunk_custom.xsl</String>
-                                                </String-array>
+                                                <String-array/>
                                             </field>
                                             <field name="xslTransformer">
                                                 <String>Saxon6.5.5</String>
@@ -3495,7 +3849,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 <String></String>
                                             </field>
                                             <field name="inputXSLURL">
-                                                <String>${frameworks}/docbook/xsl/profiling/profile.xsl</String>
+                                                <String>${frameworks}/docbook/xsl/fo/docbook_custom.xsl</String>
                                             </field>
                                             <field name="inputXMLURL">
                                                 <String>${currentFileURL}</String>
@@ -3715,9 +4069,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 </list>
                                             </field>
                                             <field name="cascadingStylesheets">
-                                                <String-array>
-                                                    <String>${frameworks}/docbook/xsl/fo/docbook_custom.xsl</String>
-                                                </String-array>
+                                                <String-array/>
                                             </field>
                                             <field name="xslTransformer">
                                                 <String>Saxon6.5.5</String>
@@ -3752,7 +4104,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 <String></String>
                                             </field>
                                             <field name="inputXSLURL">
-                                                <String>${frameworks}/docbook/xsl/profiling/profile.xsl</String>
+                                                <String>${frameworks}/docbook/xsl/xhtml/docbook_custom.xsl</String>
                                             </field>
                                             <field name="inputXMLURL">
                                                 <String>${currentFileURL}</String>
@@ -3930,9 +4282,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 </list>
                                             </field>
                                             <field name="cascadingStylesheets">
-                                                <String-array>
-                                                    <String>${frameworks}/docbook/xsl/xhtml/docbook_custom.xsl</String>
-                                                </String-array>
+                                                <String-array/>
                                             </field>
                                             <field name="xslTransformer">
                                                 <String>Saxon6.5.5</String>
@@ -3967,7 +4317,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 <String></String>
                                             </field>
                                             <field name="inputXSLURL">
-                                                <String>${frameworks}/docbook/xsl/profiling/profile.xsl</String>
+                                                <String>${frameworks}/docbook/xsl/xhtml/chunk_custom.xsl</String>
                                             </field>
                                             <field name="inputXMLURL">
                                                 <String>${currentFileURL}</String>
@@ -4187,9 +4537,7 @@ self::*:variablelist | self::*:warning | self::*:entry | self::*:acknowledgement
                                                 </list>
                                             </field>
                                             <field name="cascadingStylesheets">
-                                                <String-array>
-                                                    <String>${frameworks}/docbook/xsl/xhtml/chunk_custom.xsl</String>
-                                                </String-array>
+                                                <String-array/>
                                             </field>
                                             <field name="xslTransformer">
                                                 <String>Saxon6.5.5</String>
@@ -4754,7 +5102,7 @@ The value of this parameter specifies profiles which should be included in the o
                                                 <null/>
                                             </field>
                                             <field name="name">
-                                                <String>DocBook WebHelp (experimental)</String>
+                                                <String>DocBook WebHelp</String>
                                             </field>
                                             <field name="baseURL">
                                                 <null/>
@@ -4831,15 +5179,18 @@ The value of this parameter specifies profiles which should be included in the o
                                             <field name="extensionURLs">
                                                 <String-array>
                                                     <String>${oxygenHome}/classes/</String>
-                                                    <String>${oxygenHome}/lib/author.jar</String>
                                                     <String>${oxygenHome}/lib/oxygen.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenAuthor.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenDeveloper.jar</String>
                                                     <String>${oxygenHome}/lib/oxygenEclipse.jar</String>
-                                                    <String>${oxygenHome}/lib/authorEclipse.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenAuthorEclipse.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenDeveloperEclipse.jar</String>
                                                     <String>${oxygenHome}/lib/resolver.jar</String>
                                                     <String>${oxygenHome}/lib/xercesImpl.jar</String>
                                                     <String>${oxygenHome}/lib/saxon.jar</String>
                                                     <String>${oxygenHome}/lib/xml-apis-xpath.jar</String>
                                                     <String>${oxygenHome}/lib/xml-apis-ext.jar</String>
+                                                    <String>${oxygenHome}/lib/log4j.jar</String>
                                                 </String-array>
                                             </field>
                                         </antScenario>
@@ -5425,195 +5776,25 @@ The value of this parameter specifies profiles which should be included in the o
                                             <field name="extensionURLs">
                                                 <String-array>
                                                     <String>${oxygenHome}/classes/</String>
-                                                    <String>${oxygenHome}/lib/author.jar</String>
                                                     <String>${oxygenHome}/lib/oxygen.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenAuthor.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenDeveloper.jar</String>
                                                     <String>${oxygenHome}/lib/oxygenEclipse.jar</String>
-                                                    <String>${oxygenHome}/lib/authorEclipse.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenAuthorEclipse.jar</String>
+                                                    <String>${oxygenHome}/lib/oxygenDeveloperEclipse.jar</String>
                                                     <String>${oxygenHome}/lib/resolver.jar</String>
                                                     <String>${oxygenHome}/lib/xercesImpl.jar</String>
                                                     <String>${oxygenHome}/lib/saxon.jar</String>
                                                     <String>${oxygenHome}/lib/xml-apis-xpath.jar</String>
                                                     <String>${oxygenHome}/lib/xml-apis-ext.jar</String>
+                                                    <String>${oxygenHome}/lib/log4j.jar</String>
                                                 </String-array>
                                             </field>
                                         </antScenario>
-                                        <scenario>
-                                            <field name="advancedOptionsMap">
-                                                <null/>
-                                            </field>
-                                            <field name="name">
-                                                <String>DocBook Cookbook en (HTML single)</String>
-                                            </field>
-                                            <field name="baseURL">
-                                                <String></String>
-                                            </field>
-                                            <field name="footerURL">
-                                                <String></String>
-                                            </field>
-                                            <field name="fOPMethod">
-                                                <String>pdf</String>
-                                            </field>
-                                            <field name="fOProcessorName">
-                                                <String>Apache FOP</String>
-                                            </field>
-                                            <field name="headerURL">
-                                                <String></String>
-                                            </field>
-                                            <field name="inputXSLURL">
-                                                <String>${pdu}/../frameworks/xslt/html/docbook.xsl</String>
-                                            </field>
-                                            <field name="inputXMLURL">
-                                                <String>${pdu}/xml/DocBook-Cookbook.xml</String>
-                                            </field>
-                                            <field name="defaultScenario">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="isFOPPerforming">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="type">
-                                                <String>XSL</String>
-                                            </field>
-                                            <field name="saveAs">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                            <field name="openInBrowser">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                            <field name="outputFile">
-                                                <File>${pd}/../build/html/DocBook-Cookbook.html</File>
-                                            </field>
-                                            <field name="openOtherLocationInBrowser">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="locationToOpenInBrowserURL">
-                                                <null/>
-                                            </field>
-                                            <field name="openInEditor">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="showInHTMLPane">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="showInXMLPane">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="showInSVGPane">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="showInResultSetPane">
-                                                <Boolean>false</Boolean>
-                                            </field>
-                                            <field name="useXSLTInput">
-                                                <Boolean>true</Boolean>
-                                            </field>
-                                            <field name="xsltParams">
-                                                <list>
-                                                    <transformationParameter>
-                                                        <field name="paramDescription">
-                                                            <paramDescriptor>
-                                                                <field name="localName">
-                                                                    <String>highlight.default.language</String>
-                                                                </field>
-                                                                <field name="prefix">
-                                                                    <null/>
-                                                                </field>
-                                                                <field name="namespace">
-                                                                    <null/>
-                                                                </field>
-                                                            </paramDescriptor>
-                                                        </field>
-                                                        <field name="value">
-                                                            <String>xml</String>
-                                                        </field>
-                                                        <field name="hasXPathValue">
-                                                            <Boolean>false</Boolean>
-                                                        </field>
-                                                    </transformationParameter>
-                                                    <transformationParameter>
-                                                        <field name="paramDescription">
-                                                            <paramDescriptor>
-                                                                <field name="localName">
-                                                                    <String>highlight.xslthl.config</String>
-                                                                </field>
-                                                                <field name="prefix">
-                                                                    <null/>
-                                                                </field>
-                                                                <field name="namespace">
-                                                                    <null/>
-                                                                </field>
-                                                            </paramDescriptor>
-                                                        </field>
-                                                        <field name="value">
-                                                            <String>${frameworks}/docbook/xsl/highlighting/xslthl-config.xml</String>
-                                                        </field>
-                                                        <field name="hasXPathValue">
-                                                            <Boolean>false</Boolean>
-                                                        </field>
-                                                    </transformationParameter>
-                                                </list>
-                                            </field>
-                                            <field name="cascadingStylesheets">
-                                                <String-array/>
-                                            </field>
-                                            <field name="xslTransformer">
-                                                <String>Saxon6.5.5</String>
-                                            </field>
-                                            <field name="extensionURLs">
-                                                <String-array>
-                                                    <String>${pdu}/lib/xslthl.jar</String>
-                                                    <String>${frameworks}/docbook/xsl/extensions/saxon65.jar</String>
-                                                </String-array>
-                                            </field>
-                                        </scenario>
                                     </scenario-array>
                                 </field>
                                 <field name="validationScenarios">
-                                    <validationScenario-array>
-                                        <validationScenario>
-                                            <field name="pairs">
-                                                <list>
-                                                    <validationUnit>
-                                                        <field name="validationType">
-                                                            <validationUnitType>
-                                                                <field name="validationInputType">
-                                                                    <String>text/any</String>
-                                                                </field>
-                                                            </validationUnitType>
-                                                        </field>
-                                                        <field name="url">
-                                                            <String>${currentFileURL}</String>
-                                                        </field>
-                                                        <field name="validationEngine">
-                                                            <validationEngine>
-                                                                <field name="engineType">
-                                                                    <String>&lt;Default engine></String>
-                                                                </field>
-                                                                <field name="allowsAutomaticValidation">
-                                                                    <Boolean>true</Boolean>
-                                                                </field>
-                                                            </validationEngine>
-                                                        </field>
-                                                        <field name="allowAutomaticValidation">
-                                                            <Boolean>true</Boolean>
-                                                        </field>
-                                                        <field name="extensions">
-                                                            <null/>
-                                                        </field>
-                                                        <field name="validationSchema">
-                                                            <null/>
-                                                        </field>
-                                                    </validationUnit>
-                                                </list>
-                                            </field>
-                                            <field name="type">
-                                                <String>Validation_scenario</String>
-                                            </field>
-                                            <field name="name">
-                                                <String>DocBook 5 Validation</String>
-                                            </field>
-                                        </validationScenario>
-                                    </validationScenario-array>
+                                    <validationScenario-array/>
                                 </field>
                                 <field name="defaultValidationScenarioName">
                                     <null/>
@@ -5628,180 +5809,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <Boolean>true</Boolean>
                                 </field>
                                 <field name="imposedInitialPage">
-                                    <String>Design</String>
-                                </field>
-                                <field name="elementLocatorExtension">
-                                    <String>ro.sync.ecss.extensions.commons.DefaultElementLocatorProvider</String>
-                                </field>
-                                <field name="schemaManagerFilterExtension">
-                                    <null/>
-                                </field>
-                                <field name="authorSWTDndExtension">
-                                    <null/>
-                                </field>
-                                <field name="textSWTDndExtension">
-                                    <null/>
-                                </field>
-                                <field name="authorSwingDndExtension">
-                                    <null/>
-                                </field>
-                                <field name="cssStylesFilterExtension">
-                                    <null/>
-                                </field>
-                                <field name="attributesValueEditor">
-                                    <null/>
-                                </field>
-                                <field name="priority">
-                                    <Integer>3</Integer>
-                                </field>
-                            </documentTypeDescriptor>
-                            <documentTypeDescriptor>
-                                <field name="name">
-                                    <String>Novdoc</String>
-                                </field>
-                                <field name="schemaDescriptor">
-                                    <null/>
-                                </field>
-                                <field name="classpath">
-                                    <null/>
-                                </field>
-                                <field name="authorExtensionDescriptor">
-                                    <authorExtension>
-                                        <field name="cssDescriptors">
-                                            <cssFile-array/>
-                                        </field>
-                                        <field name="mergeCSSsFromDocument">
-                                            <Boolean>false</Boolean>
-                                        </field>
-                                        <field name="actionDescriptors">
-                                            <action-array/>
-                                        </field>
-                                        <field name="menubarDescriptor">
-                                            <menu>
-                                                <field name="label">
-                                                    <String>Menu</String>
-                                                </field>
-                                                <field name="accessKey">
-                                                    <null/>
-                                                </field>
-                                                <field name="iconPath">
-                                                    <null/>
-                                                </field>
-                                                <field name="menuEntriesDescriptorList">
-                                                    <menuEntry-array/>
-                                                </field>
-                                            </menu>
-                                        </field>
-                                        <field name="popupMenuDescriptor">
-                                            <menu>
-                                                <field name="label">
-                                                    <String>Contextual menu</String>
-                                                </field>
-                                                <field name="accessKey">
-                                                    <null/>
-                                                </field>
-                                                <field name="iconPath">
-                                                    <null/>
-                                                </field>
-                                                <field name="menuEntriesDescriptorList">
-                                                    <menuEntry-array/>
-                                                </field>
-                                            </menu>
-                                        </field>
-                                        <field name="toolbarDescriptor">
-                                            <toolbar>
-                                                <field name="id">
-                                                    <String>Toolbar</String>
-                                                </field>
-                                                <field name="type">
-                                                    <Integer>2</Integer>
-                                                </field>
-                                                <field name="largeIconPath">
-                                                    <null/>
-                                                </field>
-                                                <field name="smallIconPath">
-                                                    <null/>
-                                                </field>
-                                                <field name="toolbarEntriesDescriptorList">
-                                                    <toolbarEntry-array/>
-                                                </field>
-                                            </toolbar>
-                                        </field>
-                                        <field name="additionalToolbarsDescriptors">
-                                            <null/>
-                                        </field>
-                                        <field name="contextualItems">
-                                            <null/>
-                                        </field>
-                                        <field name="tableSupportClassName">
-                                            <null/>
-                                        </field>
-                                        <field name="tableColWidthSupportClassName">
-                                            <null/>
-                                        </field>
-                                        <field name="customReferencesResolver">
-                                            <null/>
-                                        </field>
-                                        <field name="authorExtensionStateListener">
-                                            <null/>
-                                        </field>
-                                        <field name="attributesRecognizer">
-                                            <null/>
-                                        </field>
-                                    </authorExtension>
-                                </field>
-                                <field name="templatesLocations">
-                                    <null/>
-                                </field>
-                                <field name="xmlCatalogs">
-                                    <String-array>
-                                        <String>file:/local/repos/suse.svn/trunk/novdoc/etc/catalog.xml</String>
-                                    </String-array>
-                                </field>
-                                <field name="description">
-                                    <String>Novdoc DTD</String>
-                                </field>
-                                <field name="doctypeRules">
-                                    <documentTypeRule-array>
-                                        <documentTypeRule>
-                                            <field name="namespace">
-                                                <String>*</String>
-                                            </field>
-                                            <field name="rootElem">
-                                                <String>*</String>
-                                            </field>
-                                            <field name="fileName">
-                                                <String>*</String>
-                                            </field>
-                                            <field name="publicID">
-                                                <String>-//Novell//DTD NovDoc XML V1.0//EN</String>
-                                            </field>
-                                            <field name="javaRuleClass">
-                                                <null/>
-                                            </field>
-                                        </documentTypeRule>
-                                    </documentTypeRule-array>
-                                </field>
-                                <field name="scenarios">
-                                    <scenario-array/>
-                                </field>
-                                <field name="validationScenarios">
-                                    <null/>
-                                </field>
-                                <field name="defaultValidationScenarioName">
-                                    <null/>
-                                </field>
-                                <field name="defaultTransformationScenarioName">
-                                    <null/>
-                                </field>
-                                <field name="extensionsBundleClassName">
-                                    <null/>
-                                </field>
-                                <field name="useImposedInitialPage">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="imposedInitialPage">
-                                    <String>Text</String>
+                                    <String>Author</String>
                                 </field>
                                 <field name="elementLocatorExtension">
                                     <null/>
@@ -5835,14 +5843,6 @@ The value of this parameter specifies profiles which should be included in the o
                         <documentTypeEntry-array>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>internal/DocBook Cookbook</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
                                     <String>internal/Novdoc</String>
                                 </field>
                                 <field name="enable">
@@ -5851,10 +5851,18 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
+                                    <String>internal/Toms DocBook 5</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
                                     <String>ant/ant.framework/ANT</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5862,7 +5870,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>dita/dita.framework/DITA</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5870,7 +5878,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>dita/ditamap.framework/DITA Map</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5878,7 +5886,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>dita/ditaval.framework/DITAVAL</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5886,7 +5894,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>docbook/docbook4.framework/DocBook 4</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5894,7 +5902,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>docbook/docbook5.framework/DocBook 5</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5910,7 +5918,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ead/ead.framework/EAD</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5926,7 +5934,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>kml/kml.framework/KML</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5942,7 +5950,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ncx/ncx.framework/NCX</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5950,7 +5958,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>nvdl/nvdl.framework/NVDL</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5966,7 +5974,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>ocf/ocf.framework/OCF</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5974,7 +5982,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>odf/odf.framework/ODF</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -5990,7 +5998,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>opf/opf.framework/OPF</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6027,10 +6035,18 @@ The value of this parameter specifies profiles which should be included in the o
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
+                                    <String>tei/teip5odd.framework/TEI ODD</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
                                     <String>tei/teip4.framework/TEI P4</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6038,7 +6054,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>tei/teip5.framework/TEI P5</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6046,7 +6062,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>widgets/widgets.framework/Widgets</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6062,7 +6078,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>xmlschema/xmlschema.framework/XML Schema</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6070,7 +6086,7 @@ The value of this parameter specifies profiles which should be included in the o
                                     <String>xmlspec/xmlspec.framework/XMLSpec</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -6724,6 +6740,21 @@ The value of this parameter specifies profiles which should be included in the o
                         <spellCheckOptions>
                             <field name="automaticSpellCheck">
                                 <Boolean>true</Boolean>
+                            </field>
+                            <field name="automaticSpellCheckContentTypes">
+                                <String-array>
+                                    <String>text/html</String>
+                                    <String>text/nvdl</String>
+                                    <String>text/plain</String>
+                                    <String>text/properties</String>
+                                    <String>text/rng</String>
+                                    <String>text/sch</String>
+                                    <String>text/wsdl</String>
+                                    <String>text/xml</String>
+                                    <String>text/xproc</String>
+                                    <String>text/xsd</String>
+                                    <String>text/xsl</String>
+                                </String-array>
                             </field>
                             <field name="spellCheckInComments">
                                 <Boolean>false</Boolean>
