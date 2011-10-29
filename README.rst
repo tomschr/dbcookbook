@@ -1,5 +1,5 @@
 ===================================
-README for "The DocCookBook"
+Welcome to "The DocCookBook"
 ===================================
 
 License
