@@ -53,7 +53,9 @@ div.book-titlepage div.legalnotice div.sidebar
   -webkit-border-radius:1em;
   -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
 }
-
+div.legalnotice div.sidebar div.sidebar-content {
+  padding-top:0;
+}
 div.legalnotice {
   text-align:left;
 }
@@ -78,7 +80,8 @@ div.preface-titlepage h2 {
 
 div.legalnotice div.informaltable,
 div.legalnotice div.informaltable-wrapper,
-div.legalnotice div.informaltable table {
+div.legalnotice div.informaltable table,
+div.table-wrapper {
   border-color: #CACACA;
   border-width: 0px;
   border-style:none;
@@ -126,4 +129,10 @@ div.preface div.section-titlepage h3
 }
 div.section-titlepage h5 {
   font-size:95%;
+}
+
+/* Inlines */
+p > div.remark {
+  display:inline-block;
+  color:red;
 }
