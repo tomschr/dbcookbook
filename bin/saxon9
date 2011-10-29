@@ -4,14 +4,7 @@
 # JPackage Project <http://www.jpackage.org/>
 
 . /usr/share/java-utils/java-functions
-
-# Get the absolute path of this script:
-ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-# Cut the last directory part, as script is in .../bin
-ABSPATH=${ABSPATH%/*}
-# 
-BUILDDIR="build"
-FRAMEWORKSDIR=${ABSPATH}/frameworks
+[ -e bin/common.sh ] && . bin/common.sh
 
 MAIN_CLASS=net.sf.saxon.Transform
 
@@ -23,14 +16,14 @@ jing.jar jython.jar saxon.jar saxon9-ant.jar saxon9he.jar xercesImpl.jar xml-api
 # Optional jars
 #CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon avalon-logkit xml-commons-resolver 2>/dev/null) || :
 # Extend the CLASSPATH variable
-CLASSPATH="$(build-classpath-directory ${FRAMEWORKSDIR}/xslt2/tools/lib/ 2>/dev/null)"
+CLASSPATH="$(build-classpath-directory ${FRAMEWORKSDIR}/db-xslt2/tools/lib/ 2>/dev/null)"
 CLASSPATH="$CLASSPATH:${FRAMEWORKSDIR}/xslt2/ext/build/lib/docbook-xsl2-saxon.jar"
 
 # If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
 # and tweak command line options so that it's used.
 args=
-if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
-  CLASSPATH="$CLASSPATH:__RESOLVERDIR__"
+#if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
+#  CLASSPATH="$CLASSPATH:__RESOLVERDIR__"
 #  # Tune options to use resolver.
 #  r=org.apache.xml.resolver.tools.ResolvingXMLReader
 #  for opt in -x -y ; do
@@ -42,7 +35,7 @@ if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
 #  if ! echo $@ | grep "\\-r " >/dev/null 2>&1 ; then
 #    args="$args -r:$r"
 #  fi
-fi
+#fi
 
 # Set parameters
 set_jvm
