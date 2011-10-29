@@ -1,16 +1,30 @@
 #!/bin/sh
 #
-# saxon script
+# saxon9 script
 # JPackage Project <http://www.jpackage.org/>
 
 . /usr/share/java-utils/java-functions
 
+# Get the absolute path of this script:
+ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
+# Cut the last directory part, as script is in .../bin
+ABSPATH=${ABSPATH%/*}
+# 
+BUILDDIR="build"
+FRAMEWORKSDIR=${ABSPATH}/frameworks
+
 MAIN_CLASS=net.sf.saxon.Transform
 
-BASE_JARS="saxon9.jar saxon9-dom.jar saxon9-sql.jar saxon9-s9api.jar saxon9-jdom.jar saxon9-xpath.jar saxon9-xom.jar saxon9-xqj.jar xml-commons-apis.jar jaxp_parser_impl.jar bea-stax-api.jar bea-stax-ri.jar"
+#BASE_JARS="saxon9.jar saxon9-dom.jar saxon9-sql.jar saxon9-s9api.jar saxon9-jdom.jar saxon9-xpath.jar saxon9-xom.jar saxon9-xqj.jar xml-commons-apis.jar jaxp_parser_impl.jar bea-stax-api.jar bea-stax-ri.jar"
+BASE_JARS="ant-contrib-1.0b3.jar calabash.jar commons-codec-1.3.jar 
+commons-httpclient-3.1.jar commons-logging-1.1.1.jar isorelax.jar 
+jing.jar jython.jar saxon.jar saxon9-ant.jar saxon9he.jar xercesImpl.jar xml-apis.jar xmlresolver.jar"
 
 # Optional jars
-CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon avalon-logkit xml-commons-resolver 2>/dev/null) || :
+#CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon avalon-logkit xml-commons-resolver 2>/dev/null) || :
+# Extend the CLASSPATH variable
+CLASSPATH="$(build-classpath-directory ${FRAMEWORKSDIR}/xslt2/tools/lib/ 2>/dev/null)"
+CLASSPATH="$CLASSPATH:${FRAMEWORKSDIR}/xslt2/ext/build/lib/docbook-xsl2-saxon.jar"
 
 # If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
 # and tweak command line options so that it's used.
@@ -32,7 +46,7 @@ fi
 
 # Set parameters
 set_jvm
-set_classpath $BASE_JARS
+# set_classpath $BASE_JARS
 set_flags $BASE_FLAGS
 set_options $BASE_OPTIONS
 

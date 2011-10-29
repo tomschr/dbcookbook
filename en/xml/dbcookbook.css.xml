@@ -153,33 +153,25 @@ div.section div.section div.section div.titlepage .title
   font-size: 120%;
 }
 /* Author and authorgroup */
-div.section div.titlepage div.author .author
-{
-  font-weight:normal;
-}
-div.section div.titlepage div.authorgroup
+div.section div.titlepage div.authorgroup,
+div.section div.titlepage div.othercredit,
 {
   margin-top:1.5em;
-  font-family:'Maven Pro';
   font-weight:normal;
-}
-div.section div.titlepage div.authorgroup
-{
-  margin-top:1.5em;
-  font-family:'Maven Pro';
-  font-weight:normal;
+  font-size:small;
 }
 div.section div.titlepage div.authorgroup div.author .author,
-div.section div.titlepage div.authorgroup div.author
+div.section div.titlepage div.othercredit .othercredit,
 {
-    margin-top:0;
-    margin-bottom:0;
+  margin-top:0pt;
+  margin-bottom:0pt;
 }
 div.section div.titlepage div.authorgroup:before,
-div.section div.titlepage > div.author:before
+div.section div.titlepage div.othercredit:before,
 {
   content:"Credits: ";
 }
+
 /* Tocs */
 div.book div.toc div.toc-title,
 div.book div.list-of-tables div.toc-title,

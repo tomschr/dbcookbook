@@ -108,6 +108,7 @@
     - Adding Permalinks
     - Creating Breadcrumbs (simple, sophisticated)
     - Implementing Clickable TOCs
+    - Deciding where to put Customizations (CSS or XSLT)
   -->
   
   <xi:include href="html/topic.permalinks.xml"/>
