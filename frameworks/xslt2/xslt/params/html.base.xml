@@ -1,0 +1,30 @@
+<refentry xmlns="http://docbook.org/ns/docbook"
+	  xmlns:src="http://nwalsh.com/xmlns/litprog/fragment"
+	  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	  xmlns:xlink="http://www.w3.org/1999/xlink"
+	  version="5.0"
+	  xml:id="html.base">
+<refmeta>
+<refentrytitle>html.base</refentrytitle>
+<refmiscinfo role="type">URI</refmiscinfo>
+</refmeta>
+<refnamediv>
+<refname>html.base</refname>
+<refpurpose>Specifies the HTML base URI</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv>
+<src:fragment xml:id="html.base.frag">
+<xsl:param name="html.base" select="''"/>
+</src:fragment>
+</refsynopsisdiv>
+
+<refsect1><title>Description</title>
+
+<para>If specified, this value will be used for the <tag>base</tag> element in the
+generated HTML.
+</para>
+
+</refsect1>
+</refentry>
+
