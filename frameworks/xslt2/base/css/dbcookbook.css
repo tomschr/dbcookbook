@@ -124,15 +124,41 @@ div.preface div.section-titlepage h3
   padding-left:0pt;
   text-align:left;
   font-size: 180%;
-  margin-bottom:-.5em;
+  /*margin-bottom:-.5em;*/
   text-shadow:2px 2px 4px rgba(0,0,0,0.15);
 }
 div.section-titlepage h5 {
   font-size:95%;
 }
 
+/* Lists */
+div.variablelist dd p:first-child {
+  margin-top:2pt;
+}
+
+div.procedure-wrapper div.title
+{
+  margin-bottom:2pt;
+}
+
 /* Inlines */
 p > div.remark {
   display:inline-block;
   color:red;
+}
+
+/* Footnotes */
+div.footnote p {
+  font-size:small;
+}
+div.footnote p sup {
+  vertical-align:baseline;
+  font-size:small;
+  margin-right:5pt;
+}
+
+/* Verbatim */
+div.programlisting pre 
+{
+  margin-top:2pt;
 }
