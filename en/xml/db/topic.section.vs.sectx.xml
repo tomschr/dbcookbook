@@ -63,6 +63,11 @@
             <entry>Yes</entry>
             <entry>No, needs to be renamed</entry>
           </row>
+          <row>
+            <entry>Renaming after relocation</entry>
+            <entry>Not needed</entry>
+            <entry>Needs to be renamed</entry>
+          </row>
         </tbody>
       </tgroup>
     </table>
