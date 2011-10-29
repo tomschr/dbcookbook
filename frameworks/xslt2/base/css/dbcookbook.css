@@ -7,26 +7,22 @@
  
 @import "default.css";
 
-body
-{
+body {
   margin-left:2em;
   margin-right:2em;
 }
-div.book-titlepage
-{
+div.book-titlepage {
   margin-top:2em;
   text-align: center;
 }
-div.book-titlepage h1
-{
+div.book-titlepage h1 {
   /* font-family:'Maven Pro'; */
   font-weight:900;
   font-size:500%;
   margin-bottom:12pt;
   text-shadow:4px 4px 5px rgba(0,0,0,0.15);
 }
-div.book-titlepage h2:before
-{
+div.book-titlepage h2:before {
   content:"\2767";
   display:block;
   text-align:center;
@@ -67,10 +63,15 @@ div.preface-titlepage
 }
 div.appendix-titlepage h2,
 div.chapter-titlepage h2,
-div.preface-titlepage h2
-{
+div.preface-titlepage h2 {
   text-rendering: optimizeLegibility;
   color:#369;/* navy */
   text-align:left;
   font-size:280%;
+}
+
+div.legalnotice div.informaltable,
+div.legalnotice div.informaltable-wrapper div.informaltable,
+div.legalnotice div.informaltable table {
+  border:none;
 }
