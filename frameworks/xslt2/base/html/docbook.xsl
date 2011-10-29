@@ -20,5 +20,6 @@
   <xsl:param name="make.clean.html" select="1"/>
   <xsl:param name="table.borders.with.css" select="0"/>
   <xsl:param name="section.autolabel.max.depth" select="1"/>
+  <xsl:param name="section.label.includes.component.label" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
 </xsl:stylesheet>
