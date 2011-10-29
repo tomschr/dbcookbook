@@ -5,11 +5,11 @@ syntax: glob
 
 # Temporary files used by the vim editor.
 .*.swp
-
+frameworks/db-xslt2/tools/lib/cachedir/packages/*.pkc
 *.orig
 *.html
 
-xml/.*.xml
+
 xml/fo/*.fo
 xml/fo/xslt/*.fo
 xml/fo/*.pdf
