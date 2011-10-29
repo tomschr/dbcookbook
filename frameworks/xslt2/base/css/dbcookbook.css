@@ -1,0 +1,76 @@
+/*
+ * CSS File for the DocCookBook
+ * https://sourceforge.net/projects/doccookbook/
+ * 
+ * Author: Thomas Schraitle
+ */
+ 
+@import "default.css";
+
+body
+{
+  margin-left:2em;
+  margin-right:2em;
+}
+div.book-titlepage
+{
+  margin-top:2em;
+  text-align: center;
+}
+div.book-titlepage h1
+{
+  /* font-family:'Maven Pro'; */
+  font-weight:900;
+  font-size:500%;
+  margin-bottom:12pt;
+  text-shadow:4px 4px 5px rgba(0,0,0,0.15);
+}
+div.book-titlepage h2:before
+{
+  content:"\2767";
+  display:block;
+  text-align:center;
+  height:1.5em;
+  font-size:2.5em;
+}
+
+div.book-titlepage div.legalnotice div.sidebar
+{
+  font-family: 'PT Serif';
+  text-align:left;
+  font-size:smaller;
+  margin-top:3em;
+  margin-bottom:3em;
+  margin-left:10%;
+  margin-right:10%;
+  padding:1em;
+  border:2pt solid black;
+  background-color:#FFFDB7;
+  -moz-border-radius:.5em;
+  -moz-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  -webkit-border-radius:1em;
+  -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+}
+
+div.legalnotice {
+  text-align:left;
+}
+
+blockquote h3 {
+  margin-bottom:-.5em;
+}
+
+div.chapter-titlepage,
+div.preface-titlepage
+{
+  text-align:left;
+}
+div.appendix-titlepage h2,
+div.chapter-titlepage h2,
+div.preface-titlepage h2
+{
+  text-rendering: optimizeLegibility;
+  color:#369;/* navy */
+  text-align:left;
+  font-size:280%;
+}
