@@ -16,6 +16,6 @@ xml/fo/xslt/*.fo
 xml/fo/*.pdf
 xml/fo/xslt/*.pdf
 
-html/*
+
 build/*
 test-output/*
