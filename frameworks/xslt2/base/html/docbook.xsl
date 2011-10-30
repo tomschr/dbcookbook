@@ -13,6 +13,7 @@
   <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>
   
   <xsl:include href="param.xsl"/>
+  <xsl:include href="usermeta.xsl"/>
     
   
   <xsl:template name="t:user-titlepage-templates" as="element(tmpl:templates-list)?">
