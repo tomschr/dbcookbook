@@ -24,15 +24,32 @@
     <definitions definitionfile="defs.xml"/>
     <abstract>
       <para>Some typical problems are independant from their target
-        formats like writing customization layers. This chapter gives
-        you some information what falls into this category.</para>
+        formats. This chapter gives you some information what falls into
+        this category.</para>
     </abstract>
   </info>
   
   <section xml:id="dbc.common.intro">
     <title>Introduction</title>
     <para>A lot of customizations can be shared between different output
-      formats.</para>
+      formats. As such, it is probably a good idea to think about the
+      structure of your customizations before you write them. The
+      following directories is a good start:</para>
+    <screen>mycustomizations/
+  +-- common
+  +-- fo
+  +-- html
+  +-- futher formats...</screen>
+    <para>The <filename class="directory">common</filename> directory
+      contains all the stylesheets which are not specific to any
+      formats. On the other hand, <filename class="directory"
+        >fo</filename>, <filename class="directory">html</filename>,
+      etc. contains the respective customizations for their target
+      formats. </para>
+    <para>Furthermore, it is recommended to use the same file name than
+      the original from the DocBook XSL stylesheets. This makes it
+      easier to see, what changes can be expected with your own
+      customizations.</para>
   </section>
   
   <!-- 
