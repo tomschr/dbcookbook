@@ -1,1 +1,15 @@
-# Extract chapter/abstract or section/abstract to create a small overview of summaries
+* Extract chapter/abstract or section/abstract to create a small overview of summaries
+
+* Extended XLinks (found in the DocBook XSLT2 stylesheets, html/xlink.xsl):
+<citetitle xlink:type="extended">
+  <phrase xlink:type="resource" xlink:label="source">DocBook</phrase>        
+  <link xlink:type="locator" xlink:href="http://docbook.org/" 
+    xlink:label="target"
+    xlink:title="DocBook.org"/>
+  <link xlink:type="locator" 
+    xlink:href="http://en.wikipedia.org/wiki/DocBook" 
+    xlink:label="target"
+    xlink:title="DocBook on Wikipedia"/>
+  <!-- Point from source to target(s) -->
+  <link xlink:type="arc" xlink:from="source" xlink:to="target"></link>  
+</citetitle>
