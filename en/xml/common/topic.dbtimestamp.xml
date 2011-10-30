@@ -24,7 +24,7 @@
   <section role="problem">
     <title>Problem</title>
     <para>You want to insert the current date, time, or both in your
-      output format.</para>
+      output format (for example, to show the date of creation).</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -57,28 +57,31 @@
     <section xml:id="dbc.common.dbtimestamp.default-format">
       <title>Changing the Default Format</title>
       <para>Each language contains in its language files<remark>add
-      xref</remark> the context <code>datetime</code>.</para>
+          xref</remark> the context <code>datetime</code>. The following
+        code shows it for the English language file:</para>
       <screen language="xml">&lt;l:context name="datetime">
   &lt;l:template name="format" text="m/d/Y"/>
 &lt;/l:context></screen>
       <para>This is only useful, if you want to change the appearance of
-      date completely. </para>
+        date in your document completely. </para>
       <!-- Add procedure to explain how to change? -->
     </section>
     <section xml:id="dbc.common.dbtimestamp.pseudo-attrib">
       <title>Adding Pseudo-Attributes</title>
       <para>The simpler method is to change the PI directly. Especially
         if you do not want to customize the date for the complete
-        document. Basically, add a <emphasis>pseudo-attribute</emphasis><footnote>
+        document or you want it change individually. Basically, add a
+          <emphasis>pseudo-attribute</emphasis><footnote>
           <para>A <emphasis>pseudo-attribute</emphasis> looks like an
             XML attribute due to its similar syntax. However, it is not.
             A processing instruction can only contain text and no
             attributes. For more information about PIs, refer to the XML
-          specification at <link xlink:href="http://www.w3.org/TR/REC-xml/#sec-pi"/>.</para>
+            specification at <link
+              xlink:href="http://www.w3.org/TR/REC-xml/#sec-pi"
+            />.</para>
         </footnote> into the <tag class="xmlpi">dbtimestamp</tag> PI.
-       For example, if you want to insert the year, add the <tag
-         class="attribute">format</tag> pseudo-attribute:
-      </para>
+        For example, if you want to insert only the year, add the <tag
+          class="attribute">format</tag> pseudo-attribute: </para>
       <screen language="xml">&lt;?dbtimestamp format="Y"?></screen>
       <para>More format-letters can be found in the reference page (see
         link at the <citetitle>See Also</citetitle> section).</para>
