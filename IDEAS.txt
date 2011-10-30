@@ -13,3 +13,8 @@
   <!-- Point from source to target(s) -->
   <link xlink:type="arc" xlink:from="source" xlink:to="target"></link>  
 </citetitle>
+
+ More info, see:
+ - http://www.cafeconleche.org/books/bible2/chapters/ch19.html
+
+
