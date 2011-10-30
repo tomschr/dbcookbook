@@ -106,7 +106,7 @@
       scheme="DCTERMS.URI"/>--> 
     <meta name="DC.relation" content="http://dublincore.org/"
       scheme="DCTERMS.URI"/>
-    <meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/><!-- FIXME -->
+    <!--<meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/>--><!-- FIXME -->
     <meta name="DC.rights" content="legalnotice"  scheme="DCTERMS.URI"/>
   </xsl:template>
   
