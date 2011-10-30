@@ -27,17 +27,15 @@
   <xsl:template name="t:user-meta-author">
     <xsl:param name="node" select="."/>
     <xsl:variable name="author">
-      <xsl:apply-templates select="$node/d:info/d:author" mode="user-meta-author"/>
+      <xsl:call-template name="t:person-name-first-last">
+        <xsl:with-param name="node" select="$node/d:info/d:author/d:personname"/>
+      </xsl:call-template>
     </xsl:variable>
     <xsl:if test="$author != ''">
       <meta name="author" content="{$author}"/>
     </xsl:if>
-  </xsl:template>
-  
-  <xsl:template match="d:author" mode="user-meta-author">
-    <xsl:apply-templates select="."/>
-  </xsl:template>
-  
+  </xsl:template>  
+
   <xsl:template name="t:user-meta-dublincore">
     <xsl:param name="node" select="."/>
 
@@ -46,13 +44,15 @@
     <meta name="DC.Language" content="{/*/@xml:lang}" scheme="DCTERMS.RFC3066"/>
     <meta name="DC.title" content="{f:title($node)}"/>
 
-    <!--<meta name="DC.creator">
+    <meta name="DC.creator">
       <xsl:attribute name="content">
-        <xsl:call-template name="t:person-name">
-          <xsl:with-param name="node" select="$node/d:info/d:author"/>
+        <xsl:call-template name="t:person-name-first-last">
+          <xsl:with-param name="node"
+          select="$node/d:info/d:author/d:personname"/>
         </xsl:call-template>
       </xsl:attribute>
-    </meta>-->
+    </meta>
+    
     <xsl:if test="$node/d:info/d:subjectset">
       <meta name="DC.subject"
         content="{string-join($node/d:info/d:subjectset/d:subject/d:subjectterm,
