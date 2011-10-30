@@ -36,13 +36,13 @@
       structure of your customizations before you write them. The
       following directories is a good start:</para>
     <screen>mycustomizations/
-  +-- common
-  +-- fo
-  +-- html
+  +-- common/
+  +-- fo/
+  +-- html/
   +-- futher formats...</screen>
     <para>The <filename class="directory">common</filename> directory
       contains all the stylesheets which are not specific to any
-      formats. On the other hand, <filename class="directory"
+      formats. On the contrary, <filename class="directory"
         >fo</filename>, <filename class="directory">html</filename>,
       etc. contains the respective customizations for their target
       formats. </para>
