@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:svg="http://www.w3.org/2000/svg" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:db="http://docbook.org/ns/docbook" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" ns="http://docbook.org/ns/docbook">
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svg="http://www.w3.org/2000/svg" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:db="http://docbook.org/ns/docbook" xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" ns="http://docbook.org/ns/docbook">
   <!-- DocBook V5.0-->
   <!-- See http://docbook.org/ns/docbook -->
   <start>
@@ -865,14 +865,11 @@
   </define>
   <define name="db.all.inlines">
     <choice>
-      <choice>
-        <text/>
-        <ref name="db.ubiq.inlines"/>
-        <ref name="db.general.inlines"/>
-        <ref name="db.domain.inlines"/>
-        <ref name="db.extension.inlines"/>
-      </choice>
-      <ref name="db.xi.include"/>
+      <text/>
+      <ref name="db.ubiq.inlines"/>
+      <ref name="db.general.inlines"/>
+      <ref name="db.domain.inlines"/>
+      <ref name="db.extension.inlines"/>
     </choice>
   </define>
   <define name="db.general.inlines">
@@ -1019,7 +1016,6 @@
         <ref name="db.extension.blocks"/>
       </choice>
       <ref name="db.annotation"/>
-      <ref name="db.xi.include"/>
     </choice>
   </define>
   <define name="db.formal.blocks">
@@ -1158,7 +1154,6 @@
         <ref name="db.productname"/>
         <ref name="db.productnumber"/>
       </choice>
-      <ref name="db.xi.include"/>
     </choice>
   </define>
   <define name="db.bibliographic.elements">
@@ -5940,38 +5935,6 @@ O, the molecular formula for water)</a:documentation>
       <oneOrMore>
         <ref name="db.refentry"/>
       </oneOrMore>
-      <choice>
-        <oneOrMore>
-          <choice>
-            <ref name="db.section"/>
-            <ref name="db.xi.include"/>
-          </choice>
-        </oneOrMore>
-        <oneOrMore>
-          <choice>
-            <ref name="db.simplesect"/>
-            <ref name="db.xi.include"/>
-          </choice>
-        </oneOrMore>
-      </choice>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refentry"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refsect1"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.sect1"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
     </choice>
   </define>
   <define name="db.toplevel.blocks.or.sections">
@@ -6005,32 +5968,6 @@ O, the molecular formula for water)</a:documentation>
       <oneOrMore>
         <ref name="db.refentry"/>
       </oneOrMore>
-      <choice>
-        <oneOrMore>
-          <choice>
-            <ref name="db.section"/>
-            <ref name="db.xi.include"/>
-          </choice>
-        </oneOrMore>
-        <oneOrMore>
-          <choice>
-            <ref name="db.simplesect"/>
-            <ref name="db.xi.include"/>
-          </choice>
-        </oneOrMore>
-      </choice>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refentry"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refsect1"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
     </choice>
   </define>
   <define name="db.recursive.blocks.or.sections">
@@ -6050,21 +5987,17 @@ O, the molecular formula for water)</a:documentation>
     <choice>
       <ref name="db.part"/>
       <ref name="db.reference"/>
-      <ref name="db.xi.include"/>
     </choice>
   </define>
   <define name="db.components">
     <choice>
-      <choice>
-        <ref name="db.dedication"/>
-        <ref name="db.acknowledgements"/>
-        <ref name="db.preface"/>
-        <ref name="db.chapter"/>
-        <ref name="db.appendix"/>
-        <ref name="db.article"/>
-        <ref name="db.colophon"/>
-      </choice>
-      <ref name="db.xi.include"/>
+      <ref name="db.dedication"/>
+      <ref name="db.acknowledgements"/>
+      <ref name="db.preface"/>
+      <ref name="db.chapter"/>
+      <ref name="db.appendix"/>
+      <ref name="db.article"/>
+      <ref name="db.colophon"/>
     </choice>
   </define>
   <define name="db.navigation.components">
@@ -6099,11 +6032,8 @@ O, the molecular formula for water)</a:documentation>
   </define>
   <define name="db.set.components">
     <choice>
-      <choice>
-        <ref name="db.set"/>
-        <ref name="db.book"/>
-      </choice>
-      <ref name="db.xi.include"/>
+      <ref name="db.set"/>
+      <ref name="db.book"/>
     </choice>
   </define>
   <div>
@@ -6413,7 +6343,6 @@ O, the molecular formula for water)</a:documentation>
         <ref name="db.refentry"/>
         <ref name="db.reference"/>
       </choice>
-      <ref name="db.xi.include"/>
     </choice>
   </define>
   <define name="db.part.contentmodel">
@@ -6870,24 +6799,16 @@ O, the molecular formula for water)</a:documentation>
   </div>
   <define name="db.sect1.sections">
     <choice>
-      <choice>
-        <group>
-          <oneOrMore>
-            <ref name="db.sect2"/>
-          </oneOrMore>
-          <zeroOrMore>
-            <ref name="db.simplesect"/>
-          </zeroOrMore>
-        </group>
+      <group>
         <oneOrMore>
-          <ref name="db.simplesect"/>
-        </oneOrMore>
-      </choice>
-      <oneOrMore>
-        <choice>
           <ref name="db.sect2"/>
-          <ref name="db.xi.include"/>
-        </choice>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.simplesect"/>
+        </zeroOrMore>
+      </group>
+      <oneOrMore>
+        <ref name="db.simplesect"/>
       </oneOrMore>
     </choice>
   </define>
@@ -6940,24 +6861,16 @@ O, the molecular formula for water)</a:documentation>
   </div>
   <define name="db.sect2.sections">
     <choice>
-      <choice>
-        <group>
-          <oneOrMore>
-            <ref name="db.sect3"/>
-          </oneOrMore>
-          <zeroOrMore>
-            <ref name="db.simplesect"/>
-          </zeroOrMore>
-        </group>
+      <group>
         <oneOrMore>
-          <ref name="db.simplesect"/>
-        </oneOrMore>
-      </choice>
-      <oneOrMore>
-        <choice>
           <ref name="db.sect3"/>
-          <ref name="db.xi.include"/>
-        </choice>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.simplesect"/>
+        </zeroOrMore>
+      </group>
+      <oneOrMore>
+        <ref name="db.simplesect"/>
       </oneOrMore>
     </choice>
   </define>
@@ -7010,24 +6923,16 @@ O, the molecular formula for water)</a:documentation>
   </div>
   <define name="db.sect3.sections">
     <choice>
-      <choice>
-        <group>
-          <oneOrMore>
-            <ref name="db.sect4"/>
-          </oneOrMore>
-          <zeroOrMore>
-            <ref name="db.simplesect"/>
-          </zeroOrMore>
-        </group>
+      <group>
         <oneOrMore>
-          <ref name="db.simplesect"/>
-        </oneOrMore>
-      </choice>
-      <oneOrMore>
-        <choice>
           <ref name="db.sect4"/>
-          <ref name="db.xi.include"/>
-        </choice>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.simplesect"/>
+        </zeroOrMore>
+      </group>
+      <oneOrMore>
+        <ref name="db.simplesect"/>
       </oneOrMore>
     </choice>
   </define>
@@ -7080,24 +6985,16 @@ O, the molecular formula for water)</a:documentation>
   </div>
   <define name="db.sect4.sections">
     <choice>
-      <choice>
-        <group>
-          <oneOrMore>
-            <ref name="db.sect5"/>
-          </oneOrMore>
-          <zeroOrMore>
-            <ref name="db.simplesect"/>
-          </zeroOrMore>
-        </group>
+      <group>
         <oneOrMore>
-          <ref name="db.simplesect"/>
-        </oneOrMore>
-      </choice>
-      <oneOrMore>
-        <choice>
           <ref name="db.sect5"/>
-          <ref name="db.xi.include"/>
-        </choice>
+        </oneOrMore>
+        <zeroOrMore>
+          <ref name="db.simplesect"/>
+        </zeroOrMore>
+      </group>
+      <oneOrMore>
+        <ref name="db.simplesect"/>
       </oneOrMore>
     </choice>
   </define>
@@ -7149,17 +7046,9 @@ O, the molecular formula for water)</a:documentation>
     </define>
   </div>
   <define name="db.sect5.sections">
-    <choice>
-      <oneOrMore>
-        <ref name="db.simplesect"/>
-      </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.simplesect"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
-    </choice>
+    <oneOrMore>
+      <ref name="db.simplesect"/>
+    </oneOrMore>
   </define>
   <div>
     <define name="db.sect5.status.attribute">
@@ -7216,18 +7105,6 @@ O, the molecular formula for water)</a:documentation>
       <oneOrMore>
         <ref name="db.refsect1"/>
       </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refentry"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refsect1"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
     </choice>
   </define>
   <define name="db.secondlevel.refsection">
@@ -7238,25 +7115,10 @@ O, the molecular formula for water)</a:documentation>
       <oneOrMore>
         <ref name="db.refsect2"/>
       </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refentry"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
-      <oneOrMore>
-        <choice>
-          <ref name="db.refsect2"/>
-          <ref name="db.xi.include"/>
-        </choice>
-      </oneOrMore>
     </choice>
   </define>
   <define name="db.reference.components">
-    <choice>
-      <ref name="db.refentry"/>
-      <ref name="db.xi.include"/>
-    </choice>
+    <ref name="db.refentry"/>
   </define>
   <div>
     <define name="db.reference.status.attribute">
@@ -15192,65 +15054,6 @@ where the nonterminal
         <zeroOrMore>
           <ref name="db.navigation.components"/>
         </zeroOrMore>
-      </element>
-    </define>
-  </div>
-  <div>
-    <define name="db.xi.include.attlist">
-      <optional>
-        <attribute name="href">
-          <data type="anyURI">
-            <param name="pattern">[^#]+</param>
-          </data>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="parse" a:defaultValue="xml">
-          <choice>
-            <value>xml</value>
-            <value>text</value>
-          </choice>
-        </attribute>
-      </optional>
-      <optional>
-        <attribute name="xpointer"/>
-      </optional>
-      <optional>
-        <attribute name="encoding"/>
-      </optional>
-      <optional>
-        <attribute name="accept"/>
-      </optional>
-      <optional>
-        <attribute name="accept-language"/>
-      </optional>
-    </define>
-    <define name="db.xi.include">
-      <element name="xi:include">
-        <a:documentation>An XInclude</a:documentation>
-        <ref name="db.xi.include.attlist"/>
-        <optional>
-          <ref name="db.xi.fallback"/>
-        </optional>
-      </element>
-    </define>
-  </div>
-  <div>
-    <!-- The fallback element has no attributes -->
-    <define name="db.xi.fallback">
-      <element name="xi:fallback">
-        <a:documentation>An XInclude fallback</a:documentation>
-        <choice>
-          <oneOrMore>
-            <ref name="db.all.blocks"/>
-          </oneOrMore>
-          <oneOrMore>
-            <ref name="db.all.inlines"/>
-          </oneOrMore>
-          <zeroOrMore>
-            <ref name="db._any"/>
-          </zeroOrMore>
-        </choice>
       </element>
     </define>
   </div>

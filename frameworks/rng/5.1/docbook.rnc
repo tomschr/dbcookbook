@@ -4,42 +4,13 @@ default namespace db = "http://docbook.org/ns/docbook"
 namespace html = "http://www.w3.org/1999/xhtml"
 namespace mml = "http://www.w3.org/1998/Math/MathML"
 namespace rng = "http://relaxng.org/ns/structure/1.0"
-namespace s = "http://www.ascc.net/xml/schematron"
+namespace s = "http://purl.oclc.org/dsdl/schematron"
 namespace svg = "http://www.w3.org/2000/svg"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-#  DocBook V5.0CR5
+#  DocBook V5.0
 
 # See http://docbook.org/ns/docbook
-
-# This file is part of DocBook V5.0
-# 
-# Copyright 1992-2008 HaL Computer Systems, Inc.,
-# O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
-# Corporation, Norman Walsh, Sun Microsystems, Inc., and the
-# Organization for the Advancement of Structured Information
-# Standards (OASIS).
-# 
-# Release: $Id: docbook.rnc 7661 2008-02-06 13:52:59Z nwalsh $
-# 
-# Permission to use, copy, modify and distribute the DocBook schema
-# and its accompanying documentation for any purpose and without fee
-# is hereby granted in perpetuity, provided that the above copyright
-# notice and this paragraph appear in all copies. The copyright
-# holders make no representation about the suitability of the schema
-# for any purpose. It is provided "as is" without expressed or implied
-# warranty.
-# 
-# If you modify the DocBook schema in any way, label your schema as a
-# variant of DocBook. See the reference documentation
-# (http://docbook.org/tdg5/en/html/ch05.html#s-notdocbook)
-# for more information.
-# 
-# Please direct all questions, bug reports, or suggestions for changes
-# to the docbook@lists.oasis-open.org mailing list. For more
-# information, see http://www.oasis-open.org/docbook/.
-# 
-# ======================================================================
 start =
   (db.set
    | db.book
@@ -371,12 +342,13 @@ db.verbatim.xml.space.attribute =
     ## Whitespace must be preserved.
     "preserve"
   }
-db.verbatim.attributes =
+db.verbatim.common.attributes =
   db.verbatim.continuation.attribute?
   & db.verbatim.linenumbering.attribute?
   & db.verbatim.startinglinenumber.attribute?
-  & db.verbatim.language.attribute?
   & db.verbatim.xml.space.attribute?
+db.verbatim.attributes =
+  db.verbatim.common.attributes & db.verbatim.language.attribute?
 db.label.attribute =
   
   ## Specifies an identifying string for presentation purposes
@@ -492,6 +464,9 @@ db.biblio.class.enumeration =
   | 
     ## An international standard serial number.
     "issn"
+  | 
+    ## An international standard text code.
+    "istc"
   | 
     ## A Library of Congress reference number.
     "libraryofcongress"
@@ -2588,7 +2563,7 @@ div {
   db.contrib =
     
     ## A summary of the contributions made to a document by a credited source
-    element contrib { db.contrib.attlist, db._text }
+    element contrib { db.contrib.attlist, db.all.inlines* }
 }
 div {
   db.honorific.role.attribute = attribute role { text }
@@ -3425,6 +3400,7 @@ div {
        | (db.all.blocks*, db.simplesect+))
     }
 }
+db.appendix.contentmodel = db.component.contentmodel | db.topic+
 div {
   db.appendix.status.attribute = db.status.attribute
   db.appendix.role.attribute = attribute role { text }
@@ -3439,9 +3415,10 @@ div {
     
     ## An appendix in a book or article
     element appendix {
-      db.appendix.attlist, db.appendix.info, db.component.contentmodel
+      db.appendix.attlist, db.appendix.info, db.appendix.contentmodel
     }
 }
+db.chapter.contentmodel = db.component.contentmodel | db.topic+
 div {
   db.chapter.status.attribute = db.status.attribute
   db.chapter.role.attribute = attribute role { text }
@@ -3456,7 +3433,7 @@ div {
     
     ## A chapter, as of a book
     element chapter {
-      db.chapter.attlist, db.chapter.info, db.component.contentmodel
+      db.chapter.attlist, db.chapter.info, db.chapter.contentmodel
     }
 }
 db.part.components =
@@ -3554,6 +3531,12 @@ div {
     }
 }
 db.article.components = db.toplevel.sections
+db.article.navcomponents =
+  db.navigation.components
+  | db.acknowledgements
+  | db.dedication
+  | db.appendix
+  | db.colophon
 div {
   db.article.status.attribute = db.status.attribute
   db.article.class.enumeration =
@@ -3594,16 +3577,10 @@ div {
     element article {
       db.article.attlist,
       db.article.info,
-      (db.navigation.components
-       | db.appendix
-       | db.acknowledgements
-       | db.colophon)*,
+      db.article.navcomponents*,
       ((db.all.blocks+, db.article.components?)
        | db.article.components),
-      (db.navigation.components
-       | db.appendix
-       | db.acknowledgements
-       | db.colophon)*
+      db.article.navcomponents*
     }
 }
 db.annotations.attribute =
@@ -5170,7 +5147,7 @@ div {
     
     ## A production in a set of EBNF productions
     element production {
-      db.production.attlist, db.lhs, db.rhs, db.constraint*
+      db.production.attlist, db.lhs, db.rhs+, db.constraint*
     }
 }
 div {
@@ -5971,8 +5948,17 @@ div {
     element table { db.html.table.attlist, db.html.table.model }
 }
 div {
+  db.html.informaltable.role.attribute = attribute role { text }
+  db.html.informaltable.label.attribute = db.label.attribute
   db.html.informaltable.attlist =
-    db.html.attrs & db.html.table.attributes
+    db.html.attrs
+    & db.html.table.attributes
+    & db.html.informaltable.role.attribute?
+    & db.html.informaltable.label.attribute?
+    & db.orient.attribute?
+    & db.pgwide.attribute?
+    & db.tabstyle.attribute?
+    & db.floatstyle.attribute?
   db.html.informaltable =
     
     ## An HTML table without a title
@@ -8087,6 +8073,9 @@ div {
       ## A resource
       "resource"
     | 
+      ## A security context (a role, permission, or security token, for example)
+      "securitycontext"
+    | 
       ## A server (mail.example.com)
       "server"
     | 
@@ -8098,10 +8087,26 @@ div {
     | 
       ## A user name (ndw)
       "username"
-  db.systemitem.class.attribute =
+  db.systemitem.class-enum.attribute =
     
     ## Identifies the nature of the system item
-    attribute class { db.systemitem.class.enumeration }
+    attribute class { db.systemitem.class.enumeration }?
+  db.systemitem.class-other.attribute =
+    
+    ## Identifies the nature of the non-standard system item
+    attribute otherclass { xsd:NMTOKEN }
+  db.systemitem.class-other.attributes =
+    
+    ## Identifies the kind of systemitemgraphic identifier
+    attribute class {
+      
+      ## Indicates that the system item is some 'other' kind.
+      "other"
+    }
+    & db.systemitem.class-other.attribute
+  db.systemitem.class.attribute =
+    db.systemitem.class-enum.attribute
+    | db.systemitem.class-other.attributes
   db.systemitem.role.attribute = attribute role { text }
   db.systemitem.attlist =
     db.systemitem.role.attribute?
