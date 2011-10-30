@@ -66,6 +66,7 @@
     * Renaming Image Filenames
     * Checking Style Guide Issues with XSLT
     * Using the xmllint Shell to test XPath expressions
+    * Using Placeholders (Entities, PIs, XIncludes, phrase, ref)
   -->
   <xi:include href="structure/topic.pretty-print.xml"/>
   <xi:include href="structure/topic.db4-to-db5.xml"/>
