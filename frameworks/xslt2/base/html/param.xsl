@@ -17,6 +17,8 @@
   <xsl:param name="linenumbering.everyNth" select="2"/>
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
+  <xsl:param name="generate.user.meta" select="1"/>
+  
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
