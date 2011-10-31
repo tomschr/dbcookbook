@@ -29,4 +29,8 @@
   <xsl:param name="section.autolabel.max.depth" select="1"/>
   <xsl:param name="section.label.includes.component.label" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
+  
+  <xsl:param name="menuchoice.menu.separator"> &#8594; </xsl:param>
+  <xsl:param name="menuchoice.separator">+</xsl:param>
+
 </xsl:stylesheet>
