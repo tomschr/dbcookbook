@@ -30,6 +30,9 @@
           <quote>wrong</quote> structure. This chapter shows how to
         restructure your DocBook document in the way you want.</para>
     </abstract>
+    <revhistory>
+      
+    </revhistory>
   </info>
   
   
@@ -67,6 +70,7 @@
     * Checking Style Guide Issues with XSLT
     * Using the xmllint Shell to test XPath expressions
     * Using Placeholders (Entities, PIs, XIncludes, phrase, ref)
+    * Creating a RevHistory from RSS and Atom
   -->
   <xi:include href="structure/topic.pretty-print.xml"/>
   <xi:include href="structure/topic.db4-to-db5.xml"/>
