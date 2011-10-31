@@ -95,6 +95,7 @@ div.table-wrapper {
 /* TOC */
 div.toc > dl.toc > dt {
   font-size:100%;
+  margin-top:10pt;
 }
 div.toc > dl.toc > dd > dl.toc > dt {
   font-size:90%;
@@ -108,6 +109,14 @@ div.list-of-examples > p,
 div.list-of-figures > p {
   margin-bottom:0px;
   font-size:110%;
+}
+
+
+div.preface div.toc dt, 
+div.chapter div.toc dt,
+div.appendix div.toc dt,
+div.part div.toc dt {
+     margin-top:inherit;
 }
 
 /* Sections */
