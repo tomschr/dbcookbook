@@ -25,10 +25,11 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <info>
-    <xi:include href="defs.xml"/>
-  </info>
   <title>Welcome!</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
   <blockquote>
     <title>Mission</title>
     <para>The <citetitle
