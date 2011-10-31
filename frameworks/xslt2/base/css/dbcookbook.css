@@ -35,6 +35,9 @@ div.book-titlepage h2 {
 div.book-titlepage div.author h3 {
   font-size:150%;
 }
+div.book-titlepage div.othercredit {
+  text-align:left;
+}
 
 div.book-titlepage div.legalnotice div.sidebar
 {
