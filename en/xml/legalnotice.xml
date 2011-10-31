@@ -20,14 +20,11 @@
   <title>License</title>
   
   <sidebar>
-    <title>Licensed under Creative Commons</title>
+    <title>Licensed under Creative Commons BY-NC-SA-3.0-de</title>
     <informaltable border="0" frame="void" rules="none" class="ccbox">
-      <tgroup cols="2">
-        <colspec colnum="1" colwidth="1*" rowsep="0" colsep="0"/>
-        <colspec colnum="2" colwidth="4*" rowsep="0" colsep="0"/>
-        <tbody>
-          <row>
-            <entry valign="top"><inlinemediaobject>
+      <tbody>
+        <tr>
+          <td valign="top"><inlinemediaobject>
               <imageobject>
                 <imagedata
                   fileref="png/by-nc-sa-3.0-de-88x31.png"
@@ -36,17 +33,15 @@
               <textobject>
                 <phrase>Creative Commons License Agreement</phrase>
               </textobject>
-            </inlinemediaobject></entry>
-            <entry valign="top">This work is licensed as Creative Commons
+            </inlinemediaobject></td>
+          <td>This work is licensed as Creative Commons
               Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
               by-nc-sa 3.0 DE). For more information, refer to <link xlink:show="new"
                 xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
               />; see also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
-              and <xref linkend="cc-by-nc-sa-30-unported"/>.
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
+              and <xref linkend="cc-by-nc-sa-30-unported"/>.</td>
+        </tr>
+      </tbody>
     </informaltable>
   </sidebar>
   <para>Currently, this work is released under a CC BY-NC-SA 3.0 DE
