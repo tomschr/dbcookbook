@@ -65,6 +65,7 @@
    * Taking Advantage of Common Glossary
    * Colorising Profiled Text
      http://lists.oasis-open.org/archives/docbook-apps/201108/msg00100.html
+   * Printing XPath from Stylesheet
   -->
   <xi:include href="common/topic.fonts.xml"/>
   <xi:include href="common/topic.dbxsl-customization.xml"/>
