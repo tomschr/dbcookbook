@@ -12,6 +12,7 @@
   
   <!--<xsl:param name="resource.root">../../../db-xslt2/xslt/base/</xsl:param>-->
   <xsl:param name="docbook.css" select="'css/dbcookbook.css'"/>
+  <xsl:param name="local.l10n.xml" select="document('../common/l10n/l10n.xml')"/>
   
   <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="linenumbering.everyNth" select="2"/>
@@ -33,4 +34,5 @@
   <xsl:param name="menuchoice.menu.separator"> &#8594; </xsl:param>
   <xsl:param name="menuchoice.separator">+</xsl:param>
 
+  <!--<xsl:param name="preprocess" select="'transclude'"/>-->
 </xsl:stylesheet>
