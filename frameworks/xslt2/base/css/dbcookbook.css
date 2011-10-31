@@ -22,16 +22,18 @@ div.book-titlepage h1 {
   margin-bottom:12pt;
   text-shadow:4px 4px 5px rgba(0,0,0,0.15);
 }
-div.book-titlepage h2 {
-  font-size:300%;
-}
-/*div.book-titlepage h2:before {
+
+div.book-titlepage h2:before {
   content:"\2767";
   display:block;
   text-align:center;
-  height:1.5em;
-  font-size:2.5em;
-}*/
+  margin-bottom:.5em;
+  font-size:1.75em;
+}
+div.book-titlepage h2 {
+  font-size:260%;
+}
+
 div.book-titlepage div.author h3 {
   font-size:150%;
 }
