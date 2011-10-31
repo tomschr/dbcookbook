@@ -6,60 +6,7 @@ default namespace db = "http://docbook.org/ns/docbook"
 
 include "docbookxi.rnc" 
 {
-  db.chapter =
-    ## A chapter, as of a book
-    [
-      s:pattern [
-        name = "Root must have version"
-        "\x{a}" ~
-        "          "
-        s:rule [
-          context = "/db:chapter"
-          "\x{a}" ~
-          "            "
-          s:assert [
-            test = "@version"
-            "If this element is the root element, it must have a version attribute."
-          ]
-          "\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "        "
-      ]
-    ]
-    element chapter {
-      db.chapter.attlist, db.chapter.info, db.chapter.contentmodel
-    }
-  db.appendix = 
-    ## An appendix in a book or article
-    [
-      s:pattern [
-        name = "Root must have version"
-        "\x{a}" ~
-        "          "
-        s:rule [
-          context = "/db:appendix"
-          "\x{a}" ~
-          "            "
-          s:assert [
-            test = "@version"
-            "If this element is the root element, it must have a version attribute."
-          ]
-          "\x{a}" ~
-          "          "
-        ]
-        "\x{a}" ~
-        "        "
-      ]
-    ]
-    element appendix {
-      db.appendix.attlist, db.appendix.info, db.appendix.contentmodel
-    }
 }
-
-db.appendix.contentmodel = db.component.contentmodel | db.topic+
-db.chapter.contentmodel = db.component.contentmodel | db.topic+
 
 
 db.ref = 

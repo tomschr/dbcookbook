@@ -4,54 +4,7 @@
   - use DocBook schema coding style
 -->
 <grammar ns="http://docbook.org/ns/docbook" xmlns:db="http://docbook.org/ns/docbook" xmlns:s="http://purl.oclc.org/dsdl/schematron" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <include href="docbookxi.rng">
-    <define name="db.chapter">
-      <element name="chapter">
-        <a:documentation>A chapter, as of a book</a:documentation>
-        <s:pattern name="Root must have version">
-          <s:rule context="/db:chapter">
-            <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
-
-          </s:rule>
-
-        </s:pattern>
-        <ref name="db.chapter.attlist"/>
-        <ref name="db.chapter.info"/>
-        <ref name="db.chapter.contentmodel"/>
-      </element>
-    </define>
-    <define name="db.appendix">
-      <element name="appendix">
-        <a:documentation>An appendix in a book or article</a:documentation>
-        <s:pattern name="Root must have version">
-          <s:rule context="/db:appendix">
-            <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
-
-          </s:rule>
-
-        </s:pattern>
-        <ref name="db.appendix.attlist"/>
-        <ref name="db.appendix.info"/>
-        <ref name="db.appendix.contentmodel"/>
-      </element>
-    </define>
-  </include>
-  <define name="db.appendix.contentmodel">
-    <choice>
-      <ref name="db.component.contentmodel"/>
-      <oneOrMore>
-        <ref name="db.topic"/>
-      </oneOrMore>
-    </choice>
-  </define>
-  <define name="db.chapter.contentmodel">
-    <choice>
-      <ref name="db.component.contentmodel"/>
-      <oneOrMore>
-        <ref name="db.topic"/>
-      </oneOrMore>
-    </choice>
-  </define>
+  <include href="docbookxi.rng"/>
   <define name="db.ref">
     <element name="ref">
       <a:documentation>Element for referencing content</a:documentation>
