@@ -101,14 +101,15 @@
   
   <!-- 
   (X)HTML Customizations
-    - Control chunking 
-    - Attaching CSS (to your HTML) (explain different methods)
-    - Alt Text for Images
-    - Syntax Highlighting
-    - Adding Permalinks
-    - Creating Breadcrumbs (simple, sophisticated)
-    - Implementing Clickable TOCs
-    - Deciding where to put Customizations (CSS or XSLT)
+    * Control chunking 
+    * Attaching CSS (to your HTML) (explain different methods)
+    * Alt Text for Images
+    * Syntax Highlighting
+    * Adding Permalinks
+    * Creating Breadcrumbs (simple, sophisticated)
+    * Implementing Clickable TOCs
+    * Deciding where to put Customizations (CSS or XSLT)
+    *
   -->
   
   <xi:include href="html/topic.permalinks.xml"/>
