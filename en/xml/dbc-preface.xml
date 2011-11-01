@@ -47,44 +47,43 @@
       particularly well suited to books and papers about computer
       hardware and software (though it is by no means limited to these
       applications).</quote></para>
-  <para>
-    Although there are helpful and valuable documentation like the
-      <citetitle xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
-        >DocBook&#xa0;5: The Definitive Guide</citetitle> from <personname>
+  <para> Although there are helpful and valuable documentation like the
+      <citetitle
+      xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
+      >DocBook&#xa0;5: The Definitive Guide</citetitle> from <personname>
       <firstname>Norman</firstname>
       <surname>Walsh</surname>
     </personname> and <personname>
       <firstname>Bob</firstname>
       <surname>Stayton</surname>
-    </personname>'s <citetitle xlink:href="http://www.sagehill.net/docbookxsl/"
-      >DocBook XSL</citetitle> book, until now
-    nobody wrote a book that combines the <emphasis>best of both
-    worlds</emphasis>. My book is intented to be such a book. However, 
-    it <emphasis>does not</emphasis> want to replace the prior mentioned 
-    de facto standards. It aims for <emphasis>enhancing</emphasis> 
-    the world of DocBook.
+    </personname>'s <citetitle
+      xlink:href="http://www.sagehill.net/docbookxsl/">DocBook
+      XSL</citetitle> book, until now nobody wrote a book that combines
+    the <emphasis>best of both worlds</emphasis> in a cookbook style. My
+    book is intented to be such a book. However, it <emphasis>does
+      not</emphasis> seek to replace the prior mentioned de facto
+    standards. It aims for <emphasis>enhancing</emphasis> the world of
+    DocBook with a different view. </para>
+  <para>
+    My book is a collection of topics, specific to a certain problem.
+    
+    Most topics contain step-by-step instructions to simplify your
+    tasks for DocBook. If you want to dive deeper, I have collected
+    links for further reading.
   </para>
   <para>
-    My book is a collection of problem-and-solution scenarios
-    written in a cookbook style. It is the nature of such a topic that
-    there might be some overlap with other sources. However, 
-    it also goes beyond them to get a better and deeper understanding
-    from the world of DocBook. I think, we benefit from different
-    opinions and sights.
-  </para>
-  <para>
-    The scenarios are mostly based on my own experiences with DocBook 
+    The topics are mostly based on my own experiences with DocBook 
     and the DocBook XSL stylesheets. However, it also includes questions 
     and answers from other sources: mostly the DocBook mailinglists, but
-    also other sites that I have found. When other authors inspired me, 
+    also other sites that I have found. It is the nature of such topics that
+    there might be some overlap with other sources. When other authors inspired me, 
     I have included their names. If you think your name is missing,
     please let me know.
   </para>
-  <para>
-    As I have learned a lot from the masters of DocBook, it is time to
-    give something back. This book is written and available under a 
-    Creative Commons license. I hope the DocBook community will find it useful.
-  </para>
+  <para> As I have learned a lot from the masters of DocBook, it is time
+    to give something back. This book is written and available under a
+    Creative Commons license. I hope the DocBook community will find it
+    useful. </para>
   
   <section xml:id="dbc.preface.audience">
     <title>Audience</title>
@@ -198,6 +197,23 @@
       </qandaentry>
     </qandaset>
   </section>-->
+  
+  <section xml:id="dbc.preface.license">
+    <title>Creative Commons License</title>
+    <para>The book is currently released under a Creative Commons
+        <acronym
+        xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
+        >CC BY-NC-SA 3.0 DE<alt>Creative Commons
+          Attribution-NonCommercial-ShareAlike 3.0</alt></acronym>
+      license (see original German text in <xref
+        linkend="cc-by-nc-sa-30-de" xrefstyle="select:label"/> or the
+      English translation in <xref linkend="cc-by-nc-sa-30-unported"
+        xrefstyle="select:label"/>). After this book is finished, the
+      license will be changed to <acronym
+        xlink:href="http://creativecommons.org/licenses/by-sa/3.0/de/deed.en"
+        >CC BY-SA 3.0 DE<alt>Creative Commons Attribution-ShareAlike
+          3.0</alt></acronym>.</para>
+  </section>  
   
   <section xml:id="dbc.preface.ack">
     <title>Acknowledgments</title>
