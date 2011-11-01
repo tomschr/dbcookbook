@@ -105,7 +105,6 @@
     <h3><xsl:apply-templates/></h3>
   </xsl:template>
   
-  
   <!-- Main structures -->
   <xsl:template match="h:div[@class='appendix']">
     <xsl:call-template name="create-class-titlepage"/>
@@ -158,6 +157,16 @@
   </xsl:template>  
   <xsl:template match="h:div[@class='toc-title']">
     <p><b><xsl:apply-templates/></b></p>
+  </xsl:template>
+  
+  <!-- Block Structures -->
+  <xsl:template match="h:div[@class='informaltable']">
+    <div class="informaltable-wrapper"><!-- id=node-id() -->
+      <xsl:copy>
+        <xsl:apply-templates select="@*"/>
+        <xsl:apply-templates/>
+      </xsl:copy>
+    </div>
   </xsl:template>
   
   <!-- Authors and other -->
