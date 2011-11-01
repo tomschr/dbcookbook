@@ -8,7 +8,8 @@
   xmlns:t="http://docbook.org/xslt/ns/template"
   xmlns:m="http://docbook.org/xslt/ns/mode"
   xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
-  exclude-result-prefixes="d xlink tmpl m t f">
+  xmlns:h="http://www.w3.org/1999/xhtml"
+  exclude-result-prefixes="d xlink tmpl m t f h">
   
   <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>
   
