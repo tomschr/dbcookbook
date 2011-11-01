@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.db.quotes" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Inserting Inline Quotes</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to use inline quotes in a consistent and language
+      independant way.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <tag>quote</tag> tag as shown below:</para>
+    <programlisting language="xml"
+    >&lt;para>This is a &lt;quote>English quote&lt;/quote>.&lt;/para></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <remark>toms, 2011-11-01: Check, if markers are correct now in the
+      DB XSLT2.0.</remark>
+    <para>When people think of inserting quotes, they use it directly
+        <phrase remap="quote" xml:lang="en">“like this”</phrase>.
+      However, the open and close characters are language dependent.
+      Each language has different typographic rules. German readers
+      prefer <phrase remap="quote" xml:lang="de">„this“</phrase>, French
+        <phrase remap="quote" xml:lang="fr">« this »</phrase>, and the
+      Italians use <quote xml:lang="it">«this»</quote>.
+    </para>
+    <para>Using quote markers directly has one disadvantages: if your
+      text contains different languages you need to know how quotes are
+      displayed in the respective language. Also it is easier and more
+      consistent to leave this typographic detail to the DocBook
+      stylesheets.</para>
+    <para>One nice thing with inserting <tag>quote</tag> is it can be
+      adapted to a different language by using the <tag
+        class="attribute">xml:lang</tag> attribute:</para>
+    <programlisting language="xml"
+    >&lt;para>This is a &lt;quote xml:lang="de">German quote&lt;/quote>.&lt;/para></programlisting>
+  </section>
+</section>
