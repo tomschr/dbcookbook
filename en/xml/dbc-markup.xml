@@ -31,7 +31,7 @@
   
   <section xml:id="dbc.markup.intro">
     <title>Introduction</title>
-    <para>TBD.</para>
+    <para><acronym>TBD<alt>To Be Definied</alt></acronym></para>
   </section>
   
   <!-- 
@@ -51,6 +51,12 @@
    * Inserting Indexterms
    * Adding Images
    * Knowing DocBook Derivates: Simple DocBook, Publishers Schema
+   * Using Alternative Description for Acronyms
+     <acronym><alt>extensible Markup Language</alt>XML</acronym>
+   * Using Manpage Notation
+     <citerefentry>
+      <refentrytitle>foo</refentrytitle><manvolnum>1</manvolnum>
+    </citerefentry>
   -->
   <!-- <xi:include href="db/topic.toplevel.xml"/> -->
   <xi:include href="db/topic.lists.xml"/>
