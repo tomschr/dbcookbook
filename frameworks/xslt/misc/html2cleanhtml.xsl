@@ -68,12 +68,22 @@
   <!-- ================================================ -->
   <xsl:template name="create-class-titlepage">
     <xsl:param name="class" select="@class"/>
+    <xsl:param name="create-content" select="false()"/>
     <div>
       <xsl:apply-templates select="@*"/>
       <div class="{$class}-titlepage">
         <xsl:apply-templates select="h:div[@class='titlepage']"/>        
       </div>
-      <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>
+      <xsl:choose>
+        <xsl:when test="$create-content">
+          <div class="{$class}-content">
+            <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>
+          </div>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>    
+        </xsl:otherwise>
+      </xsl:choose>
     </div>
   </xsl:template>
   
@@ -113,7 +123,9 @@
     <xsl:call-template name="create-class-titlepage"/>
   </xsl:template>
   <xsl:template match="h:div[@class='sidebar']">
-    <xsl:call-template name="create-class-titlepage"/>
+    <xsl:call-template name="create-class-titlepage">
+      <xsl:with-param name="create-content" select="true()"/>
+    </xsl:call-template>
   </xsl:template>
   <xsl:template match="h:div[@class='titlepage']">
     <xsl:apply-templates/>
@@ -160,12 +172,7 @@
   </xsl:template>
   
   
-  <!-- Links that need to be copied -->
-  <!--<xsl:template match="h:dt/h:span[@class]/h:a |
-                       h:dt/h:a |
-                       h:a[@class]">
-    <xsl:copy-of select="."/>
-  </xsl:template>-->
+  <!-- Links -->
   <xsl:template match="h:a[@class]">
     <xsl:copy>
       <xsl:apply-templates select="@*[local-name() != 'class']"/>
