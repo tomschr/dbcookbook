@@ -58,6 +58,7 @@
   </xsl:template>
   
   <!-- Remove obsolete elements and attributes -->
+  <xsl:template match="h:br[@class='example-break']"/>
   <xsl:template match="h:div/@title"/>
   <xsl:template match="h:a/@title"/>
   <xsl:template match="h:blockquote/@title"/>
@@ -158,19 +159,68 @@
   </xsl:template>
   
   <!-- Block Structures -->
-  <xsl:template match="h:div[@class='informaltable']">
-    <div class="informaltable-wrapper"><!-- id=node-id() -->
+  <xsl:template name="create-div-wrapper">
+    <xsl:param name="class" select="@class"/>
+    <div class="{$class}-wrapper"><!-- id=node-id() -->
+      <xsl:if test="h:a[. = ''] and not(@id)">
+        <xsl:attribute name="id">
+          <xsl:value-of select="h:a/@id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
       </xsl:copy>
     </div>
   </xsl:template>
+  <xsl:template match="h:div[@class='informaltable']">
+    <xsl:call-template name="create-div-wrapper"/>
+  </xsl:template>
+  <xsl:template match="h:div[@class='example']">
+    <div class="{@class}-wrapper"><!-- id=node-id() -->
+      <xsl:choose>
+        <xsl:when test="h:a[. = ''] and not(@id)">
+          <xsl:attribute name="id">
+            <xsl:value-of select="h:a/@id"/>
+          </xsl:attribute>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:apply-templates select="@*"/>
+        </xsl:otherwise>
+      </xsl:choose>
+      <xsl:apply-templates select="h:div[@class='example-title']"/>
+      <xsl:apply-templates select="h:div[@class='example-contents']"/>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:div[@class='example-contents']">
+    <div class="example">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:div[@class='programlisting']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:choose>
+        <xsl:when test="h:pre"><xsl:apply-templates/></xsl:when>
+        <xsl:otherwise>
+          <pre>
+            <xsl:apply-templates/>
+          </pre>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:copy>
+  </xsl:template>
+  
   <xsl:template match="h:div[@class='itemizedlist']">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>  
   <xsl:template match="h:div[@class='itemizedlist-title']">
+    <div class="title">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:div[@class='example-title']">
     <div class="title">
       <xsl:apply-templates/>
     </div>
