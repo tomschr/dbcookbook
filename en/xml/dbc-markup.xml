@@ -59,6 +59,7 @@
      <citerefentry>
       <refentrytitle>foo</refentrytitle><manvolnum>1</manvolnum>
     </citerefentry>
+   * Inserting Inline Quotes
   -->
   <!-- <xi:include href="db/topic.toplevel.xml"/> -->
   <xi:include href="db/topic.lists.xml"/>
