@@ -20,7 +20,7 @@
     <tmpl:templates-list>
       <tmpl:templates name="book">
       <tmpl:recto>
-        <div tmpl:class="titlepage">
+        <h:div tmpl:class="titlepage">
           <d:title/>
           <d:subtitle/>
           <d:author/>
@@ -30,8 +30,8 @@
           <d:revhistory/>          
           <d:abstract/>
           <d:othercredit class="proofreader"/>
-        </div>
-        <hr tmpl:keep="true"/>
+        </h:div>
+        <h:hr tmpl:keep="true"/>
       </tmpl:recto>
       </tmpl:templates>
     </tmpl:templates-list>
