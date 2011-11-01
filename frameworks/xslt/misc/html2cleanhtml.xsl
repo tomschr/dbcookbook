@@ -132,8 +132,7 @@
   <!-- TOCs -->
   <xsl:template match="h:div[@class='toc']">
     <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates/>
+      <xsl:copy-of select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
   <xsl:template match="h:div[@class='toc-title']">
@@ -146,8 +145,7 @@
   </xsl:template>
   <xsl:template match="h:div[starts-with(@class, 'list-of-')]">
     <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates/>
+      <xsl:copy-of select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
   <xsl:template match="h:div[starts-with(@class, 'list-of-')]/h:dl">
@@ -163,11 +161,20 @@
   <xsl:template match="h:div[@class='informaltable']">
     <div class="informaltable-wrapper"><!-- id=node-id() -->
       <xsl:copy>
-        <xsl:apply-templates select="@*"/>
-        <xsl:apply-templates/>
+        <xsl:apply-templates select="@*|node()"/>
       </xsl:copy>
     </div>
   </xsl:template>
+  <xsl:template match="h:div[@class='itemizedlist']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>  
+  <xsl:template match="h:div[@class='itemizedlist-title']">
+    <div class="title">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>  
   
   <!-- Authors and other -->
   <xsl:template match="h:div[@class='author']">
