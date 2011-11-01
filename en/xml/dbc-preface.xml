@@ -39,11 +39,14 @@
       license for the international DocBook community.</para>
   </blockquote>
   
-  <para>
-    DocBook is a XML format to write documentation mostly for hard-
-    and software, but is not limited to this domain. With the help of
-    the DocBook XSL stylesheets, text can be published into different
-    target formats. </para>
+  <para>According to its <phrase
+      xlink:href="http://www.docbook.org/whatis">homepage</phrase>,
+      <quote>DocBook is a schema (available in several languages
+      including RELAX NG, SGML and XML DTDs, and W3C XML Schema)
+      maintained by the DocBook Technical Committee of OASIS. It is
+      particularly well suited to books and papers about computer
+      hardware and software (though it is by no means limited to these
+      applications).</quote></para>
   <para>
     Although there are helpful and valuable documentation like the
       <citetitle xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
@@ -64,7 +67,7 @@
   <para>
     My book is a collection of problem-and-solution scenarios
     written in a cookbook style. It is the nature of such a topic that
-    there might be some overlap with the books above. However, 
+    there might be some overlap with other sources. However, 
     it also goes beyond them to get a better and deeper understanding
     from the world of DocBook. I think, we benefit from different
     opinions and sights.
@@ -111,7 +114,31 @@
   
   <section xml:id="dbc.preface.typo">
     <title>Typographical Conventions</title>
-    <para>TBD</para>
+    <para></para>
+    <itemizedlist spacing="compact">
+        <para><phrase role="monospace"
+          >Schreibmaschinenschrift</phrase> wird verwendet für:</para>
+        <listitem>
+          <para>Listings</para>
+        </listitem>
+        <listitem>
+          <para>Alle XML-spezifische Strukturen, wie Element- und
+            Attributnamen, Attributwerte, Entity-Referenzen,
+            Namensräume, Verarbeitungsanweisungen</para>
+        </listitem>
+        <listitem>
+          <para>Programmspezifisches wie Datei- und
+            Verzeichnisnamen, Umgebungsvariablen, Optionen, Variablen,
+            Funktionen </para>
+        </listitem>
+        <listitem>
+          <para>Sonstiges wie URLs, URNs, kurze Codeschnipsel usw.
+          <menuchoice>
+            <guimenu>File</guimenu>
+            <guimenu>Save as...</guimenu>
+          </menuchoice></para>
+        </listitem>
+      </itemizedlist>
   </section>
   
   <section xml:id="dbc.preface.feedback">
@@ -121,11 +148,7 @@
       name <link xlink:show="new"
         xlink:href="https://sourceforge.net/projects/doccookbook/">DocCookBook</link>.
       Feel free to send me praise, constructive criticism, suggestions,
-      ideas, improvements, or anything else. If you want to contribute
-      to this book, I'm more than happy to give you commit rights. Send
-      me a mail to <email>&user.sf;(AT)&domain.sf;</email> or use the
-      link <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
-      />.
+      ideas, improvements, or anything else. 
     </para>
   </section>
   
@@ -133,7 +156,12 @@
     <title>Contribute to the Book</title>
     <para>The source code of this book is published and maintained as a 
       Mercurial repository. Feel free to clone it, make improvements and
-      send me your changes. Getting a copy takes just a few seconds. 
+      mail me your changes to <email>&user.sf;(AT)&domain.sf;</email> or use the
+      link <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
+      />. 
+    </para>
+    <para>
+      Getting a copy takes just a few seconds. 
       If you have  Mercurial already installed on your system, run the 
       following command:</para>
     <screen>hg clone https://hg.code.sf.net/p/doccookbook/code</screen>
