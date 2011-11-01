@@ -56,6 +56,7 @@
       <xsl:when test=". = 'listitem'"/>
       <xsl:when test=". = 'title'"/>
       <xsl:when test=". = 'subtitle'"/>
+      <xsl:when test=". = 'xref'"/>
       <xsl:otherwise>
         <xsl:copy-of select="."/>
       </xsl:otherwise>
@@ -77,7 +78,7 @@
       <div class="{$class}-titlepage">
         <xsl:apply-templates select="h:div[@class='titlepage']"/>        
       </div>
-      <xsl:apply-templates select="h:div[@class !='titlepage']"/>
+      <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>
     </div>
   </xsl:template>
   
