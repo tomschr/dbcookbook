@@ -184,7 +184,6 @@
     <xsl:call-template name="create-div-wrapper"/>
   </xsl:template>
   <xsl:template match="h:div[@class='figure']">
-    <xsl:message>figure</xsl:message>
     <xsl:call-template name="create-div-wrapper"/>
   </xsl:template>
   
