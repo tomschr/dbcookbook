@@ -61,6 +61,10 @@ div.book-titlepage div.legalnotice div.sidebar
 div.legalnotice div.sidebar div.sidebar-content {
   padding-top:0;
 }
+div.legalnotice div.sidebar div.sidebar-content td img {
+  padding-right:1em;
+}
+
 div.legalnotice {
   text-align:left;
 }
