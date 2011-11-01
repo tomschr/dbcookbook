@@ -36,13 +36,7 @@
       <xsl:value-of select="."/>
     </xsl:attribute>
   </xsl:template>
-  
-  <xsl:template match="h:div[@class='blockquote-title']">
-    <h3>
-      <xsl:apply-templates/>
-    </h3>
-  </xsl:template>
-  
+    
   <xsl:template match="@class">
     <xsl:choose>
       <xsl:when test="starts-with(., 'sgmltag')">
@@ -65,6 +59,7 @@
   
   <!-- Remove obsolete elements and attributes -->
   <xsl:template match="h:div/@title"/>
+  <xsl:template match="h:a/@title"/>
   <xsl:template match="h:blockquote/@title"/>
   
   <!-- Remove empty anchors -->
@@ -93,6 +88,13 @@
     </div>
   </xsl:template>  
   
+  <xsl:template match="h:div[@class='blockquote-title']">
+    <h3><xsl:apply-templates/></h3>
+  </xsl:template>
+  <xsl:template match="h:div[@class='sidebar-title']">
+    <h3><xsl:apply-templates/></h3>
+  </xsl:template>
+  
   
   <!-- Main structures -->
   <xsl:template match="h:div[@class='appendix']">
@@ -110,9 +112,41 @@
   <xsl:template match="h:div[@class='section']">
     <xsl:call-template name="create-class-titlepage"/>
   </xsl:template>
+  <xsl:template match="h:div[@class='sidebar']">
+    <xsl:call-template name="create-class-titlepage"/>
+  </xsl:template>
   <xsl:template match="h:div[@class='titlepage']">
     <xsl:apply-templates/>
   </xsl:template>    
+  <!-- TOCs -->
+  <xsl:template match="h:div[@class='toc']">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='toc-title']">
+    <p><b><xsl:apply-templates/></b></p>
+  </xsl:template>
+  <xsl:template match="h:div[@class='toc']/h:dl">
+    <dl class="toc">
+      <xsl:apply-templates/>
+    </dl>
+  </xsl:template>
+  <xsl:template match="h:div[starts-with(@class, 'list-of-')]">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[starts-with(@class, 'list-of-')]/h:dl">
+    <dl class="toc">
+      <xsl:apply-templates/>
+    </dl>
+  </xsl:template>  
+  <xsl:template match="h:div[@class='toc-title']">
+    <p><b><xsl:apply-templates/></b></p>
+  </xsl:template>
   
   <!-- Authors and other -->
   <xsl:template match="h:div[@class='author']">
@@ -125,35 +159,16 @@
     <xsl:call-template name="create-personname"/>
   </xsl:template>
   
-  <!-- TOCs -->
-  <xsl:template match="h:div[@class='toc-title']">
-     <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
-  <xsl:template match="h:div[@class='list-of-tables']">
-     <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
-  <xsl:template match="h:div[@class='list-of-figures']">
-     <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
-  <xsl:template match="h:div[@class='list-of-examples']">
-     <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
-  <xsl:template match="h:div[@class='list-of-procedures']">
-     <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
-  <xsl:template match="h:div[@class='list-of-equations']">
-     <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
   
   <!-- Links that need to be copied -->
-  <xsl:template match="h:dt/h:span[@class]/h:a |
+  <!--<xsl:template match="h:dt/h:span[@class]/h:a |
                        h:dt/h:a |
                        h:a[@class]">
     <xsl:copy-of select="."/>
-  </xsl:template>
+  </xsl:template>-->
   <xsl:template match="h:a[@class]">
     <xsl:copy>
-      <xsl:copy-of select="@*[local-name() != 'class']"/>
+      <xsl:apply-templates select="@*[local-name() != 'class']"/>
       <xsl:apply-templates/>  
     </xsl:copy>
   </xsl:template>
