@@ -42,6 +42,7 @@
   
   <!-- 
    * Knowing the Differences Between DocBook's Version 4 and Version 5
+   * Modularize your Document
    * Differentiate DocBook Elements (Divisions, Block, Inline)
    * Writing Topics with DocBook
    * Creating Assemblies (Future)
