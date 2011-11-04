@@ -71,6 +71,7 @@
   <xi:include href="db/topic.section.vs.sectx.xml"/>
   <xi:include href="db/topic.lists.xml"/>
   <xi:include href="db/topic.remarks.xml"/>
+  <xi:include href="db/topic.link.xml"/>
   <xi:include href="db/topic.acronym.xml"/>
   <xi:include href="db/topic.quotes.xml"/>
 </chapter>
