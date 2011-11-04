@@ -32,9 +32,9 @@
   <section xml:id="dbc.common.intro">
     <title>Introduction</title>
     <para>A lot of customizations can be shared between different output
-      formats. As such, it is probably a good idea to think about 
-      how to structure and store your customizations before starting. The
-      following directories is a good start, especially if you want to
+      formats. As such, it is probably a good idea to think about how to
+      structure and store your customizations before starting. The
+      following directories are a good start, especially if you want to
       support different output formats:</para>
     <screen>mycustomizations/
   +-- common/
