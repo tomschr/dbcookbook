@@ -113,15 +113,29 @@
           output format.</para>
       </step>
     </procedure>
-    <para>Foo</para>
+    <para/>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>XIncludes are a very convenient way to modularize your
-      document. In </para>
+      document. However, if the referenced file is not available, the
+      XInclude step will fail. What can you do? The XInclude
+      specification definies two elements: <tag>xi:include</tag> and
+        <tag>xi:fallback</tag>. The latter can be used to add code when
+      a ressource could not be retrieved:</para>
+    <programlisting>&lt;xi:include href="revhistory.xml">
+  &lt;xi:fallback>
+    &lt;para>The revision history could not be retrieved.&lt;/para>
+  &lt;/xi:fallback>
+&lt;/xi:include></programlisting>
+    <para>The previous code does the following: When XInclude are being
+      resolved, the XML parser tries to include the file
+        <filename>revhistory.xml</filename>. If the file can not be
+      retrieved, it will process the <tag>xi:fallback</tag> element and
+      include the contents.</para>
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <para><link xlink:href="http://www.w3.org/TR/xinclude/"/></para>
   </section>
 </section>
