@@ -7,18 +7,50 @@ datatypes xs = "http://www.w3.org/2001/XMLSchema-datatypes"
 
 start = description
 
+xp.stylesheet.attrib =
+  ## Name of the stylesheet to test (required)
+	attribute stylesheet { xs:anyURI }
+
+xp.query.attrib =
+  ## query which the stylesheet is associated with
+  attribute query { xs:anyURI }
+
+xp.xslt-version.attrib =
+  ## The used XSLT version (1.0, 2.0, ...)
+  attribute xslt-version { xs:NMTOKEN }
+
+xp.version.attrib =
+  ## version of test
+  attribute version { xs:NMTOKEN }
+
+xp.query-at.attrib =
+  ##
+  attribute query-at { xs:anyURI }
+
+xp.preserve-space.attrib =
+  ## ???
+  attribute preserve-space { xs:NMTOKENS }
+	
+xp.href.attrib =
+  ## URI
+  attribute href { xs:anyURI }
+
+xp.select.attrib =
+  ## XPath expression
+  attribute select { xpath }
+
 description = 
 	## A description is a description of a stylesheet application. 
 	## It must have a stylesheet and/or a query it's associated with.
 	## It may also have a version to aid development over time.
 	element description { 
 		common-attributes,
-		attribute stylesheet { xs:anyURI }?,
-		attribute query { xs:anyURI }?,
-		attribute xslt-version { xs:NMTOKEN }?,
-		attribute query-at { xs:anyURI }?,
-		attribute version { xs:NMTOKEN }?,		
-		attribute preserve-space { xs:NMTOKENS }?,
+		xp.stylesheet.attrib,
+		xp.query.attrib?,
+		xp.xslt-version.attrib?,
+		xp.query-at.attrib?,
+		xp.version.attrib?,		
+		xp.preserve-space.attrib?,
 		(global-param | import | scenario | pending)+ }
 
 import = 
@@ -27,7 +59,7 @@ import =
 	## XSpec will be run on the stylesheet that this XSpec document describes.
 	## Importing is recursive and may be circular (although only one copy of a given
 	## imported document will actually be imported).
-	element import { common-attributes, attribute href { xs:anyURI } }
+	element import { common-attributes, xp.href.attrib }
 
 pending = 
 	## Anything that is within a <pending> element will remain untested, but will be
@@ -161,19 +193,25 @@ template-param = element param { common-attributes,
 function-param = element param { common-attributes,
                                  name?, as?, position?, selection }
 
-name = attribute name { xs:QName }
+name =
+  ## A QName
+  attribute name { xs:QName }
 
-position = attribute position { xs:integer }
+position =
+  ## A integer value
+  attribute position { xs:integer }
 
-as = attribute as { text }
+as =
+  ## A text
+  attribute as { text }
 
 selection = node-selection | value-selection
 
-node-selection = attribute href { xs:anyURI }?,
-                 attribute select { xpath }?, 
+node-selection = xp.href.attrib?,
+                 xp.select.attrib?, 
                  any-content
 
-value-selection = attribute select { xpath }
+value-selection = xp.select.attrib
 
 xpath = text
 
@@ -185,7 +223,9 @@ assertion =
 	element expect { common-attributes,
 		label, test?, selection }
 
-test = attribute test { xpath }
+test =
+  ## XPath expression to test
+  attribute test { xpath }
 
 common-attributes = attribute xml:* { text }*
 
