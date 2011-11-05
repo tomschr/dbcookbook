@@ -82,7 +82,7 @@
     <title>Discussion</title>
     <para>Before you use a font, check the following list:</para>
     <itemizedlist>
-      <itemizedlist>
+      <listitem>
         <formalpara>
           <title>Amount of Glyphs</title>
           <para>Does your font support your language? Although modern
@@ -91,8 +91,8 @@
               <quote>uncommon</quote> languages or rarely used glyphs.
           </para>
         </formalpara>
-      </itemizedlist>
-      <itemizedlist>
+      </listitem>
+      <listitem>
         <formalpara>
           <title>Missing Styles</title>
           <para>Some fonts are published in only one style, usually
@@ -101,8 +101,8 @@
             styles (bold, italic, or a combination) are needed.
           </para>
         </formalpara>
-      </itemizedlist>
-      <itemizedlist>
+      </listitem>
+      <listitem>
         <formalpara>
           <title>Font Format</title>
           <para>Modern fonts are usually Unicode fonts in <acronym>OTF<alt>OpenType 
@@ -111,8 +111,8 @@
             of glphys (theoretically 256) and can not be used on the
             Web.</para>
         </formalpara>
-      </itemizedlist>
-      <itemizedlist>
+      </listitem>
+      <listitem>
         <formalpara>
           <title>Font Combinations</title>
           <para>For a non-designer, it is generally easier to use a
@@ -120,8 +120,8 @@
             monospaced typefaces. Mixing several serif or sans serif
             typefaces should be avoided</para>
         </formalpara>
-      </itemizedlist>
-      <itemizedlist>
+      </listitem>
+      <listitem>
         <formalpara>
           <title>Quality</title>
           <para>This is a broad topic and it depends where you want to
@@ -132,7 +132,7 @@
             certain resolution) may or may not work.
           </para>
         </formalpara>
-      </itemizedlist>
+      </listitem>
     </itemizedlist>   
   </section>
 </section>
