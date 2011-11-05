@@ -106,6 +106,7 @@ div {
 db.definitions =
   ## A collection of definitions
   element definitions {
+    db.effectivity.attributes?,
     db.definitionfile.attribute?,
     db.def*
   }
