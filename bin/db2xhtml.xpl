@@ -24,13 +24,7 @@
   </p:output>
   <p:option name="outfile" select="'../build/html/DocBook-Cookbook2.html'"/>
   
-  <!--<p:variable name="outputfile">
-    <p:inline>../build/html/DocBook-Cookbook2.html</p:inline>
-  </p:variable>-->
-
   <p:import href="validate-xinclude-xslt2.xpl"/>
-  
-  <!--<p:log port="result" href="log.txt"/>-->
   
   <t:xinclude-rng-xslt2 name="xinclude-rng-xslt2">
     <p:input port="source">
