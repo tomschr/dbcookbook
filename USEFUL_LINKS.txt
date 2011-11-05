@@ -6,3 +6,6 @@ http://www.student.oulu.fi/~laurirai/muuta/koulujutut/kalifornia.html
 
 * Logical Links
 http://de.selfhtml.org/html/verweise/typisierte.htm
+
+* DocBook XSLT 2.0 stylesheets
+http://docbook.github.com/
