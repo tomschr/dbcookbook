@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.db.modularize" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Modularize Your Document</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need a method to split your document into several
+        <quote>modules</quote> and put it together afterwards.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>There are two methods<footnote>
+        <para>Actually there is another method to use, the
+            <emphasis>external entities</emphasis>. You can read about
+          them in The Definitive Guide at <link
+            xlink:href="http://www.docbook.org/tdg51/en/html/ch02.html#ch02-physdiv"
+          />. External entities can still be used, but they have a some
+          disadvantages so they are not described here. XIncludes are
+          the preferred method nowadays.</para>
+      </footnote> to solve your problem:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Use XIncludes</para>
+      </listitem>
+      <listitem>
+        <para>Use Assemblies</para>
+      </listitem>
+    </itemizedlist>
+    <para><emphasis role="italic">Assemblies</emphasis> are a very new
+      method (as of November 2011) to combine modules from
+        <quote>topics</quote>. It goes far beyond XIncludes and you need
+      DocBook&#xa0;5 and XSLT&#xa0;2. If you want to get more
+      information about assemblies, read <link
+        xlink:href="http://www.docbook.org/tdg51/en/html/ch06.html"/> in
+      The Definitive Guide.</para>
+    <para><emphasis role="italic">XIncludes</emphasis> are a W3C
+      specification and defines the elements <tag>xi:include</tag> and
+        <tag>xi:fallback</tag>. They are not DocBook elements, however
+      they have been integrated in DocBook 5.x<footnote>
+        <para>To use XInclude with DocBook 5.x, use the
+            <filename>docbookxi.rnc</filename> RELAX NG schema. </para>
+      </footnote>. </para>
+    <para>The following example shows a book which contains two
+      chapters, included by XIncludes:</para>
+    <example>
+      <title>Book with Chapters</title>
+      <programlisting language="xml">&lt;book version="5.0"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  &lt;title>...&lt;/title>
+  <emphasis role="bold">&lt;xi:include href="intro.xml"/>
+  &lt;xi:include href="conceptual-overview.xml"/></emphasis>
+&lt;/book></programlisting>
+    </example>
+    <para>The file is referenced by the <tag class="attribute"
+        >href</tag> attribute. Before you can transform your document,
+      you need to resolve your XIncludes. The following procedure shows
+      a typical workflow:</para>
+    <procedure>
+      <title>Typical Workflow with XIncludes</title>
+      <step>
+        <para>Write your document structure, usually it will be a book
+          or an article. Do not forget to include the XInclude namespace
+            <uri>http://www.w3.org/2001/XInclude</uri> into the root
+          element.</para>
+      </step>
+      <step>
+        <para>Add <tag>xi:include</tag> elements for those elements you
+          want to maintain in a separate file. Typically, this can be an
+          appendix, chapter, preface, glossary, or any other top level
+          elements.</para>
+      </step>
+      <step>
+        <para>Resolve your XIncludes. Use a XML parser who supports
+          XIncludes, for example, <command>xmllint</command> from the
+          libxml2 library. This XML parser brings the
+            <option>--xinclude</option> option to resolve all your
+          XInclude elements in one step:</para>
+        <screen><command>xmllint</command> --xinclude --output big.xml book.xml</screen>
+        <para>The above command resolves all XIncludes and saves the
+          result in the file <filename>big.xml</filename>. Note,
+          this</para>
+      </step>
+      <step>
+        <para>Validate the result (in our example, it is
+            <filename>big.xml</filename>) with your DocBook
+          schema.</para>
+      </step>
+      <step>
+        <para>Transform the result file with your stylesheets into your
+          output format.</para>
+      </step>
+    </procedure>
+    <para>Foo</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>XIncludes are a very convenient way to modularize your
+      document. In </para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>
+</section>
