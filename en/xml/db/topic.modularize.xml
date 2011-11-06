@@ -22,6 +22,11 @@
   <title>Modularize Your Document</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>xinclude</keyword>
+      <keyword>module</keyword>
+      <keyword>assemblies</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">
