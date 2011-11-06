@@ -56,10 +56,11 @@
     <para><emphasis role="italic">Assemblies</emphasis> are a very new
       method (as of November 2011) to combine modules from
         <quote>topics</quote>. It goes far beyond XIncludes and you need
-      DocBook&#xa0;5 and XSLT&#xa0;2. If you want to get more
-      information about assemblies, read <link
+      DocBook&#xa0;5 and XSLT&#xa0;2, but are currently under
+      development. If you want to get more information about assemblies, 
+      read <link
         xlink:href="http://www.docbook.org/tdg51/en/html/ch06.html"/> in
-      The Definitive Guide.</para>
+      <citetitle>The Definitive Guide</citetitle>.</para>
     <para><emphasis role="italic">XIncludes</emphasis> are a W3C
       specification and defines the elements <tag>xi:include</tag> and
         <tag>xi:fallback</tag>. They are not DocBook elements, however
