@@ -14,7 +14,7 @@
    
 -->
 
-<book version="5.1" xml:lang="en" xml:id="dbcookbook"
+<book version="5.1" xml:lang="en" xml:id="dbcookbook" status="draft"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -57,8 +57,12 @@
       <keyword>XSLT</keyword>
     </keywordset>
     <pubdate><?dbtimestamp?></pubdate>
+    <annotation xml:id="draft">
+      <title>Draft</title>
+      <para>This book is work in progress.</para>
+    </annotation>
   </info>
-  
+    
   <xi:include href="dbc-preface.xml"/>
   
   <xi:include href="dbc-markup.xml"/>
