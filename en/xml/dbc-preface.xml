@@ -32,9 +32,9 @@
   
   <blockquote>
     <title>Mission</title>
-    <para>The <citetitle
+    <para><citetitle
         xlink:href="https://sourceforge.net/projects/doccookbook/"
-        >DocCookBook</citetitle> project aims to create a collection of
+        >The DocCookBook</citetitle> project aims to create a collection of
       cookbook-style solutions released under a Creative Commons (CC)
       license for the international DocBook community.</para>
   </blockquote>
@@ -47,43 +47,49 @@
       particularly well suited to books and papers about computer
       hardware and software (though it is by no means limited to these
       applications).</quote></para>
-  <para> Although there are helpful and valuable documentation like the
-      <citetitle
-      xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
-      >DocBook&#xa0;5: The Definitive Guide</citetitle> from <personname>
-      <firstname>Norman</firstname>
-      <surname>Walsh</surname>
-    </personname> and <personname>
-      <firstname>Bob</firstname>
-      <surname>Stayton</surname>
-    </personname>'s <citetitle
-      xlink:href="http://www.sagehill.net/docbookxsl/">DocBook
-      XSL</citetitle> book, until now nobody wrote a book that combines
-    the <emphasis>best of both worlds</emphasis> in a cookbook style. My
-    book is intented to be such a book. However, it <emphasis>does
-      not</emphasis> seek to replace the prior mentioned de facto
-    standards. It aims for <emphasis>enhancing</emphasis> the world of
-    DocBook with a different view. </para>
+  <para>Although there are helpful and valuable documentation―be it as a book<footnote>
+      <para>Like the reference <citetitle
+          xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
+          >DocBook&#xa0;5: The Definitive Guide</citetitle> from <personname>
+          <firstname>Norman</firstname>
+          <surname>Walsh</surname>
+        </personname> or <personname>
+          <firstname>Bob</firstname>
+          <surname>Stayton</surname>
+        </personname>'s <citetitle
+          xlink:href="http://www.sagehill.net/docbookxsl/">DocBook
+          XSL</citetitle></para>
+    </footnote> or getting your information online―I always felt there
+    is a blank gap. This gap could be bridged with a guide that only
+    concentrates on problems and their solution. Until now nobody wrote
+    a book that combines possible problems, pitfalls, <quote>how to do
+      this</quote>, and the benefits in a cookbook style. My book is
+    intented to be such a book. However, to be clear, it <emphasis>does
+      not</emphasis> seek to replace any other information, be it a
+    printed or an online resource. It aims for
+      <emphasis>enhancing</emphasis> the world of DocBook with a
+    different view. </para>
   <para>
-    My book is a collection of topics, specific to a certain problem.
-    
-    Most topics contain step-by-step instructions to simplify your
-    tasks for DocBook. If you want to dive deeper, I have collected
-    links for further reading.
+    My book is a collection of topics, specific to a certain problem
+    written mostly as step-by-step instructions. This makes it easier to
+    read and understand. The difficulty can range from very easy to 
+    demanding. The more challenging problems need also knowledge from
+    different domains (XSLT, CSS, etc.)
   </para>
-  <para>
-    The topics are mostly based on my own experiences with DocBook 
-    and the DocBook XSL stylesheets. However, it also includes questions 
+  <para> The topics are mostly based on my own experiences with DocBook
+    and the DocBook XSL stylesheets. However, it also includes questions
     and answers from other sources: mostly the DocBook mailinglists, but
-    also other sites that I have found. It is the nature of such topics that
-    there might be some overlap with other sources. When other authors inspired me, 
-    I have included their names. If you think your name is missing,
-    please let me know.
-  </para>
-  <para> As I have learned a lot from the masters of DocBook, it is time
-    to give something back. This book is written and available under a
-    Creative Commons license. I hope the DocBook community will find it
-    useful. </para>
+    also other sites that I have found. It is the nature of such topics
+    that there might be some overlap with other sources. When other
+    authors inspired me, I have included their names. If you think your
+    name is missing, please let me know. </para>
+  <para>As I have learned (and still do) a lot from the masters of DocBook, 
+    it is time to give something back. What you are reading is the first
+    draft of the fruits of these efforts.  
+    Currently, this book is available under a
+    Creative Commons license (see <xref linkend="legalnotice"/> if you
+    want to know more). I hope you enjoy reading this book as much as I
+    enjoy writing it. </para>
   
   <section xml:id="dbc.preface.audience">
     <title>Audience</title>
@@ -114,30 +120,6 @@
   <section xml:id="dbc.preface.typo">
     <title>Typographical Conventions</title>
     <para></para>
-    <itemizedlist spacing="compact">
-        <para><phrase role="monospace"
-          >Schreibmaschinenschrift</phrase> wird verwendet für:</para>
-        <listitem>
-          <para>Listings</para>
-        </listitem>
-        <listitem>
-          <para>Alle XML-spezifische Strukturen, wie Element- und
-            Attributnamen, Attributwerte, Entity-Referenzen,
-            Namensräume, Verarbeitungsanweisungen</para>
-        </listitem>
-        <listitem>
-          <para>Programmspezifisches wie Datei- und
-            Verzeichnisnamen, Umgebungsvariablen, Optionen, Variablen,
-            Funktionen </para>
-        </listitem>
-        <listitem>
-          <para>Sonstiges wie URLs, URNs, kurze Codeschnipsel usw.
-          <menuchoice>
-            <guimenu>File</guimenu>
-            <guimenu>Save as...</guimenu>
-          </menuchoice></para>
-        </listitem>
-      </itemizedlist>
   </section>
   
   <section xml:id="dbc.preface.feedback">
