@@ -42,10 +42,10 @@
   
   <!-- 
    * Knowing the Differences Between DocBook's Version 4 and Version 5
-   * Modularize your Document
+   * Modularize your Document with XIncludes
+   * Modularize your Document with Assemblies
    * Differentiate DocBook Elements (Divisions, Block, Inline)
    * Writing Topics with DocBook
-   * Creating Assemblies (Future)
    * Distinguish Between Section and SectX
    * Using Lists
    * Using Tables
