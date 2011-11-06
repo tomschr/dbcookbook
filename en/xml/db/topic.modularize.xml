@@ -36,7 +36,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para><emphasis role="italic">XInclude</emphasis> is a W3C
+    <para>Use <emphasis role="italic">XInclude</emphasis>. It is a W3C
       specification and defines the elements <tag>xi:include</tag> and
         <tag>xi:fallback</tag>. They are not DocBook elements (as they
       are definied by the W3C), however they have been integrated in
@@ -137,6 +137,7 @@
     
   </section>
   <section role="discussion">
+    <title>Discussion</title>
     <para>The previous procedure showed a book with xincluded chapters.
       It is possible to even go deeper and include also section into a
       chapter. Actually, there is no limit. You should only be aware
@@ -147,17 +148,17 @@
       can be done in one step. This is the case for
         <command>xsltproc</command> from the libxslt library. Use the
         <option>--xinclude</option> option as shown:</para>
-    <screen><command>xsltproc</command> --xinclude </screen>
-    <title>Discussion</title>
+    <screen><command>xsltproc</command> --xinclude stylesheet file</screen>
     <para>The last section showed a general method to work with
-      XIncludes.</para>
-    <para>In most cases this is enough. However, XIncludes offers more
-      benefits which are discovered in the following subsections.</para>
+      XIncludes. In most cases this is enough. However, XIncludes offers
+      more benefits which are discovered in the following
+      subsections.</para>
     
     <section xml:id="sec.db.modularize.xifallback">
       <title>Fallback</title>
       <para>If the referenced file in the <tag>xi:include</tag> element
-        is not available, the XInclude step will fail. What can you do?
+        is not available, the XInclude step will fail. What can you
+        avoid that?
         The XInclude specification definies two elements:
           <tag>xi:include</tag> and <tag>xi:fallback</tag>. The latter
         can be used to add code when a ressource could not be
