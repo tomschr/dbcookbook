@@ -31,6 +31,9 @@
   <xsl:param name="section.label.includes.component.label" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
   
+  <!-- Use Piwik code: -->
+  <xsl:param name="use.piwik" select="1"/>
+  
   <xsl:param name="menuchoice.menu.separator"> &#8594; </xsl:param>
   <xsl:param name="menuchoice.separator">+</xsl:param>
   <xsl:param name="glossentry.show.acronym">yes</xsl:param>
