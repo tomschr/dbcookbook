@@ -26,15 +26,63 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>The problem explained.</para>
+    <para>You need some ideas how to markup links.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para>Use the <tag>link</tag> (DocBook 5.x) or <tag>ulink</tag>
+    (DocBook 4.x) element. Links can be used in two incarnations:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>As Empty Link</title>
+          <para>The link element is completely empty:</para>
+        </formalpara>
+        <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>
+        <programlisting language="xml">&lt;ulink url="https://doccookbook.sf.net"/></programlisting>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>With Text</title>
+          <para>The link element contains some text or even other
+          elements:</para>
+        </formalpara>
+        <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">The DocCookBook&lt;/link></programlisting>
+        <programlisting language="xml">&lt;ulink url="https://doccookbook.sf.net">The DocCookBook&lt;/link></programlisting>
+      </listitem>
+    </itemizedlist>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para>In most cases, it is enough to just use an empty link element.
+      As such, you should avoid this notation:</para>
+    <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">https://doccookbook.sf.net&lt;/link></programlisting>
+    <para>This is mostly unnecessary as it is overly verbose, difficult
+      to read, and does not add any value. </para>
+    <para>If you want to control the link behavior, for example, to
+      open a new window when clicking it, use the <tag class="attribute">xlink:show</tag>
+      attribute:      
+    </para>
+    <programlisting language="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/></programlisting>
+    <para>The attribute value <tag class="attvalue">show</tag> opens a
+      <quote>new window, frame, pane, or other relevant presentation
+      context</quote> (see <link 
+        xlink:href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</link>).
+        Of course, this is only useful for online formats. </para>
+    <para>Apart from the general linking attributes, DocBook 5 adds also
+      new concepts. One of this new concepts are that
+        <emphasis>every</emphasis> element can be a link. In other
+      words, you do <emphasis role="italic">not</emphasis> have to use a
+        <tag>link</tag> element anymore. If you have a book title and
+      you want to add a link to it, use <tag>citetitle</tag>. In former
+      DocBook times, this has to be marked up like this:</para>
+    <programlisting>&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DocCookBook&lt;/ulink>&lt;/citetitle></programlisting>
+    <para>or this, depending on what you prefer:</para>
+    <programlisting>&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DocCookBook&lt;/citetitle>&lt;/ulink></programlisting>
+    <para>With DocBook 5 this can be written shortly:</para>
+    <programlisting>&lt;citetitle xlink:href="https://doccookbook.sf.net">The DocCookBook&lt;/citetitle></programlisting>
+    <para>This is much shorter than the DocBook 4 version and much
+      clearer!</para>
   </section>
   <section role="seealso">
     <title>See Also</title>
