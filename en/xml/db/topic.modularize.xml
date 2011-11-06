@@ -23,9 +23,10 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>xinclude</keyword>
+      <keyword>XInclude</keyword>
       <keyword>module</keyword>
       <keyword>assemblies</keyword>
+      <keyword>XPointer</keyword>
     </keywordset>
   </info>
   
@@ -206,14 +207,31 @@
         linebreaks.</para>
     </section>
     
+    <!--
     <section xml:id="sec.db.modularize.xpointer">
-      <title>Partial Inclusion</title>
-      <para></para>
+      <title>Partial Inclusion with XPointer</title>
+      <para>Previous examples showed how to include a file with an XML
+        structure. The inclusion pulled always the complete file. It is
+        possible to use only fragments. This can be done with
+        <emphasis>XPointers</emphasis>. 
+      </para>
+      <para>Problem is, they are only partially implemented and some
+        parts of the specification are not release as W3C
+        recommendation.</para>
     </section>
-
+    -->
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para><link xlink:href="http://www.w3.org/TR/xinclude/"/></para>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.w3.org/TR/xinclude/">XML Inclusions (XInclude) Version 1.0</link></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.sagehill.net/docbookxsl/ModularDoc.html#UsingXinclude"
+          >Using XInclude</link></para>
+      </listitem>
+    </itemizedlist>
   </section>
 </section>
