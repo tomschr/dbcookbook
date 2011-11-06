@@ -16,7 +16,7 @@
                                     <null/>
                                 </field>
                                 <field name="classpath">
-                                    <String-array/>
+                                    <null/>
                                 </field>
                                 <field name="authorExtensionDescriptor">
                                     <authorExtension>
@@ -84,14 +84,7 @@
                                             <null/>
                                         </field>
                                         <field name="contextualItems">
-                                            <contextProvider>
-                                                <field name="items">
-                                                    <contextItem-array/>
-                                                </field>
-                                                <field name="removeItems">
-                                                    <null/>
-                                                </field>
-                                            </contextProvider>
+                                            <null/>
                                         </field>
                                         <field name="tableSupportClassName">
                                             <null/>
@@ -111,7 +104,7 @@
                                     </authorExtension>
                                 </field>
                                 <field name="templatesLocations">
-                                    <String-array/>
+                                    <null/>
                                 </field>
                                 <field name="xmlCatalogs">
                                     <String-array>
@@ -146,7 +139,7 @@
                                     <scenario-array/>
                                 </field>
                                 <field name="validationScenarios">
-                                    <validationScenario-array/>
+                                    <null/>
                                 </field>
                                 <field name="defaultValidationScenarioName">
                                     <null/>
@@ -185,20 +178,20 @@
                                     <null/>
                                 </field>
                                 <field name="priority">
-                                    <Integer>2</Integer>
+                                    <Integer>3</Integer>
                                 </field>
                             </documentTypeDescriptor>
                             <documentTypeDescriptor>
                                 <field name="name">
-                                    <String>Toms Cookbook DocBook 5</String>
+                                    <String>Toms CookBook (DocBook 5)</String>
                                 </field>
                                 <field name="schemaDescriptor">
                                     <docTypeSchema>
                                         <field name="type">
-                                            <Integer>3</Integer>
+                                            <Integer>6</Integer>
                                         </field>
                                         <field name="uri">
-                                            <String>${pdu}/frameworks/rng/5.1/dbref.rnc</String>
+                                            <String>${pdu}/frameworks/rng/5.1/dbref.rng</String>
                                         </field>
                                     </docTypeSchema>
                                 </field>
@@ -206,7 +199,6 @@
                                     <String-array>
                                         <String>${frameworks}/docbook/docbook.jar</String>
                                         <String>${frameworks}/docbook/resources/</String>
-                                        <String>${pdu}/frameworks/db-xslt2/ext/build/lib/docbook-xsl2-saxon.jar</String>
                                     </String-array>
                                 </field>
                                 <field name="authorExtensionDescriptor">
@@ -233,6 +225,17 @@
                                                     </field>
                                                     <field name="alternate">
                                                         <Boolean>true</Boolean>
+                                                    </field>
+                                                </cssFile>
+                                                <cssFile>
+                                                    <field name="href">
+                                                        <String>${pdu}/frameworks/oxygen/inline.css</String>
+                                                    </field>
+                                                    <field name="title">
+                                                        <String>Customized Inline</String>
+                                                    </field>
+                                                    <field name="alternate">
+                                                        <Boolean>false</Boolean>
                                                     </field>
                                                 </cssFile>
                                             </cssFile-array>
@@ -5802,97 +5805,10 @@ The value of this parameter specifies profiles which should be included in the o
                                     </scenario-array>
                                 </field>
                                 <field name="validationScenarios">
-                                    <validationScenario-array>
-                                        <validationScenario>
-                                            <field name="pairs">
-                                                <list>
-                                                    <validationUnit>
-                                                        <field name="validationType">
-                                                            <validationUnitType>
-                                                                <field name="validationInputType">
-                                                                    <String>text/xml</String>
-                                                                </field>
-                                                            </validationUnitType>
-                                                        </field>
-                                                        <field name="url">
-                                                            <String>${pdu}/en/xml/DocBook-Cookbook.xml</String>
-                                                        </field>
-                                                        <field name="validationEngine">
-                                                            <validationEngine>
-                                                                <field name="engineType">
-                                                                    <String>&lt;Default engine></String>
-                                                                </field>
-                                                                <field name="allowsAutomaticValidation">
-                                                                    <Boolean>true</Boolean>
-                                                                </field>
-                                                            </validationEngine>
-                                                        </field>
-                                                        <field name="allowAutomaticValidation">
-                                                            <Boolean>true</Boolean>
-                                                        </field>
-                                                        <field name="extensions">
-                                                            <null/>
-                                                        </field>
-                                                        <field name="validationSchema">
-                                                            <null/>
-                                                        </field>
-                                                    </validationUnit>
-                                                </list>
-                                            </field>
-                                            <field name="type">
-                                                <String>Validation_scenario</String>
-                                            </field>
-                                            <field name="name">
-                                                <String>Validieren von DocBook-Cookbook.xml</String>
-                                            </field>
-                                        </validationScenario>
-                                        <validationScenario>
-                                            <field name="pairs">
-                                                <list>
-                                                    <validationUnit>
-                                                        <field name="validationType">
-                                                            <validationUnitType>
-                                                                <field name="validationInputType">
-                                                                    <String>text/any</String>
-                                                                </field>
-                                                            </validationUnitType>
-                                                        </field>
-                                                        <field name="url">
-                                                            <String>${currentFileURL}</String>
-                                                        </field>
-                                                        <field name="validationEngine">
-                                                            <validationEngine>
-                                                                <field name="engineType">
-                                                                    <String>&lt;Default engine></String>
-                                                                </field>
-                                                                <field name="allowsAutomaticValidation">
-                                                                    <Boolean>true</Boolean>
-                                                                </field>
-                                                            </validationEngine>
-                                                        </field>
-                                                        <field name="allowAutomaticValidation">
-                                                            <Boolean>true</Boolean>
-                                                        </field>
-                                                        <field name="extensions">
-                                                            <null/>
-                                                        </field>
-                                                        <field name="validationSchema">
-                                                            <null/>
-                                                        </field>
-                                                    </validationUnit>
-                                                </list>
-                                            </field>
-                                            <field name="type">
-                                                <String>Validation_scenario</String>
-                                            </field>
-                                            <field name="name">
-                                                <String>Normales Validieren</String>
-                                            </field>
-                                        </validationScenario>
-                                    </validationScenario-array>
+                                    <validationScenario-array/>
                                 </field>
                                 <field name="defaultValidationScenarioName">
-                                    <String>Validieren von DocBook-Cookbook.xml</String>
+                                    <null/>
                                 </field>
                                 <field name="defaultTransformationScenarioName">
                                     <null/>
@@ -5938,7 +5854,23 @@ The value of this parameter specifies profiles which should be included in the o
                         <documentTypeEntry-array>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>internal/Toms Cookbook DocBook 5</String>
+                                    <String>internal/Novdoc</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>internal/Toms CookBook (DocBook 5)</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>xspec/xspec.framework/XSpec</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -6046,14 +5978,6 @@ The value of this parameter specifies profiles which should be included in the o
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>internal/Novdoc</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>false</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>
@@ -7104,7 +7028,7 @@ The value of this parameter specifies profiles which should be included in the o
                                 <Boolean>false</Boolean>
                             </field>
                             <field name="language">
-                                <String>de_DE</String>
+                                <String>en_US</String>
                             </field>
                             <field name="caseSensitive">
                                 <Boolean>true</Boolean>
@@ -7119,7 +7043,7 @@ The value of this parameter specifies profiles which should be included in the o
                                 <Boolean>true</Boolean>
                             </field>
                             <field name="ignoreDuplicates">
-                                <Boolean>false</Boolean>
+                                <Boolean>true</Boolean>
                             </field>
                             <field name="ignoreURL">
                                 <Boolean>true</Boolean>
