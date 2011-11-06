@@ -57,10 +57,21 @@
       <keyword>XSLT</keyword>
     </keywordset>
     <pubdate><?dbtimestamp?></pubdate>
-    <annotation xml:id="draft">
+    <!--<annotation xml:id="draft">
       <title>Draft</title>
       <para>This book is work in progress.</para>
     </annotation>
+    <revhistory>
+      <title>Revision History</title>
+      <revision>
+        <revnumber>xxx</revnumber>
+        <date>2011</date>
+        <revdescription>
+          <para>First initial revision</para>
+        </revdescription>
+      </revision>
+    </revhistory>
+    -->
   </info>
     
   <xi:include href="dbc-preface.xml"/>
