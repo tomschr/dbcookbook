@@ -16,49 +16,9 @@
   
   <xsl:include href="param.xsl"/>
   <xsl:include href="inlines.xsl"/>
+  <xsl:include href="titlepage-templates.xsl"/>
+  <xsl:include href="titlepage-mode.xsl"/>
+
   <xsl:include href="usermeta.xsl"/>
-  
-  <xsl:template name="t:user-titlepage-templates" as="element(tmpl:templates-list)?">
-    <tmpl:templates-list>
-      <tmpl:templates name="book">
-      <tmpl:recto>
-        <div tmpl:class="titlepage">
-          <d:title/>
-          <d:subtitle/>
-          <d:author/>
-          <d:legalnotice/>
-          <d:pubdate/>
-          <d:revision/>
-          <d:revhistory/>          
-          <d:abstract/>
-          <d:annotation xml:id="draft"/>
-          <d:othercredit class="proofreader"/>
-        </div>
-        <h:hr tmpl:keep="true"/>
-      </tmpl:recto>
-      </tmpl:templates>
-    </tmpl:templates-list>
-  </xsl:template>
-  
-  <xsl:template match="d:othercredit" mode="m:titlepage-recto-mode"/>
-  <xsl:template match="d:othercredit[@class='proofreader']" mode="m:titlepage-recto-mode">
-    <div>
-      <xsl:sequence select="f:html-attributes(.)"/>
-      <p>
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key" select="'revisedby'"/>
-        </xsl:call-template>
-        <xsl:choose>
-          <xsl:when test="d:orgname">
-            <xsl:apply-templates select="d:orgname"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:apply-templates select="d:personname"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </p>
-    </div>
-  </xsl:template>
-  
 
 </xsl:stylesheet>
