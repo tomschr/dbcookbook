@@ -33,13 +33,30 @@ hurt if you know CSS and XSLT.
 As such, it is aimed more for DocBook developers than writers.
 
 
-Adding New Topics
------------------
-A topic is this book which deals with a certain problem and gives a solution.
-To make all the topic files consistent, there is an topic.empty.xml file which
-should be used. Just copy it to one of the main directories (common, fo, html, 
-structure) and give it a good name. Use the following command:
+Contribute
+----------
+Do you miss anything? Have you spotted an error? Have an idea about how
+to improve the book? Great! If you want to contribute to the book, just
+clone my repository on Sourcforge and send me patches. Here is how to do
+it:
 
- $ hg copy en/xml/topic.empty.xml en/xml/DIR/TOPICNAME
-
+1. Download Mercurial from http://mercurial.selenic.com and install it
+on your system.
+2. Clone my Sourceforge repository with the Mercurial command hg:
+   hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook-code
+3. If you want to create a new topic, decide in which chapter it could
+belong (markup, common customizations, structure, fo, html, or any
+other). For example, if you want an addition to DocBook´s structure
+chapter, use the existing template and copy it:
+   hg copy en/xml/topic.empty.xml en/xml/structure/topic.foo.xml
+(where 'foo' is an abstract term; replace it with something meaningful.)
+4. Open the XML file which contains a chapter element. In our example, it would
+be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and
+insert the following code:
+   <xi:include href="structure/topic.foo.xml"/>
+5. Open the XML file en/xml/structure/topic.foo.xml and write your
+topic.
+6. When you are finished, create a diff:
+   hg diff > foo.patch
+7. Send the diff to me.
 
