@@ -22,7 +22,7 @@
   <p:output port="result">
     <p:pipe port="result" step="store"/>
   </p:output>
-  <p:option name="outfile" select="'../build/html/DocBook-Cookbook2.html'"/>
+  <p:option name="outfile" select="'../build/html/DocCooBook.html'"/>
   
   <p:import href="validate-xinclude-xslt2.xpl"/>
   
