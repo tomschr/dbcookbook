@@ -21,29 +21,17 @@
     </p:documentation>
   </p:option>
 
-  <p:output port="result">
-    <p:pipe step="transform" port="result"/>
-  </p:output>
+  <p:output port="result"/>  
   
-  <p:xinclude name="xinclude">
-    <p:input port="source">
-      <p:pipe step="xinclude-rng-xslt2" port="source"/>
-    </p:input>
-  </p:xinclude>
-
+  <p:xinclude name="xinclude"/>
+  
   <p:validate-with-relax-ng name="rng-validate" dtd-id-idref-warnings="true">
-    <p:input port="source">
-      <p:pipe step="xinclude" port="result"/>
-    </p:input>
     <p:input port="schema">
       <p:pipe step="xinclude-rng-xslt2" port="schema"/>
     </p:input>
   </p:validate-with-relax-ng>
 
   <p:xslt name="transform">
-    <p:input port="source">
-      <p:pipe step="rng-validate" port="result"/>
-    </p:input>
     <p:input port="stylesheet">
       <p:pipe step="xinclude-rng-xslt2" port="stylesheet"/>
     </p:input>
