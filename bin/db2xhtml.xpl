@@ -20,9 +20,9 @@
   </p:input>
   <p:input port="parameters" kind="parameter"/>
   <p:output port="result">
-    <p:pipe port="result" step="store"/>
+    <p:pipe port="result" step="store-html"/>
   </p:output>
-  <p:option name="outfile" select="'../build/html/DocCooBook.html'"/>
+  <p:option name="outfile" select="'../build/html/DocCookBook.html'"/>
   
   <p:import href="validate-xinclude-xslt2.xpl"/>
   
@@ -41,7 +41,7 @@
     </p:input>
   </t:xinclude-rng-xslt2>
   
-  <p:store name="store" 
+  <p:store name="store-html" 
     method="xhtml" indent="true" 
     encoding="utf-8" omit-xml-declaration="false">
     <p:with-option name="href" select="$outfile"/>
