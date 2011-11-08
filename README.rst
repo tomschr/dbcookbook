@@ -40,27 +40,27 @@ to improve the book? Great! If you want to contribute to the book, just
 clone my repository on Sourcforge and send me patches. Here is how to do
 it:
 
-#. Download Mercurial from http://mercurial.selenic.com and install it
+1. Download Mercurial from http://mercurial.selenic.com and install it
 on your system.
 #. Clone my Sourceforge repository with the Mercurial command hg:
 ::
   $ hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook-code
-#. If you want to create a new topic, decide in which chapter it could
+2. If you want to create a new topic, decide in which chapter it could
 belong (markup, common customizations, structure, fo, html, or any
 other). For example, if you want an addition to DocBook´s structure
 chapter, use the existing template and copy it:
 ::
   $ hg copy en/xml/topic.empty.xml en/xml/structure/topic.foo.xml
 (where 'foo' is an abstract term; replace it with something meaningful.)
-#. Open the XML file which contains a chapter element. In our example, it would
+3. Open the XML file which contains a chapter element. In our example, it would
 be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and
 insert the following code:
 ::
   <xi:include href="structure/topic.foo.xml"/>
-#. Open the XML file en/xml/structure/topic.foo.xml and write your
+4. Open the XML file en/xml/structure/topic.foo.xml and write your
 topic.
 #. When you are finished, create a diff:
 ::
   $ hg diff > foo.patch
-#. Send the diff to me.
+5. Send the diff to me.
 
