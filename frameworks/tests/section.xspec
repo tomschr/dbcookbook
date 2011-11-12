@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+  xmlns:d="http://docbook.org/ns/docbook"
+  xmlns:h="http://www.w3.org/1999/xhtml"
+  xslt-version="2.0"
+	stylesheet="../xslt2/base/html/docbook.xsl">
+
+
+<x:scenario label="Scenario for testing the DocBook HTML Stylesheets">
+	
+	<x:context>
+	  <d:section xml:id="dbc.epub.intro">
+	    <d:title>Section Test</d:title>
+	    <d:para>This section tests if certain conditions are fullfilled.</d:para>
+	  </d:section>
+	</x:context>
+	
+	<x:scenario label="when testing a section">
+	  <x:expect label="must have a @class attribute"
+	    test="exists($x:result/@class)"/>
+	  <x:expect label="must have a @class='section'"
+	    test="$x:result/@class = 'section'"/>
+	  <x:expect label="must have a @id attribute" 
+	    test="exists($x:result/@id)"/>
+	  <x:expect label="must have a @id='dbc.epub.intro'"
+	    test="$x:result/@id = 'dbc.epub.intro'"/>
+	  <x:expect label="must have a titlepage"
+	    test="exists($x:result/h:div/@class)"/>
+	  <x:expect label="must have a titlepage"
+	    test="$x:result/h:div/@class = 'section-titlepage'"/>
+	  <x:expect label="must have a h3">
+	    <h:div id="dbc.epub.intro" class="section">
+	      <h:div class="section-titlepage">
+           <h:h3>1. Section Test</h:h3>
+	      </h:div>
+	      <h:p>...</h:p>
+	    </h:div>
+	  </x:expect>	  
+	</x:scenario>  
+</x:scenario>
+
+</x:description>
