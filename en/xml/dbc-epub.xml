@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!-- <?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<chapter xml:id="dbc.epub" version="5.1"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>EPUB Customizations</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <abstract>
+      <para>EPUB is the abbreviation of <emphasis>electronic
+        publication</emphasis>, a format for ebook readers.</para>
+    </abstract>
+  </info>
+
+  <section xml:id="dbc.epub.intro">
+    <title>Introduction</title>
+    <para>Currently, there are two EPUB derivates available as
+      target formats. As such, there is no <quote>the</quote> EPUB
+      format, just different versions.</para>
+    <variablelist>
+      <varlistentry>
+        <term><filename class="directory">epub</filename></term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><filename class="directory">epub3</filename></term>
+        <listitem>
+          <para><remark>in development</remark></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+    <remark>Explain basics of EPUB format</remark>
+  </section>
+  
+</chapter>
