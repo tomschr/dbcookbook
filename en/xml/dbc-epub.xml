@@ -24,26 +24,29 @@
     <definitions definitionfile="defs.xml"/>
     <abstract>
       <para>EPUB is the abbreviation of <emphasis>electronic
-        publication</emphasis>, a format for ebook readers.</para>
+          publication</emphasis>, a format for ebook readers. It is an
+        open format based on (X)HTML  </para>
     </abstract>
   </info>
 
   <section xml:id="dbc.epub.intro">
     <title>Introduction</title>
-    <para>Currently, there are two EPUB derivates available as
+    <para>Currently, there are two EPUB incarnations available as
       target formats. As such, there is no <quote>the</quote> EPUB
       format, just different versions.</para>
     <variablelist>
       <varlistentry>
         <term><filename class="directory">epub</filename></term>
         <listitem>
-          <para></para>
+          <para>Creates EPUB version 2.0.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><filename class="directory">epub3</filename></term>
         <listitem>
-          <para><remark>in development</remark></para>
+          <para>Creates EPUB version 3.0. These stylesheets are
+            currently under development.
+          </para>
         </listitem>
       </varlistentry>
     </variablelist>
