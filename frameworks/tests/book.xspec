@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
+  xmlns:d="http://docbook.org/ns/docbook"
+  xmlns:h="http://www.w3.org/1999/xhtml"
+  xslt-version="2.0"
+	stylesheet="../xslt2/base/html/docbook.xsl">
+
+<!-- Enable generation of user meta -->
+<x:param name="generate.user.meta" select="1"/>
+
+<x:scenario label="Tests For book/info Customizations">
+	<x:context>
+	  <book version="5.1" xml:lang="en" xml:id="mybook"
+        status="draft" 
+        xmlns="http://docbook.org/ns/docbook">
+        <title>The Book</title>
+        <subtitle>Some Subbooktitle</subtitle>
+        <info>
+          <biblioid class="uri" role="project"
+            >https://sourceforge.net/projects/doccookbook/</biblioid>
+          <biblioid class="uri" role="home"
+            >https://doccookbook.sf.net</biblioid>
+          <author>
+            <personname>
+              <firstname>Thomas</firstname>
+              <surname>Schraitle</surname>
+            </personname>
+            <email>tom_schr@users.sourceforge.net</email>
+          </author>
+        </info>
+      </book>
+	</x:context>
+  <x:like ><x:label></x:label></x:like>
+	
+	 <x:expect label="with a book">
+	   
+	 </x:expect>
+</x:scenario>
+
+
+</x:description>
