@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--<!DOCTYPE catalog>-->
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <delegateSystem systemIdStartString="http://docbook.sourceforge.net/release/xsl-ns/" 
-    catalog="file:///etc/xml/docbook5-xsl-stylesheets.xml"/>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"> 
+  <group xml:base="db-xslt2/">
+    <!--                   http://docbook.github.com/release/latest/ -->
+    <rewriteSystem
+      systemIdStartString="http://docbook.github.com/release/latest/" 
+      rewritePrefix="."/>
+    <rewriteURI 
+      uriStartString="http://docbook.github.com/release/latest/" 
+      rewritePrefix="."/>  
+  </group>
+  
 </catalog>
