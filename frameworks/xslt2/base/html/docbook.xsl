@@ -12,7 +12,8 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink tmpl m t f h l">
   
-  <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>
+  <!--<xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>-->
+  <xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>
   
   <xsl:include href="param.xsl"/>
   <xsl:include href="inlines.xsl"/>
