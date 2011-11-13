@@ -10,7 +10,7 @@
   xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
   xmlns:h="http://www.w3.org/1999/xhtml"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="d xlink tmpl m t f h">  
+  exclude-result-prefixes="d xlink tmpl m t f h l">  
   
   <xsl:template match="d:guibutton">
     <xsl:call-template name="t:inline-charseq"/>
@@ -73,10 +73,16 @@
   </xsl:template>
   
   <xsl:template match="d:quote">
+    <xsl:param name="class" select="()"/>
     <span>
-      <xsl:sequence select="f:html-attributes(.)"/>
+      <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.), ($class,@role))"/>
       <xsl:call-template name="gentext-startquote"/>
-      <xsl:call-template name="t:inline-charseq"/>
+      <xsl:apply-templates/>
+      <xsl:call-template name="t:xlink">
+        <xsl:with-param name="content">
+          <xsl:apply-templates/>
+        </xsl:with-param>
+      </xsl:call-template>
       <xsl:call-template name="gentext-endquote"/>
     </span>
   </xsl:template>
