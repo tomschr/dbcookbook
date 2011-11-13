@@ -8,7 +8,9 @@
   xmlns:t="http://docbook.org/xslt/ns/template"
   xmlns:m="http://docbook.org/xslt/ns/mode"
   xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
-  exclude-result-prefixes="d xlink tmpl m t f">  
+  xmlns:h="http://www.w3.org/1999/xhtml"
+  xmlns="http://www.w3.org/1999/xhtml"
+  exclude-result-prefixes="d xlink tmpl m t f h">  
   
   <xsl:template match="d:guibutton">
     <xsl:call-template name="t:inline-charseq"/>
@@ -70,4 +72,12 @@
     </xsl:choose>
   </xsl:template>
   
+  <xsl:template match="d:quote">
+    <span>
+      <xsl:sequence select="f:html-attributes(.)"/>
+      <xsl:call-template name="gentext-startquote"/>
+      <xsl:call-template name="t:inline-charseq"/>
+      <xsl:call-template name="gentext-endquote"/>
+    </span>
+  </xsl:template>
 </xsl:stylesheet>
