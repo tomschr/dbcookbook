@@ -66,8 +66,14 @@
     <revhistory>
       <title>Revision History</title>
       <revision>
-        <revnumber>xxx</revnumber>
         <date>2011</date>
+        <author>
+          <personname>
+            <firstname>Thomas</firstname>
+            <surname>Schraitle</surname>
+          </personname>
+        </author>
+        <authorinitials>toms</authorinitials>
         <revdescription>
           <para>First initial revision</para>
         </revdescription>
