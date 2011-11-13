@@ -56,11 +56,13 @@
       <keyword>Customization</keyword>
       <keyword>XSLT</keyword>
     </keywordset>
-    <pubdate><?dbtimestamp?></pubdate>
+    <pubdate>Last published version: November/December 2011<?dbtimestamp?></pubdate>
+    <releaseinfo>Draft (Version 0.5)</releaseinfo>
     <!--<annotation xml:id="draft">
       <title>Draft</title>
       <para>This book is work in progress.</para>
     </annotation>
+    -->
     <revhistory>
       <title>Revision History</title>
       <revision>
@@ -71,7 +73,7 @@
         </revdescription>
       </revision>
     </revhistory>
-    -->
+    
   </info>
     
   <xi:include href="dbc-preface.xml"/>
