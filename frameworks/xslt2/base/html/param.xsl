@@ -9,7 +9,10 @@
   xmlns:m="http://docbook.org/xslt/ns/mode"
   xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
   exclude-result-prefixes="d xlink tmpl m t f">
-  
+ 
+
+  <xsl:param name="base.dir" select="'build/html/'"/>
+ 
   <!--<xsl:param name="resource.root">../../../db-xslt2/xslt/base/</xsl:param>-->
   <xsl:param name="docbook.css" select="'css/dbcookbook.css'"/>
   <xsl:param name="local.l10n.xml" select="document('../common/l10n/l10n.xml')"/>
