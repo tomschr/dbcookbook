@@ -77,7 +77,6 @@
     <span>
       <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.), ($class,@role))"/>
       <xsl:call-template name="gentext-startquote"/>
-      <xsl:apply-templates/>
       <xsl:call-template name="t:xlink">
         <xsl:with-param name="content">
           <xsl:apply-templates/>
