@@ -30,12 +30,15 @@
   
   <xsl:template match="d:menuchoice">
     <xsl:variable name="shortcut" select="./d:shortcut"/>
+    <span>
+      <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.))"/>
     <xsl:call-template name="process.menuchoice"/>
     <xsl:if test="$shortcut">
       <xsl:text> (</xsl:text>
       <xsl:apply-templates select="$shortcut"/>
       <xsl:text>)</xsl:text>
     </xsl:if>
+    </span>
   </xsl:template>
   <xsl:template name="process.menuchoice">
     <xsl:param name="nodelist"
