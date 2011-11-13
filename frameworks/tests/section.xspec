@@ -17,7 +17,8 @@
 	
 	<x:scenario label="when testing a section">
 	  <x:expect label="must have a @class attribute"
-	    test="exists($x:result/@class)"/>
+	    test="exists($x:result/@class)" 
+	    select="$x:result/@class"/>
 	  <x:expect label="must have a @class='section'"
 	    test="$x:result/@class = 'section'"/>
 	  <x:expect label="must have a @id attribute" 
@@ -38,5 +39,6 @@
 	  </x:expect>	  
 	</x:scenario>  
 </x:scenario>
+
 
 </x:description>
