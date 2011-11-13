@@ -20,13 +20,13 @@
             <d:title/>
             <d:subtitle/>
             <d:author/>
-            <d:legalnotice/>
             <d:pubdate/>
-            <d:revision/>
+            <d:releaseinfo/>
+            <d:legalnotice/>
+            <d:othercredit class="proofreader"/>
             <d:revhistory/>          
             <d:abstract/>
             <d:annotation xml:id="draft"/>
-            <d:othercredit class="proofreader"/>
           </div>
           <h:hr tmpl:keep="true"/>
         </tmpl:recto>
