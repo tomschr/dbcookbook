@@ -105,7 +105,7 @@
     <xsl:result-document href="{$base.dir}{$chunkfn}" method="xhtml" indent="no">
       <html>
         <xsl:call-template name="t:head">
-          <xsl:with-param name="root" select="."/>
+          <xsl:with-param name="node" select="."/>
         </xsl:call-template>
         <body>
           <div class="page">
