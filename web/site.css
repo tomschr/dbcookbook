@@ -4,7 +4,13 @@
    Released under Creative CommonsCC-BY
 */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
+/*
+@import
+url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
+*/
+
+@import url(cabin.css);
+@import url(expletus.css);
 
 html {
   margin:0;
@@ -13,13 +19,17 @@ html {
 
 body { 
   color: #2c2c2c;
-  background: #01080b url(background/bg-content-toms.png) repeat-y center center;
-  /* #38485B */
-  /*-webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;*/
+  background-color: #3E5066;
+  background: -webkit-gradient(linear, left top, right top, 
+   from(#3E5066), 
+   color-stop(0.25, #8DA1B7), color-stop(0.5, #3E5066), color-stop(0.75, #8DA1B7), 
+   to(#3E5066)); /* Safari 5.1+, Chrome 10+ */ 
+  background: -webkit-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066); /* Firefox 3.6+ */ 
+  background: -moz-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066); /* IE 10 */ 
+  background: -ms-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066); /* Opera 11.10+ */ 
+  background: -o-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066);  
 }
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family:'Open Sans', 'DejaVu Sans Condensed', sans;
@@ -27,15 +37,18 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size:340%;
+  font-size:350%;
   font-weight:700;
+  font-family: 'Expletus Sans', 'Cabin Sketch', 'DejaVu Sans Condensed', sans;
+  font-style: normal;
   text-shadow : 2px 2px 2px #CCC;
   margin-bottom:10px;
   padding-bottom:0;
 }
 h1 > span {
-  font-size:14pt;
-  font-weight:400;
+  font-size:18pt;
+  /*font-weight:400;*/
+  font-family: 'Cabin Sketch', 'DejaVu Sans Condensed', sans;
   margin-left:1em;
   padding:10px 10px;
   text-shadow:none;
@@ -61,7 +74,7 @@ h4 {
 }
 
 p {
-  font-family:'Open Sans', 'Yanone Kaffeesatz', 'DejaVu Sans Condensed', sans;
+  font-family:'Open Sans', 'DejaVu Sans Condensed', sans;
   font-weight:300;
 }
 
@@ -165,7 +178,9 @@ p {
   display : none;
 }
 .format a {
-  font : 400 120% 'Open Sans', sans;
+  /*font: 400 120% 'Open Sans', sans;*/
+  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
+  font-size:120%;
   letter-spacing : 1px;
   display : block;
   color : #fff;
@@ -186,17 +201,17 @@ p {
 
 
 #htmlchunk a:hover, #htmlsingle a:hover {
-  background: #2c2c2c url(icons/applications-internet.png) center bottom no-repeat;
+  background: #2c2c2c url(icons/applications-internet.png) left bottom no-repeat;
 }
 #pdf a:hover {
-  background: #2c2c2c url(icons/application-pdf.png) center bottom no-repeat;
+  background: #2c2c2c url(icons/application-pdf.png) left bottom no-repeat;
   color: #000
 }
 #epub a:hover {
-  background: #2c2c2c url(icons/application-epub+zip.png) center bottom no-repeat;
+  background: #2c2c2c url(icons/application-epub+zip.png) left bottom no-repeat;
 }
 .format .title a:hover {
-  background: #2c2c2c url(icons/applications-internet.png) center center no-repeat;
+  background: #2c2c2c url(icons/applications-internet.png) left center no-repeat;
 }
 
 /* */
@@ -218,17 +233,17 @@ p {
   /*text-transform : uppercase;*/
 }
 #navi li a {
-  display : block;
-  color : #fff;
-  text-decoration : none;
-  padding : 10px 20px 10px 20px;
-  background : #2c2c2c;
-  background : -webkit-gradient(linear, lefttop, leftbottom, from(#848487), to(#3c3c3c));
-  background : -webkit-linear-gradient(top, #848487, #3c3c3c);
-  background : -moz-linear-gradient(top, #848487, #3c3c3c);
-  background : -o-linear-gradient(top, #848487, #3c3c3c);
-  background : -ms-linear-gradient(top, #848487, #3c3c3c);
-  background : linear-gradient(top, #848487, #3c3c3c);
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px 10px 20px;
+  background: #2c2c2c;
+  background: -webkit-gradient(linear, lefttop, leftbottom, from(#848487), to(#3c3c3c));
+  background: -webkit-linear-gradient(top, #848487, #3c3c3c);
+  background: -moz-linear-gradient(top, #848487, #3c3c3c);
+  background: -o-linear-gradient(top, #848487, #3c3c3c);
+  background: -ms-linear-gradient(top, #848487, #3c3c3c);
+  background: linear-gradient(top, #848487, #3c3c3c);
 }
 #navi li#active span,
 #navi li a {
@@ -249,10 +264,7 @@ p {
   background: -moz-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
   background: -webkit-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
   background: -ms-linear-gradient(bottom, #38485B 0%, #6682A1 72%);
-  background: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
+  background: -webkit-gradient(linear, left bottom, left top,
 	color-stop(0, #38485B),
 	color-stop(0.72, #6682A1); 
 }
