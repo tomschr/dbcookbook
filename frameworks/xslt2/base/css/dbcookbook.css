@@ -6,9 +6,19 @@
  */
  
 @import url(default.css);
-@import url(opensans.css);
-/* Crimson+Text:400,400italic,600,600italic */
-@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic|Neuton:400,300,400italic,700|Ubuntu+Mono:400,400italic,700,700italic);
+/*@import url(opensans.css);*/
+/* 
+ * Sans Serif
+  |Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic
+  |Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic
+ * Serif:
+  |Crimson+Text:400,400italic,600,600italic
+  |Neuton:200,300,400,700,400italic
+ * Monospace
+  |Anonymous+Pro:400,400italic,700,700italic
+  
+*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);
 
 
 body {
@@ -18,31 +28,29 @@ body {
 
 /* Fonts */
 body,
-div.toc p {
-  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
+div.toc p a {
+  font-family: 'Open Sans','Lato', 'DejaVu Sans Condensed', sans;
   font-style:normal;
 }
 p {
-  font-family:Neuton, 'Crimson Text', 'PT Serif', serif;
+  font-family:'PT Serif', 'DejaVu Serif', serif;
   font-weight:normal;
-  font-size:130%;
+  font-size:110%;
 }
-code, .command, a, pre {
-  font-family:'Ubuntu Mono',monospace;
+code, .command, pre {
+  font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
   /*font-size:110%;*/
 }
 pre {
   font-size:110%;
   line-height:1.1;
 }
-p a[href^='#'], 
+/*p a[href^='#'], 
 p a[href^='file:'] {
   font-family:Neuton, 'Crimson Text', 'PT Serif', serif;
   font-size:80%;
   font-weight:300;
-  /*color:orange;*/
-  /*font-size:110%;*/
-}
+}*/
 
 /* */
 div.book-titlepage {
@@ -89,6 +97,10 @@ div.book-titlepage div.legalnotice div.sidebar
   -moz-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
   -webkit-border-radius:1em;
   -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+}
+
+div.legalnotice div.sidebar-titlepage h3 {
+  font-weight:600;
 }
 
 div.book-titlepage h2,
@@ -181,7 +193,9 @@ div.section-titlepage h5
 div.section-titlepage h3 {
   font-weight:600;
 }
-
+div.section-titlepage h4 {
+  color:#3E5066;
+}
 div.appendix div.section-titlepage h3,
 div.chapter div.section-titlepage h3,
 div.preface div.section-titlepage h3
@@ -223,11 +237,13 @@ div.itemizedlist div.title
 
 div.procedure ol {
   counter-reset:li;
+  margin-top:.25em;
 }
 
 div.procedure ol > li {
   list-style:none; /* Disable the normal item numbering */
 }
+
 div.procedure ol > li p:first-child {
   margin-top:0;
 }
