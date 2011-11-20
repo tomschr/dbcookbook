@@ -135,6 +135,9 @@ h4 {
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
+#footer {
+  font-size:small;
+}
 
 #header {
   margin-top:-1em;
