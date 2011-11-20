@@ -7,6 +7,7 @@
 @import url(cabin.css);
 @import url(opensans.css);
 /*
+@import url(http://fonts.googleapis.com/css?family=Cabin+Sketch);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
 */
 
@@ -52,7 +53,7 @@ h1 {
 h1 > span {
   font-size:20pt;
   font-weight:normal;
-  font-family: 'Cabin Sketch', 'DejaVu Sans Condensed', sans;
+  font-family: 'Cabin Sketch', cursive;
   margin-left:1em;
   padding:10px 10px;
   text-shadow:none;
