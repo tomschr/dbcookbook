@@ -65,6 +65,6 @@
   font-family: 'Open Sans';
   font-style: italic;
   font-weight: 800;
-  src: local('Open Sans Extrabold Italic'), url(fonts/OpenSans/OpenSans-ExtraboldItalic.ttf) format('truetype');
+  src: local('Open Sans Extrabold Italic'), url(fonts/OpenSans/OpenSans-ExtraBoldItalic.ttf) format('truetype');
   /*url('http://themes.googleusercontent.com/static/fonts/opensans/v5/PRmiXeptR36kaC0GEAetxlDMrAYtoOisqqMDW9M_Mqc.ttf') */
 }
