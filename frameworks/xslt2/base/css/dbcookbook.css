@@ -5,19 +5,52 @@
  * Author: Thomas Schraitle
  */
  
-@import "default.css";
+@import url(default.css);
+@import url(opensans.css);
+/* Crimson+Text:400,400italic,600,600italic */
+@import url(http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700,700italic|Neuton:400,300,400italic,700|Ubuntu+Mono:400,400italic,700,700italic);
+
 
 body {
   margin-left:2em;
   margin-right:2em;
 }
+
+/* Fonts */
+body,
+div.toc p {
+  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
+  font-style:normal;
+}
+p {
+  font-family:Neuton, 'Crimson Text', 'PT Serif', serif;
+  font-weight:normal;
+  font-size:130%;
+}
+code, .command, a, pre {
+  font-family:'Ubuntu Mono',monospace;
+  /*font-size:110%;*/
+}
+pre {
+  font-size:110%;
+  line-height:1.1;
+}
+p a[href^='#'], 
+p a[href^='file:'] {
+  font-family:Neuton, 'Crimson Text', 'PT Serif', serif;
+  font-size:80%;
+  font-weight:300;
+  /*color:orange;*/
+  /*font-size:110%;*/
+}
+
+/* */
 div.book-titlepage {
   margin-top:2em;
   text-align: center;
 }
 div.book-titlepage h1 {
-  /* font-family:'Maven Pro'; */
-  font-weight:900;
+  font-weight:800;
   font-size:500%;
   margin-bottom:12pt;
   text-shadow:4px 4px 5px rgba(0,0,0,0.15);
@@ -43,7 +76,6 @@ div.book-titlepage div.othercredit {
 
 div.book-titlepage div.legalnotice div.sidebar
 {
-  font-family: 'PT Serif';
   text-align:left;
   font-size:smaller;
   margin-top:3em;
@@ -58,6 +90,13 @@ div.book-titlepage div.legalnotice div.sidebar
   -webkit-border-radius:1em;
   -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
 }
+
+div.book-titlepage h2,
+div.book-titlepage h3 {
+  font-weight:400;
+}
+
+
 div.legalnotice div.sidebar div.sidebar-content {
   padding-top:0;
 }
@@ -85,6 +124,7 @@ div.preface-titlepage h2 {
   color:#369;/* navy */
   text-align:left;
   font-size:280%;
+  font-weight:600;
 }
 
 div.legalnotice div.informaltable,
@@ -114,7 +154,12 @@ div.list-of-figures > p {
   margin-bottom:0px;
   font-size:110%;
 }
-
+div.toc > p b,
+div.list-of-tables > p b,
+div.list-of-examples > p b,
+div.list-of-figures > p b  {
+  font-weight:500;
+}
 
 div.preface div.toc dt, 
 div.chapter div.toc dt,
@@ -126,12 +171,17 @@ div.part div.toc dt {
 /* Sections */
 div.section-titlepage,
 div.section-titlepage h2,
-div.section-titlepage h3,
 div.section-titlepage h4,
 div.section-titlepage h5
 {
   margin-bottom:2pt;
+  font-weight:400;
 }
+
+div.section-titlepage h3 {
+  font-weight:600;
+}
+
 div.appendix div.section-titlepage h3,
 div.chapter div.section-titlepage h3,
 div.preface div.section-titlepage h3
@@ -153,15 +203,42 @@ div.section-titlepage h5 {
   font-size:110%;
 }
 
+div.section-titlepage + p {
+  margin-top:0;
+}
+
 /* Lists */
 div.variablelist dd p:first-child {
   margin-top:2pt;
 }
 
-div.procedure-wrapper div.title
+div.procedure-wrapper div.title,
+div.example-wrapper div.title,
+div.table-wrapper div.title,
+div.itemizedlist div.title
 {
   margin-bottom:2pt;
+  font-weight:400;
 }
+
+div.procedure ol {
+  counter-reset:li;
+}
+
+div.procedure ol > li {
+  list-style:none; /* Disable the normal item numbering */
+}
+div.procedure ol > li p:first-child {
+  margin-top:0;
+}
+div.procedure ol > li:before {
+  content:"Step " counter(li) ":"; /* Use the counter as content */
+  counter-increment:li; /* Increment the counter by 1 */
+}
+div.procedure li ol,
+div.procedure li ul {margin-top:6px;}
+div.procedure ol ol li:last-child {margin-bottom:0;}
+
 
 /* Inlines */
 p > div.remark {
