@@ -4,20 +4,23 @@
    Released under Creative CommonsCC-BY
 */
 
-/*
-@import
-url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
-*/
-
 @import url(cabin.css);
-@import url(expletus.css);
+@import url(opensans.css);
+/*
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
+*/
 
 html {
   margin:0;
   padding:0;
 }
 
-body { 
+body, .format a {
+  font-family: 'Open Sans', Cantarell, sans;
+  font-weight:300;
+}
+
+body {
   color: #2c2c2c;
   background-color: #3E5066;
   background: -webkit-gradient(linear, left top, right top, 
@@ -31,23 +34,24 @@ body {
 }
 
 
-h1, h2, h3, h4, h5, h6 {
-  font-family:'Open Sans', 'DejaVu Sans Condensed', sans;
+h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
   font-weight:400;
 }
 
 h1 {
   font-size:350%;
-  font-weight:700;
-  font-family: 'Expletus Sans', 'Cabin Sketch', 'DejaVu Sans Condensed', sans;
+  font-weight:800; /*font-weight:700;*/
+  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
   font-style: normal;
+  line-height:1.1;
   text-shadow : 2px 2px 2px #CCC;
   margin-bottom:10px;
   padding-bottom:0;
 }
 h1 > span {
-  font-size:18pt;
-  /*font-weight:400;*/
+  font-size:20pt;
+  font-weight:normal;
   font-family: 'Cabin Sketch', 'DejaVu Sans Condensed', sans;
   margin-left:1em;
   padding:10px 10px;
@@ -73,10 +77,6 @@ h4 {
   font-size:136%;
 }
 
-p {
-  font-family:'Open Sans', 'DejaVu Sans Condensed', sans;
-  font-weight:300;
-}
 
 #main {
   margin: 0 4em auto 4em;
@@ -85,13 +85,13 @@ p {
 
 #main h2, #main h3 {
   text-shadow : 1px 1px 1px #CCC;
-  margin:.75em auto 3px auto;
+  margin:1em auto 3px auto;
   padding-bottom:0;
 }
 
 #main h2 {
   padding-bottom:0.5em;
-  paddin-top:.5em;
+  /*padding-top:.5em;*/
   border-bottom:1pt dotted #CCC;
 }
 
@@ -129,13 +129,14 @@ p {
 #content {
   /*background-color : #FFF;*/
   background-color : rgba(255, 255, 255, .95);
+  margin-top:4em;
   padding:.5em 1.5em;
   -webkit-border-radius : 5px;
   -moz-border-radius : 5px;
   border-radius : 5px;
-  -webkit-border-top-left-radius : 0px;
+  /*-webkit-border-top-left-radius : 0px;
   -moz-border-radius-topleft : 0px;
-  border-top-left-radius : 0px;
+  border-top-left-radius : 0px;*/
 }
 
 
@@ -168,7 +169,6 @@ p {
   margin-right:10px;
   margin-bottom:10px;
   width:48%;
-  /*font : bold 120% / 2.125 'Open Sans', 'DejaVu Sans Condensed', sans;*/
 }
 
 .format .title {
@@ -178,8 +178,6 @@ p {
   display : none;
 }
 .format a {
-  /*font: 400 120% 'Open Sans', sans;*/
-  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
   font-size:120%;
   letter-spacing : 1px;
   display : block;
@@ -188,7 +186,7 @@ p {
   text-align : center;
   padding : 20px 10px 20px 10px;
   background : #90A4BB;
-  background : -webkit-gradient(linear, lefttop, leftbottom, from(#90A4BB), to(#3B4D62));
+  background : -webkit-gradient(linear, left top, left bottom, from(#90A4BB), to(#3B4D62));
   background : -webkit-linear-gradient(top, #90A4BB, #3B4D62);
   background : -moz-linear-gradient(top, #90A4BB, #3B4D62);
   background : -o-linear-gradient(top, #90A4BB, #3B4D62);
@@ -229,7 +227,6 @@ p {
   display : inline-block;
   padding : 7px 0 0 0;
   margin : 0 4px 0 0;
-  font : 400 83% / 2.125 'Open Sans', 'DejaVu Sans Condensed', sans;
   /*text-transform : uppercase;*/
 }
 #navi li a {
@@ -267,4 +264,18 @@ p {
   background: -webkit-gradient(linear, left bottom, left top,
 	color-stop(0, #38485B),
 	color-stop(0.72, #6682A1); 
+}
+
+ul li {
+  list-style-type:square;
+}
+
+p {
+  font-weight:300;
+}
+p i, p em {
+  font-weight:400;
+}
+p b {
+  font-weight:500;
 }
