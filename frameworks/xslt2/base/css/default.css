@@ -168,7 +168,7 @@ div.cmdsynopsis {
   margin-bottom : 1em;
 }
 body.draft {
-  background-image : url("http://docbook.sf.net/release/images/draft.png");
+  background-image : url("images/draft.png");
 }
 em.strikethrough {
   text-decoration : line-through;
