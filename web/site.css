@@ -6,6 +6,7 @@
 
 @import url(cabin.css);
 @import url(opensans.css);
+@import url(button.css);
 /*
 @import url(http://fonts.googleapis.com/css?family=Cabin+Sketch);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700);
@@ -24,14 +25,44 @@ body, .format a {
 body {
   color: #2c2c2c;
   background-color: #3E5066;
-  background: -webkit-gradient(linear, left top, right top, 
+  /* color-stop(0.25, #8DA1B7), color-stop(0.5, #3E5066),
+  color-stop(0.75, #8DA1B7), */
+  background-image: -webkit-gradient(linear, left top, right top, 
    from(#3E5066), 
-   color-stop(0.25, #8DA1B7), color-stop(0.5, #3E5066), color-stop(0.75, #8DA1B7), 
-   to(#3E5066)); /* Safari 5.1+, Chrome 10+ */ 
-  background: -webkit-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066); /* Firefox 3.6+ */ 
-  background: -moz-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066); /* IE 10 */ 
-  background: -ms-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066); /* Opera 11.10+ */ 
-  background: -o-linear-gradient(left, #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066);  
+   color-stop(0.1, #8DA1B7), color-stop(0.2, #3E5066),
+   color-stop(0.3, #8DA1B7), color-stop(0.4, #3E5066),
+   color-stop(0.5, #8DA1B7), color-stop(0.6, #3E5066),
+   color-stop(0.7, #8DA1B7), color-stop(0.8, #3E5066),
+   color-stop(0.9, #8DA1B7), color-stop(1.0, #3E5066),
+   to(#3E5066));
+  /* Safari 5.1+, Chrome 10+ #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066 */
+  background-image: -webkit-linear-gradient(left, #3E5066, 
+    #8DA1B7 10%,  #3E5066 20%,  
+    #8DA1B7 30%,  #3E5066 40%,
+    #8DA1B7 50%,  #3E5066 60%, 
+    #8DA1B7 70%,  #3E5066 80%, 
+    #8DA1B7 90%,  #3E5066 100%); 
+  /* Firefox 3.6+ #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066  */
+  background-image: -moz-linear-gradient(left, #3E5066, 
+    #8DA1B7 10%,  #3E5066 20%,  
+    #8DA1B7 30%,  #3E5066 40%,
+    #8DA1B7 50%,  #3E5066 60%, 
+    #8DA1B7 70%,  #3E5066 80%, 
+    #8DA1B7 90%,  #3E5066 100%);
+  /* IE 10 #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066 */
+  background-image: -ms-linear-gradient(left, #3E5066, 
+    #8DA1B7 10%,  #3E5066 20%,  
+    #8DA1B7 30%,  #3E5066 40%,
+    #8DA1B7 50%,  #3E5066 60%, 
+    #8DA1B7 70%,  #3E5066 80%, 
+    #8DA1B7 90%,  #3E5066 100%); 
+  /* Opera 11.10+  #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066 */
+  background-image: -o-linear-gradient(left, #3E5066, 
+    #8DA1B7 10%,  #3E5066 20%,  
+    #8DA1B7 30%,  #3E5066 40%,
+    #8DA1B7 50%,  #3E5066 60%, 
+    #8DA1B7 70%,  #3E5066 80%, 
+    #8DA1B7 90%,  #3E5066 100%);  
 }
 
 
@@ -141,7 +172,7 @@ h4 {
 }
 
 
-#mission, #intro, #feedback, #trans  {
+#mission, #feedback, #trans  {
   float:left;
   width:48%;
 }
