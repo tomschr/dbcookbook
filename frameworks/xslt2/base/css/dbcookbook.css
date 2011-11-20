@@ -28,7 +28,11 @@ body {
 
 /* Fonts */
 body,
-div.toc p a {
+div.toc p a,
+div.toc p,
+div.list-of-tables p,
+div.list-of-examples p,
+div.list-of-figure p {
   font-family: 'Open Sans','Lato', 'DejaVu Sans Condensed', sans;
   font-style:normal;
 }
@@ -151,6 +155,7 @@ div.table-wrapper {
 /* TOC */
 div.toc > dl.toc > dt {
   font-size:100%;
+  font-weight:600;
   margin-top:10pt;
 }
 div.toc > dl.toc > dd > dl.toc > dt {
