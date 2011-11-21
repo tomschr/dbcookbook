@@ -37,16 +37,16 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <remark>toms, 2011-11-01: Check, if markers are correct now in the
-      DB XSLT2.0.</remark>
-    <para>When people think of inserting quotes, they use it directly
-        <phrase remap="quote" xml:lang="en">“like this”</phrase>.
-      However, the open and close characters are language dependent.
-      Each language has different typographic rules. German readers
-      prefer <phrase remap="quote" xml:lang="de">„this“</phrase>, French
-        <phrase remap="quote" xml:lang="fr">« this »</phrase>, and the
-      Italians use <quote xml:lang="it">«this»</quote>.
+    <para>When people think quotes, they think of
+      <phrase>"this"</phrase>. However, with the above <tag>quote</tag>
+      element there is an easier and more elegant way like
+      <quote>this</quote>. This way adheres also to typographic standards.
     </para>
+    <para>However, the open and close characters depends on the
+      language you use. Each language has different typographic rules.
+      German readers prefer <quote xml:lang="de">this</quote>, French
+        <quote xml:lang="fr">this</quote>, and the Italians use <quote
+        xml:lang="it">this</quote>. </para>
     <para>Using quote markers directly has one disadvantages: if your
       text contains different languages you need to know how quotes are
       displayed in the respective language. Also it is easier and more
