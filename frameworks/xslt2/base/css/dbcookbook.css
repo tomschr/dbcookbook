@@ -24,6 +24,7 @@
 body {
   margin-left:2em;
   margin-right:2em;
+  font-style:normal;
 }
 
 /* Fonts */
@@ -34,7 +35,6 @@ div.list-of-tables p,
 div.list-of-examples p,
 div.list-of-figure p {
   font-family: 'Open Sans','Lato', 'DejaVu Sans Condensed', sans;
-  font-style:normal;
 }
 p {
   font-family:'PT Serif', 'DejaVu Serif', serif;
