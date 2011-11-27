@@ -193,12 +193,18 @@ em em em em {
 em em em em em {
   font-style : italic;
 }
+div.remark:before {
+  content:"Remark: ";
+}
 div.remark {
-  padding : 10px;
-  border : solid #afafaf 1px;
+  border-left: solid #afafaf 5px;
+  padding-left:10px;
+  margin-bottom:1ex;
+  /*padding : 10px;
   margin-left : 35px;
   margin-right : 70px;
-  margin-bottom : 1ex;
+  margin-bottom : 1ex;*/
+  color:red;
 }
 div.sidebar {
   border : solid #afafaf 1px;
