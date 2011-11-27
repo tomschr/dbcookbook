@@ -37,17 +37,23 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>Use <emphasis role="italic">XInclude</emphasis>. It is a W3C
+    <para>Use <emphasis role="italic">XInclude</emphasis>. It is a <acronym>W3C<alt
+        >World Wide Web Consortium</alt></acronym>
       specification and defines the elements <tag>xi:include</tag> and
         <tag>xi:fallback</tag>. They are not DocBook elements (as they
-      are definied by the W3C), however they have been integrated in
-      version 5.x<footnote>
+      are definied by the <acronym>W3C</acronym> and not <acronym>OASIS<alt
+          >Organization for the Advancement of Structured Information Standards</alt
+          ></acronym>), however 
+      they have been integrated in version 5.x<footnote>
         <para>To use XInclude with DocBook 5.x, use the
             <filename>docbookxi.rnc</filename> RELAX NG schema. </para>
       </footnote>. Note, XIncludes work in DocBook regardless which
       version (4.x or 5.x) you use.</para>
-    <para>If you want to use XIncludes, you need three things:</para>
+    <para>If you want to use XIncludes, you need these things:</para>
     <itemizedlist>
+      <listitem>
+        <para>A XML parser who supports XIncludes.</para>
+      </listitem>
       <listitem>
         <para>The element <tag>xi:include</tag>. In general, it can be
           placed almost everywhere. It is a <quote>pointer</quote> to
@@ -81,8 +87,9 @@
         <filename>conceptual-overview.xml</filename>). Both are
       referenced by the XInclude´s <tag class="attribute">href</tag>
       attribute. </para>
-    <para>Before you transform your document, you need to resolve
-      your XIncludes. The following procedure shows a typical
+    <para>Before you transform your document, you need to resolve your
+      XIncludes, either by your XML parser or <quote>manually</quote> by
+      a XSLT transformation. The following procedure shows a typical
       workflow:</para>
     <procedure>
       <title>Typical Workflow with XIncludes</title>
@@ -148,21 +155,26 @@
       can be done in one step. This is the case for
         <command>xsltproc</command> from the libxslt library. Use the
         <option>--xinclude</option> option as shown:</para>
-    <screen><command>xsltproc</command> --xinclude stylesheet file</screen>
+    <screen><command>xsltproc</command> --xinclude<!--
+    --> <replaceable>STYLESHEET</replaceable><!--
+    --> <replaceable>XMLFILE</replaceable></screen>
+    <para>If you prefer Saxon, version 9 contains the
+      <option>-xi</option> option to resolve XIncludes:</para>
+    <screen><command>saxon9</command> -xi<!-- 
+    --> -xsl:<replaceable>STYLESHEET</replaceable><!-- 
+    --> -s:<replaceable>XMLFILE</replaceable></screen>
     <para>The last section showed a general method to work with
       XIncludes. In most cases this is enough. However, XIncludes offers
       more benefits which are discovered in the following
       subsections.</para>
     
     <section xml:id="sec.db.modularize.xifallback">
-      <title>Fallback</title>
+      <title>Fallbacks</title>
       <para>If the referenced file in the <tag>xi:include</tag> element
-        is not available, the XInclude step will fail. What can you
-        avoid that?
-        The XInclude specification defines two elements:
-          <tag>xi:include</tag> and <tag>xi:fallback</tag>. The latter
-        can be used to add code when a resource could not be
-        retrieved:</para>
+        is not available, the XInclude step will fail. How can you avoid
+        that? The XInclude specification defines also the
+          <tag>xi:fallback</tag> element. This element can be used to
+        add code when a referenced resource could not be retrieved:</para>
       <example xml:id="ex.db.modularize.xifallback">
         <title>Fallback Possibility with <tag>xi:fallback</tag></title>        
         <programlisting language="xml">&lt;xi:include href="revhistory.xml">
@@ -176,7 +188,8 @@
         parser tries to include the file
           <filename>revhistory.xml</filename>. If the file can not be
         retrieved, the XML parser will consider the <tag>xi:fallback</tag> element
-        and include the contents.</para>
+        and include the contents. In the above case it includes a
+        <tag>para</tag> element showing the failed attempt.</para>
       <para>This method is useful when you want to process files which
         cannot be expected to always be there. For example, the previous
         revision history needs to be generated first. However, it is not
@@ -190,7 +203,8 @@
         are XML only. If you need to include text, this can also be done
         with XInclude.</para>
       <para>Most common usecase is including source code which is
-      maintained separately. The following example points to a</para>
+      maintained separately. The following example points to a C source
+      code which needs to be included as text:</para>
       <example xml:id="ex.db.modularize.include-text">
         <title>Included Text in a Programlisting</title>
         <programlisting language="xml"
@@ -200,11 +214,11 @@
       </example>
       <para>The important line is <code>parse="text"</code>. This
         advises the XInclude processor to handle the referenced file
-        just as text. The default value for <tag
-          class="attribute">parse</tag> is XML.</para>
+        just as text and not as XML. The default value for <tag
+          class="attribute">parse</tag> is <tag class="attvalue">xml</tag>.</para>
       <para>It is recommended to remove any whitespaces inside
-          <tag>programlisting</tag> to avoid spurious indendation or
-        linebreaks.</para>
+          <tag>programlisting</tag> as shown above to avoid spurious
+        indendation or linebreaks.</para>
     </section>
     
     <!--
