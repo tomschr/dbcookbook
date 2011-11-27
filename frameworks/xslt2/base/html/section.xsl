@@ -21,7 +21,12 @@
 
 
 <xsl:template name="sf:generate-userlevel">
-  <xsl:param name="ul" select="@userlevel"/>
+  <xsl:param name="level" select="normalize-space(@userlevel)"/>
+  <xsl:variable name="ul"
+    select="if ($level='hard' or $level='heavy') 
+            then 'hard' 
+            else $level"/>
+  
   <xsl:variable name="d">
     <xsl:choose>
       <xsl:when test="$ul = 'easy'">
@@ -30,7 +35,7 @@
       <xsl:when test="$ul = 'medium'">
         <xsl:copy-of select="$userlevel.medium"/>
       </xsl:when>
-      <xsl:when test="$ul = 'hard' or $ul = 'heavy'">
+      <xsl:when test="$ul = 'hard'">
         <xsl:copy-of select="$userlevel.hard"/>
       </xsl:when>
       <xsl:otherwise><xsl:copy-of select="$userlevel.medium"/></xsl:otherwise>
@@ -39,7 +44,7 @@
   
   <xsl:if test="exists($ul) and $generate.userlevel != 0">
     <span class="section-userlevel" 
-      title="Section Difficulty"><xsl:value-of select="$d"/></span>
+      title="{$ul} section"><xsl:value-of select="$d"/></span>
   </xsl:if>
 </xsl:template>
 
@@ -56,7 +61,7 @@
       <xsl:with-param name="allow-anchors" select="true()"/>
     </xsl:apply-templates>
     <xsl:call-template name="sf:generate-userlevel">
-      <xsl:with-param name="ul"
+      <xsl:with-param name="level"
         select="(../@userlevel|../../@userlevel)[1]"/>
     </xsl:call-template>
   </xsl:element>
