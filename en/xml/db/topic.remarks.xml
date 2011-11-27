@@ -15,7 +15,7 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.db.remarks" remap="topic"
+<section xml:id="dbc.db.remarks" remap="topic" userlevel="easy"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -31,9 +31,9 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>For this purpose, there is a <tag
+    <para>For this purpose, DocBook provides a <tag
         xlink:href="http://www.docbook.org/tdg51/en/html/tag.html"
-        >remark</tag> element in DocBook. The following example shows
+        >remark</tag> element. The following example shows
         how to use it:</para>
     <example xml:id="ex.db.inlineremark">
       <title>A Remark Inside a Paragraph</title>
@@ -44,7 +44,7 @@ This is a small text.&lt;remark>Add more content&lt;/remark>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>To add a comment into your document, there are two
+    <para>To add comments in your document, there are two
       methods:</para>
     <itemizedlist>
       <listitem>
