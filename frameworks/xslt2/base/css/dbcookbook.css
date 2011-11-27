@@ -87,6 +87,10 @@ div.book-titlepage div.othercredit {
   text-align:left;
 }
 
+div.book-titlepage div.legalnotice {
+  margin-top:5em;
+}
+
 div.book-titlepage div.legalnotice div.sidebar
 {
   text-align:left;
