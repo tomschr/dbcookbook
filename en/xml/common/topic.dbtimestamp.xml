@@ -62,8 +62,8 @@
       <screen language="xml">&lt;l:context name="datetime">
   &lt;l:template name="format" text="m/d/Y"/>
 &lt;/l:context></screen>
-      <para>This is only useful, if you want to change the appearance of
-        date in your document completely. </para>
+      <para>This is only useful, if you want to completely change the appearance of
+        a date in your document. </para>
       <!-- Add procedure to explain how to change? -->
     </section>
     <section xml:id="dbc.common.dbtimestamp.pseudo-attrib">
