@@ -76,16 +76,25 @@
   </xsl:template>
   
   <xsl:template match="d:quote">
+    <!-- Circumvent a bug in quotation characters -->
     <xsl:param name="class" select="()"/>
-    <span>
-      <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.), ($class,@role))"/>
-      <xsl:call-template name="gentext-startquote"/>
-      <xsl:call-template name="t:xlink">
-        <xsl:with-param name="content">
-          <xsl:apply-templates/>
-        </xsl:with-param>
-      </xsl:call-template>
-      <xsl:call-template name="gentext-endquote"/>
-    </span>
+    <xsl:choose>
+      <xsl:when test="exists(@xml:lang)">
+        <span>
+          <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.), ($class,@role))"/>
+          <xsl:value-of select="f:dingbat(., 'startquote', @xml:lang)"/>
+          <xsl:call-template name="t:xlink">
+            <xsl:with-param name="content">
+              <xsl:apply-templates/>
+            </xsl:with-param>
+          </xsl:call-template>
+          <xsl:value-of select="f:dingbat(., 'endquote', @xml:lang)"/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-imports/>
+      </xsl:otherwise>
+    </xsl:choose>
+    
   </xsl:template>
 </xsl:stylesheet>
