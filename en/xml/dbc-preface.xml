@@ -59,20 +59,28 @@
         </personname>'s <citetitle
           xlink:href="http://www.sagehill.net/docbookxsl/">DocBook
           XSL</citetitle></para>
-    </footnote> or getting your information online―I always felt there
-    is a blank gap. This gap could be bridged with a guide that only
-    concentrates on problems and their solution. Until now nobody wrote
+  </footnote> or online<footnote>
+      <para><personname>
+        <firstname>Dave</firstname>
+        <surname>Pawson</surname>
+      </personname> maintains a <link
+        xlink:href="http://www.dpawson.co.uk/">DocBook FAQ</link></para>
+    </footnote>―I always felt there is a gap. This gap could be 
+    bridged with a guide that only concentrates on problems and their solution
+    in a concise manner. Until now nobody wrote
     a book that combines possible problems, pitfalls, <quote>how to do
-      this</quote>, and the benefits in a cookbook style. My book is
+    this</quote>, and the benefits in a cookbook style. My book is
     intented to be such a book. However, to be clear, it <emphasis>does
       not</emphasis> seek to replace any other information, be it a
     printed or an online resource. It aims for
       <emphasis>enhancing</emphasis> the world of DocBook with a
     different view. </para>
   <para>
-    My book is a collection of topics, specific to a certain problem
-    written mostly as step-by-step instructions. This makes it easier to
-    read and understand. The difficulty can range from very easy to 
+    This book is a collection of topics, specific to a certain problem
+    written mostly as step-by-step instructions. It covers very easy
+    topics or demanding ones 
+    
+     The difficulty can range from very easy to 
     demanding. The more challenging problems need also knowledge from
     different domains (XSLT, CSS, etc.)
   </para>
@@ -93,14 +101,20 @@
   
   <section xml:id="dbc.preface.audience">
     <title>Audience</title>
-    <para>This book does not attempt to teach you DocBook or any other
-      related technology (with the exception of <xref
-        linkend="dbc.markup"/>). It is targetted more for DocBook
-      developers who seek concise examples for their problems. However,
-      with some try-and-error it can also be useful for ordenary writers
-      who wants to customize their documents. For readers who want further
-      information are some links included in the <citetitle>See
-        Also</citetitle> section at the end of each topic. </para>
+    <para>This book covers topics which range from very easy to pretty
+      demanding. The more challenging problems need also knowledge from
+      different domains (CSS, FO, XSLT, etc.)  As such, this book does not and 
+      cannot attempt to teach you DocBook or any such related technology 
+      (with the exception of <xref linkend="dbc.markup"/>). If you want to 
+      learn DocBook or need  some help with XML, search elsewhere. There 
+      are plenty of information available either online or printed.   
+    </para>
+    <para>This book is aimed at DocBook users who write <emphasis>and</emphasis> 
+      seek answers for their problems. However, with some try-and-error it 
+      can also be useful for ordinary writers who wants to customize their 
+      documents. For readers who want further information are some links included 
+      in the <citetitle>See Also</citetitle> section at the end of each topic. 
+    </para>
   </section>
   
   <section xml:id="dbc.preface.further-reading">
@@ -119,7 +133,26 @@
   
   <section xml:id="dbc.preface.typo">
     <title>Typographical Conventions</title>
-    <para></para>
+    <para>The following typographical conventions are used in this book:</para>
+    <itemizedlist>
+      <listitem>
+        <para><emphasis>Italic</emphasis> is used for definition of new
+          terms or emphasised text.</para>
+      </listitem>
+      <listitem>
+        <para><literal>Monospace text</literal> is used for code
+          listings, URLs, filenames, namespaces, or links.</para>
+      </listitem>
+      <listitem>
+        <para><command>Monospace bold text</command> for commands or
+          emphasised text in listings.</para>
+      </listitem>
+      <listitem>
+        <para><emphasis><literal>Monospace italic
+        text</literal></emphasis> is used for placeholders in
+          listings.</para>
+      </listitem>
+    </itemizedlist>
   </section>
   
   <section xml:id="dbc.preface.feedback">
