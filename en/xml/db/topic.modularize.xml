@@ -225,13 +225,15 @@
     <section xml:id="sec.db.modularize.xpointer">
       <title>Partial Inclusion with XPointer</title>
       <para>Previous examples showed how to include a file with an XML
-        structure. The inclusion pulled always the complete file. It is
-        possible to use only fragments. This can be done with
-        <emphasis>XPointers</emphasis>. 
+        structure. The inclusion pulled always the
+          <emphasis>complete</emphasis> file. If you need only a
+        fragment of this file (for example, a note) use
+          <emphasis>XPointers</emphasis>. </para>
+      <para>However, XPointers are only partially implemented and some
+        parts of the specification are not released as a W3C
+        recommendation. Nevertheless they are sometimes helpful if
+        used carefully.
       </para>
-      <para>Problem is, they are only partially implemented and some
-        parts of the specification are not release as W3C
-        recommendation.</para>
     </section>
     -->
   </section>
