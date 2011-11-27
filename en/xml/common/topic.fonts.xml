@@ -104,8 +104,8 @@
         <formalpara>
           <title>Amount of Glyphs</title>
           <para>Does your font support your language? Although modern
-            fonts use Unicode thesedays, nevertheless your language can
-            not be supported. Especially if you need
+            fonts use Unicode thesedays, nevertheless your language
+            might be not supported. Especially if you need
               <quote>uncommon</quote> languages or rarely used glyphs.
           </para>
         </formalpara>
@@ -122,11 +122,11 @@
       </listitem>
       <listitem>
         <formalpara>
-          <title>Font Format</title>
-          <para>Modern fonts are usually Unicode fonts in <acronym>OTF<alt>OpenType 
-          Font</alt></acronym> or TrueType format. Older fonts are
+          <title>Font Formats</title>
+          <para>Modern fonts are usually Unicode fonts in <acronym>OTF<alt
+            >OpenType Font</alt></acronym> or TrueType format. Older fonts are
             mostly PostScript Type 1 fonts which have a limited amount
-            of glphys (theoretically 256) and can not be used on the
+            of glphys (theoretically 256). PostScript fonts cannot be used on the
             Web.</para>
         </formalpara>
       </listitem>
@@ -134,9 +134,11 @@
         <formalpara>
           <title>Font Combinations</title>
           <para>For a non-designer, it is generally easier to use a
-            complete font family containing sans serif, serif and
-            monospaced typefaces. Mixing several serif or sans serif
-            typefaces should be avoided</para>
+            complete font family conisting of sans serif, serif and
+            monospaced typefaces. The reason for this is these typefaces
+            are made to fit together. It is much more difficult to
+            select fonts which work aesthetically as it needs
+            experiences.</para>
         </formalpara>
       </listitem>
       <listitem>
