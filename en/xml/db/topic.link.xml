@@ -50,6 +50,8 @@
         <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">The DocCookBook&lt;/link></programlisting>
       </listitem>
     </itemizedlist>
+    <para>Furthermore links can be used on every element as it is shown
+      in the following section.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -60,30 +62,31 @@
       to read, and does not add any value. Correct such links to this
       notations: </para>
     <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>
-    <para>If you want to control the link behavior, for example, to
-      open a new window when clicking it, use the <tag class="attribute">xlink:show</tag>
-      attribute (only for DocBook 5.x):    
-    </para>
-    <programlisting language="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/></programlisting>
-    <para>The attribute value <tag class="attvalue">show</tag> opens a
-      <quote>new window, frame, pane, or other relevant presentation
-      context</quote> (see <link 
-        xlink:href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</link>).
-        Of course, this is only useful for online formats. </para>
-    <para>Apart from the general linking attributes, DocBook 5 also adds
-      new concepts. One of this new concepts are that
-        <emphasis>every</emphasis> element can be a link. In other
+    <para>DocBook 5 also adds new concepts. One of this new concept is that
+        <emphasis>every</emphasis> element can become a link. In other
       words, you do <emphasis role="italic">not</emphasis> have to use a
-        <tag>link</tag> element anymore. If you have a book title and
-      you want to add a link to it, just use <tag>citetitle</tag>. In former
-      DocBook times, this has to be marked up like this:</para>
+        <tag>link</tag> element anymore. For example, if you want to
+      insert a book title with an additional link, it could be   
+      marked up like this:</para>
     <programlisting>&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DocCookBook&lt;/ulink>&lt;/citetitle></programlisting>
     <para>or this, depending on what you prefer:</para>
     <programlisting>&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DocCookBook&lt;/citetitle>&lt;/ulink></programlisting>
     <para>With DocBook 5 this can be shortend:</para>
     <programlisting>&lt;citetitle xlink:href="https://doccookbook.sf.net">The DocCookBook&lt;/citetitle></programlisting>
     <para>This is much shorter than the DocBook 4 version and much
-      clearer!</para>
+    clearer!</para>
+    <para>Apart from the previous new link concept, DocBook&#xa0; also allows
+      to control the link behavior. For example, to open a new window 
+      when clicking a link, use the <tag class="attribute">xlink:show</tag>
+      attribute:    
+    </para>
+    <programlisting language="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/></programlisting>
+    <para>The attribute value <tag class="attvalue">show</tag> opens a
+      <quote>new window, frame, pane, or other relevant presentation
+        context</quote> (see <link 
+          xlink:href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</link>).
+      Of course, this is only useful for online formats. </para>
+    
   </section>
   <section role="seealso">
     <title>See Also</title>
