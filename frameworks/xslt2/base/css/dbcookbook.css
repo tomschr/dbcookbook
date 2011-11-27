@@ -127,9 +127,9 @@ div.book-titlepage p.draft {
 div.revhistory {
   margin-bottom:2em;
 }
-div.revhistory table {
+/*div.revhistory table {
   font-size:smaller;
-}
+}*/
 div.revhistory table .authorinitials {
   padding-left:2em;
 }
@@ -255,12 +255,13 @@ div.section-titlepage div.authorgroup {
   font-weight:normal;
   content: "Authors: ";
 }*/
-div.section-titlepage div.authorgroup div.author,
-div.section-titlepage div.authorgroup div.othercredit {
+div.section-titlepage div.author,
+div.section-titlepage div.othercredit {
   border:none;
   display: inline; 
 }
-div.section-titlepage div.authorgroup * h3 {
+div.section-titlepage div.authorgroup h3,
+div.section-titlepage div.othercredit h3 {
   display: inline;
   border:none;
   font-size:90%;
@@ -314,10 +315,7 @@ table thead tr th{
 }
 
 /* Inlines */
-p > div.remark {
-  display:inline-block;
-  color:red;
-}
+
 
 /* Footnotes */
 div.footnote p {
