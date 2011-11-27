@@ -31,6 +31,17 @@
           <h:hr tmpl:keep="true"/>
         </tmpl:recto>
       </tmpl:templates>
+      <tmpl:templates name="section">
+        <tmpl:titlepage>
+          <div class="section-titlepage">
+            <d:title/>
+            <d:subtitle/>
+            <d:authorgroup/>
+            <d:author/>
+            <d:othercredit/>
+          </div>
+        </tmpl:titlepage>
+      </tmpl:templates>
     </tmpl:templates-list>
   </xsl:template>
 
