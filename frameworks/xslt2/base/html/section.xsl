@@ -44,7 +44,7 @@
   
   <xsl:if test="exists($ul) and $generate.userlevel != 0">
     <span class="section-userlevel" 
-      title="{$ul} section"><xsl:value-of select="$d"/></span>
+      title="{$ul} difficulty"><xsl:value-of select="$d"/></span>
   </xsl:if>
 </xsl:template>
 
