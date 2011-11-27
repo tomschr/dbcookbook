@@ -34,15 +34,16 @@
     <para>There are some very good fonts which can be used freely. Most
       fonts are even released under the <link
         xlink:href="http://scripts.sil.org/OFL">Open Font License</link>
-      or other license. The following list is a small overview which is
-      by no means complete (use also your favorite search enginge):</para>
+      or other free or open licenses. The following list is a small
+      overview which is by no means complete (use also your favorite
+      search enginge):</para>
     <variablelist>
       <varlistentry>
         <term><link xlink:href="http://scripts.sil.org"/></term>
         <listitem>
           <para><acronym>SIL<alt>Summer Institute of
             Linguistics</alt></acronym> is a nonprofit organization for
-            sustainable language development. On part is to <quote>support 
+            sustainable language development. One part is to <quote>support 
             the use of non-Roman and complex scripts in language development.</quote>
             <acronym>SIL</acronym> creates the Charis SIL, Doulos SIL,
             Gentium, Andika, and other typefaces. All fonts are released
@@ -69,10 +70,27 @@
       </varlistentry>
       <varlistentry>
         <term><link xlink:href="http://www.linuxlibertine.org"/></term>
+        <listitem>
+          <para>The Linux Libertine fonts are designed to be an
+            alternative to the serif Times fonts.  
+            The Linux Libertine and the Linux Biolinum fonts are a
+            collection of serif and sans serif fonts with the usual
+            Latin, Greek, Cyrillic, and Hebrew glyphs. Additionally, the fonts
+            contain ligatures, true small caps, old style numbers,
+            proportional or monospaced numbers, true superscript and
+            subscript, and much more.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
         <term><link xlink:href="http://dejavu-fonts.org"/></term>
+        <listitem>
+          <para>TBD</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
         <term><link xlink:href="http://www.stixfonts.org"/></term>
         <listitem>
-          <para></para>
+          <para>TBD</para>
         </listitem>
       </varlistentry>
     </variablelist>
