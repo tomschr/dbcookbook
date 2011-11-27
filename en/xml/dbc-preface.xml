@@ -111,6 +111,39 @@
         Also</citetitle> section at the end of each topic. </para>
   </section>
   
+  <section xml:id="dbc.preface.db4-vs-5">
+    <title>DocBook 4 or 5?</title>
+    <para>Although a lot of these topics can be used for both versions
+      with minimal changes, this book focuses on DocBook&#xa0;5. Why?
+      There are several reasons: </para>
+    
+    <itemizedlist>
+      <listitem>
+        <para>DocBook&#xa0;4 is in maintenance mode and DocBook&#xa0;5
+          is the future.</para>
+      </listitem>
+      <listitem>
+        <para>It simplifies writing <emphasis>a lot</emphasis> if you
+          can concentrate on one version and not on two. It is also
+          easier to read for you.</para>
+      </listitem>
+      <listitem>
+        <para>It is easy to transform DocBook&#xa0;4 into version 5 as
+          shown in <xref linkend="dbc.structure.db4-to-db5"/>.</para>
+      </listitem>
+      <listitem>
+        <para>I wanted to show an exhaustive example with
+          DocBook&#xa0;5. With this book, I hope, users can learn how to
+          adopt and use it.</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>The differences are documented in the <citetitle>DocBook5: The
+        Definitive Guide</citetitle> book, section <citetitle
+        xlink:href="http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new"
+        >What’s New in DocBook V5.0?</citetitle>.</para>
+  </section>
+  
   <section xml:id="dbc.preface.further-reading">
     <title>Further Readings</title>
     <para>By no means is this book complete. As this book is based on
