@@ -195,6 +195,7 @@ em em em em em {
 }
 div.remark:before {
   content:"Remark: ";
+  font-size:smaller;
 }
 div.remark {
   border-left: solid #afafaf 5px;
@@ -205,6 +206,7 @@ div.remark {
   margin-right : 70px;
   margin-bottom : 1ex;*/
   color:red;
+  font-size:smaller;
 }
 div.sidebar {
   border : solid #afafaf 1px;
