@@ -5,8 +5,6 @@
  * Author: Thomas Schraitle
  */
  
-@import url(default.css);
-/*@import url(opensans.css);*/
 /* 
  * Sans Serif
   |Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic
@@ -19,6 +17,9 @@
   
 */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);
+
+@import url(default.css);
+/*@import url(opensans.css);*/
 
 
 body {
@@ -112,6 +113,9 @@ div.book-titlepage h3 {
   font-weight:400;
 }
 
+div.revhistory table .authorinitials {
+  padding-left:2em;
+}
 
 div.legalnotice div.sidebar div.sidebar-content {
   padding-top:0;
