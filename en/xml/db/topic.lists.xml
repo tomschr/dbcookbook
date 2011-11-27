@@ -15,7 +15,7 @@
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
-<section xml:id="dbc.markup.lists" remap="topic"
+<section xml:id="dbc.markup.lists" remap="topic" userlevel="easy"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -115,9 +115,34 @@
         circle) and uses a circle (○ open circle) and finally a square
         (■ solid square). If you nest your list deeper, the sequence is
         repeated. The hierarchy looks like this:</para>
-      <screen>• • •         1. level
+      <informaltable>
+        <tgroup cols="2">
+          <colspec colnum="1" align="right"/>
+          <thead>
+            <row>
+              <entry>Level</entry>
+              <entry>Shows as</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>1.</entry>
+              <entry>• • •</entry>
+            </row>
+            <row>
+              <entry>2.</entry>
+              <entry>○ ○ ○</entry>
+            </row>
+            <row>
+              <entry>3.</entry>
+              <entry>■ ■ ■</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <!--<screen>• • •         1. level
   ○ ○ ○       2. level
-    ■ ■ ■     3. level</screen>
+    ■ ■ ■     3. level</screen>-->
       <para>The default bullet symbol can be overwritten with the <tag
           class="attribute">mark</tag> attribute:</para>
       <programlisting language="xml">&lt;itemizedlist mark="circle"></programlisting>
@@ -157,11 +182,44 @@
         numbers by default. If you nest an <tag>orderedlist</tag>, it
         will be automatically numbered as shown in the following
         sequence:</para>
-      <screen>1, 2, 3              1. level
+      <informaltable>
+        <tgroup cols="2">
+          <colspec colnum="1" align="right"/>
+          <thead>
+            <row>
+              <entry>Level</entry>
+              <entry>Shows as</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>1.</entry>
+              <entry>1, 2, 3</entry>
+            </row>
+            <row>
+              <entry>2.</entry>
+              <entry>a, b, c</entry>
+            </row>
+            <row>
+              <entry>3.</entry>
+              <entry>i, ii, iii</entry>
+            </row>
+            <row>
+              <entry>4.</entry>
+              <entry>A, B, C</entry>
+            </row>
+            <row>
+              <entry>5.</entry>
+              <entry>I, II, III</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <!--<screen>1, 2, 3              1. level
   a, b, c            2. level
     i, ii, iii       3. level
       A, B, C        4. level
-        I, II, III   5. level</screen>
+        I, II, III   5. level</screen>-->
       <para>The numbering style in an <tag>orderedlist</tag> can be
         changed with the <tag class="attribute">numberation</tag>
         attribute. Allowed values are <simplelist type="inline">
