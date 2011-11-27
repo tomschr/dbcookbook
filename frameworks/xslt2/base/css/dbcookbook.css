@@ -226,6 +226,26 @@ div.section-titlepage + p {
   margin-top:0;
 }
 
+div.section-titlepage div.authorgroup {
+  border:none;
+}
+/*div.section-titlepage div.authorgroup:before {
+  font-size:90%;
+  font-weight:normal;
+  content: "Authors: ";
+}*/
+div.section-titlepage div.authorgroup div.author,
+div.section-titlepage div.authorgroup div.othercredit {
+  border:none;
+  display: inline; 
+}
+div.section-titlepage div.authorgroup * h3 {
+  display: inline;
+  border:none;
+  font-size:90%;
+  font-weight:normal;
+}
+
 /* Lists */
 div.variablelist dd p:first-child {
   margin-top:2pt;
