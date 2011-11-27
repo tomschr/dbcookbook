@@ -19,6 +19,7 @@
   <xsl:include href="inlines.xsl"/>
   <xsl:include href="titlepage-templates.xsl"/>
   <xsl:include href="titlepage-mode.xsl"/>
+  <xsl:include href="section.xsl"/>
   <xsl:include href="html.xsl"/>
   
   <xsl:include href="usermeta.xsl"/>

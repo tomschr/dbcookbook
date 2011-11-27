@@ -246,6 +246,11 @@ div.section-titlepage div.authorgroup * h3 {
   font-weight:normal;
 }
 
+div.section-titlepage h3 .section-userlevel {
+  margin-left:1em;
+  font-size:smaller;
+}
+
 /* Lists */
 div.variablelist dd p:first-child {
   margin-top:2pt;
