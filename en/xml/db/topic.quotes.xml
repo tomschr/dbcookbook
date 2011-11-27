@@ -31,21 +31,21 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>Use the <tag>quote</tag> tag as shown below:</para>
+    <para>Use the <tag>quote</tag> tag:</para>
     <programlisting language="xml"
-    >&lt;para>This is a &lt;quote>English quote&lt;/quote>.&lt;/para></programlisting>
+    >&lt;para>This is an &lt;quote>English quote&lt;/quote>.&lt;/para></programlisting>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>When people think quotes, they think of
-      <phrase>"this"</phrase>. However, with the above <tag>quote</tag>
-      element there is an easier and more elegant way like
-      <quote>this</quote>. This way adheres also to typographic standards.
+    <para>When people need quotes, they usually write
+      <phrase>"this"</phrase>. However, from a typographical point of
+      view, this is wrong. There are special start and end quotation
+      characters. The more elegant way is to use <quote>this</quote>.
     </para>
-    <para>However, the open and close characters depends on the
-      language you use. Each language has different typographic rules.
-      German readers prefer <quote xml:lang="de">this</quote>, French
-        <quote xml:lang="fr">this</quote>, and the Italians use <quote
+    <para>However, the open and close characters are language dependent.
+      Each language has different quotation rules. German readers
+      prefer <quote xml:lang="de">this</quote>, French <quote
+        xml:lang="fr">this</quote>, and the Italians use <quote
         xml:lang="it">this</quote>. </para>
     <para>Using quote markers directly has one disadvantages: if your
       text contains different languages you need to know how quotes are
