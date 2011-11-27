@@ -89,16 +89,16 @@ div.book-titlepage div.othercredit {
 
 div.book-titlepage div.legalnotice {
   margin-top:5em;
+  /*margin-top:3em;*/
+  margin-bottom:3em;
 }
 
 div.book-titlepage div.legalnotice div.sidebar
 {
   text-align:left;
   font-size:smaller;
-  margin-top:3em;
-  margin-bottom:3em;
-  margin-left:10%;
-  margin-right:10%;
+  margin-left:2em;
+  margin-right:2em;
   padding:1em;
   border:2pt solid black;
   background-color:#FFFDB7;
@@ -124,6 +124,12 @@ div.book-titlepage p.draft {
   border-right: #F06015 solid 5pt;
   /*border:#F06015 dotted 1pt;
   padding:5pt;*/
+}
+div.revhistory {
+  margin-bottom:2em;
+}
+div.revhistory table {
+  font-size:smaller;
 }
 div.revhistory table .authorinitials {
   padding-left:2em;
