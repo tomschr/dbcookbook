@@ -15,7 +15,7 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.db.xincludes" remap="topic"
+<section xml:id="dbc.db.xincludes" remap="topic" userlevel="easy"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -221,6 +221,7 @@
         indendation or linebreaks.</para>
     </section>
     
+    <!-- TODO: Move it to another topic? -->
     <!--
     <section xml:id="sec.db.modularize.xpointer">
       <title>Partial Inclusion with XPointer</title>
