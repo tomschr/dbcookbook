@@ -37,8 +37,7 @@
         <xsl:copy-of select="."/>
       </xsl:when>
       <xsl:otherwise>
-        <phrase xmlns="http://docbook.org/ns/docbook" 
-          remap="xref">
+        <phrase xmlns="http://docbook.org/ns/docbook" remap="xref">
           <xsl:choose>
             <xsl:when test="@linkend">
               <xsl:attribute name="role">
