@@ -113,6 +113,14 @@ div.book-titlepage h3 {
   font-weight:400;
 }
 
+div.book-titlepage p.draft {
+  color:#F06015;
+  font-weight:bold;
+  border-left: #F06015 solid 5pt;
+  border-right: #F06015 solid 5pt;
+  /*border:#F06015 dotted 1pt;
+  padding:5pt;*/
+}
 div.revhistory table .authorinitials {
   padding-left:2em;
 }
