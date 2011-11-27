@@ -49,8 +49,7 @@
       formats. </para>
     <para>Furthermore, it is recommended to use the same file name than
       the original from the DocBook XSL stylesheets. This makes it
-      easier to see, what changes can be expected with your own
-      customizations.</para>
+      easier to see, what changes can be expected within your files.</para>
   </section>
   
   <!-- 
