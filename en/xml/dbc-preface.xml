@@ -30,11 +30,27 @@
     <definitions definitionfile="defs.xml"/>
   </info>
   
+  <note>
+    <title>Draft Ahead!</title>
+    <para>This book is a draft and still work in progress. You will find
+    funny typos, embarrassing English grammar mistakes from a German native
+    speaker, annoying inconsistencies, missing topics, and plain errors. 
+    However, this is normal for a first draft. Nevertheless, the topic 
+    should give you (hopefully) an idea.  
+    </para>
+    <para>Visit this site from time to time and see how the book grows
+      and more and more of these annoyances will vanish. To accelerate
+      this process, send me praise, patches, or even write a topic.<footnote>
+        <para>To make me smile, please in this order. :-)</para>
+      </footnote> Read <xref linkend="dbc.preface.contrib"/>
+      to find more how to support me.</para>
+  </note>
+
   <blockquote>
     <title>Mission</title>
     <para><citetitle
-        xlink:href="https://sourceforge.net/projects/doccookbook/"
-        >The DocCookBook</citetitle> project aims to create a collection of
+      xlink:href="https://sourceforge.net/projects/doccookbook/"
+      >The DocCookBook</citetitle> project aims to create a collection of
       cookbook-style solutions released under a Creative Commons (CC)
       license for the international DocBook community.</para>
   </blockquote>
@@ -123,25 +139,38 @@
           is the future.</para>
       </listitem>
       <listitem>
-        <para>It simplifies writing <emphasis>a lot</emphasis> if you
-          can concentrate on one version and not on two. It is also
-          easier to read for you.</para>
+        <para>I wanted to show an exhaustive example with
+          DocBook&#xa0;5. With this book, I hope, users can learn how to
+          adopt and use it.</para>
       </listitem>
       <listitem>
         <para>It is easy to transform DocBook&#xa0;4 into version 5 as
           shown in <xref linkend="dbc.structure.db4-to-db5"/>.</para>
       </listitem>
       <listitem>
-        <para>I wanted to show an exhaustive example with
-          DocBook&#xa0;5. With this book, I hope, users can learn how to
-          adopt and use it.</para>
-      </listitem>
+        <para>It simplifies writing <emphasis>a lot</emphasis> if you
+          can concentrate on only one version and not on two. It is also
+          easier to read for you.</para>
+      </listitem>      
     </itemizedlist>
     
     <para>The differences are documented in the <citetitle>DocBook5: The
         Definitive Guide</citetitle> book, section <citetitle
         xlink:href="http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new"
         >What’s New in DocBook V5.0?</citetitle>.</para>
+    
+    <para>Apart from the DocBook examples, the transformation examples
+      are currently based on the DocBook XSL stylesheets version 1.x.y.
+      They are stable, well-documented and can be used with any XSLT 1.0
+      processor. At the moment, these stylesheets are rewritten for XSLT
+      2.0. 
+    </para>
+    <para>On the other side, there is always the tension between
+      implementing new concepts and retaining backward compatibility.
+      For this reason, the XSLT 1.0 stylesheets are rewritten for XSLT
+      2.0. This task is not finished yet. As soon as they are
+      production-stable, they will be covered in this book.</para>
+    
   </section>
   
   <section xml:id="dbc.preface.further-reading">
