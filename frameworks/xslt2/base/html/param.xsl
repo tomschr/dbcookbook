@@ -11,7 +11,7 @@
   exclude-result-prefixes="d xlink tmpl m t f">
  
 
-  <xsl:param name="base.dir" select="'build/html/'"/>
+  <xsl:param name="base.dir">build/html/</xsl:param>
  
   <!--<xsl:param name="resource.root">../../../db-xslt2/xslt/base/</xsl:param>-->
   <xsl:param name="docbook.css" select="'css/dbcookbook.css'"/>
@@ -33,6 +33,7 @@
   <xsl:param name="section.autolabel.max.depth" select="1"/>
   <xsl:param name="section.label.includes.component.label" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
+  <xsl:param name="use.id.as.filename" select="1"/>
   
   <!-- Use Piwik code: -->
   <xsl:param name="use.piwik" select="1"/>
