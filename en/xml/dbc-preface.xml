@@ -35,13 +35,12 @@
     <para>This book is a draft and still work in progress. You will find
     funny typos, embarrassing English grammar mistakes from a German native
     speaker, annoying inconsistencies, missing topics, and plain errors. 
-    However, this is normal for a first draft. Nevertheless, the topic 
-    should give you (hopefully) an idea.  
+    Nevertheless, the topic should give you (hopefully) an idea.  
     </para>
     <para>Visit this site from time to time and see how the book grows
-      and more and more of these annoyances will vanish. To accelerate
+      and how more and more of these annoyances will vanish. To accelerate
       this process, send me praise, patches, or even write a topic.<footnote>
-        <para>To make me smile, please in this order. :-)</para>
+        <para>To make me smile, in this order, please. :-)</para>
       </footnote> Read <xref linkend="dbc.preface.contrib"/>
       to find more how to support me.</para>
   </note>
@@ -64,7 +63,7 @@
       hardware and software (though it is by no means limited to these
       applications).</quote></para>
   <para>Although there are helpful and valuable documentation―be it as a
-    printed book<footnote>
+    printed book<footnote xml:id="fnt.tdg">
       <para>Like the reference <citetitle
           xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
           >DocBook&#xa0;5: The Definitive Guide</citetitle> from <personname>
@@ -184,7 +183,7 @@
       </personname> and <personname>
         <firstname>Bob</firstname>
         <surname>Stayton</surname>
-      </personname> as mentioned above.</para>
+      </personname> as mentioned before.</para>
   </section>
   
   <section xml:id="dbc.preface.typo">
