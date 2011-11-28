@@ -84,13 +84,13 @@
       <varlistentry>
         <term><link xlink:href="http://dejavu-fonts.org"/></term>
         <listitem>
-          <para>TBD</para>
+          <para><remark>TBD</remark></para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><link xlink:href="http://www.stixfonts.org"/></term>
         <listitem>
-          <para>TBD</para>
+          <para><remark>TBD</remark></para>
         </listitem>
       </varlistentry>
     </variablelist>
