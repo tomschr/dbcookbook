@@ -8,7 +8,7 @@
   xmlns:date="http://exslt.org/dates-and-times"
   exclude-result-prefixes="d xlink date exsl">
 
-<xsl:template name="system.head.content" priority="10">
+<xsl:template name="system.head.content">
   <xsl:param name="node" select="."/>
 
   <xsl:attribute name="profile">http://dublincore.org/documents/dcq-html/</xsl:attribute>
