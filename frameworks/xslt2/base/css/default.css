@@ -107,9 +107,9 @@ div.table {
 }
 div.informaltable-wrapper {
   padding : 0px;
-  border-color : #CACACA;
+  /*border-color : #CACACA;
   border-width : 1px;
-  border-style : solid;
+  border-style : solid;*/
 }
 div.centerimg {
   text-align : center;
