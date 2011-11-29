@@ -247,6 +247,13 @@ h4 {
   background: #2c2c2c url(icons/applications-internet.png) left center no-repeat;
 }
 
+div.read, form {
+  text-align:center;
+}
+
+blockquote p q {
+  font-style:italic;
+}
 
 ul {
   list-style-type:square;
@@ -260,6 +267,10 @@ p i, p em {
 }
 p b {
   font-weight:500;
+}
+
+.button {
+  font-weight:600;
 }
 
 q:lang(en) { quotes: '“' '”' "‘" "’" }
