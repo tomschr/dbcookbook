@@ -69,6 +69,8 @@ body {
 h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
   font-weight:400;
+  margin-bottom:0;
+  padding-bottom:0;
 }
 
 h1 {
@@ -104,7 +106,6 @@ h2 {
 h3 {
   font-size:160%;
 }
-
 h4 {
   font-size:136%;
 }
@@ -125,6 +126,15 @@ h4 {
   padding-bottom:0.5em;
   /*padding-top:.5em;*/
   border-bottom:1pt dotted #CCC;
+}
+
+hr {
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  border-bottom:1pt dotted #CCC;
+  margin-top:2em;
+  margin-bottom:2em;
 }
 
 /* Header and Footer */
@@ -174,20 +184,24 @@ h4 {
   border-top-left-radius : 0px;*/
 }
 
-
-#mission, #feedback, #trans  {
+/* #mission, , #trans */
+#features, #exofamily {
   float:left;
   width:48%;
 }
 
-#mission, #feedback {
+#exoframe, #features {
   padding-right:6pt;
 }
-#intro, #trans {
-  padding-left:6pt;
+iframe  {
+  margin-left:20pt;
 }
 
-#availformats, .end {
+#exofamily {
+  min-height:390px;
+}
+
+.end {
   clear:both;
 }
 
@@ -197,7 +211,6 @@ h4 {
   width : 100%;
   padding : 0;
   margin-top: 10px;
-  list-style : none;
 }
 .format {
   display: inline-block;
