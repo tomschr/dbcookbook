@@ -32,16 +32,16 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The DocBook XSL stylesheets contain lots of modes which two
-      are important in this regard: the <literal>label.markup</literal>
-      and <literal>title.markup</literal> mode.</para>
+    <para>The DocBook XSL stylesheets contain two modes which are 
+      important in this regard: <literal>label.markup</literal>
+      and <literal>title.markup</literal>.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para><remark>TDB</remark></para>
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <para><remark>TDB</remark></para>
   </section>
 </section>
