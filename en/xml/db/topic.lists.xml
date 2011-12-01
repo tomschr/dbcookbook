@@ -257,7 +257,7 @@
       </example>
       <para>A <tag>varlistentry</tag> can contain more than one term.
         How the terms are displayed depends usually on the output
-        formats. Per default, each <tag>term</tag> is printed on a
+        formats. By default, each <tag>term</tag> is printed on a
         separate line.</para>
     </section>
   </section>
