@@ -22,12 +22,12 @@
   <title>Generating Consistent IDs</title>
   <info>
     <definitions definitionfile="defs.xml"/>
-    <collab>
+    <othercredit>
       <personname>
         <firstname>Anatoly</firstname>
         <surname>Techtonik</surname>
       </personname>
-    </collab>
+    </othercredit>
   </info>
   
   <section role="problem">
@@ -38,7 +38,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para><remark>TBD</remark></para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -46,6 +46,6 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <para><remark>TBD</remark></para>
   </section>
 </section>
