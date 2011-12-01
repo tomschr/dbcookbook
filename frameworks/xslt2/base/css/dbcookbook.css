@@ -58,41 +58,41 @@ p a[href^='file:'] {
 }*/
 
 /* */
-div.book-titlepage {
+.book-titlepage {
   margin-top:2em;
   text-align: center;
 }
-div.book-titlepage h1 {
+.book-titlepage h1 {
   font-weight:800;
   font-size:500%;
   margin-bottom:12pt;
   text-shadow:4px 4px 5px rgba(0,0,0,0.15);
 }
 
-div.book-titlepage h2:before {
+.book-titlepage h2:before {
   content:"\2767";
   display:block;
   text-align:center;
   margin-bottom:.5em;
   font-size:1.75em;
 }
-div.book-titlepage h2 {
+.book-titlepage h2 {
   font-size:260%;
 }
 
-div.book-titlepage div.author h3 {
+.book-titlepage div.author h3 {
   font-size:150%;
 }
-div.book-titlepage div.othercredit {
+.book-titlepage div.othercredit {
   text-align:left;
 }
 
-div.book-titlepage div.legalnotice {
+.book-titlepage div.legalnotice {
   margin-top:5em;
   margin-bottom:3em;
 }
 
-div.book-titlepage div.legalnotice div.sidebar
+.book-titlepage div.legalnotice div.sidebar
 {
   text-align:left;
   font-size:smaller;
@@ -111,12 +111,12 @@ div.legalnotice div.sidebar-titlepage h3 {
   font-weight:600;
 }
 
-div.book-titlepage h2,
-div.book-titlepage h3 {
+.book-titlepage h2,
+.book-titlepage h3 {
   font-weight:400;
 }
 
-div.book-titlepage p.draft {
+.book-titlepage p.draft {
   color:#F06015;
   font-weight:bold;
   border-left: #F06015 solid 5pt;
@@ -149,14 +149,14 @@ blockquote h3 {
   margin-bottom:-.5em;
 }
 
-div.chapter-titlepage,
-div.preface-titlepage
+.chapter-titlepage,
+.preface-titlepage
 {
   text-align:left;
 }
-div.appendix-titlepage h2,
-div.chapter-titlepage h2,
-div.preface-titlepage h2 {
+.appendix-titlepage h2,
+.chapter-titlepage h2,
+.preface-titlepage h2 {
   text-rendering: optimizeLegibility;
   color:#369;/* navy */
   text-align:left;
@@ -197,32 +197,32 @@ div.list-of-figures > p b  {
   font-weight:500;
 }
 
-div.preface div.toc dt, 
-div.chapter div.toc dt,
-div.appendix div.toc dt,
-div.part div.toc dt {
+.preface div.toc dt, 
+.chapter div.toc dt,
+.appendix div.toc dt,
+.part div.toc dt {
      margin-top:inherit;
 }
 
 /* Sections */
-div.section-titlepage,
-div.section-titlepage h2,
-div.section-titlepage h4,
-div.section-titlepage h5
+.section-titlepage,
+.section-titlepage h2,
+.section-titlepage h4,
+.section-titlepage h5
 {
   margin-bottom:2pt;
   font-weight:400;
 }
 
-div.section-titlepage h3 {
+.section-titlepage h3 {
   font-weight:600;
 }
-div.section-titlepage h4 {
+.section-titlepage h4 {
   color:#3E5066;
 }
-div.appendix div.section-titlepage h3,
-div.chapter div.section-titlepage h3,
-div.preface div.section-titlepage h3
+.appendix .section-titlepage h3,
+.chapter .section-titlepage h3,
+.preface .section-titlepage h3
 {
   border-top:1pt dotted gray;
   border-left:none;
@@ -233,19 +233,19 @@ div.preface div.section-titlepage h3
   /*margin-bottom:-.5em;*/
   text-shadow:2px 2px 4px rgba(0,0,0,0.15);
 }
-div.section-titlepage h4 {
+.section-titlepage h4 {
   font-size:140%;
 }
 
-div.section-titlepage h5 {
+.section-titlepage h5 {
   font-size:110%;
 }
 
-div.section-titlepage + p {
+.section-titlepage + p {
   margin-top:0;
 }
 
-div.section-titlepage div.authorgroup {
+.section-titlepage div.authorgroup {
   border:none;
 }
 /*div.section-titlepage div.authorgroup:before {
@@ -253,20 +253,20 @@ div.section-titlepage div.authorgroup {
   font-weight:normal;
   content: "Authors: ";
 }*/
-div.section-titlepage div.author,
-div.section-titlepage div.othercredit {
+.section-titlepage div.author,
+.section-titlepage div.othercredit {
   border:none;
   display: inline; 
 }
-div.section-titlepage div.authorgroup h3,
-div.section-titlepage div.othercredit h3 {
+.section-titlepage div.authorgroup h3,
+.section-titlepage div.othercredit h3 {
   display: inline;
   border:none;
   font-size:90%;
   font-weight:normal;
 }
 
-div.section-titlepage h3 .section-userlevel {
+.section-titlepage h3 .section-userlevel {
   margin-left:1em;
   font-size:smaller;
 }
