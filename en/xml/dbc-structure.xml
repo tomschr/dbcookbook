@@ -80,6 +80,6 @@
   <xi:include href="structure/topic.move-blocks-in-para.xml"/>
   <xi:include href="structure/topic.adding-indexterms.xml"/>
   <xi:include href="structure/topic.revision-list.xml"/>
-  <xi:include href="structure/topic.preserve-entities.xml"/>
-  <xi:include href="structure/topic.impl-style-checking.xml"/>
+  <!--<xi:include href="structure/topic.preserve-entities.xml"/>-->
+  <!--<xi:include href="structure/topic.impl-style-checking.xml"/>-->
 </chapter>
