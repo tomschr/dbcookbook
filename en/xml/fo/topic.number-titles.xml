@@ -254,10 +254,10 @@ Part: The Python Library
             <entry>Result</entry>
           </row>
         </thead>
-        <tbody>
+        <tbody valign="top">
           <row>
             <entry>No parameters set, using the default settings</entry>
-            <entry><screen>I. The Python Language
+            <entry><screen linenumbering="unnumbered">I. The Python Language
   1. A Tutorial Introduction
       Running Python
       Variables
@@ -276,7 +276,7 @@ II. The Python Library
             <entry><simplelist type="vert">
               <member><literal>section.autolabel=1</literal></member>
             </simplelist></entry>
-            <entry><screen>I. The Python Language
+            <entry><screen linenumbering="unnumbered">I. The Python Language
   1. A Tutorial Introduction
       1. Running Python
       2. Variables
@@ -296,7 +296,7 @@ II. The Python Library
               <member><literal>section.autolabel=1</literal></member>
               <member><literal>section.label.includes.component.label=1</literal></member>
             </simplelist></entry>
-            <entry><screen>I. The Python Language
+            <entry><screen linenumbering="unnumbered">I. The Python Language
   1. A Tutorial Introduction
       1.1. Running Python
       1.2. Variables
@@ -317,7 +317,7 @@ II. The Python Library
               <member><literal>section.label.includes.component.label=1</literal></member>
               <member><literal>component.label.includes.part.label</literal></member>
             </simplelist></entry>
-            <entry><screen>I. The Python Language
+            <entry><screen linenumbering="unnumbered">I. The Python Language
   I.1. A Tutorial Introduction
       I.1.1. Running Python
       I.1.2. Variables
@@ -339,7 +339,7 @@ II. The Python Library
               <member><literal>component.label.includes.part.label</literal></member>
               <member><literal>label.from.part=1</literal></member>
             </simplelist></entry>
-            <entry><screen>I. The Python Language
+            <entry><screen linenumbering="unnumbered">I. The Python Language
   I.1. A Tutorial Introduction
       I.1.1. Running Python
       I.1.2. Variables
