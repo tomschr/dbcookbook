@@ -50,13 +50,11 @@
         <xsl:value-of select="f:chunk-filename($node-chunk)"/>
       </xsl:when>
       <xsl:when test="empty($node-chunk)">
-        <xsl:if test="$rootid = ''">
-          <xsl:message>
-            <xsl:text>Warning: link to </xsl:text>
-            <xsl:value-of select="f:node-id($node)"/>
-            <xsl:text> does not appear in output.</xsl:text>
-          </xsl:message>
-        </xsl:if>
+        <xsl:message>
+          <xsl:text>Warning: broken link to </xsl:text>
+          <xsl:value-of select="f:node-id($node)"/>
+          <xsl:text>; not in output.</xsl:text>
+        </xsl:message>
         <xsl:value-of select="concat('#',f:node-id($node))"/>
       </xsl:when>
       <xsl:otherwise>
@@ -67,7 +65,7 @@
 
   <xsl:function name="f:find-chunk" as="element()?">
     <xsl:param name="node" as="node()"/>
-    <xsl:sequence select="$node/ancestor-or-self::*[. = $chunks][1]"/>
+    <xsl:sequence select="$node/ancestor-or-self::*[. intersect $chunks][1]"/>
   </xsl:function>
 
 </xsl:stylesheet>

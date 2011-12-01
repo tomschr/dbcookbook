@@ -5,9 +5,9 @@
 <!-- * do not submit an edited version of this file. Instead, submit an -->
 <!-- * edited version of the source file at the following location: -->
 <!-- * -->
-<!-- *  https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/gentext/locale/ -->
+<!-- *  https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/gentext/locale/ko.xml -->
 <!-- * -->
-<!-- * E-mail the edited  source file to: -->
+<!-- * E-mail the edited ko.xml source file to: -->
 <!-- * -->
 <!-- *  docbook-developers@lists.sourceforge.net -->
 
@@ -221,6 +221,7 @@
 <l:template name="answer" text="%t"/>
 <l:template name="appendix" text="부록 %n. %t"/>
 <l:template name="article" text="%t"/>
+<l:template name="annotation" text="%t" lang="en"/>
 <l:template name="authorblurb" text="%t"/>
 <l:template name="bibliodiv" text="%t"/>
 <l:template name="biblioentry" text="%t"/>

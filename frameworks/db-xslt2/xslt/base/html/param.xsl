@@ -67,6 +67,8 @@
 
 <xsl:param name="default.image.width" select="''"/>
 
+<xsl:param name="default.table.column.widths" select="1"/>
+
 <xsl:param name="docbook-namespace" select="'http://docbook.org/ns/docbook'"/>
 
 <xsl:param name="docbook.css" select="concat($resource.root, 'css/default.css')"/>
@@ -324,8 +326,6 @@
 <xsl:param name="title.font.family" select="'sans-serif'"/>
 
 <xsl:param name="titlepage.templates" select="'titlepages.xml'"/>
-
-<xsl:param name="toc.list.type">dl</xsl:param>
 
 <xsl:param name="toc.max.depth" select="8"/>
 

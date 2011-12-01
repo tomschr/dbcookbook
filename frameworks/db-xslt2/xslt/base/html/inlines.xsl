@@ -615,9 +615,7 @@ the default is “element”.</para>
 </xsl:template>
 
 <xsl:template match="db:lineannotation">
-  <em>
-    <xsl:call-template name="t:inline-charseq"/>
-  </em>
+  <xsl:call-template name="t:inline-italicseq"/>
 </xsl:template>
 
 <xsl:template match="db:trademark">

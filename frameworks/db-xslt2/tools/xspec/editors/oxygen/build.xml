@@ -4,7 +4,7 @@
 
 	<property file="build.properties"/>
 
-	<property name="oxygen.dir" value="/home/toms/oxygen131/"/>
+	<property name="oxygen.dir" value="C:/Program Files/Oxygen XML Editor 12"/>
 	<property name="oxygen.frameworks.dir" value="${oxygen.dir}/frameworks"/>
 
 	<property name="framework.dir" value="."/>
