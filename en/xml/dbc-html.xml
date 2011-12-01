@@ -114,5 +114,5 @@
   
   <xi:include href="html/topic.permalinks.xml"/>
   <xi:include href="html/topic.simplenavig.xml"/>
-  <xi:include href="html/topic.consistent-ids.xml"/>
+  <!--<xi:include href="html/topic.consistent-ids.xml"/>-->
 </chapter>
