@@ -31,7 +31,7 @@
 
   <section xml:id="dbc.fo.intro">
     <title>Introduction</title>
-    <para>FIXME</para>
+    <para><remark>TBD</remark></para>
   </section>
   <!-- 
   Print Customizations
@@ -79,7 +79,7 @@
   <xi:include href="fo/topic.initials.xml"/>
   <xi:include href="fo/topic.number-titles.xml"/>
   <xi:include href="fo/topic.sep-label-and-titles.xml"/>
-  <xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>
-  <xi:include href="fo/topic.empty-header-and-footer.xml"/>
+  <!--<xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>-->
+  <!--<xi:include href="fo/topic.empty-header-and-footer.xml"/>-->
   
 </chapter>
