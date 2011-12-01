@@ -15,7 +15,7 @@
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
-<section xml:id="dbc.html.texinfo-navig" remap="topic"
+<section xml:id="dbc.html.texinfo-navig" remap="topic" userlevel="medium"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
