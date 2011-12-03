@@ -1,20 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
- <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<?xml version="1.0"?>
+<?xml-model href="http://www.oxygenxml.com/1999/xhtml/xhtml-xforms.nvdl" 
+  schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<!--<!DOCTYPE html PUBLIC
+  "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
+
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:cc="http://creativecommons.org/ns#"
+      xmlns:dct="http://purl.org/dc/terms/">
   <head profile="http://dublincore.org/documents/dc-html/">
     <title>The DocCookBook | Receipies for DocBook Developers</title>
-    <!--<link rel="stylesheet" href="toms.css" type="text/css" media="screen, projection"/>-->
-    <link rel="stylesheet" type="text/css" media="all" href="site.css" />
-    
+    <link rel="stylesheet" type="text/css" media="all" href="site.css" />    
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="en" />
-    <meta name="date" content="2011-10-03T17:12:00+01:00" />
+    <meta name="date" content="2011-12-01T08:10:00+01:00" />
     <meta name="description" xml:lang="en"
       content="DocCookBook - Receipies for DocBook Developers" />
     <meta name="description" xml:lang="de"
       content="DocCookBook - Rezepte für DocBook-Entwickler" />
     <meta name="keywords" xml:lang="de"
-      content="DocBook-XML, DocBook, XML, RELAX NG, DTD,
+      content="DocBook, DocBook XSL, XML, RELAX NG, DTD,
         XSLT, XPath, XSL-FO, EPUB, E-Book, Customization" />
     <meta name="robots" content="index,follow" />
     <meta name="author" content="Thomas Schraitle" />
@@ -42,14 +47,14 @@
     <!-- FIXME: -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- CSS: -->
-
   </head>
   <body>
+    
     <div id="main">
       <div id="header">
         <h3>Welcome to </h3>
-        <h1>The DocCookBook Project<span>Draft</span></h1>
-        <p>by Thomas Schraitle</p>
+        <h1>The DocCookBook Project <span class="draft">Draft</span></h1>
+        <p>by <span  class="author">Thomas Schraitle</span></p>
       </div>
       <div id="content">
         <h2>Recipes for DocBook Developers and Writers</h2>
@@ -86,33 +91,6 @@
             </div>
           </form>
         </div>
-        <!--<div id="features">
-          <h3>Features</h3>
-          <p>Some of the key features of this book:</p>
-          <ul>
-            <li><p>plenty of examples,</p></li>
-            <li><p>cookbook style: easy to read, easy to apply,</p></li>
-            <li><p>written in DocBook 5,</p></li>
-            <li><p>source code available in the Mercurial repository,</p></li>
-            <li><p>each section contains an indication how difficult it
-              is</p></li>
-            <li><p>licensed under Creative Commons.</p></li>
-          </ul>
-        </div>
-        <div id="feedback">
-          <h3>Feedback / Contribution</h3>
-          <p>There are lots of tasks where you can help:</p>
-          <ul>
-            <li><p>Give feedback to existing topics</p></li>
-            <li><p>Send ideas for new topics</p></li>
-            <li><p>Open a ticket, if you think there is something
-              wrong</p></li>
-            <li><p>Send patches for existing topics</p></li>
-            <li><p>Write completely new topics.</p></li>
-            <li><p>Improve the look-and-feel of the HTML page</p></li>
-          </ul>
-        </div>
-        -->
         <div id="contact" class="end">
           <h3>Contact Me</h3>
           <p>You can contact me via email to <a
@@ -130,22 +108,16 @@
             and many other OpenType features.
           </p>
           <p>More about these magnificant fonts can be found on the <a
-              href="http://kck.st/tivQep">Exo project page.</a> Please
+              href="http://kck.st/tivQep">Exo project page</a>. Please
             help Natanael to fund his project and to create an open
             source font for everyone.</p>
         </div>
-        <!--<iframe frameborder="0" height="410px"
-            src="http://www.kickstarter.com/projects/1010856090/the-exo-typeface-family/widget/video.html"
-            width="480px"></iframe>-->
         <iframe frameborder="0" height="380px"
             src="http://www.kickstarter.com/projects/1010856090/the-exo-typeface-family/widget/card.html"
             width="220px"></iframe>
         <p class="end"></p>
       </div>
-       
-      <!--<div class="end">
-        <p>&#xa0;</p>
-      </div>-->
+      
       <div id="footer">
         <p>
           <a href="http://validator.w3.org/check?uri=referer"><img
@@ -159,8 +131,6 @@
               alt="openSUSE.org" title="openSUSE.org"
               src="http://files.opensuse.org/opensuse/en/f/ff/Opensuse_1.png" /></a>
           <a rel="license"
-          xmlns:cc="http://creativecommons.org/ns#"
-          xmlns:dct="http://purl.org/dc/terms/" 
           href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"><img 
             alt="Creative Commons License" width="88px" height="31px"
             style="border-width:0" 
