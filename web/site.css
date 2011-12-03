@@ -56,7 +56,7 @@ body {
     #8DA1B7 70%,  #3E5066 80%, 
     #8DA1B7 90%,  #3E5066 100%);
   /* IE6-IE9 */
-  filter: progid:DXImageTransform.Microsoft.gradien(startColorstr='#3E5066', endColorstr='#8DA1B7');
+  -ms-filter:"progid:DXImageTransform.Microsoft.gradient(startColorstr='#3E5066', endColorstr='#8DA1B7')";
 }
 
 h1 {
