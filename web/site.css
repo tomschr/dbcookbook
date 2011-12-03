@@ -1,32 +1,19 @@
 /*
    CSS Stylesheet
    By Thomas Schraitle <tom_schr AT sourceforge DOT net>
-   Released under Creative CommonsCC-BY
+   Released under Creative Commons CC-BY
 */
-
-/*@import url(cabin.css);
-@import url(opensans.css);*/
-@import url(button.css);
-
-@import
-url(http://fonts.googleapis.com/css?family=Open+Sans:200,300,400,700|Cabin+Sketch);
-
 
 html {
   margin:0;
   padding:0;
 }
 
-body, .format a {
-  font-family: 'Open Sans', Cantarell, sans;
-  font-weight:300;
-}
-
 body {
+  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
+  font-weight:300;
   color: #2c2c2c;
   background-color: #3E5066;
-  /* color-stop(0.25, #8DA1B7), color-stop(0.5, #3E5066),
-  color-stop(0.75, #8DA1B7), */
   background-image: -webkit-gradient(linear, left top, right top, 
    from(#3E5066), 
    color-stop(0.1, #8DA1B7), color-stop(0.2, #3E5066),
@@ -35,28 +22,28 @@ body {
    color-stop(0.7, #8DA1B7), color-stop(0.8, #3E5066),
    color-stop(0.9, #8DA1B7), color-stop(1.0, #3E5066),
    to(#3E5066));
-  /* Safari 5.1+, Chrome 10+ #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066 */
+  /* Safari 5.1+, Chrome 10+ */
   background-image: -webkit-linear-gradient(left, #3E5066, 
     #8DA1B7 10%,  #3E5066 20%,  
     #8DA1B7 30%,  #3E5066 40%,
     #8DA1B7 50%,  #3E5066 60%, 
     #8DA1B7 70%,  #3E5066 80%, 
     #8DA1B7 90%,  #3E5066 100%); 
-  /* Firefox 3.6+ #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066  */
+  /* Firefox 3.6+ */
   background-image: -moz-linear-gradient(left, #3E5066, 
     #8DA1B7 10%,  #3E5066 20%,  
     #8DA1B7 30%,  #3E5066 40%,
     #8DA1B7 50%,  #3E5066 60%, 
     #8DA1B7 70%,  #3E5066 80%, 
     #8DA1B7 90%,  #3E5066 100%);
-  /* IE 10 #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066 */
+  /* IE 10 */
   background-image: -ms-linear-gradient(left, #3E5066, 
     #8DA1B7 10%,  #3E5066 20%,  
     #8DA1B7 30%,  #3E5066 40%,
     #8DA1B7 50%,  #3E5066 60%, 
     #8DA1B7 70%,  #3E5066 80%, 
     #8DA1B7 90%,  #3E5066 100%); 
-  /* Opera 11.10+  #3E5066, #8DA1B7, #3E5066, #8DA1B7, #3E5066 */
+  /* Opera 11.10+ */
   background-image: -o-linear-gradient(left, #3E5066, 
     #8DA1B7 10%,  #3E5066 20%,  
     #8DA1B7 30%,  #3E5066 40%,
@@ -64,70 +51,64 @@ body {
     #8DA1B7 70%,  #3E5066 80%, 
     #8DA1B7 90%,  #3E5066 100%);  
 }
-
-
-h2, h3, h4, h5, h6 {
-  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
-  font-weight:400;
-  margin-bottom:0;
-  padding-bottom:0;
+h1, h2, h3, h4, h5, h6 { 
+  font-family:'Open Sans', 'DejaVu Sans Condensed', sans;
 }
-
 h1 {
-  font-size:350%;
-  font-weight:800; /*font-weight:700;*/
-  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
+  font-size:343.75%;
+  font-weight:800; /* font-weight:700; */
   font-style: normal;
   line-height:1.1;
   text-shadow : 2px 2px 2px #CCC;
   margin-bottom:10px;
   padding-bottom:0;
 }
-h1 > span {
-  font-size:20pt;
+h2, h3, h4, h5, h6 {
+  font-weight:400;
+  margin-bottom:0;
+  padding-bottom:0;
+}
+/*.author {
+  font-variant:small-caps;
+}*/
+
+span.draft {
+  display:block;
+  float:right;
+  font-size:31.25%;
   font-weight:normal;
+  font-variant:normal;
   font-family: 'Cabin Sketch', cursive;
-  margin-left:1em;
   padding:10px 10px;
   text-shadow:none;
   background-color:orange;
-  line-height:2em;
-  text-indent:.5em;
+  margin-right:5em;
   border-radius:5px;
-  -moz-transform: rotate(-15deg);
-  -webkit-transform: rotate(-15deg):
-  -o-transform: rotate(-15deg);
-  -ms-transform: rotate(-15deg);
-  transform: rotate(-15deg);
+  transform:rotate(-15deg);
+  -ms-transform:rotate(-15deg); /* IE 9 */
+  -moz-transform:rotate(-15deg); /* Firefox */
+  -webkit-transform:rotate(-15deg); /* Safari and Chrome */
+  -o-transform:rotate(-15deg); /* Opera */
 }
 h2 {
-  font-size:244%;
+  font-size:212.5%;
 }
 h3 {
-  font-size:160%;
+  font-size:162.5%;
 }
 h4 {
-  font-size:136%;
+  font-size:131.25%;
 }
-
 
 #main {
   margin: 0 4em auto 4em;
   padding-top:0;
 }
-
 #main h2, #main h3 {
   text-shadow : 1px 1px 1px #CCC;
   margin:1em auto 3px auto;
   padding-bottom:0;
 }
-
-#main h2 {
-  padding-bottom:0.5em;
-  /*padding-top:.5em;*/
-  border-bottom:1pt dotted #CCC;
-}
-
 hr {
   border-top:none;
   border-left:none;
@@ -136,24 +117,23 @@ hr {
   margin-top:2em;
   margin-bottom:2em;
 }
-
 /* Header and Footer */
-#header, #footer { 
+#header, #footer {
   padding: .5em 1.5em .5em 1.5em;
   background-color : rgba(211, 211, 211, .6);
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
-#footer {
-  font-size:small;
-}
-
 #header {
   margin-top:-1em;
   padding-top:1em;
 }
-
+#footer {
+  font-size:small;
+  margin-top:3.5em;
+  margin-bottom:1.1em;
+}
 #header h1 {
   padding-top:0;
   margin-top:0;
@@ -165,127 +145,80 @@ hr {
   padding-bottom:0;
   margin-bottom:0;
 }
-
-#footer {
-  margin-top:3.5em;
-  margin-bottom:1.1em;
-}
-
+/* */
 #content {
-  /*background-color : #FFF;*/
   background-color : rgba(255, 255, 255, .95);
   margin-top:4em;
   padding:.5em 1.5em;
   -webkit-border-radius : 5px;
   -moz-border-radius : 5px;
   border-radius : 5px;
-  /*-webkit-border-top-left-radius : 0px;
-  -moz-border-radius-topleft : 0px;
-  border-top-left-radius : 0px;*/
 }
-
-/* #mission, , #trans */
-#features, #exofamily {
-  float:left;
-  width:48%;
-}
-
-#exoframe, #features {
-  padding-right:6pt;
-}
-iframe  {
-  margin-left:20pt;
-}
-
-#exofamily {
-  min-height:390px;
-}
-
-.end {
-  clear:both;
-}
-
-
-/* List */
-#formats {
-  width : 100%;
-  padding : 0;
-  margin-top: 10px;
-}
-.format {
-  display: inline-block;
-  margin-right:10px;
-  margin-bottom:10px;
-  width:48%;
-}
-
-.format .title {
-  padding : 0;
-}
-.format p {
-  display : none;
-}
-.format a {
-  font-size:120%;
-  letter-spacing : 1px;
-  display : block;
-  color : #fff;
-  text-decoration : none;
-  text-align : center;
-  padding : 20px 10px 20px 10px;
-  background : #90A4BB;
-  background : -webkit-gradient(linear, left top, left bottom, from(#90A4BB), to(#3B4D62));
-  background : -webkit-linear-gradient(top, #90A4BB, #3B4D62);
-  background : -moz-linear-gradient(top, #90A4BB, #3B4D62);
-  background : -o-linear-gradient(top, #90A4BB, #3B4D62);
-  background : -ms-linear-gradient(top, #90A4BB, #3B4D62);
-  background : linear-gradient(top, #90A4BB, #3B4D62);
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
+blockquote {
+  padding:.75em;
+  box-shadow: 5px 5px 15px #ccc;
   border-radius:5px;
+  /*border-bottom-right-radius: 50px 120px;*/
+}
+blockquote h4 {
+  margin-top:0.5em;
+}
+blockquote p {
+  margin-top:.5em;
 }
 
-
-#htmlchunk a:hover, #htmlsingle a:hover {
-  background: #2c2c2c url(icons/applications-internet.png) left bottom no-repeat;
-}
-#pdf a:hover {
-  background: #2c2c2c url(icons/application-pdf.png) left bottom no-repeat;
-  color: #000
-}
-#epub a:hover {
-  background: #2c2c2c url(icons/application-epub+zip.png) left bottom no-repeat;
-}
-.format .title a:hover {
-  background: #2c2c2c url(icons/applications-internet.png) left center no-repeat;
-}
-
-div.read, form {
+form, .read {
   text-align:center;
 }
 
-blockquote p q {
-  font-style:italic;
-}
-
-ul {
-  list-style-type:square;
-}
-
-p {
-  font-weight:300;
-}
-p i, p em {
-  font-weight:400;
-}
-p b {
-  font-weight:500;
-}
-
-.button {
-  font-weight:600;
-}
-
+/* Inlines */
 q:lang(en) { quotes: '“' '”' "‘" "’" }
 q:before { content: open-quote }
 q:after  { content: close-quote }
+q { font-style: italic; }
+
+/* Buttons */
+.button {
+  display:inline-block;
+  outline:none;
+  cursor:pointer;
+  text-align:center;
+  text-decoration:none;
+  /*width:30%;*/
+  padding: 0.5em 2em .55em;
+  text-shadow:0 1px 1px rgba(0,0,0,.3);
+  -webkit-border-radius: .5em;
+  -moz-border-radius: .5em;
+  border-radius:.5em;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+  box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.button:hover {
+  text-decoration:none;
+}
+.button:active {
+  position:relative;
+  top: 1px;
+}
+.blue {
+	color: #fef4e9;
+	border: solid 1px #769AC4;
+	background: #f78d1d;
+	background: -webkit-gradient(linear, left top, left bottom, from(#90A4BB), to(#3B4D62));
+	background: -moz-linear-gradient(top,  #90A4BB,  #3B4D62);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#90A4BB', endColorstr='#3B4D62');
+}
+.blue:hover {
+	background: #3B4D62;
+  background-image: url(icons/application-pdf.png) left bottom no-repeat;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3B4662), to(#9AB0C8));
+	background: -moz-linear-gradient(top,  #3B4662, #9AB0C8);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3B4662', endColorstr='#9AB0C8');
+}
+.blue:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#3B4D62), to(#90A4BB));
+	background: -moz-linear-gradient(top,  #3B4D62,  #90A4BB);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#3B4D62', endColorstr='#90A4BB');
+}
