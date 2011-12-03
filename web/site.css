@@ -157,7 +157,10 @@ hr {
 blockquote {
   padding:.75em;
   box-shadow: 5px 5px 15px #ccc;
+  -webkit-border-radius : 5px;
+  -moz-border-radius : 5px;
   border-radius:5px;
+  -moz-border-radius-bottomright: 90px 11px;
   border-bottom-right-radius: 90px 11px;
 }
 blockquote h4 {
@@ -206,7 +209,7 @@ form, .read {
 q:lang(en) { quotes: '“' '”' "‘" "’" }
 q:before { content: open-quote }
 q:after  { content: close-quote }
-q { font-style: italic; }
+q { font-style: italic; font-weight:normal; }
 
 /* Buttons */
 .button {
