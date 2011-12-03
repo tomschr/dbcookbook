@@ -269,7 +269,7 @@
   </section>-->
   
   <section xml:id="dbc.preface.license">
-    <title>Creative Commons License</title>
+    <title>Licensed under Creative Commons</title>
     <para>The book is currently released under a Creative Commons
         <acronym
         xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
@@ -281,8 +281,9 @@
         xrefstyle="select:label"/>). After this book is finished, the
       license will be changed to <acronym
         xlink:href="http://creativecommons.org/licenses/by-sa/3.0/de/deed.en"
-        >CC BY-SA 3.0 DE<alt>Creative Commons Attribution-ShareAlike
-          3.0</alt></acronym>.</para>
+        >CC BY-SA 3.0 DE<alt
+          >Creative Commons Attribution-ShareAlike 3.0</alt
+        ></acronym>.</para>
   </section>  
   
   <section xml:id="dbc.preface.ack">
