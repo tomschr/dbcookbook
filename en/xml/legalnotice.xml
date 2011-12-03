@@ -36,13 +36,13 @@
             </inlinemediaobject></td>
           <td><para>This work is licensed as Creative Commons
               Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
-              by-nc-sa 3.0 DE). For more information, refer to <xref 
-                linkend="dbc.preface.license"/> or go to <link
+              BY-NC-SA 3.0 DE). For more information, refer to <xref 
+                linkend="dbc.preface.license"/> <!--or go to <link
                 xlink:show="new"
                 xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
               /></para>
             <para>See also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
-              and <xref linkend="cc-by-nc-sa-30-unported"/>.</para></td>
+              and <xref linkend="cc-by-nc-sa-30-unported"/>-->.</para></td>
         </tr>
       </tbody>
     </informaltable>
