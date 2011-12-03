@@ -10,8 +10,12 @@ html {
   padding:0;
 }
 
+/* Fonts */
+body, h1, h2, h3, h4, h5, h6, .button  { 
+  font-family:'Open Sans', 'DejaVu Sans Condensed', sans-serif;
+}
+
 body {
-  font-family: 'Open Sans', 'DejaVu Sans', sans-serif;
   font-weight:300;
   color: #2c2c2c;
   background-color: #8DA1B7;
@@ -50,11 +54,11 @@ body {
     #8DA1B7 30%,  #3E5066 40%,
     #8DA1B7 50%,  #3E5066 60%, 
     #8DA1B7 70%,  #3E5066 80%, 
-    #8DA1B7 90%,  #3E5066 100%);  
+    #8DA1B7 90%,  #3E5066 100%);
+  /* IE6-IE9 */
+  filter: progid:DXImageTransform.Microsoft.gradien(startColorstr='#3E5066', endColorstr='#8DA1B7');
 }
-h1, h2, h3, h4, h5, h6, .button  { 
-  font-family:'Open Sans', 'DejaVu Sans Condensed', sans-serif;
-}
+
 h1 {
   font-size:343.75%;
   font-weight:800; /* font-weight:700; */
