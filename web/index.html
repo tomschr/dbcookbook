@@ -4,7 +4,7 @@
 <!--<!DOCTYPE html PUBLIC
   "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">-->
-
+<!--[if IE 6]><![endif]-->
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" 
       xmlns:cc="http://creativecommons.org/ns#"
       xmlns:dct="http://purl.org/dc/terms/">
@@ -47,6 +47,13 @@
     <!-- FIXME: -->
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- CSS: -->
+    <!--[if IE]
+    <style type="text/css">
+    #header, #footer, #content { background-color: rgb(211,211,211); }
+    blockquote { background-color:white; }
+    #availformats form { margin-bottom:0.75em; }
+    </style>
+    <![endif]-->
   </head>
   <body>    
     <div id="main">
@@ -72,13 +79,12 @@
           <p>Currently, there is only HTML available. Other formats will
             be provided in the near future.</p>
           <div class="read">
-            <a href="html/en/DocCookBook.html" class="button blue"
-              >Click Here to Read it Online</a>
+            <a href="html/en/DocCookBook.html" class="button orange"
+              >Read It <b>Now</b>―Free!</a>
           </div>
           <p>If you find this website useful and want to support this project, 
             please consider to donate a small amount of money:</p>
           <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <div>
               <input type="hidden" name="cmd" value="_s-xclick"/><input 
                 type="hidden" name="hosted_button_id" 
                 value="8XQXHPHCCWRQW"/><input type="image" 
@@ -86,9 +92,7 @@
                   name="submit" 
                   alt="PayPal - The safer, easier way to pay online!"/><img alt=""
                     src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" 
-                    width="1" height="1"/>
-            </div>
-          </form>
+                    width="1" height="1"/></form>
         </div>
         <div id="contact" class="end">
           <h3>Contact Me</h3>
