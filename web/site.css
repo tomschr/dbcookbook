@@ -3,6 +3,7 @@
    By Thomas Schraitle <tom_schr AT sourceforge DOT net>
    Released under Creative Commons CC-BY
 */
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,800|Cabin+Sketch);*/
 
 html {
   margin:0;
@@ -10,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', 'DejaVu Sans Condensed', sans;
+  font-family: 'Open Sans', 'DejaVu Sans', sans;
   font-weight:300;
   color: #2c2c2c;
   background-color: #3E5066;
