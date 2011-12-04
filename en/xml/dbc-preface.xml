@@ -13,14 +13,6 @@
    http://creativecommons.org/licenses/by-nc-sa/3.0/
    
 -->
-<!DOCTYPE preface 
-[
-  <!ENTITY user.sf    "tom_schr">
-  <!ENTITY domain.sf  "users.sourceforge.net">
-  <!ENTITY mymail "&user.sf;&#064;&domain.sf;">
-  
-]>
-
 <preface xml:id="dbc.preface"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -30,12 +22,12 @@
     <definitions definitionfile="defs.xml"/>
   </info>
   
-  <note>
+  <note xml:id="draftahead">
     <title>Draft Ahead!</title>
     <para>This book is a draft and still work in progress. You will find
     funny typos, embarrassing English grammar mistakes from a German native
     speaker, annoying inconsistencies, missing topics, and plain errors. 
-    Nevertheless, the topic should give you (hopefully) an idea.  
+    Nevertheless, I hope the topics should give you an idea.  
     </para>
     <para>Visit this site from time to time and see how the book grows
       and how more and more of these annoyances will vanish. To accelerate
@@ -225,7 +217,7 @@
     <title>Contribute to the Book</title>
     <para>The source code of this book is published and maintained as a 
       Mercurial repository. Feel free to clone it, make improvements and
-      mail me your changes to <email>&user.sf;(AT)&domain.sf;</email> or use the
+      mail me your changes to <email><ref name="author.email"/></email> or use the
       link <link xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
       />. 
     </para>
