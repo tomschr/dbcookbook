@@ -35,7 +35,7 @@ div.toc p,
 div.list-of-tables p,
 div.list-of-examples p,
 div.list-of-figure p {
-  font-family: 'Open Sans','Lato', 'DejaVu Sans Condensed', sans;
+  font-family: 'Open Sans', 'DejaVu Sans', sans-serif;
 }
 p {
   font-family:'PT Serif', 'DejaVu Serif', serif;
@@ -172,7 +172,20 @@ div.table-wrapper {
 }
 
 /* TOC */
-div.toc > dl.toc > dt {
+.toc > ul.toc,
+.list-of-tables > ul.toc,
+.list-of-examples > ul.toc,
+.list-of-figures > ul.toc {
+  margin-top:0;
+  padding-left:1em;
+}
+ul.toc
+{
+  list-style-type:none;
+  margin-left:0;
+}
+
+div.toc > .toc > dt {
   font-size:100%;
   font-weight:600;
   margin-top:10pt;
@@ -247,12 +260,10 @@ div.list-of-figures > p b  {
 
 .section-titlepage div.authorgroup {
   border:none;
-}
-/*div.section-titlepage div.authorgroup:before {
   font-size:90%;
   font-weight:normal;
-  content: "Authors: ";
-}*/
+  display:inline;
+}
 .section-titlepage div.author,
 .section-titlepage div.othercredit {
   border:none;
@@ -276,10 +287,10 @@ div.variablelist dd p:first-child {
   margin-top:2pt;
 }
 
-div.procedure-wrapper div.title,
-div.example-wrapper div.title,
-div.table-wrapper div.title,
-div.itemizedlist div.title
+.procedure-wrapper div.title,
+.example-wrapper div.title,
+.table-wrapper div.title,
+.itemizedlist div.title
 {
   margin-bottom:2pt;
   font-weight:400;
