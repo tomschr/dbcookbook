@@ -22,6 +22,14 @@
   <title>Creating Simple Navigation in Chapters</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>HTML</keyword>
+      <keyword>simple navigation</keyword>
+      <keyword>next</keyword>
+      <keyword>previous</keyword>
+      <keyword>sections</keyword>
+      <keyword>generate.simple.navigation</keyword>
+    </keywordset>
   </info>
   <section role="problem">
     <title>Problem</title>
