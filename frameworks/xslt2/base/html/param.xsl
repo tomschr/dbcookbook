@@ -41,5 +41,5 @@
   <xsl:param name="menuchoice.menu.separator"> &#8594; </xsl:param>
   <xsl:param name="menuchoice.separator">+</xsl:param>
   <xsl:param name="glossentry.show.acronym">yes</xsl:param>
-  <!--<xsl:param name="preprocess" select="'transclude'"/>-->
+  <xsl:param name="preprocess" select="'transclude'"/>
 </xsl:stylesheet>
