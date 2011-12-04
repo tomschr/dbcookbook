@@ -323,6 +323,10 @@ table thead tr th{
   padding-right: 1em;
 }
 
+figure {
+  margin-left:0;
+  margin-right:0;
+}
 
 /* Inlines */
 
