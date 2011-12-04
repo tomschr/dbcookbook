@@ -17,7 +17,7 @@
   <xsl:variable name="id">
     <xsl:choose>
       <!-- Make sure the subtitle doesn't get the same id as the title -->
-      <xsl:when test="self::subtitle">
+      <xsl:when test="self::d:subtitle">
         <xsl:call-template name="object.id">
           <xsl:with-param name="object" select="."/>
         </xsl:call-template>
