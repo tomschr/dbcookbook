@@ -21,6 +21,7 @@
   <title>The DocCookBook</title>
   <subtitle>Recipies for DocBook Developers</subtitle>
   <info>
+    <definitions definitionfile="defs.xml"/>
     <rdf:RDF
       xmlns="http://creativecommons.org/ns#"
       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -79,7 +80,6 @@
         </revdescription>
       </revision>
     </revhistory>
-    
   </info>
     
   <xi:include href="dbc-preface.xml"/>
