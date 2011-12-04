@@ -8,19 +8,28 @@
       x1="0%"   y1="0%"
       x2="100%" y2="0%">
       <stop offset="0%"  stop-color="#3E5066" stop-opacity="1"/>
-      <stop offset="10%" stop-color="#8DA1B7" stop-opacity="1"/>
+      <stop offset="5%"  stop-color="#8DA1B7" stop-opacity="1"/>
+      <stop offset="10%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="15%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="20%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="25%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="30%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="40%" stop-color="#3E5066" stop-opacity="1"/>
-      <stop offset="50%" stop-color="#8DA1B7" stop-opacity="1"/>
+      <stop offset="45%" stop-color="#8DA1B7" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="55%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="60%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="65%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="70%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="75%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="80%" stop-color="#3E5066" stop-opacity="1"/>
-      <stop offset="90%" stop-color="#8DA1B7" stop-opacity="1"/>
+      <stop offset="85%" stop-color="#8DA1B7" stop-opacity="1"/>
+      <stop offset="90%" stop-color="#3E5066" stop-opacity="1"/>
+      <stop offset="95%" stop-color="#8DA1B7" stop-opacity="1"/>
       <stop offset="100%" stop-color="#3E5066" stop-opacity="1"/>
     </linearGradient>
   </defs>
   
-  <rect width="100%" height="100%"
-    style="fill:url(#myLinearGradient1);" />
+  <rect width="100%" height="100%" style="fill:url(#myLinearGradient1);" />
 </svg>
