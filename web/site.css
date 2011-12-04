@@ -90,11 +90,18 @@ span.draft {
   background-color:#f78d1d;
   margin-right:5em;
   border-radius:5px;
-  transform:rotate(-15deg);
-  -ms-transform:rotate(-15deg); /* IE 9 */
-  -moz-transform:rotate(-15deg); /* Firefox */
   -webkit-transform:rotate(-15deg); /* Safari and Chrome */
+  -moz-transform:rotate(-15deg); /* Firefox */
   -o-transform:rotate(-15deg); /* Opera */
+  -ms-transform:rotate(-15deg); /* IE 9 */
+  transform: rotate(-15deg);
+  filter: progid:DXImageTransform.Microsoft.Matrix(
+            M11=0.9659258262890684,
+            M12=0.25881904510252024,
+            M21=-0.25881904510252024,
+            M22=0.9659258262890684,
+            SizingMethod='auto expand');
+  -ms-filter:"progid:DXImageTransform.Microsoft.Matrix(M11=0.9659258262890684,M12=0.25881904510252024,M21=-0.25881904510252024,M22=0.9659258262890684,SizingMethod='auto expand')";
 }
 h2 {
   font-size:212.5%;
