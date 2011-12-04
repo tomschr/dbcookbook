@@ -23,7 +23,7 @@
             <d:pubdate/>
             <d:releaseinfo/>
             <d:legalnotice/>
-            <d:othercredit class="proofreader"/>
+            <!--<d:othercredit class="proofreader"/>-->
             <d:revhistory/>          
             <d:abstract/>
             <d:annotation xml:id="draft"/>
