@@ -19,7 +19,6 @@
 <xsl:param name="userlevel.medium">★★☆</xsl:param>
 <xsl:param name="userlevel.hard"  >★★★</xsl:param>
 
-
 <xsl:template name="sf:generate-userlevel">
   <xsl:param name="level" select="normalize-space(@userlevel)"/>
   <xsl:variable name="ul"
@@ -44,10 +43,9 @@
   
   <xsl:if test="exists($ul) and $generate.userlevel != 0">
     <span class="section-userlevel" 
-      title="{$ul} difficulty"><xsl:value-of select="$d"/></span>
+      title="difficulty: {$ul}"><xsl:value-of select="$d"/></span>
   </xsl:if>
 </xsl:template>
-
 
 <xsl:template match="d:section[not(parent::d:section)]/d:title|
                      d:section[not(parent::d:section)]/d:info/d:title" mode="m:titlepage-mode">
