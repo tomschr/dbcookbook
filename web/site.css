@@ -19,6 +19,8 @@ body {
   font-weight:300;
   color: #2c2c2c;
   background-color: #8DA1B7;
+  background-image:url(ie-background.jpg);
+  background-repeat:repeat;
   background-image: -webkit-gradient(linear, left top, right top, 
    from(#3E5066), 
    color-stop(0.1, #8DA1B7), color-stop(0.2, #3E5066),
