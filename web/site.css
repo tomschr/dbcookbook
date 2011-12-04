@@ -95,13 +95,13 @@ span.draft {
   -o-transform:rotate(-15deg); /* Opera */
   -ms-transform:rotate(-15deg); /* IE 9 */
   transform: rotate(-15deg);
+  -ms-filter:"progid:DXImageTransform.Microsoft.Matrix(M11=0.9659258262890684,M12=0.25881904510252024,M21=-0.25881904510252024,M22=0.9659258262890684,sizingMethod='auto expand')";
   filter: progid:DXImageTransform.Microsoft.Matrix(
             M11=0.9659258262890684,
             M12=0.25881904510252024,
             M21=-0.25881904510252024,
             M22=0.9659258262890684,
-            SizingMethod='auto expand');
-  -ms-filter:"progid:DXImageTransform.Microsoft.Matrix(M11=0.9659258262890684,M12=0.25881904510252024,M21=-0.25881904510252024,M22=0.9659258262890684,SizingMethod='auto expand')";
+            sizingMethod='auto expand');
 }
 h2 {
   font-size:212.5%;
@@ -138,6 +138,7 @@ hr {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  filter:alpha(opacity=90);/* IE6-IE8 */
 }
 #header {
   margin-top:-1em;
