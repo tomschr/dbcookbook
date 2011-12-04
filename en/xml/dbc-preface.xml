@@ -31,7 +31,7 @@
     </para>
     <para>Visit this site from time to time and see how the book grows
       and how more and more of these annoyances will vanish. To accelerate
-      this process, send me praise, patches, or even write a topic.<footnote>
+      this process, send me praise, critisism, patches, donations, or even write a topic.<footnote>
         <para>To make me smile, in this order, please. :-)</para>
       </footnote> Read <xref linkend="dbc.preface.contrib"/>
       to find more how to support me.</para>
@@ -39,11 +39,13 @@
 
   <blockquote>
     <title>Mission</title>
-    <para><citetitle
-      xlink:href="https://sourceforge.net/projects/doccookbook/"
-      >The DocCookBook</citetitle> project aims to create a collection of
-      cookbook-style solutions released under a Creative Commons (CC)
-      license for the international DocBook community.</para>
+    <para><citetitle xlink:href="https://doccookbook.sf.net"
+      >The DocCookBook Project</citetitle> aims to create an open source
+      book about <phrase xlink:href="http://www.docbook.org/"
+        >DocBook</phrase> and the <phrase
+        xlink:href="http://docbook.sf.net/release/xsl/current/doc/"
+        >DocBook XSL stylesheets</phrase> written in a cookbook-style
+      manner and released under a Creative Commons license.</para>
   </blockquote>
   
   <para>According to its <phrase
