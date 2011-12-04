@@ -18,44 +18,91 @@ body, h1, h2, h3, h4, h5, h6, .button  {
 body {
   font-weight:300;
   color: #2c2c2c;
-  background-color: #8DA1B7;
-  background-image: -webkit-gradient(linear, left top, right top, 
-   from(#3E5066), 
-   color-stop(0.1, #8DA1B7), color-stop(0.2, #3E5066),
-   color-stop(0.3, #8DA1B7), color-stop(0.4, #3E5066),
-   color-stop(0.5, #8DA1B7), color-stop(0.6, #3E5066),
-   color-stop(0.7, #8DA1B7), color-stop(0.8, #3E5066),
-   color-stop(0.9, #8DA1B7), color-stop(1.0, #3E5066),
-   to(#3E5066));
-  /* Safari 5.1+, Chrome 10+ */
-  background-image: -webkit-linear-gradient(left, #3E5066, 
-    #8DA1B7 10%,  #3E5066 20%,  
-    #8DA1B7 30%,  #3E5066 40%,
-    #8DA1B7 50%,  #3E5066 60%, 
-    #8DA1B7 70%,  #3E5066 80%, 
-    #8DA1B7 90%,  #3E5066 100%); 
-  /* Firefox 3.6+ */
-  background-image: -moz-linear-gradient(left, #3E5066, 
-    #8DA1B7 10%,  #3E5066 20%,  
-    #8DA1B7 30%,  #3E5066 40%,
-    #8DA1B7 50%,  #3E5066 60%, 
-    #8DA1B7 70%,  #3E5066 80%, 
-    #8DA1B7 90%,  #3E5066 100%);
-  /* IE 10 */
-  background-image: -ms-linear-gradient(left, #3E5066, 
-    #8DA1B7 10%,  #3E5066 20%,  
-    #8DA1B7 30%,  #3E5066 40%,
-    #8DA1B7 50%,  #3E5066 60%, 
-    #8DA1B7 70%,  #3E5066 80%, 
-    #8DA1B7 90%,  #3E5066 100%); 
-  /* Opera 11.10+ */
-  background-image: -o-linear-gradient(left, #3E5066, 
-    #8DA1B7 10%,  #3E5066 20%,  
-    #8DA1B7 30%,  #3E5066 40%,
-    #8DA1B7 50%,  #3E5066 60%, 
-    #8DA1B7 70%,  #3E5066 80%, 
-    #8DA1B7 90%,  #3E5066 100%);
+  background-image: url('bg-gradient.svg');
+  /* Legacy browsers */
+	background: #3E5066 url("bg-gradient.png") repeat-y left;
+	-o-background-size: 100% 100%;
+	-moz-background-size: 100% 100%;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	/* Internet Explorer */
+	*background: #8DA1B7;
+	background: #8DA1B7\0/;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="bg-gradient.png", sizingMethod="scale");
 }
+
+@media all and (min-width: 0px) {
+  body {
+	/* Opera */
+	background: #3E5066 url("bg-gradient.svg");
+	/* Recent browsers */
+	background-image: -webkit-gradient(
+		linear, left top, right top,
+		from(#3E5066), to(#3E5066),
+		color-stop(0.1, #8DA1B7),
+		color-stop(0.2, #3E5066),
+		color-stop(0.3, #8DA1B7),
+		color-stop(0.4, #3E5066),
+		color-stop(0.5, #8DA1B7),
+		color-stop(0.6, #3E5066),
+		color-stop(0.7, #8DA1B7),
+		color-stop(0.8, #3E5066),
+		color-stop(0.9, #8DA1B7) );
+	background-image: -webkit-linear-gradient(
+		left,
+		#3E5066,
+		#8DA1B7 10%,
+		#3E5066 20%,
+		#8DA1B7 30%,
+		#3E5066 40%,
+		#8DA1B7 50%,
+		#3E5066 60%,
+		#8DA1B7 70%,
+		#3E5066 80%,
+		#8DA1B7 90%,
+		#3E5066);
+	background-image: -moz-linear-gradient(
+		left,
+		#3E5066,
+		#8DA1B7 10%,
+		#3E5066 20%,
+		#8DA1B7 30%,
+		#3E5066 40%,
+		#8DA1B7 50%,
+		#3E5066 60%,
+		#8DA1B7 70%,
+		#3E5066 80%,
+		#8DA1B7 90%,
+		#3E5066);
+	background-image: -o-linear-gradient(
+		left,
+		#3E5066,
+		#8DA1B7 10%,
+		#3E5066 20%,
+		#8DA1B7 30%,
+		#3E5066 40%,
+		#8DA1B7 50%,
+		#3E5066 60%,
+		#8DA1B7 70%,
+		#3E5066 80%,
+		#8DA1B7 90%,
+		#3E5066	);
+	background-image: linear-gradient(
+		left,
+		#3E5066,
+		#8DA1B7 10%,
+		#3E5066 20%,
+		#8DA1B7 30%,
+		#3E5066 40%,
+		#8DA1B7 50%,
+		#3E5066 60%,
+		#8DA1B7 70%,
+		#3E5066 80%,
+		#8DA1B7 90%,
+		#3E5066);
+	}
+}
+
 
 h1 {
   font-size:343.75%;
