@@ -23,7 +23,6 @@
   <info>
     <definitions definitionfile="defs.xml"/>
   </info>
-  <remark>TODO: Revise topic and make it more procedural</remark>
   <section role="problem">
     <title>Problem</title>
     <para>You need a simple navigation for your single HTML file. The
@@ -45,22 +44,33 @@
       <title><filename>simple-navigation.xsl</filename></title>
       <programlisting language="xml"><xi:include href="xslt/simple-navigation.xsl" parse="text"/></programlisting>
     </example>
-    <para>The <filename>simple-navigation-xsl</filename> stylesheet can
-      not stand on its own, it needs to be imported into your
-      customization layer. How this can be done is shown in <xref
-        linkend="ex.db-simple-navigation.xsl"/>:</para>
-    <example xml:id="ex.db-simple-navigation.xsl">
-      <title><filename>db-simple-navigation.xsl</filename></title>
-      <programlisting language="xml"><xi:include href="xslt/db-simple-navigation.xsl" parse="text"/></programlisting>      
-    </example>
+    <para>This is not enough, of course. Use the following steps to
+      include it into your customization layers:</para>
+    <procedure>
+      <step>
+        <para>Create a customization layer as shown in <xref
+          linkend="dbc.common.dbcustomize"/>.</para>
+      </step>
+      <step>
+        <para>Include the stylesheet from <xref
+            linkend="ex.simple-navigation.xsl"/> into your customization
+            layer:</para>
+        <example xml:id="ex.db-simple-navigation.xsl">
+          <title><filename>db-simple-navigation.xsl</filename></title>
+          <programlisting language="xml"><xi:include href="xslt/db-simple-navigation.xsl" parse="text"/></programlisting>      
+        </example>        
+      </step>
+      <step>
+        <para>Use the file <filename>db-simple-navigation.xsl</filename>
+        to transform your documents.</para>
+      </step>
+    </procedure>
     
-    <para>The customization layer in <xref
-      linkend="ex.db-simple-navigation.xsl"/> contains the parameter 
-      <parameter>generate.simple.navigation</parameter><footnote>
+    <para>If you want to switch on or off the above behaviour, use the
+      parameter <parameter>generate.simple.navigation</parameter><footnote>
         <para>It is not an error to have a parameter with the same name
           as a named template.</para>
-      </footnote> to
-      switch on or off the navigation links.</para>
+      </footnote> and set it to <literal>0</literal>.</para>    
   </section>
   <section role="discussion">
     <title>Discussion</title>
