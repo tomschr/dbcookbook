@@ -292,5 +292,13 @@
     people contributed to this book:</para>
     <!--  -->
     <!--<para>Written <?dbtimestamp?></para>-->
+    <itemizedlist>
+      <listitem>
+        <para><personname>
+          <firstname>Antje</firstname>
+          <surname>Faber</surname>
+        </personname> for proofreading some of my texts.</para>
+      </listitem>
+    </itemizedlist>
   </section>
 </preface>
