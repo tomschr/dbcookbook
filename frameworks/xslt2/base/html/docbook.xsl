@@ -15,6 +15,7 @@
   <!--<xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>-->
   <xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>
   
+  <xsl:include href="piwik.xsl"/>
   <xsl:include href="param.xsl"/>
   <xsl:include href="inlines.xsl"/>
   <xsl:include href="titlepage-templates.xsl"/>
@@ -24,4 +25,36 @@
   
   <xsl:include href="usermeta.xsl"/>
 
+  <xsl:template match="/">
+    <xsl:variable name="root" as="element()"
+      select="f:docbook-root-element(f:preprocess(/),$rootid)"/>
+
+    <xsl:if test="$verbosity &gt; 3">
+      <xsl:message>Styling...</xsl:message>
+    </xsl:if>
+
+    <html>
+      <xsl:call-template name="t:head">
+        <xsl:with-param name="node" select="$root"/>
+      </xsl:call-template>
+      <body>
+        <xsl:call-template name="t:body-attributes"/>
+        <xsl:if test="$root/@status">
+          <xsl:attribute name="class" select="$root/@status"/>
+        </xsl:if>
+
+        <xsl:apply-templates select="$root"/>
+        
+        <xsl:if test="$use.piwik != 0">
+          <xsl:call-template name="generate.piwik"/>
+        </xsl:if>
+      </body>
+    </html>
+
+    <xsl:for-each
+      select=".//d:mediaobject[d:textobject[not(d:phrase)]]">
+      <xsl:call-template name="t:write-longdesc"/>
+    </xsl:for-each>
+  </xsl:template>
+  
 </xsl:stylesheet>
