@@ -31,6 +31,12 @@ article.book {
   margin-right:auto;
 }
 
+/*.c {
+  color:orange;
+  text-decoration: line-through;
+  display:none;
+}*/
+
 /* Fonts */
 body,
 div.toc p a,
@@ -48,10 +54,7 @@ p {
 code, .command, pre {
   font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
 }
-pre {
-  font-size:105%;
-  line-height:1.1;
-}
+
 /* Font Sizes */
 .book-titlepage h1 { font-size:425%; } 
 .book-titlepage h2 { font-size:262.5%; }
@@ -72,6 +75,7 @@ pre {
 .example-wrapper div.title,
 .table-wrapper div.title,
 .itemizedlist div.title { font-size:110%; }
+pre { font-size:105%; /*line-height:1.1;*/ }
 
 /* Titlepages */
 .book-titlepage {
@@ -389,4 +393,14 @@ div.footnote p sup {
 div.programlisting pre 
 {
   margin-top:2pt;
+  /*text-overflow:ellipsis;
+  overflow:hidden;
+  width: 100%;*/
 }
+
+/* TODO: */
+/*div.programlisting pre:hover
+{
+  overflow-x:scroll;
+  text-overflow:visible;
+}*/
