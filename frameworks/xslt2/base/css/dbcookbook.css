@@ -330,7 +330,11 @@ figure {
 }
 
 /* Inlines */
-
+.linenumber-separator {
+  /*border-left:2pt gray solid;*/
+  border-left:2pt gray solid;
+  padding-left:5pt;
+}
 /* Blocks */
 div.admonition {
   margin-left:30px;
