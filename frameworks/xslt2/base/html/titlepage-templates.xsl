@@ -24,6 +24,7 @@
             <d:releaseinfo/>
             <d:legalnotice/>
             <!--<d:othercredit class="proofreader"/>-->
+            <d:cover/>
             <d:revhistory/>          
             <d:abstract/>
             <d:annotation xml:id="draft"/>

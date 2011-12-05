@@ -19,7 +19,11 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>-->
-  
+
+  <xsl:template match="d:cover" mode="m:titlepage-recto-mode">
+    <xsl:apply-templates/>
+  </xsl:template>
+
   <xsl:template match="d:othercredit" mode="m:titlepage-recto-mode"/>
   
   <xsl:template match="d:othercredit[@class='proofreader']" mode="m:titlepage-recto-mode">
@@ -40,7 +44,5 @@
       </p>
     </div>
   </xsl:template>
-  
-  
-  
+
 </xsl:stylesheet>
