@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?><html xmlns="http://www.w3.org/1999/xhtml">
    <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-      <title>The DocCookBook</title>
+      <title>The DoCookBook</title>
       <meta name="generator" content="DocBook XSL 2.0 Stylesheets V2.0.3" />
       <meta name="keywords" content="DocBook, Customization, XSLT" />
       <link rel="stylesheet" type="text/css" href="css/dbcookbook.css" /><style type="text/css">
@@ -16,7 +16,7 @@ body { background-image: url('images/draft.svg');
       <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT" />
       <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType" />
       <meta name="DC.Language" content="en" scheme="DCTERMS.RFC3066" />
-      <meta name="DC.title" content="The DocCookBook" />
+      <meta name="DC.title" content="The DoCookBook" />
       <meta name="DC.creator" content="Thomas Schraitle" />
       <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType" />
       <meta name="DC.identifier" scheme="DCTERMS.URI"
@@ -28,13 +28,13 @@ body { background-image: url('images/draft.svg');
    <body class="draft">
       <article id="dbcookbook" lang="en" class="book">
          <div class="book-titlepage">
-            <h1>The DocCookBook</h1>
+            <h1>The DoCookBook</h1>
             <h2>Recipies for DocBook Developers</h2>
             <div class="author">
                <h3><span class="personname"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span></h3>
             </div>
             <div>
-               <p>Last published version: November/December 2011<?dbtimestamp?></p>
+               <p>Last published version: December 2011<?dbtimestamp?></p>
             </div>
             <p class="draft">Draft (Version 0.1)</p>
             <div id="legalnotice" lang="en" class="legalnotice">
@@ -67,13 +67,35 @@ body { background-image: url('images/draft.svg');
                   </div>
                </div>
             </div>
+            
+            <p>
+               
+               <div class="note admonition">
+                  <h3>Draft Ahead!</h3>
+                  <p>This book is a draft and still work in progress. You
+                     will find funny typos, embarrassing English grammar mistakes
+                     from a German native speaker, annoying inconsistencies,
+                     missing topics, and plain errors. Nevertheless, I hope the
+                     topics should give you an idea. 
+                  </p>
+                  <p>Visit this site from time to time and see how the book
+                     grows and how more and more of these annoyances will vanish.
+                     To accelerate this process, send me praise, critisism,
+                     patches, donations, or even write a topic.<sup class="footnote"><span class="osq">[</span><a name="draftahead.1.1.3.1" href="#ftn.draftahead.1.1.3.1">1</a><span class="csq">]</span></sup> Read <a href="#dbc.preface.contrib">Section 1.6, “Contribute to the Book”</a> to
+                     find more how to support me.
+                  </p>
+               </div>
+               
+            </p>
+            
+            
             <div class="revhistory">
                <table border="0" summary="Revision History">
                   <tr>
                      <td colspan="2"><span class="title">Revision History</span></td>
                   </tr>
                   <tr class="revision">
-                     <td class="date"><span class="date">2011</span></td>
+                     <td class="date"><span class="date">Dec 2011</span></td>
                      <td class="author"><span class="author"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span><span class="authorinitials">toms</span></td>
                   </tr>
                   <tr class="revdescription">
@@ -224,20 +246,6 @@ body { background-image: url('images/draft.svg');
                   <li><span><a href="#dbc.preface.ack">1.8. Acknowledgments</a></span></li>
                </ul>
             </div>
-            <div id="draftahead" class="note admonition">
-               <h3>Draft Ahead!</h3>
-               <p>This book is a draft and still work in progress. You will find
-                  funny typos, embarrassing English grammar mistakes from a German native
-                  speaker, annoying inconsistencies, missing topics, and plain errors. 
-                  Nevertheless, I hope the topics should give you an idea.  
-                  
-               </p>
-               <p>Visit this site from time to time and see how the book grows
-                  and how more and more of these annoyances will vanish. To accelerate
-                  this process, send me praise, critisism, patches, donations, or even write a topic.<sup class="footnote"><span class="osq">[</span><a name="draftahead.3.1" href="#ftn.draftahead.3.1">1</a><span class="csq">]</span></sup> Read <a href="#dbc.preface.contrib">Section 1.6, “Contribute to the Book”</a>
-                  to find more how to support me.
-               </p>
-            </div>
             <blockquote>
                <h3>Mission</h3>
                <p><em class="citetitle"><a href="https://doccookbook.sf.net">The DocCookBook Project</a></em> aims to create an open source
@@ -254,7 +262,7 @@ body { background-image: url('images/draft.svg');
                   applications).</span>”
             </p>
             <p>Although there are helpful and valuable documentation―be it as a
-               printed book<sup id="fnt.tdg" class="footnote"><span class="osq">[</span><a name="fnt.tdg" href="#ftn.fnt.tdg">2</a><span class="csq">]</span></sup> or online<sup class="footnote"><span class="osq">[</span><a name="dbc.preface.6.2" href="#ftn.dbc.preface.6.2">3</a><span class="csq">]</span></sup>―I always felt there is a gap. This gap could be bridged
+               printed book<sup id="fnt.tdg" class="footnote"><span class="osq">[</span><a name="fnt.tdg" href="#ftn.fnt.tdg">2</a><span class="csq">]</span></sup> or online<sup class="footnote"><span class="osq">[</span><a name="dbc.preface.5.2" href="#ftn.dbc.preface.5.2">3</a><span class="csq">]</span></sup>―I always felt there is a gap. This gap could be bridged
                with a guide that only concentrates on problems and their solution
                in a concise manner explained by step-by-step procedures. Until now
                nobody wrote a book that combines possible problems, pitfalls,
@@ -360,7 +368,7 @@ body { background-image: url('images/draft.svg');
                <p>By no means is this book complete. As this book is based on
                   technologies like CSS, XML, (X)HTML, and XSLT, it is always a good
                   idea to seek other information. I highly recommend to read the
-                  books from <span class="personname"><span class="firstname">Norman</span> <span class="surname">Walsh</span></span> and <span class="personname"><span class="firstname">Bob</span> <span class="surname">Stayton</span></span> as mentioned before.
+                  books by <span class="personname"><span class="firstname">Norman</span> <span class="surname">Walsh</span></span> and <span class="personname"><span class="firstname">Bob</span> <span class="surname">Stayton</span></span> as mentioned before.
                </p>
             </section>
             <section id="dbc.preface.typo" class="section">
@@ -456,16 +464,12 @@ body { background-image: url('images/draft.svg');
             <div class="footnotes">
                <hr width="100" align="left" class="footnotes-divider" />
                <div class="footnote">
-                  <p><sup><span class="osq">[</span><a href="#draftahead.3.1" name="ftn.draftahead.3.1">1</a><span class="csq">]</span></sup>To make me smile, in this order, please. :-)
-                  </p>
-               </div>
-               <div class="footnote">
                   <p><sup><span class="osq">[</span><a href="#fnt.tdg" name="ftn.fnt.tdg">2</a><span class="csq">]</span></sup>Like the reference <em class="citetitle"><a href="http://www.docbook.org/tdg51/en/html/docbook.html">DocBook 5: The Definitive Guide</a></em> from <span class="personname"><span class="firstname">Norman</span> <span class="surname">Walsh</span></span> or <span class="personname"><span class="firstname">Bob</span> <span class="surname">Stayton</span></span>'s <em class="citetitle"><a href="http://www.sagehill.net/docbookxsl/">DocBook
                            XSL</a></em></p>
                </div>
                <div class="footnote">
-                  <p><sup><span class="osq">[</span><a href="#dbc.preface.6.2" name="ftn.dbc.preface.6.2">3</a><span class="csq">]</span></sup><span class="personname"><span class="firstname">Dave</span> <span class="surname">Pawson</span></span> maintains a <a href="http://www.dpawson.co.uk/">DocBook FAQ</a> and
-                     the previous mentioned books can be online too.
+                  <p><sup><span class="osq">[</span><a href="#dbc.preface.5.2" name="ftn.dbc.preface.5.2">3</a><span class="csq">]</span></sup><span class="personname"><span class="firstname">Dave</span> <span class="surname">Pawson</span></span> maintains a <a href="http://www.dpawson.co.uk/">DocBook FAQ</a> and
+                     the previous mentioned books can be found online too.
                   </p>
                </div>
             </div>
