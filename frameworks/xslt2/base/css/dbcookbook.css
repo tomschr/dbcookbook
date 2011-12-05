@@ -25,6 +25,12 @@ body {
   font-style:normal;
 }
 
+article.book {
+  width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
 /* Fonts */
 body,
 div.toc p a,
@@ -41,25 +47,31 @@ p {
 }
 code, .command, pre {
   font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
-  /*font-size:110%;*/
 }
 pre {
-  font-size:110%;
+  font-size:105%;
   line-height:1.1;
 }
 /* Font Sizes */
-.book-titlepage h1 { font-size:500%; } 
-.book-titlepage h2 { font-size:260%; }
-.book-titlepage div.author h3 { font-size:150%; }
+.book-titlepage h1 { font-size:425%; } 
+.book-titlepage h2 { font-size:262.5%; }
+.book-titlepage div.author h3 { font-size:162.5%; }
 .appendix-titlepage h2,
 .chapter-titlepage h2,
 .glossary-titlepage h2,
-.preface-titlepage h2 { font-size:280%; }
+.preface-titlepage h2 { font-size:262.5%; }
 .appendix .section-titlepage h3,
 .chapter .section-titlepage h3,
-.preface .section-titlepage h3 { font-size: 180%; }
-.section-titlepage h4 { font-size:140%; }
+.preface .section-titlepage h3 { font-size: 162.5%; }
+.section-titlepage h4 { font-size:131.25%; }
 .section-titlepage h5 { font-size:110%; }
+/*div.admonition h3 { font-size: ; } */
+.legalnotice .sidebar h3,
+.admonition h3 { font-size: 162.5%; }
+.procedure-wrapper div.title,
+.example-wrapper div.title,
+.table-wrapper div.title,
+.itemizedlist div.title { font-size:110%; }
 
 /* Titlepages */
 .book-titlepage {
@@ -68,6 +80,7 @@ pre {
 }
 .book-titlepage h1 {
   font-weight:800;
+  /*text-align: center;*/
   margin-bottom:12pt;
   text-shadow:4px 4px 5px rgba(0,0,0,0.15);
 }
@@ -344,7 +357,7 @@ div.remark {
 /* Admonitions */
 div.admonition {
   text-align:left;
-  padding:1em;
+  /*padding:2em;*/
   border:2pt solid black;
   -moz-border-radius:.5em;
   -moz-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
@@ -352,9 +365,10 @@ div.admonition {
   -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
   border-radius:.5em;
 }
+
 div.note {
   background-color:#FABA52;
-  padding:10px;
+  padding:1em;
 }
 
 /* Footnotes */
