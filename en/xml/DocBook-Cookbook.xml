@@ -18,7 +18,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>The DocCookBook</title>
+  <title>The Do<phrase role="c">c</phrase>CookBook</title>
   <subtitle>Recipies for DocBook Developers</subtitle>
   <info>
     <definitions definitionfile="defs.xml"/>
@@ -64,6 +64,26 @@
       <para>This book is work in progress.</para>
     </annotation>
     -->
+    <cover xml:id="draftahead">
+      <para>
+        <note>
+          <title>Draft Ahead!</title>
+          <para>This book is a draft and still work in progress. You
+            will find funny typos, embarrassing English grammar mistakes
+            from a German native speaker, annoying inconsistencies,
+            missing topics, and plain errors. Nevertheless, I hope the
+            topics should give you an idea. </para>
+          <para>Visit this site from time to time and see how the book
+            grows and how more and more of these annoyances will vanish.
+            To accelerate this process, send me praise, critisism,
+            patches, donations, or even write a topic.<footnote>
+              <para>To make me smile, in this order, please. :-)</para>
+            </footnote> Read <xref linkend="dbc.preface.contrib"/> to
+            find more how to support me.</para>
+        </note>
+      </para>
+      
+    </cover>
     <revhistory>
       <title>Revision History</title>
       <revision>
