@@ -1,5 +1,5 @@
 ===================================
-Welcome to "The DocCookBook"
+Welcome to "The DoCookBook"
 ===================================
 
 License
@@ -10,9 +10,9 @@ This work is licensed as Creative Commons Attribution-NonCommercial-ShareAlike 3
 
 Mission
 -------
-The DocCookBook project aims to create a collection of cookbook-style
-solutions released under an open source license for the international 
-DocBook community.
+The DoCookBook project aims to create an open source book about DocBook and the DocBook XSL 
+stylesheets written in a cookbook-style manner and released under a Creative Commons license.
+
 
 Concept
 -------
@@ -45,6 +45,7 @@ on your system.
 #. Clone my Sourceforge repository with the Mercurial command hg:
 ::
   $ hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook-code
+
 2. If you want to create a new topic, decide in which chapter it could
 belong (markup, common customizations, structure, fo, html, or any
 other). For example, if you want an addition to DocBook´s structure
@@ -52,15 +53,18 @@ chapter, use the existing template and copy it:
 ::
   $ hg copy en/xml/topic.empty.xml en/xml/structure/topic.foo.xml
 (where 'foo' is an abstract term; replace it with something meaningful.)
+
 3. Open the XML file which contains a chapter element. In our example, it would
 be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and
 insert the following code:
 ::
   <xi:include href="structure/topic.foo.xml"/>
+
 4. Open the XML file en/xml/structure/topic.foo.xml and write your
 topic.
 #. When you are finished, create a diff:
 ::
   $ hg diff > foo.patch
+
 5. Send the diff to me.
 
