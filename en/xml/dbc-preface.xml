@@ -75,7 +75,7 @@
           <surname>Pawson</surname>
         </personname> maintains a <link
           xlink:href="http://www.dpawson.co.uk/">DocBook FAQ</link> and
-        the previous mentioned books can be online too.</para>
+        the previous mentioned books can be found online too.</para>
     </footnote>―I always felt there is a gap. This gap could be bridged
     with a guide that only concentrates on problems and their solution
     in a concise manner explained by step-by-step procedures. Until now
@@ -171,7 +171,7 @@
     <para>By no means is this book complete. As this book is based on
       technologies like CSS, XML, (X)HTML, and XSLT, it is always a good
       idea to seek other information. I highly recommend to read the
-      books from <personname>
+      books by <personname>
         <firstname>Norman</firstname>
         <surname>Walsh</surname>
       </personname> and <personname>
