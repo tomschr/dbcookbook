@@ -18,9 +18,6 @@
 */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);
 
-/*@import url(default.css);*/
-/*@import url(opensans.css);*/
-
 
 body {
   margin-left:2em;
@@ -50,21 +47,27 @@ pre {
   font-size:110%;
   line-height:1.1;
 }
-/*p a[href^='#'], 
-p a[href^='file:'] {
-  font-family:Neuton, 'Crimson Text', 'PT Serif', serif;
-  font-size:80%;
-  font-weight:300;
-}*/
+/* Font Sizes */
+.book-titlepage h1 { font-size:500%; } 
+.book-titlepage h2 { font-size:260%; }
+.book-titlepage div.author h3 { font-size:150%; }
+.appendix-titlepage h2,
+.chapter-titlepage h2,
+.glossary-titlepage h2,
+.preface-titlepage h2 { font-size:280%; }
+.appendix .section-titlepage h3,
+.chapter .section-titlepage h3,
+.preface .section-titlepage h3 { font-size: 180%; }
+.section-titlepage h4 { font-size:140%; }
+.section-titlepage h5 { font-size:110%; }
 
-/* */
+/* Titlepages */
 .book-titlepage {
   margin-top:2em;
   text-align: center;
 }
 .book-titlepage h1 {
   font-weight:800;
-  font-size:500%;
   margin-bottom:12pt;
   text-shadow:4px 4px 5px rgba(0,0,0,0.15);
 }
@@ -76,13 +79,7 @@ p a[href^='file:'] {
   margin-bottom:.5em;
   font-size:1.75em;
 }
-.book-titlepage h2 {
-  font-size:260%;
-}
 
-.book-titlepage div.author h3 {
-  font-size:150%;
-}
 .book-titlepage div.othercredit {
   text-align:left;
 }
@@ -160,7 +157,6 @@ blockquote h3 {
   text-rendering: optimizeLegibility;
   color:#369;/* navy */
   text-align:left;
-  font-size:280%;
   font-weight:600;
 }
 
@@ -242,16 +238,8 @@ div.list-of-figures > p b  {
   padding-top:0.4em;
   padding-left:0pt;
   text-align:left;
-  font-size: 180%;
   /*margin-bottom:-.5em;*/
   text-shadow:2px 2px 4px rgba(0,0,0,0.15);
-}
-.section-titlepage h4 {
-  font-size:140%;
-}
-
-.section-titlepage h5 {
-  font-size:110%;
 }
 
 .section-titlepage + p {
@@ -353,6 +341,17 @@ div.remark {
   font-size:smaller;
 }
 
+/* Admonitions */
+div.admonition {
+  text-align:left;
+  padding:1em;
+  border:2pt solid black;
+  -moz-border-radius:.5em;
+  -moz-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  -webkit-border-radius:1em;
+  -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  border-radius:.5em;
+}
 div.note {
   background-color:#FABA52;
   padding:10px;
