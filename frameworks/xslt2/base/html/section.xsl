@@ -47,6 +47,44 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template name="sf:generate-permalink">
+   <xsl:param name="node" select="."/>
+   <xsl:variable name="next"
+     select="($node/following::d:sect1|$node/following::d:section)[1]"/>
+   <xsl:variable name="prev"
+     select="($node/preceding::d:sect1|$node/preceding::d:section)[1]"/>
+  <xsl:if test="$prev">
+    <span class="section-prev">
+      <a rel="prev" href="{f:href(., $prev)}">
+        <!--<xsl:attribute name="href">
+          <xsl:call-template name="href.target">
+            <xsl:with-param name="object" select="$prev"/>
+          </xsl:call-template>
+        </xsl:attribute>-->
+        <!--<xsl:attribute name="title">
+          <xsl:apply-templates select="$prev" mode="object.title.markup.textonly"/>
+        </xsl:attribute>-->
+        <xsl:text>▲</xsl:text>
+      </a>
+    </span>
+  </xsl:if>
+  <xsl:if test="$next">
+    <span class="section-next">
+      <a rel="next" href="{f:href(., $next)}">
+        <!--<xsl:attribute name="href">
+          <xsl:call-template name="href.target">
+            <xsl:with-param name="object" select="$next"/>
+          </xsl:call-template>
+        </xsl:attribute>-->
+        <!--<xsl:attribute name="title">
+          <xsl:apply-templates select="$next" mode="object.title.markup.textonly"/>
+        </xsl:attribute>-->
+        <xsl:text>▼</xsl:text>
+      </a>
+    </span>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template match="d:section[not(parent::d:section)]/d:title|
                      d:section[not(parent::d:section)]/d:info/d:title" mode="m:titlepage-mode">
   <xsl:variable name="depth" select="min((count(ancestor::d:section), 4))"/>
@@ -62,6 +100,7 @@
       <xsl:with-param name="level"
         select="(../@userlevel|../../@userlevel)[1]"/>
     </xsl:call-template>
+    <!--<xsl:call-template name="sf:generate-permalink"/>-->
   </xsl:element>
 </xsl:template>
 
