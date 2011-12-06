@@ -33,6 +33,9 @@ body {
 
 @media all and (min-width: 0px) {
   body {
+  width:900px;
+  margin-left:auto;
+  margin-right:auto;
 	/* Opera */
 	background: #3E5066 url("bg-gradient.svg");
 	/* Recent browsers */
