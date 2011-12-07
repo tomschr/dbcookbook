@@ -232,7 +232,7 @@ blockquote p {
   margin-top:.5em;
 }
 
-form, .read {
+form, .read, .flattr {
   text-align:center;
 }
 
