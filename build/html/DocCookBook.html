@@ -55,7 +55,7 @@ body { background-image: url('images/draft.svg');
                                     <td>
                                        <p>This work is licensed as Creative Commons
                                           Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
-                                          BY-NC-SA 3.0 DE). For more information, refer to <a href="#dbc.preface.license">Section 1.7, “Licensed under Creative Commons”</a> .
+                                          BY-NC-SA 3.0 DE). For more information, refer to <a href="#dbc.preface.license">Section 1.8, “Licensed under Creative Commons”</a> .
                                        </p>
                                     </td>
                                     
@@ -86,8 +86,7 @@ body { background-image: url('images/draft.svg');
                   </p>
                </div>
                
-            </p>
-            
+            </p>      
             
             <div class="revhistory">
                <table border="0" summary="Revision History">
@@ -95,14 +94,14 @@ body { background-image: url('images/draft.svg');
                      <td colspan="2"><span class="title">Revision History</span></td>
                   </tr>
                   <tr class="revision">
-                     <td class="date"><span class="date">Dec 2011</span></td>
+                     <td class="date"><span class="date">07 Dec 2011</span></td>
                      <td class="author"><span class="author"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span><span class="authorinitials">toms</span></td>
                   </tr>
                   <tr class="revdescription">
                      <td> </td>
                      <td class="revdescription" colspan="1"><span class="revdescription">
                            
-                           <p>First public revision</p>
+                           <p>First public revision announced</p>
                            </span></td>
                   </tr>
                </table>
@@ -119,8 +118,9 @@ body { background-image: url('images/draft.svg');
                      <li><span><a href="#dbc.preface.typo">1.4. Typographical Conventions</a></span></li>
                      <li><span><a href="#dbc.preface.feedback">1.5. Feedback</a></span></li>
                      <li><span><a href="#dbc.preface.contrib">1.6. Contribute to the Book</a></span></li>
-                     <li><span><a href="#dbc.preface.license">1.7. Licensed under Creative Commons</a></span></li>
-                     <li><span><a href="#dbc.preface.ack">1.8. Acknowledgments</a></span></li>
+                     <li><span><a href="#dbc.preface.piwik">1.7. A Few Words About Piwik</a></span></li>
+                     <li><span><a href="#dbc.preface.license">1.8. Licensed under Creative Commons</a></span></li>
+                     <li><span><a href="#dbc.preface.ack">1.9. Acknowledgments</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#dbc.markup">1. Knowing DocBook’s Structure</a></span><ul class="toc">
@@ -242,13 +242,14 @@ body { background-image: url('images/draft.svg');
                   <li><span><a href="#dbc.preface.typo">1.4. Typographical Conventions</a></span></li>
                   <li><span><a href="#dbc.preface.feedback">1.5. Feedback</a></span></li>
                   <li><span><a href="#dbc.preface.contrib">1.6. Contribute to the Book</a></span></li>
-                  <li><span><a href="#dbc.preface.license">1.7. Licensed under Creative Commons</a></span></li>
-                  <li><span><a href="#dbc.preface.ack">1.8. Acknowledgments</a></span></li>
+                  <li><span><a href="#dbc.preface.piwik">1.7. A Few Words About Piwik</a></span></li>
+                  <li><span><a href="#dbc.preface.license">1.8. Licensed under Creative Commons</a></span></li>
+                  <li><span><a href="#dbc.preface.ack">1.9. Acknowledgments</a></span></li>
                </ul>
             </div>
             <blockquote>
                <h3>Mission</h3>
-               <p><em class="citetitle"><a href="https://doccookbook.sf.net">The DocCookBook Project</a></em> aims to create an open source
+               <p><em class="citetitle"><a href="https://doccookbook.sf.net">The DoCookBook Project</a></em> aims to create an open source
                   book about <span><a href="http://www.docbook.org/">DocBook</a></span> and the <span><a href="http://docbook.sf.net/release/xsl/current/doc/">DocBook XSL stylesheets</a></span> written in a cookbook-style
                   manner and released under a Creative Commons license.
                </p>
@@ -419,8 +420,7 @@ body { background-image: url('images/draft.svg');
                </div>
                <p>The source code of this book is published and maintained as a 
                   Mercurial repository. Feel free to clone it, make improvements and
-                  mail me your changes to <code class="email">&lt;<a href="mailto:tom_schr@users.sourceforge.net">tom_schr@users.sourceforge.net</a>&gt;</code> or use the
-                  link <a href="https://sourceforge.net/sendmessage.php?touser=27667">https://sourceforge.net/sendmessage.php?touser=27667</a>. 
+                  mail me your changes to <code class="email">&lt;<a href="mailto:tom_schr@web.de">tom_schr@web.de</a>&gt;</code>. 
                   
                </p>
                <p>
@@ -433,9 +433,39 @@ body { background-image: url('images/draft.svg');
                   available for Mac, Linux, and Windows. Download it from <a href="http://mercurial.selenic.com">http://mercurial.selenic.com</a>.
                </p>
             </section>
+            <section id="dbc.preface.piwik" class="section">
+               <div class="section-titlepage">
+                  <h3>1.7. A Few Words About Piwik</h3>
+               </div>
+               <p>If you are reading this text online, you may have noticed that
+                  this project uses Piwik. According to its home page, Piwik is a
+                  “<span class="quote">real time web analytics software program</span>”. The
+                  result gives me detailed reports on my Web sites visitors: where do they
+                  come from, which browser and operating system they use and so on.
+                  
+               </p>
+               <p>Why Piwik? First it is open source, but that is not the main
+                  reason. The main reason why I use Piwik is it collects data anonymously 
+                  to create statistical studies. With these result I can improve
+                  this project and make it better.
+               </p>
+               <p>For example, if my visitors browsing the Web through Firefox,
+                  Opera, and Chromium instead of Internet Explorer, I can focus more
+                  on the first three browsers. Focusing on one area gives me more
+                  time to write cool new topics. Or improve existing text. Or draw
+                  nice graphics. Furthermore with the collected data I can see which
+                  topics are the most popular and which needs additional devotion. I
+                  hope you get the idea.
+               </p>
+               <p>Just to make it clear: The collected data is completely
+                  anonymous and only used to improve this project. It will
+                  <em>never</em> be sold nor will it be used to spam
+                  you.
+               </p>
+            </section>
             <section id="dbc.preface.license" class="section">
                <div class="section-titlepage">
-                  <h3>1.7. Licensed under Creative Commons</h3>
+                  <h3>1.8. Licensed under Creative Commons</h3>
                </div>
                <p>The book is currently released under a Creative Commons
                   <span title="Creative Commons&#xA;          Attribution-NonCommercial-ShareAlike 3.0"
@@ -447,7 +477,7 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.preface.ack" class="section">
                <div class="section-titlepage">
-                  <h3>1.8. Acknowledgments</h3>
+                  <h3>1.9. Acknowledgments</h3>
                </div>
                <p>Such a large project is usually not a one man show. Many
                   people contributed to this book:
@@ -456,6 +486,10 @@ body { background-image: url('images/draft.svg');
                   <ul>
                      <li>
                         <p><span class="personname"><span class="firstname">Antje</span> <span class="surname">Faber</span></span> for proofreading some of my texts.
+                        </p>
+                     </li>
+                     <li>
+                        <p><span class="personname"><span class="firstname">Matthias</span> <span class="surname">Weckbecker</span></span> for helping me with some wording and ideas.
                         </p>
                      </li>
                   </ul>
@@ -512,7 +546,7 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.db.xincludes" class="section">
                <div class="section-titlepage">
-                  <h3>1.2. Modularize Your Document with XIncludes<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>1.2. Modularize Your Document with XIncludes<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.db.xincludes.3" class="section problem">
                   <div class="section-titlepage">
@@ -765,7 +799,7 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.section.vs.sectx" class="section">
                <div class="section-titlepage">
-                  <h3>1.3. Distinguish Between Section and SectX Elements<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>1.3. Distinguish Between Section and SectX Elements<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.section.vs.sectx.3" class="section problem">
                   <div class="section-titlepage">
@@ -886,7 +920,7 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.markup.lists" class="section">
                <div class="section-titlepage">
-                  <h3>1.4. Using Lists<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>1.4. Using Lists<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.markup.lists.3" class="section problem">
                   <div class="section-titlepage">
@@ -1194,7 +1228,7 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.db.remarks" class="section">
                <div class="section-titlepage">
-                  <h3>1.5. Inserting Remarks<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>1.5. Inserting Remarks<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.db.remarks.3" class="section problem">
                   <div class="section-titlepage">
@@ -1345,7 +1379,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.db.link" class="section">
                <div class="section-titlepage">
-                  <h3>1.6. Choosing Between Two Link Methods<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>1.6. Choosing Between Two Link Methods<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.db.link.3" class="section problem">
                   <div class="section-titlepage">
@@ -1432,7 +1466,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.db.quotes" class="section">
                <div class="section-titlepage">
-                  <h3>1.7. Inserting Inline Quotes<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>1.7. Inserting Inline Quotes<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.db.quotes.3" class="section problem">
                   <div class="section-titlepage">
@@ -1537,7 +1571,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.fonts" class="section">
                <div class="section-titlepage">
-                  <h3>2.2. Finding Professional Fonts<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>2.2. Finding Professional Fonts<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.common.fonts.3" class="section problem">
                   <div class="section-titlepage">
@@ -1676,7 +1710,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.dbcustomize" class="section">
                <div class="section-titlepage">
-                  <h3>2.3. Writing Customization Layers<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>2.3. Writing Customization Layers<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.common.dbcustomize.3" class="section problem">
                   <div class="section-titlepage">
@@ -1747,7 +1781,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.dbtimestamp" class="section">
                <div class="section-titlepage">
-                  <h3>2.4. Inserting Date and Time<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>2.4. Inserting Date and Time<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.common.dbtimestamp.2" class="section problem">
                   <div class="section-titlepage">
@@ -1846,7 +1880,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.l10n" class="section">
                <div class="section-titlepage">
-                  <h3>2.5. Extending Language Files with Your Own Text<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>2.5. Extending Language Files with Your Own Text<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.common.l10n.3" class="section problem">
                   <div class="section-titlepage">
@@ -2028,7 +2062,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.struct.pretty-print" class="section">
                <div class="section-titlepage">
-                  <h3>3.2. Pretty-Printing DocBook Documents<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>3.2. Pretty-Printing DocBook Documents<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.struct.pretty-print.3" class="section problem">
                   <div class="section-titlepage">
@@ -2140,7 +2174,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.db4-to-db5" class="section">
                <div class="section-titlepage">
-                  <h3>3.3. Converting DocBook from Version 4 to Version 5<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>3.3. Converting DocBook from Version 4 to Version 5<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.structure.db4-to-db5.3" class="section problem">
                   <div class="section-titlepage">
@@ -2267,7 +2301,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.db5-to-db4" class="section">
                <div class="section-titlepage">
-                  <h3>3.4. Converting DocBook from Version 5 to Version 4<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>3.4. Converting DocBook from Version 5 to Version 4<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.structure.db5-to-db4.3" class="section problem">
                   <div class="section-titlepage">
@@ -2644,7 +2678,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.splitdb" class="section">
                <div class="section-titlepage">
-                  <h3>3.5. Splitting DocBook Documents<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>3.5. Splitting DocBook Documents<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.structure.splitdb.3" class="section problem">
                   <div class="section-titlepage">
@@ -3521,7 +3555,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.extract" class="section">
                <div class="section-titlepage">
-                  <h3>3.6. Extracting One Element from DocBook Document<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>3.6. Extracting One Element from DocBook Document<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.structure.extract.3" class="section problem">
                   <div class="section-titlepage">
@@ -3794,7 +3828,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.sectX-to-section" class="section">
                <div class="section-titlepage">
-                  <h3>3.7. Transforming <code class="tag-element">sectX</code> Elements into <code class="tag-element">section</code> Elements<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>3.7. Transforming <code class="tag-element">sectX</code> Elements into <code class="tag-element">section</code> Elements<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.structure.sectX-to-section.3" class="section">
                   <div class="section-titlepage">
@@ -3846,7 +3880,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.section-to-sectX" class="section">
                <div class="section-titlepage">
-                  <h3>3.8. Transforming <code class="tag-element">section</code> Elements into <code class="tag-element">sectX</code> Elements<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>3.8. Transforming <code class="tag-element">section</code> Elements into <code class="tag-element">sectX</code> Elements<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.structure.section-to-sectX.3" class="section">
                   <div class="section-titlepage">
@@ -3940,7 +3974,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.bridgehead-to-section" class="section">
                <div class="section-titlepage">
-                  <h3>3.9. Transforming <code class="tag-element">bridgehead</code> Elements into <code class="tag-element">section</code> Elements<span class="section-userlevel" title="difficulty: hard">★★★</span></h3>
+                  <h3>3.9. Transforming <code class="tag-element">bridgehead</code> Elements into <code class="tag-element">section</code> Elements<span class="section-userlevel" title="difficulty: hard">⚑⚑⚑</span></h3>
                </div>
                <section id="dbc.structure.bridgehead-to-section.3" class="section problem">
                   <div class="section-titlepage">
@@ -4131,7 +4165,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.remove-blocks-in-para" class="section">
                <div class="section-titlepage">
-                  <h3>3.10. Moving Block Elements Outside of Paragraphs<span class="section-userlevel" title="difficulty: hard">★★★</span></h3>
+                  <h3>3.10. Moving Block Elements Outside of Paragraphs<span class="section-userlevel" title="difficulty: hard">⚑⚑⚑</span></h3>
                   <div class="authorgroup">
                      <div class="othercredit">
                         <h3><span class="personname"><span class="firstname">Jeni</span> <span class="surname">Tennison</span></span></h3>
@@ -4217,7 +4251,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.adding-indexterms" class="section">
                <div class="section-titlepage">
-                  <h3>3.11. Adding Index Entries (Semi-)Automatically<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>3.11. Adding Index Entries (Semi-)Automatically<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.structure.adding-indexterms.3" class="section problem">
                   <div class="section-titlepage">
@@ -4557,7 +4591,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.revision-list" class="section">
                <div class="section-titlepage">
-                  <h3>3.12. Including Revision Information from Version Control Systems<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>3.12. Including Revision Information from Version Control Systems<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.structure.revision-list.3" class="section problem">
                   <div class="section-titlepage">
@@ -4907,7 +4941,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.line-height" class="section">
                <div class="section-titlepage">
-                  <h3>4.2. Influencing the Leading<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>4.2. Influencing the Leading<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                   <div class="othercredit">
                      <h3><span class="personname"><span class="firstname">Tony</span> <span class="surname">Graham</span></span></h3>
                   </div>
@@ -5066,7 +5100,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.hyphen-urls" class="section">
                <div class="section-titlepage">
-                  <h3>4.3. Hyphenating URLs<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>4.3. Hyphenating URLs<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.fo.hyphen-urls.3" class="section problem">
                   <div class="section-titlepage">
@@ -5201,7 +5235,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.initials" class="section">
                <div class="section-titlepage">
-                  <h3>4.4. Creating Initials and Drop Caps<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>4.4. Creating Initials and Drop Caps<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.fo.initials.3" class="section problem">
                   <div class="section-titlepage">
@@ -5332,7 +5366,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.number-titles" class="section">
                <div class="section-titlepage">
-                  <h3>4.5. Numbering Part, Chapter, Appendix, and other Titles<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>4.5. Numbering Part, Chapter, Appendix, and other Titles<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.fo.number-titles.3" class="section problem">
                   <div class="section-titlepage">
@@ -5886,7 +5920,7 @@ II. The Python Library
             </section>
             <section id="dbc.html.permalinks" class="section">
                <div class="section-titlepage">
-                  <h3>5.2. Creating Permalinks<span class="section-userlevel" title="difficulty: easy">★☆☆</span></h3>
+                  <h3>5.2. Creating Permalinks<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.html.permalinks.3" class="section problem">
                   <div class="section-titlepage">
@@ -6057,7 +6091,7 @@ II. The Python Library
             </section>
             <section id="dbc.html.texinfo-navig" class="section">
                <div class="section-titlepage">
-                  <h3>5.3. Creating Simple Navigation in Chapters<span class="section-userlevel" title="difficulty: medium">★★☆</span></h3>
+                  <h3>5.3. Creating Simple Navigation in Chapters<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.html.texinfo-navig.3" class="section problem">
                   <div class="section-titlepage">
