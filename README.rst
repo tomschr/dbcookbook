@@ -35,10 +35,15 @@ As such, it is aimed more for DocBook developers than writers.
 
 Contribute
 ----------
-Do you miss anything? Have you spotted an error? Have an idea about how
-to improve the book? Great! If you want to contribute to the book, just
-clone my repository on Sourcforge and send me patches. Here is how to do
-it:
+Do you miss anything? Have you discovered an error? Have an idea about how
+to improve the book? Great! If you want to contribute to the book, you can
+do it in different ways:
+
+* Write me a mail to <tom_schr (AT) web.de> and send me your comments
+* Extend Ticket#15 (Ideas for New Topics) at http://sf.net/p/doccookbook/tickets/15
+* Clone my repository on Sourcforge and send me patches
+
+Here is a procedure about how to clone the repository:
 
 1. Download Mercurial from http://mercurial.selenic.com and install it
 on your system.
@@ -49,10 +54,10 @@ on your system.
 2. If you want to create a new topic, decide in which chapter it could
 belong (markup, common customizations, structure, fo, html, or any
 other). For example, if you want an addition to DocBook´s structure
-chapter, use the existing template and copy it:
+chapter, use the existing template and copy it (where 'FOO' is an 
+abstract term; replace it with something meaningful):
 ::
-  $ hg copy en/xml/topic.empty.xml en/xml/structure/topic.foo.xml
-(where 'foo' is an abstract term; replace it with something meaningful.)
+  $ hg copy en/xml/topic.empty.xml en/xml/structure/topic.FOO.xml
 
 3. Open the XML file which contains a chapter element. In our example, it would
 be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and
@@ -67,4 +72,7 @@ topic.
   $ hg diff > foo.patch
 
 5. Send the diff to me.
+
+
+Find more information about Mercurial at http://mercurial.selenic.com/.
 
