@@ -222,7 +222,7 @@
   <section xml:id="dbc.preface.piwik">
     <title>A Few Words About Piwik</title>
     <para>If you are reading this text online, you may have noticed that
-      this project uses Piwik. According to its home page, Piwik is a
+      this project uses <application xlink:href="http://piwik.org">Piwik</application>. According to its home page, Piwik is a
         <quote>real time web analytics software program</quote>. The
       result gives me detailed reports on my Web sites visitors: where do they
       come from, which browser and operating system they use and so on.
