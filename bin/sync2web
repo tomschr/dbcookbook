@@ -4,7 +4,7 @@
 
 USER=${1:-tom_schr}
 PROJECT=doccookbook
-TOSYNC="web/index.html web/favicon.ico web/icons web/bg-gradient.* web/ie-background.jpg"
+TOSYNC="web/index.html web/site.css web/favicon.ico web/icons web/bg-gradient.* web/ie-background.jpg"
 
 rsync -aiv ${TOSYNC} ${USER},${PROJECT}@web.sourceforge.net:/home/project-web/${PROJECT}/htdocs/
 
