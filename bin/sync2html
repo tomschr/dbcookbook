@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# $1=User
+
+USER=${1:-tom_schr}
+PROJECT=doccookbook
+TOSYNC="build/html/*.html build/html/{css,js,images}"
+
+rsync -aiv --copy-links ${TOSYNC} ${USER},${PROJECT}@web.sourceforge.net:/home/project-web/${PROJECT}/htdocs/html/en/
+
