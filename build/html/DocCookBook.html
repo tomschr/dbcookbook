@@ -158,10 +158,11 @@ body { background-image: url('images/draft.svg');
                </li>
                <li><span><a href="#dbc.fo">4. Print Customizations</a></span><ul class="toc">
                      <li><span><a href="#dbc.fo.intro">4.1. Introduction</a></span></li>
-                     <li><span><a href="#dbc.fo.line-height">4.2. Influencing the Leading</a></span></li>
-                     <li><span><a href="#dbc.fo.hyphen-urls">4.3. Hyphenating URLs</a></span></li>
-                     <li><span><a href="#dbc.fo.initials">4.4. Creating Initials and Drop Caps</a></span></li>
-                     <li><span><a href="#dbc.fo.number-titles">4.5. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
+                     <li><span><a href="#dbc.fo.cover">4.2. Designing a Title Page</a></span></li>
+                     <li><span><a href="#dbc.fo.line-height">4.3. Influencing the Leading</a></span></li>
+                     <li><span><a href="#dbc.fo.hyphen-urls">4.4. Hyphenating URLs</a></span></li>
+                     <li><span><a href="#dbc.fo.initials">4.5. Creating Initials and Drop Caps</a></span></li>
+                     <li><span><a href="#dbc.fo.number-titles">4.6. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#dbc.html">5. (X)HTML Customizations</a></span><ul class="toc">
@@ -438,7 +439,7 @@ body { background-image: url('images/draft.svg');
                   <h3>1.7. A Few Words About Piwik</h3>
                </div>
                <p>If you are reading this text online, you may have noticed that
-                  this project uses Piwik. According to its home page, Piwik is a
+                  this project uses <span class="application"><a href="http://piwik.org">Piwik</a></span>. According to its home page, Piwik is a
                   “<span class="quote">real time web analytics software program</span>”. The
                   result gives me detailed reports on my Web sites visitors: where do they
                   come from, which browser and operating system they use and so on.
@@ -4925,10 +4926,11 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                <p><b>Table of Contents</b></p>
                <ul class="toc">
                   <li><span><a href="#dbc.fo.intro">4.1. Introduction</a></span></li>
-                  <li><span><a href="#dbc.fo.line-height">4.2. Influencing the Leading</a></span></li>
-                  <li><span><a href="#dbc.fo.hyphen-urls">4.3. Hyphenating URLs</a></span></li>
-                  <li><span><a href="#dbc.fo.initials">4.4. Creating Initials and Drop Caps</a></span></li>
-                  <li><span><a href="#dbc.fo.number-titles">4.5. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
+                  <li><span><a href="#dbc.fo.cover">4.2. Designing a Title Page</a></span></li>
+                  <li><span><a href="#dbc.fo.line-height">4.3. Influencing the Leading</a></span></li>
+                  <li><span><a href="#dbc.fo.hyphen-urls">4.4. Hyphenating URLs</a></span></li>
+                  <li><span><a href="#dbc.fo.initials">4.5. Creating Initials and Drop Caps</a></span></li>
+                  <li><span><a href="#dbc.fo.number-titles">4.6. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
                </ul>
             </div>
             <section id="dbc.fo.intro" class="section">
@@ -4939,9 +4941,324 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="remark">TBD</div>
                </p>
             </section>
+            <section id="dbc.fo.cover" class="section">
+               <div class="section-titlepage">
+                  <h3>4.2. Designing a Title Page<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+               </div>
+               <section id="dbc.fo.cover.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You want to design a title page of your book or
+                     article.
+                  </p>
+               </section>
+               <section id="dbc.fo.cover.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>To design your title page there are two ways to do it,
+                     regardless if it is a book or an article:
+                  </p>
+                  <div class="orderedlist">
+                     <ol style="list-style: decimal;">
+                        <li>
+                           <div class="formalpara">
+                              <p><b>Indirectly</b>  Write a title page template which contains the wanted
+                                 elements in their respective order.
+                              </p>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="formalpara">
+                              <p><b>Directly</b>  Customize the specific named templates.
+                              </p>
+                           </div>
+                        </li>
+                     </ol>
+                  </div>
+                  <p>Both methods are shown below. Although the following
+                     descriptions focus on a book title page, the same procedure can be
+                     applied for an article title page as well.
+                  </p>
+                  <p>For this example, we use the following requisites:</p>
+                  <div id="li.fo.cover.rectopage.defs" class="itemizedlist">
+                     <div class="title">Recto (Right) Page</div>
+                     <p>This is the “<span class="quote">main page</span>” and the content appears
+                        in the following order:
+                     </p>
+                     <ul>
+                        <li>
+                           <p>the book title, from <code class="code">/book/title</code> or
+                              <code class="code">/book/info/title</code></p>
+                        </li>
+                        <li>
+                           <p>the book subtitle, from <code class="code">/book/subtitle</code> or
+                              <code class="code">/book/info/subtitle</code></p>
+                        </li>
+                        <li>
+                           <p>the book's author, from
+                              <code class="code">/book/info/author</code></p>
+                        </li>
+                        <li>
+                           <p>the edition, from <code class="code">/book/info/edition</code></p>
+                        </li>
+                     </ul>
+                  </div>
+                  <div id="li.fo.cover.versopage.defs" class="itemizedlist">
+                     <div class="title">Verso (Left) Page</div>
+                     <p>This usually holds the imprint and the content appears
+                        in the following order:
+                     </p>
+                     <ul>
+                        <li>
+                           <p>the book's title and subtitle in a smaller font
+                              size
+                           </p>
+                        </li>
+                        <li>
+                           <p>the author, from <code class="code">/book/info/author</code></p>
+                        </li>
+                        <li>
+                           <p>the edition, from <code class="code">/book/info/edition</code></p>
+                        </li>
+                        <li>
+                           <p>some legal text (copyright), from
+                              <code class="code">/book/info/legalnotice</code></p>
+                        </li>
+                        <li>
+                           <p>the <span title="International Standard Book Number" class="acronym">ISBN</span>, from
+                              <code class="code">/book/info/biblioid</code> with <code class="tag-attribute">class</code> and the value <code class="tag-attvalue">isbn</code></p>
+                        </li>
+                     </ul>
+                  </div>
+                  <section id="dbc.fo.cover.titlepage.indirectly" class="section">
+                     <div class="section-titlepage">
+                        <h5>Using Title Page Templates</h5>
+                     </div>
+                     <p>To create a title page using a title page template proceed
+                        as follows:
+                     </p>
+                     <figure id="dbc.fo.cover.titlepage.indirectly.3" class="procedure-wrapper">
+                        <div class="procedure">
+                           <ol type="1">
+                              <li class="step">
+                                 <div>
+                                    <p>Prepare the title page template:</p>
+                                    <div class="substeps">
+                                       <ol type="a">
+                                          <li class="step">
+                                             <div>
+                                                <p>Copy the file
+                                                   <code class="filename">fo/titlepage.templates.xml</code> from the
+                                                   DocBook XSL stylesheet distribution to a directory where
+                                                   all your FO customization is stored. Use the filename
+                                                   <code class="filename">booktitlepage.xml</code>.
+                                                </p>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Open the file and remove anything except the
+                                                   root and <code class="tag-element">t:titlepage</code> elements with the
+                                                   attribute <code class="tag-attribute">t:element="book"</code>.
+                                                   Your titlepage template should look like this:
+                                                </p>
+                                                <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE t:templates [
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize0 "10pt"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize1 "12pt"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize2 "14.4pt"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize3 "17.28pt"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize4 "20.736pt"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize5 "24.8832pt"&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize0space "7.5pt"&gt; &lt;!-- 0.75 * hsize0 --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize1space "9pt"&gt; &lt;!-- 0.75 * hsize1 --&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize2space "10.8pt"&gt; &lt;!-- 0.75 * hsize2 --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize3space "12.96pt"&gt; &lt;!-- 0.75 * hsize3 --&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize4space "15.552pt"&gt; &lt;!-- 0.75 * hsize4 --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize5space "18.6624pt"&gt; &lt;!-- 0.75 * hsize5 --&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>]&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;t:templates xmlns:t="http://nwalsh.com/docbook/xsl/template/1.0"
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>             xmlns:param="http://nwalsh.com/docbook/xsl/template/1.0/param"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             xmlns:fo="http://www.w3.org/1999/XSL/Format"
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>             xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>   &lt;t:titlepage t:element="book" t:wrapper="fo:block"&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>     &lt;!-- Content disabled for better legibility --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>   &lt;/t:titlepage&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>&lt;/t:templates&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                       </ol>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Customize the content of your titlepage and save your
+                                       changes into the <code class="filename">booktitlepage.xml</code>
+                                       file.
+                                    </p>
+                                    <div class="substeps">
+                                       <ol type="a">
+                                          <li class="step">
+                                             <div>
+                                                <p>Change the recto page and locate the
+                                                   <code class="tag-element">t:titlepage-content</code> element with its
+                                                   attribute <code class="tag-element">t:side="recto"</code>. As definied in
+                                                   <a href="#li.fo.cover.rectopage.defs">Recto (Right) Page</a>, we
+                                                   remove everything what is not needed. Additionally we
+                                                   have to output edition, which we get from an empty <code class="tag-emptytag">&lt;edition/&gt;</code> tag. The content of the
+                                                   <code class="tag-element">t:titlepage-content</code> should look like
+                                                   this:
+                                                </p>
+                                                <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;t:titlepage-content t:side="recto"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;title     t:named-template="division.title"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             param:node="ancestor-or-self::book[1]"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>             text-align="center"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             font-size="&amp;hsize5;"
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>             space-before="&amp;hsize5space;"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             font-weight="bold"
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>             font-family="{$title.fontset}"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;subtitle  text-align="center"
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>             font-size="&amp;hsize4;"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             space-before="&amp;hsize4space;"
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>             font-family="{$title.fontset}"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;author    font-size="&amp;hsize3;"
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>             space-before="&amp;hsize2space;"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             keep-with-next.within-column="always"/&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>  &lt;edition  font-size="&amp;hsize3;"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/t:titlepage-content&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Change the verso page and locate the
+                                                   <code class="tag-element">t:titlepage-content</code> element with its
+                                                   attribute <code class="tag-element">t:side="verso"</code>. As definied in
+                                                   <a href="#li.fo.cover.versopage.defs">Verso (Left) Page</a>, again,
+                                                   we remove everything what is not needed. The content of
+                                                   the <code class="tag-element">t:titlepage-content</code> should look like
+                                                   this: 
+                                                </p>
+                                                <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;t:titlepage-content t:side="verso"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;title     t:named-template="book.verso.title"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             font-size="&amp;hsize2;"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>             font-weight="bold"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             font-family="{$title.fontset}"/&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;subtitle  t:named-template="book.verso.title"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             font-size="&amp;hsize2;"
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>             font-weight="bold"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>             font-family="{$title.fontset}"/&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;author/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;edition/&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  &lt;legalnotice/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;biblioid  t:predicate="[@class = 'isbn']"/&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>&lt;/t:titlepage-content&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Leave the other elements
+                                                   (<code class="tag-element">t:titlepage-separator</code> and
+                                                   <code class="tag-element">t:titlepage-before</code>) as they are.
+                                                </p>
+                                             </div>
+                                          </li>
+                                       </ol>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Use the <code class="filename">template/titlepage.xsl</code>
+                                       stylesheet from the DocBook XSL distribution to transform
+                                       your <code class="filename">booktitlepage.xml</code> title page
+                                       definition to create the
+                                       <code class="filename">booktitlepage.xsl</code> output:
+                                    </p>
+                                    <div class="screen"><pre><strong class="command">xsltproc</strong> --output booktitlepage.xsl $DB/template/titlepage.xsl booktitlepage.xml</pre></div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Insert the constructed
+                                       <code class="filename">booktitlepage.xsl</code> into your
+                                       customization layer <code class="filename">mybooktitlepage.xsl</code>:
+                                    </p>
+                                    <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;xsl:stylesheet version="1.0"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  xmlns:fo="http://www.w3.org/1999/XSL/Format"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/fo/docbook.xsl"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:include href="booktitlepage.xsl"/&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;!-- More customizations hidden --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:stylesheet&gt;</pre></div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Build your book as usual with your customization layer.</p>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </figure>
+                  </section>
+                  <section id="dbc.fo.cover.titlepage.directly" class="section">
+                     <div class="section-titlepage">
+                        <h5>Customizing Title Pages Directly</h5>
+                     </div>
+                     <p>The DocBook XSL stylesheets use named templates to generate
+                        a title page. For a book title page, the named templates are
+                        called in the following order, starting with
+                        <code class="function">book.titlepage</code>:
+                     </p>
+                     <div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>book.titlepage
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  book.titlepage.before.recto
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  book.titlepage.recto
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  book.titlepage.before.verso
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  book.titlepage.verso
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  book.titlepage.separator</pre></div>
+                     <p>This partitioning makes it easy to pick and choose</p>
+                  </section>
+               </section>
+               <section id="dbc.fo.cover.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>There are several reason to customize the titlepage of your
+                     work:
+                  </p>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p>You want a different order of the default elements</p>
+                        </li>
+                        <li>
+                           <p>You want to show or hide different elements</p>
+                        </li>
+                        <li>
+                           <p>You want to insert corporate logos, links, or</p>
+                        </li>
+                        <li>
+                           <p>You want to distinguish between a document in draft or in
+                              final state.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+               <section id="dbc.fo.cover.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <p></p>
+               </section>
+            </section>
             <section id="dbc.fo.line-height" class="section">
                <div class="section-titlepage">
-                  <h3>4.2. Influencing the Leading<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3>4.3. Influencing the Leading<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                   <div class="othercredit">
                      <h3><span class="personname"><span class="firstname">Tony</span> <span class="surname">Graham</span></span></h3>
                   </div>
@@ -5100,7 +5417,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.hyphen-urls" class="section">
                <div class="section-titlepage">
-                  <h3>4.3. Hyphenating URLs<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3>4.4. Hyphenating URLs<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
                </div>
                <section id="dbc.fo.hyphen-urls.3" class="section problem">
                   <div class="section-titlepage">
@@ -5235,7 +5552,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.initials" class="section">
                <div class="section-titlepage">
-                  <h3>4.4. Creating Initials and Drop Caps<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3>4.5. Creating Initials and Drop Caps<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.fo.initials.3" class="section problem">
                   <div class="section-titlepage">
@@ -5360,13 +5677,13 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>See Also</h4>
                   </div>
-                  <p>Find information about the property <code class="tag-attribute">line-height</code> in <a href="#dbc.fo.line-height">Section 4.2, “Influencing the Leading”</a>.
+                  <p>Find information about the property <code class="tag-attribute">line-height</code> in <a href="#dbc.fo.line-height">Section 4.3, “Influencing the Leading”</a>.
                   </p>
                </section>
             </section>
             <section id="dbc.fo.number-titles" class="section">
                <div class="section-titlepage">
-                  <h3>4.5. Numbering Part, Chapter, Appendix, and other Titles<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3>4.6. Numbering Part, Chapter, Appendix, and other Titles<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.fo.number-titles.3" class="section problem">
                   <div class="section-titlepage">
