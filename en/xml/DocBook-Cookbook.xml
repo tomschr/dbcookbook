@@ -18,7 +18,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>The Do<phrase role="c">c</phrase>CookBook</title>
+  <title>The DoCookBook</title>
   <subtitle>Recipies for DocBook Developers</subtitle>
   <info>
     <definitions definitionfile="defs.xml"/>
@@ -57,7 +57,7 @@
       <keyword>Customization</keyword>
       <keyword>XSLT</keyword>
     </keywordset>
-    <pubdate>Last published version: November/December 2011<?dbtimestamp?></pubdate>
+    <pubdate>Last published version: December 2011<?dbtimestamp?></pubdate>
     <releaseinfo role="draft">Draft (Version 0.1)</releaseinfo>
     <!--<annotation xml:id="draft">
       <title>Draft</title>
@@ -81,13 +81,12 @@
             </footnote> Read <xref linkend="dbc.preface.contrib"/> to
             find more how to support me.</para>
         </note>
-      </para>
-      
+      </para>      
     </cover>
     <revhistory>
       <title>Revision History</title>
       <revision>
-        <date>2011</date>
+        <date>2011-12-07</date>
         <author>
           <personname>
             <firstname>Thomas</firstname>
@@ -96,7 +95,7 @@
         </author>
         <authorinitials>toms</authorinitials>
         <revdescription>
-          <para>First public revision</para>
+          <para>First public revision announced</para>
         </revdescription>
       </revision>
     </revhistory>
