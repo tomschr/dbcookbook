@@ -74,6 +74,7 @@
     - Influencing the TOC Bookmark Levels in PDF
   -->
   
+  <xi:include href="fo/topic.cover.xml"/>
   <xi:include href="fo/topic.line-height.xml"/>
   <xi:include href="fo/topic.hyphenating-urls.xml"/>
   <xi:include href="fo/topic.initials.xml"/>
