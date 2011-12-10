@@ -22,6 +22,10 @@
   <title>The Topic Title</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword></keyword>
+      <keyword></keyword>
+    </keywordset>
   </info>
   
   <section role="problem">
@@ -30,14 +34,14 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para>The solution explained.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para>Some discussion about the problem and solution.</para>
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <para>Include URL or bibliographic references.</para>
   </section>
 </section>
