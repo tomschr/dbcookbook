@@ -76,3 +76,12 @@ topic.
 
 Find more information about Mercurial at http://mercurial.selenic.com/.
 
+
+How you can help
+----------------
+
+* Find typos, grammar problems, inconsistencies, or plain errors
+* Send me patches
+* Write your owm topic
+
+
