@@ -208,7 +208,30 @@
                                 <field name="authorExtensionDescriptor">
                                     <authorExtension>
                                         <field name="cssDescriptors">
-                                            <cssFile-array/>
+                                            <cssFile-array>
+                                                <cssFile>
+                                                    <field name="href">
+                                                        <String>${frameworks}/docbook/css/docbook.css</String>
+                                                    </field>
+                                                    <field name="title">
+                                                        <String>DocBook CSS</String>
+                                                    </field>
+                                                    <field name="alternate">
+                                                        <Boolean>false</Boolean>
+                                                    </field>
+                                                </cssFile>
+                                                <cssFile>
+                                                    <field name="href">
+                                                        <String>${frameworks}/docbook/css/hideColspec.css</String>
+                                                    </field>
+                                                    <field name="title">
+                                                        <String>Table</String>
+                                                    </field>
+                                                    <field name="alternate">
+                                                        <Boolean>false</Boolean>
+                                                    </field>
+                                                </cssFile>
+                                            </cssFile-array>
                                         </field>
                                         <field name="mergeCSSsFromDocument">
                                             <Boolean>false</Boolean>
@@ -271,7 +294,14 @@
                                             <null/>
                                         </field>
                                         <field name="contextualItems">
-                                            <null/>
+                                            <contextProvider>
+                                                <field name="items">
+                                                    <contextItem-array/>
+                                                </field>
+                                                <field name="removeItems">
+                                                    <null/>
+                                                </field>
+                                            </contextProvider>
                                         </field>
                                         <field name="tableSupportClassName">
                                             <null/>
@@ -326,7 +356,7 @@
                                     <scenario-array/>
                                 </field>
                                 <field name="validationScenarios">
-                                    <null/>
+                                    <validationScenario-array/>
                                 </field>
                                 <field name="defaultValidationScenarioName">
                                     <null/>
@@ -498,7 +528,7 @@
                                     <String>internal/Novdoc</String>
                                 </field>
                                 <field name="enable">
-                                    <Boolean>false</Boolean>
+                                    <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
                             <documentTypeEntry>

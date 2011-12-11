@@ -7,8 +7,10 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook"
   xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:exsl="http://exslt.org/common"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="d xlink">
+  exclude-result-prefixes="d xlink exsl"
+  extension-element-prefixes="exsl">
   
   <!-- 
     http://docbook.sourceforge.net/release/xsl/current/doc/html/
@@ -25,5 +27,14 @@
   <xsl:param name="chunk.fast" select="1"/>
   <xsl:param name="highlight.source" select="0"/>
 
-
+  <!--<xsl:template match="/">
+    <xsl:message>XSLT Processor:
+     version: <xsl:value-of select="system-property('xsl:version')"/>
+     vendor: <xsl:value-of select="system-property('xsl:vendor')"/>
+     vendor-url: <xsl:value-of select="system-property('xsl:vendor-url')"/> 
+     exsl:document: <xsl:value-of select="boolean(element-available('exsl:document'))"/>
+     xsl:document: <xsl:value-of select="boolean(element-available('xsl:document'))"/> 
+    </xsl:message>
+    <xsl:apply-imports/>
+  </xsl:template>-->
 </xsl:stylesheet>
