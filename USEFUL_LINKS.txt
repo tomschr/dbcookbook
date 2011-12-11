@@ -1,3 +1,14 @@
+Sourceforge Links
+-----------------
+
+* OAuth 
+  https://sourceforge.net/auth/oauth/
+* API Documentation (REST API)
+  http://sourceforge.net/p/forge/documentation/API%20-%20Beta/
+
+
+Other Links
+-----------
 * CSS Design: Taming Lists
 http://www.alistapart.com/articles/taminglists/
 
