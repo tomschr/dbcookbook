@@ -1,6 +1,8 @@
-Sourceforge Links
+SourceForge Links
 -----------------
 
+* SourceForge.net Documentation
+  http://sourceforge.net/p/forge/documentation
 * OAuth 
   https://sourceforge.net/auth/oauth/
 * API Documentation (REST API)
