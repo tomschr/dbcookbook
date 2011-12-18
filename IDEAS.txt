@@ -20,4 +20,6 @@
 * Debugging FOP process 
   Source: http://inasmuch.as/2011/07/11/debugging-fop-process/
   FOP_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,address=9000,server=y,suspend=y" fop test.fo test.pdf
-  
+
+* Pygments as syntax highlighter for DocBook documents
+  http://lunaryorn.de/downloads/docbook_build.py.html  
