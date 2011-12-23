@@ -22,6 +22,11 @@
   <title>Choosing Between Two Link Methods</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>external links</keyword>
+      <keyword>xlink:href</keyword>
+      <keyword>ulink</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">
