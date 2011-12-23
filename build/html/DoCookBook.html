@@ -27,7 +27,7 @@ body { background-image: url('images/draft.svg');
    </head>
    <body class="draft">
       <article id="dbcookbook" lang="en" class="book">
-         <div class="book-titlepage">
+         <header class="book-titlepage">
             <h1>The DoCookBook</h1>
             <h2>Recipies for DocBook Developers</h2>
             <div class="author">
@@ -91,22 +91,23 @@ body { background-image: url('images/draft.svg');
             <div class="revhistory">
                <table border="0" summary="Revision History">
                   <tr>
-                     <td colspan="2"><span class="title">Revision History</span></td>
+                     <td colspan="3"><span class="title">Revision History</span></td>
                   </tr>
                   <tr class="revision">
+                     <td class="revnumber"><span class="revnumber">0.1</span></td>
                      <td class="date"><span class="date">07 Dec 2011</span></td>
                      <td class="author"><span class="author"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span><span class="authorinitials">toms</span></td>
                   </tr>
                   <tr class="revdescription">
                      <td> </td>
-                     <td class="revdescription" colspan="1"><span class="revdescription">
+                     <td class="revdescription" colspan="2"><span class="revdescription">
                            
                            <p>First public revision announced</p>
                            </span></td>
                   </tr>
                </table>
             </div>
-         </div>
+         </header>
          <hr />
          <div class="toc">
             <p><b>Table of Contents</b></p>
@@ -129,8 +130,10 @@ body { background-image: url('images/draft.svg');
                      <li><span><a href="#dbc.section.vs.sectx">1.3. Distinguish Between Section and SectX Elements</a></span></li>
                      <li><span><a href="#dbc.markup.lists">1.4. Using Lists</a></span></li>
                      <li><span><a href="#dbc.db.remarks">1.5. Inserting Remarks</a></span></li>
-                     <li><span><a href="#dbc.db.link">1.6. Choosing Between Two Link Methods</a></span></li>
-                     <li><span><a href="#dbc.db.quotes">1.7. Inserting Inline Quotes</a></span></li>
+                     <li><span><a href="#dbc.xref-vs-link">1.6. Knowing the Difference of Crossreferences and Links</a></span></li>
+                     <li><span><a href="#dbc.db.xref">1.7. Inserting Cross References</a></span></li>
+                     <li><span><a href="#dbc.db.link">1.8. Choosing Between Link Methods</a></span></li>
+                     <li><span><a href="#dbc.db.quotes">1.9. Inserting Inline Quotes</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#dbc.common">2. Common Customizations</a></span><ul class="toc">
@@ -181,6 +184,9 @@ body { background-image: url('images/draft.svg');
             <ul class="toc">
                <li>1.1. <a href="#tab.section.vs.sectx.comparison">Comparison Between <code class="tag-element">section</code> and <code class="tag-element">sectX</code> Elements</a></li>
                <li>1.2. <a href="#tab.db.xmlcomments-vs-remarks">Comparison XML Comments versus Remarks</a></li>
+               <li>1.3. <a href="#tab.xref-vs-link">Differences Between <code class="tag-element">xref</code> and <code class="tag-element">link</code></a></li>
+               <li>1.4. <a href="#tab.db.link.internal-vs.external">Internal and External Links Examples</a></li>
+               <li>1.5. <a href="#tab.db.link">Different Possibilities for Links</a></li>
                <li>4.1. <a href="#tab.fo.number-titles.autolabel">Autolabel Parameters and their Default Values</a></li>
                <li>4.2. <a href="#tab.fo.">Possible Formats for Autolabel Parameters</a></li>
                <li>4.3. <a href="#dbc.fo.number-titles.5.12">Parameter Combinations</a></li>
@@ -196,6 +202,8 @@ body { background-image: url('images/draft.svg');
                <li>1.5. <a href="#dbc.markup.lists.5.5.3">Numbered List with Three Entries</a></li>
                <li>1.6. <a href="#dbc.markup.lists.5.6.3">Definition List with Two Entries</a></li>
                <li>1.7. <a href="#ex.db.inlineremark">A Remark Inside a Paragraph</a></li>
+               <li>1.8. <a href="#ex.xref-vs-link.xref">A Cross Reference</a></li>
+               <li>1.9. <a href="#ex.xref-vs-link.link">A Hyperlink</a></li>
                <li>2.1. <a href="#ex.common.dbcustomize.general-cust-layer">General Customization Layer</a></li>
                <li>3.1. <a href="#ex.copy.xsl"><code class="filename">copy.xsl</code></a></li>
                <li>3.2. <a href="#ex.pretty.xsl"><code class="filename">pretty.xsl</code></a></li>
@@ -490,6 +498,10 @@ body { background-image: url('images/draft.svg');
                         </p>
                      </li>
                      <li>
+                        <p><span class="personname"><span class="firstname">Lars</span> <span class="surname">Vogel</span></span> for his suggestions and improvements.
+                        </p>
+                     </li>
+                     <li>
                         <p><span class="personname"><span class="firstname">Matthias</span> <span class="surname">Weckbecker</span></span> for helping me with some wording and ideas.
                         </p>
                      </li>
@@ -524,6 +536,7 @@ body { background-image: url('images/draft.svg');
                      improve consistency throughout your documentation. 
                   </p>
                </div>
+               <div class="ticket">See also Ticket#19: <a href="https://sourceforge.net/p/doccookbook/tickets/19/" title="Ticket#19">https://sourceforge.net/p/doccookbook/tickets/19/</a></div>
             </header>
             <div class="toc">
                <p><b>Table of Contents</b></p>
@@ -533,8 +546,10 @@ body { background-image: url('images/draft.svg');
                   <li><span><a href="#dbc.section.vs.sectx">1.3. Distinguish Between Section and SectX Elements</a></span></li>
                   <li><span><a href="#dbc.markup.lists">1.4. Using Lists</a></span></li>
                   <li><span><a href="#dbc.db.remarks">1.5. Inserting Remarks</a></span></li>
-                  <li><span><a href="#dbc.db.link">1.6. Choosing Between Two Link Methods</a></span></li>
-                  <li><span><a href="#dbc.db.quotes">1.7. Inserting Inline Quotes</a></span></li>
+                  <li><span><a href="#dbc.xref-vs-link">1.6. Knowing the Difference of Crossreferences and Links</a></span></li>
+                  <li><span><a href="#dbc.db.xref">1.7. Inserting Cross References</a></span></li>
+                  <li><span><a href="#dbc.db.link">1.8. Choosing Between Link Methods</a></span></li>
+                  <li><span><a href="#dbc.db.quotes">1.9. Inserting Inline Quotes</a></span></li>
                </ul>
             </div>
             <section id="dbc.markup.intro" class="section">
@@ -1378,9 +1393,239 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   </figure>
                </section>
             </section>
+            <section id="dbc.xref-vs-link" class="section">
+               <div class="section-titlepage">
+                  <h3>1.6. Knowing the Difference of Crossreferences and Links<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+               </div>
+               <section id="dbc.xref-vs-link.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You want to set a “<span class="quote">link</span>” but you do not know
+                     which DocBook element to use.
+                  </p>
+               </section>
+               <section id="dbc.xref-vs-link.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>DocBook distinguishes between two link types:</p>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <div class="formalpara">
+                              <p><b>Internal Links or Cross References</b>  use primarily <code class="tag-element">xref</code></p>
+                           </div>
+                        </li>
+                        <li>
+                           <div class="formalpara">
+                              <p><b>External Links</b>  use primarily <code class="tag-element">link</code></p>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+               <section id="dbc.xref-vs-link.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>There are several difference between <code class="tag-element">xref</code> and
+                     <code class="tag-element">link</code>. An <code class="tag-element">xref</code> is used for cross
+                     referencing another part of the document. In its simplest form,
+                     you need only an ID value of the object where you want to link
+                     to:
+                  </p>
+                  <figure id="ex.xref-vs-link.xref" class="example-wrapper">
+                     <div class="title">Example 1.8. A Cross Reference</div>
+                     <div class="example">
+                        <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter xml:id="tea"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;title&gt;Tea&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;section xml:id="about-tea"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    &lt;title&gt;About Tea&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;para&gt;This section gives you an introduction about tea.&lt;/para&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;/section&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;section xml:id="prepar"&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;title&gt;Preparing Tea&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;para&gt;Read an introduction in &lt;xref linkend="about-tea"/&gt;.&lt;/para&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;/section&gt;      
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/chapter&gt;</pre></div>
+                     </div>
+                  </figure>
+                  <p>The DocBook XSL stylesheets take care of resolving the
+                     <code class="tag-element">xref</code>. By default, it replaces the <code class="tag-element">xref</code>
+                     element with a number and the title of the reference. It could
+                     look like this:
+                  </p>
+                  <div class="screen"><pre>Read an introduction in Section 1.1, “About Tea”.</pre></div>
+                  <p>The text <code class="code">Section 1.1, “About Tea”</code> is a “<span class="quote">hot
+                        link</span>” and points to the respective section. Using
+                     <code class="tag-element">xref</code> for cross references has several advantages:
+                  </p>
+                  <div class="itemizedlist">
+                     <div class="title">Advantages of Cross References Using <code class="tag-element">xref</code></div>
+                     <ul>
+                        <li>
+                           <p>Whenever a text of a title changes, all <code class="tag-element">xref</code>s
+                              pointing to it will automatically change too.
+                           </p>
+                        </li>
+                        <li>
+                           <p>During validation, the <code class="tag-attribute">linkend</code> attribute is checked, if this ID
+                              exists.
+                           </p>
+                        </li>
+                        <li>
+                           <p>During resolution, additonal words like
+                              “<span class="quote">Section</span>”, “<span class="quote">Chapter</span>”, or
+                              “<span class="quote">Figure</span>” are automatically inserted according to
+                              the used document language.
+                           </p>
+                        </li>
+                        <li>
+                           <p>You do not have to care about numbering.</p>
+                        </li>
+                        <li>
+                           <p>For further customization use the <code class="tag-attribute">xrefstyle</code> attribute.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>In contrast, an <code class="tag-element">link</code> is used in most cases for
+                     <em>external</em> links.
+                  </p>
+                  <figure id="ex.xref-vs-link.link" class="example-wrapper">
+                     <div class="title">Example 1.9. A Hyperlink</div>
+                     <div class="example">
+                        <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;section xml:id="about-tea"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;title&gt;About Tea&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;para&gt;See &lt;link xlink:href="http://www.example.org/tea"/&gt; for further information.&lt;/para&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;/section&gt;</pre></div>
+                     </div>
+                  </figure>
+                  <p>Using an <code class="tag-element">link</code> has the following advantages:
+                  </p>
+                  <div class="itemizedlist">
+                     <div class="title">Advantages of External Links Using <code class="tag-element">link</code></div>
+                     <ul>
+                        <li>
+                           <p>Usually no automatic resolution performed (only if you use
+                              <code class="tag-attribute">xlink:href</code>).
+                           </p>
+                        </li>
+                        <li>
+                           <p>No validation necessary.</p>
+                        </li>
+                        <li>
+                           <p>Additional inline elements allowed.</p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>The differences between <code class="tag-element">xref</code> and <code class="tag-element">link</code>
+                     are collected in <a href="#tab.xref-vs-link">Table 1.3, “Differences Between <code class="tag-element">xref</code> and <code class="tag-element">link</code>”</a>.      
+                     
+                  </p>
+                  <figure id="tab.xref-vs-link" class="table-wrapper">
+                     <div class="title">Table 1.3. Differences Between <code class="tag-element">xref</code> and <code class="tag-element">link</code></div>
+                     <div class="table">
+                        <table border="0" summary="Table 1.3. Differences Between xref and link"
+                               style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; ">
+                           <colgroup>
+                              <col class="tcol1" width="33%" />
+                              <col class="tcol2" width="33%" />
+                              <col class="tcol3" width="33%" />
+                           </colgroup>
+                           <thead>
+                              <tr>
+                                 <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Topic</th>
+                                 <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="tag-element">xref</code></th>
+                                 <th style="border-bottom: 0.5pt solid ; "><code class="tag-element">link</code></th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">TDG Definition</td>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">A cross reference to another part of the document</td>
+                                 <td style="border-bottom: 0.5pt solid ; ">A hypertext link</td>
+                              </tr>
+                              <tr>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Content Model</td>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">empty</td>
+                                 <td style="border-bottom: 0.5pt solid ; ">text and inline elements</td>
+                              </tr>
+                              <tr>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Automatic text</td>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Yes</td>
+                                 <td style="border-bottom: 0.5pt solid ; ">No</td>
+                              </tr>
+                              <tr>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">ID/IDREF Checking</td>
+                                 <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Yes</td>
+                                 <td style="border-bottom: 0.5pt solid ; ">Only when used with <code class="tag-attribute">linkend</code></td>
+                              </tr>
+                              <tr>
+                                 <td style="border-right: 0.5pt solid ; ">Restrictions</td>
+                                 <td style="border-right: 0.5pt solid ; ">Only cross referencing to elements which contains a <code class="tag-element">title</code></td>
+                                 <td>No restrictions</td>
+                              </tr>
+                           </tbody>
+                        </table>
+                     </div>
+                  </figure>
+               </section>
+               <section id="dbc.xref-vs-link.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p><a href="#dbc.db.xref">Section 1.7, “Inserting Cross References”</a></p>
+                        </li>
+                        <li>
+                           <p><a href="#dbc.db.link">Section 1.8, “Choosing Between Link Methods”</a></p>
+                        </li>
+                        <li>
+                           <p><a href="http://www.docbook.org/tdg51/en/html/link.html">http://www.docbook.org/tdg51/en/html/link.html</a></p>
+                        </li>
+                        <li>
+                           <p><a href="http://www.docbook.org/tdg51/en/html/xref.html">http://www.docbook.org/tdg51/en/html/xref.html</a></p>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+            </section>
+            <section id="dbc.db.xref" class="section">
+               <div class="section-titlepage">
+                  <h3>1.7. Inserting Cross References<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+               </div>
+               <section id="dbc.db.xref.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>The problem explained.</p>
+               </section>
+               <section id="dbc.db.xref.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>The solution explained.</p>
+               </section>
+               <section id="dbc.db.xref.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>Some discussion about the problem and solution.</p>
+               </section>
+               <section id="dbc.db.xref.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <p>Include URL or bibliographic references.</p>
+               </section>
+            </section>
             <section id="dbc.db.link" class="section">
                <div class="section-titlepage">
-                  <h3>1.6. Choosing Between Two Link Methods<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3>1.8. Choosing Between Link Methods<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.db.link.3" class="section problem">
                   <div class="section-titlepage">
@@ -1392,7 +1637,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>Solution</h4>
                   </div>
-                  <p>Use the <code class="tag-element">link</code><sup class="footnote"><span class="osq">[</span><a name="dbc.db.link.4.2.2" href="#ftn.dbc.db.link.4.2.2">5</a><span class="csq">]</span></sup> element. Links can be used in two ways:
+                  <p>Use the <code class="tag-element">link</code><sup class="footnote"><span class="osq">[</span><a name="dbc.db.link.4.2.2" href="#ftn.dbc.db.link.4.2.2">5</a><span class="csq">]</span></sup> element. Usually, external links are used in two ways:
                   </p>
                   <div class="itemizedlist">
                      <ul>
@@ -1409,54 +1654,210 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                  elements:
                               </p>
                            </div>
-                           <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"&gt;The DocCookBook&lt;/link&gt;</pre></div>
+                           <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"&gt;The DoCookBook&lt;/link&gt;</pre></div>
                         </li>
                      </ul>
                   </div>
-                  <p>Furthermore links can be used on every element as it is shown
-                     in the following section.
-                  </p>
                </section>
                <section id="dbc.db.link.5" class="section discussion">
                   <div class="section-titlepage">
                      <h4>Discussion</h4>
                   </div>
-                  <p>In most cases, it is enough to just use an empty link element.
-                     As such, you should avoid this notation:
+                  <p>The <code class="tag-element">link</code> element has several features for creating
+                     internal or external links. It is allowed to use text content or
+                     leave a <code class="tag-element">link</code> completely empty. Regardless of the text
+                     content, you have to choose between the attributes <code class="tag-attribute">xlink:href</code> or <code class="tag-attribute">linkend</code>. 
                   </p>
-                  <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"&gt;https://doccookbook.sf.net&lt;/link&gt;</pre></div>
-                  <p>This is mostly unnecessary as it is overly verbose, difficult
-                     to read, and does not add any value. Correct such links to this
-                     notations: 
-                  </p>
-                  <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"/&gt;</pre></div>
-                  <p>DocBook 5 also adds new concepts. One of this new concept is that
-                     <em>every</em> element can become a link. In other
-                     words, you do <em class="italic">not</em> have to use a
-                     <code class="tag-element">link</code> element anymore. For example, if you want to
-                     insert a book title with an additional link, it could be   
-                     marked up like this:
-                  </p>
-                  <div class="programlisting"><pre>&lt;citetitle&gt;&lt;ulink url="https://doccookbook.sf.net"&gt;The DocCookBook&lt;/ulink&gt;&lt;/citetitle&gt;</pre></div>
-                  <p>or this, depending on what you prefer:</p>
-                  <div class="programlisting"><pre>&lt;ulink url="https://doccookbook.sf.net"&gt;&lt;citetitle&gt;The DocCookBook&lt;/citetitle&gt;&lt;/ulink&gt;</pre></div>
-                  <p>With DocBook 5 this can be shortend:</p>
-                  <div class="programlisting"><pre>&lt;citetitle xlink:href="https://doccookbook.sf.net"&gt;The DocCookBook&lt;/citetitle&gt;</pre></div>
-                  <p>This is much shorter than the DocBook 4 version and much
-                     clearer!
-                  </p>
-                  <p>Apart from the previous new link concept, DocBook  also allows
-                     to control the link behavior. For example, to open a new window 
-                     when clicking a link, use the <code class="tag-attribute">xlink:show</code>
-                     attribute:    
-                     
-                  </p>
-                  <div class="programlisting"><pre class="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/&gt;</pre></div>
-                  <p>The attribute value <code class="tag-attvalue">show</code> opens a
-                     “<span class="quote">new window, frame, pane, or other relevant presentation
-                        context</span>” (see <a href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</a>).
-                     Of course, this is only useful for online formats. 
-                  </p>
+                  <section id="sec.db.link.attributes" class="section">
+                     <div class="section-titlepage">
+                        <h5>Knowing the Properties of the <code class="tag-attribute">xlink:href</code> and
+                           <code class="tag-attribute">linkend</code> Attributes
+                        </h5>
+                     </div>
+                     <p>Using <code class="tag-attribute">linkend</code> leads always to
+                        an internal link and is semantically equivalent to
+                        <code class="tag-element">xref</code>. You cannot create external links with the
+                        <code class="tag-attribute">linkend</code> attribute. 
+                     </p>
+                     <p>On the other hand, the XLink attribute <code class="tag-attribute">xlink:href</code> can be used for both types:
+                        internal or external links. An example is shown in <a href="#tab.db.link.internal-vs.external">Table 1.4, “Internal and External Links Examples With <code class="tag-attribute">linkend</code> vs. <code class="tag-attribute">xlink:href</code>”</a>.
+                     </p>
+                     <figure id="tab.db.link.internal-vs.external" class="table-wrapper">
+                        <div class="title">Table 1.4. Internal and External Links Examples With <code class="tag-attribute">linkend</code> vs. <code class="tag-attribute">xlink:href</code></div>
+                        <div class="table">
+                           <table border="0"
+                                  summary="Table 1.4. Internal and External Links Examples With linkend vs. xlink:href"
+                                  style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; ">
+                              <colgroup>
+                                 <col class="tcol1" width="33%" />
+                                 <col class="tcol2" width="33%" />
+                                 <col class="tcol3" width="33%" />
+                              </colgroup>
+                              <thead>
+                                 <tr>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "> </th>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="tag-attribute">xlink:href</code></th>
+                                    <th style="border-bottom: 0.5pt solid ; "><code class="tag-attribute">linkend</code></th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Datatype</td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">xsd:anyURI</td>
+                                    <td style="border-bottom: 0.5pt solid ; ">xsd:IDREF</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Internal</td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="tag-attvalue">#cha.intro</code></td>
+                                    <td style="border-bottom: 0.5pt solid ; "><code class="tag-attvalue">cha.intro</code></td>
+                                 </tr>
+                                 <tr>
+                                    <td style="border-right: 0.5pt solid ; ">External</td>
+                                    <td style="border-right: 0.5pt solid ; "><code class="tag-attvalue">http://www.docbook.org</code></td>
+                                    <td align="center">―</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </figure>
+                     <p>Note, validation is only performed when using <code class="tag-attribute">linkend</code>, not with <code class="tag-attribute">xlink:href</code>. The reason for this is the
+                        different datatypes. The XML parser can only validate a
+                        <span class="property">xsd:ID</span> and <span class="property">xsd:IDREF</span>
+                        connection.
+                     </p>
+                  </section>
+                  <section id="sec.db.link.matrix" class="section">
+                     <div class="section-titlepage">
+                        <h5>Choosing the Needed Combination</h5>
+                     </div>
+                     <p>With text content, you have several combinations which is
+                        shown in <a href="#tab.db.link">Table 1.5, “Different Possibilities for Links”</a>:
+                     </p>
+                     <figure id="tab.db.link" class="table-wrapper">
+                        <div class="title">Table 1.5. Different Possibilities for Links</div>
+                        <div class="table">
+                           <table border="0" summary="Table 1.5. Different Possibilities for Links"
+                                  style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; ">
+                              <colgroup>
+                                 <col class="tcol1" width="10%" />
+                                 <col class="tcol2" width="10%" />
+                                 <col class="tcol3" width="40%" />
+                                 <col class="tcol4" width="40%" />
+                              </colgroup>
+                              <thead>
+                                 <tr>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " rowspan="2"
+                                        colspan="2"> </th>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " colspan="2"
+                                        align="center">Content</th>
+                                 </tr>
+                                 <tr>
+                                    <th style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">With Content</th>
+                                    <th style="border-bottom: 0.5pt solid ; ">Empty</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " rowspan="2"
+                                        valign="middle"><strong class="emphasis">Linking Attributes</strong></td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; "><code class="tag-element">xlink:href</code></td>
+                                    <td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; ">Content is a link to the specified URI</td>
+                                    <td style="border-bottom: 0.5pt solid ; ">The specified URI is used as the content</td>
+                                 </tr>
+                                 <tr>
+                                    <td style="border-right: 0.5pt solid ; "><code class="tag-element">linkend</code></td>
+                                    <td style="border-right: 0.5pt solid ; ">Content is an internal link to the element identified</td>
+                                    <td>Semantically equivalent to an <code class="tag-element">xref</code>
+                                       (internal link)
+                                    </td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </figure>
+                     <p>The following list shows some examples:</p>
+                     <div class="variablelist">
+                        <dl>
+                           <dt id="vl.db.link.content-xlinkhref"><span class="term">Links With Content Using <code class="tag-attribute">xlink:href</code></span></dt>
+                           <dd>
+                              <p>Use this code to create an external link with a text
+                                 different than the URL:
+                              </p>
+                              <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"&gt;My Project&lt;/link&gt;</pre></div>
+                           </dd>
+                           <dt id="vl.db.link.content-linkend"><span class="term">Links With Content Using <code class="tag-attribute">linkend</code></span></dt>
+                           <dd>
+                              <p>Use this code to create an internal link (cross
+                                 reference). The “<span class="quote">hot text</span>”
+                                 is created from the content of <code class="tag-element">link</code>:
+                              </p>
+                              <div class="programlisting"><pre class="xml">&lt;link linkend="cha.intro"&gt;Introduction&lt;/link&gt;</pre></div>
+                           </dd>
+                           <dt id="vl.db.link.empty-xlinkhref"><span class="term">Empty Links Using <code class="tag-attribute">xlink:href</code></span></dt>
+                           <dd>
+                              <p>Use this code to create an external link where the “<span class="quote">hot text</span>”
+                                 is taken from the URL:
+                              </p>
+                              <div class="programlisting"><pre class="xml">&lt;link xlink:href="http://www.example.org/Intro"/&gt;</pre></div>
+                              <p>If you want to create an internal link without ID
+                                 validation check, use this code:
+                              </p>
+                              <div class="programlisting"><pre class="xml">&lt;link xlink:href="#cha.intro"/&gt;</pre></div>
+                              <p>Be aware, if the ID does not exist in your document,
+                                 the link will be broken.
+                              </p>
+                           </dd>
+                           <dt><span class="term">Empty Links Using <code class="tag-attribute">linkend</code></span></dt>
+                           <dd>
+                              <p>This notation is semantically equivalent to an
+                                 <code class="tag-element">xref</code>. See also <a href="#dbc.db.xref">Section 1.7, “Inserting Cross References”</a>:
+                              </p>
+                              <div class="programlisting"><pre class="xml">&lt;link linkend="cha.intro"/&gt;</pre></div>
+                              <p>The only difference of the previous example is the ID
+                                 <code class="tag-attvalue">cha.intro</code> must be unique and
+                                 is checked if it is available in your document. If not, it
+                                 is an validation error.
+                              </p>
+                           </dd>
+                        </dl>
+                     </div>
+                     <p>In most cases, it is enough to just use an empty link element.
+                        As such, you should avoid this notation:
+                     </p>
+                     <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"&gt;https://doccookbook.sf.net&lt;/link&gt;</pre></div>
+                     <p>This is mostly unnecessary as it is overly verbose, difficult
+                        to read, and does not add any value. Correct such links to this
+                        notations: 
+                     </p>
+                     <div class="programlisting"><pre class="xml">&lt;link xlink:href="https://doccookbook.sf.net"/&gt;</pre></div>
+                  </section>
+                  <section id="sec.db.link.xlinks" class="section">
+                     <div class="section-titlepage">
+                        <h5>Further Notes on Links</h5>
+                     </div>
+                     <p>DocBook 5 also adds new concepts. One of this new concept is that
+                        <em>every</em> element can become a link. In other
+                        words, you do <em class="italic">not</em> have to use a
+                        <code class="tag-element">link</code> element anymore. For example, if you want to
+                        insert a book title with an additional link, it could be   
+                        marked up like this:
+                     </p>
+                     <div class="programlisting"><pre>&lt;citetitle&gt;&lt;ulink url="https://doccookbook.sf.net"&gt;The DoCookBook&lt;/ulink&gt;&lt;/citetitle&gt;</pre></div>
+                     <p>or this, depending on what you prefer:</p>
+                     <div class="programlisting"><pre>&lt;ulink url="https://doccookbook.sf.net"&gt;&lt;citetitle&gt;The DoCookBook&lt;/citetitle&gt;&lt;/ulink&gt;</pre></div>
+                     <p>With DocBook 5 this can be shortend:</p>
+                     <div class="programlisting"><pre>&lt;citetitle xlink:href="https://doccookbook.sf.net"&gt;The DoCookBook&lt;/citetitle&gt;</pre></div>
+                     <p>Apart from the previous described link concept,
+                        DocBook 5 allows to control the link behavior. For example,
+                        to open a new window when clicking a link, use the <code class="tag-attribute">xlink:show</code> attribute: 
+                     </p>
+                     <div class="programlisting"><pre class="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/&gt;</pre></div>
+                     <p>The attribute value <code class="tag-attvalue">show</code> opens a
+                        “<span class="quote">new window, frame, pane, or other relevant presentation
+                           context</span>” (see <a href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</a>).
+                        Of course, this is only useful for online formats. 
+                     </p>
+                  </section>
                </section>
                <section id="dbc.db.link.6" class="section seealso">
                   <div class="section-titlepage">
@@ -1467,7 +1868,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.db.quotes" class="section">
                <div class="section-titlepage">
-                  <h3>1.7. Inserting Inline Quotes<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3>1.9. Inserting Inline Quotes<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
                </div>
                <section id="dbc.db.quotes.3" class="section problem">
                   <div class="section-titlepage">
@@ -1533,6 +1934,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                      this category.
                   </p>
                </div>
+               <div class="ticket">See also Ticket#20: <a href="https://sourceforge.net/p/doccookbook/tickets/20/" title="Ticket#20">https://sourceforge.net/p/doccookbook/tickets/20/</a></div>
             </header>
             <div class="toc">
                <p><b>Table of Contents</b></p>
@@ -2009,6 +2411,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                      restructure your DocBook document in the way you want.
                   </p>
                </div>
+               <div class="ticket">See also Ticket#21: <a href="https://sourceforge.net/p/doccookbook/tickets/21/" title="Ticket#21">https://sourceforge.net/p/doccookbook/tickets/21/</a></div>
             </header>
             <div class="toc">
                <p><b>Table of Contents</b></p>
@@ -4921,6 +5324,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                      chapter shows you to go beyond simple parameter change.
                   </p>
                </div>
+               <div class="ticket">See also Ticket#22: <a href="https://sourceforge.net/p/doccookbook/tickets/22/" title="Ticket#22">https://sourceforge.net/p/doccookbook/tickets/22/</a></div>
             </header>
             <div class="toc">
                <p><b>Table of Contents</b></p>
@@ -5053,16 +5457,18 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                                    <code class="filename">fo/titlepage.templates.xml</code> from the
                                                    DocBook XSL stylesheet distribution to a directory where
                                                    all your FO customization is stored. Use the filename
-                                                   <code class="filename">booktitlepage.xml</code>.
+                                                   <code class="filename">booktitlepage.xml</code> so we know, it
+                                                   contains only a title page for a book.
                                                 </p>
                                              </div>
                                           </li>
                                           <li class="step">
                                              <div>
-                                                <p>Open the file and remove anything except the
+                                                <p>Open the file <code class="filename">booktitlepage.xml</code>
+                                                   and remove anything except the
                                                    root and <code class="tag-element">t:titlepage</code> elements with the
                                                    attribute <code class="tag-attribute">t:element="book"</code>.
-                                                   Your titlepage template should look like this:
+                                                   Your title page template should look like this:
                                                 </p>
                                                 <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;!DOCTYPE t:templates [
 <span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;!ENTITY hsize0 "10pt"&gt;
@@ -5126,7 +5532,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;author    font-size="&amp;hsize3;"
 <span class="linenumber"> 14</span><span class="linenumber-separator"> </span>             space-before="&amp;hsize2space;"
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>             keep-with-next.within-column="always"/&gt;
-<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>  &lt;edition  font-size="&amp;hsize3;"/&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>  &lt;edition   font-size="&amp;hsize3;"/&gt;
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/t:titlepage-content&gt;</pre></div>
                                              </div>
                                           </li>
@@ -5176,7 +5582,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                        definition to create the
                                        <code class="filename">booktitlepage.xsl</code> output:
                                     </p>
-                                    <div class="screen"><pre><strong class="command">xsltproc</strong> --output booktitlepage.xsl $DB/template/titlepage.xsl booktitlepage.xml</pre></div>
+                                    <div class="screen"><pre><strong class="command">xsltproc</strong> --output booktitlepage.xsl template/titlepage.xsl booktitlepage.xml</pre></div>
                                  </div>
                               </li>
                               <li class="step">
@@ -5214,21 +5620,27 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         called in the following order, starting with
                         <code class="function">book.titlepage</code>:
                      </p>
-                     <div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>book.titlepage
-<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  book.titlepage.before.recto
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>  book.titlepage.recto
-<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  book.titlepage.before.verso
-<span class="linenumber">   </span><span class="linenumber-separator"> </span>  book.titlepage.verso
-<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  book.titlepage.separator</pre></div>
-                     <p>This partitioning makes it easy to pick and choose</p>
+                     <div class="screen"><pre>book.titlepage
+  book.titlepage.before.recto
+  book.titlepage.recto
+  book.titlepage.before.verso
+  book.titlepage.verso
+  book.titlepage.separator</pre></div>
+                     <p>This partitioning makes it easy to just only the affected
+                        named template. As we only need the default, we do not change
+                        <code class="function">book.titlepage.before.recto</code>,
+                        <code class="function">book.titlepage.separator</code>, and
+                        <code class="function">book.titlepage.before.verso</code>.
+                        
+                     </p>
                   </section>
                </section>
                <section id="dbc.fo.cover.5" class="section discussion">
                   <div class="section-titlepage">
                      <h4>Discussion</h4>
                   </div>
-                  <p>There are several reason to customize the titlepage of your
-                     work:
+                  <p>There are several reasons to customize the title page of your
+                     book:
                   </p>
                   <div class="itemizedlist">
                      <ul>
@@ -5236,10 +5648,12 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                            <p>You want a different order of the default elements</p>
                         </li>
                         <li>
-                           <p>You want to show or hide different elements</p>
+                           <p>You want to show or hide elements</p>
                         </li>
                         <li>
-                           <p>You want to insert corporate logos, links, or</p>
+                           <p>You want to insert corporate logos, links, or other
+                              graphical illustrations
+                           </p>
                         </li>
                         <li>
                            <p>You want to distinguish between a document in draft or in
@@ -5253,7 +5667,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>See Also</h4>
                   </div>
-                  <p></p>
+                  <p><a href="http://www.sagehill.net/docbookxsl/HTMLTitlePage.html">http://www.sagehill.net/docbookxsl/HTMLTitlePage.html</a></p>
                </section>
             </section>
             <section id="dbc.fo.line-height" class="section">
@@ -6163,6 +6577,7 @@ II. The Python Library
                      used “<span class="quote">inside</span>” ebooks (<span title="Electronic&#xA;          PUBlication" class="acronym">EPUB</span>). It comes in several derivates.
                   </p>
                </div>
+               <div class="ticket">See also Ticket#23: <a href="https://sourceforge.net/p/doccookbook/tickets/23/" title="Ticket#23">https://sourceforge.net/p/doccookbook/tickets/23/</a></div>
             </header>
             <div class="toc">
                <p><b>Table of Contents</b></p>
