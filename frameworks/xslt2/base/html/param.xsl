@@ -26,6 +26,8 @@
   <xsl:param name="toc.max.depth">2</xsl:param>
   <xsl:param name="generate.user.meta" select="1"/>
   
+  <xsl:param name="img.src.path">images/</xsl:param>
+  
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
