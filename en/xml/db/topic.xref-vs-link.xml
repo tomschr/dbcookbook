@@ -38,7 +38,7 @@
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>Internal Links</title>
+          <title>Internal Links or Cross References</title>
           <para>use primarily <tag>xref</tag></para>
         </formalpara>
       </listitem>
@@ -116,7 +116,8 @@
     <itemizedlist>
       <title>Advantages of External Links Using <tag>link</tag></title>
       <listitem>
-        <para>No automatic resolution performed.</para>
+        <para>Usually no automatic resolution performed (only if you use
+          <tag class="attribute">xlink:href</tag>).</para>
       </listitem>
       <listitem>
         <para>No validation necessary.</para>
@@ -173,9 +174,9 @@
   <section role="seealso">
     <title>See Also</title>
     <itemizedlist>
-      <!--<listitem>
+      <listitem>
         <para><xref linkend="dbc.db.xref"/></para>
-      </listitem>-->
+      </listitem>
       <listitem>
         <para><xref linkend="dbc.db.link"/></para>
       </listitem>
