@@ -22,7 +22,7 @@
   <xsl:include href="titlepage-mode.xsl"/>
   <xsl:include href="section.xsl"/>
   <xsl:include href="html.xsl"/>
-  
+  <xsl:include href="graphics.xsl"/>
   <xsl:include href="usermeta.xsl"/>
 
   <xsl:template match="/">
@@ -51,8 +51,7 @@
       </body>
     </html>
 
-    <xsl:for-each
-      select=".//d:mediaobject[d:textobject[not(d:phrase)]]">
+    <xsl:for-each select=".//d:mediaobject[d:textobject[not(d:phrase)]]">
       <xsl:call-template name="t:write-longdesc"/>
     </xsl:for-each>
   </xsl:template>
