@@ -23,6 +23,7 @@
   
   <info>
     <definitions definitionfile="defs.xml"/>
+    <bibliorelation class="uri" role="ticket">https://sourceforge.net/p/doccookbook/tickets/21/</bibliorelation>
     <abstract>
       <para>DocBook files can be created manually or by tools.
         Sometimes tools create a structure which is inconvenient for

@@ -22,6 +22,7 @@
   <title>(X)HTML Customizations</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <bibliorelation class="uri" role="ticket">https://sourceforge.net/p/doccookbook/tickets/23/</bibliorelation>
     <abstract>
       <para>HTML is a very important output format for the DocBook XSL
         stylesheets as it is not only displayed on Web sites, but also

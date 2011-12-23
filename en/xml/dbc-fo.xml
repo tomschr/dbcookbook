@@ -22,6 +22,7 @@
   <title>Print Customizations</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <bibliorelation class="uri" role="ticket">https://sourceforge.net/p/doccookbook/tickets/22/</bibliorelation>
     <abstract>
       <para>The DocBook XSL stylesheets has got more than 200 parameters
       which can customize some aspects of the layout very easily. This
