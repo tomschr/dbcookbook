@@ -16,7 +16,7 @@
     <tmpl:templates-list>
       <tmpl:templates name="book">
         <tmpl:recto>
-          <div tmpl:class="titlepage">
+          <header tmpl:class="titlepage">
             <d:title/>
             <d:subtitle/>
             <d:author/>
@@ -28,10 +28,24 @@
             <d:revhistory/>          
             <d:abstract/>
             <d:annotation xml:id="draft"/>
-          </div>
+          </header>
           <h:hr tmpl:keep="true"/>
         </tmpl:recto>
       </tmpl:templates>
+      <tmpl:templates name="preface chapter appendix">
+      <tmpl:titlepage>
+        <header tmpl:class="titlepage">
+          <d:title/>
+          <d:subtitle/>
+          <d:authorgroup/>
+          <d:author/>
+          <d:releaseinfo/>
+          <d:abstract/>
+          <d:revhistory/>
+          <d:biblioid/>
+        </header>
+      </tmpl:titlepage>
+     </tmpl:templates>
       <tmpl:templates name="section">
         <tmpl:titlepage>
           <div class="section-titlepage">

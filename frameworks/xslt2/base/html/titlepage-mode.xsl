@@ -45,4 +45,14 @@
     </div>
   </xsl:template>
 
+  <xsl:template match="d:biblioid[@class='other' and
+    @otherclass='ticket']" mode="m:titlepage-mode">
+    <xsl:variable name="ticketnr" select="normalize-space(.)"/>
+    <div class="ticket">
+      <xsl:value-of select="concat('See also Ticket#', $ticketnr, ': ')"/>
+      <a href="{concat($ticket.url, $ticketnr, '/')}" title="Ticket#{$ticketnr}">
+        <xsl:value-of select="concat($ticket.url, $ticketnr, '/')"/>
+      </a>
+    </div>
+  </xsl:template>
 </xsl:stylesheet>

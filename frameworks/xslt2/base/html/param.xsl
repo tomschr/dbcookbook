@@ -46,4 +46,7 @@
   <xsl:param name="menuchoice.separator">+</xsl:param>
   <xsl:param name="glossentry.show.acronym">yes</xsl:param>
   <xsl:param name="preprocess" select="'transclude'"/>
+  
+  <xsl:param name="ticket.url">https://sourceforge.net/p/doccookbook/tickets/</xsl:param>
+  
 </xsl:stylesheet>
