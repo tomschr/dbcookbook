@@ -83,22 +83,7 @@
         </note>
       </para>      
     </cover>
-    <revhistory>
-      <title>Revision History</title>
-      <revision>
-        <date>2011-12-07</date>
-        <author>
-          <personname>
-            <firstname>Thomas</firstname>
-            <surname>Schraitle</surname>
-          </personname>
-        </author>
-        <authorinitials>toms</authorinitials>
-        <revdescription>
-          <para>First public revision announced</para>
-        </revdescription>
-      </revision>
-    </revhistory>
+    <xi:include href="revhistory.xml"/>
   </info>
     
   <xi:include href="dbc-preface.xml"/>
