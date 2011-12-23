@@ -22,7 +22,7 @@
   <title>Knowing DocBook’s Structure</title>
   <info>
     <definitions definitionfile="defs.xml"/>
-    <bibliorelation class="uri" role="ticket">https://sourceforge.net/p/doccookbook/tickets/19/</bibliorelation>
+    <biblioid class="other" otherclass="ticket">19</biblioid>
     <abstract>
       <para>DocBook has a wide variety of elements covering different
         semantics: from structural elements like <tag>book</tag><tag>,
@@ -75,6 +75,7 @@
   <xi:include href="db/topic.lists.xml"/>
   <xi:include href="db/topic.remarks.xml"/>
   <xi:include href="db/topic.xref-vs-link.xml"/>
+  <xi:include href="db/topic.xref.xml"/>
   <xi:include href="db/topic.link.xml"/>
   <!-- TODO: Needs to investigate alt in acronym more: -->
   <!--<xi:include href="db/topic.acronym.xml"/>-->
