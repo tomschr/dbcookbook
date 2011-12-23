@@ -6,6 +6,21 @@
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Revision History</title>
   <revision>
+    <revnumber>0.2</revnumber>
+    <date>2011-12-23</date>
+    <author>
+      <personname>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+      </personname>
+    </author>
+    <authorinitials>toms</authorinitials>
+    <revdescription>
+      <para>Second public release, see <link xlink:href="http://sf.net/mailarchive/message.php?msg_id=28585391"/></para>
+    </revdescription>
+  </revision>
+  
+  <revision>
     <revnumber>0.1</revnumber>
     <date>2011-12-07</date>
     <author>
@@ -14,8 +29,7 @@
         <surname>Schraitle</surname>
       </personname>
     </author>
-    <authorinitials>toms</authorinitials>
-    
+    <authorinitials>toms</authorinitials>    
     <revdescription>
       <para>First public revision announced</para>
     </revdescription>
