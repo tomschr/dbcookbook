@@ -4,8 +4,8 @@
 
 USER=${1:-tom_schr}
 PROJECT=doccookbook
+SFSITE=web.sourceforge.net
 TOSYNC="build/html/*.html frameworks/db-xslt2/xslt/base/js frameworks/xslt2/base/css images"
 
-rsync -aiv --copy-links --dry-run ${TOSYNC} \
-   ${USER},${PROJECT}@web.sourceforge.net:/home/project-web/${PROJECT}/htdocs/html/en/
+rsync -aiv --copy-links  ${TOSYNC} ${USER},${PROJECT}@${SFSITE}:htdocs/html/en/
 
