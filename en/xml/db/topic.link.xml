@@ -73,11 +73,11 @@
         <tag>link</tag> element anymore. For example, if you want to
       insert a book title with an additional link, it could be   
       marked up like this:</para>
-    <programlisting>&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DocCookBook&lt;/ulink>&lt;/citetitle></programlisting>
+    <programlisting>&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
     <para>or this, depending on what you prefer:</para>
-    <programlisting>&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DocCookBook&lt;/citetitle>&lt;/ulink></programlisting>
+    <programlisting>&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
     <para>With DocBook 5 this can be shortend:</para>
-    <programlisting>&lt;citetitle xlink:href="https://doccookbook.sf.net">The DocCookBook&lt;/citetitle></programlisting>
+    <programlisting>&lt;citetitle xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/citetitle></programlisting>
     <para>This is much shorter than the DocBook 4 version and much
     clearer!</para>
     <para>Apart from the previous new link concept, DocBook&#xa0; also allows
