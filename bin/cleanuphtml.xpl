@@ -57,12 +57,12 @@
       </p:documentation>
     </p:variable>
     
+    <cx:message name="out">
+      <p:with-option name="message" select="concat('*** Processing ', $file)"/>
+    </cx:message>
     <p:load name="loadhtml">
         <p:with-option name="href" select="$absfile"/>
     </p:load>
-    <cx:message name="out">
-			<p:with-option name="message" select="concat('*** Processing ', $file)"/>
-		</cx:message>
     
     <p:xslt name="xsltcleanup">
       <p:input port="source"/>
