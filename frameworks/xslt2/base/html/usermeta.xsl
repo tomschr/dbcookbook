@@ -38,10 +38,10 @@
 
   <xsl:template name="t:user-meta-dublincore">
     <xsl:param name="node" select="."/>
-
+    <meta name="robots" content="index,follow" />
     <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT"/>
     <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
-    <meta name="DC.Language" content="{/*/@xml:lang}" scheme="DCTERMS.RFC3066"/>
+    <meta name="DC.language" content="{/*/@xml:lang}" scheme="DCTERMS.RFC3066"/>
     <meta name="DC.title" content="{f:title($node)}"/>
 
     <meta name="DC.creator">
@@ -75,21 +75,9 @@
       </meta>
     </xsl:if>
     <!--<meta name="DC.contributor" content=""/>-->
-    <!--<meta name="DC.date" scheme="DCTERMS.W3CDTF">
-      <xsl:variable name="date" select="date:date-time()"/>
-      <xsl:attribute name="content">
-        <!-\-content="2011-09-18T01:49:37+02:00"-\->
-        <xsl:call-template name="datetime.format">
-          <xsl:with-param name="format">Y-m-d</xsl:with-param>
-          <xsl:with-param name="date" select="$date"/>
-        </xsl:call-template>
-        <xsl:text>T</xsl:text>
-        <xsl:call-template name="datetime.format">
-          <xsl:with-param name="format">X</xsl:with-param>
-          <xsl:with-param name="date" select="$date"/>
-        </xsl:call-template>
-      </xsl:attribute>
-    </meta>-->
+    <meta name="DC.date" scheme="DCTERMS.W3CDTF" 
+      content="{current-dateTime()}"/>
+    <meta name="date" content="{current-dateTime()}"/>
     <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
     <xsl:if test="$node/d:info/d:biblioid">
       <xsl:for-each select="$node/d:info/d:biblioid">
