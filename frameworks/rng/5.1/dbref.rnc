@@ -148,5 +148,5 @@ db.info.elements |= db.ref
 db.info.elements |= db.definitions
 
 # or they can be provided in a separate file
-start |= db.definitions
+start |= db.definitions | db.revhistory
 
