@@ -52,7 +52,7 @@
     <p:with-option name="href" select="$stylesheet"/>
   </p:load>
   
-  <p:import href="validate-xinclude-xslt2.xpl"/>
+  <p:import href="xpl/validate-xinclude-xslt2.xpl"/>
   
   <t:xinclude-rng-xslt2 name="xinclude-rng-xslt2">
     <p:input port="source">

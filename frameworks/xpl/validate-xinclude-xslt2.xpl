@@ -33,7 +33,7 @@
 
   <p:output port="result"/>  
   
-  <p:xinclude name="xinclude"/>
+  <!--<p:xinclude name="xinclude"/>-->
   
   <p:validate-with-relax-ng name="rng-validate">
     <p:input port="schema">
