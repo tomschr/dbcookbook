@@ -135,6 +135,7 @@ var popup_</xsl:text>
       </meta>
     </xsl:if>
     <meta name="DC.contributor" content=""/>
+    <xsl:if test="function-available('date:date-time')">
     <meta name="DC.date" scheme="DCTERMS.W3CDTF">
       <xsl:variable name="date" select="date:date-time()"/>
       <xsl:attribute name="content">
@@ -150,6 +151,7 @@ var popup_</xsl:text>
         </xsl:call-template>
       </xsl:attribute>
     </meta>
+    </xsl:if>
     <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
     <xsl:if test="$node/d:info/d:biblioid">
       <xsl:for-each select="$node/d:info/d:biblioid">
