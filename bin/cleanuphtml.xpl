@@ -8,7 +8,7 @@
   xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils"
   xmlns:c="http://www.w3.org/ns/xproc-step">
  
- <p:import href="library-1.0.xpl"/>
+ <p:import href="xpl/library-1.0.xpl"/>
  
   <p:input port="source">
     <p:empty/>
