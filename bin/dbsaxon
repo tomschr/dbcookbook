@@ -29,7 +29,7 @@ CLASSPATH="${CLASSPATH}:${LIBDIR}/xslthl.jar"
 # and tweak command line options so that it's used.
 args=
 if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
-  CLASSPATH="xml/:$CLASSPATH:/etc/java/resolver"
+  CLASSPATH="${ABSPATH}:$CLASSPATH:/etc/java/resolver"
   # Tune options to use resolver.
   r=org.apache.xml.resolver.tools.ResolvingXMLReader
   for opt in -x -y ; do
