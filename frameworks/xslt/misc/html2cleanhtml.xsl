@@ -129,7 +129,7 @@
     <section>
       <xsl:attribute name="id">
         <xsl:value-of
-          select="(.//h:h2|.//h:h3|.//h:h4|.//h:h5|.//h:h6)[@class='title'][1]/@id"/>
+          select="(.//h:h2|.//h:h3|.//h:h4|.//h:h5|.//h:h6)[@class='title'][1]/@xml:id"/>
       </xsl:attribute>
       <xsl:apply-templates select="@*"/>
       <div class="{@class}-titlepage">
