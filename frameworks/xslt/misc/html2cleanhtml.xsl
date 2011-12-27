@@ -18,8 +18,17 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="exsl h">
 
-  <xsl:import href="copy.xsl"/>  
+  <xsl:import href="copy.xsl"/>
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
+  
+  <xsl:include href="../html/piwik.xsl"/>
+  
+  <xsl:template match="h:body">
+    <xsl:copy>
+      <xsl:apply-templates select="@*|node()"/>
+      <xsl:call-template name="generate.piwik"/>
+    </xsl:copy>
+  </xsl:template>
   
   <!-- ================================================ -->
   <!-- Remove or otherwise leave out elements and attributes -->
@@ -59,9 +68,7 @@
   
   <!-- Remove obsolete elements and attributes -->
   <xsl:template match="/h:html/@version"/>
-  <xsl:template match="h:br[@class='example-break']"/>
-  <xsl:template match="h:br[@class='figure-break']"/>
-  <xsl:template match="h:br[@class='table-break']"/>
+  <xsl:template match="h:br"/>
   <xsl:template match="h:div/@title"/>
   <xsl:template match="h:a/@title"/>
   <xsl:template match="h:a/@target"/>
@@ -81,6 +88,7 @@
   <xsl:template match="h:a[. = '']"/>
   
   <!-- ================================================ -->
+  
   <xsl:template name="create-class-titlepage">
     <xsl:param name="class" select="@class"/>
     <xsl:param name="create-content" select="false()"/>
@@ -285,7 +293,7 @@
         <xsl:when test="h:pre"><xsl:apply-templates/></xsl:when>
         <xsl:otherwise>
           <pre>
-            <xsl:apply-templates/>
+            <xsl:apply-templates select="@*|node()"/>
           </pre>
         </xsl:otherwise>
       </xsl:choose>
