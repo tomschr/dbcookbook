@@ -63,6 +63,14 @@
   <xsl:template match="h:div/@title"/>
   <xsl:template match="h:a/@title"/>
   <xsl:template match="h:blockquote/@title"/>
+  <xsl:template match="h:p/@title"/>
+  <xsl:template match="/h:html/@version"/>
+  
+  <xsl:template match="h:h2[@class='title']/@id"/>
+  <xsl:template match="h:h3[@class='title']/@id"/>
+  <xsl:template match="h:h4[@class='title']/@id"/>
+  <xsl:template match="h:h5[@class='title']/@id"/>
+  <xsl:template match="h:h6[@class='title']/@id"/>
   
   <!-- Remove empty anchors -->
   <xsl:template match="h:a[. = '']"/>
@@ -89,6 +97,31 @@
     </div>
   </xsl:template>
   
+  <xsl:template name="create-article">    
+    <article>
+      <xsl:apply-templates select="@*"/>
+      <header class="{@class}-titlepage">
+        <xsl:apply-templates select="h:div[@class='titlepage']"/>        
+      </header>
+      <xsl:apply-templates select="h:div[@class='toc']"/>
+      <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>  
+    </article>
+  </xsl:template>
+  
+  <xsl:template name="create-section">    
+    <section>
+      <xsl:attribute name="id">
+        <xsl:value-of
+          select="(.//h:h2|.//h:h3|.//h:h4|.//h:h5|.//h:h6)[@class='title'][1]/@id"/>
+      </xsl:attribute>
+      <xsl:apply-templates select="@*"/>
+      <div class="{@class}-titlepage">
+        <xsl:apply-templates select="h:div[@class='titlepage']"/>        
+      </div>
+      <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>
+    </section>
+  </xsl:template>
+  
   <xsl:template name="create-personname">
     <xsl:param name="class" select="@class"/>
     <div class="{$class}">
@@ -109,19 +142,19 @@
   
   <!-- Main structures -->
   <xsl:template match="h:div[@class='appendix']">
-    <xsl:call-template name="create-class-titlepage"/>
+    <xsl:call-template name="create-article"/>
   </xsl:template>
   <xsl:template match="h:div[@class='book']">
-    <xsl:call-template name="create-class-titlepage"/>
+    <xsl:call-template name="create-article"/>
   </xsl:template>
   <xsl:template match="h:div[@class='chapter']">
-    <xsl:call-template name="create-class-titlepage"/>
+    <xsl:call-template name="create-article"/>
   </xsl:template>
   <xsl:template match="h:div[@class='preface']">
-    <xsl:call-template name="create-class-titlepage"/>
+    <xsl:call-template name="create-article"/>
   </xsl:template>
   <xsl:template match="h:div[@class='section']">
-    <xsl:call-template name="create-class-titlepage"/>
+    <xsl:call-template name="create-section"/>
   </xsl:template>
   <xsl:template match="h:div[@class='sidebar']">
     <xsl:call-template name="create-class-titlepage">
