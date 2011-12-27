@@ -6,7 +6,9 @@
   xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="d xlink">
 
   <xsl:template name="user.header.navigation">
-    <xsl:call-template name="breadcrumbs"/>
+    <xsl:if test="generate.breadcrumbs != 0">
+      <xsl:call-template name="breadcrumbs"/>
+    </xsl:if>
   </xsl:template>
 
   <xsl:template name="breadcrumbs">
