@@ -66,7 +66,9 @@ var popup_</xsl:text>
         <xsl:with-param name="node" select="$node/d:info/d:author"/>
       </xsl:call-template>
     </xsl:if>
-
+    <xsl:if test="$generate.javascript != 0">
+      <xsl:call-template name="javascript"/>
+    </xsl:if>
   </xsl:template>
   
   <xsl:template name="user.meta.author">
@@ -171,5 +173,8 @@ var popup_</xsl:text>
     <meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/><!-- FIXME -->
     <meta name="DC.rights" content="legalnotice"  scheme="DCTERMS.URI"/>
   </xsl:template>
-
+  
+  <xsl:template name="javascript">
+    <script type="text/javascript" src="js/dbmodnizr.js"/>
+  </xsl:template>
 </xsl:stylesheet>
