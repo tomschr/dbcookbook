@@ -45,7 +45,11 @@
       <xsl:value-of select="."/>
     </xsl:attribute>
   </xsl:template>
-    
+  
+  <xsl:template match="h:div[@class='revhistory']/h:table/@border">
+    <xsl:attribute name="border">0</xsl:attribute>
+  </xsl:template>
+  
   <xsl:template match="@class">
     <xsl:choose>
       <xsl:when test="starts-with(., 'sgmltag')">
@@ -67,6 +71,7 @@
   </xsl:template>
   
   <!-- Remove obsolete elements and attributes -->
+  <xsl:template match="h:table/h:h1"/>
   <xsl:template match="/h:html/@version"/>
   <xsl:template match="h:br"/>
   <xsl:template match="h:div/@title"/>
@@ -313,13 +318,44 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  
   <xsl:template match="h:dt[h:a]">
     <xsl:copy>
       <xsl:attribute name="id"><xsl:value-of select="h:a/@id"/></xsl:attribute>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
+  
+  <xsl:template match="h:div[@class='revhistory']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  <!--<xsl:template match="h:div[@class='revhistory']/h:table[not(h:tbody)]">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <tbody>
+        <xsl:apply-templates/>
+      </tbody>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[count(h:td)=3]">
+    <xsl:message>h:tr[count(h:td)=3]</xsl:message>
+    <xsl:copy>
+      <xsl:attribute name="class">revision</xsl:attribute>
+      <xsl:apply-templates select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr[position()>1 and count(h:td)!=3]">
+    <xsl:message>h:tr[count(h:td) &lt;> 3]</xsl:message>
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <xsl:attribute name="class">revdescription</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>-->
   <!-- -->
   <xsl:template match="h:p[h:span[@class='formalpara-title']]">
     <div class="formalpara">
