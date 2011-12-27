@@ -139,7 +139,10 @@
     <div class="{$class}">
       <h3>
         <span class="personname">
-          <xsl:apply-templates select="h:h3/*"/>
+          <xsl:for-each select="h:h3/h:span">
+            <xsl:copy-of select="."/>
+            <xsl:text> </xsl:text>
+          </xsl:for-each>
         </span>
       </h3>
     </div>
