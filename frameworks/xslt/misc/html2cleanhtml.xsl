@@ -286,14 +286,14 @@
     </div>
   </xsl:template>
   
-  <xsl:template match="h:div[@class='programlisting']">
+  <xsl:template match="h:div[@class='programlisting']|h:div[@class='screen']">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:choose>
         <xsl:when test="h:pre"><xsl:apply-templates/></xsl:when>
         <xsl:otherwise>
           <pre>
-            <xsl:apply-templates select="@*|node()"/>
+            <xsl:apply-templates select="@*[local-name()!='class']|node()"/>
           </pre>
         </xsl:otherwise>
       </xsl:choose>
