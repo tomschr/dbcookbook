@@ -292,7 +292,9 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="h:div[@class='itemizedlist']">
+  <xsl:template match="h:div[@class='itemizedlist' or
+                             @class='variablelist' or 
+                             @class='orderedlist']">
     <xsl:copy>
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
@@ -303,6 +305,12 @@
     </div>
   </xsl:template>
   
+  <xsl:template match="h:dt[h:a]">
+    <xsl:copy>
+      <xsl:attribute name="id"><xsl:value-of select="h:a/@id"/></xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
   <!-- -->
   <xsl:template match="h:p[h:span[@class='formalpara-title']]">
     <div class="formalpara">
