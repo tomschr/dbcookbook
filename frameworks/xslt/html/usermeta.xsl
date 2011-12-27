@@ -8,6 +8,8 @@
   xmlns:date="http://exslt.org/dates-and-times"
   exclude-result-prefixes="d xlink date exsl">
 
+  <xsl:preserve-space elements="script"/>
+  
 <xsl:template name="system.head.content">
   <xsl:param name="node" select="."/>
 
@@ -55,7 +57,7 @@ var popup_</xsl:text>
        have a lower CSS precedence than the users stylesheet. -->
 </xsl:template>
 
-  <xsl:template name="user.head.content">
+<xsl:template name="user.head.content">
     <xsl:param name="node" select="."/>
 
     <xsl:if test="$generate.user.meta != 0">
@@ -69,9 +71,9 @@ var popup_</xsl:text>
     <xsl:if test="$generate.javascript != 0">
       <xsl:call-template name="javascript"/>
     </xsl:if>
-  </xsl:template>
+</xsl:template>
   
-  <xsl:template name="user.meta.author">
+<xsl:template name="user.meta.author">
     <xsl:param name="node" select="."/>
 
     <xsl:variable name="author">
@@ -82,9 +84,9 @@ var popup_</xsl:text>
     <xsl:if test="$author != ''">
       <meta name="author" content="{$author}"/>
     </xsl:if>
-  </xsl:template>
+</xsl:template>
 
-  <xsl:template name="user.meta.dublincore">
+<xsl:template name="user.meta.dublincore">
     <xsl:param name="node" select="."/>
 
     <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT"/>
@@ -172,9 +174,10 @@ var popup_</xsl:text>
       scheme="DCTERMS.URI"/>
     <meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/><!-- FIXME -->
     <meta name="DC.rights" content="legalnotice"  scheme="DCTERMS.URI"/>
-  </xsl:template>
+</xsl:template>
   
-  <xsl:template name="javascript">
-    <script type="text/javascript" src="js/dbmodnizr.js"/>
-  </xsl:template>
+<xsl:template name="javascript">
+    <script type="text/javascript" src="js/dbmodnizr.js">/**/</script>
+</xsl:template>
+
 </xsl:stylesheet>
