@@ -61,6 +61,7 @@
   <xsl:template match="/h:html/@version"/>
   <xsl:template match="h:br[@class='example-break']"/>
   <xsl:template match="h:br[@class='figure-break']"/>
+  <xsl:template match="h:br[@class='table-break']"/>
   <xsl:template match="h:div/@title"/>
   <xsl:template match="h:a/@title"/>
   <xsl:template match="h:a/@target"/>
@@ -240,6 +241,28 @@
   </xsl:template>  
   <xsl:template match="h:div[@class='figure-contents']">
     <div class="figure">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:div[@class='table']">
+    <figure class="table-wrapper">
+      <xsl:if test="h:a/@id">
+        <xsl:attribute name="id">
+          <xsl:value-of select="h:a/@id"/>
+        </xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates select="h:div[@class='table-title']"/>
+      <xsl:apply-templates select="h:div[@class='table-contents']"/>
+    </figure>
+  </xsl:template>
+  
+  <xsl:template match="h:div[@class='table-title']">
+    <div class="title">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:div[@class='table-contents']">
+    <div class="table">
       <xsl:apply-templates/>
     </div>
   </xsl:template>
