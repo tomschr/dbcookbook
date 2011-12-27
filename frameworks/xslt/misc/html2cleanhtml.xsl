@@ -183,9 +183,7 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="h:div[@class='toc-title']">
-    <p><b><xsl:apply-templates/></b></p>
-  </xsl:template>
+  
   <xsl:template match="h:div[@class='toc']/h:dl">
     <dl class="toc">
       <xsl:apply-templates/>
