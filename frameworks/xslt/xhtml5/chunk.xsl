@@ -16,7 +16,7 @@
   extension-element-prefixes="exsl">
 
   <xsl:import href="&db;/chunk.xsl"/>
-  <xsl:import href="../html/param.xsl"/>
+  <xsl:import href="docbook.xsl"/>
   <xsl:output method="xml"/>
   
   <!-- To use the same stripped nodeset everywhere, it should
