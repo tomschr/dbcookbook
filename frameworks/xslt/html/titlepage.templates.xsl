@@ -6,6 +6,6 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink">
   
-  <xsl:template match="othercredit" mode="book.titlepage.recto.auto.mode"/>
+  <xsl:template match="d:othercredit" mode="book.titlepage.recto.auto.mode"/>
   
 </xsl:stylesheet>
