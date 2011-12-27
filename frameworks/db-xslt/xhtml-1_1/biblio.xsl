@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?>
-<!--This file was created automatically by html2xhtml-->
-<!--from the HTML stylesheets.-->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: biblio.xsl 8421 2009-05-04 07:49:49Z bobstayton $
+     $Id: biblio.xsl 9127 2011-10-10 19:41:51Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -318,8 +315,15 @@
 <xsl:template match="author" mode="bibliography.mode">
   <span>
     <xsl:call-template name="common.html.attributes"/>
-    <xsl:call-template name="person.name"/>
-    <xsl:copy-of select="$biblioentry.item.separator"/>
+    <xsl:choose>
+      <xsl:when test="orgname">
+        <xsl:apply-templates select="orgname" mode="bibliography.mode"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="person.name"/>
+        <xsl:copy-of select="$biblioentry.item.separator"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </span>
 </xsl:template>
 
@@ -377,7 +381,7 @@
       <xsl:call-template name="gentext.endquote"/>
     </xsl:when>
     <xsl:otherwise>
-      <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></em>
+      <em><xsl:apply-templates/></em>
     </xsl:otherwise>
   </xsl:choose>
   <xsl:copy-of select="$biblioentry.item.separator"/>
@@ -775,7 +779,7 @@
 <xsl:template match="title" mode="bibliography.mode">
   <span>
     <xsl:call-template name="common.html.attributes"/>
-    <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates mode="bibliography.mode"/></em>
+    <em><xsl:apply-templates mode="bibliography.mode"/></em>
     <xsl:copy-of select="$biblioentry.item.separator"/>
   </span>
 </xsl:template>
@@ -869,7 +873,14 @@
 <xsl:template match="author" mode="bibliomixed.mode">
   <span>
     <xsl:call-template name="common.html.attributes"/>
-    <xsl:apply-templates mode="bibliomixed.mode"/>
+    <xsl:choose>
+      <xsl:when test="orgname">
+        <xsl:apply-templates select="orgname" mode="bibliomixed.mode"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="person.name"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </span>
 </xsl:template>
 
@@ -919,7 +930,7 @@
       <xsl:call-template name="gentext.endquote"/>
     </xsl:when>
     <xsl:otherwise>
-      <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></em>
+      <em><xsl:apply-templates/></em>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>

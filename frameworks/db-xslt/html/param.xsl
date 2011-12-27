@@ -1,9 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?>
-<!-- This file is generated from param.xweb -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<?xml version="1.0" encoding="utf-8"?><!-- This file is generated from param.xweb --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- ********************************************************************
-     $Id: param.xweb 8552 2009-12-07 17:45:26Z bobstayton $
+     $Id: param.xweb 9148 2011-11-12 00:07:29Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -105,6 +103,7 @@ http://docbook.sourceforge.net/release/images/annot-close.png</xsl:param>
 <xsl:param name="chunk.toc"/>
 <xsl:param name="chunk.tocs.and.lots" select="0"/>
 <xsl:param name="chunk.tocs.and.lots.has.title" select="1"/>
+<xsl:param name="chunked.filename.prefix"/>
 <xsl:param name="citerefentry.link" select="0"/>
 <xsl:param name="collect.xref.targets">no</xsl:param>
 <xsl:param name="component.label.includes.part.label" select="0"/>
@@ -163,6 +162,7 @@ task before
 <xsl:param name="funcsynopsis.decoration" select="1"/>
 <xsl:param name="funcsynopsis.style">kr</xsl:param>
 <xsl:param name="function.parens" select="0"/>
+<xsl:param name="generate.consistent.ids" select="0"/>
 <xsl:param name="generate.css.header" select="0"/>
 <xsl:param name="generate.id.attributes" select="0"/>
 <xsl:param name="generate.index" select="1"/>
@@ -301,7 +301,7 @@ set       toc,title
     
 <xsl:param name="manifest.in.base.dir" select="0"/>
 <xsl:param name="manual.toc"/>
-<xsl:param name="menuchoice.menu.separator"> &#8594; </xsl:param>
+<xsl:param name="menuchoice.menu.separator"> → </xsl:param>
 <xsl:param name="menuchoice.separator">+</xsl:param>
 <xsl:param name="navig.graphics.extension">.gif</xsl:param>
 <xsl:param name="navig.graphics" select="0"/>

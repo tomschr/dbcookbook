@@ -5,7 +5,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: labels.xsl 8540 2009-12-02 05:28:09Z bobstayton $
+     $Id: labels.xsl 9007 2011-05-12 15:59:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -791,6 +791,14 @@ element label.</para>
 </xsl:template>
 
 <xsl:template match="sidebar" mode="label.markup">
+  <!-- nop -->
+</xsl:template>
+
+<xsl:template match="glossdiv|glosslist" mode="label.markup">
+  <!-- nop -->
+</xsl:template>
+
+<xsl:template match="glossentry" mode="label.markup">
   <!-- nop -->
 </xsl:template>
 

@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: autotoc.xsl 8558 2009-12-11 00:33:17Z bobstayton $
+     $Id: autotoc.xsl 9143 2011-11-01 01:00:59Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -125,7 +125,7 @@
   <xsl:if test="contains($toc.params, 'table')">
     <xsl:call-template name="list.of.titles">
       <xsl:with-param name="titles" select="'table'"/>
-      <xsl:with-param name="nodes" select=".//table"/>
+      <xsl:with-param name="nodes" select=".//table[not(@tocentry = 0)]"/>
     </xsl:call-template>
   </xsl:if>
 
@@ -160,7 +160,7 @@
   <xsl:call-template name="make.toc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="toc.title.p" select="$toc.title.p"/>
-    <xsl:with-param name="nodes" select="book|setindex"/>
+    <xsl:with-param name="nodes" select="book|setindex|set"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -301,16 +301,18 @@
     <xsl:call-template name="toc.line">
       <xsl:with-param name="toc-context" select="$toc-context"/>
     </xsl:call-template>
-    <xsl:if test="$toc.listitem.type = 'li'
-                  and $toc.section.depth > $depth and 
+    <xsl:if test="$toc.listitem.type = 'li' and
+                  ( (self::set or self::book or self::part) or 
+                        $toc.section.depth > $depth) and 
                   ( ($qanda.in.toc = 0 and count($nodes)&gt;0) or
                     ($qanda.in.toc != 0 and count($nodes.plus)&gt;0) )
                   and $toc.max.depth > $depth.from.context">
       <xsl:copy-of select="$subtoc.list"/>
     </xsl:if>
   </xsl:element>
-  <xsl:if test="$toc.listitem.type != 'li'
-                and $toc.section.depth > $depth and 
+  <xsl:if test="$toc.listitem.type != 'li' and
+                  ( (self::set or self::book or self::part) or 
+                        $toc.section.depth > $depth) and 
                 ( ($qanda.in.toc = 0 and count($nodes)&gt;0) or
                   ($qanda.in.toc != 0 and count($nodes.plus)&gt;0) )
                 and $toc.max.depth > $depth.from.context">

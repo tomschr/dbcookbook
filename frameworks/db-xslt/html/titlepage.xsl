@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 8816 2010-08-10 11:56:35Z mzjn $
+     $Id: titlepage.xsl 9147 2011-11-12 00:05:44Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -555,7 +555,7 @@
 
       <xsl:variable name="filename">
         <xsl:call-template name="make-relative-filename">
-          <xsl:with-param name="base.dir" select="$base.dir"/>
+          <xsl:with-param name="base.dir" select="$chunk.base.dir"/>
 	  <xsl:with-param name="base.name" select="$file"/>
         </xsl:call-template>
       </xsl:variable>
@@ -806,7 +806,7 @@
 
       <xsl:variable name="filename">
         <xsl:call-template name="make-relative-filename">
-          <xsl:with-param name="base.dir" select="$base.dir"/>
+          <xsl:with-param name="base.dir" select="$chunk.base.dir"/>
           <xsl:with-param name="base.name" select="$file"/>
         </xsl:call-template>
       </xsl:variable>

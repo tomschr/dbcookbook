@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?>
-<!--This file was created automatically by html2xhtml-->
-<!--from the HTML stylesheets.-->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 8816 2010-08-10 11:56:35Z mzjn $
+     $Id: titlepage.xsl 9147 2011-11-12 00:05:44Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -537,7 +534,7 @@
 
       <xsl:variable name="filename">
         <xsl:call-template name="make-relative-filename">
-          <xsl:with-param name="base.dir" select="$base.dir"/>
+          <xsl:with-param name="base.dir" select="$chunk.base.dir"/>
 	  <xsl:with-param name="base.name" select="$file"/>
         </xsl:call-template>
       </xsl:variable>
@@ -584,7 +581,7 @@
 </xsl:template>
 
 <xsl:template match="legalnotice/title" mode="titlepage.mode">
-  <p class="legalnotice-title"><strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></strong></p>
+  <p class="legalnotice-title"><strong><xsl:apply-templates/></strong></p>
 </xsl:template>
 
 <xsl:template match="lineage" mode="titlepage.mode">
@@ -762,7 +759,7 @@
       <table border="1" width="100%" summary="Revision history">
         <tr>
           <th align="{$direction.align.start}" valign="top" colspan="{$numcols}">
-            <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
+            <strong>
               <xsl:call-template name="gentext">
                 <xsl:with-param name="key" select="'RevHistory'"/>
               </xsl:call-template>
@@ -788,7 +785,7 @@
 
       <xsl:variable name="filename">
         <xsl:call-template name="make-relative-filename">
-          <xsl:with-param name="base.dir" select="$base.dir"/>
+          <xsl:with-param name="base.dir" select="$chunk.base.dir"/>
           <xsl:with-param name="base.name" select="$file"/>
         </xsl:call-template>
       </xsl:variable>

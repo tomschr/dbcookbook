@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: block.xsl 8831 2010-08-13 17:08:49Z mzjn $
+     $Id: block.xsl 9158 2011-11-24 00:12:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -64,7 +64,9 @@
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:call-template name="locale.html.attributes"/>
+          <xsl:call-template name="common.html.attributes">
+            <xsl:with-param name="class" select="''"/>
+          </xsl:call-template>
         </xsl:otherwise>
       </xsl:choose>
       <xsl:copy-of select="$content"/>

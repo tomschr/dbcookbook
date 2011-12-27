@@ -1,10 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?>
-<!--This file was created automatically by html2xhtml-->
-<!--from the HTML stylesheets.-->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: lists.xsl 8524 2009-10-10 02:45:47Z abdelazer $
+     $Id: lists.xsl 9125 2011-10-09 21:39:38Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -16,6 +13,15 @@
 <!-- ==================================================================== -->
 
 <xsl:template match="itemizedlist">
+  <!-- Handle spacing="compact" as multiple class attribute instead
+       of the deprecated HTML compact attribute -->
+  <xsl:variable name="default.class">
+    <xsl:value-of select="local-name()"/>
+    <xsl:if test="@spacing = 'compact'">
+      <xsl:text> compact</xsl:text>
+    </xsl:if>
+  </xsl:variable>
+  
   <div>
     <xsl:call-template name="common.html.attributes"/>
     <xsl:call-template name="anchor"/>
@@ -27,18 +33,15 @@
     <xsl:apply-templates select="*[not(self::listitem                   or self::title                   or self::titleabbrev)]                 |comment()[not(preceding-sibling::listitem)]                 |processing-instruction()[not(preceding-sibling::listitem)]"/>
 
     <ul>
-      <xsl:call-template name="generate.class.attribute"/>
+      <xsl:call-template name="generate.class.attribute">
+        <xsl:with-param name="class" select="$default.class"/>
+      </xsl:call-template>
       <xsl:if test="$css.decoration != 0">
         <xsl:attribute name="type">
           <xsl:call-template name="list.itemsymbol"/>
         </xsl:attribute>
       </xsl:if>
 
-      <xsl:if test="@spacing='compact'">
-        <xsl:attribute name="compact">
-          <xsl:value-of select="@spacing"/>
-        </xsl:attribute>
-      </xsl:if>
       <xsl:apply-templates select="listitem                     |comment()[preceding-sibling::listitem]                     |processing-instruction()[preceding-sibling::listitem]"/>
     </ul>
   </div>
@@ -105,6 +108,15 @@
 </xsl:template>
 
 <xsl:template match="orderedlist">
+  <!-- Handle spacing="compact" as multiple class attribute instead
+       of the deprecated HTML compact attribute -->
+  <xsl:variable name="default.class">
+    <xsl:value-of select="local-name()"/>
+    <xsl:if test="@spacing = 'compact'">
+      <xsl:text> compact</xsl:text>
+    </xsl:if>
+  </xsl:variable>
+  
   <xsl:variable name="start">
     <xsl:call-template name="orderedlist-starting-number"/>
   </xsl:variable>
@@ -145,7 +157,9 @@
     <xsl:choose>
       <xsl:when test="@inheritnum='inherit' and ancestor::listitem[parent::orderedlist]">
         <table border="0">
-          <xsl:call-template name="generate.class.attribute"/>
+          <xsl:call-template name="generate.class.attribute">
+            <xsl:with-param name="class" select="$default.class"/>
+          </xsl:call-template>
           <col align="{$direction.align.start}" valign="top"/>
           <tbody>
             <xsl:apply-templates mode="orderedlist-table" select="listitem                         |comment()[preceding-sibling::listitem]                         |processing-instruction()[preceding-sibling::listitem]"/>
@@ -154,7 +168,9 @@
       </xsl:when>
       <xsl:otherwise>
         <ol>
-          <xsl:call-template name="generate.class.attribute"/>
+          <xsl:call-template name="generate.class.attribute">
+            <xsl:with-param name="class" select="$default.class"/>
+          </xsl:call-template>
           <xsl:if test="$start != '1'">
             <xsl:attribute name="start">
               <xsl:value-of select="$start"/>
@@ -163,11 +179,6 @@
           <xsl:if test="$numeration != ''">
             <xsl:attribute name="type">
               <xsl:value-of select="$type"/>
-            </xsl:attribute>
-          </xsl:if>
-          <xsl:if test="@spacing='compact'">
-            <xsl:attribute name="compact">
-              <xsl:value-of select="@spacing"/>
             </xsl:attribute>
           </xsl:if>
           <xsl:apply-templates select="listitem                         |comment()[preceding-sibling::listitem]                         |processing-instruction()[preceding-sibling::listitem]"/>
@@ -239,6 +250,15 @@
   <xsl:variable name="pi-presentation">
     <xsl:call-template name="pi.dbhtml_list-presentation"/>
   </xsl:variable>
+  <!-- Handle spacing="compact" as multiple class attribute instead
+       of the deprecated HTML compact attribute -->
+  <xsl:variable name="default.class">
+    <xsl:value-of select="local-name()"/>
+    <xsl:if test="@spacing = 'compact'">
+      <xsl:text> compact</xsl:text>
+    </xsl:if>
+  </xsl:variable>
+  
 
   <xsl:variable name="presentation">
     <xsl:choose>
@@ -278,6 +298,9 @@
         <!-- Preserve order of PIs and comments -->
         <xsl:apply-templates select="*[not(self::varlistentry                     or self::title                     or self::titleabbrev)]                   |comment()[not(preceding-sibling::varlistentry)]                   |processing-instruction()[not(preceding-sibling::varlistentry)]"/>
         <table border="0">
+          <xsl:call-template name="generate.class.attribute">
+            <xsl:with-param name="class" select="$default.class"/>
+          </xsl:call-template>
           <xsl:if test="$list-width != ''">
             <xsl:attribute name="width">
               <xsl:value-of select="$list-width"/>
@@ -304,6 +327,9 @@
         <!-- Preserve order of PIs and comments -->
         <xsl:apply-templates select="*[not(self::varlistentry                     or self::title                     or self::titleabbrev)]                   |comment()[not(preceding-sibling::varlistentry)]                   |processing-instruction()[not(preceding-sibling::varlistentry)]"/>
         <dl>
+          <xsl:call-template name="generate.class.attribute">
+            <xsl:with-param name="class" select="$default.class"/>
+          </xsl:call-template>
           <xsl:apply-templates select="varlistentry                       |comment()[preceding-sibling::varlistentry]                       |processing-instruction()[preceding-sibling::varlistentry]"/>
         </dl>
       </xsl:otherwise>
@@ -775,7 +801,7 @@
 <xsl:template match="step/title">
   <p>
     <xsl:call-template name="common.html.attributes"/>
-    <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
+    <strong>
       <xsl:apply-templates/>
     </strong>
   </p>
@@ -951,7 +977,8 @@
         </table>
       </xsl:when>
       <xsl:otherwise>
-        <dl compact="compact">
+        <dl>
+          <xsl:apply-templates select="." mode="class.attribute"/>
           <xsl:apply-templates select="callout                                 |comment()[preceding-sibling::callout]                                 |processing-instruction()[preceding-sibling::callout]"/>
         </dl>
       </xsl:otherwise>

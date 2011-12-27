@@ -5,7 +5,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: fop1.xsl 8913 2010-10-01 04:44:57Z bobstayton $
+     $Id: fop1.xsl 9017 2011-06-21 16:51:51Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -52,7 +52,7 @@
 	  <xsl:value-of select="$bookmarks.state"/>
 	</xsl:attribute>
         <fo:bookmark-title>
-          <xsl:value-of select="normalize-space(translate($bookmark-label, $a-dia, $a-asc))"/>
+          <xsl:value-of select="normalize-space($bookmark-label)"/>
         </fo:bookmark-title>
         <xsl:apply-templates select="*" mode="fop1.outline"/>
       </fo:bookmark>
@@ -63,7 +63,7 @@
 	  <xsl:value-of select="$bookmarks.state"/>
 	</xsl:attribute>
         <fo:bookmark-title>
-          <xsl:value-of select="normalize-space(translate($bookmark-label, $a-dia, $a-asc))"/>
+          <xsl:value-of select="normalize-space($bookmark-label)"/>
         </fo:bookmark-title>
       </fo:bookmark>
 
@@ -137,7 +137,9 @@
     <xsl:apply-templates select="/*[1]" mode="label.markup"/>
     <xsl:apply-templates select="/*[1]" mode="title.markup"/>
     <xsl:variable name="subtitle">
-      <xsl:apply-templates select="/*[1]" mode="subtitle.markup"/>
+      <xsl:apply-templates select="/*[1]" mode="subtitle.markup">
+        <xsl:with-param name="verbose" select="0"/>
+      </xsl:apply-templates>
     </xsl:variable>
     <xsl:if test="$subtitle !=''">
       <xsl:text> - </xsl:text>
@@ -167,6 +169,9 @@
                 </xsl:when>
                 <xsl:when test="$authors[self::corpauthor]">
                   <xsl:value-of select="$authors"/>
+                </xsl:when>
+                <xsl:when test="$authors[orgname]">
+                  <xsl:value-of select="$authors/orgname"/>
                 </xsl:when>
                 <xsl:otherwise>
                   <xsl:call-template name="person.name">

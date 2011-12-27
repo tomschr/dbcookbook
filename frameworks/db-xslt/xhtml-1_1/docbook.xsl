@@ -6,7 +6,7 @@
 <xsl:output method="xml" encoding="UTF-8" indent="no" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"/>
 
 <!-- ********************************************************************
-     $Id: docbook.xsl 8783 2010-07-28 10:59:39Z mzjn $
+     $Id: docbook.xsl 9141 2011-10-31 20:37:22Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -300,6 +300,15 @@ var popup_</xsl:text>
   <xsl:param name="node" select="."/>
 </xsl:template>
 
+<!-- To use the same stripped nodeset everywhere, it should
+be created as a global variable here.
+Used by docbook.xsl, chunk-code.xsl and chunkfast.xsl -->
+<xsl:variable name="no.namespace">
+  <xsl:if test="$exsl.node.set.available != 0                     and (*/self::ng:* or */self::db:*)">
+    <xsl:apply-templates select="/*" mode="stripNS"/>
+  </xsl:if>
+</xsl:variable>
+
 <xsl:template match="/">
   <!-- * Get a title for current doc so that we let the user -->
   <!-- * know what document we are processing at this point. -->
@@ -322,16 +331,13 @@ var popup_</xsl:text>
           <xsl:text>stripped namespace before processing</xsl:text>
         </xsl:with-param>
       </xsl:call-template>
-      <xsl:variable name="nons">
-        <xsl:apply-templates mode="stripNS"/>
-      </xsl:variable>
-      <!--
+      <!-- DEBUG: to save stripped document.
       <xsl:message>Saving stripped document.</xsl:message>
       <xsl:call-template name="write.chunk">
         <xsl:with-param name="filename" select="'/tmp/stripped.xml'"/>
         <xsl:with-param name="method" select="'xml'"/>
         <xsl:with-param name="content">
-          <xsl:copy-of select="exsl:node-set($nons)"/>
+          <xsl:copy-of select="exsl:node-set($no.namespace)"/>
         </xsl:with-param>
       </xsl:call-template>
       -->
@@ -345,7 +351,7 @@ var popup_</xsl:text>
           <xsl:text>processing stripped document</xsl:text>
         </xsl:with-param>
       </xsl:call-template>
-      <xsl:apply-templates select="exsl:node-set($nons)"/>
+      <xsl:apply-templates select="exsl:node-set($no.namespace)"/>
     </xsl:when>
     <!-- Can't process unless namespace removed -->
     <xsl:when test="*/self::ng:* or */self::db:*">

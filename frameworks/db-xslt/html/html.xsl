@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: html.xsl 8556 2009-12-11 00:05:45Z bobstayton $
+     $Id: html.xsl 9158 2011-11-24 00:12:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -52,7 +52,16 @@
   <xsl:apply-templates select="." mode="html.title.attribute"/>
 </xsl:template>
 
+<xsl:template match="acronym|abbrev" mode="html.title.attribute">
+  <xsl:if test="alt">
+    <xsl:attribute name="title">
+      <xsl:value-of select="normalize-space(alt)"/>
+    </xsl:attribute>
+  </xsl:if>
+</xsl:template>
+
 <!-- Generate a title attribute for the context node -->
+<!-- This may be the target of an xref -->
 <xsl:template match="*" mode="html.title.attribute">
   <xsl:variable name="is.title">
     <xsl:call-template name="gentext.template.exists">
@@ -195,7 +204,7 @@
   <xsl:param name="context" select="."/>
   <xsl:param name="object" select="."/>
   <xsl:if test="$manifest.in.base.dir = 0">
-    <xsl:value-of select="$base.dir"/>
+    <xsl:value-of select="$chunk.base.dir"/>
   </xsl:if>
   <xsl:call-template name="href.target">
     <xsl:with-param name="context" select="$context"/>
@@ -287,11 +296,17 @@
   <xsl:param name="class" select="local-name(.)"/>
   <!-- permit customization of class attributes -->
   <!-- Use element name by default -->
-  <xsl:attribute name="class">
+  <xsl:variable name="class.value">
     <xsl:apply-templates select="." mode="class.value">
       <xsl:with-param name="class" select="$class"/>
     </xsl:apply-templates>
-  </xsl:attribute>
+  </xsl:variable>
+
+  <xsl:if test="string-length(normalize-space($class.value)) != 0">
+    <xsl:attribute name="class">
+      <xsl:value-of select="$class.value"/>
+    </xsl:attribute>
+  </xsl:if> 
 </xsl:template>
 
 <xsl:template match="*" mode="class.value">
@@ -321,7 +336,6 @@
   <xsl:apply-templates select="." mode="class.attribute">
     <xsl:with-param name="class" select="$class"/>
   </xsl:apply-templates>
-  <xsl:call-template name="generate.html.title"/>
 </xsl:template>
 
 <!-- Apply common attributes not including class -->
@@ -332,7 +346,6 @@
 <xsl:template match="*" mode="locale.html.attributes">
   <xsl:call-template name="generate.html.lang"/>
   <xsl:call-template name="dir"/>
-  <xsl:call-template name="generate.html.title"/>
 </xsl:template>
 
 <!-- Pass through any lang attributes -->
@@ -603,7 +616,7 @@
     </xsl:call-template>
   </xsl:variable>
 
-  <xsl:variable name="path" select="concat($base.dir, $file)"/>
+  <xsl:variable name="path" select="concat($chunk.base.dir, $file)"/>
   <xsl:value-of select="$path"/>
   
 </xsl:template>

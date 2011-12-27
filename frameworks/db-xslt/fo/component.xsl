@@ -5,7 +5,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: component.xsl 8320 2009-03-12 17:43:44Z mzjn $
+     $Id: component.xsl 8936 2010-11-23 22:03:32Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -356,6 +356,20 @@
 <xsl:template match="colophon/title"></xsl:template>
 <xsl:template match="colophon/subtitle"></xsl:template>
 <xsl:template match="colophon/titleabbrev"></xsl:template>
+
+<!-- article/colophon has no page sequence -->
+<xsl:template match="article/colophon">
+  <xsl:variable name="id">
+    <xsl:call-template name="object.id"/>
+  </xsl:variable>
+
+  <fo:block id="{$id}">
+    <fo:block xsl:use-attribute-sets="component.titlepage.properties">
+      <xsl:call-template name="colophon.titlepage"/>
+    </fo:block>
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
 
 <!-- ==================================================================== -->
 

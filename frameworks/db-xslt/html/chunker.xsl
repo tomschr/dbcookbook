@@ -9,7 +9,7 @@
                 extension-element-prefixes="saxon redirect lxslt exsl">
 
 <!-- ********************************************************************
-     $Id: chunker.xsl 8526 2009-10-14 18:59:40Z bobstayton $
+     $Id: chunker.xsl 9147 2011-11-12 00:05:44Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -33,7 +33,20 @@
 <xsl:param name="chunker.output.doctype-system" select="''"/>
 <xsl:param name="chunker.output.media-type" select="''"/>
 <xsl:param name="chunker.output.cdata-section-elements" select="''"/>
-<xsl:param name="chunker.output.quiet" select="0"/>
+
+<!-- Make sure base.dir has a trailing slash now -->
+<xsl:param name="chunk.base.dir">
+  <xsl:choose>
+    <xsl:when test="string-length($base.dir) = 0"></xsl:when>
+    <!-- make sure to add trailing slash if omitted by user -->
+    <xsl:when test="substring($base.dir, string-length($base.dir), 1) = '/'">
+      <xsl:value-of select="$base.dir"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="concat($base.dir, '/')"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:param>
 
 <xsl:param name="saxon.character.representation" select="'entity;decimal'"/>
 
@@ -43,30 +56,17 @@
   <xsl:param name="base.dir" select="'./'"/>
   <xsl:param name="base.name" select="''"/>
 
-  <xsl:message>Foooo</xsl:message>
   <xsl:choose>
-    <!-- Saxon 9.x -->
-    <xsl:when test="element-available('xsl:document') and
-                    system-property('xsl:version') = '2.0'">
-      <xsl:choose>
-        <xsl:when test="count(parent::*) = 0">
-          <xsl:value-of select="concat($base.dir,$base.name)"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$base.name"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:when>
     <!-- put Saxon first to work around a bug in libxslt -->
     <xsl:when test="element-available('saxon:output')">
       <!-- Saxon doesn't make the chunks relative -->
-      <xsl:value-of select="concat($base.dir,$base.name)"/>
+      <xsl:value-of select="concat($chunk.base.dir,$base.name)"/>
     </xsl:when>
     <xsl:when test="element-available('exsl:document')">
       <!-- EXSL document does make the chunks relative, I think -->
       <xsl:choose>
         <xsl:when test="count(parent::*) = 0">
-          <xsl:value-of select="concat($base.dir,$base.name)"/>
+          <xsl:value-of select="concat($chunk.base.dir,$base.name)"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="$base.name"/>
@@ -75,14 +75,12 @@
     </xsl:when>
     <xsl:when test="element-available('redirect:write')">
       <!-- Xalan doesn't make the chunks relative -->
-      <xsl:value-of select="concat($base.dir,$base.name)"/>
+      <xsl:value-of select="concat($chunk.base.dir,$base.name)"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:message terminate="yes">
         <xsl:text>Don't know how to chunk with </xsl:text>
         <xsl:value-of select="system-property('xsl:vendor')"/>
-        [<xsl:value-of
-          select="boolean(element-available('saxon:output'))"/>}
       </xsl:message>
     </xsl:otherwise>
   </xsl:choose>
@@ -90,7 +88,7 @@
 
 <xsl:template name="write.chunk">
   <xsl:param name="filename" select="''"/>
-  <xsl:param name="quiet" select="$chunker.output.quiet"/>
+  <xsl:param name="quiet" select="$chunk.quietly"/>
   <xsl:param name="suppress-context-node-name" select="0"/>
   <xsl:param name="message-prolog"/>
   <xsl:param name="message-epilog"/>
@@ -246,128 +244,6 @@
       </xsl:choose>
     </xsl:when>
 
-    <!-- Saxon 9.x -->
-    <xsl:when test="element-available('xsl:document')">
-      <xsl:choose>
-        <!-- Handle the permutations ... -->
-        <xsl:when test="$media-type != ''">
-          <xsl:choose>
-            <xsl:when test="$doctype-public != '' and $doctype-system != ''">
-              <xsl:document href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            media-type="{$media-type}"
-                            doctype-public="{$doctype-public}"
-                            doctype-system="{$doctype-system}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:when>
-            <xsl:when test="$doctype-public != '' and $doctype-system = ''">
-              <xsl:document href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            media-type="{$media-type}"
-                            doctype-public="{$doctype-public}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:when>
-            <xsl:when test="$doctype-public = '' and $doctype-system != ''">
-              <xsl:document saxon:character-representation="{$saxon.character.representation}"
-                            href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            media-type="{$media-type}"
-                            doctype-system="{$doctype-system}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:when>
-            <xsl:otherwise><!-- $doctype-public = '' and $doctype-system = ''"> -->
-              <xsl:document saxon:character-representation="{$saxon.character.representation}"
-                            href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            media-type="{$media-type}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:choose>
-            <xsl:when test="$doctype-public != '' and $doctype-system != ''">
-              <xsl:document saxon:character-representation="{$saxon.character.representation}"
-                            href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            doctype-public="{$doctype-public}"
-                            doctype-system="{$doctype-system}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:when>
-            <xsl:when test="$doctype-public != '' and $doctype-system = ''">
-              <xsl:document saxon:character-representation="{$saxon.character.representation}"
-                            href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            doctype-public="{$doctype-public}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:when>
-            <xsl:when test="$doctype-public = '' and $doctype-system != ''">
-              <xsl:document saxon:character-representation="{$saxon.character.representation}"
-                            href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            doctype-system="{$doctype-system}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:when>
-            <xsl:otherwise><!-- $doctype-public = '' and $doctype-system = ''"> -->
-              <xsl:document saxon:character-representation="{$saxon.character.representation}"
-                            href="{$filename}"
-                            method="{$method}"
-                            encoding="{$encoding}"
-                            indent="{$indent}"
-                            omit-xml-declaration="{$omit-xml-declaration}"
-                            cdata-section-elements="{$cdata-section-elements}"
-                            standalone="{$standalone}">
-                <xsl:copy-of select="$content"/>
-              </xsl:document>
-            </xsl:otherwise>
-          </xsl:choose>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:when>
-
-
     <xsl:when test="element-available('saxon:output')">
       <xsl:choose>
         <!-- Handle the permutations ... -->
@@ -510,7 +386,7 @@
 
 <xsl:template name="write.chunk.with.doctype">
   <xsl:param name="filename" select="''"/>
-  <xsl:param name="quiet" select="$chunker.output.quiet"/>
+  <xsl:param name="quiet" select="$chunk.quietly"/>
 
   <xsl:param name="method" select="$chunker.output.method"/>
   <xsl:param name="encoding" select="$chunker.output.encoding"/>
@@ -544,7 +420,7 @@
 
 <xsl:template name="write.text.chunk">
   <xsl:param name="filename" select="''"/>
-  <xsl:param name="quiet" select="$chunker.output.quiet"/>
+  <xsl:param name="quiet" select="$chunk.quietly"/>
   <xsl:param name="suppress-context-node-name" select="0"/>
   <xsl:param name="message-prolog"/>
   <xsl:param name="message-epilog"/>

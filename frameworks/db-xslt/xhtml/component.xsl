@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="ASCII"?>
-<!--This file was created automatically by html2xhtml-->
-<!--from the HTML stylesheets.-->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
      $Id: component.xsl 8568 2010-01-11 03:16:56Z bobstayton $
@@ -55,7 +52,7 @@
 
   <xsl:if test="$subtitle">
     <h3 class="subtitle">
-      <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
+      <em>
         <xsl:apply-templates select="$node" mode="object.subtitle.markup"/>
       </em>
     </h3>

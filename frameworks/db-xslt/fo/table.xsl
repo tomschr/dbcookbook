@@ -13,7 +13,7 @@
 <xsl:include href="../common/table.xsl"/>
 
 <!-- ********************************************************************
-     $Id: table.xsl 8814 2010-08-09 21:19:53Z bobstayton $
+     $Id: table.xsl 9059 2011-09-12 16:26:32Z mzjn $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -27,7 +27,7 @@
   <info>
     <title>Formatting Object Table Reference</title>
     <releaseinfo role="meta">
-      $Id: table.xsl 8814 2010-08-09 21:19:53Z bobstayton $
+      $Id: table.xsl 9059 2011-09-12 16:26:32Z mzjn $
     </releaseinfo>
   </info>
   <partintro xml:id="partintro">
@@ -1422,6 +1422,7 @@
 
       <xsl:variable name="colspec.colwidth">
         <xsl:choose>
+          <xsl:when test="normalize-space($colspec/@colwidth)='*'">1*</xsl:when>
           <xsl:when test="$colspec/@colwidth">
             <xsl:value-of select="$colspec/@colwidth"/>
           </xsl:when>

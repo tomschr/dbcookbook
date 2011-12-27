@@ -4,7 +4,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 8804 2010-08-09 16:41:43Z bobstayton $
+     $Id: titlepage.xsl 9161 2011-11-26 23:02:55Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -280,6 +280,10 @@
   <xsl:apply-templates mode="titlepage.mode"/>
 </xsl:template>
 
+<xsl:template match="collabname" mode="titlepage.mode">
+  <xsl:apply-templates mode="titlepage.mode"/>
+</xsl:template>
+
 <xsl:template match="confgroup" mode="titlepage.mode">
   <fo:block>
     <xsl:apply-templates mode="titlepage.mode"/>
@@ -407,7 +411,7 @@
 </xsl:template>
 
 <xsl:template match="itermset" mode="titlepage.mode">
-  <!-- discard -->
+  <xsl:apply-templates select="indexterm"/>
 </xsl:template>
 
 <xsl:template match="invpartnumber" mode="titlepage.mode">
