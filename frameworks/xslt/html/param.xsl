@@ -13,6 +13,7 @@
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
   <xsl:param name="html.stylesheet">css/dbcookbook.css</xsl:param>
+  <xsl:param name="html.ext">.html</xsl:param>
   <xsl:param name="inherit.keywords" select="1"/>
 
   <xsl:param name="highlight.source" select="1"/>
