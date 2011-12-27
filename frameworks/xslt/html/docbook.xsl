@@ -19,5 +19,6 @@
   <xsl:include href="usermeta.xsl"/> 
   <xsl:include href="piwik.xsl"/>
   <xsl:include href="footer.xsl"/>
+  <xsl:include href="titlepage.templates.xsl"/>
   
 </xsl:stylesheet>
