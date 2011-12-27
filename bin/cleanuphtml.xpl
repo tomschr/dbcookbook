@@ -7,21 +7,23 @@
   xmlns:cx="http://xmlcalabash.com/ns/extensions"
   xmlns:cxf="http://xmlcalabash.com/ns/extensions/fileutils"
   xmlns:c="http://www.w3.org/ns/xproc-step">
- 
+ <p:option name="debug" select="1" cx:type="1|0"/>
+  
  <p:import href="xpl/library-1.0.xpl"/>
- 
+ <p:import href="xpl/tee.xpl"/>
+  
   <p:input port="source">
     <p:empty/>
   </p:input>
   <!--<p:output port="result" sequence="true">
     <!-\-<p:pipe port="result"/>-\->
   </p:output>-->
-  <p:option name="path" select="'../build/html/'"/>
+  <p:option name="path" select="'../build/'"/>
   <p:option name="exclude-filter" select="'[A-Z].*\.html'"/>
   <p:option name="include-filter" select="'^.*\.html$'"/>
 
   <p:directory-list name="buildhtml">
-    <p:with-option name="path" select="$path"/>
+    <p:with-option name="path" select="concat($path, 'tmp/')"/>
     <p:with-option name="exclude-filter" select="$exclude-filter"/>
     <p:with-option name="include-filter" select="$include-filter"/>
   </p:directory-list>
@@ -45,7 +47,10 @@
     </p:documentation> 
   </p:string-replace>
     
-  <!--<p:store name="save" href="dirlisting.out"/>-->
+  <cx:tee name="tee">
+    <p:with-option name="debug" select="$debug"/>
+    <p:with-option name="href" select="concat($path, 'tmp/dirlisting.xml')"/>
+  </cx:tee>
   
   <p:for-each name="forloop">
     <p:iteration-source select="/c:directory/c:file"/>
@@ -75,7 +80,7 @@
     </p:xslt>
     
     <p:store name="write2file">
-      <p:with-option name="href" select="concat($path,'/chunks/',$file)"/>
+      <p:with-option name="href" select="concat($path,'html/',$file)"/>
     </p:store>
   </p:for-each>
   
