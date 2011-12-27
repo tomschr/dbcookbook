@@ -58,14 +58,18 @@
   </xsl:template>
   
   <!-- Remove obsolete elements and attributes -->
+  <xsl:template match="/h:html/@version"/>
   <xsl:template match="h:br[@class='example-break']"/>
   <xsl:template match="h:br[@class='figure-break']"/>
   <xsl:template match="h:div/@title"/>
   <xsl:template match="h:a/@title"/>
+  <xsl:template match="h:a/@target"/>
   <xsl:template match="h:blockquote/@title"/>
   <xsl:template match="h:p/@title"/>
-  <xsl:template match="/h:html/@version"/>
   
+  <xsl:template match="h:ul/@class"/>
+  
+  <!-- Remove any id on headers as they are added to <section> -->
   <xsl:template match="h:h2[@class='title']/@id"/>
   <xsl:template match="h:h3[@class='title']/@id"/>
   <xsl:template match="h:h4[@class='title']/@id"/>
@@ -219,7 +223,6 @@
   <xsl:template match="h:div[@class='figure']">
     <xsl:call-template name="create-div-wrapper"/>
   </xsl:template>
-  
   <xsl:template match="h:div[@class='example-title']">
     <div class="title">
       <xsl:apply-templates/>
@@ -277,6 +280,15 @@
     </div>
   </xsl:template>
   
+  <!-- -->
+  <xsl:template match="h:p[h:span[@class='formalpara-title']]">
+    <div class="formalpara">
+      <p><xsl:apply-templates/></p>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:span[@class='formalpara-title']">
+    <b><xsl:apply-templates/></b>
+  </xsl:template>
   
   <!-- Authors and other -->
   <xsl:template match="h:div[@class='author']">
