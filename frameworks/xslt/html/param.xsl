@@ -4,15 +4,15 @@
   xmlns="http://www.w3.org/1999/xhtml">
   
   <!--<xsl:param name="css.decoration" select="0"/>-->
-  <xsl:param name="base.dir">build/html/</xsl:param>
+  <xsl:param name="base.dir">build/tmp/</xsl:param>
   <!--<xsl:param name="chunk.tocs.and.lots" select="1"/>-->
-  <xsl:param name="custom.css.source">dbcookbook.css.xml</xsl:param>
+  <xsl:param name="docbook.css.link" select="0"/>
   <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="img.src.path">images/</xsl:param>
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
-
+  <xsl:param name="html.stylesheet">css/dbcookbook.css</xsl:param>
   <xsl:param name="inherit.keywords" select="1"/>
 
   <xsl:param name="highlight.source" select="1"/>
@@ -34,6 +34,7 @@
   <xsl:param name="use.viewport" select="0"/>
   
   <xsl:param name="use.piwik" select="0"/>
+  <xsl:param name="generate.breadcrumbs" select="0"/>
   
   <!-- ================================================== -->
   <xsl:param name="up.navigation">
