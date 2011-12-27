@@ -321,6 +321,11 @@
     <b><xsl:apply-templates/></b>
   </xsl:template>
   
+  <!-- Remove the outer span for quotes -->
+  <xsl:template match="h:span[@class='quote'][not(h:span[@class='quote'])]">
+    <xsl:apply-templates/>
+  </xsl:template>
+  
   <!-- Authors and other -->
   <xsl:template match="h:div[@class='author']">
     <xsl:call-template name="create-personname"/>
