@@ -116,7 +116,6 @@
       <header class="{@class}-titlepage">
         <xsl:apply-templates select="h:div[@class='titlepage']"/>        
       </header>
-      <xsl:apply-templates select="h:div[@class='toc']"/>
       <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>  
     </article>
   </xsl:template>
@@ -180,7 +179,8 @@
   <!-- TOCs -->
   <xsl:template match="h:div[@class='toc']">
     <xsl:copy>
-      <xsl:copy-of select="@*|node()"/>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
   <xsl:template match="h:div[@class='toc-title']">
