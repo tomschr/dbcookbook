@@ -251,7 +251,7 @@
   </xsl:template>
   <xsl:template match="h:ul">
     <xsl:copy>
-        <xsl:if test="ancestor::h:div[@class='toc']">
+        <xsl:if test="ancestor::h:div[@class='toc' or starts-with(@class,'list-of-')]">
           <xsl:attribute name="class">toc</xsl:attribute>
         </xsl:if>
       <xsl:apply-templates/>
@@ -264,7 +264,8 @@
   </xsl:template>
   <xsl:template match="h:div[starts-with(@class, 'list-of-')]">
     <xsl:copy>
-      <xsl:copy-of select="@*|node()"/>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
   <xsl:template match="h:div[starts-with(@class, 'list-of-')]/h:dl">
