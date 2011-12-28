@@ -63,6 +63,7 @@ code, .command, pre {
 .chapter-titlepage h2,
 .glossary-titlepage h2,
 .preface-titlepage h2 { font-size:262.5%; }
+body .section-titlepage h3,
 .appendix .section-titlepage h3,
 .chapter .section-titlepage h3,
 .preface .section-titlepage h3 { font-size: 162.5%; }
