@@ -20,3 +20,4 @@ xml/fo/xslt/*.pdf
 
 build/*
 test-output/*
+tmp/
