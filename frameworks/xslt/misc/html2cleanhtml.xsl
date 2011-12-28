@@ -180,6 +180,11 @@
       <h2><xsl:apply-templates/></h2>
     </div>
   </xsl:template>
+  <xsl:template match="h:h3[ancestor::h:section[@class='preface']]">
+    <div class="preface-titlepage">
+      <h2><xsl:apply-templates/></h2>
+    </div>
+  </xsl:template>
   <xsl:template match="h:h2[ancestor::h:section[@class='section']]">
     <div class="section-titlepage">
       <h3><xsl:apply-templates/></h3>
@@ -208,6 +213,9 @@
   <xsl:template match="h:section[@class='chapter']">
     <xsl:call-template name="create-article"/>
   </xsl:template>
+  <xsl:template match="h:section[@class='preface']">
+    <xsl:call-template name="create-article"/>
+  </xsl:template>
   <xsl:template match="h:div[@class='preface']">
     <xsl:call-template name="create-article"/>
   </xsl:template>
@@ -222,6 +230,14 @@
   <xsl:template match="h:div[@class='titlepage']">
     <xsl:apply-templates/>
   </xsl:template>    
+  
+  <xsl:template match="h:div[@class='abstract']">
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  
   <!-- TOCs -->
   <xsl:template match="h:div[@class='toc']">
     <xsl:copy>
