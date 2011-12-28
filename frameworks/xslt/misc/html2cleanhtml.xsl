@@ -71,6 +71,11 @@
     </xsl:choose>
   </xsl:template>
   
+  <xsl:template match="@xml:lang">
+    <xsl:attribute name="lang">
+      <xsl:value-of select="."/>
+    </xsl:attribute>
+  </xsl:template>
   <!-- Remove obsolete elements and attributes -->
   <xsl:template match="h:table/h:h1"/>
   <xsl:template match="/h:html/@version"/>
@@ -80,7 +85,8 @@
   <xsl:template match="h:a/@target"/>
   <xsl:template match="h:blockquote/@title"/>
   <xsl:template match="h:p/@title"/>
-  
+  <xsl:template match="h:p[@class='legalnotice-title']"/>
+
   <xsl:template match="h:ul/@class"/>
   
   <!-- Remove any id on headers as they are added to <section> -->
@@ -163,9 +169,30 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-    
+  
   <xsl:template match="h:div[@class='blockquote-title']">
     <h3><xsl:apply-templates/></h3>
+  </xsl:template>
+  
+  <xsl:template match="h:div[@class='legalnotice']">
+    <xsl:copy>
+      <xsl:apply-templates select="@class|@xml:lang"/>
+      <xsl:if test="h:a/@id">
+        <xsl:apply-templates select="h:a/@id"/>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='sidebar']">
+    <xsl:copy>
+      <xsl:apply-templates select="@*"/>
+      <header class="sidebar-titlepage">
+        <xsl:apply-templates select="h:div[@class='titlepage']" />
+      </header>
+      <div class="sidebar-content">
+        <xsl:apply-templates select="h:table" />
+      </div>
+    </xsl:copy>
   </xsl:template>
   <xsl:template match="h:div[@class='sidebar-title']">
     <h3><xsl:apply-templates/></h3>
@@ -232,11 +259,6 @@
   </xsl:template>
   <xsl:template match="h:div[@class='section']">
     <xsl:call-template name="create-section"/>
-  </xsl:template>
-  <xsl:template match="h:div[@class='sidebar']">
-    <xsl:call-template name="create-class-titlepage">
-      <xsl:with-param name="create-content" select="true()"/>
-    </xsl:call-template>
   </xsl:template>
   <xsl:template match="h:div[@class='titlepage']">
     <xsl:apply-templates/>
