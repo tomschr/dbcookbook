@@ -26,8 +26,12 @@
   
   <xsl:param name="linenumbering.everyNth" select="1"/>
   <xsl:param name="make.clean.html" select="1"/>
+  <xsl:param name="section.autolabel" select="1"/>
+  <xsl:param name="section.label.includes.component.label" select="1"/>
+  <xsl:param name="section.autolabel.max.depth">1</xsl:param>
+  
   <xsl:param name="table.borders.with.css" select="0"/>
-
+  <xsl:param name="ticket.url">https://sf.net/p/doccookbook/tickets/</xsl:param>
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
   <xsl:param name="ulink.target" select="0"/>
