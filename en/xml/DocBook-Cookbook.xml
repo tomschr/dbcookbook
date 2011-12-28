@@ -57,13 +57,9 @@
       <keyword>Customization</keyword>
       <keyword>XSLT</keyword>
     </keywordset>
-    <pubdate>Last published version: December 2011<?dbtimestamp?></pubdate>
-    <releaseinfo role="draft">Draft (Version 0.1)</releaseinfo>
-    <!--<annotation xml:id="draft">
-      <title>Draft</title>
-      <para>This book is work in progress.</para>
-    </annotation>
-    -->
+    <pubdate>Last published version: December 2011 <?dbtimestamp?></pubdate>
+    <releaseinfo role="draft">Draft (Version 0.3)</releaseinfo>
+    
     <cover xml:id="draftahead">
       <para>
         <note>
@@ -76,9 +72,8 @@
           <para>Visit this site from time to time and see how the book
             grows and how more and more of these annoyances will vanish.
             To accelerate this process, send me praise, critisism,
-            patches, donations, or even write a topic.<footnote>
-              <para>To make me smile, in this order, please. :-)</para>
-            </footnote> Read <xref linkend="dbc.preface.contrib"/> to
+            patches, donations, or even write a topic. Read 
+            <xref linkend="dbc.preface.contrib"/> to
             find more how to support me.</para>
         </note>
       </para>      
