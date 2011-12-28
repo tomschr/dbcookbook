@@ -100,28 +100,6 @@
   <xsl:template match="h:a[. = '']"/>
   
   <!-- ================================================ -->
-  
-  <xsl:template name="create-class-titlepage">
-    <xsl:param name="class" select="@class"/>
-    <xsl:param name="create-content" select="false()"/>
-    <div>
-      <xsl:apply-templates select="@*"/>
-      <div class="{$class}-titlepage">
-        <xsl:apply-templates select="h:div[@class='titlepage']"/>        
-      </div>
-      <xsl:choose>
-        <xsl:when test="$create-content">
-          <div class="{$class}-content">
-            <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>
-          </div>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:apply-templates select="*[not(self::h:div[@class='titlepage'])]"/>    
-        </xsl:otherwise>
-      </xsl:choose>
-    </div>
-  </xsl:template>
-  
   <xsl:template name="create-article">    
     <article>
       <xsl:apply-templates select="@*"/>
@@ -165,7 +143,7 @@
   <xsl:template match="h:div[@class='abstract']|
                        h:div[contains(@class, 'note')]">
     <xsl:copy>
-      <xsl:copy-of select="@*"/>
+      <xsl:apply-templates select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
@@ -271,10 +249,13 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template match="h:div[@class='toc']/h:ul">
-    <ul class="toc">
+  <xsl:template match="h:ul">
+    <xsl:copy>
+        <xsl:if test="ancestor::h:div[@class='toc']">
+          <xsl:attribute name="class">toc</xsl:attribute>
+        </xsl:if>
       <xsl:apply-templates/>
-    </ul>
+    </xsl:copy>
   </xsl:template>
   <xsl:template match="h:div[@class='toc']/h:dl">
     <dl class="toc">
