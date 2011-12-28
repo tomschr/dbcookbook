@@ -59,11 +59,12 @@ code, .command, pre {
 .book-titlepage h1 { font-size:425%; } 
 .book-titlepage h2 { font-size:262.5%; }
 .book-titlepage div.author h3 { font-size:162.5%; }
+body > .chapter h2,
 .appendix-titlepage h2,
 .chapter-titlepage h2,
 .glossary-titlepage h2,
 .preface-titlepage h2 { font-size:262.5%; }
-body .section-titlepage h3,
+body > .section .section-titlepage h3,
 .appendix .section-titlepage h3,
 .chapter .section-titlepage h3,
 .preface .section-titlepage h3 { font-size: 162.5%; }
@@ -126,6 +127,7 @@ div.legalnotice div.sidebar-titlepage h3 {
   font-weight:600;
 }
 
+body > .chapter h2,
 .book-titlepage h2,
 .book-titlepage h3 {
   font-weight:400;
