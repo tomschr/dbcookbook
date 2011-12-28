@@ -60,6 +60,7 @@ code, .command, pre {
 .book-titlepage h2 { font-size:262.5%; }
 .book-titlepage div.author h3 { font-size:162.5%; }
 body > .chapter h2,
+body > .preface h2,
 .appendix-titlepage h2,
 .chapter-titlepage h2,
 .glossary-titlepage h2,
