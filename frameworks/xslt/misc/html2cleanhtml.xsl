@@ -19,6 +19,7 @@
   exclude-result-prefixes="exsl h">
 
   <xsl:import href="copy.xsl"/>
+  <xsl:preserve-space elements="h:pre"/>
   <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
   
   <xsl:include href="../html/piwik.xsl"/>
@@ -125,12 +126,14 @@
     </article>
   </xsl:template>
   
-  <xsl:template name="create-section">    
-    <section>
+  <xsl:template name="create-section">
+    <xsl:variable name="id" select="(.//h:h1|.//h:h2|.//h:h3|.//h:h4|.//h:h5|.//h:h6)[@class='title'][1]/@id"/>    
+    <section class="section">
+      <xsl:if test="string($id) != ''">
       <xsl:attribute name="id">
-        <xsl:value-of
-          select="(.//h:h2|.//h:h3|.//h:h4|.//h:h5|.//h:h6)[@class='title'][1]/@xml:id"/>
+        <xsl:value-of select="$id"/>
       </xsl:attribute>
+      </xsl:if>
       <xsl:apply-templates select="@*"/>
       <div class="{@class}-titlepage">
         <xsl:apply-templates select="h:div[@class='titlepage']"/>        
@@ -161,6 +164,38 @@
   </xsl:template>
   
   <!-- Main structures -->
+  <xsl:template match="h:section">
+    <xsl:variable name="id" select="(.//h:h1|.//h:h2|.//h:h3|.//h:h4|.//h:h5|.//h:h6)[@class='title'][1]/@id"/> 
+    <xsl:copy>
+      <xsl:copy-of select="@*"/>
+      <xsl:if test="not(@id) and $id != ''">
+        <xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="h:h3[ancestor::h:section[@class='chapter']]">
+    <div class="chapter-titlepage">
+      <h2><xsl:apply-templates/></h2>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:h2[ancestor::h:section[@class='section']]">
+    <div class="section-titlepage">
+      <h3><xsl:apply-templates/></h3>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:h3[ancestor::h:section[@class='section']]">
+    <div class="section-titlepage">
+      <h4><xsl:apply-templates/></h4>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:h4[ancestor::h:section[@class='section']]">
+    <div class="section-titlepage">
+      <h5><xsl:apply-templates/></h5>
+    </div>
+  </xsl:template>
+  
   <xsl:template match="h:div[@class='appendix']">
     <xsl:call-template name="create-article"/>
   </xsl:template>
@@ -168,6 +203,9 @@
     <xsl:call-template name="create-article"/>
   </xsl:template>
   <xsl:template match="h:div[@class='chapter']">
+    <xsl:call-template name="create-article"/>
+  </xsl:template>
+  <xsl:template match="h:section[@class='chapter']">
     <xsl:call-template name="create-article"/>
   </xsl:template>
   <xsl:template match="h:div[@class='preface']">
@@ -191,7 +229,11 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
-  
+  <xsl:template match="h:div[@class='toc']/h:ul">
+    <ul class="toc">
+      <xsl:apply-templates/>
+    </ul>
+  </xsl:template>
   <xsl:template match="h:div[@class='toc']/h:dl">
     <dl class="toc">
       <xsl:apply-templates/>
