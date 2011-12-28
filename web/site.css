@@ -210,7 +210,7 @@ hr {
 #content {
   background-color: rgba(255, 255, 255, .95);
   background-color:white;
-  margin-top:4em;
+  margin-top:2em;
   padding:.5em 1.5em;
   -webkit-border-radius : 5px;
   -moz-border-radius : 5px;
@@ -232,28 +232,28 @@ blockquote p {
   margin-top:.5em;
 }
 
-form, .read, .flattr {
+form, .flattr {
   text-align:center;
 }
 
 /* Floats */
-.fontad {
-  width: 100%;
-  min-height:390px;
-  margin-bottom:2em;
-}
-.fontad h3 {
-  margin-bottom:.25em;
-}
-.fontad iframe {
-  float:right;
-  width:attr(width);
-  height:attr(height);
+.chunk {
   margin-left:1em;
 }
-.fontad p:first-child {
-  margin-top:0;
+.button-content {
+  text-align:center;
 }
+.button-content div {
+  float:left;
+}
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after { clear:both; }
+.clearfix { zoom:1; }
+
 .end {
   clear:both;
   visibility:hidden;
@@ -280,13 +280,15 @@ q { font-style: italic; font-weight:normal; }
 }
 .button {
   display:inline-block;
+  line-height:1;
   outline:none;
   cursor:pointer;
   text-align:center;
   text-decoration:none;
   font-size:131.25%;
+  width:280px;
   /*width:30%;*/
-  padding: 1em 1.5em 1em;
+  padding: .5em 1em .5em;
   text-shadow:0 1px 1px rgba(0,0,0,.3);
   -webkit-border-radius: .5em;
   -moz-border-radius: .5em;
