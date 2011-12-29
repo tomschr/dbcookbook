@@ -141,11 +141,16 @@
   </xsl:template>  
   
   <xsl:template match="h:div[@class='abstract']|
-                       h:div[contains(@class, 'note')]">
+                       h:div[contains(@class, 'note')]|
+                       h:div[starts-with(@class, 'list-of-')]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
       <xsl:apply-templates/>
     </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="h:div[@class='html5']">
+    <xsl:copy-of select="."/>
   </xsl:template>
   
   <xsl:template match="h:div[@class='blockquote-title']">
@@ -262,12 +267,7 @@
       <xsl:apply-templates/>
     </dl>
   </xsl:template>
-  <xsl:template match="h:div[starts-with(@class, 'list-of-')]">
-    <xsl:copy>
-      <xsl:copy-of select="@*"/>
-      <xsl:apply-templates/>
-    </xsl:copy>
-  </xsl:template>
+
   <xsl:template match="h:div[starts-with(@class, 'list-of-')]/h:dl">
     <dl class="toc">
       <xsl:apply-templates/>
