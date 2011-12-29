@@ -30,4 +30,15 @@
     </xsl:if>
   </xsl:variable>
   
+  <xsl:template name="user.footer.navigation">
+    <div class="html5">
+      <a href="http://www.w3.org/html/logo/"><img
+        src="http://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png"
+        width="165" height="64" align="middle"
+        alt="HTML5 Powered with CSS3 / Styling, and Semantics"
+        title="HTML5 Powered with CSS3 / Styling, and Semantics"/></a>
+      <span>HTML5 Logo by <a href="http://www.w3.org/"><abbr
+        title="World Wide Web Consortium">W3C</abbr></a></span>
+    </div>
+  </xsl:template>
 </xsl:stylesheet>
