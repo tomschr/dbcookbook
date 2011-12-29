@@ -79,7 +79,7 @@
       </p:input>
     </p:xslt>
     
-    <p:store name="write2file">
+    <p:store name="write2file" omit-xml-declaration="false">
       <p:with-option name="href" select="concat($path,'html/',$file)"/>
     </p:store>
   </p:for-each>
