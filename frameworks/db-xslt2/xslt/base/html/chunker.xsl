@@ -4,9 +4,9 @@
   xmlns:saxon="http://icl.com/saxon"
   xmlns:lxslt="http://xml.apache.org/xslt"
   xmlns:redirect="http://xml.apache.org/xalan/redirect"
-  xmlns:exsl="http://exslt.org/common";
+  xmlns:exsl="http://exslt.org/common"
   xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
-	xmlns:ch="http://docbook.sf.net/xmlns/chunk"
+  xmlns:ch="http://docbook.sf.net/xmlns/chunk"
   exclude-result-prefixes="doc ch saxon lxslt redirect exsl"
   extension-element-prefixes="saxon redirect lxslt exsl">
 
