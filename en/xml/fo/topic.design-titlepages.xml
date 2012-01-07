@@ -15,7 +15,7 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.fo.cover" remap="topic" userlevel="medium"
+<section xml:id="dbc.fo.design-titlepages" remap="topic" userlevel="medium"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -63,7 +63,7 @@
       elements needs to be shown. For this example, we use the following
       requisites:</para>
     
-    <itemizedlist xml:id="li.fo.cover.rectopage.defs">
+    <itemizedlist xml:id="li.fo.design-titlepages.rectopage.defs">
       <title>Recto (Right) Page</title>
       <para>This is the <quote>main page</quote> and the content appears
       in the following order:</para>
@@ -83,7 +83,7 @@
         <para>the edition, from <code>/book/info/edition</code></para>
       </listitem>
     </itemizedlist>
-    <itemizedlist xml:id="li.fo.cover.versopage.defs">
+    <itemizedlist xml:id="li.fo.design-titlepages.versopage.defs">
       <title>Verso (Left) Page</title>
       <para>This usually holds the imprint and the content appears
       in the following order:</para>
@@ -110,11 +110,11 @@
       </listitem>
     </itemizedlist>
     
-    <section xml:id="dbc.fo.cover.titlepage.indirectly">
+    <section xml:id="dbc.fo.design-titlepages.titlepage.indirectly">
       <title>Using Title Page Templates</title>
       <para>To create a title page using a title page template proceed
         as follows:</para>
-      <procedure xml:id="pro.fo.cover.titlepage.indirectly">
+      <procedure xml:id="pro.fo.design-titlepages.titlepage.indirectly">
         <step>
           <para>Prepare the title page template:</para>
           <substeps>
@@ -166,7 +166,7 @@
               <para>Change the recto page and locate the
                   <tag>t:titlepage-content</tag> element with its
                 attribute <tag>t:side="recto"</tag>. As definied in
-                  <xref linkend="li.fo.cover.rectopage.defs"/>, we
+                  <xref linkend="li.fo.design-titlepages.rectopage.defs"/>, we
                 remove everything what is not needed. Additionally we
                 have to output edition, which we get from an empty <tag
                   class="emptytag">edition</tag> tag. The content of the
@@ -194,7 +194,7 @@
               <para>Change the verso page and locate the
                   <tag>t:titlepage-content</tag> element with its
                 attribute <tag>t:side="verso"</tag>. As definied in
-                  <xref linkend="li.fo.cover.versopage.defs"/>, again,
+                  <xref linkend="li.fo.design-titlepages.versopage.defs"/>, again,
                 we remove everything what is not needed. The content of
                 the <tag>t:titlepage-content</tag> should look like
                 this: </para>
@@ -240,12 +240,12 @@
         </step>
       </procedure>
     </section>
-    <section xml:id="dbc.fo.cover.titlepage.directly">
+    <section xml:id="dbc.fo.design-titlepages.titlepage.directly">
       <title>Customizing Title Pages Directly</title>  
       <para>To create a title page directly using named templates
         proceed as follows:</para>
       
-      <procedure xml:id="pro.fo.cover.titlepage.directly">
+      <procedure xml:id="pro.fo.design-titlepages.titlepage.directly">
         <step>
           <para>Open the file
             <filename>fo/titlepage.templates.xsl</filename> of your
@@ -276,7 +276,7 @@
           <para>Customize the template
               <function>book.titlepage.recto</function> according to the
             definitions in 
-              <xref linkend="li.fo.cover.rectopage.defs"/>:</para>
+              <xref linkend="li.fo.design-titlepages.rectopage.defs"/>:</para>
           <substeps>
             <step>
               <para>Leave the two <tag>xsl:choose</tag> conditions intact to
@@ -335,7 +335,7 @@
         <step>
           <para>Customize the template
               <function>book.titlepage.verso</function> according to the
-            definitions in <xref linkend="li.fo.cover.versopage.defs"/>
+            definitions in <xref linkend="li.fo.design-titlepages.versopage.defs"/>
             (note the different mode):</para>
           <substeps>
             <step>
@@ -471,7 +471,7 @@
       is empty.</para>
     <para>Note, all of the above templates process title page elements
       in a special mode. As you have seen in <xref
-        linkend="dbc.fo.cover.titlepage.directly"/>, elements for a
+        linkend="dbc.fo.design-titlepages.titlepage.directly"/>, elements for a
       recto page are processed in the
         <code>book.titlepage.recto.auto.mode</code> mode. The same
       principle applies for a verso page and its mode
