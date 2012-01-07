@@ -57,7 +57,11 @@
     <para>Both methods are shown below. Although the following
       descriptions focus on a book title page, the same procedure
       applies for an article title page as well.</para>
-    <para>For this example, we use the following requisites:</para>
+    <para>Before we customize the stylesheets, we need to define,
+        <emphasis>what</emphasis> we want to display on our title
+      page(s). Depending on if it is a left or a right page, different
+      elements needs to be shown. For this example, we use the following
+      requisites:</para>
     
     <itemizedlist xml:id="li.fo.cover.rectopage.defs">
       <title>Recto (Right) Page</title>
@@ -249,17 +253,18 @@
         </step>
         <step>
           <para>Search for the correct template name(s). A template name is
-            composed of the following components:
+            composed of the following components, wheras <replaceable>ELEMENT</replaceable>
+            and <replaceable>SIDE</replaceable> are placeholders:
           </para>
           <screen><replaceable>ELEMENT</replaceable>.titlepage.<replaceable>SIDE</replaceable></screen>
-          <para>As we want to change the title page of a book and the
-            left (verso) and right (recto) title pages, the correct 
+          <para>As we want to change the title page of a book for the
+            left (verso) and right (recto) pages, the correct 
             template names are <function>book.titlepage.recto</function>
             and <function>book.titlepage.verso</function>.</para>
         </step>
         <step>
           <para>Create a new file, for example
-              <filename>booktitlepage.xsl</filename>. This contains all our
+              <filename>booktitlepage.xsl</filename>. This will contain all our
             customizations of our book's title page. </para>
         </step>
         <step>
@@ -268,58 +273,93 @@
             your new file <filename>booktitlepage.xsl</filename>.</para>
         </step>
         <step>
-          <para>Customize the recto page according to <xref 
-            linkend="li.fo.cover.rectopage.defs"/>:</para>
+          <para>Customize the template
+              <function>book.titlepage.recto</function> according to the
+            definitions in 
+              <xref linkend="li.fo.cover.rectopage.defs"/>:</para>
           <substeps>
             <step>
               <para>Leave the two <tag>xsl:choose</tag> conditions intact to
                 select the book's title and subtitle.</para>
             </step>
             <step>
-              <para>Insert the following line to select the book's author
-                from <code>book/info/author</code>:</para>
+              <para>Insert after the last <tag class="endtag"
+                  >xsl:choose</tag> the following line to select the
+                book's author from <code>book/info/author</code>:</para>
               <programlisting
  >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/author"/></programlisting>
             </step>
             <step>
-              <para>Insert the following line to select the book's editor
-                from <code>book/info/editor</code>:</para>
+              <para>Insert the following line to select the book's
+                edition from <code>book/info/edition</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/editor/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/edition"/></programlisting>
             </step>
             <step>
               <para>Remove the other <tag>xsl:apply-templates</tag>
-                elements as we only want display the title, subtitle,
-                author, and the editor.</para>
+                elements as we only want to display the title, subtitle,
+                author, and the editor. The template should look like
+                this:</para>
+              <programlisting language="xml"
+>&lt;xsl:template name="book.titlepage.recto">
+  &lt;xsl:choose>
+    &lt;xsl:when test="bookinfo/title">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/title"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="info/title">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/title"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="title">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="title"/>
+    &lt;/xsl:when>
+  &lt;/xsl:choose>
+              
+  &lt;xsl:choose>
+    &lt;xsl:when test="bookinfo/subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/subtitle"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="info/subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/subtitle"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="subtitle"/>
+    &lt;/xsl:when>
+  &lt;/xsl:choose>
+  
+  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/author"/>
+  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/edition"/>
+&lt;/xsl:template></programlisting>
             </step>
           </substeps>
         </step>
         <step>
-          <para>Customize the verso page according to <xref 
-          linkend="li.fo.cover.versopage.defs"/>:</para>
+          <para>Customize the template
+              <function>book.titlepage.verso</function> according to the
+            definitions in <xref linkend="li.fo.cover.versopage.defs"/>
+            (note the different mode):</para>
           <substeps>
             <step>
               <para>Leave the two <tag>xsl:choose</tag> conditions intact to
                 select the book's title and subtitle.</para>
             </step>            
             <step>
-              <para>Insert the following line to select the book's author
-                from <code>book/info/author</code> (note the different
-                mode):</para>
+              <para>Insert after the last <tag class="endtag">xsl:choose</tag>
+                the following line to select the book's author
+                from <code>info/author</code>:</para>
               <programlisting
  >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/author"/></programlisting>
             </step>
             <step>
-              <para>Insert the following line to select the book's editor
-                from <code>book/info/editor</code>:</para>
+              <para>Insert the following line to select the book's
+                edition from <code>book/info/edition</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/editor/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/edition"/></programlisting>
             </step>
             <step>
               <para>Insert the following line to select some legal text
                 from <code>book/info/legalnotice</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/editor/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/legalnotice"/></programlisting>
             </step>            
             <step>
               <para>Insert the following line to select the book's ISBN
@@ -331,7 +371,39 @@
             <step>
               <para>Remove the other <tag>xsl:apply-templates</tag>
                 elements as we only want display the title, subtitle,
-                author, editor, legal text, and the ISBN number.</para>
+                author, editor, legal text, and the ISBN number. The
+                template should look like this:</para>
+              <programlisting language="xml"
+>&lt;xsl:template name="book.titlepage.verso">
+  &lt;xsl:choose>
+    &lt;xsl:when test="bookinfo/title">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/title"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="info/title">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/title"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="title">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="title"/>
+    &lt;/xsl:when>
+  &lt;/xsl:choose>
+              
+  &lt;xsl:choose>
+    &lt;xsl:when test="bookinfo/subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/subtitle"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="info/subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/subtitle"/>
+    &lt;/xsl:when>
+    &lt;xsl:when test="subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="subtitle"/>
+    &lt;/xsl:when>
+  &lt;/xsl:choose>
+  
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/author"/>
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/editor"/>
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/legalnotice"/>
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/biblioid[@class='isbn']"/> 
+&lt;/xsl:template></programlisting>
             </step>
           </substeps>
         </step>
