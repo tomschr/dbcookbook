@@ -33,8 +33,7 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>You want to design a title page of your book or
-      article.</para>
+    <para>You want to design a title page of your book or article.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -56,8 +55,8 @@
       </listitem>
     </orderedlist>
     <para>Both methods are shown below. Although the following
-      descriptions focus on a book title page, the same procedure can be
-      applied for an article title page as well.</para>
+      descriptions focus on a book title page, the same procedure
+      applies for an article title page as well.</para>
     <para>For this example, we use the following requisites:</para>
     
     <itemizedlist xml:id="li.fo.cover.rectopage.defs">
@@ -111,7 +110,7 @@
       <title>Using Title Page Templates</title>
       <para>To create a title page using a title page template proceed
         as follows:</para>
-      <procedure>
+      <procedure xml:id="pro.fo.cover.titlepage.indirectly">
         <step>
           <para>Prepare the title page template:</para>
           <substeps>
@@ -238,24 +237,116 @@
       </procedure>
     </section>
     <section xml:id="dbc.fo.cover.titlepage.directly">
-      <title>Customizing Title Pages Directly</title>
-      <para>The DocBook XSL stylesheets use named templates to generate
-        a title page. For a book title page, the named templates are
-        called in the following order, starting with
-        <function>book.titlepage</function>:</para>
-      <screen linenumbering="unnumbered">book.titlepage
-  book.titlepage.before.recto
-  book.titlepage.recto
-  book.titlepage.before.verso
-  book.titlepage.verso
-  book.titlepage.separator</screen>
-      <para>This partitioning makes it easy to just only the affected
-        named template. As we only need the default, we do not change
-         <function>book.titlepage.before.recto</function>,
-          <function>book.titlepage.separator</function>, and
-          <function>book.titlepage.before.verso</function>.
-      </para>
+      <title>Customizing Title Pages Directly</title>  
+      <para>To create a title page directly using named templates
+        proceed as follows:</para>
       
+      <procedure xml:id="pro.fo.cover.titlepage.directly">
+        <step>
+          <para>Open the file
+            <filename>fo/titlepage.templates.xsl</filename> of your
+            DocBook XSL stylesheet distribution.</para>
+        </step>
+        <step>
+          <para>Search for the correct template name(s). A template name is
+            composed of the following components:
+          </para>
+          <screen><replaceable>ELEMENT</replaceable>.titlepage.<replaceable>SIDE</replaceable></screen>
+          <para>As we want to change the title page of a book and the
+            left (verso) and right (recto) title pages, the correct 
+            template names are <function>book.titlepage.recto</function>
+            and <function>book.titlepage.verso</function>.</para>
+        </step>
+        <step>
+          <para>Create a new file, for example
+              <filename>booktitlepage.xsl</filename>. This contains all our
+            customizations of our book's title page. </para>
+        </step>
+        <step>
+          <para>Copy the <function>book.titlepage.recto</function> and
+              <function>book.titlepage.verso</function> templates into
+            your new file <filename>booktitlepage.xsl</filename>.</para>
+        </step>
+        <step>
+          <para>Customize the recto page according to <xref 
+            linkend="li.fo.cover.rectopage.defs"/>:</para>
+          <substeps>
+            <step>
+              <para>Leave the two <tag>xsl:choose</tag> conditions intact to
+                select the book's title and subtitle.</para>
+            </step>
+            <step>
+              <para>Insert the following line to select the book's author
+                from <code>book/info/author</code>:</para>
+              <programlisting
+ >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/author"/></programlisting>
+            </step>
+            <step>
+              <para>Insert the following line to select the book's editor
+                from <code>book/info/editor</code>:</para>
+              <programlisting
+ >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/editor/></programlisting>
+            </step>
+            <step>
+              <para>Remove the other <tag>xsl:apply-templates</tag>
+                elements as we only want display the title, subtitle,
+                author, and the editor.</para>
+            </step>
+          </substeps>
+        </step>
+        <step>
+          <para>Customize the verso page according to <xref 
+          linkend="li.fo.cover.versopage.defs"/>:</para>
+          <substeps>
+            <step>
+              <para>Leave the two <tag>xsl:choose</tag> conditions intact to
+                select the book's title and subtitle.</para>
+            </step>            
+            <step>
+              <para>Insert the following line to select the book's author
+                from <code>book/info/author</code> (note the different
+                mode):</para>
+              <programlisting
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/author"/></programlisting>
+            </step>
+            <step>
+              <para>Insert the following line to select the book's editor
+                from <code>book/info/editor</code>:</para>
+              <programlisting
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/editor/></programlisting>
+            </step>
+            <step>
+              <para>Insert the following line to select some legal text
+                from <code>book/info/legalnotice</code>:</para>
+              <programlisting
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/editor/></programlisting>
+            </step>            
+            <step>
+              <para>Insert the following line to select the book's ISBN
+                number from <code>book/info/biblioid</code>:</para>
+               <programlisting
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode"
+    select="info/biblioid[@class='isbn']"/></programlisting>
+            </step>            
+            <step>
+              <para>Remove the other <tag>xsl:apply-templates</tag>
+                elements as we only want display the title, subtitle,
+                author, editor, legal text, and the ISBN number.</para>
+            </step>
+          </substeps>
+        </step>
+        <step>
+          <para>Insert the constructed
+            <filename>booktitlepage.xsl</filename> into your
+            customization layer <filename>mybooktitlepage.xsl</filename>:</para>
+          <programlisting language="xml"><xi:include parse="text"
+            href="xslt/mybooktitlepage.xsl"/></programlisting>
+        </step>
+        <step>
+          <para>Build your book as usual with your customization layer.</para>
+        </step>
+      </procedure>
+
     </section>
   </section>
   <section role="discussion">
@@ -278,6 +369,28 @@
           final state.</para>
       </listitem>
     </itemizedlist>
+  
+    <para>The DocBook XSL stylesheets use named templates to generate
+      a title page. For a book title page, the named templates are
+      called in the following order, starting with
+      <function>book.titlepage</function>:</para>
+    <screen linenumbering="unnumbered">book.titlepage
+  book.titlepage.before.recto
+  book.titlepage.recto
+  book.titlepage.before.verso
+  book.titlepage.verso
+  book.titlepage.separator</screen>
+    <para>Each of the templates in <function>book.titlepage</function>
+      are responsible for a different setup of a title page. For
+      example, the <function>book.titlepage.recto</function> creates
+      the recto (right) page of book's title page.
+    </para>
+    <para>This partitioning makes it easy to just customize only the
+      affected named template. As we only need the default, we do not
+      change <function>book.titlepage.before.recto</function>,
+      <function>book.titlepage.separator</function>, and
+      <function>book.titlepage.before.verso</function>. </para>
+    
   </section>
   <section role="seealso">
     <title>See Also</title>
