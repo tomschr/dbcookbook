@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.fo.style-titlepages" remap="topic"
+   userlevel="medium"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Styling Title Pages</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>title page</keyword>
+      <keyword>style title page</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You do not want to overhaul the default title pages, but you
+      want to change small things, like the font size, margins, or
+      other stylistic parameters. </para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The difficulty is to find the correct template to customize.
+      Here is a general procedure how to do this:</para>
+    
+    <procedure xml:id="pro.fo.style-titlepages">
+      <title>Finding the Correct Template to Customize for a Title Page</title>
+      <step>
+        <para>Open the file
+          <filename>fo/titlepage.templates.xsl</filename> from your
+          DocBook XSL distribution.</para>
+      </step>
+      <step>
+        <para>Determine the following parameters and write it down or
+          memorize it:</para>
+        <itemizedlist>
+          <listitem>
+            <para>The title page which you want to customize (usually 
+              something like book, chapter, etc.), refered as
+              <replaceable>DIVISION</replaceable></para>
+          </listitem>
+          <listitem>
+            <para>The element on that title page, referred as
+              <replaceable>ELEMENT</replaceable></para>
+          </listitem>
+          <listitem>
+            <para>The side, be it recto (right) or verso (left), refered
+            as <replaceable>SIDE</replaceable>.</para>
+          </listitem>
+        </itemizedlist>
+      </step>
+      <step xml:id="st.fo.style-titlepages.compose-template">
+        <para>Compose a template in your mind from the previous parameters and
+          replace the placeholders:</para>
+        <programlisting language="xml"
+>&lt;xsl:template match="<replaceable
+  >ELEMENT</replaceable>" mode="<replaceable
+  >DIVISION</replaceable>.titlepage.<replaceable>SIDE</replaceable>.auto.mode"></programlisting>
+      </step>
+      <step>
+        <para>Try to find the template from <xref 
+          linkend="st.fo.style-titlepages.compose-template"/> in
+          <filename>fo/titlepage.templates.xsl</filename>.</para>
+      </step>
+      <step>
+        <para>If you have found the template depicted in <xref
+            linkend="st.fo.style-titlepages.compose-template"/>, copy it
+          to your customization layer. If there is no such template,
+          create a new one with the same signature.</para>
+      </step>
+      <step>
+        <para>Customize the template.</para>
+      </step>
+      <step>
+        <para>Build your document with your customization layer.</para>
+      </step>
+    </procedure>
+    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>To make the general explanations a bit more useful, here is a
+      small example: you want to change the font size for the title of a book's recto
+      title page. Applying <xref linkend="pro.fo.style-titlepages"/>
+      leads to the following template:</para>
+    <screen>&lt;xsl:template match="<emphasis role="strong"
+           xlink:title="The ELEMENT placeholder"
+>d:title</emphasis>" mode="<emphasis role="strong" xlink:title="The DIVISION placeholder"
+  >book</emphasis>.titlepage.<emphasis role="strong" xlink:title="The SIDE placeholder"
+  >recto</emphasis>.auto.mode"></screen>
+    <para>After you have copied it to your customization layer, you can
+      change the <tag class="attribute">font-size</tag> (marked bold):</para>
+    <programlisting language="xml">&lt;xsl:template match="d:title" mode="book.titlepage.recto.auto.mode">
+  &lt;fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+     xsl:use-attribute-sets="book.titlepage.recto.style" 
+     text-align="center" 
+     <emphasis role="strong">font-size="40pt"</emphasis>
+     space-before="18.6624pt" 
+     font-weight="bold" 
+     font-family="{$title.fontset}">
+    &lt;xsl:call-template name="division.title">
+      &lt;xsl:with-param name="node" select="ancestor-or-self::d:book[1]"/>
+    &lt;/xsl:call-template>
+  &lt;/fo:block>
+&lt;/xsl:template></programlisting>
+    <para>In the previous example, the font size was changed from
+      the original value of <literal>24.8832pt</literal> to
+      <literal>40pt</literal>. The other objects are unchanged. Other
+      attributes can be changed as needed.</para>
+    
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para><xref linkend="dbc.fo.design-titlepages"/></para>
+  </section>
+</section>
