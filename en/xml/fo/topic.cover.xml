@@ -285,15 +285,15 @@
             <step>
               <para>Insert after the last <tag class="endtag"
                   >xsl:choose</tag> the following line to select the
-                book's author from <code>book/info/author</code>:</para>
+                book's author from <code>d:info/d:author</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/author"/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:author"/></programlisting>
             </step>
             <step>
               <para>Insert the following line to select the book's
-                edition from <code>book/info/edition</code>:</para>
+                edition from <code>d:info/d:edition</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/edition"/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:edition"/></programlisting>
             </step>
             <step>
               <para>Remove the other <tag>xsl:apply-templates</tag>
@@ -303,31 +303,31 @@
               <programlisting language="xml"
 >&lt;xsl:template name="book.titlepage.recto">
   &lt;xsl:choose>
-    &lt;xsl:when test="bookinfo/title">
-      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/title"/>
+    &lt;xsl:when test="d:bookinfo/d:title">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:bookinfo/d:title"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="info/title">
-      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/title"/>
+    &lt;xsl:when test="d:info/d:title">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:title"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="title">
-      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="title"/>
+    &lt;xsl:when test="d:title">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:title"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
               
   &lt;xsl:choose>
-    &lt;xsl:when test="bookinfo/subtitle">
-      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/subtitle"/>
+    &lt;xsl:when test="d:bookinfo/d:subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:bookinfo/d:subtitle"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="info/subtitle">
-      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/subtitle"/>
+    &lt;xsl:when test="d:info/d:subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/subtitle"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="subtitle">
-      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="subtitle"/>
+    &lt;xsl:when test="d:subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:subtitle"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
   
-  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/author"/>
-  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/edition"/>
+  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:author"/>
+  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:edition"/>
 &lt;/xsl:template></programlisting>
             </step>
           </substeps>
@@ -345,28 +345,28 @@
             <step>
               <para>Insert after the last <tag class="endtag">xsl:choose</tag>
                 the following line to select the book's author
-                from <code>info/author</code>:</para>
+                from <code>d:info/d:author</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/author"/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:author"/></programlisting>
             </step>
             <step>
               <para>Insert the following line to select the book's
-                edition from <code>book/info/edition</code>:</para>
+                edition from <code>d:info/d:edition</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/edition"/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:edition"/></programlisting>
             </step>
             <step>
               <para>Insert the following line to select some legal text
-                from <code>book/info/legalnotice</code>:</para>
+                from <code>d:info/d:legalnotice</code>:</para>
               <programlisting
- >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/legalnotice"/></programlisting>
+ >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:legalnotice"/></programlisting>
             </step>            
             <step>
               <para>Insert the following line to select the book's ISBN
-                number from <code>book/info/biblioid</code>:</para>
+                number from <code>d:info/d:biblioid</code>:</para>
                <programlisting
  >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode"
-    select="info/biblioid[@class='isbn']"/></programlisting>
+    select="d:info/d:biblioid[@class='isbn']"/></programlisting>
             </step>            
             <step>
               <para>Remove the other <tag>xsl:apply-templates</tag>
@@ -376,33 +376,33 @@
               <programlisting language="xml"
 >&lt;xsl:template name="book.titlepage.verso">
   &lt;xsl:choose>
-    &lt;xsl:when test="bookinfo/title">
-      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/title"/>
+    &lt;xsl:when test="d:bookinfo/d:title">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:bookinfo/d:title"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="info/title">
-      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/title"/>
+    &lt;xsl:when test="d:info/d:title">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:title"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="title">
-      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="title"/>
+    &lt;xsl:when test="d:title">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:title"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
               
   &lt;xsl:choose>
-    &lt;xsl:when test="bookinfo/subtitle">
-      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/subtitle"/>
+    &lt;xsl:when test="d:bookinfo/d:subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:bookinfo/d:subtitle"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="info/subtitle">
-      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/subtitle"/>
+    &lt;xsl:when test="d:info/d:subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:subtitle"/>
     &lt;/xsl:when>
-    &lt;xsl:when test="subtitle">
-      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="subtitle"/>
+    &lt;xsl:when test="d:subtitle">
+      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:subtitle"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
   
-  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/author"/>
-  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/editor"/>
-  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/legalnotice"/>
-  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/biblioid[@class='isbn']"/> 
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:author"/>
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:editor"/>
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:legalnotice"/>
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:biblioid[@class='isbn']"/> 
 &lt;/xsl:template></programlisting>
             </step>
           </substeps>
