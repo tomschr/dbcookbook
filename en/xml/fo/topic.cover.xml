@@ -423,8 +423,7 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>There are several reasons to customize the title page of your
-    book:</para>
+    <para>There are several reasons to customize a title page:</para>
     <itemizedlist>
       <listitem>
         <para>You want a different order of the default elements</para>
@@ -441,28 +440,65 @@
           final state.</para>
       </listitem>
     </itemizedlist>
-  
-    <para>The DocBook XSL stylesheets use named templates to generate
-      a title page. For a book title page, the named templates are
+    
+    <para>All these requirements can be done, either with the direct or
+      indirect method. Apart from your own preferences, use the direct
+      method if you have more complicated conditions which can not be
+      expressed by simple title page definitions. Sometimes it is faster to
+      just add the respective named template instead of going through
+      the indirect method. </para>
+    <para>Regardless which method you prefer, it ends up with the same
+      named templates. For a book title page, the named templates are
       called in the following order, starting with
-      <function>book.titlepage</function>:</para>
+        <function>book.titlepage</function>:</para>
     <screen linenumbering="unnumbered">book.titlepage
   book.titlepage.before.recto
   book.titlepage.recto
   book.titlepage.before.verso
   book.titlepage.verso
   book.titlepage.separator</screen>
-    <para>Each of the templates in <function>book.titlepage</function>
-      are responsible for a different setup of a title page. For
-      example, the <function>book.titlepage.recto</function> creates
-      the recto (right) page of book's title page.
-    </para>
-    <para>This partitioning makes it easy to just customize only the
-      affected named template. As we only need the default, we do not
-      change <function>book.titlepage.before.recto</function>,
-      <function>book.titlepage.separator</function>, and
-      <function>book.titlepage.before.verso</function>. </para>
+    <para>Usually, the <function>book.titlepage</function> template is
+      only customized in rare cases. For example, if you want to revamp
+      the previous schema completely and add additional pages like
+        <phrase xlink:href="http://en.wikipedia.org/wiki/Half_title"
+        >half titles</phrase>. Each of the templates in
+        <function>book.titlepage</function> are responsible for a
+      different setup of a title page. We discussed the <function>book.titlepage.recto</function>
+      and <function>book.titlepage.verso</function> templates already.
+      The templates <function>book.titlepage.separator</function> and
+        <function>book.titlepage.before.verso</function> contain page
+      breaks, whereas <function>book.titlepage.before.recto</function>
+      is empty.</para>
+    <para>Note, all of the above templates process title page elements
+      in a special mode. As you have seen in <xref
+        linkend="dbc.fo.cover.titlepage.directly"/>, elements for a
+      recto page are processed in the
+        <code>book.titlepage.recto.auto.mode</code> mode. The same
+      principle applies for a verso page and its mode
+        <code>book.titlepage.verso.auto.mode</code>. However, not all
+      elements have a template with such modes as not all elements can
+      (and should) appear on a title page. Look into the file
+        <filename>fo/titlepage.templates.xsl</filename> to see which are
+      definied. Assume title and subtitle have already templates for
+      recto and verso pages as well as all the elements which are listed
+      in the original <function>book.titlepage.verso</function> and
+      <function>book.titlepage.recto</function>.</para>
+    <para>For example, the <tag>edition</tag> element has certainly no
+      templates for a recto and verso book title page. If you do not
+      have definied one, a fallback mechanism takes place. For this
+      reason, if you call a element in <function>book.titlepage.verso</function> and
+      <function>book.titlepage.recto</function>, you need also to define
+      the respective templates: </para>
+    <programlisting language="xml"
+      >&lt;xsl:template match="d:edition" mode="book.titlepage.recto.auto.mode">
+   &lt;!-- Add your code for a recto page -->
+&lt;/xsl:template>
     
+&lt;xsl:template match="d:edition" mode="book.titlepage.verso.auto.mode">
+   &lt;!-- Add your code for a verso page -->
+&lt;/xsl:template></programlisting>
+    <para>Usually, you want to display the edition on a recto page
+    different than on a verso page.</para>
   </section>
   <section role="seealso">
     <title>See Also</title>
