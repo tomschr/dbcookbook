@@ -66,7 +66,7 @@
       <p:with-option name="message" select="concat('*** Processing ', $file)"/>
     </cx:message>
     <p:load name="loadhtml">
-        <p:with-option name="href" select="$absfile"/>
+      <p:with-option name="href" select="$absfile"/>
     </p:load>
     
     <p:xslt name="xsltcleanup">
@@ -79,7 +79,8 @@
       </p:input>
     </p:xslt>
     
-    <p:store name="write2file" omit-xml-declaration="false">
+    <p:store name="write2file" omit-xml-declaration="false"
+       indent="true">
       <p:with-option name="href" select="concat($path,'html/',$file)"/>
     </p:store>
   </p:for-each>
