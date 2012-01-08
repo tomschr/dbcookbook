@@ -204,7 +204,7 @@
     <title>Contribute to the Book</title>
     <para>The source code of this book is published and maintained as a 
       Mercurial repository. Feel free to clone it, make improvements and
-      mail me your changes to <email><ref name="author.email"/></email><!-- 
+      mail me your changes to <email>tom_schr@web.de</email><!-- 
         or use the link <link 
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
       />-->. 
@@ -315,7 +315,7 @@
           <firstname>Norman</firstname>
           <surname>Walsh</surname>
         </personname> for DocBook, the DocBook stylesheets, and all the
-          nice tools that makes live with DocBook much easier.</para>
+          nice tools that makes live with DocBook so much easier.</para>
       </listitem>
       <listitem>
         <para><personname>
