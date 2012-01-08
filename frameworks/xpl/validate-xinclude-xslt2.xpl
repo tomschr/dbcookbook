@@ -8,8 +8,7 @@
   xmlns:p="http://www.w3.org/ns/xproc"
   xmlns:err="http://www.w3.org/ns/xproc-error">
   <p:documentation>
-    <db:para>      
-    </db:para>
+    <db:para>Pipeline with XIncludes, RNG validation, and XSLT steps</db:para>
   </p:documentation>
 
   <p:input port="source" primary="true"/>
@@ -33,7 +32,7 @@
 
   <p:output port="result"/>  
   
-  <!--<p:xinclude name="xinclude"/>-->
+  <p:xinclude name="xinclude"/>
   
   <p:validate-with-relax-ng name="rng-validate">
     <p:input port="schema">
