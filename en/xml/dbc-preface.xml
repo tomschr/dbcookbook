@@ -117,7 +117,7 @@
           is the future.</para>
       </listitem>
       <listitem>
-        <para>I wanted to show an exhaustive example with
+        <para>I wanted to show exhaustive examples for
           DocBook&#xa0;5. With this book, I hope, users can learn how to
           adopt and use it.</para>
       </listitem>
@@ -211,18 +211,24 @@
     </para>
     <para>
       Getting a copy takes just a few seconds. 
-      If you have  Mercurial already installed on your system, run the 
+      If you have Mercurial already installed on your system, run the 
       following command:</para>
     <screen>hg clone https://hg.code.sf.net/p/doccookbook/code doccookbook</screen>
     <para>Mercurial is a free, distributed version control system and
       available for Mac, Linux, and Windows. Download it from <link 
         xlink:href="http://mercurial.selenic.com"/>.</para>
+    <para>If you do not want to change the source code, but want to
+    contribute, open a ticket. Describe your bugs, grammar errors, typos,
+    or other inconveniences you have found and add them to the list at
+    <link xlink:href="http://sf.net/p/doccookbook/tickets/"/>.
+    </para>
   </section>
   
   <section xml:id="dbc.preface.piwik">
     <title>A Few Words About Piwik</title>
     <para>If you are reading this text online, you may have noticed that
-      this project uses <application xlink:href="http://piwik.org">Piwik</application>. According to its home page, Piwik is a
+      this project uses <application xlink:href="http://piwik.org">Piwik</application>. 
+      According to its home page, Piwik is a
         <quote>real time web analytics software program</quote>. The
       result gives me detailed reports on my Web sites visitors: where do they
       come from, which browser and operating system they use and so on.
