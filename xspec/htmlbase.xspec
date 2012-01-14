@@ -41,9 +41,35 @@
               test="/h:html/h:body/h:article[@id='dbcookbook']/h:header"
               select="/h:html/h:body/h:article[@id='dbcookbook']/h:header"
               href="result/book.001.html"/>
-    
   </x:scenario>
   
+  <x:scenario label="chapter.001.xml">
+    <x:context href="src/chapter.001.xml"/>
+    <x:expect label="head/title"
+              test="/h:html/h:head/h:title[1]"
+              select="/h:html/h:head/h:title[1]"
+              href="result/chapter.001.html"/>
+    <x:expect label="article/@class"
+              test="/h:html/h:body[1]/h:article[1]/@class"
+              select="/h:html/h:body[1]/h:article[1]/@class"
+              href="result/chapter.001.html"/>
+    <x:expect label="html/body/article[@id='cha.foo']/header"
+              test="/h:html/h:body/h:article[@id='cha.foo']/h:header"
+              select="/h:html/h:body/h:article[@id='cha.foo']/h:header"
+              href="result/chapter.001.html"/>
+    <x:expect label="div[@class='ticket']"
+              test="//h:header/h:div[@class='ticket']"
+              select="//h:header/h:div[@class='ticket']"
+              href="result/chapter.001.html"/>
+    <x:expect label="h:section[@id='sec.intro']/h:div[@class='section-titlepage']"
+              test="//h:section[@id='sec.intro']/h:div[@class='section-titlepage']"
+              select="//h:section[@id='sec.intro']/h:div[@class='section-titlepage']"
+              href="result/chapter.001.html"/>
+    <x:expect label="/html/body[1]/script[1] (Piwik)"
+              test="/h:html/h:body[1]/h:script[1]"
+              select="/h:html/h:body[1]/h:script[1]"
+              href="result/chapter.001.html"/>
+  </x:scenario>
   
 </x:scenario>
 
