@@ -41,3 +41,11 @@ http://www.xfront.com/xproc/
 
 * Norman's "A Guide to XProc" book
 http://xprocbook.com/book/book-1.html
+
+
+XSLT
+----
+
+* XSLT2 Functions and Examples
+http://www.xsltfunctions.com
+
