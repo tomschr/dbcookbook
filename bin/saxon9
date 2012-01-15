@@ -7,22 +7,26 @@
 # Author: Thomas Schraitle
 # 
 
+# set -x
+
 . /usr/share/java-utils/java-functions
 [ -e ./common.sh ] && . ./common.sh
 [ -e bin/common.sh ] && . bin/common.sh
 
 DBXSL2JAR="${FRAMEWORKSDIR}/db-xslt2/ext/build/lib/docbook-xsl2-saxon.jar"
-PYTHONPATH="/usr/lib/python2.6/site-packages:/usr/lib64/python2.6/"
-PYCACHE="/tmp/jython/"
+#PYTHONPATH="/usr/lib/python2.6/site-packages:/usr/lib64/python2.6/"
+#JYTH_EXT_PATH="${FRAMEWORKSDIR}/db-xslt2/ext/jython/"
+#PYCACHE="/tmp/jython/"
 
 # Prepare correct environment and export variables which is detected and
 # incorporated by the saxon9 and java-functions scripts:
 export CLASSPATH="CatalogManager.properties:${DBXSL2JAR}"
-export ADDITIONAL_JARS="jython.jar"
-export ADDITIONAL_FLAGS="-Dpython.path=${PYTHONPATH} -Dpython.cachedir=${PYCACHE}"
+# export ADDITIONAL_JARS="jython.jar"
+# export ADDITIONAL_FLAGS="-Dpython.path=\"${PYTHONPATH}:${JYTH_EXT_PATH}\""
+# export ADDITIONAL_FLAGS="${ADDITIONAL_FLAGS} -Dpython.cachedir=${PYCACHE}"
 export ADDITIONAL_OPTIONS=""
 
 export VERBOSE=1
 
 # Call the system saxon9 script:
-saxon9 $@
+saxon9 -init:docbook.Initializer $@
