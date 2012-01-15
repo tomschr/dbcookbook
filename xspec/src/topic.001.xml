@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<section  xml:id="sec.foo" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>The Section</title>
+    <info>
+    <keywordset>
+      <keyword>A</keyword>
+      <keyword>B</keyword>
+      <keyword>C</keyword>
+      <keyword>D</keyword>
+    </keywordset>
+  </info>
+  <section role="problem">
+    <title>Problem</title>
+    <para>The problem explained.</para>
+  </section>
+  
+  <section role="solution">
+    <title>Solution</title>
+    <para>The solution explained.</para>
+  </section>
+  
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The discussion section.</para>
+  </section>
+  
+  <section role="seealso">
+    <title>See Also</title>
+    <para>Links to further information.</para>
+  </section>
+</section>

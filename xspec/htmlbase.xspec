@@ -71,6 +71,29 @@
               href="result/chapter.001.html"/>
   </x:scenario>
   
+  <x:scenario label="topic.001.xml">
+    <x:context href="src/topic.001.xml"/>
+    <x:expect label="section[1]/div[@class='section-titlepage']"
+              test="/h:html/h:body/h:section[1]/h:div[@class='section-titlepage']"
+              select="/h:html/h:body/h:section[1]/h:div[@class='section-titlepage']"
+              href="result/topic.001.html"/>
+    <x:expect label="problem section"
+              test="/h:html/h:body/h:section[1]/h:section[1]"
+              select="/h:html/h:body/h:section[1]/h:section[1]"
+              href="result/topic.001.html"/>
+    <x:expect label="solution section"
+              test="/h:html/h:body/h:section[1]/h:section[2]"
+              select="/h:html/h:body/h:section[1]/h:section[2]"
+              href="result/topic.001.html"/>
+    <x:expect label="discussion section"
+              test="/h:html/h:body/h:section[1]/h:section[3]"
+              select="/h:html/h:body/h:section[1]/h:section[3]"
+              href="result/topic.001.html"/>
+    <x:expect label="see also section"
+              test="/h:html/h:body/h:section[1]/h:section[4]"
+              select="/h:html/h:body/h:section[1]/h:section[4]"
+              href="result/topic.001.html"/>
+  </x:scenario>
 </x:scenario>
 
 </x:description>
