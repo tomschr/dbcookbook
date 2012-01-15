@@ -10,7 +10,8 @@
   xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
   xmlns:h="http://www.w3.org/1999/xhtml"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="d xlink tmpl m t f h l">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  exclude-result-prefixes="d xlink tmpl m t f h l xs">
   
   <!--<xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>-->
   <xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>
@@ -45,7 +46,7 @@
 
         <xsl:apply-templates select="$root"/>
         
-        <xsl:if test="$use.piwik != 0">
+        <xsl:if test="xs:integer($use.piwik) != 0">
           <xsl:call-template name="generate.piwik"/>
         </xsl:if>
       </body>
