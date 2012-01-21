@@ -12,9 +12,11 @@
    extension-element-prefixes="xdmp">
   
   <xsl:template name="t:user-localization-data">
-    <l:l10n language="en" english-language-name="English">
-      <l:gentext key="Difficulty" text="Difficulty"/>
-    </l:l10n>
+    <l:i18n>
+      <l:l10n language="en" english-language-name="English">
+        <l:gentext key="Difficulty" text="Difficulty"/>
+      </l:l10n>
+    </l:i18n>
   </xsl:template>
   
 </xsl:stylesheet>

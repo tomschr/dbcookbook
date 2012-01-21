@@ -18,7 +18,7 @@
   
   <xsl:include href="piwik.xsl"/>
   <xsl:include href="param.xsl"/>
-  <!--<xsl:include href="../common/l10n.xsl"/>-->
+  <xsl:include href="../common/l10n.xsl"/>
   <xsl:include href="inlines.xsl"/>
   <xsl:include href="titlepage-templates.xsl"/>
   <xsl:include href="titlepage-mode.xsl"/>
