@@ -42,8 +42,12 @@
   </xsl:variable>
   
   <xsl:if test="exists($ul) and $generate.userlevel != 0">
-    <span class="section-userlevel" 
-      title="difficulty: {$ul}"><xsl:value-of select="$d"/></span>
+    <div class="section-userlevel" title="difficulty: {$ul}">
+      <xsl:call-template name="gentext">
+        <xsl:with-param name="key">Difficulty</xsl:with-param>
+      </xsl:call-template>
+      <xsl:value-of select="$d"/>
+    </div>
   </xsl:if>
 </xsl:template>
 
@@ -96,12 +100,12 @@
     <xsl:apply-templates select="$context" mode="m:object-title-markup">
       <xsl:with-param name="allow-anchors" select="true()"/>
     </xsl:apply-templates>
-    <xsl:call-template name="sf:generate-userlevel">
-      <xsl:with-param name="level"
-        select="(../@userlevel|../../@userlevel)[1]"/>
-    </xsl:call-template>
-    <!--<xsl:call-template name="sf:generate-permalink"/>-->
   </xsl:element>
+  <!--<xsl:call-template name="sf:generate-permalink"/>-->
+  <xsl:call-template name="sf:generate-userlevel">
+    <xsl:with-param name="level"
+      select="(../@userlevel|../../@userlevel)[1]"/>
+  </xsl:call-template>
 </xsl:template>
 
 </xsl:stylesheet>
