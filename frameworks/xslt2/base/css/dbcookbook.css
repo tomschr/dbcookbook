@@ -167,6 +167,7 @@ blockquote h3 {
   margin-bottom:-.5em;
 }
 
+
 .chapter-titlepage,
 .preface-titlepage
 {
@@ -251,6 +252,20 @@ div.list-of-figures > p b  {
 .section-titlepage h4 {
   color:#3E5066;
 }
+
+.section-next:before {
+  content:'❱';
+}
+.section-prev:before {
+  content:'❰';
+}
+
+.section-next,
+.section-prev {
+  font-size:small;
+  display:block;
+}
+
 .appendix .section-titlepage h3,
 .chapter .section-titlepage h3,
 .preface .section-titlepage h3
