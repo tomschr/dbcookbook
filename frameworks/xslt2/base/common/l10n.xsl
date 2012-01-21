@@ -14,7 +14,8 @@
   <xsl:template name="t:user-localization-data">
     <l:i18n>
       <l:l10n language="en" english-language-name="English">
-        <l:gentext key="Difficulty" text="Difficulty"/>
+        <l:gentext key="Difficulty" text="Difficulty: "/>
+        <l:gentext key="Ticket" text="See also Ticket#"/>
       </l:l10n>
     </l:i18n>
   </xsl:template>
