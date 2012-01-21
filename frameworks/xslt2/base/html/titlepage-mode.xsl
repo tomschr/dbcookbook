@@ -12,44 +12,20 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink tmpl m t f h l">
   
-  <!--<xsl:template match="d:annotation[@xml:id='draft']" mode="m:titlepage-recto-mode">
-    <xsl:message>  d:annotation[@xml:id='draft']</xsl:message>
-    <div>
-      <xsl:sequence select="f:html-attributes(.)"/>
-      <xsl:apply-templates/>
-    </div>
-  </xsl:template>-->
 
   <xsl:template match="d:cover" mode="m:titlepage-recto-mode">
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="d:othercredit" mode="m:titlepage-recto-mode"/>
-  
-  <xsl:template match="d:othercredit[@class='proofreader']" mode="m:titlepage-recto-mode">
-    <div>
-      <xsl:sequence select="f:html-attributes(.)"/>
-      <p>
-        <xsl:call-template name="gentext">
-          <xsl:with-param name="key" select="'revisedby'"/>
-        </xsl:call-template>
-        <xsl:choose>
-          <xsl:when test="d:orgname">
-            <xsl:apply-templates select="d:orgname"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:apply-templates select="d:personname"/>
-          </xsl:otherwise>
-        </xsl:choose>
-      </p>
-    </div>
-  </xsl:template>
 
   <xsl:template match="d:biblioid[@class='other' and
     @otherclass='ticket']" mode="m:titlepage-mode">
     <xsl:variable name="ticketnr" select="normalize-space(.)"/>
     <div class="ticket">
-      <xsl:value-of select="concat('See also Ticket#', $ticketnr, ': ')"/>
+      <xsl:call-template name="gentext">
+        <xsl:with-param name="key" select="'Ticket'"/>
+      </xsl:call-template>
+      <xsl:value-of select="concat($ticketnr, ': ')"/>
       <a href="{concat($ticket.url, $ticketnr, '/')}" title="Ticket#{$ticketnr}">
         <xsl:value-of select="concat($ticket.url, $ticketnr, '/')"/>
       </a>
