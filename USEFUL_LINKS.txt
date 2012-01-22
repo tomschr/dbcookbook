@@ -49,3 +49,9 @@ XSLT
 * XSLT2 Functions and Examples
 http://www.xsltfunctions.com
 
+
+Other Tools
+-----------
+
+* rsync output
+http://stackoverflow.com/questions/1113948/rsync-output
