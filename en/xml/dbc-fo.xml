@@ -25,14 +25,24 @@
     <biblioid class="other" otherclass="ticket">22</biblioid>
     <abstract>
       <para>The DocBook XSL stylesheets has got more than 200 parameters
-      which can customize some aspects of the layout very easily. This
-      chapter shows you to go beyond simple parameter change.</para>
+      which can customize some aspects of the layout very easily (like
+      the page dimensions). This chapter shows customizations which go 
+      beyond simple parameter change.</para>
     </abstract>
   </info>
 
   <section xml:id="dbc.fo.intro">
     <title>Introduction</title>
-    <para><remark>TBD</remark></para>
+    <para>Currently, there is only one stylesheet available for creating
+      FO output: <filename>fo/docbook.xsl</filename>. To be exact, this
+      creates XSL-FO 1.1 output which is compatible with decent FO
+      formatters.</para>
+    <para>Furthermore, the DocBook FO stylesheets supports extensions
+      which enables the formatter to implement specific features. These
+      features go beyond the FO specifications like PDF bookmarks,
+      indices, etc. Currently, the stylesheets support extensions from
+      PTC's Arbortext, Antenna House's AXF, Apache's FOP, and RenderX's
+      XEP.</para>
   </section>
   <!-- 
   Print Customizations
