@@ -16,6 +16,7 @@
 
 
 <xsl:param name="generate.userlevel" select="1"/>
+<xsl:param name="generate.prevnext.sectionlinks" select="1"/>  
 <xsl:param name="userlevel.easy"  >★☆☆</xsl:param><!-- ⚑⚐⚐ -->
 <xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
 <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
@@ -43,17 +44,18 @@
   </xsl:variable>
   
   <xsl:if test="exists($ul) and $generate.userlevel != 0">
-    <div class="section-userlevel" title="difficulty: {$ul}">
+    <div class="section-userlevel" title="{$ul}">
       <xsl:call-template name="gentext">
         <xsl:with-param name="key">Difficulty</xsl:with-param>
       </xsl:call-template>
-      <xsl:value-of select="$d"/>
+      <xsl:value-of select="concat($d, ' (', $ul, ')')"/>
     </div>
   </xsl:if>
 </xsl:template>
 
-<xsl:template name="sf:generate-permalink">
-   <xsl:param name="node" select="."/>
+<xsl:template name="sf:generate-prevnext-sectionlinks">
+  <xsl:param name="node" select="."/>
+  <xsl:if test="$generate.prevnext.sectionlinks != 0">
    <xsl:variable name="next"
      select="($node/following::d:sect1|$node/following::d:section)[parent::d:chapter][1]"/>
    <xsl:variable name="prev"
@@ -114,6 +116,7 @@
       </a>
     </span>
   </xsl:if>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template match="d:section[not(parent::d:section)]/d:title|
@@ -130,7 +133,8 @@
       <xsl:with-param name="allow-anchors" select="true()"/>
     </xsl:apply-templates>
   </xsl:element>
-  <xsl:call-template name="sf:generate-permalink">
+  <!-- Permalink -->
+  <xsl:call-template name="sf:generate-prevnext-sectionlinks">
     <xsl:with-param name="node" select="$context"/>
   </xsl:call-template>
   <xsl:call-template name="sf:generate-userlevel">
