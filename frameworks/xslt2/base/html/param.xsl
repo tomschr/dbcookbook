@@ -51,4 +51,10 @@
   
   <xsl:param name="ticket.url">https://sourceforge.net/p/doccookbook/tickets/</xsl:param>
   
+  <xsl:param name="generate.userlevel" select="1"/>
+  <xsl:param name="generate.prevnext.sectionlinks" select="1"/>  
+  <xsl:param name="userlevel.easy"  >★☆☆</xsl:param><!-- ⚑⚐⚐ -->
+  <xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
+  <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
+  
 </xsl:stylesheet>

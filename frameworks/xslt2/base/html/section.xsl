@@ -14,13 +14,6 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink tmpl m t f h l sf mp">
 
-
-<xsl:param name="generate.userlevel" select="1"/>
-<xsl:param name="generate.prevnext.sectionlinks" select="1"/>  
-<xsl:param name="userlevel.easy"  >★☆☆</xsl:param><!-- ⚑⚐⚐ -->
-<xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
-<xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
-
 <xsl:template name="sf:generate-userlevel">
   <xsl:param name="level" select="normalize-space(@userlevel)"/>
   <xsl:variable name="ul"
