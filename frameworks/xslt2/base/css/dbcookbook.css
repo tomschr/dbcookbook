@@ -282,8 +282,10 @@ h3.navig {
   font-size:small;
   float:right;
   width:2em;
-  text-align:right;
+  text-align:center;
   margin-top:1em;
+  padding:3pt;
+  background-color:#FFFCD1;
 }
 .section-navig, .section-userlevel {
   margin-left:.6em;
