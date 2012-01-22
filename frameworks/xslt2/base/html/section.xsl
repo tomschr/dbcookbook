@@ -53,6 +53,7 @@
      select="($node/following::d:sect1|$node/following::d:section)[parent::d:chapter][1]"/>
    <xsl:variable name="prev"
      select="($node/preceding::d:sect1|$node/preceding::d:section)[parent::d:chapter][last()]"/>
+    <div class="section-navig">
   <xsl:if test="$prev">
     <span class="section-prev">
       <!--
@@ -109,6 +110,29 @@
       </a>
     </span>
   </xsl:if>
+    </div>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="sf:generate-permalink">
+  <xsl:param name="node" select="."/>
+  <xsl:if test="$generate.permalink != 0">
+    <xsl:variable name="permalink">
+      <xsl:call-template name="gentext">
+          <xsl:with-param name="key" select="'Permalink'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="component"
+     select="if ($node/ancestor-or-self::*[@xml:id][1])
+             then $node/ancestor-or-self::*[@xml:id][1]
+             else ($node)"/>
+    
+      <div class="permalink">
+        <a alt="{$permalink}" title="{$permalink}" 
+          href="{f:href-target-uri($component)}">
+          <xsl:copy-of select="$permalink.text"/>
+        </a>
+      </div>
   </xsl:if>
 </xsl:template>
 
@@ -122,11 +146,14 @@
                         else parent::*"/>
 
   <xsl:element name="h{$depth + 2}" namespace="http://www.w3.org/1999/xhtml">
+    <xsl:if test="$generate.permalink != 0">
+      <xsl:attribute name="class">navig</xsl:attribute>
+    </xsl:if>
     <xsl:apply-templates select="$context" mode="m:object-title-markup">
       <xsl:with-param name="allow-anchors" select="true()"/>
     </xsl:apply-templates>
   </xsl:element>
-  <!-- Permalink -->
+  <xsl:call-template name="sf:generate-permalink"/>
   <xsl:call-template name="sf:generate-prevnext-sectionlinks">
     <xsl:with-param name="node" select="$context"/>
   </xsl:call-template>

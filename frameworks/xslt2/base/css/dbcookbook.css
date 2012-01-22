@@ -236,6 +236,20 @@ div.list-of-figures > p b  {
 }
 
 /* Sections */
+.appendix > .section > .section-titlepage,
+.chapter > .section > .section-titlepage,
+.preface > .section > .section-titlepage {
+  margin-bottom:1em;
+} 
+
+.section-titlepage:before,
+.section-titlepage:after {
+  content:"";
+  display:table;
+}
+.section-titlepage:after { clear:both; }
+.section-titlepage { zoom:1; }
+
 .section-titlepage,
 .section-titlepage h2,
 .section-titlepage h4,
@@ -266,16 +280,38 @@ div.list-of-figures > p b  {
   display:block;
 }
 
-.appendix .section-titlepage h3,
-.chapter .section-titlepage h3,
-.preface .section-titlepage h3
-{
+/* Only effective, when generate.permalink=1 */
+h3.navig {
+  float:left;
+  width:90%;
+  margin-top:5px;
+}
+.permalink {
+  font-size:small;
+  float:left;
+  width:2em;
+  text-align:right;
+  margin-top:1em;
+}
+.section-navig, .section-userlevel {
+  margin-left:.6em;
+}
+
+.appendix > .section,
+.chapter > .section,
+.preface > .section {
   border-top:1pt dotted gray;
   border-left:none;
-  padding-top:0.4em;
-  padding-left:0pt;
+  padding-top:0;
+  padding-left:0;
+  margin-top:2em;
+}
+
+.appendix > .section-titlepage h3,
+.chapter > .section-titlepage h3,
+.preface > .section-titlepage h3
+{
   text-align:left;
-  /*margin-bottom:-.5em;*/
   text-shadow:2px 2px 4px rgba(0,0,0,0.15);
 }
 
