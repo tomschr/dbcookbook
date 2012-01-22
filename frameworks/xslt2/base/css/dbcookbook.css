@@ -242,14 +242,6 @@ div.list-of-figures > p b  {
   margin-bottom:1em;
 } 
 
-.section-titlepage:before,
-.section-titlepage:after {
-  content:"";
-  display:table;
-}
-.section-titlepage:after { clear:both; }
-.section-titlepage { zoom:1; }
-
 .section-titlepage,
 .section-titlepage h2,
 .section-titlepage h4,
@@ -283,12 +275,12 @@ div.list-of-figures > p b  {
 /* Only effective, when generate.permalink=1 */
 h3.navig {
   float:left;
-  width:90%;
+  width:95%;
   margin-top:5px;
 }
 .permalink {
   font-size:small;
-  float:left;
+  float:right;
   width:2em;
   text-align:right;
   margin-top:1em;
@@ -296,6 +288,16 @@ h3.navig {
 .section-navig, .section-userlevel {
   margin-left:.6em;
 }
+
+.section-titlepage:before,
+.section-navig:before,
+.section-titlepage:after,
+.section-navig:after{
+  content:"";
+  display:table;
+}
+.section-titlepage:after, .section-navig:after { clear:both; }
+.section-titlepage, .section-navig { zoom:1; }
 
 .appendix > .section,
 .chapter > .section,
