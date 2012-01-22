@@ -34,7 +34,8 @@
   <section xml:id="dbc.html.intro">
     <title>Introduction</title>
     <para>Currently, there are several HTML derivates available as
-      target formats. As such, <quote>the</quote> HTML </para>
+      target formats. As such, <quote>the</quote> HTML does not exist,
+      only a variety of HTML dialects:</para>
     
     <variablelist>
       <varlistentry>
