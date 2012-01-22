@@ -29,8 +29,9 @@
       book about <phrase xlink:href="http://www.docbook.org/"
         >DocBook</phrase> and the <phrase
         xlink:href="http://docbook.sf.net/release/xsl/current/doc/"
-        >DocBook XSL stylesheets</phrase> written in a cookbook-style
-      manner and released under a Creative Commons license.</para>
+        >DocBook XSL stylesheets</phrase> written in a cookbook
+      and released under Creative Commons license.
+    </para>
   </blockquote>
   
   <para>According to its <phrase
@@ -101,7 +102,7 @@
         <emphasis>and</emphasis> seek answers for their customization
       problems. However, with some try-and-error, it can also be useful
       for ordinary writers who want to try something out. For readers
-      who want further information, links included in the <citetitle>See
+      who want further information, links are included in the <citetitle>See
         Also</citetitle> section at the end of each topic. </para>
   </section>
   
@@ -138,17 +139,15 @@
         >What’s New in DocBook V5.0?</citetitle>.</para>
     
     <para>Apart from the DocBook examples, the transformation examples
-      are currently based on the DocBook XSL stylesheets version 1.x.y.
+      are currently based on the DocBook XSL 1.0 stylesheets.
       They are stable, well-documented and can be used with any XSLT 1.0
-      processor. At the moment, these stylesheets are rewritten for XSLT
-      2.0. 
+      processor. 
     </para>
     <para>On the other side, there is always the tension between
       implementing new concepts and retaining backward compatibility.
       For this reason, the XSLT 1.0 stylesheets are rewritten for XSLT
       2.0. This task is not finished yet. As soon as they are
-      production-stable, they will be covered in this book.</para>
-    
+      production-stable, they will be covered in this book too.</para>    
   </section>
   
   <section xml:id="dbc.preface.further-reading">
@@ -175,7 +174,7 @@
       </listitem>
       <listitem>
         <para><literal>Monospace text</literal> is used for code
-          listings, URLs, filenames, namespaces, or links.</para>
+          listings, XML structures, URLs, filenames, namespaces, or links.</para>
       </listitem>
       <listitem>
         <para><command>Monospace bold text</command> for commands or
@@ -203,7 +202,8 @@
   <section xml:id="dbc.preface.contrib">
     <title>Contribute to the Book</title>
     <para>The source code of this book is published and maintained as a 
-      Mercurial repository. Feel free to clone it, make improvements and
+      <application xlink:href="http://mercurial.selenic.com">Mercurial</application> repository. 
+      Feel free to clone it, make improvements and
       mail me your changes to <email>tom_schr@web.de</email><!-- 
         or use the link <link 
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
@@ -308,7 +308,8 @@
         <para><personname>
           <firstname>Antje</firstname>
           <surname>Faber</surname>
-        </personname> for proofreading some of my texts.</para>
+        </personname> for proofreading some of my texts and the original
+          idea.</para>
       </listitem>
       <listitem>
         <para><personname>
