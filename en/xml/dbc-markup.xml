@@ -25,12 +25,13 @@
     <biblioid class="other" otherclass="ticket">19</biblioid>
     <abstract>
       <para>DocBook has a wide variety of elements covering different
-        semantics: from structural elements like <tag>book</tag><tag>,
-          chapter</tag>, <tag>appendix</tag>, to block elements like
+        semantics: from structural elements like <tag>book</tag>,
+        <tag>chapter</tag>, <tag>appendix</tag>, to block elements like
           <tag>orderedlist</tag>, <tag>table</tag>, <tag>figure</tag>,
         to inline elements like <tag>filename</tag>, <tag>quote</tag>,
         or <tag>link</tag>. All of these elements are well covered in
-          <citetitle>The Definitive Guide</citetitle>. This chapter
+          <citetitle xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
+            >The Definitive Guide</citetitle>. This chapter
         shows more the unknown parts and how to avoid pitfalls and
         improve consistency throughout your documentation. </para>
     </abstract>
