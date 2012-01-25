@@ -15,7 +15,8 @@
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
-<section xml:id="dbc.common.dbcustomize" remap="topic" userlevel="medium"
+<section xml:id="dbc.common.dbcustomize" remap="topic"
+   userlevel="medium" version="5.1"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -31,7 +32,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>A DocBook XSL customization layer comprised the following
+    <para>A DocBook XSL customization layer comprise the following
     components:</para>
     
     <itemizedlist>
@@ -46,10 +47,11 @@
       </listitem>
       <listitem>
         <para>A <tag class="emptytag">xsl:import</tag> element to 
-          incoporate the base format.</para>
+          incoporate the base DocBook XSLT stylesheet.</para>
       </listitem>
       <listitem>
-        <para>Your customizations.</para>
+        <para>Your customizations (parameters, variables, templates, or
+          other imports).</para>
       </listitem>
     </itemizedlist>
     <para>How this can look is shown in the following listing.</para>
@@ -69,7 +71,96 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para><remark>TBD</remark></para>
+    <para>Why not modify the original stylesheets? There are some
+      profound reasons which speaks against such modifications:      
+    </para>
+    <itemizedlist>
+      <listitem>
+        <para>Whenever you update your stylesheet, all your
+          modifications are lost.</para>
+      </listitem>
+      <listitem>
+        <para>If you modify the original stylesheets directly you can
+          not go back to the former output. </para>
+      </listitem>
+      <listitem>
+        <para>It is hard to distinguish between your customizations and
+          the original one.</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>Refrain from editing the original stylesheets! Always write a
+      customization layer.</para>
+    
+    <para>Apart from the above, obvious reasons, the following list
+      gives you some recommendations:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para>Insert common parameters or templates into a stylesheet
+          which is included in your different customizations.</para>
+      </listitem>
+      <listitem>
+        <para>Structure your output formats in different directories as
+          shown in <xref linkend="dbc.common.intro"/>.</para>
+      </listitem>
+      <listitem>
+        <para>Name your main stylesheet <filename>docbook.xsl</filename>
+          or <filename>chunk.xsl</filename> (HTML only).</para>
+      </listitem>
+      <listitem>
+        <para>If your customization grows, outsource your customization
+          into several stylesheets and include them into your
+          <quote>main</quote> stylesheet.</para>
+      </listitem>
+      <listitem>
+        <para>Name your files like the DocBook XSL stylesheets. For
+          example, if you customize <tag>filename</tag> (an inline
+          element) put it into the file
+          <filename>inline.xsl</filename>.</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>An example how this can look like, is shown in <xref linkend="ex.dbxsl.customizations"/>:</para>
+    <example xml:id="ex.dbxsl.customizations">
+      <title>Structure </title>
+      <screen>mycustomizations/
+  +-- common/
+      +-- common.xsl <co xml:id="co.dbxsl.custlayer.common"/>
+  +-- fo/
+      +-- docbook.xsl <co xml:id="co.dbxsl.custlayer.fo.docbook"/>
+      +-- inline.xsl  <co xml:id="co.dbxsl.custlayer.fo.inline"/>
+  +-- html/
+      +-- docbook.xsl <co xml:id="co.dbxsl.custlayer.html.docbook"/>
+      +-- chunk.xsl   <co xml:id="co.dbxsl.custlayer.html.chunk"/>
+      +-- inline.xsl  <co xml:id="co.dbxsl.custlayer.html.inline"/></screen>
+    </example>
+    <calloutlist>
+      <callout arearefs="co.dbxsl.custlayer.common">
+        <para>Common customizations across different formats</para>
+      </callout>
+      <callout arearefs="co.dbxsl.custlayer.fo.docbook">
+        <para>Main stylesheet for FO output; includes <filename>inline.xsl</filename></para>
+      </callout>
+      <callout arearefs="co.dbxsl.custlayer.fo.inline">
+        <para>Contains all modifications for inline elements regarding
+          the FO output.</para>
+      </callout>
+      <callout arearefs="co.dbxsl.custlayer.html.docbook">
+        <para>Main stylesheet for HTML output; includes <filename>inline.xsl</filename></para>
+      </callout>
+      <callout arearefs="co.dbxsl.custlayer.html.chunk">
+        <para>Main stylesheet for HTML output; imports <filename>docbook.xsl</filename></para>
+      </callout>
+      <callout arearefs="co.dbxsl.custlayer.html.inline">
+        <para>Contains all modifications for inline elements regarding
+          the FO output.</para>
+      </callout>
+    </calloutlist>
+    
+    <para>To use one of the customization layer with, for example,
+      <command>xsltproc</command>, use:</para>
+    <screen><command>xsltproc</command> mycustomizations/html/docbook.xsl mydocbook.xml</screen>
   </section>
   <section role="seealso">
     <title>See Also</title>
