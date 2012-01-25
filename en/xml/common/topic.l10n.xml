@@ -39,8 +39,7 @@
       contains all your translated text as a key/value pair. For more
       complex settings and to group things, there are
         <emphasis>contexts</emphasis>. The key is never translated, it
-      is used for every language, and is only needed to find and
-      retrieve the translated text. </para>
+      a constant and is only needed to find and retrieve the translated text. </para>
     <para>To use a language file, proceed as follows:</para>
     <procedure>
       <title>Adding Your Own Localized Text</title>
@@ -50,7 +49,9 @@
       <step>
         <para>Add the parameter <parameter>local.l10n.xml</parameter> in
           your customization layer and point it to your language
-          file:</para>        
+          file (in this case, it is named
+          <filename>myl10n.xml</filename>, but you can use any name you
+          like):</para>        
         <screen>&lt;xsl:param name="local.l10n.xml" select="document('myl10n.xml')"/></screen>
       </step>
       <step>
@@ -66,13 +67,14 @@
     &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
   &lt;/l:l10n>
 &lt;/l:i18n></programlisting>
-        <para>The above code shows two language, English and German.
-          Furthermore, it contains text two entries for each language
-            (<quote>Authors</quote> and
-          <quote>lastbuilt</quote>).</para>    
+        <para>The above code shows two language, English and German
+          (marked in the <tag class="attribute">language</tag>
+          attribute).
+          Furthermore, it contains two text entries for each language
+            (<quote>Authors</quote> and <quote>lastbuilt</quote>).</para>    
       </step>
       <step>
-        <para>Call the <function>gentext</function> template to retrieve
+        <para>Call <function>gentext</function> in your template to retrieve
         the translated text:</para>
         <programlisting language="xml">&lt;xsl:call-template name="gentext">
   &lt;xsl:with-param name="key" select="'Authors'"/>
