@@ -98,11 +98,11 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Before you use a font, check the following list:</para>
+    <para>Before you use a font, answer the following questions:</para>
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>Amount of Glyphs</title>
+          <title>Supported Languages and Amount of Glyphs</title>
           <para>Does your font support your language? Although modern
             fonts use Unicode thesedays, nevertheless your language
             might be not supported. Especially if you need
@@ -123,11 +123,11 @@
       <listitem>
         <formalpara>
           <title>Font Formats</title>
-          <para>Modern fonts are usually Unicode fonts in <acronym>OTF<alt
-            >OpenType Font</alt></acronym> or TrueType format. Older fonts are
-            mostly PostScript Type 1 fonts which have a limited amount
-            of glphys (theoretically 256). PostScript fonts cannot be used on the
-            Web.</para>
+          <para>Modern fonts are usually Unicode fonts published as <acronym>OTF<alt
+            >OpenType Font</alt></acronym> or <acronym>TTF<alt>TrueType</alt></acronym>
+            format. Older fonts are mostly PostScript Type 1 fonts which 
+            have a limited amount of glphys (theoretically 256). 
+            PostScript fonts cannot be used on the Web.</para>
         </formalpara>
       </listitem>
       <listitem>
@@ -144,12 +144,12 @@
       <listitem>
         <formalpara>
           <title>Quality</title>
-          <para>This is a broad topic and it depends where you want to
+          <para>This is a broad topic and it depends heavily where you want to
             use the font. Is it primarily used for Web content or only
             for print? Or both? Some fonts looks only good in a Web
-            page, other work only for a book. Sometimes the
+            page, other work only for printed documents. Sometimes the
             <emphasis>Hinting</emphasis> (adjustment of a font to a
-            certain resolution) may or may not work.
+            certain resolution) may or may not be implemented.
           </para>
         </formalpara>
       </listitem>
