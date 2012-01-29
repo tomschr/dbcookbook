@@ -5,6 +5,21 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Revision History</title>
+  <revision xml:id="r0.4">
+    <revnumber>0.4</revnumber>
+    <date>2012-01-29</date>
+    <author>
+      <personname>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+      </personname>
+    </author>
+     <authorinitials>toms</authorinitials>
+    <revdescription>
+      <para>Fourth public release, see <link
+        xlink:href="http://sf.net/mailarchive/message.php?msg_id="/></para>
+    </revdescription>
+  </revision>
   <revision xml:id="r0.3">
     <revnumber>0.3</revnumber>
     <date>2011-12-28</date>
