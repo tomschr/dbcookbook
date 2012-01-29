@@ -26,9 +26,9 @@
   <xsl:param name="toc.max.depth">2</xsl:param>
   <xsl:param name="generate.user.meta" select="1"/>
   
-  <xsl:param name="img.src.path">images/</xsl:param>
+  <xsl:param name="img.src.path"></xsl:param>
   <xsl:param name="callout.graphics.path" 
-    select="concat($resource.root, 'png/callouts/')"/>
+    select="concat($img.src.path, 'png/callouts/')"/>
   
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
