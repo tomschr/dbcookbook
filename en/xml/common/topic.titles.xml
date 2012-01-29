@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.titles" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Accessing Titles</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>title</keyword>
+      <keyword>title.markup</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need to retrieve a title, but your current node is not
+      <tag>title</tag>.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The DocBook XSL stylesheets offers the
+      <literal>title.markup</literal> mode for this purpose. Usually,
+      insert the following code in the appropriate place:</para>
+    <programlisting>&lt;xsl:apply-templates select="." mode="title.markup"/></programlisting>
+    <para>The <tag>xsl:apply-templates</tag> recursively finds the
+      correct title, regardless where you currently are. It also looks
+      into an <tag>info</tag> element, if necessary.</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>To further elaborate why you should use the mode, let's assume
+    you have this chapter title:</para>
+    <programlisting>&lt;chapter>
+   &lt;title>Programming in Python&lt;/title>
+   &lt;!-- further substructure pruned -->
+&lt;/chapter></programlisting>
+    <para>Let's assume further, you have a template where you need the
+      title of the enclosing section, chapter, etc. One solution simple,
+      yet unfavorable solution could be coded like this:</para>
+    <programlisting>&lt;xsl:template name="...">
+   &lt;xsl:value-of select="ancestor::d:title"/>
+&lt;/xsl:template></programlisting>
+    <para>This has several disadvantages:</para>
+    <itemizedlist>
+      <listitem>
+        <para>The XPath does not consider a title inside an
+          <tag>info</tag> element.</para>
+      </listitem>
+      <listitem>
+        <para>The <tag>xsl:value-of</tag> returns the <emphasis>string
+          value</emphasis>. In most cases this is correct. However, if
+          you have a <tag>quote</tag> inside <tag>title</tag>, the
+          <tag>quote</tag> is not processed and you will not get any
+          quotation marks.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Replacing <tag>xsl:value-of</tag> through the
+      <tag>xsl:apply-templates</tag> ensures processing of child
+      elements inside <tag>title</tag>.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/ReplaceTemplate.html#UtilityTemplates"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
