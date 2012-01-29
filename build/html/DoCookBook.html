@@ -19,8 +19,8 @@ body { background-image: url('images/draft.svg');
       <meta name="DC.language" content="en" scheme="DCTERMS.RFC3066" />
       <meta name="DC.title" content="The DoCookBook" />
       <meta name="DC.creator" content="Thomas Schraitle" />
-      <meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2011-12-28T17:06:56.181+01:00" />
-      <meta name="date" content="2011-12-28T17:06:56.181+01:00" />
+      <meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2012-01-29T15:47:41.026+01:00" />
+      <meta name="date" content="2012-01-29T15:47:41.026+01:00" />
       <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType" />
       <meta name="DC.identifier" scheme="DCTERMS.URI"
             content="http://sf.net/p/doccookbook/" />
@@ -37,9 +37,9 @@ body { background-image: url('images/draft.svg');
                <h3><span class="personname"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span></h3>
             </div>
             <div>
-               <p>Last published version: December 2011</p>
+               <p>Published: 29 Jan 2012, 15:47 +01:00</p>
             </div>
-            <p class="draft">Draft (Version 0.3)</p>
+            <p class="draft">Draft (Version 0.4)</p>
             <div id="legalnotice" lang="en" class="legalnotice">
                <div class="sidebar">
                   <header class="sidebar-titlepage">
@@ -92,10 +92,22 @@ body { background-image: url('images/draft.svg');
                
             </p>      
             
-            <div class="revhistory">
+            <div lang="en" class="revhistory">
                <table border="0" summary="Revision History">
                   <tr>
                      <td colspan="3"><span class="title">Revision History</span></td>
+                  </tr>
+                  <tr id="r0.4" class="revision">
+                     <td class="revnumber"><span class="revnumber">0.4</span></td>
+                     <td class="date"><span class="date">29 Jan 2012</span></td>
+                     <td class="author"><span class="author"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span><span class="authorinitials">toms</span></td>
+                  </tr>
+                  <tr class="revdescription">
+                     <td> </td>
+                     <td class="revdescription" colspan="2"><span class="revdescription">
+                           
+                           <p>Fourth public release, see <a href="https://sourceforge.net/mailarchive/message.php?msg_id=28755847">https://sourceforge.net/mailarchive/message.php?msg_id=28755847</a></p>
+                           </span></td>
                   </tr>
                   <tr id="r0.3" class="revision">
                      <td class="revnumber"><span class="revnumber">0.3</span></td>
@@ -169,7 +181,8 @@ body { background-image: url('images/draft.svg');
                      <li><span><a href="#dbc.common.fonts">2.2. Finding Professional Fonts</a></span></li>
                      <li><span><a href="#dbc.common.dbcustomize">2.3. Writing Customization Layers</a></span></li>
                      <li><span><a href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span></li>
-                     <li><span><a href="#dbc.common.l10n">2.5. Extending Language Files with Your Own Text</a></span></li>
+                     <li><span><a href="#dbc.common.titles">2.5. Accessing Titles</a></span></li>
+                     <li><span><a href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#dbc.structure">3. Manipulating DocBook Document Structure</a></span><ul class="toc">
@@ -189,17 +202,19 @@ body { background-image: url('images/draft.svg');
                </li>
                <li><span><a href="#dbc.fo">4. Print Customizations</a></span><ul class="toc">
                      <li><span><a href="#dbc.fo.intro">4.1. Introduction</a></span></li>
-                     <li><span><a href="#dbc.fo.cover">4.2. Designing a Title Page</a></span></li>
-                     <li><span><a href="#dbc.fo.line-height">4.3. Influencing the Leading</a></span></li>
-                     <li><span><a href="#dbc.fo.hyphen-urls">4.4. Hyphenating URLs</a></span></li>
-                     <li><span><a href="#dbc.fo.initials">4.5. Creating Initials and Drop Caps</a></span></li>
-                     <li><span><a href="#dbc.fo.number-titles">4.6. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
+                     <li><span><a href="#dbc.fo.design-titlepages">4.2. Designing a Title Page</a></span></li>
+                     <li><span><a href="#dbc.fo.style-titlepages">4.3. Styling Title Pages</a></span></li>
+                     <li><span><a href="#dbc.fo.line-height">4.4. Influencing the Leading</a></span></li>
+                     <li><span><a href="#dbc.fo.hyphen-urls">4.5. Hyphenating URLs</a></span></li>
+                     <li><span><a href="#dbc.fo.initials">4.6. Creating Initials and Drop Caps</a></span></li>
+                     <li><span><a href="#dbc.fo.number-titles">4.7. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#dbc.html">5. (X)HTML Customizations</a></span><ul class="toc">
                      <li><span><a href="#dbc.html.intro">5.1. Introduction</a></span></li>
                      <li><span><a href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span></li>
                      <li><span><a href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></li>
+                     <li><span><a href="#dbc.html.breadcrumbs">5.4. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#cc-by-nc-sa-30-de">A. Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
@@ -233,6 +248,7 @@ body { background-image: url('images/draft.svg');
                <li>1.8. <a href="#ex.xref-vs-link.xref">A Cross Reference</a></li>
                <li>1.9. <a href="#ex.xref-vs-link.link">A Hyperlink</a></li>
                <li>2.1. <a href="#ex.common.dbcustomize.general-cust-layer">General Customization Layer</a></li>
+               <li>2.2. <a href="#ex.dbxsl.customizations">Structure </a></li>
                <li>3.1. <a href="#ex.copy.xsl"><code class="filename">copy.xsl</code></a></li>
                <li>3.2. <a href="#ex.pretty.xsl"><code class="filename">pretty.xsl</code></a></li>
                <li>3.3. <a href="#ex.db5to4-core.xsl"><code class="filename">db5to4-core.xsl</code></a></li>
@@ -266,7 +282,7 @@ body { background-image: url('images/draft.svg');
                <li>5.3. <a href="#ex.db-simple-navigation.xsl"><code class="filename">db-simple-navigation.xsl</code></a></li>
             </ul>
          </div>
-         <article id="dbc.preface" class="preface">
+         <article id="dbc.preface" lang="en" class="preface">
             <header class="preface-titlepage">
                <h2>Welcome!</h2>
             </header>
@@ -287,8 +303,9 @@ body { background-image: url('images/draft.svg');
             <blockquote>
                <h3>Mission</h3>
                <p><em class="citetitle"><a href="https://doccookbook.sf.net">The DoCookBook Project</a></em> aims to create an open source
-                  book about <span><a href="http://www.docbook.org/">DocBook</a></span> and the <span><a href="http://docbook.sf.net/release/xsl/current/doc/">DocBook XSL stylesheets</a></span> written in a cookbook-style
-                  manner and released under a Creative Commons license.
+                  book about <span><a href="http://www.docbook.org/">DocBook</a></span> and the <span><a href="http://docbook.sf.net/release/xsl/current/doc/">DocBook XSL stylesheets</a></span> written in a cookbook
+                  and released under Creative Commons license.
+                  
                </p>
             </blockquote>
             <p>According to its <span><a href="http://www.docbook.org/whatis">homepage</a></span>,
@@ -330,7 +347,9 @@ body { background-image: url('images/draft.svg');
             </p>
             <section id="dbc.preface.audience" class="section">
                <div class="section-titlepage">
-                  <h3>1.1. Audience</h3>
+                  <h3 class="navig">1.1. Audience</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.audience">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>This book covers topics which range from very easy to pretty
                   demanding. The more challenging a problems is the more you need
@@ -344,13 +363,15 @@ body { background-image: url('images/draft.svg');
                   <em>and</em> seek answers for their customization
                   problems. However, with some try-and-error, it can also be useful
                   for ordinary writers who want to try something out. For readers
-                  who want further information, links included in the <em class="citetitle">See
+                  who want further information, links are included in the <em class="citetitle">See
                      Also</em> section at the end of each topic. 
                </p>
             </section>
             <section id="dbc.preface.db4-vs-5" class="section">
                <div class="section-titlepage">
-                  <h3>1.2. DocBook 4 or 5?</h3>
+                  <h3 class="navig">1.2. DocBook 4 or 5?</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.db4-vs-5">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>Although a lot of these topics can be used for both versions
                   with minimal changes, this book focuses on DocBook 5. Why?
@@ -364,7 +385,7 @@ body { background-image: url('images/draft.svg');
                         </p>
                      </li>
                      <li>
-                        <p>I wanted to show an exhaustive example with
+                        <p>I wanted to show exhaustive examples for
                            DocBook 5. With this book, I hope, users can learn how to
                            adopt and use it.
                         </p>
@@ -386,22 +407,23 @@ body { background-image: url('images/draft.svg');
                      Definitive Guide</em> book, section <em class="citetitle"><a href="http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new">What’s New in DocBook V5.0?</a></em>.
                </p>
                <p>Apart from the DocBook examples, the transformation examples
-                  are currently based on the DocBook XSL stylesheets version 1.x.y.
+                  are currently based on the DocBook XSL 1.0 stylesheets.
                   They are stable, well-documented and can be used with any XSLT 1.0
-                  processor. At the moment, these stylesheets are rewritten for XSLT
-                  2.0. 
+                  processor. 
                   
                </p>
                <p>On the other side, there is always the tension between
                   implementing new concepts and retaining backward compatibility.
                   For this reason, the XSLT 1.0 stylesheets are rewritten for XSLT
                   2.0. This task is not finished yet. As soon as they are
-                  production-stable, they will be covered in this book.
+                  production-stable, they will be covered in this book too.
                </p>
             </section>
             <section id="dbc.preface.further-reading" class="section">
                <div class="section-titlepage">
-                  <h3>1.3. Further Readings</h3>
+                  <h3 class="navig">1.3. Further Readings</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.further-reading">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>By no means is this book complete. As this book is based on
                   technologies like CSS, XML, (X)HTML, and XSLT, it is always a good
@@ -411,7 +433,9 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.preface.typo" class="section">
                <div class="section-titlepage">
-                  <h3>1.4. Typographical Conventions</h3>
+                  <h3 class="navig">1.4. Typographical Conventions</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.typo">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>The following typographical conventions are used in this book:</p>
                <div class="itemizedlist">
@@ -423,7 +447,7 @@ body { background-image: url('images/draft.svg');
                      </li>
                      <li>
                         <p><code class="literal">Monospace text</code> is used for code
-                           listings, URLs, filenames, namespaces, or links.
+                           listings, XML structures, URLs, filenames, namespaces, or links.
                         </p>
                      </li>
                      <li>
@@ -442,7 +466,9 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.preface.feedback" class="section">
                <div class="section-titlepage">
-                  <h3>1.5. Feedback</h3>
+                  <h3 class="navig">1.5. Feedback</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.feedback">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>The project is hosted on <a href="https://sourceforge.net">SourceForge</a> under the
                   name <a href="https://sourceforge.net/projects/doccookbook/">DocCookBook</a>.
@@ -453,38 +479,50 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.preface.contrib" class="section">
                <div class="section-titlepage">
-                  <h3>1.6. Contribute to the Book</h3>
+                  <h3 class="navig">1.6. Contribute to the Book</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.contrib">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>The source code of this book is published and maintained as a 
-                  Mercurial repository. Feel free to clone it, make improvements and
+                  <span class="application"><a href="http://mercurial.selenic.com">Mercurial</a></span> repository. 
+                  Feel free to clone it, make improvements and
                   mail me your changes to <code class="email">&lt;<a href="mailto:tom_schr@web.de">tom_schr@web.de</a>&gt;</code>. 
                   
                </p>
                <p>
                   Getting a copy takes just a few seconds. 
-                  If you have  Mercurial already installed on your system, run the 
+                  If you have Mercurial already installed on your system, run the 
                   following command:
                </p>
                <div class="screen"><pre>hg clone https://hg.code.sf.net/p/doccookbook/code doccookbook</pre></div>
                <p>Mercurial is a free, distributed version control system and
                   available for Mac, Linux, and Windows. Download it from <a href="http://mercurial.selenic.com">http://mercurial.selenic.com</a>.
                </p>
+               <p>If you do not want to change the source code, but want to
+                  contribute, open a ticket. Describe your bugs, grammar errors, typos,
+                  or other inconveniences you have found and add them to the list at
+                  <a href="http://sf.net/p/doccookbook/tickets/">http://sf.net/p/doccookbook/tickets/</a>.
+                  
+               </p>
             </section>
             <section id="dbc.preface.piwik" class="section">
                <div class="section-titlepage">
-                  <h3>1.7. A Few Words About Piwik</h3>
+                  <h3 class="navig">1.7. A Few Words About Piwik</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.piwik">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>If you are reading this text online, you may have noticed that
-                  this project uses <span class="application"><a href="http://piwik.org">Piwik</a></span>. According to its home page, Piwik is a
+                  this project uses <span class="application"><a href="http://piwik.org">Piwik</a></span>. 
+                  According to its home page, Piwik is a
                   “<span class="quote">real time web analytics software program</span>”. The
-                  result gives me detailed reports on my Web sites visitors: where do they
+                  result gives me detailed reports about my Web site visitors: where do they
                   come from, which browser and operating system they use and so on.
                   
                </p>
                <p>Why Piwik? First it is open source, but that is not the main
                   reason. The main reason why I use Piwik is it collects data anonymously 
-                  to create statistical studies. With these result I can improve
-                  this project and make it better.
+                  to create statistical studies. With these results I can not only improve 
+                  the HTML page but the whole better.
                </p>
                <p>For example, if my visitors browsing the Web through Firefox,
                   Opera, and Chromium instead of Internet Explorer, I can focus more
@@ -495,14 +533,16 @@ body { background-image: url('images/draft.svg');
                   hope you get the idea.
                </p>
                <p>Just to make it clear: The collected data is completely
-                  anonymous and only used to improve this project. It will
-                  <em>never</em> be sold nor will it be used to spam
+                  anonymous and <em>only</em> used to improve this project.
+                  It will <em>never</em> be sold nor will it be used to spam
                   you.
                </p>
             </section>
             <section id="dbc.preface.license" class="section">
                <div class="section-titlepage">
-                  <h3>1.8. Licensed under Creative Commons</h3>
+                  <h3 class="navig">1.8. Licensed under Creative Commons</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.license">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>The book is currently released under a Creative Commons
                   <span title="Creative Commons&#xA;          Attribution-NonCommercial-ShareAlike 3.0"
@@ -514,7 +554,9 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.preface.ack" class="section">
                <div class="section-titlepage">
-                  <h3>1.9. Acknowledgments</h3>
+                  <h3 class="navig">1.9. Acknowledgments</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.preface.ack">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.markup.intro">1.1. Introduction</a></span></div>
                </div>
                <p>Such a large project is usually not a one man show. Many
                   people contributed to this book:
@@ -522,11 +564,17 @@ body { background-image: url('images/draft.svg');
                <div class="itemizedlist">
                   <ul>
                      <li>
-                        <p><span class="personname"><span class="firstname">Antje</span> <span class="surname">Faber</span></span> for proofreading some of my texts.
+                        <p><span class="personname"><span class="firstname">Antje</span> <span class="surname">Faber</span></span> for proofreading some of my texts and the original
+                           idea.
                         </p>
                      </li>
                      <li>
                         <p><span class="personname"><span class="firstname">Lars</span> <span class="surname">Vogel</span></span> for his suggestions and improvements.
+                        </p>
+                     </li>
+                     <li>
+                        <p><span class="personname"><span class="firstname">Norman</span> <span class="surname">Walsh</span></span> for DocBook, the DocBook stylesheets, and all the
+                           nice tools that makes live with DocBook so much easier.
                         </p>
                      </li>
                      <li>
@@ -549,17 +597,17 @@ body { background-image: url('images/draft.svg');
                </div>
             </div>
          </article>
-         <article id="dbc.markup" class="chapter">
+         <article id="dbc.markup" lang="en" class="chapter">
             <header class="chapter-titlepage">
                <h2>Chapter 1. Knowing DocBook’s Structure</h2>
                <div class="abstract">
                   <p>DocBook has a wide variety of elements covering different
-                     semantics: from structural elements like <code class="tag-element">book</code><code class="tag-element">,
-                        chapter</code>, <code class="tag-element">appendix</code>, to block elements like
+                     semantics: from structural elements like <code class="tag-element">book</code>,
+                     <code class="tag-element">chapter</code>, <code class="tag-element">appendix</code>, to block elements like
                      <code class="tag-element">orderedlist</code>, <code class="tag-element">table</code>, <code class="tag-element">figure</code>,
                      to inline elements like <code class="tag-element">filename</code>, <code class="tag-element">quote</code>,
                      or <code class="tag-element">link</code>. All of these elements are well covered in
-                     <em class="citetitle">The Definitive Guide</em>. This chapter
+                     <em class="citetitle"><a href="http://www.docbook.org/tdg51/en/html/docbook.html">The Definitive Guide</a></em>. This chapter
                      shows more the unknown parts and how to avoid pitfalls and
                      improve consistency throughout your documentation. 
                   </p>
@@ -582,7 +630,9 @@ body { background-image: url('images/draft.svg');
             </div>
             <section id="dbc.markup.intro" class="section">
                <div class="section-titlepage">
-                  <h3>1.1. Introduction</h3>
+                  <h3 class="navig">1.1. Introduction</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.markup.intro">¶</a></div>
+                  <div class="section-navig"><span class="section-next"><a rel="next" href="#dbc.db.xincludes">1.2. Modularize Your Document with XIncludes</a></span></div>
                </div>
                <p>
                   <div class="remark">TBD</div>
@@ -590,7 +640,10 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.db.xincludes" class="section">
                <div class="section-titlepage">
-                  <h3>1.2. Modularize Your Document with XIncludes<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.2. Modularize Your Document with XIncludes</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.db.xincludes">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.markup.intro">1.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.section.vs.sectx">1.3. Distinguish Between Section and SectX Elements</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.db.xincludes.3" class="section problem">
                   <div class="section-titlepage">
@@ -843,7 +896,10 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.section.vs.sectx" class="section">
                <div class="section-titlepage">
-                  <h3>1.3. Distinguish Between Section and SectX Elements<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.3. Distinguish Between Section and SectX Elements</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.section.vs.sectx">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.db.xincludes">1.2. Modularize Your Document with XIncludes</a></span><span class="section-next"><a rel="next" href="#dbc.markup.lists">1.4. Using Lists</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.section.vs.sectx.3" class="section problem">
                   <div class="section-titlepage">
@@ -964,7 +1020,10 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.markup.lists" class="section">
                <div class="section-titlepage">
-                  <h3>1.4. Using Lists<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.4. Using Lists</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.markup.lists">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.section.vs.sectx">1.3. Distinguish Between Section and SectX Elements</a></span><span class="section-next"><a rel="next" href="#dbc.db.remarks">1.5. Inserting Remarks</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.markup.lists.3" class="section problem">
                   <div class="section-titlepage">
@@ -1272,7 +1331,10 @@ body { background-image: url('images/draft.svg');
             </section>
             <section id="dbc.db.remarks" class="section">
                <div class="section-titlepage">
-                  <h3>1.5. Inserting Remarks<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.5. Inserting Remarks</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.db.remarks">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.markup.lists">1.4. Using Lists</a></span><span class="section-next"><a rel="next" href="#dbc.xref-vs-link">1.6. Knowing the Difference of Crossreferences and Links</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.db.remarks.3" class="section problem">
                   <div class="section-titlepage">
@@ -1423,7 +1485,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.xref-vs-link" class="section">
                <div class="section-titlepage">
-                  <h3>1.6. Knowing the Difference of Crossreferences and Links<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.6. Knowing the Difference of Crossreferences and Links</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.xref-vs-link">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.db.remarks">1.5. Inserting Remarks</a></span><span class="section-next"><a rel="next" href="#dbc.db.xref">1.7. Inserting Cross References</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.xref-vs-link.3" class="section problem">
                   <div class="section-titlepage">
@@ -1624,7 +1689,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.db.xref" class="section">
                <div class="section-titlepage">
-                  <h3>1.7. Inserting Cross References<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.7. Inserting Cross References</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.db.xref">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.xref-vs-link">1.6. Knowing the Difference of Crossreferences and Links</a></span><span class="section-next"><a rel="next" href="#dbc.db.link">1.8. Choosing Between Link Methods</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.db.xref.3" class="section problem">
                   <div class="section-titlepage">
@@ -1653,7 +1721,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.db.link" class="section">
                <div class="section-titlepage">
-                  <h3>1.8. Choosing Between Link Methods<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.8. Choosing Between Link Methods</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.db.link">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.db.xref">1.7. Inserting Cross References</a></span><span class="section-next"><a rel="next" href="#dbc.db.quotes">1.9. Inserting Inline Quotes</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.db.link.3" class="section problem">
                   <div class="section-titlepage">
@@ -1896,7 +1967,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.db.quotes" class="section">
                <div class="section-titlepage">
-                  <h3>1.9. Inserting Inline Quotes<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">1.9. Inserting Inline Quotes</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.db.quotes">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.db.link">1.8. Choosing Between Link Methods</a></span><span class="section-next"><a rel="next" href="#dbc.common.intro">2.1. Introduction</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.db.quotes.3" class="section problem">
                   <div class="section-titlepage">
@@ -1953,7 +2027,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                </div>
             </div>
          </article>
-         <article id="dbc.common" class="chapter">
+         <article id="dbc.common" lang="en" class="chapter">
             <header class="chapter-titlepage">
                <h2>Chapter 2. Common Customizations</h2>
                <div class="abstract">
@@ -1971,12 +2045,15 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <li><span><a href="#dbc.common.fonts">2.2. Finding Professional Fonts</a></span></li>
                   <li><span><a href="#dbc.common.dbcustomize">2.3. Writing Customization Layers</a></span></li>
                   <li><span><a href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span></li>
-                  <li><span><a href="#dbc.common.l10n">2.5. Extending Language Files with Your Own Text</a></span></li>
+                  <li><span><a href="#dbc.common.titles">2.5. Accessing Titles</a></span></li>
+                  <li><span><a href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span></li>
                </ul>
             </div>
             <section id="dbc.common.intro" class="section">
                <div class="section-titlepage">
-                  <h3>2.1. Introduction</h3>
+                  <h3 class="navig">2.1. Introduction</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.intro">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.db.quotes">1.9. Inserting Inline Quotes</a></span><span class="section-next"><a rel="next" href="#dbc.common.fonts">2.2. Finding Professional Fonts</a></span></div>
                </div>
                <p>A lot of customizations can be shared between different output
                   formats. As such, it is probably a good idea to think about how to
@@ -2002,7 +2079,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.fonts" class="section">
                <div class="section-titlepage">
-                  <h3>2.2. Finding Professional Fonts<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">2.2. Finding Professional Fonts</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.fonts">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.intro">2.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.common.dbcustomize">2.3. Writing Customization Layers</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.common.fonts.3" class="section problem">
                   <div class="section-titlepage">
@@ -2080,12 +2160,12 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>Discussion</h4>
                   </div>
-                  <p>Before you use a font, check the following list:</p>
+                  <p>Before you use a font, answer the following questions:</p>
                   <div class="itemizedlist">
                      <ul>
                         <li>
                            <div class="formalpara">
-                              <p><b>Amount of Glyphs</b>  Does your font support your language? Although modern
+                              <p><b>Supported Languages and Amount of Glyphs</b>  Does your font support your language? Although modern
                                  fonts use Unicode thesedays, nevertheless your language
                                  might be not supported. Especially if you need
                                  “<span class="quote">uncommon</span>” languages or rarely used glyphs.
@@ -2105,10 +2185,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </li>
                         <li>
                            <div class="formalpara">
-                              <p><b>Font Formats</b>  Modern fonts are usually Unicode fonts in <span title="OpenType Font" class="acronym">OTF</span> or TrueType format. Older fonts are
-                                 mostly PostScript Type 1 fonts which have a limited amount
-                                 of glphys (theoretically 256). PostScript fonts cannot be used on the
-                                 Web.
+                              <p><b>Font Formats</b>  Modern fonts are usually Unicode fonts published as <span title="OpenType Font" class="acronym">OTF</span> or <span title="TrueType" class="acronym">TTF</span>
+                                 format. Older fonts are mostly PostScript Type 1 fonts which 
+                                 have a limited amount of glphys (theoretically 256). 
+                                 PostScript fonts cannot be used on the Web.
                               </p>
                            </div>
                         </li>
@@ -2125,12 +2205,12 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </li>
                         <li>
                            <div class="formalpara">
-                              <p><b>Quality</b>  This is a broad topic and it depends where you want to
+                              <p><b>Quality</b>  This is a broad topic and it depends heavily where you want to
                                  use the font. Is it primarily used for Web content or only
                                  for print? Or both? Some fonts looks only good in a Web
-                                 page, other work only for a book. Sometimes the
+                                 page, other work only for printed documents. Sometimes the
                                  <em>Hinting</em> (adjustment of a font to a
-                                 certain resolution) may or may not work.
+                                 certain resolution) may or may not be implemented.
                                  
                               </p>
                            </div>
@@ -2141,7 +2221,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.dbcustomize" class="section">
                <div class="section-titlepage">
-                  <h3>2.3. Writing Customization Layers<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">2.3. Writing Customization Layers</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.dbcustomize">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.fonts">2.2. Finding Professional Fonts</a></span><span class="section-next"><a rel="next" href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.common.dbcustomize.3" class="section problem">
                   <div class="section-titlepage">
@@ -2155,7 +2238,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>Solution</h4>
                   </div>
-                  <p>A DocBook XSL customization layer comprised the following
+                  <p>A DocBook XSL customization layer comprise the following
                      components:
                   </p>
                   <div class="itemizedlist">
@@ -2171,11 +2254,13 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </li>
                         <li>
                            <p>A <code class="tag-emptytag">&lt;xsl:import/&gt;</code> element to 
-                              incoporate the base format.
+                              incoporate the base DocBook XSLT stylesheet.
                            </p>
                         </li>
                         <li>
-                           <p>Your customizations.</p>
+                           <p>Your customizations (parameters, variables, templates, or
+                              other imports).
+                           </p>
                         </li>
                      </ul>
                   </div>
@@ -2199,9 +2284,150 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>Discussion</h4>
                   </div>
-                  <p>
-                     <div class="remark">TBD</div>
+                  <p>Why not modify the original stylesheets? There are some
+                     profound reasons which speaks against such modifications:      
+                     
                   </p>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p>Whenever you update your stylesheet, all your
+                              modifications are lost.
+                           </p>
+                        </li>
+                        <li>
+                           <p>If you modify the original stylesheets directly you can
+                              not go back to the former output. 
+                           </p>
+                        </li>
+                        <li>
+                           <p>It is hard to distinguish between your customizations and
+                              the original one.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>Refrain from editing the original stylesheets! Always write a
+                     customization layer.
+                  </p>
+                  <p>Apart from the above, obvious reasons, the following list
+                     gives you some recommendations:
+                  </p>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p>Insert common parameters or templates into a stylesheet
+                              which is included in your different customizations.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Structure your output formats in different directories as
+                              shown in <a href="#dbc.common.intro">Section 2.1, “Introduction”</a>.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Name your main stylesheet <code class="filename">docbook.xsl</code>
+                              or <code class="filename">chunk.xsl</code> (HTML only).
+                           </p>
+                        </li>
+                        <li>
+                           <p>If your customization grows, outsource your customization
+                              into several stylesheets and include them into your
+                              “<span class="quote">main</span>” stylesheet.
+                           </p>
+                        </li>
+                        <li>
+                           <p>Name your files like the DocBook XSL stylesheets. For
+                              example, if you customize <code class="tag-element">filename</code> (an inline
+                              element) put it into the file
+                              <code class="filename">inline.xsl</code>.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>An example how this can look like, is shown in <a href="#ex.dbxsl.customizations">Example 2.2, “Structure ”</a>:
+                  </p>
+                  <figure id="ex.dbxsl.customizations" class="example-wrapper">
+                     <div class="title">Example 2.2. Structure </div>
+                     <div class="example">
+                        <div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>mycustomizations/
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  +-- common/
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      +-- common.xsl <a name="co.dbxsl.custlayer.common" id="co.dbxsl.custlayer.common"></a><img src="png/callouts/1.png" alt="1" border="0" />
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  +-- fo/
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      +-- docbook.xsl <a name="co.dbxsl.custlayer.fo.docbook" id="co.dbxsl.custlayer.fo.docbook"></a><img src="png/callouts/2.png" alt="2" border="0" />
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>      +-- inline.xsl  <a name="co.dbxsl.custlayer.fo.inline" id="co.dbxsl.custlayer.fo.inline"></a><img src="png/callouts/3.png" alt="3" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  +-- html/
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>      +-- docbook.xsl <a name="co.dbxsl.custlayer.html.docbook" id="co.dbxsl.custlayer.html.docbook"></a><img src="png/callouts/4.png" alt="4" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      +-- chunk.xsl   <a name="co.dbxsl.custlayer.html.chunk" id="co.dbxsl.custlayer.html.chunk"></a><img src="png/callouts/5.png" alt="5" border="0" />
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>      +-- inline.xsl  <a name="co.dbxsl.custlayer.html.inline" id="co.dbxsl.custlayer.html.inline"></a><img src="png/callouts/6.png" alt="6" border="0" /></pre></div>
+                     </div>
+                  </figure>
+                  <div class="calloutlist">
+                     <table border="0" summary="Callout list">
+                        <tr class="callout-row">
+                           <td class="callout-bug" valign="baseline" align="left">
+                              <p class="callout"><a href="#co.dbxsl.custlayer.common"><img src="png/callouts/1.png" alt="1" border="0" /></a>  
+                              </p>
+                           </td>
+                           <td class="callout-body" valign="baseline" align="left">
+                              <p>Common customizations across different formats</p>
+                           </td>
+                        </tr>
+                        <tr class="callout-row">
+                           <td class="callout-bug" valign="baseline" align="left">
+                              <p class="callout"><a href="#co.dbxsl.custlayer.fo.docbook"><img src="png/callouts/2.png" alt="2" border="0" /></a>  
+                              </p>
+                           </td>
+                           <td class="callout-body" valign="baseline" align="left">
+                              <p>Main stylesheet for FO output; includes <code class="filename">inline.xsl</code></p>
+                           </td>
+                        </tr>
+                        <tr class="callout-row">
+                           <td class="callout-bug" valign="baseline" align="left">
+                              <p class="callout"><a href="#co.dbxsl.custlayer.fo.inline"><img src="png/callouts/3.png" alt="3" border="0" /></a>  
+                              </p>
+                           </td>
+                           <td class="callout-body" valign="baseline" align="left">
+                              <p>Contains all modifications for inline elements regarding
+                                 the FO output.
+                              </p>
+                           </td>
+                        </tr>
+                        <tr class="callout-row">
+                           <td class="callout-bug" valign="baseline" align="left">
+                              <p class="callout"><a href="#co.dbxsl.custlayer.html.docbook"><img src="png/callouts/4.png" alt="4" border="0" /></a>  
+                              </p>
+                           </td>
+                           <td class="callout-body" valign="baseline" align="left">
+                              <p>Main stylesheet for HTML output; includes <code class="filename">inline.xsl</code></p>
+                           </td>
+                        </tr>
+                        <tr class="callout-row">
+                           <td class="callout-bug" valign="baseline" align="left">
+                              <p class="callout"><a href="#co.dbxsl.custlayer.html.chunk"><img src="png/callouts/5.png" alt="5" border="0" /></a>  
+                              </p>
+                           </td>
+                           <td class="callout-body" valign="baseline" align="left">
+                              <p>Main stylesheet for HTML output; imports <code class="filename">docbook.xsl</code></p>
+                           </td>
+                        </tr>
+                        <tr class="callout-row">
+                           <td class="callout-bug" valign="baseline" align="left">
+                              <p class="callout"><a href="#co.dbxsl.custlayer.html.inline"><img src="png/callouts/6.png" alt="6" border="0" /></a>  
+                              </p>
+                           </td>
+                           <td class="callout-body" valign="baseline" align="left">
+                              <p>Contains all modifications for inline elements regarding
+                                 the FO output.
+                              </p>
+                           </td>
+                        </tr>
+                     </table>
+                  </div>
+                  <p>To use one of the customization layer with, for example,
+                     <strong class="command">xsltproc</strong>, use:
+                  </p>
+                  <div class="screen"><pre><strong class="command">xsltproc</strong> mycustomizations/html/docbook.xsl mydocbook.xml</pre></div>
                </section>
                <section id="dbc.common.dbcustomize.6" class="section seealso">
                   <div class="section-titlepage">
@@ -2212,7 +2438,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.common.dbtimestamp" class="section">
                <div class="section-titlepage">
-                  <h3>2.4. Inserting Date and Time<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">2.4. Inserting Date and Time</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.dbtimestamp">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.dbcustomize">2.3. Writing Customization Layers</a></span><span class="section-next"><a rel="next" href="#dbc.common.titles">2.5. Accessing Titles</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.common.dbtimestamp.2" class="section problem">
                   <div class="section-titlepage">
@@ -2309,9 +2538,94 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   </div>
                </section>
             </section>
+            <section id="dbc.common.titles" class="section">
+               <div class="section-titlepage">
+                  <h3 class="navig">2.5. Accessing Titles</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.titles">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span><span class="section-next"><a rel="next" href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span></div>
+               </div>
+               <section id="dbc.common.titles.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You need to retrieve a title, but your current node is not
+                     <code class="tag-element">title</code>.
+                  </p>
+               </section>
+               <section id="dbc.common.titles.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>The DocBook XSL stylesheets offers the
+                     <code class="literal">title.markup</code> mode for this purpose. Usually,
+                     insert the following code in the appropriate place:
+                  </p>
+                  <div class="programlisting"><pre>&lt;xsl:apply-templates select="." mode="title.markup"/&gt;</pre></div>
+                  <p>The <code class="tag-element">xsl:apply-templates</code> recursively finds the
+                     correct title, regardless where you currently are. It also looks
+                     into an <code class="tag-element">info</code> element, if necessary.
+                  </p>
+               </section>
+               <section id="dbc.common.titles.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>To further elaborate why you should use the mode, let's assume
+                     you have this chapter title:
+                  </p>
+                  <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;chapter&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>   &lt;title&gt;Programming in Python&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>   &lt;!-- further substructure pruned --&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;/chapter&gt;</pre></div>
+                  <p>Let's assume further, you have a template where you need the
+                     title of the enclosing section, chapter, etc. One solution simple,
+                     yet unfavorable solution could be coded like this:
+                  </p>
+                  <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template name="..."&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>   &lt;xsl:value-of select="ancestor::d:title"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                  <p>This has several disadvantages:</p>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p>The XPath does not consider a title inside an
+                              <code class="tag-element">info</code> element.
+                           </p>
+                        </li>
+                        <li>
+                           <p>The <code class="tag-element">xsl:value-of</code> returns the <em>string
+                                 value</em>. In most cases this is correct. However, if
+                              you have a <code class="tag-element">quote</code> inside <code class="tag-element">title</code>, the
+                              <code class="tag-element">quote</code> is not processed and you will not get any
+                              quotation marks.
+                           </p>
+                        </li>
+                     </ul>
+                  </div>
+                  <p>Replacing <code class="tag-element">xsl:value-of</code> through the
+                     <code class="tag-element">xsl:apply-templates</code> ensures processing of child
+                     elements inside <code class="tag-element">title</code>.
+                  </p>
+               </section>
+               <section id="dbc.common.titles.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p><a href="http://www.sagehill.net/docbookxsl/ReplaceTemplate.html#UtilityTemplates">http://www.sagehill.net/docbookxsl/ReplaceTemplate.html#UtilityTemplates</a></p>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+            </section>
             <section id="dbc.common.l10n" class="section">
                <div class="section-titlepage">
-                  <h3>2.5. Extending Language Files with Your Own Text<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">2.6. Extending Language Files with Your Own Text</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.l10n">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.titles">2.5. Accessing Titles</a></span><span class="section-next"><a rel="next" href="#dbc.structure.intro">3.1. Introduction</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.common.l10n.3" class="section problem">
                   <div class="section-titlepage">
@@ -2332,8 +2646,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                      contains all your translated text as a key/value pair. For more
                      complex settings and to group things, there are
                      <em>contexts</em>. The key is never translated, it
-                     is used for every language, and is only needed to find and
-                     retrieve the translated text. 
+                     a constant and is only needed to find and retrieve the translated text. 
                   </p>
                   <p>To use a language file, proceed as follows:</p>
                   <figure id="dbc.common.l10n.4.4" class="procedure-wrapper">
@@ -2350,7 +2663,9 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                               <div>
                                  <p>Add the parameter <em class="parameter"><code>local.l10n.xml</code></em> in
                                     your customization layer and point it to your language
-                                    file:
+                                    file (in this case, it is named
+                                    <code class="filename">myl10n.xml</code>, but you can use any name you
+                                    like):
                                  </p>
                                  <div class="screen"><pre>&lt;xsl:param name="local.l10n.xml" select="document('myl10n.xml')"/&gt;</pre></div>
                               </div>
@@ -2370,16 +2685,17 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
 <span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/&gt;
 <span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/l:l10n&gt;
 <span class="linenumber"> 10</span><span class="linenumber-separator"> </span>&lt;/l:i18n&gt;</pre></div>
-                                 <p>The above code shows two language, English and German.
-                                    Furthermore, it contains text two entries for each language
-                                    (“<span class="quote">Authors</span>” and
-                                    “<span class="quote">lastbuilt</span>”).
+                                 <p>The above code shows two language, English and German
+                                    (marked in the <code class="tag-attribute">language</code>
+                                    attribute).
+                                    Furthermore, it contains two text entries for each language
+                                    (“<span class="quote">Authors</span>” and “<span class="quote">lastbuilt</span>”).
                                  </p>
                               </div>
                            </li>
                            <li class="step">
                               <div>
-                                 <p>Call the <code class="function">gentext</code> template to retrieve
+                                 <p>Call <code class="function">gentext</code> in your template to retrieve
                                     the translated text:
                                  </p>
                                  <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:call-template name="gentext"&gt;
@@ -2428,7 +2744,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                </div>
             </div>
          </article>
-         <article id="dbc.structure" class="chapter">
+         <article id="dbc.structure" lang="en" class="chapter">
             <header class="chapter-titlepage">
                <h2>Chapter 3. Manipulating DocBook Document Structure</h2>
                <div class="abstract">
@@ -2460,7 +2776,9 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </div>
             <section id="dbc.structure.intro" class="section">
                <div class="section-titlepage">
-                  <h3>3.1. Introduction</h3>
+                  <h3 class="navig">3.1. Introduction</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.intro">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span><span class="section-next"><a rel="next" href="#dbc.struct.pretty-print">3.2. Pretty-Printing DocBook Documents</a></span></div>
                </div>
                <p>The methods described in this chapter are mostly XSLT
                   solutions where you can find more or less in any XSLT book.
@@ -2494,7 +2812,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.struct.pretty-print" class="section">
                <div class="section-titlepage">
-                  <h3>3.2. Pretty-Printing DocBook Documents<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">3.2. Pretty-Printing DocBook Documents</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.struct.pretty-print">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.intro">3.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.structure.db4-to-db5">3.3. Converting DocBook from Version 4 to Version 5</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.struct.pretty-print.3" class="section problem">
                   <div class="section-titlepage">
@@ -2606,7 +2927,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.db4-to-db5" class="section">
                <div class="section-titlepage">
-                  <h3>3.3. Converting DocBook from Version 4 to Version 5<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">3.3. Converting DocBook from Version 4 to Version 5</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.db4-to-db5">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.struct.pretty-print">3.2. Pretty-Printing DocBook Documents</a></span><span class="section-next"><a rel="next" href="#dbc.structure.db5-to-db4">3.4. Converting DocBook from Version 5 to Version 4</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.structure.db4-to-db5.3" class="section problem">
                   <div class="section-titlepage">
@@ -2733,7 +3057,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.db5-to-db4" class="section">
                <div class="section-titlepage">
-                  <h3>3.4. Converting DocBook from Version 5 to Version 4<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">3.4. Converting DocBook from Version 5 to Version 4</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.db5-to-db4">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.db4-to-db5">3.3. Converting DocBook from Version 4 to Version 5</a></span><span class="section-next"><a rel="next" href="#dbc.structure.splitdb">3.5. Splitting DocBook Documents</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.structure.db5-to-db4.3" class="section problem">
                   <div class="section-titlepage">
@@ -3110,7 +3437,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.splitdb" class="section">
                <div class="section-titlepage">
-                  <h3>3.5. Splitting DocBook Documents<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">3.5. Splitting DocBook Documents</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.splitdb">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.db5-to-db4">3.4. Converting DocBook from Version 5 to Version 4</a></span><span class="section-next"><a rel="next" href="#dbc.structure.extract">3.6. Extracting One Element from DocBook Document</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.structure.splitdb.3" class="section problem">
                   <div class="section-titlepage">
@@ -3987,7 +4317,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.extract" class="section">
                <div class="section-titlepage">
-                  <h3>3.6. Extracting One Element from DocBook Document<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">3.6. Extracting One Element from DocBook Document</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.extract">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.splitdb">3.5. Splitting DocBook Documents</a></span><span class="section-next"><a rel="next" href="#dbc.structure.sectX-to-section">3.7. Transforming <code class="tag-element">sectX</code> Elements into <code class="tag-element">section</code> Elements</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.structure.extract.3" class="section problem">
                   <div class="section-titlepage">
@@ -4260,7 +4593,11 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.sectX-to-section" class="section">
                <div class="section-titlepage">
-                  <h3>3.7. Transforming <code class="tag-element">sectX</code> Elements into <code class="tag-element">section</code> Elements<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">3.7. Transforming <code class="tag-element">sectX</code> Elements into <code class="tag-element">section</code> Elements
+                  </h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.sectX-to-section">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.extract">3.6. Extracting One Element from DocBook Document</a></span><span class="section-next"><a rel="next" href="#dbc.structure.section-to-sectX">3.8. Transforming <code class="tag-element">section</code> Elements into <code class="tag-element">sectX</code> Elements</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.structure.sectX-to-section.3" class="section">
                   <div class="section-titlepage">
@@ -4312,7 +4649,11 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.section-to-sectX" class="section">
                <div class="section-titlepage">
-                  <h3>3.8. Transforming <code class="tag-element">section</code> Elements into <code class="tag-element">sectX</code> Elements<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">3.8. Transforming <code class="tag-element">section</code> Elements into <code class="tag-element">sectX</code> Elements
+                  </h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.section-to-sectX">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.sectX-to-section">3.7. Transforming <code class="tag-element">sectX</code> Elements into <code class="tag-element">section</code> Elements</a></span><span class="section-next"><a rel="next" href="#dbc.structure.bridgehead-to-section">3.9. Transforming <code class="tag-element">bridgehead</code> Elements into <code class="tag-element">section</code> Elements</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.structure.section-to-sectX.3" class="section">
                   <div class="section-titlepage">
@@ -4406,7 +4747,11 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.bridgehead-to-section" class="section">
                <div class="section-titlepage">
-                  <h3>3.9. Transforming <code class="tag-element">bridgehead</code> Elements into <code class="tag-element">section</code> Elements<span class="section-userlevel" title="difficulty: hard">⚑⚑⚑</span></h3>
+                  <h3 class="navig">3.9. Transforming <code class="tag-element">bridgehead</code> Elements into <code class="tag-element">section</code> Elements
+                  </h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.bridgehead-to-section">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.section-to-sectX">3.8. Transforming <code class="tag-element">section</code> Elements into <code class="tag-element">sectX</code> Elements</a></span><span class="section-next"><a rel="next" href="#dbc.structure.remove-blocks-in-para">3.10. Moving Block Elements Outside of Paragraphs</a></span></div>
+                  <div class="section-userlevel" title="hard">Difficulty: ★★★ (hard)</div>
                </div>
                <section id="dbc.structure.bridgehead-to-section.3" class="section problem">
                   <div class="section-titlepage">
@@ -4597,7 +4942,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.remove-blocks-in-para" class="section">
                <div class="section-titlepage">
-                  <h3>3.10. Moving Block Elements Outside of Paragraphs<span class="section-userlevel" title="difficulty: hard">⚑⚑⚑</span></h3>
+                  <h3 class="navig">3.10. Moving Block Elements Outside of Paragraphs</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.remove-blocks-in-para">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.bridgehead-to-section">3.9. Transforming <code class="tag-element">bridgehead</code> Elements into <code class="tag-element">section</code> Elements</a></span><span class="section-next"><a rel="next" href="#dbc.structure.adding-indexterms">3.11. Adding Index Entries (Semi-)Automatically</a></span></div>
+                  <div class="section-userlevel" title="hard">Difficulty: ★★★ (hard)</div>
                   <div class="authorgroup">
                      <div class="othercredit">
                         <h3><span class="personname"><span class="firstname">Jeni</span> <span class="surname">Tennison</span></span></h3>
@@ -4683,7 +5031,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.adding-indexterms" class="section">
                <div class="section-titlepage">
-                  <h3>3.11. Adding Index Entries (Semi-)Automatically<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">3.11. Adding Index Entries (Semi-)Automatically</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.adding-indexterms">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.remove-blocks-in-para">3.10. Moving Block Elements Outside of Paragraphs</a></span><span class="section-next"><a rel="next" href="#dbc.structure.revision-list">3.12. Including Revision Information from Version Control Systems</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.structure.adding-indexterms.3" class="section problem">
                   <div class="section-titlepage">
@@ -5007,7 +5358,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                  “<span class="quote">environment variables</span>”). If you maintain 
                                  different languages, you should replace it with a more
                                  general solution and move the language specific text into
-                                 language files as described in <a href="#dbc.common.l10n">Section 2.5, “Extending Language Files with Your Own Text”</a>.
+                                 language files as described in <a href="#dbc.common.l10n">Section 2.6, “Extending Language Files with Your Own Text”</a>.
                               </p>
                            </div>
                         </li>
@@ -5023,7 +5374,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.structure.revision-list" class="section">
                <div class="section-titlepage">
-                  <h3>3.12. Including Revision Information from Version Control Systems<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">3.12. Including Revision Information from Version Control Systems</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.revision-list">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.adding-indexterms">3.11. Adding Index Entries (Semi-)Automatically</a></span><span class="section-next"><a rel="next" href="#dbc.fo.intro">4.1. Introduction</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.structure.revision-list.3" class="section problem">
                   <div class="section-titlepage">
@@ -5343,13 +5697,14 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                </div>
             </div>
          </article>
-         <article id="dbc.fo" class="chapter">
+         <article id="dbc.fo" lang="en" class="chapter">
             <header class="chapter-titlepage">
                <h2>Chapter 4. Print Customizations</h2>
                <div class="abstract">
                   <p>The DocBook XSL stylesheets has got more than 200 parameters
-                     which can customize some aspects of the layout very easily. This
-                     chapter shows you to go beyond simple parameter change.
+                     which can customize some aspects of the layout very easily (like
+                     the page dimensions). This chapter shows customizations which go 
+                     beyond simple parameter change.
                   </p>
                </div>
                <div class="ticket">See also Ticket#22: <a href="https://sourceforge.net/p/doccookbook/tickets/22/" title="Ticket#22">https://sourceforge.net/p/doccookbook/tickets/22/</a></div>
@@ -5358,34 +5713,47 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                <p><b>Table of Contents</b></p>
                <ul class="toc">
                   <li><span><a href="#dbc.fo.intro">4.1. Introduction</a></span></li>
-                  <li><span><a href="#dbc.fo.cover">4.2. Designing a Title Page</a></span></li>
-                  <li><span><a href="#dbc.fo.line-height">4.3. Influencing the Leading</a></span></li>
-                  <li><span><a href="#dbc.fo.hyphen-urls">4.4. Hyphenating URLs</a></span></li>
-                  <li><span><a href="#dbc.fo.initials">4.5. Creating Initials and Drop Caps</a></span></li>
-                  <li><span><a href="#dbc.fo.number-titles">4.6. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
+                  <li><span><a href="#dbc.fo.design-titlepages">4.2. Designing a Title Page</a></span></li>
+                  <li><span><a href="#dbc.fo.style-titlepages">4.3. Styling Title Pages</a></span></li>
+                  <li><span><a href="#dbc.fo.line-height">4.4. Influencing the Leading</a></span></li>
+                  <li><span><a href="#dbc.fo.hyphen-urls">4.5. Hyphenating URLs</a></span></li>
+                  <li><span><a href="#dbc.fo.initials">4.6. Creating Initials and Drop Caps</a></span></li>
+                  <li><span><a href="#dbc.fo.number-titles">4.7. Numbering Part, Chapter, Appendix, and other Titles</a></span></li>
                </ul>
             </div>
             <section id="dbc.fo.intro" class="section">
                <div class="section-titlepage">
-                  <h3>4.1. Introduction</h3>
+                  <h3 class="navig">4.1. Introduction</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.intro">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.structure.revision-list">3.12. Including Revision Information from Version Control Systems</a></span><span class="section-next"><a rel="next" href="#dbc.fo.design-titlepages">4.2. Designing a Title Page</a></span></div>
                </div>
-               <p>
-                  <div class="remark">TBD</div>
+               <p>Currently, there is only one stylesheet available for creating
+                  FO output: <code class="filename">fo/docbook.xsl</code>. To be exact, this
+                  creates XSL-FO 1.1 output which is compatible with decent FO
+                  formatters.
+               </p>
+               <p>Furthermore, the DocBook FO stylesheets supports extensions
+                  which enables the formatter to implement specific features. These
+                  features go beyond the FO specifications like PDF bookmarks,
+                  indices, etc. Currently, the stylesheets support extensions from
+                  PTC's Arbortext, Antenna House's AXF, Apache's FOP, and RenderX's
+                  XEP.
                </p>
             </section>
-            <section id="dbc.fo.cover" class="section">
+            <section id="dbc.fo.design-titlepages" class="section">
                <div class="section-titlepage">
-                  <h3>4.2. Designing a Title Page<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">4.2. Designing a Title Page</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.design-titlepages">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.intro">4.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.fo.style-titlepages">4.3. Styling Title Pages</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
-               <section id="dbc.fo.cover.3" class="section problem">
+               <section id="dbc.fo.design-titlepages.3" class="section problem">
                   <div class="section-titlepage">
                      <h4>Problem</h4>
                   </div>
-                  <p>You want to design a title page of your book or
-                     article.
-                  </p>
+                  <p>You want to design a title page of your book or article.</p>
                </section>
-               <section id="dbc.fo.cover.4" class="section solution">
+               <section id="dbc.fo.design-titlepages.4" class="section solution">
                   <div class="section-titlepage">
                      <h4>Solution</h4>
                   </div>
@@ -5410,11 +5778,16 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                      </ol>
                   </div>
                   <p>Both methods are shown below. Although the following
-                     descriptions focus on a book title page, the same procedure can be
-                     applied for an article title page as well.
+                     descriptions focus on a book title page, the same procedure
+                     applies for an article title page as well.
                   </p>
-                  <p>For this example, we use the following requisites:</p>
-                  <div id="li.fo.cover.rectopage.defs" class="itemizedlist">
+                  <p>Before we customize the stylesheets, we need to define,
+                     <em>what</em> we want to display on our title
+                     page(s). Depending on if it is a left or a right page, different
+                     elements needs to be shown. For this example, we use the following
+                     requisites:
+                  </p>
+                  <div id="li.fo.design-titlepages.rectopage.defs" class="itemizedlist">
                      <div class="title">Recto (Right) Page</div>
                      <p>This is the “<span class="quote">main page</span>” and the content appears
                         in the following order:
@@ -5437,7 +5810,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </li>
                      </ul>
                   </div>
-                  <div id="li.fo.cover.versopage.defs" class="itemizedlist">
+                  <div id="li.fo.design-titlepages.versopage.defs" class="itemizedlist">
                      <div class="title">Verso (Left) Page</div>
                      <p>This usually holds the imprint and the content appears
                         in the following order:
@@ -5464,14 +5837,14 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </li>
                      </ul>
                   </div>
-                  <section id="dbc.fo.cover.titlepage.indirectly" class="section">
+                  <section id="dbc.fo.design-titlepages.titlepage.indirectly" class="section">
                      <div class="section-titlepage">
                         <h5>Using Title Page Templates</h5>
                      </div>
                      <p>To create a title page using a title page template proceed
                         as follows:
                      </p>
-                     <figure id="dbc.fo.cover.titlepage.indirectly.3" class="procedure-wrapper">
+                     <figure id="pro.fo.design-titlepages.titlepage.indirectly" class="procedure-wrapper">
                         <div class="procedure">
                            <ol type="1">
                               <li class="step">
@@ -5539,7 +5912,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                                 <p>Change the recto page and locate the
                                                    <code class="tag-element">t:titlepage-content</code> element with its
                                                    attribute <code class="tag-element">t:side="recto"</code>. As definied in
-                                                   <a href="#li.fo.cover.rectopage.defs">Recto (Right) Page</a>, we
+                                                   <a href="#li.fo.design-titlepages.rectopage.defs">Recto (Right) Page</a>, we
                                                    remove everything what is not needed. Additionally we
                                                    have to output edition, which we get from an empty <code class="tag-emptytag">&lt;edition/&gt;</code> tag. The content of the
                                                    <code class="tag-element">t:titlepage-content</code> should look like
@@ -5569,7 +5942,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                                 <p>Change the verso page and locate the
                                                    <code class="tag-element">t:titlepage-content</code> element with its
                                                    attribute <code class="tag-element">t:side="verso"</code>. As definied in
-                                                   <a href="#li.fo.cover.versopage.defs">Verso (Left) Page</a>, again,
+                                                   <a href="#li.fo.design-titlepages.versopage.defs">Verso (Left) Page</a>, again,
                                                    we remove everything what is not needed. The content of
                                                    the <code class="tag-element">t:titlepage-content</code> should look like
                                                    this: 
@@ -5639,37 +6012,253 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </div>
                      </figure>
                   </section>
-                  <section id="dbc.fo.cover.titlepage.directly" class="section">
+                  <section id="dbc.fo.design-titlepages.titlepage.directly" class="section">
                      <div class="section-titlepage">
                         <h5>Customizing Title Pages Directly</h5>
                      </div>
-                     <p>The DocBook XSL stylesheets use named templates to generate
-                        a title page. For a book title page, the named templates are
-                        called in the following order, starting with
-                        <code class="function">book.titlepage</code>:
+                     <p>To create a title page directly using named templates
+                        proceed as follows:
                      </p>
-                     <div class="screen"><pre>book.titlepage
-  book.titlepage.before.recto
-  book.titlepage.recto
-  book.titlepage.before.verso
-  book.titlepage.verso
-  book.titlepage.separator</pre></div>
-                     <p>This partitioning makes it easy to just only the affected
-                        named template. As we only need the default, we do not change
-                        <code class="function">book.titlepage.before.recto</code>,
-                        <code class="function">book.titlepage.separator</code>, and
-                        <code class="function">book.titlepage.before.verso</code>.
-                        
-                     </p>
+                     <figure id="pro.fo.design-titlepages.titlepage.directly" class="procedure-wrapper">
+                        <div class="procedure">
+                           <ol type="1">
+                              <li class="step">
+                                 <div>
+                                    <p>Open the file
+                                       <code class="filename">fo/titlepage.templates.xsl</code> of your
+                                       DocBook XSL stylesheet distribution.
+                                    </p>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Search for the correct template name(s). A template name is
+                                       composed of the following components, wheras <em class="replaceable"><code>ELEMENT</code></em>
+                                       and <em class="replaceable"><code>SIDE</code></em> are placeholders:
+                                       
+                                    </p>
+                                    <div class="screen"><pre><em class="replaceable"><code>ELEMENT</code></em>.titlepage.<em class="replaceable"><code>SIDE</code></em></pre></div>
+                                    <p>As we want to change the title page of a book for the
+                                       left (verso) and right (recto) pages, the correct 
+                                       template names are <code class="function">book.titlepage.recto</code>
+                                       and <code class="function">book.titlepage.verso</code>.
+                                    </p>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Create a new file, for example
+                                       <code class="filename">booktitlepage.xsl</code>. This will contain all our
+                                       customizations of our book's title page. 
+                                    </p>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Copy the <code class="function">book.titlepage.recto</code> and
+                                       <code class="function">book.titlepage.verso</code> templates into
+                                       your new file <code class="filename">booktitlepage.xsl</code>.
+                                    </p>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Customize the template
+                                       <code class="function">book.titlepage.recto</code> according to the
+                                       definitions in 
+                                       <a href="#li.fo.design-titlepages.rectopage.defs">Recto (Right) Page</a>:
+                                    </p>
+                                    <div class="substeps">
+                                       <ol type="a">
+                                          <li class="step">
+                                             <div>
+                                                <p>Leave the two <code class="tag-element">xsl:choose</code> conditions intact to
+                                                   select the book's title and subtitle.
+                                                </p>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Insert after the last <code class="tag-endtag">&lt;/xsl:choose&gt;</code> the following line to select the
+                                                   book's author from <code class="code">d:info/d:author</code>:
+                                                </p>
+                                                <div class="programlisting"><pre>&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:author"/&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Insert the following line to select the book's
+                                                   edition from <code class="code">d:info/d:edition</code>:
+                                                </p>
+                                                <div class="programlisting"><pre>&lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:edition"/&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Remove the other <code class="tag-element">xsl:apply-templates</code>
+                                                   elements as we only want to display the title, subtitle,
+                                                   author, and the editor. The template should look like
+                                                   this:
+                                                </p>
+                                                <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template name="book.titlepage.recto"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:bookinfo/d:title"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:bookinfo/d:title"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:info/d:title"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:title"/&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:title"&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:title"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  &lt;/xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>              
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>  &lt;xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:bookinfo/d:subtitle"&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:bookinfo/d:subtitle"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:info/d:subtitle"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/subtitle"/&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:subtitle"&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:subtitle"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>  &lt;/xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:author"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:edition"/&gt;
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                       </ol>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Customize the template
+                                       <code class="function">book.titlepage.verso</code> according to the
+                                       definitions in <a href="#li.fo.design-titlepages.versopage.defs">Verso (Left) Page</a>
+                                       (note the different mode):
+                                    </p>
+                                    <div class="substeps">
+                                       <ol type="a">
+                                          <li class="step">
+                                             <div>
+                                                <p>Leave the two <code class="tag-element">xsl:choose</code> conditions intact to
+                                                   select the book's title and subtitle.
+                                                </p>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Insert after the last <code class="tag-endtag">&lt;/xsl:choose&gt;</code>
+                                                   the following line to select the book's author
+                                                   from <code class="code">d:info/d:author</code>:
+                                                </p>
+                                                <div class="programlisting"><pre>&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:author"/&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Insert the following line to select the book's
+                                                   edition from <code class="code">d:info/d:edition</code>:
+                                                </p>
+                                                <div class="programlisting"><pre>&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:edition"/&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Insert the following line to select some legal text
+                                                   from <code class="code">d:info/d:legalnotice</code>:
+                                                </p>
+                                                <div class="programlisting"><pre>&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:legalnotice"/&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Insert the following line to select the book's ISBN
+                                                   number from <code class="code">d:info/d:biblioid</code>:
+                                                </p>
+                                                <div class="programlisting"><pre>&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode"
+    select="d:info/d:biblioid[@class='isbn']"/&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                          <li class="step">
+                                             <div>
+                                                <p>Remove the other <code class="tag-element">xsl:apply-templates</code>
+                                                   elements as we only want display the title, subtitle,
+                                                   author, editor, legal text, and the ISBN number. The
+                                                   template should look like this:
+                                                </p>
+                                                <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template name="book.titlepage.verso"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:bookinfo/d:title"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:bookinfo/d:title"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:info/d:title"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:title"/&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:title"&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:title"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  &lt;/xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>              
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>  &lt;xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:bookinfo/d:subtitle"&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:bookinfo/d:subtitle"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:info/d:subtitle"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:subtitle"/&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="d:subtitle"&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>      &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:subtitle"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>  &lt;/xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:author"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:editor"/&gt;
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:legalnotice"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:biblioid[@class='isbn']"/&gt; 
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                                             </div>
+                                          </li>
+                                       </ol>
+                                    </div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Insert the constructed
+                                       <code class="filename">booktitlepage.xsl</code> into your
+                                       customization layer <code class="filename">mybooktitlepage.xsl</code>:
+                                    </p>
+                                    <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>&lt;xsl:stylesheet version="1.0"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  xmlns:fo="http://www.w3.org/1999/XSL/Format"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/fo/docbook.xsl"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:include href="booktitlepage.xsl"/&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;!-- More customizations hidden --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:stylesheet&gt;</pre></div>
+                                 </div>
+                              </li>
+                              <li class="step">
+                                 <div>
+                                    <p>Build your book as usual with your customization layer.</p>
+                                 </div>
+                              </li>
+                           </ol>
+                        </div>
+                     </figure>
                   </section>
                </section>
-               <section id="dbc.fo.cover.5" class="section discussion">
+               <section id="dbc.fo.design-titlepages.5" class="section discussion">
                   <div class="section-titlepage">
                      <h4>Discussion</h4>
                   </div>
-                  <p>There are several reasons to customize the title page of your
-                     book:
-                  </p>
+                  <p>There are several reasons to customize a title page:</p>
                   <div class="itemizedlist">
                      <ul>
                         <li>
@@ -5690,17 +6279,217 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         </li>
                      </ul>
                   </div>
+                  <p>All these requirements can be done, either with the direct or
+                     indirect method. Apart from your own preferences, use the direct
+                     method if you have more complicated conditions which can not be
+                     expressed by simple title page definitions. Sometimes it is faster to
+                     just add the respective named template instead of going through
+                     the indirect method. 
+                  </p>
+                  <p>Regardless which method you prefer, it ends up with the same
+                     named templates. For a book title page, the named templates are
+                     called in the following order, starting with
+                     <code class="function">book.titlepage</code>:
+                  </p>
+                  <div class="screen"><pre>book.titlepage
+  book.titlepage.before.recto
+  book.titlepage.recto
+  book.titlepage.before.verso
+  book.titlepage.verso
+  book.titlepage.separator</pre></div>
+                  <p>Usually, the <code class="function">book.titlepage</code> template is
+                     only customized in rare cases. For example, if you want to revamp
+                     the previous schema completely and add additional pages like
+                     <span><a href="http://en.wikipedia.org/wiki/Half_title">half titles</a></span>. Each of the templates in
+                     <code class="function">book.titlepage</code> are responsible for a
+                     different setup of a title page. We discussed the <code class="function">book.titlepage.recto</code>
+                     and <code class="function">book.titlepage.verso</code> templates already.
+                     The templates <code class="function">book.titlepage.separator</code> and
+                     <code class="function">book.titlepage.before.verso</code> contain page
+                     breaks, whereas <code class="function">book.titlepage.before.recto</code>
+                     is empty.
+                  </p>
+                  <p>Note, all of the above templates process title page elements
+                     in a special mode. As you have seen in <a href="#dbc.fo.design-titlepages.titlepage.directly">the section called “Customizing Title Pages Directly”</a>, elements for a
+                     recto page are processed in the
+                     <code class="code">book.titlepage.recto.auto.mode</code> mode. The same
+                     principle applies for a verso page and its mode
+                     <code class="code">book.titlepage.verso.auto.mode</code>. However, not all
+                     elements have a template with such modes as not all elements can
+                     (and should) appear on a title page. Look into the file
+                     <code class="filename">fo/titlepage.templates.xsl</code> to see which are
+                     definied. Assume title and subtitle have already templates for
+                     recto and verso pages as well as all the elements which are listed
+                     in the original <code class="function">book.titlepage.verso</code> and
+                     <code class="function">book.titlepage.recto</code>.
+                  </p>
+                  <p>For example, the <code class="tag-element">edition</code> element has certainly no
+                     templates for a recto and verso book title page. If you do not
+                     have definied one, a fallback mechanism takes place. For this
+                     reason, if you call a element in <code class="function">book.titlepage.verso</code> and
+                     <code class="function">book.titlepage.recto</code>, you need also to define
+                     the respective templates: 
+                  </p>
+                  <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template match="d:edition" mode="book.titlepage.recto.auto.mode"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>   &lt;!-- Add your code for a recto page --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;xsl:template match="d:edition" mode="book.titlepage.verso.auto.mode"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>   &lt;!-- Add your code for a verso page --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                  <p>Usually, you want to display the edition on a recto page
+                     different than on a verso page.
+                  </p>
                </section>
-               <section id="dbc.fo.cover.6" class="section seealso">
+               <section id="dbc.fo.design-titlepages.6" class="section seealso">
                   <div class="section-titlepage">
                      <h4>See Also</h4>
                   </div>
                   <p><a href="http://www.sagehill.net/docbookxsl/HTMLTitlePage.html">http://www.sagehill.net/docbookxsl/HTMLTitlePage.html</a></p>
                </section>
             </section>
+            <section id="dbc.fo.style-titlepages" class="section">
+               <div class="section-titlepage">
+                  <h3 class="navig">4.3. Styling Title Pages</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.style-titlepages">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.design-titlepages">4.2. Designing a Title Page</a></span><span class="section-next"><a rel="next" href="#dbc.fo.line-height">4.4. Influencing the Leading</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
+               </div>
+               <section id="dbc.fo.style-titlepages.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You do not want to overhaul the default title pages, but you
+                     want to change small things, like the font size, margins, or
+                     other stylistic parameters. 
+                  </p>
+               </section>
+               <section id="dbc.fo.style-titlepages.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>The difficulty is to find the correct template to customize.
+                     Here is a general procedure how to do this:
+                  </p>
+                  <figure id="pro.fo.style-titlepages" class="procedure-wrapper">
+                     <div class="title">Finding the Correct Template to Customize for a Title Page</div>
+                     <div class="procedure">
+                        <ol type="1">
+                           <li class="step">
+                              <div>
+                                 <p>Open the file
+                                    <code class="filename">fo/titlepage.templates.xsl</code> from your
+                                    DocBook XSL distribution.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Determine the following parameters and write it down or
+                                    memorize it:
+                                 </p>
+                                 <div class="itemizedlist">
+                                    <ul>
+                                       <li>
+                                          <p>The title page which you want to customize (usually 
+                                             something like book, chapter, etc.), refered as
+                                             <em class="replaceable"><code>DIVISION</code></em></p>
+                                       </li>
+                                       <li>
+                                          <p>The element on that title page, referred as
+                                             <em class="replaceable"><code>ELEMENT</code></em></p>
+                                       </li>
+                                       <li>
+                                          <p>The side, be it recto (right) or verso (left), refered
+                                             as <em class="replaceable"><code>SIDE</code></em>.
+                                          </p>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </li>
+                           <li id="st.fo.style-titlepages.compose-template" class="step">
+                              <div>
+                                 <p>Compose a template in your mind from the previous parameters and
+                                    replace the placeholders:
+                                 </p>
+                                 <div class="programlisting"><pre class="xml">&lt;xsl:template match="<em class="replaceable"><code>ELEMENT</code></em>" mode="<em class="replaceable"><code>DIVISION</code></em>.titlepage.<em class="replaceable"><code>SIDE</code></em>.auto.mode"&gt;</pre></div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Try to find the template from <a href="#st.fo.style-titlepages.compose-template">Step 3</a> in
+                                    <code class="filename">fo/titlepage.templates.xsl</code>.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>If you have found the template depicted in <a href="#st.fo.style-titlepages.compose-template">Step 3</a>, copy it
+                                    to your customization layer. If there is no such template,
+                                    create a new one with the same signature.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Customize the template.</p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Build your document with your customization layer.</p>
+                              </div>
+                           </li>
+                        </ol>
+                     </div>
+                  </figure>
+               </section>
+               <section id="dbc.fo.style-titlepages.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>To make the general explanations a bit more useful, here is a
+                     small example: you want to change the font size for the title of a book's recto
+                     title page. Applying <a href="#pro.fo.style-titlepages">Finding the Correct Template to Customize for a Title Page</a>
+                     leads to the following template:
+                  </p>
+                  <div class="screen"><pre>&lt;xsl:template match="<strong class="emphasis">d:title</strong>" mode="<strong class="emphasis">book</strong>.titlepage.<strong class="emphasis">recto</strong>.auto.mode"&gt;</pre></div>
+                  <p>After you have copied it to your customization layer, you can
+                     change the <code class="tag-attribute">font-size</code> (marked bold):
+                  </p>
+                  <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template match="d:title" mode="book.titlepage.recto.auto.mode"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>     xsl:use-attribute-sets="book.titlepage.recto.style" 
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>     text-align="center" 
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>     <strong class="emphasis">font-size="40pt"</strong>
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>     space-before="18.6624pt" 
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>     font-weight="bold" 
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>     font-family="{$title.fontset}"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:call-template name="division.title"&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>      &lt;xsl:with-param name="node" select="ancestor-or-self::d:book[1]"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:call-template&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>  &lt;/fo:block&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                  <p>In the previous example, the font size was changed from
+                     the original value of <code class="literal">24.8832pt</code> to
+                     <code class="literal">40pt</code>. The other objects are unchanged. Other
+                     attributes can be changed as needed.
+                  </p>
+               </section>
+               <section id="dbc.fo.style-titlepages.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <p><a href="#dbc.fo.design-titlepages">Section 4.2, “Designing a Title Page”</a></p>
+               </section>
+            </section>
             <section id="dbc.fo.line-height" class="section">
                <div class="section-titlepage">
-                  <h3>4.3. Influencing the Leading<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">4.4. Influencing the Leading</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.line-height">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.style-titlepages">4.3. Styling Title Pages</a></span><span class="section-next"><a rel="next" href="#dbc.fo.hyphen-urls">4.5. Hyphenating URLs</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                   <div class="othercredit">
                      <h3><span class="personname"><span class="firstname">Tony</span> <span class="surname">Graham</span></span></h3>
                   </div>
@@ -5859,7 +6648,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.hyphen-urls" class="section">
                <div class="section-titlepage">
-                  <h3>4.4. Hyphenating URLs<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">4.5. Hyphenating URLs</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.hyphen-urls">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.line-height">4.4. Influencing the Leading</a></span><span class="section-next"><a rel="next" href="#dbc.fo.initials">4.6. Creating Initials and Drop Caps</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.fo.hyphen-urls.3" class="section problem">
                   <div class="section-titlepage">
@@ -5994,7 +6786,10 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
             </section>
             <section id="dbc.fo.initials" class="section">
                <div class="section-titlepage">
-                  <h3>4.5. Creating Initials and Drop Caps<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">4.6. Creating Initials and Drop Caps</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.initials">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.hyphen-urls">4.5. Hyphenating URLs</a></span><span class="section-next"><a rel="next" href="#dbc.fo.number-titles">4.7. Numbering Part, Chapter, Appendix, and other Titles</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.fo.initials.3" class="section problem">
                   <div class="section-titlepage">
@@ -6119,13 +6914,16 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <div class="section-titlepage">
                      <h4>See Also</h4>
                   </div>
-                  <p>Find information about the property <code class="tag-attribute">line-height</code> in <a href="#dbc.fo.line-height">Section 4.3, “Influencing the Leading”</a>.
+                  <p>Find information about the property <code class="tag-attribute">line-height</code> in <a href="#dbc.fo.line-height">Section 4.4, “Influencing the Leading”</a>.
                   </p>
                </section>
             </section>
             <section id="dbc.fo.number-titles" class="section">
                <div class="section-titlepage">
-                  <h3>4.6. Numbering Part, Chapter, Appendix, and other Titles<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">4.7. Numbering Part, Chapter, Appendix, and other Titles</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.fo.number-titles">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.initials">4.6. Creating Initials and Drop Caps</a></span><span class="section-next"><a rel="next" href="#dbc.html.intro">5.1. Introduction</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.fo.number-titles.3" class="section problem">
                   <div class="section-titlepage">
@@ -6596,7 +7394,7 @@ II. The Python Library
                </section>
             </section>
          </article>
-         <article id="dbc.html" class="chapter">
+         <article id="dbc.html" lang="en" class="chapter">
             <header class="chapter-titlepage">
                <h2>Chapter 5. (X)HTML Customizations</h2>
                <div class="abstract">
@@ -6613,14 +7411,18 @@ II. The Python Library
                   <li><span><a href="#dbc.html.intro">5.1. Introduction</a></span></li>
                   <li><span><a href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span></li>
                   <li><span><a href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></li>
+                  <li><span><a href="#dbc.html.breadcrumbs">5.4. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></li>
                </ul>
             </div>
             <section id="dbc.html.intro" class="section">
                <div class="section-titlepage">
-                  <h3>5.1. Introduction</h3>
+                  <h3 class="navig">5.1. Introduction</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.intro">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.number-titles">4.7. Numbering Part, Chapter, Appendix, and other Titles</a></span><span class="section-next"><a rel="next" href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span></div>
                </div>
                <p>Currently, there are several HTML derivates available as
-                  target formats. As such, “<span class="quote">the</span>” HTML 
+                  target formats. As such, “<span class="quote">the</span>” HTML does not exist,
+                  only a variety of HTML dialects:
                </p>
                <div class="variablelist">
                   <dl>
@@ -6680,7 +7482,10 @@ II. The Python Library
             </section>
             <section id="dbc.html.permalinks" class="section">
                <div class="section-titlepage">
-                  <h3>5.2. Creating Permalinks<span class="section-userlevel" title="difficulty: easy">⚑⚐⚐</span></h3>
+                  <h3 class="navig">5.2. Creating Permalinks</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.permalinks">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.intro">5.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></div>
+                  <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.html.permalinks.3" class="section problem">
                   <div class="section-titlepage">
@@ -6851,7 +7656,10 @@ II. The Python Library
             </section>
             <section id="dbc.html.texinfo-navig" class="section">
                <div class="section-titlepage">
-                  <h3>5.3. Creating Simple Navigation in Chapters<span class="section-userlevel" title="difficulty: medium">⚑⚑⚐</span></h3>
+                  <h3 class="navig">5.3. Creating Simple Navigation in Chapters</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.texinfo-navig">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span><span class="section-next"><a rel="next" href="#dbc.html.breadcrumbs">5.4. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></div>
+                  <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.html.texinfo-navig.3" class="section problem">
                   <div class="section-titlepage">
@@ -7139,11 +7947,220 @@ II. The Python Library
                   </p>
                </section>
             </section>
+            <section id="dbc.html.breadcrumbs" class="section">
+               <div class="section-titlepage">
+                  <h3 class="navig">5.4. Implementing “<span class="quote">Breadcrumbs</span>”
+                  </h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.breadcrumbs">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></div>
+               </div>
+               <section id="dbc.html.breadcrumbs.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You want to display a “<span class="quote">path</span>” to your current
+                     chapter, section etc. to improve fast jumping to parent
+                     structures.
+                  </p>
+               </section>
+               <section id="dbc.html.breadcrumbs.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>Use breadcrumbs<sup class="footnote"><span class="osq">[</span><a name="dbc.html.breadcrumbs.4.2.1" href="#ftn.dbc.html.breadcrumbs.4.2.1">8</a><span class="csq">]</span></sup> to improve navigation. Use the following procedure to
+                     create breadcrumbs for your documents: 
+                  </p>
+                  <figure id="pro.html.breadcrumbs" class="procedure-wrapper">
+                     <div class="procedure">
+                        <ol type="1">
+                           <li id="st.html.breadcrumbs.custlayer" class="step">
+                              <div>
+                                 <p>Create a customization layer as shown in <a href="#dbc.common.dbcustomize">Section 2.3, “Writing Customization Layers”</a>.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Create a file <code class="filename">breadcrumbs.xsl</code> with
+                                    the following content:
+                                 </p>
+                                 <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:stylesheet version="1.0"
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  xmlns:d="http://docbook.org/ns/docbook"
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  xmlns="http://www.w3.org/1999/xhtml"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  exclude-result-prefixes="d"&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:param name="breadcrumbs.separator" select="' &gt; '"/&gt; <a name="ar.breadcrumbs.param"></a><img src="png/callouts/1.png" alt="1" border="0" />
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:template name="generate.breadcrumbs"&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    &lt;xsl:param name="current.node" select="."/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;div class="breadcrumbs"&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>      &lt;xsl:for-each select="$current.node/ancestor::*"&gt;    <a name="ar.breadcrumbs.ancestor"></a><img src="png/callouts/2.png" alt="2" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;span class="breadcrumb-link"&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>          &lt;a&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;xsl:attribute name="href"&gt;                    <a name="ar.breadcrumbs.href"></a><img src="png/callouts/3.png" alt="3" border="0" />
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>              &lt;xsl:call-template name="href.target"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>                &lt;xsl:with-param name="object" select="."/&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>                &lt;xsl:with-param name="context" select="$current.node"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>              &lt;/xsl:call-template&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>            &lt;/xsl:attribute&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;xsl:apply-templates select="." mode="title.markup"/&gt; <a name="ar.breadcrumbs.title"></a><img src="png/callouts/4.png" alt="4" border="0" />
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>          &lt;/a&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;/span&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>        &lt;xsl:copy-of select="$breadcrumbs.separator"/&gt;     <a name="ar.breadcrumbs.sep"></a><img src="png/callouts/5.png" alt="5" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;/xsl:for-each&gt;
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>      &lt;!-- Display the current node, but not as a link --&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;span class="breadcrumb-node"&gt;                       <a name="ar.breadcrumbs.currentnode"></a><img src="png/callouts/6.png" alt="6" border="0" />
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>        &lt;xsl:apply-templates select="$current.node" mode="title.markup"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;/span&gt;
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>    &lt;/div&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/xsl:template&gt;
+<span class="linenumber"> 32</span><span class="linenumber-separator"> </span>&lt;/xsl:stylesheet&gt;</pre></div>
+                                 <div class="calloutlist">
+                                    <table border="0" summary="Callout list">
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/1.png" alt="1" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Parameter to separate each component</p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/2.png" alt="2" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Iterates over the ancestor axis</p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/3.png" alt="3" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Creates the <code class="tag-attribute">href</code>
+                                                attribute by calling <code class="function">href.target</code>
+                                                to create appropriate link references even for chunked
+                                                output
+                                             </p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/4.png" alt="4" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Inserts the processed title</p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/5.png" alt="5" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Inserts the breadcrumbs separator</p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/6.png" alt="6" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Inserts the processed title of the current node but
+                                                not as a link
+                                             </p>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Include <code class="filename">breadcrumbs.xsl</code> into your
+                                    customization layer from <a href="#st.html.breadcrumbs.custlayer">Step 1</a>:
+                                 </p>
+                                 <div class="programlisting"><pre>&lt;xsl:include href="breadcrumbs.xsl"/&gt;</pre></div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Add the following code into your customization layer:</p>
+                                 <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template name="user.header.content"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;xsl:call-template name="generate.breadcrumb"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Build your document with your customization layer.</p>
+                              </div>
+                           </li>
+                        </ol>
+                     </div>
+                  </figure>
+                  <p>For example, consider the the current topic. It is embedded
+                     into this nested structure:
+                  </p>
+                  <div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>book: The DoCookBook
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  chapter: (X)HTML Customizations
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>     sect1: Implementing “Breadcrumbs”</pre></div>
+                  <p>The above <code class="filename">breadcrumbs.xsl</code> stylesheets
+                     creates this HTML code when the current node is this topic:
+                  </p>
+                  <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;div class="breadcrumbs"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;span&gt;&lt;a href="...X..."&gt;The DoCookBook&lt;/a&gt;&lt;/span&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>  &lt;span&gt;&lt;a href="...Y..."&gt;(X)HTML Customizations&lt;/a&gt;&lt;/span&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>  &lt;span class="breadcrumb-node"&gt;Implementing “Breadcrumbs”&lt;/span&gt;  
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/div&gt;</pre></div>
+                  <p>Leading to the following appearance:</p>
+                  <div class="screen"><pre>The DoCookBook &gt; (X)HTML Customizations &gt; Implementing “Breadcrumbs”</pre></div>
+                  <p>Whereas all <code class="tag-element">span</code>s contains links to their
+                     respective components except the last one.
+                  </p>
+               </section>
+               <section id="dbc.html.breadcrumbs.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>
+                     <div class="remark">TBD</div>
+                  </p>
+               </section>
+               <section id="dbc.html.breadcrumbs.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p><a href="http://www.sagehill.net/docbookxsl/HTMLHeaders.html#BreadCrumbs">http://www.sagehill.net/docbookxsl/HTMLHeaders.html#BreadCrumbs</a></p>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+            </section>
             <div class="footnotes">
                <hr width="100" align="left" class="footnotes-divider" />
                <div class="footnote">
                   <p><sup><span class="osq">[</span><a href="#dbc.html.texinfo-navig.4.6.2" name="ftn.dbc.html.texinfo-navig.4.6.2">7</a><span class="csq">]</span></sup>It is not an error to have a parameter with the same name
                      as a named template.
+                  </p>
+               </div>
+               <div class="footnote">
+                  <p><sup><span class="osq">[</span><a href="#dbc.html.breadcrumbs.4.2.1" name="ftn.dbc.html.breadcrumbs.4.2.1">8</a><span class="csq">]</span></sup>Breadcrumbs are a navigation aid and show the titles from 
+                     the top page to the current page. The term origin from the 
+                     trail of breadcrumbs left by Hänsel and Gretel in the 
+                     popular fairytale written by the Brothers Grimm.
                   </p>
                </div>
             </div>
@@ -7793,7 +8810,7 @@ II. The Python Library
                </div>
             </div>
          </article>
-         <article id="cc-by-nc-sa-30-unported" class="appendix">
+         <article id="cc-by-nc-sa-30-unported" lang="en" class="appendix">
             <header class="appendix-titlepage">
                <h2>Appendix B. Attribution-NonCommercial-ShareAlike 3.0 Unported</h2>
             </header>
