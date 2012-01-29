@@ -74,6 +74,7 @@
   <xi:include href="common/topic.dbtimestamp.xml"/>
   <xi:include href="common/topic.titles.xml"/>
   <xi:include href="common/topic.pi.xml"/>
+  <xi:include href="common/topic.xpath.location.xml"/>
   <xi:include href="common/topic.l10n.xml"/>
   
 </chapter>
