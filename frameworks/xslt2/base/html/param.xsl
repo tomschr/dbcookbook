@@ -27,6 +27,8 @@
   <xsl:param name="generate.user.meta" select="1"/>
   
   <xsl:param name="img.src.path">images/</xsl:param>
+  <xsl:param name="callout.graphics.path" 
+    select="concat($resource.root, 'png/callouts/')"/>
   
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
