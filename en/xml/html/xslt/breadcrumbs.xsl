@@ -5,46 +5,28 @@
   exclude-result-prefixes="d">
 
   <xsl:param name="breadcrumbs.separator" select="' > '"/>
-  
-  <xsl:template name="generate.breadcrumb">
+
+  <xsl:template name="generate.breadcrumbs">
     <xsl:param name="current.node" select="."/>
-
-    <xsl:for-each select="ancestor::*">
-      <a>
-        <xsl:attribute name="href">
-          <xsl:call-template name="href.target">
-            <xsl:with-param name="object" select="."/>
-            <xsl:with-param name="context" select="$current.node"/>
-          </xsl:call-template>
-        </xsl:attribute>
-        <xsl:choose>
-          <xsl:when test="$current.node/d:title">
-            <xsl:value-of select="normalize-space($current.node/d:title)"/>
-          </xsl:when>
-          <xsl:when test="$current.node/d:info/d:title">
-            <xsl:value-of
-              select="normalize-space($current.node/d:info/d:title)"/>
-          </xsl:when>
-        </xsl:choose>
-      </a>
-      <xsl:value-of select="$breadcrumbs.separator"/>
-    </xsl:for-each>
-
-    <!-- 
-     We don't want to make the current page an active link 
-    -->
-    <xsl:if test="$current.node != /*">
-      <strong>
-        <xsl:choose>
-          <xsl:when test="$current.node/d:title">
-            <xsl:value-of select="normalize-space($current.node/d:title)"/>
-          </xsl:when>
-          <xsl:when test="$current.node/d:info/d:title">
-            <xsl:value-of
-              select="normalize-space($current.node/d:info/d:title)"/>
-          </xsl:when>
-        </xsl:choose>
-      </strong>
-    </xsl:if>
+    <div class="breadcrumbs">
+      <xsl:for-each select="$current.node/ancestor::*">
+        <span class="breadcrumb-link">
+          <a>
+            <xsl:attribute name="href">
+              <xsl:call-template name="href.target">
+                <xsl:with-param name="object" select="."/>
+                <xsl:with-param name="context" select="$current.node"/>
+              </xsl:call-template>
+            </xsl:attribute>
+            <xsl:apply-templates select="." mode="title.markup"/>
+          </a>
+        </span>
+        <xsl:copy-of select="$breadcrumbs.separator"/>
+      </xsl:for-each>
+      <!-- Display the current node, but not as a link -->
+      <span class="breadcrumb-node">
+        <xsl:apply-templates select="$current.node" mode="title.markup"/>
+      </span>
+    </div>
   </xsl:template>
 </xsl:stylesheet>
