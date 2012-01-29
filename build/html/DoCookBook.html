@@ -19,8 +19,8 @@ body { background-image: url('images/draft.svg');
       <meta name="DC.language" content="en" scheme="DCTERMS.RFC3066" />
       <meta name="DC.title" content="The DoCookBook" />
       <meta name="DC.creator" content="Thomas Schraitle" />
-      <meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2012-01-29T16:17:56.753+01:00" />
-      <meta name="date" content="2012-01-29T16:17:56.753+01:00" />
+      <meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2012-01-29T20:32:53.195+01:00" />
+      <meta name="date" content="2012-01-29T20:32:53.195+01:00" />
       <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType" />
       <meta name="DC.identifier" scheme="DCTERMS.URI"
             content="http://sf.net/p/doccookbook/" />
@@ -37,7 +37,7 @@ body { background-image: url('images/draft.svg');
                <h3><span class="personname"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span></h3>
             </div>
             <div>
-               <p>Published: 29 Jan 2012, 16:17 +01:00</p>
+               <p>Published: 29 Jan 2012, 20:32 +01:00</p>
             </div>
             <p class="draft">Draft (Version 0.4)</p>
             <div id="legalnotice" lang="en" class="legalnotice">
@@ -182,7 +182,8 @@ body { background-image: url('images/draft.svg');
                      <li><span><a href="#dbc.common.dbcustomize">2.3. Writing Customization Layers</a></span></li>
                      <li><span><a href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span></li>
                      <li><span><a href="#dbc.common.titles">2.5. Accessing Titles</a></span></li>
-                     <li><span><a href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span></li>
+                     <li><span><a href="#dbc.common.pi">2.6. Extract Information from Your Own Processing Instructions</a></span></li>
+                     <li><span><a href="#dbc.common.l10n">2.7. Extending Language Files with Your Own Text</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#dbc.structure">3. Manipulating DocBook Document Structure</a></span><ul class="toc">
@@ -2046,7 +2047,8 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <li><span><a href="#dbc.common.dbcustomize">2.3. Writing Customization Layers</a></span></li>
                   <li><span><a href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span></li>
                   <li><span><a href="#dbc.common.titles">2.5. Accessing Titles</a></span></li>
-                  <li><span><a href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span></li>
+                  <li><span><a href="#dbc.common.pi">2.6. Extract Information from Your Own Processing Instructions</a></span></li>
+                  <li><span><a href="#dbc.common.l10n">2.7. Extending Language Files with Your Own Text</a></span></li>
                </ul>
             </div>
             <section id="dbc.common.intro" class="section">
@@ -2542,7 +2544,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                <div class="section-titlepage">
                   <h3 class="navig">2.5. Accessing Titles</h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.titles">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span><span class="section-next"><a rel="next" href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.dbtimestamp">2.4. Inserting Date and Time</a></span><span class="section-next"><a rel="next" href="#dbc.common.pi">2.6. Extract Information from Your Own Processing Instructions</a></span></div>
                </div>
                <section id="dbc.common.titles.3" class="section problem">
                   <div class="section-titlepage">
@@ -2620,11 +2622,199 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   </div>
                </section>
             </section>
+            <section id="dbc.common.pi" class="section">
+               <div class="section-titlepage">
+                  <h3 class="navig">2.6. Extract Information from Your Own Processing Instructions</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.pi">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.titles">2.5. Accessing Titles</a></span><span class="section-next"><a rel="next" href="#dbc.common.l10n">2.7. Extending Language Files with Your Own Text</a></span></div>
+               </div>
+               <section id="dbc.common.pi.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You need an own processing instruction (not one from the
+                     DocBook XSL stylesheets) to fine-tune your transformation.
+                  </p>
+               </section>
+               <section id="dbc.common.pi.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>The DocBook XSL stylesheet offers the
+                     <code class="function">pi-attribute</code> template for this purpose. It
+                     expects a processing instruction node and a
+                     “<span class="quote">pseudo-attribute</span>” name. For example, the following
+                     processing instruction is given:
+                  </p>
+                  <div class="programlisting"><pre>&lt;?toms-html background-color="blue"?&gt;</pre></div>
+                  <p>Call <code class="function">pi-attribute</code> to extract the content
+                     of the pseudo-attribute <code class="tag-attribute">name</code>:
+                  </p>
+                  <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:call-template name="pi-attribute"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;xsl:with-param name="pis" select="processing-instruction('toms-html')"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:with-param name="attribute" select="'background-color'"/&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>&lt;/xsl:call-template&gt;</pre></div>
+                  <p>This gives you the result <code class="literal">blue</code>.
+                  </p>
+               </section>
+               <section id="dbc.common.pi.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>Processing instructions (PIs) are usually needed for fine-tune your
+                     output formats. For example, to add page break information,
+                     background color, or other stylistic hints. PIs should
+                     <em>not</em> be used to insert data which should
+                     normally reside inside a DocBook element! As a general rule of
+                     thumb: Use PIs if you want provide layout specific information for
+                     your output format if there is no other method.
+                     
+                  </p>
+                  <p>The following example use the PI <code class="tag-xmlpi">&lt;?toms-html?&gt;</code> which is included inside an
+                     <code class="tag-element">para</code> element to insert background color in HTML:<sup class="footnote"><span class="osq">[</span><a name="dbc.common.pi.5.3.3" href="#ftn.dbc.common.pi.5.3.3">6</a><span class="csq">]</span></sup></p>
+                  <figure id="dbc.common.pi.5.4" class="procedure-wrapper">
+                     <div class="procedure">
+                        <ol type="1">
+                           <li class="step">
+                              <div>
+                                 <p>Invent a target name for your processing instruction. This
+                                    name should be unique and must not conflict with existing PIs (like
+                                    <code class="tag-xmlpi">&lt;?dbhtml?&gt;</code>, <code class="tag-xmlpi">&lt;?dbfo?&gt;</code>, etc.) For
+                                    example, you could use your abbreviated name and the output format to
+                                    distinguish it from other processing instructions.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Insert your PI into a para which indicates a different
+                                    background color:
+                                 </p>
+                                 <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;para&gt;&lt;?toms-html background-color="blue"?&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  ...
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/para&gt;</pre></div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Create a customization layer as shown in <a href="#dbc.common.dbcustomize">Section 2.3, “Writing Customization Layers”</a>.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Customize the <code class="tag-element">para</code> template and add the
+                                    following code to your customization layer. The customized
+                                    template call <code class="function">pi-attribute</code> with the
+                                    relevant parameters. If no PI was set, apply the original
+                                    template:
+                                 </p>
+                                 <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:template match="d:para"&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;xsl:variable name="bg"&gt;     <a name="ar.pi.variable"></a><img src="png/callouts/1.png" alt="1" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:call-template name="pi-attribute"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>      &lt;xsl:with-param name="pis" select="processing-instruction('toms-html')"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:with-param name="attribute" select="'background-color'"/&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>    &lt;/xsl:call-template&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/xsl:variable&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>  &lt;xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:when test="$bg != ''"&gt;<a name="ar.pi.when"></a><img src="png/callouts/2.png" alt="2" border="0" />   
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>      &lt;div style="background-color:{$bg}"&gt;  <a name="ar.pi.div"></a><img src="png/callouts/3.png" alt="3" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;xsl:apply-imports/&gt;   <a name="ar.pi.apply-imports"></a><img src="png/callouts/4.png" alt="4" border="0" />
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>      &lt;/div&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:when&gt;
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>    &lt;xsl:otherwise&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:apply-imports/&gt;     <a name=""></a><img src="png/callouts/4.png" alt="4" border="0" />
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>    &lt;/xsl:otherwise&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;/xsl:choose&gt;
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>&lt;/xsl:template&gt;</pre></div>
+                                 <div class="calloutlist">
+                                    <table border="0" summary="Callout list">
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/1.png" alt="1" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Fill the variable <code class="varname">bg</code> with the
+                                                result of <code class="function">pi-attribute</code>. Note, the <code class="tag-attribute">select</code> only matches for PIs
+                                                <em>inside</em> a <code class="tag-element">para</code>.
+                                             </p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/2.png" alt="2" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Decide what to do when background color is found.</p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/3.png" alt="3" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Wrap our paragraph around <code class="tag-element">div</code> with the
+                                                corresponding <code class="tag-attribute">background-color</code> inside a <code class="tag-attribute">style</code> attribute. 
+                                             </p>
+                                          </td>
+                                       </tr>
+                                       <tr class="callout-row">
+                                          <td class="callout-bug" valign="baseline" align="left">
+                                             <p class="callout"><img src="png/callouts/4.png" alt="4" border="0" /> 
+                                             </p>
+                                          </td>
+                                          <td class="callout-body" valign="baseline" align="left">
+                                             <p>Delegate the default handling to the original
+                                                <code class="tag-element">para</code> template.
+                                             </p>
+                                          </td>
+                                       </tr>
+                                    </table>
+                                 </div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Build your document with your customization layer.</p>
+                              </div>
+                           </li>
+                        </ol>
+                     </div>
+                  </figure>
+                  <p>The previous example only recognizes a PI
+                     <em>inside</em> a <code class="tag-element">para</code>. If you want to
+                     recognize also PIs <em>before</em>, use the following
+                     XPath in the <code class="tag-attribute">select</code> attribute of
+                     <code class="function">pi-attribute</code>:
+                  </p>
+                  <div class="screen"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>( processing-instruction('toms-html') | 
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span> preceding-sibling::processing-instruction('toms-html')[1] 
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>)[last()]</pre></div>
+                  <p>If two PIs are available (one inside, another outside), the
+                     one which is located inside takes precedence.
+                  </p>
+               </section>
+               <section id="dbc.common.pi.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p><a href="http://docbook.sourceforge.net/release/xsl/current/doc/lib/pi-attribute.html">http://docbook.sourceforge.net/release/xsl/current/doc/lib/pi-attribute.html</a></p>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+            </section>
             <section id="dbc.common.l10n" class="section">
                <div class="section-titlepage">
-                  <h3 class="navig">2.6. Extending Language Files with Your Own Text</h3>
+                  <h3 class="navig">2.7. Extending Language Files with Your Own Text</h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.common.l10n">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.titles">2.5. Accessing Titles</a></span><span class="section-next"><a rel="next" href="#dbc.structure.intro">3.1. Introduction</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.pi">2.6. Extract Information from Your Own Processing Instructions</a></span><span class="section-next"><a rel="next" href="#dbc.structure.intro">3.1. Introduction</a></span></div>
                   <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.common.l10n.3" class="section problem">
@@ -2742,6 +2932,12 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                      specification at <a href="http://www.w3.org/TR/REC-xml/#sec-pi">http://www.w3.org/TR/REC-xml/#sec-pi</a>.
                   </p>
                </div>
+               <div class="footnote">
+                  <p><sup><span class="osq">[</span><a href="#dbc.common.pi.5.3.3" name="ftn.dbc.common.pi.5.3.3">6</a><span class="csq">]</span></sup>Usually, such a need would be solved through CSS and not
+                     PIs. However, this example shows just the principle so it is a
+                     perfect use case.
+                  </p>
+               </div>
             </div>
          </article>
          <article id="dbc.structure" lang="en" class="chapter">
@@ -2778,7 +2974,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                <div class="section-titlepage">
                   <h3 class="navig">3.1. Introduction</h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.structure.intro">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.l10n">2.6. Extending Language Files with Your Own Text</a></span><span class="section-next"><a rel="next" href="#dbc.struct.pretty-print">3.2. Pretty-Printing DocBook Documents</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.common.l10n">2.7. Extending Language Files with Your Own Text</a></span><span class="section-next"><a rel="next" href="#dbc.struct.pretty-print">3.2. Pretty-Printing DocBook Documents</a></span></div>
                </div>
                <p>The methods described in this chapter are mostly XSLT
                   solutions where you can find more or less in any XSLT book.
@@ -5279,7 +5475,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                   <p>With the above stylesheet, it is possible to influence how
                      your index terms appear. This is done with the
                      <code class="tag-attribute">condition</code><sup class="footnote"><span class="osq">[</span><a name="dbc.structure.adding-indexterms.5.7.2"
-                           href="#ftn.dbc.structure.adding-indexterms.5.7.2">6</a><span class="csq">]</span></sup> attribute, demonstrated on our <code class="tag-element">envar</code>
+                           href="#ftn.dbc.structure.adding-indexterms.5.7.2">7</a><span class="csq">]</span></sup> attribute, demonstrated on our <code class="tag-element">envar</code>
                      example:
                   </p>
                   <div class="variablelist">
@@ -5358,7 +5554,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                                  “<span class="quote">environment variables</span>”). If you maintain 
                                  different languages, you should replace it with a more
                                  general solution and move the language specific text into
-                                 language files as described in <a href="#dbc.common.l10n">Section 2.6, “Extending Language Files with Your Own Text”</a>.
+                                 language files as described in <a href="#dbc.common.l10n">Section 2.7, “Extending Language Files with Your Own Text”</a>.
                               </p>
                            </div>
                         </li>
@@ -5690,7 +5886,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                <hr width="100" align="left" class="footnotes-divider" />
                <div class="footnote">
                   <p><sup><span class="osq">[</span><a href="#dbc.structure.adding-indexterms.5.7.2"
-                           name="ftn.dbc.structure.adding-indexterms.5.7.2">6</a><span class="csq">]</span></sup>Theoretically you could use any of the several common
+                           name="ftn.dbc.structure.adding-indexterms.5.7.2">7</a><span class="csq">]</span></sup>Theoretically you could use any of the several common
                      attributes available on every DocBook element. The <code class="tag-attribute">condition</code> was the one attribute 
                      that has fitted the best in the authors mind.
                   </p>
@@ -7803,7 +7999,7 @@ II. The Python Library
                      </div>
                   </figure>
                   <p>If you want to switch on or off the above behaviour, use the
-                     parameter <em class="parameter"><code>generate.simple.navigation</code></em><sup class="footnote"><span class="osq">[</span><a name="dbc.html.texinfo-navig.4.6.2" href="#ftn.dbc.html.texinfo-navig.4.6.2">7</a><span class="csq">]</span></sup> and set it to <code class="literal">0</code>.
+                     parameter <em class="parameter"><code>generate.simple.navigation</code></em><sup class="footnote"><span class="osq">[</span><a name="dbc.html.texinfo-navig.4.6.2" href="#ftn.dbc.html.texinfo-navig.4.6.2">8</a><span class="csq">]</span></sup> and set it to <code class="literal">0</code>.
                   </p>
                </section>
                <section id="dbc.html.texinfo-navig.5" class="section discussion">
@@ -7967,7 +8163,7 @@ II. The Python Library
                   <div class="section-titlepage">
                      <h4>Solution</h4>
                   </div>
-                  <p>Use breadcrumbs<sup class="footnote"><span class="osq">[</span><a name="dbc.html.breadcrumbs.4.2.1" href="#ftn.dbc.html.breadcrumbs.4.2.1">8</a><span class="csq">]</span></sup> to improve navigation. Use the following procedure to
+                  <p>Use breadcrumbs<sup class="footnote"><span class="osq">[</span><a name="dbc.html.breadcrumbs.4.2.1" href="#ftn.dbc.html.breadcrumbs.4.2.1">9</a><span class="csq">]</span></sup> to improve navigation. Use the following procedure to
                      create breadcrumbs for your documents: 
                   </p>
                   <figure id="pro.html.breadcrumbs" class="procedure-wrapper">
@@ -8152,12 +8348,12 @@ II. The Python Library
             <div class="footnotes">
                <hr width="100" align="left" class="footnotes-divider" />
                <div class="footnote">
-                  <p><sup><span class="osq">[</span><a href="#dbc.html.texinfo-navig.4.6.2" name="ftn.dbc.html.texinfo-navig.4.6.2">7</a><span class="csq">]</span></sup>It is not an error to have a parameter with the same name
+                  <p><sup><span class="osq">[</span><a href="#dbc.html.texinfo-navig.4.6.2" name="ftn.dbc.html.texinfo-navig.4.6.2">8</a><span class="csq">]</span></sup>It is not an error to have a parameter with the same name
                      as a named template.
                   </p>
                </div>
                <div class="footnote">
-                  <p><sup><span class="osq">[</span><a href="#dbc.html.breadcrumbs.4.2.1" name="ftn.dbc.html.breadcrumbs.4.2.1">8</a><span class="csq">]</span></sup>Breadcrumbs are a navigation aid and show the titles from 
+                  <p><sup><span class="osq">[</span><a href="#dbc.html.breadcrumbs.4.2.1" name="ftn.dbc.html.breadcrumbs.4.2.1">9</a><span class="csq">]</span></sup>Breadcrumbs are a navigation aid and show the titles from 
                      the top page to the current page. The term origin from the 
                      trail of breadcrumbs left by Hänsel and Gretel in the 
                      popular fairytale written by the Brothers Grimm.
