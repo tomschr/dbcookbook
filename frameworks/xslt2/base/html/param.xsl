@@ -8,7 +8,8 @@
   xmlns:t="http://docbook.org/xslt/ns/template"
   xmlns:m="http://docbook.org/xslt/ns/mode"
   xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"
-  exclude-result-prefixes="d xlink tmpl m t f">
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  exclude-result-prefixes="d xlink tmpl m t f xs">
  
 
   <xsl:param name="base.dir">build/html/</xsl:param>
@@ -61,4 +62,5 @@
   <xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
   <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
   
+  <xsl:param name="use.downloadlink" select="1" as="xs:integer"/>
 </xsl:stylesheet>
