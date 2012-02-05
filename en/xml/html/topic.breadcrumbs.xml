@@ -52,6 +52,13 @@
       <step>
         <para>Create a file <filename>breadcrumbs.xsl</filename> with
           the following content:</para>
+        
+        <informalexample>
+         <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/breadcrumbs.xsl</filename>
+          </output>
+        </info>
         <programlistingco>
           <areaspec>
             <area xml:id="ar.breadcrumbs.param" coords="7" units="linecolumn"/>
@@ -87,7 +94,8 @@
                 not as a link</para>
             </callout>
           </calloutlist>
-        </programlistingco>        
+        </programlistingco>
+        </informalexample>               
       </step>
       <step>
         <para>Include <filename>breadcrumbs.xsl</filename> into your

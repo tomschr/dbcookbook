@@ -40,6 +40,11 @@
       parameter.</para>
     <example xml:id="ex.html.permalinks">
       <title>Permalink Stylesheet (<filename>permalinks.xsl</filename>)</title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/permalinks.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml"><xi:include href="xslt/permalinks.xsl" parse="text"/></programlisting>
     </example>
     <para>This is of course not enough. Use the following steps to
