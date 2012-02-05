@@ -13,8 +13,8 @@
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   exclude-result-prefixes="d xlink tmpl m t f h l xs">
   
-  <!--<xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>-->
-  <xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>
+  <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>  
+  <!--<xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>-->
   
   <xsl:include href="piwik.xsl"/>
   <xsl:include href="param.xsl"/>
@@ -24,6 +24,7 @@
   <xsl:include href="titlepage-mode.xsl"/>
   <xsl:include href="section.xsl"/>
   <xsl:include href="html.xsl"/>
+  <xsl:include href="formal.xsl"/>
   <xsl:include href="graphics.xsl"/>
   <xsl:include href="usermeta.xsl"/>
 
