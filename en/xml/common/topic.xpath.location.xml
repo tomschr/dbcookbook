@@ -64,7 +64,6 @@
     &lt;xsl:with-param name="node" select="<replaceable>YOUR_XPath_Expression</replaceable>"/>
   &lt;/xsl:call-template>
 &lt;/xsl:message></programlisting>
-    <para>The information above helps you to locate where you are.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -74,15 +73,19 @@
       predicates. If you have a DocBook document with different
       namespaces, the original version does not help.</para>
     <para>In <xref linkend="ex.xpathns.location"/>, the revised template
-    recognizes namespaces.</para>
+    recognizes namespaces and counts elements on the sibling axis.</para>
     <example xml:id="ex.xpathns.location">
       <title>Namespace-aware Output of an XPath</title>
+      <info>
+        <biblioid class="uri">xslt/xpath.location.v2.xsl</biblioid>
+      </info>
       <programlistingco>
         <areaspec>
           <area xml:id="co.xpathns.ns" coords="5" units="linecolumn"/>
           <area xml:id="co.xpathns.nsnodes" coords="13 75" units="linecolumn"/>
           <area xml:id="co.xpathns.method" coords="18" units="linecolumn"/>
           <area xml:id="co.xpathns.choose" coords="21" units="linecolumn"/>
+          <area xml:id="co.xpathns.predicate" coords="32 80" units="linecolumn"/>
         </areaspec>
         <programlisting><xi:include href="xslt/xpathns.location.xsl" parse="text"/></programlisting>
       </programlistingco>
@@ -97,21 +100,34 @@
           <para>Defines the method how prefixes are displayed. You can
             choose between <quote>prefix</quote> and the Clark notation.
             The latter adds the namespace in curly brackets before the
-            element name.
+            element name, but makes the whole XPath very verbose.
             </para>
         </callout>
         <callout arearefs="co.xpathns.choose">
           <para>Choose between the prefixed or Clark notation</para>
         </callout>
+        <callout arearefs="co.xpathns.predicate">
+          <para>Checks, if we are not at the root node and there is more
+          than one element with the same name and the same namespace. If
+          this is true, we output a predicate where the current number
+          is enclosed in squared brackets.</para>
+        </callout>
       </calloutlist>
     </example>
-    
+    <para>Be aware, the previous template is slower than the original
+      version (it has to count a little bit more). For debugging purpose
+      it is probably fine.
+    </para>
   </section>
   <section role="seealso">
     <title>See Also</title>
     <itemizedlist>
       <listitem>
         <para><link xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/lib/xpath.location.html"/></para>
+      </listitem>
+      <listitem>
+        <para>A recursive solution, considering also attribute, text,
+          and processing instruction nodes: <link xlink:href="http://www.dpawson.co.uk/xsl/sect2/xpath.html#d11572e154"/></para>
       </listitem>
     </itemizedlist>
   </section>
