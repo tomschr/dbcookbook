@@ -20,17 +20,14 @@
     <xsl:for-each 
       select="$node//( (d:example|d:informalexample)
                          [d:info/de:output/de:filename] )">
-      <xsl:variable name="downloadlink"
-        select="if (d:info/de:output/de:filename)
-                then d:info/de:output/de:filename
-                else ()" />
+      <xsl:variable name="dl" select="f:download-link(.)"/>
       
-      <xsl:if test="not(empty($downloadlink))">
+      <xsl:if test="not(empty($dl))">
         <xsl:if test="$verbosity > 2">
           <xsl:message>  Creating example output for "<xsl:value-of
-            select="$downloadlink"/>"</xsl:message>
+            select="$dl"/>"</xsl:message>
         </xsl:if>
-        <xsl:result-document href="{$downloadlink}" encoding="UTF-8"
+        <xsl:result-document href="{$dl}" encoding="UTF-8"
           method="text" validation="strip">
           <xsl:value-of disable-output-escaping="yes"
             select="string((current()/d:programlisting |

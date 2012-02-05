@@ -14,20 +14,35 @@
   xmlns:de="urn:x-toms:docbook-ext"
   exclude-result-prefixes="d xlink tmpl m t f h l xs de">
 
-<xsl:template name="t:create-downloadlink">
-  <xsl:param name="node" select="."/>
-  <xsl:variable name="downloadlink"
+<xsl:param name="base.example.dir" as="xs:string">example/</xsl:param>
+
+<xsl:function name="f:download-link">
+  <xsl:param name="node" />
+  
+  <xsl:variable name="fn"
       select="if ($node/d:info/de:output/de:filename)
               then $node/d:info/de:output/de:filename
               else ()"/>
+  <xsl:variable name="downloadlink" 
+      select="if ($fn)
+              then concat($base.example.dir, $fn)
+              else ()"/>
   
-    <xsl:if test="$use.downloadlink != 0 and not(empty($downloadlink))">
+  <xsl:sequence select="$downloadlink"/>
+</xsl:function>
+
+
+<xsl:template name="t:create-downloadlink">
+  <xsl:param name="node" select="."/>
+  <xsl:variable name="dl" select="f:download-link($node)"/>
+  
+    <xsl:if test="$use.downloadlink != 0 and not(empty($dl))">
       <xsl:if test="$verbosity > 4">
         <xsl:message> Integrating download link for "<xsl:value-of
-            select="$downloadlink"/>"</xsl:message>
+            select="$dl"/>"</xsl:message>
       </xsl:if>
       <div class="example-download-link">
-        <a href="{$downloadlink}">
+        <a href="{$dl}">
           <xsl:call-template name="gentext">
             <xsl:with-param name="key" select="'Download'"/>
           </xsl:call-template>
