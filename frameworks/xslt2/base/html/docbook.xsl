@@ -26,7 +26,9 @@
   <xsl:include href="html.xsl"/>
   <xsl:include href="formal.xsl"/>
   <xsl:include href="graphics.xsl"/>
+  
   <xsl:include href="usermeta.xsl"/>
+  <xsl:include href="collect-examples.xsl"/>
 
   <xsl:template match="/">
     <xsl:variable name="root" as="element()"
@@ -57,6 +59,10 @@
     <xsl:for-each select=".//d:mediaobject[d:textobject[not(d:phrase)]]">
       <xsl:call-template name="t:write-longdesc"/>
     </xsl:for-each>
+    
+    <xsl:if test="$use.downloadlink != 0">
+      <xsl:call-template name="t:write-examples"/>
+    </xsl:if>
   </xsl:template>
   
 </xsl:stylesheet>
