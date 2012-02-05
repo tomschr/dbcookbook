@@ -19,14 +19,23 @@
   
     <xsl:variable name="next.path">
       <xsl:choose>
-        <xsl:when test="$method = 'prefix' and $nsnodes[namespace-uri($node) = .]">
+        <xsl:when test="$method = 'prefix' and $nsnodes[namespace-uri($node)]">
           <xsl:value-of select="concat($nsnodes[namespace-uri($node) = .]/@prefix, ':')"/>
         </xsl:when>
         <xsl:when test="$method = 'clark' and namespace-uri($node) != ''">
           <xsl:value-of select="concat('{', namespace-uri($node), '}')"/>
         </xsl:when>
       </xsl:choose>  
-      <xsl:value-of select="local-name($node)"/>
+      <xsl:value-of select="local-name($node)"/>      
+      <xsl:if test="generate-id($node) != generate-id(/*) and
+                    count(../*[local-name()=local-name(current()) and
+                             namespace-uri()=namespace-uri(current())]) > 1">
+        <xsl:text>[</xsl:text>
+        <xsl:value-of select="count(preceding-sibling::*
+                          [local-name()=local-name(current()) and
+                           namespace-uri()=namespace-uri(current())]) + 1"/>
+      <xsl:text>]</xsl:text>
+    </xsl:if>
       <xsl:if test="$path != ''">
         <xsl:text>/</xsl:text>
       </xsl:if>
