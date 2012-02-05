@@ -31,9 +31,8 @@
         <xsl:result-document href="{$downloadlink}" encoding="UTF-8"
           method="text" validation="strip">
           <xsl:value-of disable-output-escaping="yes"
-            select="(current()/d:programlisting |
-                   current()/d:programlistingco/d:programlisting)[1]/text()"
-          />
+            select="string((current()/d:programlisting |
+                   current()/d:programlistingco/d:programlisting)[1])"/>
         </xsl:result-document>
       </xsl:if>
     </xsl:for-each>
