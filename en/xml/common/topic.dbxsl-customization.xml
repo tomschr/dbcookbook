@@ -57,6 +57,11 @@
     <para>How this can look is shown in the following listing.</para>
     <example xml:id="ex.common.dbcustomize.general-cust-layer">
       <title>General Customization Layer</title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/docbook-customization.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml">&lt;xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook">

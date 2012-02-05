@@ -77,7 +77,9 @@
     <example xml:id="ex.xpathns.location">
       <title>Namespace-aware Output of an XPath</title>
       <info>
-        <biblioid class="uri">xslt/xpath.location.v2.xsl</biblioid>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/xpath.location.v2.xsl</filename>
+        </output>
       </info>
       <programlistingco>
         <areaspec>

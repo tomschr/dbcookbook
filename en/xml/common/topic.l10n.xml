@@ -57,6 +57,12 @@
       <step>
         <para>Open the <filename>myl10n.xml</filename> file and insert
         the following XML code as an example:</para>
+        <informalexample>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>xslt/l10n.xml</filename>
+            </output>
+          </info>
         <programlisting language="xml">&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
   &lt;l:l10n language="en">
     &lt;l:gentext key="Authors" text="Authors"/>
@@ -67,6 +73,7 @@
     &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
   &lt;/l:l10n>
 &lt;/l:i18n></programlisting>
+        </informalexample>
         <para>The above code shows two language, English and German
           (marked in the <tag class="attribute">language</tag>
           attribute).
