@@ -47,6 +47,11 @@
             <tag>para</tag> element:</para>
         <example xml:id="ex.profile-envar.xml">
           <title><filename>profile-envar.xml</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>xslt/profile-envar.xml</filename>
+            </output>
+          </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include
             href="xslt/profile-envar.xml" parse="text"/></programlisting>
         </example>
@@ -56,6 +61,11 @@
         with the following content:</para>
         <example xml:id="ex.profile-tag.xsl">
           <title><filename>profile-tag.xsl</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>xslt/profile-tags.xsl</filename>
+            </output>
+          </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include 
             href="xslt/profile-tags.xsl" parse="text"/></programlisting>
         </example>
@@ -69,6 +79,11 @@
           profiling conditions.</para>
         <example>
           <title><filename>add-indexterms.xsl</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>xslt/add-indexterms.xsl</filename>
+            </output>
+          </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include
         href="xslt/add-indexterms.xsl" parse="text"/></programlisting>
         </example>

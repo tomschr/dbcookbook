@@ -36,6 +36,11 @@
     attribute. If this is available, use the following stylesheet:</para>
     <example xml:id="ex.rootid.xsl">
       <title>Extracting Stylesheet <filename>rootid.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/rootid.xsl</filename>
+        </output>
+      </info>
       <programlisting linenumbering="numbered"
         language="xml"><xi:include href="xslt/rootid.xsl" parse="text"/></programlisting>
     </example>
@@ -60,6 +65,11 @@
       <quote>resolved form</quote> by using the following code:</para>
     <example xml:id="ex.rootid-resolve-xrefs.xsl">
       <title><filename>rootid-resolve-xrefs.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/rootid-resolve-xrefs.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
       href="xslt/rootid-resolve-xrefs.xsl" parse="text"/></programlisting>
     </example>
@@ -132,8 +142,6 @@
             </formalpara>
           </listitem>
         </itemizedlist>
-        
-        
       </listitem>
       <listitem>
         <para>If the <tag>xref</tag> needs to be revamped, we use the

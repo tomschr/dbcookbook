@@ -35,6 +35,11 @@
     <example xml:id="ex.structure.sectX-to-section">
       <title>Transforms every <tag>sectX</tag> Element into a
           <tag>section</tag> Element</title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/db-sectX-to-section.xsl</filename>
+        </output>
+      </info>
       <programlisting linenumbering="numbered" language="xml"><xi:include href="xslt/db-sectX-to-section.xsl" parse="text"/></programlisting>
     </example>
   </section>

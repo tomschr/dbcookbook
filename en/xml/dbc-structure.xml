@@ -49,7 +49,12 @@
     
     <example xml:id="ex.copy.xsl">
       <title><filename>copy.xsl</filename></title>
-      <programlisting linenumbering="numbered" language="xml"><xi:include 
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/copy.xsl</filename>
+        </output>
+      </info>
+      <programlisting language="xml"><xi:include 
         href="structure/xslt/copy.xsl" parse="text"/></programlisting>
     </example>
     

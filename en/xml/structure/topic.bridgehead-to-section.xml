@@ -41,7 +41,12 @@
     <example>
       <title>Transforms every <tag>bridgehead</tag> Element into
          a <tag>section</tag> Element</title>
-      <programlisting linenumbering="numbered" language="xml"><xi:include href="xslt/db-bridgehead-to-section.xsl" 
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/db-bridgehead-to-section.xsl</filename>
+        </output>
+      </info>
+      <programlisting language="xml"><xi:include href="xslt/db-bridgehead-to-section.xsl" 
         parse="text"/></programlisting>
     </example>
   </section>

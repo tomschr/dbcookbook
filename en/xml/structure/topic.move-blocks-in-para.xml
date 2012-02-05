@@ -53,6 +53,11 @@
     <para>The solution explained</para>
     <example xml:id="ex.">
       <title><filename>move-blocks-outof-para.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/move-blocks-outof-para.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml"
         linenumbering="numbered"><xi:include
           href="xslt/move-blocks-outof-para.xsl" 

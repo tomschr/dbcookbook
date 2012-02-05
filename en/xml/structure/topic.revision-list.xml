@@ -148,6 +148,11 @@
       <example xml:id="ex.hg2revhistory.xsl">
         <title>Stylesheet <filename>hg2revhistory.xsl</filename> to Convert
           Mercurial XML Log Files into  DocBook's <tag>revhistory</tag></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/hg2revhistory.xsl</filename>
+          </output>
+        </info>
         <programlisting linenumbering="numbered" language="xml"
           ><xi:include href="xslt/hg2revhistory.xsl" parse="text"
           /></programlisting>

@@ -50,6 +50,11 @@
         <filename>html/chunk-code.xsl</filename>.</para>
       <example xml:id="ex.dbsplit.xsl">
         <title><filename>dbsplit.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/dbsplit.xsl</filename>
+          </output>
+        </info>
         <programlisting language="xml"><xi:include
           href="xslt/dbsplit.xsl" parse="text"/></programlisting>
       </example>
@@ -62,6 +67,11 @@
         from the DocBook XSL stylesheets.</para>
       <example>
         <title><filename>chunker.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/chunker.xsl</filename>
+          </output>
+        </info>
         <programlisting language="xml"><xi:include
           href="xslt/chunker.xsl" parse="text"/></programlisting>
       </example>
@@ -108,14 +118,12 @@
     </section>
     <section xml:id="sec.structure.splitdb.dbsplit">
       <title>Splitting with the <command>dbautosplit</command></title>
-      <para>TBD</para>
+      <para><remark>TBD</remark></para>
     </section>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>
-      
-    </para>
+    <para><remark>TDB</remark></para>
   </section>
   <!--<section role="seealso">
     <title>See Also</title>

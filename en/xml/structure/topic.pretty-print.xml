@@ -58,6 +58,11 @@
       It relies on the <filename>copy.xsl</filename> stylesheet.</para>
       <example xml:id="ex.pretty.xsl">
         <title><filename>pretty.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/pretty.xsl</filename>
+          </output>
+        </info>
         <programlisting language="xml"><xi:include
           href="xslt/pretty.xsl" parse="text"/></programlisting>
       </example>

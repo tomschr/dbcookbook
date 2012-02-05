@@ -40,6 +40,11 @@
       core transformation might help:</para>
     <example xml:id="ex.db5to4-core.xsl">
       <title><filename>db5to4-core.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/db5to4-core.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
         href="xslt/db5to4-core.xsl" parse="text"/></programlisting>
     </example>
@@ -107,12 +112,22 @@
       stylesheet:</para>
     <example xml:id="ex.db5to4-info.xsl">
       <title><filename>db5to4-info.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/db5to4-info.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
           href="xslt/db5to4-info.xsl" parse="text"/></programlisting>
     </example>
     <para>To combine both, use the following stylesheet:</para>
     <example xml:id="ex.db5to4-withinfo.xsl">
       <title><filename>db5to4-withinfo.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/db5to4-withinfo.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
           href="xslt/db5to4-withinfo.xsl" parse="text"/></programlisting>
     </example>
