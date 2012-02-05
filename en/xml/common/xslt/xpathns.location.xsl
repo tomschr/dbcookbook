@@ -16,26 +16,13 @@
     <xsl:param name="node" select="."/>
     <xsl:param name="path" select="''"/>
     <xsl:param name="method">prefix</xsl:param>
-    
-    <xsl:message>xpath.location<xsl:value-of select="concat('(',
-      local-name(.), '): ', '  ', 
-      $path)"/>
-    </xsl:message>
-    
+  
     <xsl:variable name="next.path">
       <xsl:choose>
         <xsl:when test="$method = 'prefix' and $nsnodes[namespace-uri($node) = .]">
           <xsl:value-of select="concat($nsnodes[namespace-uri($node) = .]/@prefix, ':')"/>
         </xsl:when>
-        <!--<xsl:choose>
-            <xsl:when test="namespace-uri($node) = '&dbns;'">d:</xsl:when>
-            <xsl:when test="namespace-uri($node) = '&xins;'">xi:</xsl:when>
-            <xsl:when test="namespace-uri($node) = '&rdfns;'">rdf:</xsl:when>
-            <xsl:when test="namespace-uri($node) = '&ccns;'">cc:</xsl:when>
-            <xsl:when test="namespace-uri($node) = '&svgns;'">svg:</xsl:when>            
-          </xsl:choose>
-        -->
-        <xsl:when test="$method = 'clark'">
+        <xsl:when test="$method = 'clark' and namespace-uri($node) != ''">
           <xsl:value-of select="concat('{', namespace-uri($node), '}')"/>
         </xsl:when>
       </xsl:choose>  
