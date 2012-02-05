@@ -11,22 +11,24 @@
   xmlns:h="http://www.w3.org/1999/xhtml"
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  exclude-result-prefixes="d xlink tmpl m t f h l xs">
+  xmlns:de="urn:x-toms:docbook-ext"
+  exclude-result-prefixes="d xlink tmpl m t f h l xs de">
   
   <xsl:template name="t:write-examples">
     <xsl:param name="node" select="/" as="document-node()"/>
     
     <xsl:for-each 
-      select="$node//( (d:example|d:informalexample)[d:info/d:biblioid[@class='uri']] )">
+      select="$node//( (d:example|d:informalexample)
+                         [d:info/de:output/de:filename] )">
       <xsl:variable name="downloadlink"
-        select="if (d:info/d:biblioid[@class='uri'])
-                then d:info/d:biblioid[@class='uri']
+        select="if (d:info/de:output/de:filename)
+                then d:info/de:output/de:filename
                 else ()" />
       
       <xsl:if test="not(empty($downloadlink))">
         <xsl:if test="$verbosity > 2">
           <xsl:message>  Creating example output for "<xsl:value-of
-            select="d:info/d:biblioid[@class='uri']"/>"</xsl:message>
+            select="$downloadlink"/>"</xsl:message>
         </xsl:if>
         <xsl:result-document href="{$downloadlink}" encoding="UTF-8"
           method="text" validation="strip">

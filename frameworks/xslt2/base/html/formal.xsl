@@ -11,13 +11,14 @@
   xmlns:h="http://www.w3.org/1999/xhtml"
   xmlns="http://www.w3.org/1999/xhtml"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  exclude-result-prefixes="d xlink tmpl m t f h l xs">
+  xmlns:de="urn:x-toms:docbook-ext"
+  exclude-result-prefixes="d xlink tmpl m t f h l xs de">
 
 <xsl:template name="t:create-downloadlink">
   <xsl:param name="node" select="."/>
   <xsl:variable name="downloadlink"
-      select="if ($node/d:info/d:biblioid[@class='uri'])
-              then $node/d:info/d:biblioid[@class='uri']
+      select="if ($node/d:info/de:output/de:filename)
+              then $node/d:info/de:output/de:filename
               else ()"/>
   
     <xsl:if test="$use.downloadlink != 0 and not(empty($downloadlink))">
