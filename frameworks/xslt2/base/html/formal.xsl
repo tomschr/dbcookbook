@@ -26,7 +26,11 @@
             select="$downloadlink"/>"</xsl:message>
       </xsl:if>
       <div class="example-download-link">
-        <a href="{$downloadlink}">Download File</a>
+        <a href="{$downloadlink}">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key" select="'Download'"/>
+          </xsl:call-template>
+        </a>
       </div>
     </xsl:if>
 </xsl:template>

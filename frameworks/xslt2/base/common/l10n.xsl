@@ -18,6 +18,7 @@
         <l:gentext key="Ticket" text="See also Ticket#"/>
         <l:gentext key="Permalink" text="Permalink"/>
         <l:gentext key="permalink" text="permalink"/>
+        <l:gentext key="Download" text="Download File"/>
         <l:context name="datetime">
           <l:template name="format" 
             text="[D01] [MNn,*-3] [Y0001], [H01]:[m] [Z]"/>
