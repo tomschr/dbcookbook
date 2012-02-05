@@ -78,7 +78,7 @@
       <title>Namespace-aware Output of an XPath</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/xpath.location.v2.xsl</filename>
+          <filename>xpath.location.v2.xsl</filename>
         </output>
       </info>
       <programlistingco>

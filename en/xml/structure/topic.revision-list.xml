@@ -150,7 +150,7 @@
           Mercurial XML Log Files into  DocBook's <tag>revhistory</tag></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/hg2revhistory.xsl</filename>
+            <filename>hg2revhistory.xsl</filename>
           </output>
         </info>
         <programlisting linenumbering="numbered" language="xml"

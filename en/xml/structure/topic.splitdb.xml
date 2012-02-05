@@ -52,7 +52,7 @@
         <title><filename>dbsplit.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/dbsplit.xsl</filename>
+            <filename>dbsplit.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include
@@ -69,7 +69,7 @@
         <title><filename>chunker.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/chunker.xsl</filename>
+            <filename>chunker.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include

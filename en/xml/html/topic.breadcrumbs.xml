@@ -56,7 +56,7 @@
         <informalexample>
          <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/breadcrumbs.xsl</filename>
+            <filename>breadcrumbs.xsl</filename>
           </output>
         </info>
         <programlistingco>

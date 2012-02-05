@@ -42,7 +42,7 @@
       <title>Permalink Stylesheet (<filename>permalinks.xsl</filename>)</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/permalinks.xsl</filename>
+          <filename>permalinks.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"><xi:include href="xslt/permalinks.xsl" parse="text"/></programlisting>

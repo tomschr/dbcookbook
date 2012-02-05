@@ -55,7 +55,7 @@
       <title><filename>move-blocks-outof-para.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/move-blocks-outof-para.xsl</filename>
+          <filename>move-blocks-outof-para.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"

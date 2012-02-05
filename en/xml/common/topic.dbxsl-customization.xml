@@ -59,7 +59,7 @@
       <title>General Customization Layer</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/docbook-customization.xsl</filename>
+          <filename>docbook-customization.xsl</filename>
         </output>
       </info>
       <programlisting language="xml">&lt;xsl:stylesheet version="1.0"

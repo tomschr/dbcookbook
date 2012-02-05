@@ -51,7 +51,7 @@
       <title><filename>copy.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/copy.xsl</filename>
+          <filename>copy.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"><xi:include 

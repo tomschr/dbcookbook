@@ -60,7 +60,7 @@
         <title><filename>pretty.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/pretty.xsl</filename>
+            <filename>pretty.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include

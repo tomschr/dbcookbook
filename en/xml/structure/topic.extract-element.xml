@@ -38,7 +38,7 @@
       <title>Extracting Stylesheet <filename>rootid.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/rootid.xsl</filename>
+          <filename>rootid.xsl</filename>
         </output>
       </info>
       <programlisting linenumbering="numbered"
@@ -67,7 +67,7 @@
       <title><filename>rootid-resolve-xrefs.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/rootid-resolve-xrefs.xsl</filename>
+          <filename>rootid-resolve-xrefs.xsl</filename>
         </output>
       </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 

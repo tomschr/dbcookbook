@@ -37,7 +37,7 @@
           <tag>section</tag> Element</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/db-section-to-sectX.xsl</filename>
+          <filename>db-section-to-sectX.xsl</filename>
         </output>
       </info>
       <programlisting linenumbering="numbered" language="xml"><xi:include

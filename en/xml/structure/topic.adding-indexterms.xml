@@ -49,7 +49,7 @@
           <title><filename>profile-envar.xml</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>xslt/profile-envar.xml</filename>
+              <filename>profile-envar.xml</filename>
             </output>
           </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include
@@ -63,7 +63,7 @@
           <title><filename>profile-tag.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>xslt/profile-tags.xsl</filename>
+              <filename>profile-tags.xsl</filename>
             </output>
           </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include 
@@ -81,7 +81,7 @@
           <title><filename>add-indexterms.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>xslt/add-indexterms.xsl</filename>
+              <filename>add-indexterms.xsl</filename>
             </output>
           </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include

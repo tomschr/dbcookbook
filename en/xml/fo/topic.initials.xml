@@ -60,7 +60,7 @@
         <title><filename>initials-baseline.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/initials-baseline.xsl</filename>
+            <filename>initials-baseline.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include
@@ -74,7 +74,7 @@
       <informalexample>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>xslt/db-initials.xsl</filename>
+            <filename>db-initials.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include 

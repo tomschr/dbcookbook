@@ -42,7 +42,7 @@
       <title><filename>db5to4-core.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/db5to4-core.xsl</filename>
+          <filename>db5to4-core.xsl</filename>
         </output>
       </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
@@ -114,7 +114,7 @@
       <title><filename>db5to4-info.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/db5to4-info.xsl</filename>
+          <filename>db5to4-info.xsl</filename>
         </output>
       </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
@@ -125,7 +125,7 @@
       <title><filename>db5to4-withinfo.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/db5to4-withinfo.xsl</filename>
+          <filename>db5to4-withinfo.xsl</filename>
         </output>
       </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 

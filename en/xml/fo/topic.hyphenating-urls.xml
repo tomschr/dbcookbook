@@ -80,7 +80,7 @@
       <title><filename>hyphenate-url.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/hyphenate-url.xsl</filename>
+          <filename>hyphenate-url.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"><xi:include parse="text" 

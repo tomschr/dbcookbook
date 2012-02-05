@@ -60,7 +60,7 @@
         <informalexample>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>xslt/l10n.xml</filename>
+              <filename>l10n.xml</filename>
             </output>
           </info>
         <programlisting language="xml">&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 

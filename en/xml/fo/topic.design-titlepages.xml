@@ -135,7 +135,7 @@
               <informalexample>
                 <info>
                   <output xmlns="urn:x-toms:docbook-ext">
-                    <filename>xslt/booktitlepage.xml</filename>
+                    <filename>booktitlepage.xml</filename>
                   </output>
                 </info>
               <programlisting language="xml">&lt;!DOCTYPE t:templates [
@@ -242,7 +242,7 @@
           <informalexample>
             <info>
               <output xmlns="urn:x-toms:docbook-ext">
-                <filename>xslt/mybooktitlepage.xsl</filename>
+                <filename>mybooktitlepage.xsl</filename>
               </output>
             </info>
             <programlisting language="xml"><xi:include parse="text"

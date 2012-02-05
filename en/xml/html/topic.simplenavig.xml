@@ -52,7 +52,7 @@
       <title><filename>simple-navigation.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/simple-navigation.xsl</filename>
+          <filename>simple-navigation.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"><xi:include href="xslt/simple-navigation.xsl" parse="text"/></programlisting>
@@ -72,7 +72,7 @@
           <title><filename>db-simple-navigation.xsl</filename></title>
           <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xslt/db-simple-navigation.xsl</filename>
+          <filename>db-simple-navigation.xsl</filename>
         </output>
       </info>
           <programlisting language="xml"><xi:include href="xslt/db-simple-navigation.xsl" parse="text"/></programlisting>      
