@@ -14,7 +14,7 @@
   xmlns:de="urn:x-toms:docbook-ext"
   exclude-result-prefixes="d xlink tmpl m t f h l xs de">
 
-<xsl:param name="base.example.dir" as="xs:string">example/</xsl:param>
+<xsl:param name="base.example.dir" as="xs:string">examples/</xsl:param>
 
 <xsl:function name="f:download-link">
   <xsl:param name="node" />
