@@ -32,28 +32,80 @@
   <section role="problem">
     <title>Problem</title>
     <para>You need the path to your current node—the XPath—to output it
-      as debugging information or in your target format.</para>
+      as debugging information.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
     <para>The DocBook XSL stylesheet offers the
-      <function>xpath.location</function> template for this purpose. To
-      output the current XPath, use the following code:</para>
-    <programlisting language="xml">&lt;xsl:call-template name="xpath.location"/></programlisting>
-    <para>If you need the XPath for a different node, use this:</para>
-    <programlisting language="xml">&lt;xsl:call-template name="xpath.location">
-  &lt;xsl:with-param name="node" select="<replaceable>YOUR_XPath_Expression</replaceable>"/>
-&lt;/xsl:call-template></programlisting>
-  </section>
-  <section role="discussion">
-    <title>Discussion</title>
-    <para>To know the XPath of a node is very convenient especially when
-      you are debuggin. A <tag>xsl:message</tag> statement can give you
-      the right hint where you are:</para>
-    <programlisting language="xml">&lt;xsl:message>
+        <function>xpath.location</function> template for this purpose.
+      To output the current XPath, use the following procedure:</para>
+    
+    <procedure>
+      <step>
+        <para>Import the <function>xpath.location</function> template
+          from the DocBook XSL stylesheets:</para>
+        <programlisting language="xml"
+>&lt;xsl:import href="http://docbook.sourceforge.net/release/xsl/current/lib/lib.xsl"/></programlisting>
+      </step>
+      <step>
+        <para>Add the following code in your template:</para>
+        <programlisting language="xml">&lt;xsl:message>
   &lt;xsl:text>Current XPath: &lt;/xsl:text>
   &lt;xsl:call-template name="xpath.location"/>
 &lt;/xsl:message></programlisting>
+      </step>
+    </procedure>
+    
+    <para>If you need the XPath for a different node, extend the
+      previous code:</para>
+    <programlisting language="xml">&lt;xsl:message>
+  &lt;xsl:text>Current XPath: &lt;/xsl:text>
+  &lt;xsl:call-template name="xpath.location">
+    &lt;xsl:with-param name="node" select="<replaceable>YOUR_XPath_Expression</replaceable>"/>
+  &lt;/xsl:call-template>
+&lt;/xsl:message></programlisting>
+    <para>The information above helps you to locate where you are.</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Currently, the template in <filename>lib/lib.xsl</filename> is
+      limited: it walks from the current node up to the root node and
+      outputs just the element name. No namespace prefixes, no
+      predicates. If you have a DocBook document with different
+      namespaces, the original version does not help.</para>
+    <para>In <xref linkend="ex.xpathns.location"/>, the revised template
+    recognizes namespaces.</para>
+    <example xml:id="ex.xpathns.location">
+      <title>Namespace-aware Output of an XPath</title>
+      <programlistingco>
+        <areaspec>
+          <area xml:id="co.xpathns.ns" coords="5" units="linecolumn"/>
+          <area xml:id="co.xpathns.nsnodes" coords="13 75" units="linecolumn"/>
+          <area xml:id="co.xpathns.method" coords="18" units="linecolumn"/>
+          <area xml:id="co.xpathns.choose" coords="21" units="linecolumn"/>
+        </areaspec>
+        <programlisting><xi:include href="xslt/xpathns.location.xsl" parse="text"/></programlisting>
+      </programlistingco>
+      <calloutlist>
+        <callout arearefs="co.xpathns.ns">
+          <para>Contains the list of namespaces and their prefixes</para>
+        </callout>
+        <callout arearefs="co.xpathns.nsnodes">
+          <para>Create a node set of all namespace to prefix mappings</para>
+        </callout>
+        <callout arearefs="co.xpathns.method">
+          <para>Defines the method how prefixes are displayed. You can
+            choose between <quote>prefix</quote> and the Clark notation.
+            The latter adds the namespace in curly brackets before the
+            element name.
+            </para>
+        </callout>
+        <callout arearefs="co.xpathns.choose">
+          <para>Choose between the prefixed or Clark notation</para>
+        </callout>
+      </calloutlist>
+    </example>
+    
   </section>
   <section role="seealso">
     <title>See Also</title>
