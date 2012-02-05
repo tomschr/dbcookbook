@@ -132,6 +132,12 @@
                 root and <tag>t:titlepage</tag> elements with the
                 attribute <tag class="attribute">t:element="book"</tag>.
                 Your title page template should look like this:</para>
+              <informalexample>
+                <info>
+                  <output xmlns="urn:x-toms:docbook-ext">
+                    <filename>xslt/booktitlepage.xml</filename>
+                  </output>
+                </info>
               <programlisting language="xml">&lt;!DOCTYPE t:templates [
 &lt;!ENTITY hsize0 "10pt">
 &lt;!ENTITY hsize1 "12pt">
@@ -154,6 +160,7 @@
      &lt;!-- Content disabled for better legibility -->
    &lt;/t:titlepage>
 &lt;/t:templates></programlisting>
+              </informalexample>
             </step>
           </substeps>
         </step>
@@ -232,8 +239,16 @@
           <para>Insert the constructed
             <filename>booktitlepage.xsl</filename> into your
             customization layer <filename>mybooktitlepage.xsl</filename>:</para>
-          <programlisting language="xml"><xi:include parse="text"
+          <informalexample>
+            <info>
+              <output xmlns="urn:x-toms:docbook-ext">
+                <filename>xslt/mybooktitlepage.xsl</filename>
+              </output>
+            </info>
+            <programlisting language="xml"><xi:include parse="text"
             href="xslt/mybooktitlepage.xsl"/></programlisting>
+          </informalexample>
+          
         </step>
         <step>
           <para>Build your book as usual with your customization layer.</para>

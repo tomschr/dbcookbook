@@ -78,6 +78,11 @@
       point before or after it.</para>
     <example xml:id="ex.hyphenate-url.xsl">
       <title><filename>hyphenate-url.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>xslt/hyphenate-url.xsl</filename>
+        </output>
+      </info>
       <programlisting language="xml"><xi:include parse="text" 
         href="xslt/hyphenate-url.xsl"/></programlisting>
     </example>

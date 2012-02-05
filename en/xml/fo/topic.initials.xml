@@ -58,6 +58,11 @@
         size, family, and weight:</para>
       <example xml:id="ex.initials-baseline.xsl">
         <title><filename>initials-baseline.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/initials-baseline.xsl</filename>
+          </output>
+        </info>
         <programlisting language="xml"><xi:include
           href="xslt/initials-baseline.xsl" parse="text"
         /></programlisting>
@@ -65,9 +70,18 @@
       <para>To use it, include it into your customization layer. It is
         usually called in text nodes like the first paragraph from a
         section which parent is an article:</para>
-      <programlisting language="xml"><xi:include 
+      
+      <informalexample>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>xslt/db-initials.xsl</filename>
+          </output>
+        </info>
+        <programlisting language="xml"><xi:include 
         href="xslt/db-initials.xsl" parse="text"
-      /></programlisting>
+        /></programlisting>
+      </informalexample>
+      
       <para>It is easy to extend it to chapters, you just have to copy
         the template and correct the content in the <tag
           class="attribute">match</tag> attribute to:</para>
