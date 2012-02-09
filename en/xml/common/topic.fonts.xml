@@ -87,7 +87,11 @@
       <varlistentry>
         <term><link xlink:href="http://dejavu-fonts.org"/></term>
         <listitem>
-          <para><remark>TBD</remark></para>
+          <para><remark>FIXME</remark>
+          The DejaVu font family are derived from the Bitstream Vera fonts.
+          Due to license issues, the font has to be renamed. The fonts
+          contain now lots of glyphs.
+          </para>
         </listitem>
       </varlistentry>
       <varlistentry>
