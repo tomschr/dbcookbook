@@ -69,13 +69,13 @@
             will find funny typos, embarrassing English grammar mistakes
             from a German native speaker, annoying inconsistencies,
             missing topics, and plain errors. Nevertheless, I hope the
-            topics should give you an idea. </para>
+            topics are useful and should give you an idea.</para>
           <para>Visit this site from time to time and see how the book
             grows and how more and more of these annoyances will vanish.
             To accelerate this process, send me praise, critisism,
-            patches, donations, or even write a topic. Read 
-            <xref linkend="dbc.preface.contrib"/> to
-            find more how to support me.</para>
+            patches, donations, or even write a topic. Read <xref
+              linkend="dbc.preface.contrib"/> to find more how to
+            support this project.</para>
         </note>
       </para>      
     </cover>
