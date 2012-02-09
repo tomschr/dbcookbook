@@ -47,7 +47,9 @@
             the use of non-Roman and complex scripts in language development.</quote>
             <acronym>SIL</acronym> creates the Charis SIL, Doulos SIL,
             Gentium, Andika, and other typefaces. All fonts are released
-            under the 
+            under the Open Font License (OFL). This license was specially
+            created for fonts and was initiated by SIL
+            <remark>FIXME: Check!</remark>
             </para>
         </listitem>
       </varlistentry>
