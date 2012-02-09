@@ -199,9 +199,9 @@
     
     <section xml:id="sec.db.modularize.include-text">
       <title>Including Text</title>
-      <para>The previous examples dealt with included resources which
-        are XML only. If you need to include text, this can also be done
-        with XInclude.</para>
+      <para>The previous examples dealt with included resources in XML
+        only. If you need to include text, this can also be done with
+        XInclude.</para>
       <para>Most common usecase is including source code which is
       maintained separately. The following example points to a C source
       code which needs to be included as text:</para>
