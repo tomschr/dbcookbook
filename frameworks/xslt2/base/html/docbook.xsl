@@ -15,7 +15,10 @@
   
   <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>  
   <!--<xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>-->
-  
+ 
+  <!-- See http://stackoverflow.com/questions/3387127/set-html5-doctype-with-xslt -->
+  <xsl:output method="xhtml" indent="yes" doctype-system="about:legacy-compat"/>
+ 
   <xsl:include href="piwik.xsl"/>
   <xsl:include href="param.xsl"/>
   <xsl:include href="../common/l10n.xsl"/>
