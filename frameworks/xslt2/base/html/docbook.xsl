@@ -16,6 +16,8 @@
   <xsl:import href="../../../db-xslt2/xslt/base/html/docbook.xsl"/>  
   <!--<xsl:import href="http://docbook.github.com/release/latest/xslt/base/html/docbook.xsl"/>-->
   
+  <xsl:output method="xhtml" encoding="utf-8" indent="no" />
+  
   <xsl:include href="piwik.xsl"/>
   <xsl:include href="param.xsl"/>
   <xsl:include href="../common/l10n.xsl"/>
