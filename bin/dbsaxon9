@@ -10,8 +10,8 @@ ABSPATH=${ABSPATH%/*}
 # 
 BUILDDIR=${ABSPATH}/build
 FRAMEWORKSDIR=${ABSPATH}/frameworks
-# BASEXSLT=${FRAMEWORKSDIR}/xslt2/base
-BASEXSLT=${FRAMEWORKSDIR}/db-xslt2/xslt/base
+BASEXSLT=${FRAMEWORKSDIR}/xslt2/base
+#BASEXSLT=${FRAMEWORKSDIR}/db-xslt2/xslt/base
 
 # echo BASEXSLT=${BASEXSLT}
 
@@ -20,9 +20,9 @@ BASEXSLT=${FRAMEWORKSDIR}/db-xslt2/xslt/base
 bin/saxon9 -xi  \
    -s:en/xml/DocBook-Cookbook.xml \
    -xsl:${BASEXSLT}/html/docbook.xsl \
-   -o:${BUILDDIR}/html/DocBook-Cookbook2.html $@
+   -o:${BUILDDIR}/html/DoCookBook.html $@
 
 [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 
-
+echo "Find the HTML in ${BUILDDIR}/html/DoCookBook.html "
 echo "Done"
