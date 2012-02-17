@@ -29,9 +29,9 @@ XI_FLAGS="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerce
 # export ADDITIONAL_FLAGS="-Dpython.path=\"${PYTHONPATH}:${JYTH_EXT_PATH}\""
 # export ADDITIONAL_FLAGS="${ADDITIONAL_FLAGS} -Dpython.cachedir=${PYCACHE}"
 # export ADDITIONAL_FLAGS="$XI_FLAGS"
-export ADDITIONAL_OPTIONS=""
+# export ADDITIONAL_OPTIONS=""
 
 # export VERBOSE=1
 
 # Call the system saxon9 script:
-saxon9 -init:docbook.Initializer $@
+saxon9  $@
