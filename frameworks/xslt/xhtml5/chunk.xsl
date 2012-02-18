@@ -12,12 +12,16 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns:exsl="http://exslt.org/common"
   xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:saxon="http://icl.com/saxon"
   exclude-result-prefixes="d db ng xlink exsl"
-  extension-element-prefixes="exsl">
+  extension-element-prefixes="exsl saxon">
 
   <xsl:import href="&db;/chunk.xsl"/>
   <xsl:import href="docbook.xsl"/>
-  <xsl:output method="xml"/>
+  <xsl:output method="xml" saxon:character-representation="native;hex"/>
+  
+  <xsl:param name="saxon.character.representation"
+    select="'entity;decimal'"/>
   
   <!-- To use the same stripped nodeset everywhere, it should
        be created as a global variable here.
