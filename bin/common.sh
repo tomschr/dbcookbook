@@ -14,7 +14,8 @@ DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
 
 XMLIN="en/xml/DocBook-Cookbook.xml"
-SINGLEHTMLOUT=${BUILDDIR}/html/DoCookBook.html
+HTMLOUT="${BUILDDIR}/html"
+SINGLEHTMLOUT=${HTMLOUT}/DoCookBook.html
 CATALOGPROP="CatalogManager.properties"
 
 HLCONFIG="${DBXSLT5}/highlighting/xslthl-config.xml"
