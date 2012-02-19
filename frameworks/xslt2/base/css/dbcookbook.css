@@ -9,14 +9,15 @@
  * Sans Serif
   |Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic
   |Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic
+  |Exo:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic
  * Serif:
   |Crimson+Text:400,400italic,600,600italic
   |Neuton:200,300,400,700,400italic
  * Monospace
   |Anonymous+Pro:400,400italic,700,700italic
-  
+   
 */
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);
 
 
 body {
