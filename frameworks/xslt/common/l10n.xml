@@ -2,24 +2,8 @@
 <!DOCTYPE l:i18n []>
 <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
   <l:l10n language="en" english-language-name="English">
-    <l:gentext key="topic" text="Topic"/>
-    <l:context name="title-unnumbered">
-      <l:template name="topic" text="%t"/>
-    </l:context>
-    <l:context name="title-numbered">
-      <l:template name="topic" text="%n. %t"/>
-    </l:context>
-    <l:context name="subtitle">
-      <l:template name="topic" text="%s"/>
-    </l:context>
-    <l:context name="xref">
-      <l:template name="topic" text="the topic called “%t”"/>
-    </l:context>
-    <l:context name="xref-number">
-      <l:template name="topic" text="Topic %n"/>
-    </l:context>
-    <l:context name="xref-number-and-title">
-      <l:template name="topic" text="Topic %n, “%t”"/>
+    <l:context name="datetime">
+      <l:template name="format" text="d b Y, X"/>
     </l:context>
   </l:l10n>
 </l:i18n>
