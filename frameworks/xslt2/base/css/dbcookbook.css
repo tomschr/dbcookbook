@@ -144,6 +144,7 @@ body > .chapter h2,
   padding:5pt;*/
 }
 div.revhistory {
+  margin-top:2em;
   margin-bottom:2em;
 }
 /*div.revhistory table {
