@@ -153,6 +153,10 @@ div.revhistory {
 div.revhistory table .authorinitials {
   padding-left:2em;
 }
+.revdescription {
+  text-align:left;
+}
+
 
 div.legalnotice div.sidebar div.sidebar-content {
   padding-top:0;
