@@ -39,6 +39,8 @@
   <xsl:param name="use.extensions" select="1"/>
   <xsl:param name="use.viewport" select="0"/>
   
+  <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
+  
   <xsl:param name="use.piwik" select="0"/>
   <xsl:param name="generate.breadcrumbs" select="0"/>
   
