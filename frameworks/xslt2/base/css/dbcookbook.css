@@ -52,7 +52,8 @@ p {
   font-weight:normal;
   font-size:110%;
 }
-code, .command, pre {
+code, .command, pre,
+div.programlisting, div.screen {
   font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
 }
 
@@ -426,6 +427,12 @@ div.remark {
   margin-bottom:1ex;
   color:red;
   font-size:smaller;
+}
+
+/* Verbatim */
+div.programlisting,
+div.screen {
+  white-space: pre;
 }
 
 /* Admonitions */
