@@ -20,8 +20,9 @@
 
   <xsl:import href="copy.xsl"/>
   <xsl:preserve-space elements="h:pre"/>
-  <xsl:output method="xml" doctype-system="about:legacy-compat" 
-    encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
+  <xsl:output method="xml" omit-xml-declaration="yes" encoding="UTF-8" indent="yes"/>
+  <!--<xsl:output method="xml" doctype-system="about:legacy-compat" 
+    encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>-->
   
   <xsl:include href="../html/piwik.xsl"/>
   
@@ -151,6 +152,14 @@
     </div>
   </xsl:template>  
   
+  <!-- Used for HTML elements without a namespace -->
+  <xsl:template match="span">
+    <span>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
+    </span>
+  </xsl:template>
+  
+  <!--  -->
   <xsl:template match="h:div[@class='abstract']|
                        h:div[contains(@class, 'note')]|
                        h:div[starts-with(@class, 'list-of-')]">
