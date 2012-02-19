@@ -13,7 +13,7 @@ ${XINCLUDEFLAG} ${HLFLAG}"
 export CLASSPATH="${CATALOGPROP}:${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
 
 [[ $VERBOSE != "" ]] && echo "Transforming..."
-saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml5/chunk.xsl
+saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/html/chunk.xsl
 
 # [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 
@@ -25,13 +25,19 @@ if true; then
 for i in ${BUILDDIR}/tmp/*.html; do
  _base=${i##*/}
  
- # sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
- tidy -modify -asxhtml --output-xml yes --numeric-entities yes --doctype omit --tidy-mark no --new-blocklevel-tags article,header,footer,section --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
+# sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
+
+# tidy -modify -asxhtml --output-xml yes --add-xml-decl no \
+#   --numeric-entities yes --doctype omit \
+#   --tidy-mark no \
+#   --new-blocklevel-tags article,header,footer,section,aside \
+#   --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
  
- echo "Cleaning up ${_base}..."
- xsltproc -o ${HTMLOUT}/${_base} \
+ [[ $VERBOSE != "" ]] && echo "  Cleaning up ${_base}..."
+ xsltproc --html -o ${HTMLOUT}/${_base} \
    ${BASEXSLT1}/misc/html2cleanhtml.xsl \
    $i
+ sed -i '1s#??>#?>#' ${HTMLOUT}/${_base}
 done
 fi
 
