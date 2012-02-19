@@ -12,8 +12,27 @@ ${XINCLUDEFLAG} ${HLFLAG}"
 
 export CLASSPATH="${CATALOGPROP}:${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
 
-saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/html/chunk.xsl
+[[ $VERBOSE != "" ]] && echo "Transforming..."
+saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml5/chunk.xsl
 
-[ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
+# [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
+
+# createEntity
+
+if true; then 
+  [[ $VERBOSE != "" ]] && echo -e "\nCleaning up HTML...\n"
+
+for i in ${BUILDDIR}/tmp/*.html; do
+ _base=${i##*/}
+ 
+ # sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
+ tidy -modify -asxhtml --output-xml yes --numeric-entities yes --doctype omit --tidy-mark no --new-blocklevel-tags article,header,footer,section --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
+ 
+ echo "Cleaning up ${_base}..."
+ xsltproc -o ${HTMLOUT}/${_base} \
+   ${BASEXSLT1}/misc/html2cleanhtml.xsl \
+   $i
+done
+fi
 
 echo -e "\nFind the HTMLs in ${BUILDDIR}/html/"
