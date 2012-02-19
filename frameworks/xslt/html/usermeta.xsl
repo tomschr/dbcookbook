@@ -15,6 +15,7 @@
 
   <xsl:attribute name="profile">http://dublincore.org/documents/dcq-html/</xsl:attribute>
 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8;" />
   <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"/>
   <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/"/>
 
@@ -71,6 +72,9 @@ var popup_</xsl:text>
     <xsl:if test="$generate.javascript != 0">
       <xsl:call-template name="javascript"/>
     </xsl:if>
+    <xsl:if test="$html.stylesheet != ''">
+      <link rel="stylesheet" type="text/css" href="{$html.stylesheet}" />
+    </xsl:if>
 </xsl:template>
   
 <xsl:template name="user.meta.author">
@@ -101,7 +105,8 @@ var popup_</xsl:text>
     <meta name="DC.creator">
       <xsl:attribute name="content">
         <xsl:call-template name="person.name">
-          <xsl:with-param name="node" select="$node/d:info/d:author"/>
+          <xsl:with-param name="node"
+            select="$node/d:info/d:author/d:personname"/>
         </xsl:call-template>
       </xsl:attribute>
     </meta>
