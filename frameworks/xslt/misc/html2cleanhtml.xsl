@@ -55,6 +55,10 @@
   <xsl:template match="h:div[@class='revhistory']/h:table/@border">
     <xsl:attribute name="border">0</xsl:attribute>
   </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/@style"/>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td/@style"/>
+  
+  <xsl:template match="@lang[.='']"/>
   
   <xsl:template match="@class">
     <xsl:choose>
@@ -100,6 +104,8 @@
   <xsl:template match="h:h4[@class='title']/@id"/>
   <xsl:template match="h:h5[@class='title']/@id"/>
   <xsl:template match="h:h6[@class='title']/@id"/>
+  
+  <xsl:template match="h:div[@class='revhistory']/h:h1"/>
   
   <!-- Remove empty anchors -->
   <xsl:template match="h:a[. = '']"/>
@@ -402,6 +408,72 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
+  
+  <!-- revhistory -->
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[1]">
+    <tr>
+      <td colspan="3">
+        <span class="title">Revision History</span>
+      </td>
+    </tr>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr/h:td[1][not(@colspan)]">
+    <xsl:copy>
+      <xsl:attribute name="class">revnumber</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[2][not(@colspan)]">
+    <xsl:copy>
+      <xsl:attribute name="class">date</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[3][not(@colspan)]">
+    <xsl:copy>
+      <xsl:attribute name="class">author</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr[h:td[@colspan] and position() > 1]">
+    <xsl:copy>
+      <xsl:attribute name="class">revdescription</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[not(@*)
+    and position() > 1]">
+    <xsl:copy>
+      <xsl:attribute name="class">revision</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr[count(h:td)=1 and
+    position() > 2]">
+    <xsl:copy>
+      <xsl:attribute name="class">revdescription</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+   </xsl:template> 
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[@colspan]">
+    <td> </td>
+    <td class="revdescription" colspan="2">
+      <span class="revdescription">
+        <!-- NO attributes here, we don't want to copy @colspan -->
+        <xsl:apply-templates />
+      </span>
+    </td>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[
+    starts-with(., 'Revision')]">
+    <xsl:copy>
+      <xsl:value-of select="substring-after(., 'Revision ')"/>
+    </xsl:copy>
+  </xsl:template>
+  
   <!--<xsl:template match="h:div[@class='revhistory']/h:table[not(h:tbody)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
@@ -427,7 +499,7 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>-->
-  <!-- -->
+  <!-- Inlines -->
   <xsl:template match="h:p[h:span[@class='formalpara-title']]">
     <div class="formalpara">
       <p><xsl:apply-templates/></p>
