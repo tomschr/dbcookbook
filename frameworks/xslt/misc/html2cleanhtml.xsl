@@ -32,6 +32,10 @@
     </xsl:copy>
   </xsl:template>
   
+  <xsl:template match="h:meta[@http-equiv='Content-Type']">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  </xsl:template>
+  
   <!-- ================================================ -->
   <!-- Remove or otherwise leave out elements and attributes -->
   <xsl:template match="h:div">
