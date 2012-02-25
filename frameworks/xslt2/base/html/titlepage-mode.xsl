@@ -18,8 +18,18 @@
     <xsl:apply-templates/>
   </xsl:template>
 
-  <xsl:template match="d:biblioid[@class='other' and
-    @otherclass='ticket']" mode="m:titlepage-mode">
+  <xsl:template match="d:biblioid[@class='other' and @otherclass='ticket']" 
+    mode="m:titlepage-mode">
+    <xsl:variable name="ticketnr" select="normalize-space(.)"/>
+    <div class="ticket">
+      <xsl:call-template name="gentext">
+        <xsl:with-param name="key" select="'Ticket'"/>
+      </xsl:call-template>
+      <xsl:value-of select="concat($ticketnr, ': ')"/>
+      <a href="{concat($ticket.url, $ticketnr, '/')}" title="Ticket#{$ticketnr}">
+        <xsl:value-of select="concat($ticket.url, $ticketnr, '/')"/>
+      </a>
+    </div>
   </xsl:template>
   
   <xsl:template match="d:bibliosource[@class='other']" mode="m:titlepage-mode">
