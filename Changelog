@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
+
+Infrastructure:
+- Added <link/> element for HTML to mark up RSS and Atom feeds
+  (Changesets fb82de3b8ace, a0560ecceb35)
+
+-------------------------------------------------------------------
 Sun Feb  5 21:58:18 UTC 2012 - tom_schr@web.de
 
 Topics:
