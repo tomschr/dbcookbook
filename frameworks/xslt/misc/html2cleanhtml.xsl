@@ -158,6 +158,16 @@
       <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
     </span>
   </xsl:template>
+  <xsl:template match="em">
+    <em>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
+    </em>
+  </xsl:template>
+  <xsl:template match="img">
+    <img>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
+    </img>
+  </xsl:template>
   
   <!--  -->
   <xsl:template match="h:div[@class='abstract']|
