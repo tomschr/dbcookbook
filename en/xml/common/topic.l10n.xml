@@ -44,7 +44,7 @@
     <procedure>
       <title>Adding Your Own Localized Text</title>
       <step>
-        <para>Create a customization layer as shown in <xref linkend="dbc.common.dbcustomize"/>.</para>
+        <para>Create a customization layer first as shown in <xref linkend="dbc.common.dbcustomize"/>.</para>
       </step>
       <step>
         <para>Add the parameter <parameter>local.l10n.xml</parameter> in
