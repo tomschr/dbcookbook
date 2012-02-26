@@ -43,10 +43,11 @@
          a <tag>section</tag> Element</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>db-bridgehead-to-section.xsl</filename>
+          <filename>bridgehead-to-section/db-bridgehead-to-section.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include href="xslt/db-bridgehead-to-section.xsl" 
+      <programlisting language="xml"><xi:include 
+        href="bridgehead-to-section/db-bridgehead-to-section.xsl" 
         parse="text"/></programlisting>
     </example>
   </section>
