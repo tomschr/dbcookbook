@@ -60,11 +60,11 @@
         <title><filename>pretty.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>pretty.xsl</filename>
+            <filename>pretty/pretty.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include
-          href="xslt/pretty.xsl" parse="text"/></programlisting>
+          href="pretty/pretty.xsl" parse="text"/></programlisting>
       </example>
     </section>
     <section xml:id="sec.struct.pretty-print.xmlformat">
