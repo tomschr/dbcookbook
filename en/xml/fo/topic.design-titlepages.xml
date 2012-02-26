@@ -135,7 +135,7 @@
               <informalexample>
                 <info>
                   <output xmlns="urn:x-toms:docbook-ext">
-                    <filename>booktitlepage.xml</filename>
+                    <filename>design-titlepages/booktitlepage.xml</filename>
                   </output>
                 </info>
               <programlisting language="xml">&lt;!DOCTYPE t:templates [
@@ -242,11 +242,11 @@
           <informalexample>
             <info>
               <output xmlns="urn:x-toms:docbook-ext">
-                <filename>mybooktitlepage.xsl</filename>
+                <filename>design-titlepages/mybooktitlepage.xsl</filename>
               </output>
             </info>
             <programlisting language="xml"><xi:include parse="text"
-            href="xslt/mybooktitlepage.xsl"/></programlisting>
+            href="design-titlepages/mybooktitlepage.xsl"/></programlisting>
           </informalexample>
           
         </step>
@@ -427,7 +427,7 @@
             <filename>booktitlepage.xsl</filename> into your
             customization layer <filename>mybooktitlepage.xsl</filename>:</para>
           <programlisting language="xml"><xi:include parse="text"
-            href="xslt/mybooktitlepage.xsl"/></programlisting>
+            href="design-titlepages/mybooktitlepage.xsl"/></programlisting>
         </step>
         <step>
           <para>Build your book as usual with your customization layer.</para>
