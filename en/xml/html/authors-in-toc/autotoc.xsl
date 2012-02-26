@@ -1,35 +1,19 @@
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns="http://www.w3.org/1999/xhtml">
-
-  <xsl:param name="toc.personname.style"></xsl:param>
-
+  
   <xsl:template name="toc.line">
     <xsl:param name="toc-context" select="."/>
     <xsl:param name="depth" select="1"/>
     <xsl:param name="depth.from.context" select="8"/>
 
-    <xsl:variable name="author" select="*/author[1]"/>
+    <xsl:variable name="author" select="*/author|*/authorgroup/author"/>
 
     <xsl:if test="$author">
       <span class="author">
-        <xsl:choose>
-          <xsl:when test="$toc.personname.style = 'family-given'">
-            <xsl:call-template name="person.name.family-given">
-              <xsl:with-param name="node" select="$author"/>
-            </xsl:call-template>
-          </xsl:when>
-          <xsl:when test="$toc.personname.style = 'last-first'">
-            <xsl:call-template name="person.name.last-first">
-              <xsl:with-param name="node" select="$author"/>
-            </xsl:call-template>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:call-template name="person.name.first-last">
-              <xsl:with-param name="node" select="$author"/>
-            </xsl:call-template>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:call-template name="person.name.list">
+          <xsl:with-param name="person.list" select="$author"/>
+        </xsl:call-template>
         <xsl:text>: </xsl:text>
       </span>
     </xsl:if>
