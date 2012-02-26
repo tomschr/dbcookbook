@@ -15,6 +15,12 @@
             <surname>Penguin</surname>
           </personname>
         </author>
+        <author>
+          <personname>
+            <firstname>Py</firstname>
+            <surname>Python</surname>
+          </personname>
+        </author>
       </info>
       <para>Bla bla...</para>
     </sect1>

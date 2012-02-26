@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.html.authors-in-toc" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Adding Authors Into Table of Contents</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>table of content</keyword>
+      <keyword>TOC</keyword>
+      <keyword>authors</keyword>
+      <keyword>proceedings</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a document which are written by different authors
+      (like in proceedings) and want to include the author name in the
+      table of contents.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>You need to customize the <function>toc.line</function>
+      template. Proceed as follows:</para>
+    
+    <procedure xml:id="pro.html.authors-in-toc">
+      <step>
+        <para>Make sure your chapters, appendices, sections, etc.
+          contain an author like in the following example:</para>
+        <programlisting language="xml">&lt;sect1>
+  &lt;title>How to Become a Linux Mascott&lt;/title>
+  &lt;info>
+    &lt;author>
+      &lt;personname>
+        &lt;firstname>Tux&lt;/firstname>
+        &lt;surname>Penguin&lt;/surname>
+      &lt;/personname>
+    &lt;/author>
+  &lt;/info>
+  &lt;!-- ... -->
+&lt;/sect1></programlisting>
+      </step>
+      <step>
+        <para>Create a customization layer first as shown in <xref linkend="dbc.common.dbcustomize"/>.</para>
+      </step>
+      <step>
+        <para>Add the following line in your customization layer:</para>
+        <programlisting language="xml"
+          >&lt;xsl:include href="autotoc.xsl"/></programlisting>
+      </step>
+      <step>
+        <para>Create a new file <filename>autotoc.xsl</filename> in the
+          same directory with the following contents:</para>
+        <informalexample xml:id="ex.html.authors-in-toc">
+          <!--<title><filename>autotoc.xsl</filename></title>-->
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>author-in-toc/autotoc.xsl</filename>
+            </output>
+          </info>          
+          <programlistingco>
+            <areaspec>
+              <area xml:id="ar.html.authors-in-toc.param" coords="5"
+                units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.author" coords="12" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.if" coords="14" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.choose" coords="17 68" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.span" coords="36" units="linecolumn"/>
+            </areaspec>
+            <programlisting><xi:include 
+              href="xslt/autotoc.xsl" parse="text"/></programlisting>
+          </programlistingco>
+          <calloutlist>
+            <callout arearefs="ar.html.authors-in-toc.param">
+              <para>Defines the style of a name; allowed values are
+                <literal>family-given</literal>,
+                <literal>last-first</literal>, or
+                <literal>first-last</literal> (default)</para>
+            </callout>
+            <callout arearefs="ar.html.authors-in-toc.author">
+              <para>Collects the first author</para>
+            </callout>
+            <callout arearefs="ar.html.authors-in-toc.if">
+              <para>Checks, if the context contains an author</para>
+            </callout>
+            <callout arearefs="ar.html.authors-in-toc.choose">
+              <para>Applies the style which is checked from <varname>toc.personname.style</varname></para>
+            </callout>
+            <callout arearefs="ar.html.authors-in-toc.span">
+              <para>Contains the original code from
+                <filename>autotoc.xsl</filename> and creates the title
+                entry for the table of contents</para>
+            </callout>
+          </calloutlist>
+        </informalexample>
+        
+      </step>
+    </procedure>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some discussion about the problem and solution.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/TOCcontrol.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
