@@ -34,8 +34,8 @@ body { background-image: url('images/draft.svg');
       <meta name="DC.language" content="en" scheme="DCTERMS.RFC3066" />
       <meta name="DC.title" content="The DoCookBook" />
       <meta name="DC.creator" content="Thomas Schraitle" />
-      <meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2012-02-25T18:03:14.4+01:00" />
-      <meta name="date" content="2012-02-25T18:03:14.4+01:00" />
+      <meta name="DC.date" scheme="DCTERMS.W3CDTF" content="2012-02-26T15:53:17.038+01:00" />
+      <meta name="date" content="2012-02-26T15:53:17.038+01:00" />
       <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType" />
       <meta name="DC.identifier" scheme="DCTERMS.URI"
             content="http://sf.net/p/doccookbook/" />
@@ -52,7 +52,7 @@ body { background-image: url('images/draft.svg');
                <h3><span class="personname"><span class="firstname">Thomas</span> <span class="surname">Schraitle</span></span></h3>
             </div>
             <div>
-               <p>Published: 25 Feb 2012, 18:03 +01:00</p>
+               <p>Published: 26 Feb 2012, 15:53 +01:00</p>
             </div>
             <p class="draft">Draft (Version 0.4a)</p>
             <div id="legalnotice" lang="en" class="legalnotice">
@@ -228,9 +228,10 @@ body { background-image: url('images/draft.svg');
                </li>
                <li><span><a href="#dbc.html">5. (X)HTML Customizations</a></span><ul class="toc">
                      <li><span><a href="#dbc.html.intro">5.1. Introduction</a></span></li>
-                     <li><span><a href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span></li>
-                     <li><span><a href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></li>
-                     <li><span><a href="#dbc.html.breadcrumbs">5.4. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></li>
+                     <li><span><a href="#dbc.html.authors-in-toc">5.2. Adding Authors Into Table of Contents</a></span></li>
+                     <li><span><a href="#dbc.html.permalinks">5.3. Creating Permalinks</a></span></li>
+                     <li><span><a href="#dbc.html.texinfo-navig">5.4. Creating Simple Navigation in Chapters</a></span></li>
+                     <li><span><a href="#dbc.html.breadcrumbs">5.5. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></li>
                   </ul>
                </li>
                <li><span><a href="#cc-by-nc-sa-30-de">A. Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
@@ -3120,7 +3121,7 @@ This is a text &lt;!-- Ohh, we should add more --&gt;
                         <ol type="1">
                            <li class="step">
                               <div>
-                                 <p>Create a customization layer as shown in <a href="#dbc.common.dbcustomize">Section 2.3, “Writing Customization Layers”</a>.
+                                 <p>Create a customization layer first as shown in <a href="#dbc.common.dbcustomize">Section 2.3, “Writing Customization Layers”</a>.
                                  </p>
                               </div>
                            </li>
@@ -7978,16 +7979,17 @@ II. The Python Library
                <p><b>Table of Contents</b></p>
                <ul class="toc">
                   <li><span><a href="#dbc.html.intro">5.1. Introduction</a></span></li>
-                  <li><span><a href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span></li>
-                  <li><span><a href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></li>
-                  <li><span><a href="#dbc.html.breadcrumbs">5.4. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></li>
+                  <li><span><a href="#dbc.html.authors-in-toc">5.2. Adding Authors Into Table of Contents</a></span></li>
+                  <li><span><a href="#dbc.html.permalinks">5.3. Creating Permalinks</a></span></li>
+                  <li><span><a href="#dbc.html.texinfo-navig">5.4. Creating Simple Navigation in Chapters</a></span></li>
+                  <li><span><a href="#dbc.html.breadcrumbs">5.5. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></li>
                </ul>
             </div>
             <section id="dbc.html.intro" class="section">
                <div class="section-titlepage">
                   <h3 class="navig">5.1. Introduction</h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.intro">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.number-titles">4.7. Numbering Part, Chapter, Appendix, and other Titles</a></span><span class="section-next"><a rel="next" href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.fo.number-titles">4.7. Numbering Part, Chapter, Appendix, and other Titles</a></span><span class="section-next"><a rel="next" href="#dbc.html.authors-in-toc">5.2. Adding Authors Into Table of Contents</a></span></div>
                </div>
                <p>Currently, there are several HTML derivates available as
                   target formats. As such, “<span class="quote">the</span>” HTML does not exist,
@@ -8049,11 +8051,229 @@ II. The Python Library
                   </dl>
                </div>
             </section>
+            <section id="dbc.html.authors-in-toc" class="section">
+               <div class="section-titlepage">
+                  <h3 class="navig">5.2. Adding Authors Into Table of Contents</h3>
+                  <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.authors-in-toc">¶</a></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.intro">5.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.html.permalinks">5.3. Creating Permalinks</a></span></div>
+               </div>
+               <section id="dbc.html.authors-in-toc.3" class="section problem">
+                  <div class="section-titlepage">
+                     <h4>Problem</h4>
+                  </div>
+                  <p>You have a document which are written by different authors
+                     (like in proceedings) and want to include the author name in the
+                     table of contents.
+                  </p>
+               </section>
+               <section id="dbc.html.authors-in-toc.4" class="section solution">
+                  <div class="section-titlepage">
+                     <h4>Solution</h4>
+                  </div>
+                  <p>You need to customize the <code class="function">toc.line</code>
+                     template. Proceed as follows:
+                  </p>
+                  <figure id="pro.html.authors-in-toc" class="procedure-wrapper">
+                     <div class="procedure">
+                        <ol type="1">
+                           <li class="step">
+                              <div>
+                                 <p>Make sure your chapters, appendices, sections, etc.
+                                    contain an author like in the following example:
+                                 </p>
+                                 <div class="programlisting"><pre class="xml"><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;sect1&gt;
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  &lt;title&gt;How to Become a Linux Mascott&lt;/title&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;info&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>    &lt;author&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;personname&gt;
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>        &lt;firstname&gt;Tux&lt;/firstname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;surname&gt;Penguin&lt;/surname&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>      &lt;/personname&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/author&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>  &lt;/info&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;!-- ... --&gt;
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>&lt;/sect1&gt;</pre></div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Create a customization layer first as shown in <a href="#dbc.common.dbcustomize">Section 2.3, “Writing Customization Layers”</a>.
+                                 </p>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Add the following line in your customization layer:</p>
+                                 <div class="programlisting"><pre class="xml">&lt;xsl:include href="autotoc.xsl"/&gt;</pre></div>
+                              </div>
+                           </li>
+                           <li class="step">
+                              <div>
+                                 <p>Create a new file <code class="filename">autotoc.xsl</code> in the
+                                    same directory with the following contents:
+                                 </p>
+                                 <figure id="ex.html.authors-in-toc" class="informalexample-wrapper">
+                                    <div>
+                                       <div class="example-download-link"><a href="examples/author-in-toc/autotoc.xsl">Download File</a></div>
+                                       <div class="informalexample">
+                                          <div class="programlisting"><pre><span class="linenumber">  1</span><span class="linenumber-separator"> </span>&lt;xsl:stylesheet version="1.0"
+<span class="linenumber">  2</span><span class="linenumber-separator"> </span>  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  xmlns="http://www.w3.org/1999/xhtml"&gt;
+<span class="linenumber">  4</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:param name="toc.personname.style"&gt;&lt;/xsl:param&gt;      <a name="ar.html.authors-in-toc.param"></a><img src="png/callouts/1.png" alt="1" border="0" />
+<span class="linenumber">  6</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>  &lt;xsl:template name="toc.line"&gt;
+<span class="linenumber">  8</span><span class="linenumber-separator"> </span>    &lt;xsl:param name="toc-context" select="."/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;xsl:param name="depth" select="1"/&gt;
+<span class="linenumber"> 10</span><span class="linenumber-separator"> </span>    &lt;xsl:param name="depth.from.context" select="8"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 12</span><span class="linenumber-separator"> </span>    &lt;xsl:variable name="author" select="*/author[1]"/&gt;     <a name="ar.html.authors-in-toc.author"></a><img src="png/callouts/2.png" alt="2" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>
+<span class="linenumber"> 14</span><span class="linenumber-separator"> </span>    &lt;xsl:if test="$author"&gt;                                <a name="ar.html.authors-in-toc.if"></a><img src="png/callouts/3.png" alt="3" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;span class="author"&gt;
+<span class="linenumber"> 16</span><span class="linenumber-separator"> </span>        &lt;xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;xsl:when test="$toc.personname.style = 'family-given'"&gt; <a name="ar.html.authors-in-toc.choose"></a><img src="png/callouts/4.png" alt="4" border="0" />
+<span class="linenumber"> 18</span><span class="linenumber-separator"> </span>            &lt;xsl:call-template name="person.name.family-given"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>              &lt;xsl:with-param name="node" select="$author"/&gt;
+<span class="linenumber"> 20</span><span class="linenumber-separator"> </span>            &lt;/xsl:call-template&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;/xsl:when&gt;
+<span class="linenumber"> 22</span><span class="linenumber-separator"> </span>          &lt;xsl:when test="$toc.personname.style = 'last-first'"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;xsl:call-template name="person.name.last-first"&gt;
+<span class="linenumber"> 24</span><span class="linenumber-separator"> </span>              &lt;xsl:with-param name="node" select="$author"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;/xsl:call-template&gt;
+<span class="linenumber"> 26</span><span class="linenumber-separator"> </span>          &lt;/xsl:when&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;xsl:otherwise&gt;
+<span class="linenumber"> 28</span><span class="linenumber-separator"> </span>            &lt;xsl:call-template name="person.name.first-last"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>              &lt;xsl:with-param name="node" select="$author"/&gt;
+<span class="linenumber"> 30</span><span class="linenumber-separator"> </span>            &lt;/xsl:call-template&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;/xsl:otherwise&gt;
+<span class="linenumber"> 32</span><span class="linenumber-separator"> </span>        &lt;/xsl:choose&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;xsl:text&gt;: &lt;/xsl:text&gt;
+<span class="linenumber"> 34</span><span class="linenumber-separator"> </span>      &lt;/span&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/xsl:if&gt;
+<span class="linenumber"> 36</span><span class="linenumber-separator"> </span>    &lt;span class="{local-name(.)}"&gt;                         <a name="ar.html.authors-in-toc.span"></a><img src="png/callouts/5.png" alt="5" border="0" />
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;xsl:if test="$autotoc.label.in.hyperlink = 0"&gt;
+<span class="linenumber"> 38</span><span class="linenumber-separator"> </span>        &lt;xsl:variable name="label"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;xsl:apply-templates select="." mode="label.markup"/&gt;
+<span class="linenumber"> 40</span><span class="linenumber-separator"> </span>        &lt;/xsl:variable&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;xsl:copy-of select="$label"/&gt;
+<span class="linenumber"> 42</span><span class="linenumber-separator"> </span>        &lt;xsl:if test="$label != ''"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;xsl:value-of select="$autotoc.label.separator"/&gt;
+<span class="linenumber"> 44</span><span class="linenumber-separator"> </span>        &lt;/xsl:if&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;/xsl:if&gt;
+<span class="linenumber"> 46</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>      &lt;a&gt;
+<span class="linenumber"> 48</span><span class="linenumber-separator"> </span>        &lt;xsl:attribute name="href"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;xsl:call-template name="href.target"&gt;
+<span class="linenumber"> 50</span><span class="linenumber-separator"> </span>            &lt;xsl:with-param name="context" select="$toc-context"/&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;xsl:with-param name="toc-context" select="$toc-context"/&gt;
+<span class="linenumber"> 52</span><span class="linenumber-separator"> </span>          &lt;/xsl:call-template&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;/xsl:attribute&gt;
+<span class="linenumber"> 54</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;xsl:if test="not($autotoc.label.in.hyperlink = 0)"&gt;
+<span class="linenumber"> 56</span><span class="linenumber-separator"> </span>          &lt;xsl:variable name="label"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;xsl:apply-templates select="." mode="label.markup"/&gt;
+<span class="linenumber"> 58</span><span class="linenumber-separator"> </span>          &lt;/xsl:variable&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>          &lt;xsl:copy-of select="$label"/&gt;
+<span class="linenumber"> 60</span><span class="linenumber-separator"> </span>          &lt;xsl:if test="$label != ''"&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>            &lt;xsl:value-of select="$autotoc.label.separator"/&gt;
+<span class="linenumber"> 62</span><span class="linenumber-separator"> </span>          &lt;/xsl:if&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;/xsl:if&gt;
+<span class="linenumber"> 64</span><span class="linenumber-separator"> </span>
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>        &lt;xsl:apply-templates select="." mode="titleabbrev.markup"/&gt;
+<span class="linenumber"> 66</span><span class="linenumber-separator"> </span>      &lt;/a&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>    &lt;/span&gt;
+<span class="linenumber"> 68</span><span class="linenumber-separator"> </span>  &lt;/xsl:template&gt;
+<span class="linenumber">   </span><span class="linenumber-separator"> </span>&lt;/xsl:stylesheet&gt;</pre></div>
+                                          <div class="calloutlist">
+                                             <table border="0" summary="Callout list">
+                                                <tr class="callout-row">
+                                                   <td class="callout-bug" valign="baseline" align="left">
+                                                      <p class="callout"><img src="png/callouts/1.png" alt="1" border="0" /> 
+                                                      </p>
+                                                   </td>
+                                                   <td class="callout-body" valign="baseline" align="left">
+                                                      <p>Defines the style of a name; allowed values are
+                                                         <code class="literal">family-given</code>,
+                                                         <code class="literal">last-first</code>, or
+                                                         <code class="literal">first-last</code> (default)
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                                <tr class="callout-row">
+                                                   <td class="callout-bug" valign="baseline" align="left">
+                                                      <p class="callout"><img src="png/callouts/2.png" alt="2" border="0" /> 
+                                                      </p>
+                                                   </td>
+                                                   <td class="callout-body" valign="baseline" align="left">
+                                                      <p>Collects the first author</p>
+                                                   </td>
+                                                </tr>
+                                                <tr class="callout-row">
+                                                   <td class="callout-bug" valign="baseline" align="left">
+                                                      <p class="callout"><img src="png/callouts/3.png" alt="3" border="0" /> 
+                                                      </p>
+                                                   </td>
+                                                   <td class="callout-body" valign="baseline" align="left">
+                                                      <p>Checks, if the context contains an author</p>
+                                                   </td>
+                                                </tr>
+                                                <tr class="callout-row">
+                                                   <td class="callout-bug" valign="baseline" align="left">
+                                                      <p class="callout"><img src="png/callouts/4.png" alt="4" border="0" /> 
+                                                      </p>
+                                                   </td>
+                                                   <td class="callout-body" valign="baseline" align="left">
+                                                      <p>Applies the style which is checked from <code class="varname">toc.personname.style</code></p>
+                                                   </td>
+                                                </tr>
+                                                <tr class="callout-row">
+                                                   <td class="callout-bug" valign="baseline" align="left">
+                                                      <p class="callout"><img src="png/callouts/5.png" alt="5" border="0" /> 
+                                                      </p>
+                                                   </td>
+                                                   <td class="callout-body" valign="baseline" align="left">
+                                                      <p>Contains the original code from
+                                                         <code class="filename">autotoc.xsl</code> and creates the title
+                                                         entry for the table of contents
+                                                      </p>
+                                                   </td>
+                                                </tr>
+                                             </table>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </figure>
+                              </div>
+                           </li>
+                        </ol>
+                     </div>
+                  </figure>
+               </section>
+               <section id="dbc.html.authors-in-toc.5" class="section discussion">
+                  <div class="section-titlepage">
+                     <h4>Discussion</h4>
+                  </div>
+                  <p>Some discussion about the problem and solution.</p>
+               </section>
+               <section id="dbc.html.authors-in-toc.6" class="section seealso">
+                  <div class="section-titlepage">
+                     <h4>See Also</h4>
+                  </div>
+                  <div class="itemizedlist">
+                     <ul>
+                        <li>
+                           <p><a href="http://www.sagehill.net/docbookxsl/TOCcontrol.html">http://www.sagehill.net/docbookxsl/TOCcontrol.html</a></p>
+                        </li>
+                     </ul>
+                  </div>
+               </section>
+            </section>
             <section id="dbc.html.permalinks" class="section">
                <div class="section-titlepage">
-                  <h3 class="navig">5.2. Creating Permalinks</h3>
+                  <h3 class="navig">5.3. Creating Permalinks</h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.permalinks">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.intro">5.1. Introduction</a></span><span class="section-next"><a rel="next" href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.authors-in-toc">5.2. Adding Authors Into Table of Contents</a></span><span class="section-next"><a rel="next" href="#dbc.html.texinfo-navig">5.4. Creating Simple Navigation in Chapters</a></span></div>
                   <div class="section-userlevel" title="easy">Difficulty: ★☆☆ (easy)</div>
                </div>
                <section id="dbc.html.permalinks.3" class="section problem">
@@ -8228,9 +8448,9 @@ II. The Python Library
             </section>
             <section id="dbc.html.texinfo-navig" class="section">
                <div class="section-titlepage">
-                  <h3 class="navig">5.3. Creating Simple Navigation in Chapters</h3>
+                  <h3 class="navig">5.4. Creating Simple Navigation in Chapters</h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.texinfo-navig">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.permalinks">5.2. Creating Permalinks</a></span><span class="section-next"><a rel="next" href="#dbc.html.breadcrumbs">5.4. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.permalinks">5.3. Creating Permalinks</a></span><span class="section-next"><a rel="next" href="#dbc.html.breadcrumbs">5.5. Implementing “<span class="quote">Breadcrumbs</span>”</a></span></div>
                   <div class="section-userlevel" title="medium">Difficulty: ★★☆ (medium)</div>
                </div>
                <section id="dbc.html.texinfo-navig.3" class="section problem">
@@ -8527,10 +8747,10 @@ II. The Python Library
             </section>
             <section id="dbc.html.breadcrumbs" class="section">
                <div class="section-titlepage">
-                  <h3 class="navig">5.4. Implementing “<span class="quote">Breadcrumbs</span>”
+                  <h3 class="navig">5.5. Implementing “<span class="quote">Breadcrumbs</span>”
                   </h3>
                   <div class="permalink"><a alt="Permalink" title="Permalink" href="#dbc.html.breadcrumbs">¶</a></div>
-                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.texinfo-navig">5.3. Creating Simple Navigation in Chapters</a></span></div>
+                  <div class="section-navig"><span class="section-prev"><a rel="prev" href="#dbc.html.texinfo-navig">5.4. Creating Simple Navigation in Chapters</a></span></div>
                </div>
                <section id="dbc.html.breadcrumbs.3" class="section problem">
                   <div class="section-titlepage">

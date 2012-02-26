@@ -1,6 +1,13 @@
 -------------------------------------------------------------------
 Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
 
+Topics:
+- Added new idea (authors in TOC) with examples
+  (Changesets 6e41f665f574)
+
+-------------------------------------------------------------------
+Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
+
 Infrastructure:
 - Added <link/> element for HTML to mark up RSS and Atom feeds
   (Changesets fb82de3b8ace, a0560ecceb35)
