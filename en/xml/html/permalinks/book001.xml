@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" 
+  schematypens="http://relaxng.org/ns/structure/1.0"?>
+<book xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+  <title>Our Book Example</title>
+  <part>
+    <title>First Part</title>
+    <chapter>
+      <title>First Chapter Title</title>
+      <sect1>
+        <title>First Section1 Title in <quote>1st Chapter</quote></title>
+        <para>Text</para>
+      </sect1>
+      <sect1>
+        <title>Second Section1 Title in 1st Chapter</title>
+        <para>Text</para>
+      </sect1>
+      <sect1>
+        <title>Third Section1 Title in <emphasis>1st Chapter</emphasis></title>
+        <para>Text</para>
+      </sect1>
+    </chapter>
+
+    <chapter>
+      <title>Second <quote>Chapter</quote> Title</title>
+      <sect1>
+        <title>First Section1 Title in 2st Chapter</title>
+        <para>Text</para>
+      </sect1>
+      <sect1>
+        <title>Second Section1 Title in 2st Chapter</title>
+        <para>Text</para>
+      </sect1>
+      <sect1>
+        <title>Third Section1 Title in 2st Chapter</title>
+        <para>Text</para>
+      </sect1>
+    </chapter>
+  </part>
+</book>

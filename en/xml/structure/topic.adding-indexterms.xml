@@ -49,11 +49,11 @@
           <title><filename>profile-envar.xml</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>profile-envar.xml</filename>
+              <filename>adding-indexterms/profile-envar.xml</filename>
             </output>
           </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include
-            href="xslt/profile-envar.xml" parse="text"/></programlisting>
+            href="adding-indexterms/profile-envar.xml" parse="text"/></programlisting>
         </example>
       </step>
       <step>
@@ -63,11 +63,11 @@
           <title><filename>profile-tag.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>profile-tags.xsl</filename>
+              <filename>adding-indexterms/profile-tags.xsl</filename>
             </output>
           </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include 
-            href="xslt/profile-tags.xsl" parse="text"/></programlisting>
+            href="adding-indexterms/profile-tags.xsl" parse="text"/></programlisting>
         </example>
       </step>
       <step>
@@ -81,11 +81,11 @@
           <title><filename>add-indexterms.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
-              <filename>add-indexterms.xsl</filename>
+              <filename>adding-indexterms/add-indexterms.xsl</filename>
             </output>
           </info>
           <programlisting language="xml" linenumbering="numbered"><xi:include
-        href="xslt/add-indexterms.xsl" parse="text"/></programlisting>
+        href="adding-indexterms/add-indexterms.xsl" parse="text"/></programlisting>
         </example>
       </step>
       <step>
@@ -100,7 +100,7 @@
     <example>
       <title>Output of the Transformation</title>
       <programlisting language="xml"><xi:include
-        href="xslt/profile-envar-result.xml" parse="text"/></programlisting>
+        href="adding-indexterms/profile-envar-result.xml" parse="text"/></programlisting>
     </example>
   </section>
   <section role="discussion">

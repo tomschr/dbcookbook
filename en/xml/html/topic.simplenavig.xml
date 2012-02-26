@@ -52,10 +52,10 @@
       <title><filename>simple-navigation.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>simple-navigation.xsl</filename>
+          <filename>simplenavig/simple-navigation.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include href="xslt/simple-navigation.xsl" parse="text"/></programlisting>
+      <programlisting language="xml"><xi:include href="simplenavig/simple-navigation.xsl" parse="text"/></programlisting>
     </example>
     <para>This is not enough, of course. Use the following steps to
       include it into your customization layers:</para>
@@ -75,7 +75,7 @@
           <filename>db-simple-navigation.xsl</filename>
         </output>
       </info>
-          <programlisting language="xml"><xi:include href="xslt/db-simple-navigation.xsl" parse="text"/></programlisting>      
+          <programlisting language="xml"><xi:include href="simplenavig/db-simple-navigation.xsl" parse="text"/></programlisting>      
         </example>        
       </step>
       <step>

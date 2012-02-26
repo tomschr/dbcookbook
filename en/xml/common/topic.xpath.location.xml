@@ -43,7 +43,7 @@
     <procedure>
       <step>
         <para>Import the <function>xpath.location</function> template
-          from the DocBook XSL stylesheets:</para>
+          from the DocBook XSL stylesheets in your customization layer:</para>
         <programlisting language="xml"
 >&lt;xsl:import href="http://docbook.sourceforge.net/release/xsl/current/lib/lib.xsl"/></programlisting>
       </step>
@@ -78,7 +78,7 @@
       <title>Namespace-aware Output of an XPath</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>xpath.location.v2.xsl</filename>
+          <filename>xpath.location/xpath.location.v2.xsl</filename>
         </output>
       </info>
       <programlistingco>
@@ -89,7 +89,7 @@
           <area xml:id="co.xpathns.choose" coords="21" units="linecolumn"/>
           <area xml:id="co.xpathns.predicate" coords="32 80" units="linecolumn"/>
         </areaspec>
-        <programlisting><xi:include href="xslt/xpathns.location.xsl" parse="text"/></programlisting>
+        <programlisting><xi:include href="xpath.location/xpathns.location.xsl" parse="text"/></programlisting>
       </programlistingco>
       <calloutlist>
         <callout arearefs="co.xpathns.ns">

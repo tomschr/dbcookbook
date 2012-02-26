@@ -38,11 +38,11 @@
       <title>Extracting Stylesheet <filename>rootid.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>rootid.xsl</filename>
+          <filename>extract/rootid.xsl</filename>
         </output>
       </info>
       <programlisting linenumbering="numbered"
-        language="xml"><xi:include href="xslt/rootid.xsl" parse="text"/></programlisting>
+        language="xml"><xi:include href="extract/rootid.xsl" parse="text"/></programlisting>
     </example>
     <para>Pass the <parameter>rootid</parameter> parameter to your XSLT
     processor with the corresponding ID, for example:</para>
@@ -67,11 +67,11 @@
       <title><filename>rootid-resolve-xrefs.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>rootid-resolve-xrefs.xsl</filename>
+          <filename>extract/rootid-resolve-xrefs.xsl</filename>
         </output>
       </info>
       <programlisting language="xml" linenumbering="numbered"><xi:include 
-      href="xslt/rootid-resolve-xrefs.xsl" parse="text"/></programlisting>
+      href="extract/rootid-resolve-xrefs.xsl" parse="text"/></programlisting>
     </example>
     <para>The stylesheet in <xref
       linkend="ex.rootid-resolve-xrefs.xsl"/> imports the

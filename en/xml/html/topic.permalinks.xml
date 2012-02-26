@@ -42,10 +42,10 @@
       <title>Permalink Stylesheet (<filename>permalinks.xsl</filename>)</title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>permalinks.xsl</filename>
+          <filename>permalinks/permalinks.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include href="xslt/permalinks.xsl" parse="text"/></programlisting>
+      <programlisting language="xml"><xi:include href="permalinks/permalinks.xsl" parse="text"/></programlisting>
     </example>
     <para>This is of course not enough. Use the following steps to
     include it into your customization layers:</para>
