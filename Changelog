@@ -1,9 +1,13 @@
 -------------------------------------------------------------------
-Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
+Sat Feb 25 20:14:00 UTC 2012 - tom_schr@web.de
 
 Topics:
 - Added new idea (authors in TOC) with examples
   (Changesets 6e41f665f574)
+
+Infrastructure:
+- Added subdirectory for each topic. This makes it easier to create
+  similar filename
 
 -------------------------------------------------------------------
 Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
