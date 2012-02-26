@@ -16,6 +16,7 @@
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
 <section xml:id="dbc.html.authors-in-toc" remap="topic"
+   userlevel="medium"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -44,7 +45,7 @@
     <procedure xml:id="pro.html.authors-in-toc">
       <step>
         <para>Make sure your chapters, appendices, sections, etc.
-          contain an author like in the following example:</para>
+          contain at least one author like in the following example:</para>
         <programlisting language="xml">&lt;sect1>
   &lt;title>How to Become a Linux Mascott&lt;/title>
   &lt;info>
@@ -78,31 +79,25 @@
           </info>          
           <programlistingco>
             <areaspec>
-              <area xml:id="ar.html.authors-in-toc.param" coords="5"
-                units="linecolumn"/>
-              <area xml:id="ar.html.authors-in-toc.author" coords="12" units="linecolumn"/>
-              <area xml:id="ar.html.authors-in-toc.if" coords="14" units="linecolumn"/>
-              <area xml:id="ar.html.authors-in-toc.choose" coords="17 68" units="linecolumn"/>
-              <area xml:id="ar.html.authors-in-toc.span" coords="36" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.author" coords="10 74" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.if" coords="12" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.call" coords="14" units="linecolumn"/>
+              <area xml:id="ar.html.authors-in-toc.span" coords="20" units="linecolumn"/>
             </areaspec>
             <programlisting><xi:include 
               href="authors-in-toc/autotoc.xsl" parse="text"/></programlisting>
           </programlistingco>
           <calloutlist>
-            <callout arearefs="ar.html.authors-in-toc.param">
-              <para>Defines the style of a name; allowed values are
-                <literal>family-given</literal>,
-                <literal>last-first</literal>, or
-                <literal>first-last</literal> (default)</para>
-            </callout>
             <callout arearefs="ar.html.authors-in-toc.author">
-              <para>Collects the first author</para>
+              <para>Collects all author nodes regardless if they appear in
+              <tag>info</tag> or <tag>authorgroup</tag></para>
             </callout>
             <callout arearefs="ar.html.authors-in-toc.if">
-              <para>Checks, if the context contains an author</para>
+              <para>Checks, if <tag>author</tag> nodes were found</para>
             </callout>
-            <callout arearefs="ar.html.authors-in-toc.choose">
-              <para>Applies the style which is checked from <varname>toc.personname.style</varname></para>
+            <callout arearefs="ar.html.authors-in-toc.call">
+              <para>Calls  <function>person.name.list</function> and pass
+              the nodes from <xref linkend="ar.html.authors-in-toc.author"/></para>
             </callout>
             <callout arearefs="ar.html.authors-in-toc.span">
               <para>Contains the original code from
@@ -110,14 +105,68 @@
                 entry for the table of contents</para>
             </callout>
           </calloutlist>
-        </informalexample>
-        
+        </informalexample>        
+      </step>
+      <step>
+        <para>Rebuild your document with your customization layer.</para>
       </step>
     </procedure>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about the problem and solution.</para>
+    <para>The previous stylesheet works also for one or more authors. It
+    does not matter if the <tag>author</tag> elements appear as a direct
+    child of <tag>info</tag> or <tag>authorgroup</tag>. The following
+      code produces the same string:</para>
+    
+    <informaltable>
+      <tgroup cols="2">
+        <tbody valign="top">
+          <row>
+            <entry><programlisting language="xml">&lt;info>
+  &lt;author>
+    &lt;personname>
+      &lt;firstname>Tux&lt;/firstname>
+      &lt;surname>Penguin&lt;/surname>
+    &lt;/personname>
+  &lt;/author>
+  &lt;author>
+    &lt;personname>
+      &lt;firstname>Wilber&lt;/firstname>
+      &lt;surname>Gimp&lt;/surname>
+    &lt;/personname>
+  &lt;/author>
+&lt;/info></programlisting></entry>
+            <entry><programlisting language="xml">&lt;info>
+  &lt;authorgroup>
+    &lt;author>
+      &lt;personname>
+        &lt;firstname>Tux&lt;/firstname>
+        &lt;surname>Penguin&lt;/surname>
+      &lt;/personname>
+    &lt;/author>
+    &lt;author>
+      &lt;personname>
+        &lt;firstname>Wilber&lt;/firstname>
+        &lt;surname>Gimp&lt;/surname>
+      &lt;/personname>
+    &lt;/author>
+  &lt;/authorgroup>
+&lt;/info></programlisting></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </informaltable>
+    
+    <para>Even if you mix <tag>author</tag> and <tag>authorgroup</tag>
+      you will get the correct string output.</para>
+    <para>You can also use other elements than <tag>author</tag>s. To
+      detect <tag>editor</tag>, extend the variable
+      <varname>author</varname> as follows:</para>
+    
+    <programlisting language="xml"
+      >&lt;xsl:variable name="author"
+      select="*/author|*/editor|*/authorgroup/author|*/authorgroup/editor"/></programlisting>
   </section>
   <section role="seealso">
     <title>See Also</title>
