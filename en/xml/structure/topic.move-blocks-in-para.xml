@@ -55,12 +55,12 @@
       <title><filename>move-blocks-outof-para.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>move-blocks-outof-para.xsl</filename>
+          <filename>remove-blocks-in-para/move-blocks-outof-para.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"
         linenumbering="numbered"><xi:include
-          href="xslt/move-blocks-outof-para.xsl" 
+          href="remove-blocks-in-para/move-blocks-outof-para.xsl" 
           parse="text"/></programlisting>
     </example>
   </section>
