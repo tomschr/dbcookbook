@@ -9,18 +9,20 @@
     <sect1 xml:id="tux">
       <title>How to Become a Linux Mascott</title>
       <info>
-        <author>
+        <!--<authorgroup>-->
+          <author>
           <personname>
             <firstname>Tux</firstname>
             <surname>Penguin</surname>
           </personname>
         </author>
-        <author>
+        <!--<author>
           <personname>
             <firstname>Py</firstname>
             <surname>Python</surname>
           </personname>
         </author>
+        </authorgroup>-->
       </info>
       <para>Bla bla...</para>
     </sect1>
@@ -32,6 +34,12 @@
           <personname>
             <firstname>Wilber</firstname>
             <surname>Gimp</surname>
+          </personname>
+        </author>
+        <author>
+          <personname>
+            <firstname>Konqui</firstname>
+            <surname>Konqueror</surname>
           </personname>
         </author>
       </info>
