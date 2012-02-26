@@ -72,7 +72,7 @@
           <title><filename>db-simple-navigation.xsl</filename></title>
           <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>db-simple-navigation.xsl</filename>
+          <filename>simplenavig/db-simple-navigation.xsl</filename>
         </output>
       </info>
           <programlisting language="xml"><xi:include href="simplenavig/db-simple-navigation.xsl" parse="text"/></programlisting>      
