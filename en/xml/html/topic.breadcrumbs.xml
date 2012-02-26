@@ -56,7 +56,7 @@
         <informalexample>
          <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>breadcrumbs.xsl</filename>
+            <filename>breadcrumbs/breadcrumbs.xsl</filename>
           </output>
         </info>
         <programlistingco>
@@ -68,8 +68,8 @@
             <area xml:id="ar.breadcrumbs.sep" coords="24" units="linecolumn"/>
             <area xml:id="ar.breadcrumbs.currentnode" coords="27" units="linecolumn"/>
           </areaspec>
-          <programlisting language="xml" role="html/breadcrumbs.xsl"><xi:include
-          href="xslt/breadcrumbs.xsl" parse="text"/></programlisting>
+          <programlisting language="xml"><xi:include
+          href="breadcrumbs/breadcrumbs.xsl" parse="text"/></programlisting>
           <calloutlist>
             <callout arearefs="ar.breadcrumbs.param">
               <para>Parameter to separate each component</para>
