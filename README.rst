@@ -40,7 +40,7 @@ to improve the book? Great! If you want to contribute to the book, you can
 do it in different ways:
 
 * Write me a mail to <tom_schr (AT) web.de> and send me your comments
-* Extend Ticket#15 (Ideas for New Topics) at http://sf.net/p/doccookbook/tickets/15
+* Extend the tickets (Ideas for New Topics) at http://sf.net/p/doccookbook/tickets/
 * Clone my repository on Sourcforge and send me patches
 
 Here is a procedure about how to clone the repository:
