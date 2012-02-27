@@ -60,11 +60,11 @@
         <title><filename>initials-baseline.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>initials-baseline.xsl</filename>
+            <filename>initials/initials-baseline.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include
-          href="xslt/initials-baseline.xsl" parse="text"
+          href="initials/initials-baseline.xsl" parse="text"
         /></programlisting>
       </example>
       <para>To use it, include it into your customization layer. It is
@@ -74,11 +74,11 @@
       <informalexample>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>db-initials.xsl</filename>
+            <filename>initials/db-initials.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include 
-        href="xslt/db-initials.xsl" parse="text"
+        href="initials/db-initials.xsl" parse="text"
         /></programlisting>
       </informalexample>
       

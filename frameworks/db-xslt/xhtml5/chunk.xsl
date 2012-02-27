@@ -2,8 +2,10 @@
 <xsl:stylesheet 
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
   xmlns:exsl="http://exslt.org/common"
+  xmlns:db="http://docbook.org/ns/docbook"
+  xmlns:ng="http://docbook.org/docbook-ng"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="exsl"
+  exclude-result-prefixes="exsl db ng"
   version="1.0">
 
 <!-- $Id: chunk.xsl,v 1.1 2011-09-16 21:43:59 bobs Exp $ -->
@@ -25,5 +27,12 @@ includes all the components that it needs. -->
      and named templates.  These override any templates that
      handle chunking behavior -->
 <xsl:include href="html5-chunk-mods.xsl"/>
+
+<xsl:variable name="no.namespace">
+    <xsl:if test="$exsl.node.set.available != 0 and 
+                  (*/self::ng:* or */self::db:*)">
+      <xsl:apply-templates select="/*" mode="stripNS"/>
+    </xsl:if>
+</xsl:variable>
 
 </xsl:stylesheet>

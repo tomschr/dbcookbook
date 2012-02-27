@@ -51,11 +51,11 @@
       <title><filename>copy.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>copy.xsl</filename>
+          <filename>common/copy.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"><xi:include 
-        href="structure/xslt/copy.xsl" parse="text"/></programlisting>
+        href="structure/common/copy.xsl" parse="text"/></programlisting>
     </example>
     
     <para>This simple stylesheet copies everything from the input

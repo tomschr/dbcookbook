@@ -20,22 +20,6 @@
   
   <xsl:include href="&db;/chunk-code.xsl"/>
   
-  <!-- Start here with my customization -->
-  <!--<xsl:include href="navigation.xsl"/>-->
-  <!--<xsl:include href="breadcrumbs.xsl"/>-->
-
-  <!--<xsl:param name="chunk.fast" select="1"/>-->
-  <!--<xsl:param name="highlight.source" select="0"/>-->
-
-  <!--<xsl:template match="/" priority="2">
-    <xsl:message>XSLT Processor:
-     version: <xsl:value-of select="system-property('xsl:version')"/>
-     vendor: <xsl:value-of select="system-property('xsl:vendor')"/>
-     vendor-url: <xsl:value-of select="system-property('xsl:vendor-url')"/> 
-     exsl:document: <xsl:value-of select="boolean(element-available('exsl:document'))"/>
-     xsl:document: <xsl:value-of select="boolean(element-available('xsl:document'))"/> 
-    </xsl:message>
-    <xsl:apply-imports/>
-  </xsl:template>-->
-  
+  <xsl:param name="chunker.output.method" select="'xml'"/>
+    
 </xsl:stylesheet>

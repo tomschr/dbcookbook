@@ -3,24 +3,13 @@
 # saxon script
 # JPackage Project <http://www.jpackage.org/>
 
-# Get the absolute path of this script:
-ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-# Cut the last directory part, as script is in .../bin
-ABSPATH=${ABSPATH%/*}
-# 
-BUILDDIR=${ABSPATH}/build
-FRAMEWORKSDIR=${ABSPATH}/frameworks
-BASEXSLT=${FRAMEWORKSDIR}/xslt2/base
-#BASEXSLT=${FRAMEWORKSDIR}/db-xslt2/xslt/base
-
-# echo BASEXSLT=${BASEXSLT}
-
+source bin/common.sh
 #    -r:org.apache.xml.resolver.tools.CatalogResolver \
 # -init:docbook.Initializer
 bin/saxon9 -xi  \
-   -s:en/xml/DocBook-Cookbook.xml \
-   -xsl:${BASEXSLT}/html/docbook.xsl \
-   -o:${BUILDDIR}/html/DoCookBook.html $@
+   -s:${XMLIN} \
+   -xsl:${BASEXSLT2}/html/docbook.xsl \
+   -o:${SINGLEHTMLOUT} $@
 
 [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 

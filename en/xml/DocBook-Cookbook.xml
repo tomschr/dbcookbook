@@ -38,6 +38,18 @@
     <xi:include href="legalnotice.xml"/>
     <biblioid class="uri" role="project">http://sf.net/p/doccookbook/</biblioid>
     <biblioid class="uri" role="home">http://doccookbook.sf.net</biblioid>
+    <bibliosource class="other" otherclass="rss"  role="code"
+      xlink:href="http://sf.net/p/doccookbook/code/feed.rss"
+      >[DoCookBook] Recent Code Changes (RSS)</bibliosource>
+    <bibliosource class="other" otherclass="atom" role="code" 
+      xlink:href="http://sf.net/p/doccookbook/code/feed.atom"
+      >[DoCookBook] Recent Code Changes (Atom)</bibliosource>
+    <bibliosource class="other" otherclass="rss"  role="ticket" 
+      xlink:href="http://sf.net/p/doccookbook/tickets/feed.rss"
+      >[DoCookBook] Recent Changes to Tickets (RSS)</bibliosource>
+    <bibliosource class="other" otherclass="atom" role="ticket" 
+      xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"
+      >[DoCookBook] Recent Changes to Tickets (Atom)</bibliosource>
     <author>
       <personname>
         <firstname>Thomas</firstname>

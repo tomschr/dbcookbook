@@ -52,11 +52,11 @@
         <title><filename>dbsplit.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>dbsplit.xsl</filename>
+            <filename>splitdb/dbsplit.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include
-          href="xslt/dbsplit.xsl" parse="text"/></programlisting>
+          href="splitdb/dbsplit.xsl" parse="text"/></programlisting>
       </example>
       <para>The <filename>chunker.xsl</filename> file is more or
         less a stripped down version of the
@@ -69,11 +69,11 @@
         <title><filename>chunker.xsl</filename></title>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
-            <filename>chunker.xsl</filename>
+            <filename>splitdb/chunker.xsl</filename>
           </output>
         </info>
         <programlisting language="xml"><xi:include
-          href="xslt/chunker.xsl" parse="text"/></programlisting>
+          href="splitdb/chunker.xsl" parse="text"/></programlisting>
       </example>
       <para>It can be customized with several parameters:</para>
       <variablelist>

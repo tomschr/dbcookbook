@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:date="http://exslt.org/dates-and-times"
+  xmlns:exsl="http://exslt.org/common"
   xmlns:d="http://docbook.org/ns/docbook"
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns="http://www.w3.org/1999/xhtml"
-  exclude-result-prefixes="d xlink">
+  exclude-result-prefixes="d xlink date exsl"
+  extension-element-prefixes="date exsl">
   
   
   <xsl:template name="book.titlepage.recto">
@@ -51,6 +54,38 @@
   </xsl:template>
     
   <xsl:template match="othercredit" mode="book.titlepage.recto.auto.mode"/>
+  
+  <xsl:template match="pubdate" mode="book.titlepage.recto.auto.mode">
+    <xsl:variable name="date">
+      <xsl:choose>
+        <xsl:when test="function-available('date:date-time')">
+          <xsl:value-of select="date:date-time()"/>
+        </xsl:when>
+        <xsl:when test="function-available('date:dateTime')">
+          <!-- Xalan quirk -->
+          <xsl:value-of select="date:dateTime()"/>
+        </xsl:when>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:variable name="format">
+      <xsl:call-template name="gentext.template">
+        <xsl:with-param name="context" select="'datetime'"/>
+        <xsl:with-param name="name" select="'format'"/>
+      </xsl:call-template>
+    </xsl:variable>
+    
+    <div xsl:use-attribute-sets="book.titlepage.recto.style" class="pubdate">
+      <p>
+        <xsl:apply-templates/>
+        <xsl:call-template name="datetime.format">
+          <xsl:with-param name="date" select="$date"/>
+          <xsl:with-param name="format" select="$format"/>
+          <xsl:with-param name="padding" select="1"/>
+        </xsl:call-template>
+      </p>
+    </div>
+  </xsl:template>
+  
   
   <!-- Chapter Titlepages -->
   <xsl:template name="chapter.titlepage.recto">

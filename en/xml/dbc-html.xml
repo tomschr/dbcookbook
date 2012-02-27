@@ -113,7 +113,7 @@
     * Deciding where to put Customizations (CSS or XSLT)
     * Integrating Google's Web Fonts
   -->
-  
+  <xi:include href="html/topic.authors-in-toc.xml"/>
   <xi:include href="html/topic.permalinks.xml"/>
   <xi:include href="html/topic.simplenavig.xml"/>
   <xi:include href="html/topic.breadcrumbs.xml"/>

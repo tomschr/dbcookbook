@@ -1,96 +1,44 @@
 #!/bin/bash
 # 
-# saxon script
-# JPackage Project <http://www.jpackage.org/>
 
-. /usr/share/java-utils/java-functions
+source bin/common.sh
 
-MAIN_CLASS=com.icl.saxon.StyleSheet
+export ADDITIONAL_JARS="xerces-j2.jar xerces-j2-xml-apis.jar"
+export ADDITIONAL_FLAGS="-Djavax.xml.parsers.DocumentBuilderFactory=\
+org.apache.xerces.jaxp.DocumentBuilderFactoryImpl \
+    -Djavax.xml.parsers.SAXParserFactory=\
+org.apache.xerces.jaxp.SAXParserFactoryImpl \
+${XINCLUDEFLAG} ${HLFLAG}"
 
-# Get the absolute path of this script:
-ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-# Cut the last directory part, as script is in .../bin
-ABSPATH=${ABSPATH%/*}
-# 
-BUILDDIR="build"
-FRAMEWORKSDIR=${ABSPATH}/frameworks
-LIBDIR=${FRAMEWORKSDIR}/lib
-HLCONFIG=/usr/share/xml/docbook/stylesheet/nwalsh5/current/highlighting/xslthl-config.xml
+export CLASSPATH="${CATALOGPROP}:${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
 
-BASE_JARS="saxon.jar xml-commons-apis.jar jaxp_parser_impl.jar"
-BASE_FLAGS="-Dxslthl.config=file://${HLCONFIG}"
+[[ $VERBOSE != "" ]] && echo "Transforming..."
+saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/html/chunk.xsl
 
-# Optional jars
-CLASSPATH="$CLASSPATH:"$(build-classpath docbook-xsl-saxon saxon-fop \
-  excalibur/avalon-logkit xml-commons-resolver 2>/dev/null) || :
-CLASSPATH="${CLASSPATH}:${LIBDIR}/xslthl.jar"
+# [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 
-# If we have resolver, add the CatalogManager.properties dir to CLASSPATH,
-# and tweak command line options so that it's used.
-args=
-if echo "$CLASSPATH" | grep xml-commons-resolver >/dev/null 2>&1 ; then
-  CLASSPATH="${ABSPATH}:$CLASSPATH:/etc/java/resolver"
-  # Tune options to use resolver.
-  r=org.apache.xml.resolver.tools.ResolvingXMLReader
-  for opt in -x -y ; do
-    if ! echo $@ | grep "\\$opt " >/dev/null 2>&1 ; then
-      args="$args $opt $r"
-    fi
-  done
-  r=org.apache.xml.resolver.tools.CatalogResolver
-  if ! echo $@ | grep "\\-r " >/dev/null 2>&1 ; then
-    args="$args -r $r"
-  fi
-fi
+# createEntity
 
-# Parse the possible options in Saxon to get the first argument as
-# the XML filename
-# Usage:  java com.icl.saxon.StyleSheet [options] source-doc style-doc {param=value}...
-ARGS=""
-while true
-do
-  #echo $# $1
-  case "$1" in
-    -h|-\?)
-     ARGS="-h"
-     shift
-     break
-     ;;
-    # These are single options:
-    -a|-ds|-dt|-l|-noext|-t|-T|-u|-w1|-w2)
-      #echo "Single Option: $1"
-      ARGS="$ARGS $1"
-      ;;
-    # These are options which hold a second argument:
-    -o|-m|-r|-TL|-x|-y)
-      #echo "Double Option: $1=$2"
-      ARGS="$ARGS $1 $2"
-      shift ;;
-    *) break ;;
-  esac
-  shift
+if true; then 
+  [[ $VERBOSE != "" ]] && echo -e "\nCleaning up HTML...\n"
+
+for i in ${BUILDDIR}/tmp/*.html; do
+ _base=${i##*/}
+ 
+# sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
+
+# tidy -modify -asxhtml --output-xml yes --add-xml-decl no \
+#   --numeric-entities yes --doctype omit \
+#   --tidy-mark no \
+#   --new-blocklevel-tags article,header,footer,section,aside \
+#   --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
+ 
+ [[ $VERBOSE != "" ]] && echo "  Cleaning up ${_base}..."
+ xsltproc --html -o ${HTMLOUT}/${_base} \
+   ${BASEXSLT1}/misc/html2cleanhtml.xsl \
+   $i
+ sed -i '1s#??>#?>#' ${HTMLOUT}/${_base}
 done
-
-XMLIN=$1
-XSLT=$2
-shift 2
-# The rest are only parameters:
-PARAMS=$@
-
-XMLDIR=${XMLIN%/*}
-# Construct our resolved XML filename:
-BASEXML=${BUILDDIR}/${XMLIN##*/}
-
-# Resolve XInclude and save it into the dot file:
-if [ "$1" != "-h" ]; then
-  xmllint --xinclude --output $BASEXML $XMLIN
 fi
 
-# Set parameters
-set_jvm
-set_classpath $BASE_JARS
-set_flags $BASE_FLAGS
-set_options $BASE_OPTIONS
-
-# Let's start
-run $args $ARGS $BASEXML $XSLT $PARAMS
+echo -e "\nFind the HTMLs in ${BUILDDIR}/html/"

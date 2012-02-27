@@ -20,7 +20,9 @@
 
   <xsl:import href="copy.xsl"/>
   <xsl:preserve-space elements="h:pre"/>
-  <xsl:output method="xml" encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>
+  <xsl:output method="xml" omit-xml-declaration="yes" encoding="UTF-8" indent="yes"/>
+  <!--<xsl:output method="xml" doctype-system="about:legacy-compat" 
+    encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>-->
   
   <xsl:include href="../html/piwik.xsl"/>
   
@@ -29,6 +31,10 @@
       <xsl:apply-templates select="@*|node()"/>
       <xsl:call-template name="generate.piwik"/>
     </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="h:meta[@http-equiv='Content-Type']">
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   </xsl:template>
   
   <!-- ================================================ -->
@@ -50,6 +56,10 @@
   <xsl:template match="h:div[@class='revhistory']/h:table/@border">
     <xsl:attribute name="border">0</xsl:attribute>
   </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/@style"/>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td/@style"/>
+  
+  <xsl:template match="@lang[.='']"/>
   
   <xsl:template match="@class">
     <xsl:choose>
@@ -96,6 +106,8 @@
   <xsl:template match="h:h5[@class='title']/@id"/>
   <xsl:template match="h:h6[@class='title']/@id"/>
   
+  <xsl:template match="h:div[@class='revhistory']/h:h1"/>
+  
   <!-- Remove empty anchors -->
   <xsl:template match="h:a[. = '']"/>
   
@@ -140,6 +152,24 @@
     </div>
   </xsl:template>  
   
+  <!-- Used for HTML elements without a namespace -->
+  <xsl:template match="span">
+    <span>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
+    </span>
+  </xsl:template>
+  <xsl:template match="em">
+    <em>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
+    </em>
+  </xsl:template>
+  <xsl:template match="img">
+    <img>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
+    </img>
+  </xsl:template>
+  
+  <!--  -->
   <xsl:template match="h:div[@class='abstract']|
                        h:div[contains(@class, 'note')]|
                        h:div[starts-with(@class, 'list-of-')]">
@@ -397,6 +427,72 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>
+  
+  <!-- revhistory -->
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[1]">
+    <tr>
+      <td colspan="3">
+        <span class="title">Revision History</span>
+      </td>
+    </tr>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr/h:td[1][not(@colspan)]">
+    <xsl:copy>
+      <xsl:attribute name="class">revnumber</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[2][not(@colspan)]">
+    <xsl:copy>
+      <xsl:attribute name="class">date</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[3][not(@colspan)]">
+    <xsl:copy>
+      <xsl:attribute name="class">author</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr[h:td[@colspan] and position() > 1]">
+    <xsl:copy>
+      <xsl:attribute name="class">revdescription</xsl:attribute>
+      <xsl:apply-templates select="@*|node()"/>
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[not(@*)
+    and position() > 1]">
+    <xsl:copy>
+      <xsl:attribute name="class">revision</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+  </xsl:template>
+  <xsl:template
+    match="h:div[@class='revhistory']/h:table/h:tr[count(h:td)=1 and
+    position() > 2]">
+    <xsl:copy>
+      <xsl:attribute name="class">revdescription</xsl:attribute>
+      <xsl:apply-templates />
+    </xsl:copy>
+   </xsl:template> 
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[@colspan]">
+    <td> </td>
+    <td class="revdescription" colspan="2">
+      <span class="revdescription">
+        <!-- NO attributes here, we don't want to copy @colspan -->
+        <xsl:apply-templates />
+      </span>
+    </td>
+  </xsl:template>
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[
+    starts-with(., 'Revision')]">
+    <xsl:copy>
+      <xsl:value-of select="substring-after(., 'Revision ')"/>
+    </xsl:copy>
+  </xsl:template>
+  
   <!--<xsl:template match="h:div[@class='revhistory']/h:table[not(h:tbody)]">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
@@ -422,7 +518,7 @@
       <xsl:apply-templates/>
     </xsl:copy>
   </xsl:template>-->
-  <!-- -->
+  <!-- Inlines -->
   <xsl:template match="h:p[h:span[@class='formalpara-title']]">
     <div class="formalpara">
       <p><xsl:apply-templates/></p>

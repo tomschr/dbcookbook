@@ -8,7 +8,8 @@
   <!--<xsl:param name="chunk.tocs.and.lots" select="1"/>-->
   <xsl:param name="docbook.css.link" select="0"/>
   <xsl:param name="css.decoration" select="0"/>
-  <xsl:param name="img.src.path">images/</xsl:param>
+  <xsl:param name="callout.graphics.path" select="concat($img.src.path,'callouts/')"/>
+  <xsl:param name="img.src.path">png/</xsl:param>
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
@@ -38,6 +39,8 @@
   <xsl:param name="use.id.as.filename" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
   <xsl:param name="use.viewport" select="0"/>
+  
+  <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
   
   <xsl:param name="use.piwik" select="0"/>
   <xsl:param name="generate.breadcrumbs" select="0"/>

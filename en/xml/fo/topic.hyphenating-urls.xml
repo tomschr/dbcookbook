@@ -80,11 +80,11 @@
       <title><filename>hyphenate-url.xsl</filename></title>
       <info>
         <output xmlns="urn:x-toms:docbook-ext">
-          <filename>hyphenate-url.xsl</filename>
+          <filename>hyphen-urls/hyphenate-url.xsl</filename>
         </output>
       </info>
       <programlisting language="xml"><xi:include parse="text" 
-        href="xslt/hyphenate-url.xsl"/></programlisting>
+        href="hyphen-urls/hyphenate-url.xsl"/></programlisting>
     </example>
     <remark>HINT: Runtime behaviour O(n); should not be a problem as
       URLs are short. Negligible?</remark>

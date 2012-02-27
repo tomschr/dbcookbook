@@ -14,6 +14,9 @@
   <xsl:template name="t:user-head-content">
     <xsl:param name="node" select="."/>
     <xsl:if test="$generate.user.meta != 0">
+      <xsl:call-template name="t:user-link-feeds">
+        <xsl:with-param name="node" select="$node"/>
+      </xsl:call-template>
       <xsl:call-template name="t:user-meta-author">
         <xsl:with-param name="node" select="$node"/>
       </xsl:call-template>
@@ -23,6 +26,60 @@
     </xsl:if>  
   </xsl:template>
   
+  <xsl:template name="t:user-link-feeds">
+    <xsl:param name="node" select="."/>
+    <xsl:variable name="bibliosource" select="$node/d:info/d:bibliosource[@class='other']"/>
+    
+    <!--<xsl:message>t:user-link-feeds:
+      bibliosource = <xsl:value-of select="count($bibliosource)"/>
+      $bibliosource[@otherclass='rss'][@role='code']: <xsl:value-of 
+        select="count($bibliosource[@otherclass='rss'])"/>
+    </xsl:message>-->
+    
+    <xsl:if test="$bibliosource">
+      <xsl:if test="$bibliosource[@otherclass='rss'][@role='code']">
+        <link
+          href="{$bibliosource[@otherclass='rss'][@role='code']/@xlink:href}"
+          type="application/rss+xml" rel="alternate">
+          <xsl:attribute name="title">
+          <xsl:apply-templates  mode="m:titlepage-mode"
+            select="$bibliosource[@otherclass='rss'][@role='code']"/>
+          </xsl:attribute>
+        </link>
+      </xsl:if>
+      <xsl:if test="$bibliosource[@otherclass='atom'][@role='code']">
+        <link
+          href="{$bibliosource[@otherclass='atom'][@role='code']/@xlink:href}"
+          type="application/atom+xml" rel="alternate">
+          <xsl:attribute name="title">
+          <xsl:apply-templates mode="m:titlepage-mode" 
+            select="$bibliosource[@otherclass='atom'][@role='code']"/>
+          </xsl:attribute>
+        </link>
+      </xsl:if>
+      
+      <xsl:if test="$bibliosource[@otherclass='rss'][@role='ticket']">
+        <link
+          href="{$bibliosource[@otherclass='rss'][@role='ticket']/@xlink:href}"
+          type="application/rss+xml" rel="alternate">
+          <xsl:attribute name="title">
+          <xsl:apply-templates  mode="m:titlepage-mode"
+            select="$bibliosource[@otherclass='rss'][@role='ticket']"/>
+          </xsl:attribute>
+        </link>
+      </xsl:if>
+      <xsl:if test="$bibliosource[@otherclass='atom'][@role='ticket']">
+        <link
+          href="{$bibliosource[@otherclass='atom'][@role='ticket']/@xlink:href}"
+          type="application/atom+xml" rel="alternate">
+          <xsl:attribute name="title">
+          <xsl:apply-templates  mode="m:titlepage-mode"
+            select="$bibliosource[@otherclass='atom'][@role='ticket']"/>
+          </xsl:attribute>
+        </link>
+      </xsl:if>
+    </xsl:if>
+  </xsl:template>
 
   <xsl:template name="t:user-meta-author">
     <xsl:param name="node" select="."/>
