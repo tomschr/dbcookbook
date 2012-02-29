@@ -20,11 +20,11 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Adding Authors Into Table of Contents</title>
+  <title>Adding Authors to Table of Contents</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>table of content</keyword>
+      <keyword>table of contents</keyword>
       <keyword>TOC</keyword>
       <keyword>authors</keyword>
       <keyword>proceedings</keyword>
@@ -33,8 +33,8 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>You have a document which are written by different authors
-      (like in proceedings) and want to include the author name in the
+    <para>You have a document which is written by different authors
+      (like in proceedings) and want to include the author names in the
       table of contents.</para>
   </section>
   <section role="solution">
@@ -45,31 +45,31 @@
     <procedure xml:id="pro.html.authors-in-toc">
       <step>
         <para>Make sure your chapters, appendices, sections, etc.
-          contain at least one author like in the following example:</para>
-        <programlisting language="xml">&lt;sect1>
-  &lt;title>How to Become a Linux Mascott&lt;/title>
-  &lt;info>
-    &lt;author>
-      &lt;personname>
-        &lt;firstname>Tux&lt;/firstname>
-        &lt;surname>Penguin&lt;/surname>
-      &lt;/personname>
-    &lt;/author>
-  &lt;/info>
-  &lt;!-- ... -->
-&lt;/sect1></programlisting>
+          contain at least one author, like in the following example:</para>
+        <programlisting language="xml"><![CDATA[<sect1>
+  <title>How to Become a Linux Mascott</title>
+  <info>
+    <author>
+      <personname>
+        <firstname>Tux</firstname>
+        <surname>Penguin</surname>
+      </personname>
+    </author>
+  </info>
+  <!-- ... -->
+</sect1>]]></programlisting>
       </step>
       <step>
         <para>Create a customization layer first as shown in <xref linkend="dbc.common.dbcustomize"/>.</para>
       </step>
       <step>
-        <para>Add the following line in your customization layer:</para>
+        <para>Add the following line to your customization layer:</para>
         <programlisting language="xml"
           >&lt;xsl:include href="autotoc.xsl"/></programlisting>
       </step>
       <step>
         <para>Create a new file <filename>autotoc.xsl</filename> in the
-          same directory with the following contents:</para>
+          same directory, with the following contents:</para>
         <informalexample xml:id="ex.html.authors-in-toc">
           <!--<title><filename>autotoc.xsl</filename></title>-->
           <info>
@@ -123,36 +123,36 @@
       <tgroup cols="2">
         <tbody valign="top">
           <row>
-            <entry><programlisting language="xml">&lt;info>
-  &lt;author>
-    &lt;personname>
-      &lt;firstname>Tux&lt;/firstname>
-      &lt;surname>Penguin&lt;/surname>
-    &lt;/personname>
-  &lt;/author>
-  &lt;author>
-    &lt;personname>
-      &lt;firstname>Wilber&lt;/firstname>
-      &lt;surname>Gimp&lt;/surname>
-    &lt;/personname>
-  &lt;/author>
-&lt;/info></programlisting></entry>
-            <entry><programlisting language="xml">&lt;info>
-  &lt;authorgroup>
-    &lt;author>
-      &lt;personname>
-        &lt;firstname>Tux&lt;/firstname>
-        &lt;surname>Penguin&lt;/surname>
-      &lt;/personname>
-    &lt;/author>
-    &lt;author>
-      &lt;personname>
-        &lt;firstname>Wilber&lt;/firstname>
-        &lt;surname>Gimp&lt;/surname>
-      &lt;/personname>
-    &lt;/author>
-  &lt;/authorgroup>
-&lt;/info></programlisting></entry>
+            <entry><programlisting language="xml"><![CDATA[<info>
+  <author>
+    <personname>
+      <firstname>Tux</firstname>
+      <surname>Penguin</surname>
+    </personname>
+  </author>
+  <author>
+    <personname>
+      <firstname>Wilber</firstname>
+      <surname>Gimp</surname>
+    </personname>
+  </author>
+</info></programlisting></entry>
+            <entry><programlisting language="xml"><info>
+  <authorgroup>
+    <author>
+      <personname>
+        <firstname>Tux</firstname>
+        <surname>Penguin</surname>
+      </personname>
+    </author>
+    <author>
+      <personname>
+        <firstname>Wilber</firstname>
+        <surname>Gimp</surname>
+      </personname>
+    </author>
+  </authorgroup>
+</info>]]></programlisting></entry>
           </row>
         </tbody>
       </tgroup>
@@ -160,7 +160,7 @@
     
     <para>Even if you mix <tag>author</tag> and <tag>authorgroup</tag>
       you will get the correct string output.</para>
-    <para>You can also use other elements than <tag>author</tag>s. To
+    <para>You can also use elements other than <tag>author</tag>. To
       detect <tag>editor</tag>, extend the variable
       <varname>author</varname> as follows:</para>
     
