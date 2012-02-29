@@ -65,7 +65,7 @@
       <step>
         <para>Add the following line to your customization layer:</para>
         <programlisting language="xml"
-          >&lt;xsl:include href="autotoc.xsl"/></programlisting>
+          ><![CDATA[<xsl:include href="autotoc.xsl"/>]]></programlisting>
       </step>
       <step>
         <para>Create a new file <filename>autotoc.xsl</filename> in the
@@ -136,8 +136,10 @@
       <surname>Gimp</surname>
     </personname>
   </author>
-</info></programlisting></entry>
-            <entry><programlisting language="xml"><info>
+</info>]]>
+</programlisting></entry>
+            <entry>
+<programlisting language="xml"><![CDATA[<info>
   <authorgroup>
     <author>
       <personname>
