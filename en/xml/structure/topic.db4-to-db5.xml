@@ -22,6 +22,11 @@
   <title>Converting DocBook from Version&#xa0;4 to Version&#xa0;5</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>converting</keyword>
+      <keyword>DocBook 4</keyword>
+      <keyword>DocBook 5</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

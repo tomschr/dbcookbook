@@ -22,6 +22,18 @@
   <title>Using Lists</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>lists</keyword>
+      <keyword>itemizedlist</keyword>
+      <keyword>orderedlist</keyword>
+      <keyword>variablelist</keyword>
+      <keyword>bibliolist</keyword>
+      <keyword>calloutlist</keyword>
+      <keyword>glosslist</keyword>
+      <keyword>segmentedlist</keyword>
+      <keyword>simplelist</keyword>
+      <keyword>numeration</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

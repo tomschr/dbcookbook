@@ -22,6 +22,15 @@
   <title>Finding Professional Fonts</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>fonts</keyword>
+      <keyword>SIL</keyword>
+      <keyword>Google Web Fonts</keyword>
+      <keyword>CTAN</keyword>
+      <keyword>Linux Libertine fonts</keyword>
+      <keyword>DejaVu fonts</keyword>
+      <keyword>Stix fonts</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

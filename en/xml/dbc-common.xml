@@ -23,6 +23,10 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <biblioid class="other" otherclass="ticket">20</biblioid>
+    <keywordset>
+      <keyword>common customizations</keyword>
+    </keywordset>
+    
     <abstract>
       <para>Some typical problems are independant from their target
         formats. This chapter gives you some information what falls into

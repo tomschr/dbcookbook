@@ -22,6 +22,11 @@
   <title>Styling Numbers Differently than Titles in Divisions</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>styling title</keyword>
+      <keyword>label.markup</keyword>
+      <keyword>title.markup</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

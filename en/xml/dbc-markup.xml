@@ -23,6 +23,9 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <biblioid class="other" otherclass="ticket">19</biblioid>
+    <keywordset>
+      <keyword>docbook markup</keyword>
+    </keywordset>
     <abstract>
       <para>DocBook has a wide variety of elements covering different
         semantics: from structural elements like <tag>book</tag>,

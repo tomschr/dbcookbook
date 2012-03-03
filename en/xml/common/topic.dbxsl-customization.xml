@@ -23,6 +23,9 @@
   <title>Writing Customization Layers</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>customization layer</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

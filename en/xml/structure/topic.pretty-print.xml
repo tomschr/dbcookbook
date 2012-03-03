@@ -22,6 +22,10 @@
   <title>Pretty-Printing DocBook Documents</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>pretty-print</keyword>
+      <keyword>xmlformat</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

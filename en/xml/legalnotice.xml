@@ -18,6 +18,14 @@
   xmlns:xlink="http://www.w3.org/1999/xlink"
   xmlns="http://docbook.org/ns/docbook">
   <title>License</title>
+  <info>
+    <keywordset>
+      <keyword>license</keyword>
+      <keyword>Creative Commons</keyword>
+      <keyword>CC</keyword>
+      <keyword>CC BY-NC-SA 3.0 DE</keyword>
+    </keywordset>
+  </info>
   
   <sidebar>
     <title>Licensed under Creative Commons</title>

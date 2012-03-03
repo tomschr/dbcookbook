@@ -22,6 +22,14 @@
   <title>Including Revision Information from Version Control Systems</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>version control system</keyword>
+      <keyword>revhistory</keyword>
+      <keyword>Bazaar</keyword>
+      <keyword>Git</keyword>
+      <keyword>Mercurial</keyword>
+      <keyword>Subversion</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

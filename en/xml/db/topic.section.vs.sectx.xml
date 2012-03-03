@@ -22,6 +22,12 @@
   <title>Distinguish Between Section and SectX Elements</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>section</keyword>
+      <keyword>sectX</keyword>
+      <keyword>sect1</keyword>
+      <keyword>nesting sections</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

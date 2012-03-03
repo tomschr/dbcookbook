@@ -22,6 +22,11 @@
   <title>Adding Index Entries (Semi-)Automatically</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>index</keyword>
+      <keyword>automatically insert indices</keyword>
+      <keyword>consistency</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

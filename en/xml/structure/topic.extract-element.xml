@@ -22,6 +22,12 @@
   <title>Extracting One Element from DocBook Document</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>extracting one element</keyword>
+      <keyword>rootid</keyword>
+      <keyword>xref</keyword>
+      <keyword>cross-references</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

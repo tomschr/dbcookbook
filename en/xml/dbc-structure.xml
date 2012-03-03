@@ -24,6 +24,9 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <biblioid class="other" otherclass="ticket">21</biblioid>
+    <keywordset>
+      <keyword>docbook structure</keyword>
+    </keywordset>
     <abstract>
       <para>DocBook files can be created manually or by tools.
         Sometimes tools create a structure which is inconvenient for

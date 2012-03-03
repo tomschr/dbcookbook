@@ -22,6 +22,9 @@
   <title>Preserving Entities</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>preserving entities</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

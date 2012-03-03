@@ -20,6 +20,12 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Suppressing Header and Footer</title>
+  <info>
+    <keywordset>
+      <keyword>header</keyword>
+      <keyword>footer</keyword>
+    </keywordset>
+  </info>
    <!--How to remove headers
 Von:	Mauritz Jeanson <mj@johanneberg.com>-->
   <section role="problem">

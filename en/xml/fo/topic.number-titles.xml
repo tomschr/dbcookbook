@@ -22,6 +22,21 @@
   <title>Numbering Part, Chapter, Appendix, and other Titles</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>titles</keyword>
+      <keyword>numbering</keyword>
+      <keyword>appendix.autolabel</keyword>
+      <keyword>chapter.autolabel</keyword>
+      <keyword>part.autolabel</keyword>
+      <keyword>preface.autolabel</keyword>
+      <keyword>qandadiv.autolabel</keyword>
+      <keyword>reference.autolabel</keyword>
+      <keyword>section.autolabel</keyword>
+      <keyword>section.label.includes.component.label</keyword>
+      <keyword>component.label.includes.part.label</keyword>
+      <keyword>label.from.part</keyword>
+      <keyword>section.autolabel.max.depth</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

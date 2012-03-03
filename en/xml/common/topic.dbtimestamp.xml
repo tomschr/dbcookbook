@@ -20,6 +20,15 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Inserting Date and Time</title>
+  <info>
+    <keywordset>
+      <keyword>date and time</keyword>
+      <keyword>datetime</keyword>
+      <keyword>dbtimestamp</keyword>
+      <keyword>processing-instruction</keyword>
+      <keyword>context</keyword>
+    </keywordset>
+  </info>
     
   <section role="problem">
     <title>Problem</title>

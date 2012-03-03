@@ -22,6 +22,11 @@
   <title>Transforming <tag>sectX</tag> Elements into <tag>section</tag> Elements</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>sectX</keyword>
+      <keyword>section</keyword>
+      <keyword>sectX to section</keyword>
+    </keywordset>
   </info>
   
   <section>

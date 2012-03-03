@@ -22,6 +22,15 @@
   <title>Extending Language Files with Your Own Text</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>l10n</keyword>
+      <keyword>translation</keyword>
+      <keyword>language files</keyword>
+      <keyword>local.l10n.xml</keyword>
+      <keyword>context</keyword>
+      <keyword>gentext</keyword>
+      <keyword>http://docbook.sourceforge.net/xmlns/l10n/1.0</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

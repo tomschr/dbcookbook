@@ -23,6 +23,13 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <biblioid class="other" otherclass="ticket">23</biblioid>
+    <keywordset>
+      <keyword>html customizations</keyword>
+      <keyword>online</keyword>
+      <keyword>XHTML</keyword>
+      <keyword>HTML</keyword>
+      <keyword>HTML5</keyword>
+    </keywordset>
     <abstract>
       <para>HTML is a very important output format for the DocBook XSL
         stylesheets as it is not only displayed on Web sites, but also
@@ -117,5 +124,6 @@
   <xi:include href="html/topic.permalinks.xml"/>
   <xi:include href="html/topic.simplenavig.xml"/>
   <xi:include href="html/topic.breadcrumbs.xml"/>
+  <!-- <xi:include href="html/topic.google-webfonts.xml"/> -->
   <!--<xi:include href="html/topic.consistent-ids.xml"/>-->
 </chapter>

@@ -22,6 +22,11 @@
   <title>Creating Page Definitions with Inkscape</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>Inkscape</keyword>
+      <keyword>page definition</keyword>
+      <keyword>SVG</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

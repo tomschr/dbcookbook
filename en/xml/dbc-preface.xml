@@ -20,6 +20,9 @@
   <title>Welcome!</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>preface</keyword>
+    </keywordset>
   </info>
   
   <blockquote>

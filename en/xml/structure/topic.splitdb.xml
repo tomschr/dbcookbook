@@ -21,6 +21,10 @@
   <title>Splitting DocBook Documents</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>splitting</keyword>
+      <keyword>exsl:document</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">

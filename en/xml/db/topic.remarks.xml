@@ -22,6 +22,10 @@
   <title>Inserting Remarks</title>
   <info>
     <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>remarks</keyword>
+      <keyword>show.comments</keyword>
+    </keywordset>
   </info>
   
   <section role="problem">
