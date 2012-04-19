@@ -124,6 +124,7 @@
   <xi:include href="html/topic.permalinks.xml"/>
   <xi:include href="html/topic.simplenavig.xml"/>
   <xi:include href="html/topic.breadcrumbs.xml"/>
+  <xi:include href="html/topic.movetoc.xml"/>
   <!-- <xi:include href="html/topic.google-webfonts.xml"/> -->
   <!--<xi:include href="html/topic.consistent-ids.xml"/>-->
 </chapter>
