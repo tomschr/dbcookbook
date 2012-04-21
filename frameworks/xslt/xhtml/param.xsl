@@ -9,7 +9,6 @@
   <xsl:param name="docbook.css.link" select="0"/>
   <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="callout.graphics.path" select="concat($img.src.path,'callouts/')"/>
-  <xsl:param name="img.src.path">png/</xsl:param>
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
