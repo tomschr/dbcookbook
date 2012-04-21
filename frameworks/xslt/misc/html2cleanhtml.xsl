@@ -232,7 +232,7 @@
   </xsl:template>
   
   <xsl:template match="h:h2[ancestor::h:div[@class='section']]">
-    <h3><xsl:apply-templates/></h3>
+    <h3 class="navig"><xsl:apply-templates/></h3>
   </xsl:template>
   <xsl:template match="h:h3[ancestor::h:section[@class='chapter']]">
     <div class="chapter-titlepage">
