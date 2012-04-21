@@ -11,8 +11,8 @@
   exclude-result-prefixes="d db ng t xlink exsl"
   extension-element-prefixes="exsl">
   
-  <xsl:include href="../html/param.xsl"/>
-  <xsl:include href="../html/usermeta.xsl"/>
-  <xsl:include href="../html/titlepage.templates.xsl"/>
+  <xsl:include href="../xhtml/param.xsl"/>
+  <xsl:include href="../xhtml/usermeta.xsl"/>
+  <xsl:include href="../xhtml/titlepage.templates.xsl"/>
    
 </xsl:stylesheet>

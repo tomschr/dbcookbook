@@ -24,7 +24,7 @@
   <!--<xsl:output method="xml" doctype-system="about:legacy-compat" 
     encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>-->
   
-  <xsl:include href="../html/piwik.xsl"/>
+  <xsl:include href="../xhtml/piwik.xsl"/>
   
   <xsl:template match="h:body">
     <xsl:copy>
