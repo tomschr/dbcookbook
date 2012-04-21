@@ -24,6 +24,13 @@
   <xsl:param name="generate.user.meta" select="1"/>
   <xsl:param name="generate.section.navig" select="0"/>
   <xsl:param name="generate.javascript" select="1"/>
+  <xsl:param name="generate.permalink" select="1"/>
+  <xsl:param name="generate.userlevel" select="1"/>
+  <xsl:param name="permalink.text">¶</xsl:param>
+  <xsl:param name="userlevel.easy"  >★☆☆</xsl:param><!-- ⚑⚐⚐ -->
+  <xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
+  <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
+
   
   <xsl:param name="linenumbering.everyNth" select="1"/>
   <xsl:param name="make.clean.html" select="1"/>

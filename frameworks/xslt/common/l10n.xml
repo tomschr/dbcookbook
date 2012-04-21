@@ -2,6 +2,11 @@
 <!DOCTYPE l:i18n []>
 <l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
   <l:l10n language="en" english-language-name="English">
+    <l:gentext key="Difficulty" text="Difficulty: "/>
+    <l:gentext key="Ticket" text="See also Ticket#"/>
+    <l:gentext key="Permalink" text="Permalink"/>
+    <l:gentext key="permalink" text="permalink"/>
+    <l:gentext key="Download" text="Download File"/>    
     <l:context name="datetime">
       <l:template name="format" text="d b Y, X"/>
     </l:context>
