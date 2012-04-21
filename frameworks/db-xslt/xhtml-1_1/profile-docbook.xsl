@@ -1,9 +1,14 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><!--This file was created automatically by xsl2profile--><!--from the DocBook XSL stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns:exsl="http://exslt.org/common" xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exslt:dummy="dummy" ng:dummy="dummy" db:dummy="dummy" extension-element-prefixes="exslt" exclude-result-prefixes="db ng exsl exslt exslt" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<!--This file was created automatically by xsl2profile-->
+<!--from the DocBook XSL stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns:exsl="http://exslt.org/common" xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exslt:dummy="dummy" ng:dummy="dummy" db:dummy="dummy" extension-element-prefixes="exslt" exclude-result-prefixes="db ng exsl exslt exslt" version="1.0">
 
 <xsl:output method="xml" encoding="UTF-8" indent="no" doctype-public="-//W3C//DTD XHTML 1.1//EN" doctype-system="http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"/>
 
 <!-- ********************************************************************
-     $Id: docbook.xsl 9141 2011-10-31 20:37:22Z bobstayton $
+     $Id: docbook.xsl 9202 2012-01-30 03:14:31Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -132,6 +137,12 @@
     </xsl:call-template>
   </xsl:if>
 
+  <xsl:if test="$html.script != ''">
+    <xsl:call-template name="output.html.scripts">
+      <xsl:with-param name="scripts" select="normalize-space($html.script)"/>
+    </xsl:call-template>
+  </xsl:if>
+
   <xsl:if test="$link.mailto.url != ''">
     <link rev="made" href="{$link.mailto.url}"/>
   </xsl:if>
@@ -188,6 +199,29 @@ body { background-image: url('</xsl:text>
     <xsl:when test="$stylesheets != ''">
       <xsl:call-template name="make.css.link">
         <xsl:with-param name="css.filename" select="$stylesheets"/>
+      </xsl:call-template>
+    </xsl:when>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="output.html.scripts">
+  <xsl:param name="scripts" select="''"/>
+
+  <xsl:choose>
+    <xsl:when test="contains($scripts, ' ')">
+      <xsl:variable name="script.filename" select="substring-before($scripts, ' ')"/>
+
+      <xsl:call-template name="make.script.link">
+        <xsl:with-param name="script.filename" select="$script.filename"/>
+      </xsl:call-template>
+
+      <xsl:call-template name="output.html.scripts">
+        <xsl:with-param name="scripts" select="substring-after($scripts, ' ')"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$scripts != ''">
+      <xsl:call-template name="make.script.link">
+        <xsl:with-param name="script.filename" select="$scripts"/>
       </xsl:call-template>
     </xsl:when>
   </xsl:choose>

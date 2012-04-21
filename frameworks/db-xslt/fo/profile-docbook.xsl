@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="US-ASCII"?><!--This file was created automatically by xsl2profile--><!--from the DocBook XSL stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns:exslt="http://exslt.org/common" exslt:dummy="dummy" ng:dummy="dummy" db:dummy="dummy" extension-element-prefixes="exslt" exclude-result-prefixes="db ng exsl exslt" version="1.0">
+<?xml version="1.0" encoding="US-ASCII"?>
+<!--This file was created automatically by xsl2profile-->
+<!--from the DocBook XSL stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns:exslt="http://exslt.org/common" exslt:dummy="dummy" ng:dummy="dummy" db:dummy="dummy" extension-element-prefixes="exslt" exclude-result-prefixes="db ng exsl exslt" version="1.0">
 
 <!-- It is important to use indent="no" here, otherwise verbatim -->
 <!-- environments get broken by indented tags...at least when the -->

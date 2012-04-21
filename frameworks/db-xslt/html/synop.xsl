@@ -6,7 +6,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: synop.xsl 8421 2009-05-04 07:49:49Z bobstayton $
+     $Id: synop.xsl 9224 2012-02-01 05:07:27Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -1548,6 +1548,22 @@ paramdef      ::= (#PCDATA|type|replaceable|parameter|funcparams)*
 </xsl:template>
 
 <xsl:template match="link|olink|xref" mode="perl">
+  <xsl:apply-templates select="."/>
+</xsl:template>
+
+<xsl:template match="link|olink|xref" mode="ansi-nontabular">
+  <xsl:apply-templates select="."/>
+</xsl:template>
+
+<xsl:template match="link|olink|xref" mode="ansi-tabular">
+  <xsl:apply-templates select="."/>
+</xsl:template>
+
+<xsl:template match="link|olink|xref" mode="kr-nontabular">
+  <xsl:apply-templates select="."/>
+</xsl:template>
+
+<xsl:template match="link|olink|xref" mode="kr-tabular">
   <xsl:apply-templates select="."/>
 </xsl:template>
 

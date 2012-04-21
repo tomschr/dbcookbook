@@ -33,7 +33,9 @@
 
 <xsl:import href="titlepage.templates.xsl"/>
 
+<!--
 <xsl:key name="image-filerefs" match="graphic|inlinegraphic|imagedata" use="@fileref"/>
+-->
 
 <!--==============================================================-->
 <!--  DocBook XSL Parameter settings                              -->
@@ -42,8 +44,10 @@
 <xsl:param name="chunk.tocs.and.lots" select="1"/>
 <xsl:param name="toc.section.depth" select="2"/>
 <xsl:param name="generate.toc">
-book  toc,title
+book  toc,title,figure,table,example,equation
+article  toc,title,figure,table,example,equation
 </xsl:param>
+<xsl:param name="generate.manifest" select="0"/>
 <xsl:param name="manifest.in.base.dir" select="1"/>
 <xsl:param name="base.dir" select="'OEBPS/'"/>
 <xsl:param name="index.links.to.section" select="0"/>
@@ -68,7 +72,7 @@ book  toc,title
 <!-- generate the css file from a source file -->
 <xsl:param name="make.clean.html" select="1"/>
 <!-- specify the default epub3 stylesheet -->
-<xsl:param name="docbook.css.source">docbook.css.xml</xsl:param>
+<xsl:param name="docbook.css.source">docbook-epub.css.xml</xsl:param>
 <!-- for custom CSS, use the custom.css.source param -->
 <xsl:param name="custom.css.source"></xsl:param>
 
@@ -446,9 +450,22 @@ book  toc,title
 
 <xsl:template match="author|corpauthor" mode="opf.metadata">
   <xsl:variable name="n">
-    <xsl:call-template name="person.name">
-      <xsl:with-param name="node" select="."/>
-    </xsl:call-template>
+    <xsl:choose>
+      <xsl:when test="self::corpauthor">
+        <xsl:apply-templates/>
+      </xsl:when>
+      <xsl:when test="org/orgname">
+        <xsl:apply-templates select="org/orgname"/>
+      </xsl:when>
+      <xsl:when test="orgname">
+        <xsl:apply-templates select="orgname"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="person.name">
+          <xsl:with-param name="node" select="."/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:variable>
 
   <xsl:if test="string-length($n) != 0">
@@ -472,6 +489,19 @@ book  toc,title
 </xsl:template>
 
 <xsl:template match="editor" mode="opf.metadata">
+  <xsl:variable name="n">
+    <xsl:choose>
+      <xsl:when test="orgname">
+        <xsl:apply-templates select="orgname"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="person.name">
+          <xsl:with-param name="node" select="."/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
   <xsl:variable name="name">
     <xsl:choose>
       <xsl:when test="string-length($editor.property) != 0">
@@ -488,24 +518,24 @@ book  toc,title
       <xsl:text>dcterms:</xsl:text>
       <xsl:value-of select="$name"/>
     </xsl:attribute>
-    <xsl:value-of select="normalize-space(.)"/>
+    <xsl:value-of select="normalize-space($n)"/>
   </xsl:element>
 
   <xsl:if test="$epub.include.optional.metadata.dc.elements != 0">
     <xsl:choose>
       <xsl:when test="$name = 'creator'">
         <dc:creator>
-          <xsl:value-of select="normalize-space(.)"/>
+          <xsl:value-of select="normalize-space($n)"/>
         </dc:creator>
       </xsl:when>
       <xsl:when test="$name = 'contributor'">
         <dc:contributor>
-          <xsl:value-of select="normalize-space(.)"/>
+          <xsl:value-of select="normalize-space($n)"/>
         </dc:contributor>
       </xsl:when>
       <xsl:otherwise>
         <xsl:element namespace="{$dc.namespace}" name="{$name}">
-          <xsl:value-of select="normalize-space(.)"/>
+          <xsl:value-of select="normalize-space($n)"/>
         </xsl:element>
       </xsl:otherwise>
     </xsl:choose>
@@ -513,7 +543,7 @@ book  toc,title
 
 </xsl:template>
 
-<xsl:template match="othercredit|corpcredit|collab" mode="opf.metadata">
+<xsl:template match="corpcredit" mode="opf.metadata">
   <xsl:element name="meta" namespace="{$opf.namespace}">
     <xsl:attribute name="property">dcterms:contributor</xsl:attribute>
     <xsl:value-of select="normalize-space(.)"/>
@@ -522,6 +552,39 @@ book  toc,title
   <xsl:if test="$epub.include.optional.metadata.dc.elements != 0">
     <dc:contributor>
       <xsl:value-of select="normalize-space(.)"/>
+    </dc:contributor>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="collab|othercredit" mode="opf.metadata">
+  <xsl:variable name="content">
+    <xsl:choose>
+      <xsl:when test="collabname">
+        <xsl:apply-templates select="collabname"/>
+      </xsl:when>
+      <xsl:when test="org/orgname">
+        <xsl:apply-templates select="org/orgname"/>
+      </xsl:when>
+      <xsl:when test="orgname">
+        <xsl:apply-templates select="orgname"/>
+      </xsl:when>
+      <xsl:when test="personname|firstname|surname|othername">
+        <xsl:call-template name="person.name"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:element name="meta" namespace="{$opf.namespace}">
+    <xsl:attribute name="property">dcterms:contributor</xsl:attribute>
+    <xsl:value-of select="normalize-space($content)"/>
+  </xsl:element>
+
+  <xsl:if test="$epub.include.optional.metadata.dc.elements != 0">
+    <dc:contributor>
+      <xsl:value-of select="normalize-space($content)"/>
     </dc:contributor>
   </xsl:if>
 
@@ -905,6 +968,8 @@ book  toc,title
                     |dedication
                     |sidebar
                     |footnote
+                    |glossterm
+                    |glossdef
                     |bridgehead
                     |part" mode="epub.type">
   <xsl:variable name="type" select="local-name()"/>
@@ -916,15 +981,38 @@ book  toc,title
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="section[parent::chapter]" mode="epub.type">
+<xsl:template match="section[parent::chapter] | sect1" mode="epub.type">
   <xsl:if test="$epub.output.epub.types != 0">
     <xsl:attribute name="epub:type">subchapter</xsl:attribute>
   </xsl:if>
 </xsl:template>
 
-<xsl:template match="section[not(parent::chapter)]" mode="epub.type">
+<xsl:template match="section[not(parent::chapter)] |
+                     sect2 |
+                     sect3 |
+                     sect4 |
+                     sect5 |
+                     sect6" mode="epub.type">
   <xsl:if test="$epub.output.epub.types != 0">
     <xsl:attribute name="epub:type">division</xsl:attribute>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="note|tip|caution|important" mode="epub.type">
+  <xsl:if test="$epub.output.epub.types != 0">
+    <xsl:attribute name="epub:type">notice</xsl:attribute>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="orderedlist|itemizedlist|variablelist|simplelist" mode="epub.type">
+  <xsl:if test="$epub.output.epub.types != 0">
+    <xsl:attribute name="epub:type">list</xsl:attribute>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="listitem" mode="epub.type">
+  <xsl:if test="$epub.output.epub.types != 0">
+    <xsl:attribute name="epub:type">list-item</xsl:attribute>
   </xsl:if>
 </xsl:template>
 
@@ -1127,25 +1215,6 @@ book  toc,title
   </xsl:if>
 </xsl:template>
 
-<xsl:template name="graphic.format.content-type">
-  <xsl:param name="format" select="''"/>
-  <xsl:choose>
-    <xsl:when test="$format = ''"></xsl:when>
-    <xsl:when test="$format = 'linespecific'"></xsl:when>
-    <xsl:when test="$format = 'PS'">application/postscript</xsl:when>
-    <xsl:when test="$format = 'PDF'">application/pdf</xsl:when>
-    <xsl:when test="$format = 'PNG'">image/png</xsl:when>
-    <xsl:when test="$format = 'SVG'">image/svg+xml</xsl:when>
-    <xsl:when test="$format = 'JPG'">image/jpeg</xsl:when>
-    <xsl:when test="$format = 'GIF87a'">image/gif</xsl:when>
-    <xsl:when test="$format = 'GIF89a'">image/gif</xsl:when>
-    <xsl:otherwise>
-        <xsl:value-of select="concat('image/', 
-          translate($format, &uppercase;, &lowercase;))"/>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
 <xsl:template name="manifest.toc">
   <xsl:variable name="toc.params">
     <xsl:call-template name="find.path.params">
@@ -1261,22 +1330,37 @@ book  toc,title
   <!-- get the element corresponding to the next chunk -->
   <xsl:variable name="next.chunk" select="key('genid', ($nextdiv/@id|$nextdiv/@xml:id)[1])"/>
 
-  <xsl:variable name="this.imagedata"
-                select="$this.chunk//imagedata"/>
-  <xsl:variable name="before.next"
-                select="$next.chunk/preceding::imagedata"/>
-  
-  <!-- select for an SVG imagedata in the intersection of them -->
-  <xsl:variable name="intersection"
-      select="$this.imagedata[count(.|$before.next) = count($before.next)]"/>
-
-  <xsl:variable name="svg.imagedata"
-      select="$intersection[contains(
-                  substring(@fileref, string-length(@fileref)-3,4), '.svg')]"/>
-
-  <xsl:if test="count($svg.imagedata) != 0">
-    <xsl:text>svg</xsl:text>
- </xsl:if>
+  <xsl:choose>
+    <xsl:when test="$next.chunk">
+      <xsl:variable name="this.imagedata"
+                    select="$this.chunk//imagedata"/>
+      <xsl:variable name="before.next"
+                    select="$next.chunk/preceding::imagedata"/>
+      
+      <!-- select for an SVG imagedata in the intersection of them -->
+      <xsl:variable name="intersection"
+          select="$this.imagedata[count(.|$before.next) = count($before.next)]"/>
+    
+      <xsl:variable name="svg.imagedata"
+          select="$intersection[contains(
+                      substring(@fileref, string-length(@fileref)-3,4), '.svg')]"/>
+    
+      <xsl:if test="count($svg.imagedata) != 0">
+        <xsl:text>svg</xsl:text>
+     </xsl:if>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:variable name="this.imagedata"
+                    select="$this.chunk//imagedata"/>
+      <xsl:variable name="svg.imagedata"
+          select="$this.imagedata[contains(
+                      substring(@fileref, string-length(@fileref)-3,4), '.svg')]"/>
+      <xsl:if test="count($svg.imagedata) != 0">
+        <xsl:text>svg</xsl:text>
+     </xsl:if>
+    
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template name="mathml.property">
@@ -1331,14 +1415,14 @@ book  toc,title
     <xsl:when test="$exsl.node.set.available != 0 and 
                     function-available('set:distinct')">
       <xsl:for-each select="set:distinct(exsl:node-set($imagelist)/*)">
-        <xsl:if test="string-length(href) != 0">
+        <xsl:if test="string-length(tmp-href) != 0">
           <!-- convert the child elements to attributes -->
           <xsl:element name="item" namespace="{$opf.namespace}">
             <xsl:attribute name="id">
               <xsl:value-of select="generate-id()"/>
             </xsl:attribute>
             <xsl:attribute name="href">
-              <xsl:value-of select="href"/>
+              <xsl:value-of select="tmp-href"/>
             </xsl:attribute>
             <xsl:attribute name="media-type">
               <xsl:value-of select="media-type"/>
@@ -1353,7 +1437,12 @@ book  toc,title
           <xsl:attribute name="id">
             <xsl:value-of select="generate-id()"/>
           </xsl:attribute>
-          <xsl:copy-of select="@*"/>
+          <xsl:attribute name="href">
+            <xsl:value-of select="tmp-href"/>
+          </xsl:attribute>
+          <xsl:attribute name="media-type">
+            <xsl:value-of select="media-type"/>
+          </xsl:attribute>
         </xsl:element>
       </xsl:for-each>
     </xsl:when>
@@ -1384,9 +1473,12 @@ book  toc,title
 
 <xsl:template match="mediaobject|inlinemediaobject" mode="enumerate-images">
 
-  <xsl:variable name="olist" select="imageobject|imageobjectco|
-                     videoobject|audioobject|
-                     textobject"/>
+  <xsl:variable name="olist" 
+                select="imageobject[not(@role = 'poster')] 
+                       |imageobjectco
+                       |videoobject
+                       |audioobject
+                       |textobject"/>
  
   <xsl:variable name="object.index">
     <xsl:call-template name="select.mediaobject.index">
@@ -1396,6 +1488,16 @@ book  toc,title
   </xsl:variable>
   
   <xsl:variable name="object" select="$olist[position() = $object.index]"/>
+
+  <xsl:apply-templates select="$object" mode="enumerate-images"/>
+
+  <!-- also include a poster image if present -->
+  <xsl:apply-templates select="imageobject[@role = 'poster']" mode="enumerate-images"/>
+
+</xsl:template>
+
+<xsl:template match="imageobject|videoobject|audioobject" mode="enumerate-images">
+  <xsl:param name="object" select="."/>
 
   <xsl:if test="$object">
     <xsl:variable name="image.filename">
@@ -1417,14 +1519,76 @@ book  toc,title
       </xsl:call-template>
     </xsl:variable>
 
-    <xsl:element name="filename" namespace="">
-      <xsl:element name="href" namespace="">
+    <xsl:element name="tmp-filename" namespace="">
+      <xsl:element name="tmp-href" namespace="">
         <xsl:value-of select="$image.filename"/>
       </xsl:element>
       <xsl:element name="media-type" namespace="">
         <xsl:value-of select="$image.type"/>
       </xsl:element>
     </xsl:element>
+
+  </xsl:if>
+</xsl:template>
+ 
+<!-- Add in the generated images -->
+<xsl:template match="note|caution|warning|important|tip" mode="enumerate-images">
+  <xsl:if test="$admon.graphics != 0">
+    <xsl:variable name="image.filename">
+      <xsl:call-template name="admon.graphic"/>
+    </xsl:variable>
+
+    <xsl:variable name="image.type">
+      <xsl:call-template name="graphic.format.content-type">
+        <xsl:with-param name="format" select="translate(
+               substring-after($admon.graphics.extension,'.'), 
+                   &lowercase;, &uppercase;)"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:element name="tmp-filename" namespace="">
+      <xsl:element name="tmp-href" namespace="">
+        <xsl:value-of select="$image.filename"/>
+      </xsl:element>
+      <xsl:element name="media-type" namespace="">
+        <xsl:value-of select="$image.type"/>
+      </xsl:element>
+    </xsl:element>
+
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="callout" mode="enumerate-images">
+  <!-- process arearefs to get name of callout bug image files -->
+  <xsl:if test="$callout.graphics != 0">
+    <xsl:variable name="arearefs">
+      <xsl:call-template name="callout.arearefs">
+        <xsl:with-param name="arearefs" select="@arearefs"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:variable name="nodes" select="exsl:node-set($arearefs)"/>
+
+    <xsl:for-each select="$nodes//*[@src]">
+      <xsl:variable name="image.filename" select="@src"/>
+
+      <xsl:variable name="image.type">
+        <xsl:call-template name="graphic.format.content-type">
+          <xsl:with-param name="format" select="translate(
+                 substring-after($callout.graphics.extension,'.'), 
+                     &lowercase;, &uppercase;)"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:element name="tmp-filename" namespace="">
+        <xsl:element name="tmp-href" namespace="">
+          <xsl:value-of select="$image.filename"/>
+        </xsl:element>
+        <xsl:element name="media-type" namespace="">
+          <xsl:value-of select="$image.type"/>
+        </xsl:element>
+      </xsl:element>
+    </xsl:for-each>
 
   </xsl:if>
 </xsl:template>
@@ -1540,6 +1704,7 @@ book  toc,title
 
 <xsl:template match="book|
                      article|
+                     topic|
                      part|
                      reference|
                      preface|
@@ -1593,6 +1758,7 @@ book  toc,title
                                 preceding::bibliography|
                                 preceding::appendix|
                                 preceding::article|
+                                preceding::topic|
                                 preceding::glossary|
                                 preceding::section[not(parent::partintro)]|
                                 preceding::sect1[not(parent::partintro)]|
@@ -1632,7 +1798,7 @@ book  toc,title
         <xsl:value-of select="$href"/>
       </xsl:attribute>
     </xsl:element>
-    <xsl:apply-templates select="book[parent::set]|part|reference|preface|chapter|bibliography|appendix|article|glossary|section|sect1|sect2|sect3|sect4|sect5|refentry|colophon|bibliodiv[title]|setindex|index" mode="ncx"/>
+    <xsl:apply-templates select="book[parent::set]|part|reference|preface|chapter|bibliography|appendix|article|topic|glossary|section|sect1|sect2|sect3|sect4|sect5|refentry|colophon|bibliodiv[title]|setindex|index" mode="ncx"/>
   </xsl:element>
 
 </xsl:template>
@@ -1858,37 +2024,81 @@ book  toc,title
     <xsl:otherwise>
       <xsl:choose>
         <xsl:when test="$qanda.in.toc != 0">
-          <xsl:if test="$nodes.plus">
-            <div class="toc">
-              <xsl:copy-of select="$toc.title"/>
-              <nav epub:type="toc">
-                <xsl:element name="{$toc.list.type}">
+          <div class="toc">
+            <xsl:copy-of select="$toc.title"/>
+            <nav epub:type="toc">
+              <xsl:element name="{$toc.list.type}">
+                <xsl:if test="$nodes.plus">
                   <xsl:apply-templates select="$nodes.plus" mode="toc">
                     <xsl:with-param name="toc-context" select="$toc-context"/>
                   </xsl:apply-templates>
-                </xsl:element>
-              </nav>
-            </div>
-          </xsl:if>
+                </xsl:if>
+              </xsl:element>
+            </nav>
+          </div>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:if test="$nodes">
-            <div class="toc">
-              <xsl:copy-of select="$toc.title"/>
-              <nav epub:type="toc">
-                <xsl:element name="{$toc.list.type}">
+          <div class="toc">
+            <xsl:copy-of select="$toc.title"/>
+            <nav epub:type="toc">
+              <xsl:element name="{$toc.list.type}">
+                <xsl:if test="$nodes">
                   <xsl:apply-templates select="$nodes" mode="toc">
                     <xsl:with-param name="toc-context" select="$toc-context"/>
                   </xsl:apply-templates>
-                </xsl:element>
-              </nav>
-            </div>
-          </xsl:if>
+                </xsl:if>
+              </xsl:element>
+            </nav>
+          </div>
         </xsl:otherwise>
       </xsl:choose>
 
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template name="list.of.titles">
+  <xsl:param name="toc-context" select="."/>
+  <xsl:param name="titles" select="'table'"/>
+  <xsl:param name="nodes" select=".//table"/>
+
+  <xsl:variable name="epub.type">
+    <xsl:choose>
+      <xsl:when test="$titles='table'">lot</xsl:when>
+      <xsl:when test="$titles='figure'">loi</xsl:when>
+      <xsl:when test="$titles='equation'">loi</xsl:when>
+      <xsl:when test="$titles='example'">loi</xsl:when>
+      <xsl:when test="$titles='procedure'">loi</xsl:when>
+      <xsl:otherwise>loi</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:if test="$nodes">
+    <div class="list-of-{$titles}s">
+      <nav epub:type="{$epub.type}">
+        <h4 class="toc-title">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">
+              <xsl:choose>
+                <xsl:when test="$titles='table'">ListofTables</xsl:when>
+                <xsl:when test="$titles='figure'">ListofFigures</xsl:when>
+                <xsl:when test="$titles='equation'">ListofEquations</xsl:when>
+                <xsl:when test="$titles='example'">ListofExamples</xsl:when>
+                <xsl:when test="$titles='procedure'">ListofProcedures</xsl:when>
+                <xsl:otherwise>ListofUnknown</xsl:otherwise>
+              </xsl:choose>
+            </xsl:with-param>
+          </xsl:call-template>
+        </h4>
+
+        <xsl:element name="{$toc.list.type}">
+          <xsl:apply-templates select="$nodes" mode="toc">
+            <xsl:with-param name="toc-context" select="$toc-context"/>
+          </xsl:apply-templates>
+        </xsl:element>
+      </nav>
+    </div>
+  </xsl:if>
 </xsl:template>
 
 <!-- EPUB3: add hidden="" for sections below toc.section.depth -->
@@ -1991,12 +2201,18 @@ book  toc,title
   </xsl:element>
 </xsl:template>
 
+<!-- Inserted when a title is blank to avoid epubcheck error -->
+<xsl:param name="toc.entry.default.text">&#xA0;</xsl:param>
+
 <!-- EPUB3: either <a> or <span>, but not both  -->
 <xsl:template name="toc.line">
   <xsl:param name="toc-context" select="."/>
   <xsl:param name="depth" select="1"/>
   <xsl:param name="depth.from.context" select="8"/>
 
+  <xsl:variable name="title">
+    <xsl:apply-templates select="." mode="title.markup"/>
+  </xsl:variable>
 
   <a>
     <xsl:attribute name="href">
@@ -2018,8 +2234,109 @@ book  toc,title
       </xsl:if>
     </xsl:if>
 
-    <xsl:apply-templates select="." mode="title.markup"/>
+    <xsl:choose>
+      <xsl:when test="string-length(normalize-space($title)) != 0">
+        <xsl:copy-of select="$title"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$toc.entry.default.text"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </a>
+</xsl:template>
+
+<!-- Make sure all text is inside the <a> element for epub3 -->
+<xsl:template match="figure|table|example|equation|procedure" mode="toc">
+  <xsl:param name="toc-context" select="."/>
+
+  <xsl:element name="{$toc.listitem.type}">
+    <a>
+      <xsl:attribute name="href">
+        <xsl:call-template name="href.target">
+          <xsl:with-param name="toc-context" select="$toc-context"/>
+        </xsl:call-template>
+      </xsl:attribute>
+      <xsl:variable name="label">
+        <xsl:apply-templates select="." mode="label.markup"/>
+      </xsl:variable>
+      <xsl:copy-of select="$label"/>
+      <xsl:if test="$label != ''">
+        <xsl:value-of select="$autotoc.label.separator"/>
+      </xsl:if>
+      <xsl:apply-templates select="." mode="titleabbrev.markup"/>
+    </a>
+  </xsl:element>
+</xsl:template>
+
+<!-- Remove spans from refentry TOC lines for epub3check -->
+<xsl:template match="refentry" mode="toc">
+  <xsl:param name="toc-context" select="."/>
+
+  <xsl:variable name="refmeta" select=".//refmeta"/>
+  <xsl:variable name="refentrytitle" select="$refmeta//refentrytitle"/>
+  <xsl:variable name="refnamediv" select=".//refnamediv"/>
+  <xsl:variable name="refname" select="$refnamediv//refname"/>
+  <xsl:variable name="refdesc" select="$refnamediv//refdescriptor"/>
+  <xsl:variable name="title">
+    <xsl:choose>
+      <xsl:when test="$refentrytitle">
+        <xsl:apply-templates select="$refentrytitle[1]" mode="titleabbrev.markup"/>
+      </xsl:when>
+      <xsl:when test="$refdesc">
+        <xsl:apply-templates select="$refdesc" mode="titleabbrev.markup"/>
+      </xsl:when>
+      <xsl:when test="$refname">
+        <xsl:apply-templates select="$refname[1]" mode="titleabbrev.markup"/>
+      </xsl:when>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:element name="{$toc.listitem.type}" namespace="http://www.w3.org/1999/xhtml">
+    <a>
+      <xsl:attribute name="href">
+        <xsl:call-template name="href.target">
+          <xsl:with-param name="toc-context" select="$toc-context"/>
+        </xsl:call-template>
+      </xsl:attribute>
+      <xsl:copy-of select="$title"/>
+      <xsl:if test="$annotate.toc != 0">
+        <!-- * DocBook 5 says inlinemediaobject (among other things) -->
+        <!-- * is allowed in refpurpose; so we need to run -->
+        <!-- * apply-templates on refpurpose here, instead of value-of  -->
+        <!-- Set allow-anchors=0 to avoid indexterms and other links -->
+        <xsl:text> - </xsl:text>
+        <xsl:apply-templates select="refnamediv/refpurpose" mode="no.anchor.mode"/>
+      </xsl:if>
+    </a>
+  </xsl:element>
+</xsl:template>
+
+<!-- Copy these here so relative document() open gets the correct css source -->
+<xsl:template name="generate.default.css.file">
+  <xsl:if test="$make.clean.html != 0 and 
+                $generate.css.header = 0 and
+                $docbook.css.source != ''">
+    <!-- Select default file relative to stylesheet -->
+    <xsl:variable name="css.node" select="document($docbook.css.source)/*[1]"/>
+
+    <xsl:call-template name="generate.css.file">
+      <xsl:with-param name="src" select="$docbook.css.source"/>
+      <xsl:with-param name="css.node" select="$css.node"/>
+    </xsl:call-template>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template name="generate.custom.css.file">
+  <xsl:if test="$custom.css.source != '' and
+                $generate.css.header = 0">
+    <!-- Select custom file relative to document -->
+    <xsl:variable name="css.node" select="document($custom.css.source,.)/*[1]"/>
+
+    <xsl:call-template name="generate.css.file">
+      <xsl:with-param name="src" select="$custom.css.source"/>
+      <xsl:with-param name="css.node" select="$css.node"/>
+    </xsl:call-template>
+  </xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

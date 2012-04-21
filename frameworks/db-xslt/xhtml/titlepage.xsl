@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: titlepage.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -62,6 +65,9 @@
 
 <xsl:attribute-set name="sidebar.titlepage.recto.style"/>
 <xsl:attribute-set name="sidebar.titlepage.verso.style"/>
+
+<xsl:attribute-set name="topic.titlepage.recto.style"/>
+<xsl:attribute-set name="topic.titlepage.verso.style"/>
 
 <xsl:attribute-set name="section.titlepage.recto.style"/>
 <xsl:attribute-set name="section.titlepage.verso.style"/>
@@ -581,7 +587,7 @@
 </xsl:template>
 
 <xsl:template match="legalnotice/title" mode="titlepage.mode">
-  <p class="legalnotice-title"><strong><xsl:apply-templates/></strong></p>
+  <p class="legalnotice-title"><strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></strong></p>
 </xsl:template>
 
 <xsl:template match="lineage" mode="titlepage.mode">
@@ -759,7 +765,7 @@
       <table border="1" width="100%" summary="Revision history">
         <tr>
           <th align="{$direction.align.start}" valign="top" colspan="{$numcols}">
-            <strong>
+            <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
               <xsl:call-template name="gentext">
                 <xsl:with-param name="key" select="'RevHistory'"/>
               </xsl:call-template>

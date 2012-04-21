@@ -6,7 +6,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: math.xsl 7503 2007-10-08 01:57:30Z xmldoc $
+     $Id: math.xsl 9177 2012-01-10 18:36:35Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -39,38 +39,8 @@
   </fo:inline>
 </xsl:template>
 
-<!-- "Support" for MathML -->
-
-<xsl:template match="mml:math" xmlns:mml="http://www.w3.org/1998/Math/MathML">
-  <xsl:choose>
-    <!-- * If user is using passivetex, we don't wrap the output in -->
-    <!-- * fo:instream-foreign-object (which passivetex doesn't support). -->
-    <xsl:when test="not($passivetex.extensions = 0)">
-      <xsl:copy>
-        <xsl:copy-of select="@*"/>
-        <xsl:apply-templates/>
-      </xsl:copy>
-    </xsl:when>
-    <xsl:otherwise>
-      <fo:instream-foreign-object>
-        <xsl:copy>
-          <xsl:copy-of select="@*"/>
-          <xsl:apply-templates/>
-        </xsl:copy>
-      </fo:instream-foreign-object>
-    </xsl:otherwise>
-  </xsl:choose>
-</xsl:template>
-
-<xsl:template match="mml:*" xmlns:mml="http://www.w3.org/1998/Math/MathML">
-  <xsl:copy>
-    <xsl:copy-of select="@*"/>
-    <xsl:apply-templates/>
-  </xsl:copy>
-</xsl:template>
-
 <xsl:template match="equation/graphic | informalequation/graphic">
-  <xsl:if test="$passivetex.extensions = 0 or $tex.math.in.alt = ''">
+  <xsl:if test="$tex.math.in.alt = ''">
     <fo:block>
       <xsl:call-template name="process.image"/>
     </fo:block>

@@ -4,7 +4,7 @@
                 exclude-result-prefixes="doc">
 
 <!-- ********************************************************************
-     $Id: chunktoc.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: chunktoc.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -164,6 +164,10 @@
 </xsl:template>
 
 <xsl:template match="article">
+  <xsl:call-template name="process-chunk"/>
+</xsl:template>
+
+<xsl:template match="topic">
   <xsl:call-template name="process-chunk"/>
 </xsl:template>
 

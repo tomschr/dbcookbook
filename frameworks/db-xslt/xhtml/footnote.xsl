@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="exsl" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="exsl" version="1.0">
 
 <!-- ********************************************************************
-     $Id: footnote.xsl 8812 2010-08-09 20:51:51Z bobstayton $
+     $Id: footnote.xsl 9236 2012-02-20 18:15:57Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -21,24 +24,24 @@
 
   <xsl:choose>
     <xsl:when test="ancestor::table or ancestor::informaltable">
-      <sup>
-        <xsl:text>[</xsl:text>
-        <a id="{$name}" href="{$href}">
-          <xsl:apply-templates select="." mode="class.attribute"/>
+      <a id="{$name}" href="{$href}">
+        <xsl:apply-templates select="." mode="class.attribute"/>
+        <sup>
+          <xsl:text>[</xsl:text>
           <xsl:apply-templates select="." mode="footnote.number"/>
-        </a>
-        <xsl:text>]</xsl:text>
-      </sup>
+          <xsl:text>]</xsl:text>
+        </sup>
+      </a>
     </xsl:when>
     <xsl:otherwise>
-      <sup>
-        <xsl:text>[</xsl:text>
-        <a id="{$name}" href="{$href}">
-          <xsl:apply-templates select="." mode="class.attribute"/>
+      <a id="{$name}" href="{$href}">
+        <xsl:apply-templates select="." mode="class.attribute"/>
+        <sup>
+          <xsl:text>[</xsl:text>
           <xsl:apply-templates select="." mode="footnote.number"/>
-        </a>
-        <xsl:text>]</xsl:text>
-      </sup>
+          <xsl:text>]</xsl:text>
+        </sup>
+      </a>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -68,14 +71,14 @@ linkend/id: <xsl:value-of select="@linkend"/>
     <xsl:value-of select="substring-after($target.href, '#')"/>
   </xsl:variable>
 
-  <sup>
-    <xsl:text>[</xsl:text>
-    <a href="{$href}">
-      <xsl:apply-templates select="." mode="class.attribute"/>
+  <a href="{$href}">
+    <xsl:apply-templates select="." mode="class.attribute"/>
+    <sup>
+      <xsl:text>[</xsl:text>
       <xsl:apply-templates select="$footnote" mode="footnote.number"/>
-    </a>
-    <xsl:text>]</xsl:text>
-  </sup>
+      <xsl:text>]</xsl:text>
+    </sup>
+  </a>
 </xsl:template>
 
 <xsl:template match="footnote" mode="footnote.number">
@@ -139,14 +142,14 @@ linkend/id: <xsl:value-of select="@linkend"/>
       </xsl:if>
     </xsl:with-param>
     <xsl:with-param name="content">
-      <sup>
-        <xsl:text>[</xsl:text>
-        <a id="{$name}" href="{$href}">
-          <xsl:apply-templates select="." mode="class.attribute"/>
+      <a id="{$name}" href="{$href}">
+        <xsl:apply-templates select="." mode="class.attribute"/>
+        <sup>
+          <xsl:text>[</xsl:text>
           <xsl:apply-templates select="ancestor::footnote" mode="footnote.number"/>
-        </a>
-        <xsl:text>] </xsl:text>
-      </sup>
+          <xsl:text>] </xsl:text>
+        </sup>
+      </a>
       <xsl:apply-templates/>
     </xsl:with-param>
   </xsl:call-template>
@@ -169,14 +172,14 @@ linkend/id: <xsl:value-of select="@linkend"/>
     </xsl:call-template>
   </xsl:variable>
   <xsl:variable name="footnote.mark">
-    <sup>
-      <xsl:text>[</xsl:text>
-      <a id="{$name}" href="{$href}">
-        <xsl:apply-templates select="." mode="class.attribute"/>
+    <a id="{$name}" href="{$href}">
+      <xsl:apply-templates select="." mode="class.attribute"/>
+      <sup>
+        <xsl:text>[</xsl:text>
         <xsl:apply-templates select="ancestor::footnote" mode="footnote.number"/>
-      </a>
-      <xsl:text>] </xsl:text>
-    </sup>
+        <xsl:text>] </xsl:text>
+      </sup>
+    </a>
   </xsl:variable>
 
   <xsl:variable name="html">

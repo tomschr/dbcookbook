@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:stext="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.TextFactory" xmlns:simg="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.ImageIntrinsics" xmlns:ximg="xalan://com.nwalsh.xalan.ImageIntrinsics" xmlns:xtext="xalan://com.nwalsh.xalan.Text" xmlns:lxslt="http://xml.apache.org/xslt" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xlink stext xtext lxslt simg ximg" extension-element-prefixes="stext xtext" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:stext="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.TextFactory" xmlns:simg="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.ImageIntrinsics" xmlns:ximg="xalan://com.nwalsh.xalan.ImageIntrinsics" xmlns:xtext="xalan://com.nwalsh.xalan.Text" xmlns:lxslt="http://xml.apache.org/xslt" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xlink stext xtext lxslt simg ximg" extension-element-prefixes="stext xtext" version="1.0">
 
 <!-- ********************************************************************
-     $Id: graphics.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: graphics.xsl 9282 2012-04-16 20:41:20Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -27,7 +30,7 @@
 <xsl:template name="is.graphic.extension">
   <xsl:param name="ext"/>
   <xsl:variable name="lcext" select="translate($ext,                                        'ABCDEFGHIJKLMNOPQRSTUVWXYZ',                                        'abcdefghijklmnopqrstuvwxyz')"/>
-  <xsl:if test="$lcext = 'svg'              or $lcext = 'png'              or $lcext = 'jpeg'              or $lcext = 'jpg'              or $lcext = 'avi'              or $lcext = 'mpg'              or $lcext = 'mpeg'              or $lcext = 'qt'              or $lcext = 'gif'              or $lcext = 'bmp'">1</xsl:if>
+  <xsl:if test="$lcext = 'svg'              or $lcext = 'png'              or $lcext = 'jpeg'              or $lcext = 'jpg'              or $lcext = 'avi'              or $lcext = 'mpg'              or $lcext = 'mp4'              or $lcext = 'mpeg'              or $lcext = 'qt'              or $lcext = 'gif'              or $lcext = 'acc'              or $lcext = 'mp1'              or $lcext = 'mp2'              or $lcext = 'mp3'              or $lcext = 'mp4'              or $lcext = 'm4v'              or $lcext = 'm4a'              or $lcext = 'wav'              or $lcext = 'ogv'              or $lcext = 'ogg'              or $lcext = 'webm'              or $lcext = 'bmp'">1</xsl:if>
 </xsl:template>
 
 <!-- ==================================================================== -->
@@ -951,11 +954,13 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
     </xsl:attribute>
   </xsl:if>
 
+  <!-- Turn off longdesc attribute since not supported by browsers
   <xsl:if test="$longdesc != ''">
     <xsl:attribute name="longdesc">
       <xsl:value-of select="$longdesc"/>
     </xsl:attribute>
   </xsl:if>
+  -->
 
   <xsl:if test="@align and $viewport = 0">
     <xsl:attribute name="align">

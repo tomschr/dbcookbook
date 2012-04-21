@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<?xml version="1.0"?>
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- This file is generated from param.xweb -->
 
 <!-- ********************************************************************
-     $Id: param.xweb 9167 2011-12-08 13:40:25Z kosek $
+     $Id: param.xweb 9238 2012-03-02 18:38:42Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -873,6 +874,9 @@ set       toc,title
   <xsl:attribute name="border-before-width.conditionality">retain</xsl:attribute>
   <xsl:attribute name="border-collapse">collapse</xsl:attribute>
 </xsl:attribute-set>
+<xsl:attribute-set name="table.caption.properties">
+  <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
+</xsl:attribute-set>
  <xsl:param name="target.database.document">olinkdb.xml</xsl:param>
 <xsl:param name="targets.filename">target.db</xsl:param>
 <xsl:attribute-set name="task.properties" use-attribute-sets="formal.object.properties">
@@ -977,5 +981,8 @@ set       toc,title
   <xsl:attribute name="padding">0</xsl:attribute>
   <xsl:attribute name="reference-orientation">90</xsl:attribute>
 </xsl:attribute-set>
+<xsl:attribute-set name="para.properties" use-attribute-sets="normal.para.spacing">
+</xsl:attribute-set>
 
 </xsl:stylesheet>
+

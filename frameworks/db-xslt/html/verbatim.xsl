@@ -8,7 +8,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: verbatim.xsl 8807 2010-08-09 18:57:41Z bobstayton $
+     $Id: verbatim.xsl 9259 2012-03-29 16:36:20Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -34,12 +34,7 @@
 
   <xsl:call-template name="anchor"/>
 
-  <xsl:variable name="div.element">
-    <xsl:choose>
-      <xsl:when test="$make.clean.html != 0">div</xsl:when>
-      <xsl:otherwise>pre</xsl:otherwise>
-    </xsl:choose>
-  </xsl:variable>
+  <xsl:variable name="div.element">pre</xsl:variable>
 
   <xsl:if test="$shade.verbatim != 0">
     <xsl:message>

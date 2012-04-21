@@ -4,7 +4,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 9161 2011-11-26 23:02:55Z bobstayton $
+     $Id: titlepage.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -130,6 +130,9 @@
 <xsl:attribute-set name="simplesect.titlepage.verso.style"
                    use-attribute-sets="section.titlepage.verso.style"/>
 
+<xsl:attribute-set name="topic.titlepage.recto.style"/>
+<xsl:attribute-set name="topic.titlepage.verso.style"/>
+
 <xsl:attribute-set name="refnamediv.titlepage.recto.style"
                    use-attribute-sets="section.titlepage.recto.style"/>
 <xsl:attribute-set name="refnamediv.titlepage.verso.style"
@@ -180,6 +183,24 @@
 
 <xsl:attribute-set name="list.of.unknowns.titlepage.recto.style"/>
 <xsl:attribute-set name="list.of.unknowns.contents.titlepage.verso.style"/>
+
+<xsl:attribute-set name="component.list.of.tables.titlepage.recto.style"/>
+<xsl:attribute-set name="component.list.of.tables.contents.titlepage.verso.style"/>
+
+<xsl:attribute-set name="component.list.of.figures.titlepage.recto.style"/>
+<xsl:attribute-set name="component.list.of.figures.contents.titlepage.verso.style"/>
+
+<xsl:attribute-set name="component.list.of.equations.titlepage.recto.style"/>
+<xsl:attribute-set name="component.list.of.equations.contents.titlepage.verso.style"/>
+
+<xsl:attribute-set name="component.list.of.examples.titlepage.recto.style"/>
+<xsl:attribute-set name="component.list.of.examples.contents.titlepage.verso.style"/>
+
+<xsl:attribute-set name="component.list.of.procedures.titlepage.recto.style"/>
+<xsl:attribute-set name="component.list.of.procedures.contents.titlepage.verso.style"/>
+
+<xsl:attribute-set name="component.list.of.unknowns.titlepage.recto.style"/>
+<xsl:attribute-set name="component.list.of.unknowns.contents.titlepage.verso.style"/>
 
 <!-- ==================================================================== -->
 

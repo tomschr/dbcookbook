@@ -7,7 +7,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: xref.xsl 9027 2011-08-02 18:16:34Z bobstayton $
+     $Id: xref.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -601,6 +601,19 @@
   <!-- FIXME: What about "in Chapter X"? -->
 </xsl:template>
 
+<xsl:template match="topic" mode="xref-to">
+  <xsl:param name="referrer"/>
+  <xsl:param name="xrefstyle"/>
+  <xsl:param name="verbose" select="1"/>
+
+  <xsl:apply-templates select="." mode="object.xref.markup">
+    <xsl:with-param name="purpose" select="'xref'"/>
+    <xsl:with-param name="xrefstyle" select="$xrefstyle"/>
+    <xsl:with-param name="referrer" select="$referrer"/>
+    <xsl:with-param name="verbose" select="$verbose"/>
+  </xsl:apply-templates>
+</xsl:template>
+
 <xsl:template match="bridgehead" mode="xref-to">
   <xsl:param name="referrer"/>
   <xsl:param name="xrefstyle"/>
@@ -616,19 +629,6 @@
 </xsl:template>
 
 <xsl:template match="qandaset" mode="xref-to">
-  <xsl:param name="referrer"/>
-  <xsl:param name="xrefstyle"/>
-  <xsl:param name="verbose" select="1"/>
-
-  <xsl:apply-templates select="." mode="object.xref.markup">
-    <xsl:with-param name="purpose" select="'xref'"/>
-    <xsl:with-param name="xrefstyle" select="$xrefstyle"/>
-    <xsl:with-param name="referrer" select="$referrer"/>
-    <xsl:with-param name="verbose" select="$verbose"/>
-  </xsl:apply-templates>
-</xsl:template>
-
-<xsl:template match="qandadiv" mode="xref-to">
   <xsl:param name="referrer"/>
   <xsl:param name="xrefstyle"/>
   <xsl:param name="verbose" select="1"/>
@@ -805,6 +805,7 @@
                                        |ancestor::sect3
                                        |ancestor::sect4
                                        |ancestor::sect5
+                                       |ancestor::topic
                                        |ancestor::refsection
                                        |ancestor::refsect1
                                        |ancestor::refsect2

@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!-- ********************************************************************
+<?xml version="1.0"?>
+<!-- ********************************************************************
      $Id: lib.xweb 9040 2011-08-19 21:51:47Z bobstayton $
      ********************************************************************
 
@@ -8,7 +9,8 @@
 
      This module implements DTD-independent functions
 
-     ******************************************************************** --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+     ******************************************************************** -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <xsl:template name="dot.count">
   <!-- Returns the number of "." characters in a string -->
@@ -328,7 +330,7 @@
   <xsl:template name="str.tokenize.keep.delimiters-characters">
     <xsl:param name="string"/>
     <xsl:if test="$string">
-      <ssb:token xmlns:ssb="http://sideshowbarker.net/ns" xmlns="http://docbook.org/ns/docbook" xmlns:src="http://nwalsh.com/xmlns/litprog/fragment" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dyn="http://exslt.org/dynamic" xmlns:saxon="http://icl.com/saxon"><xsl:value-of select="substring($string, 1, 1)"/></ssb:token>
+      <ssb:token xmlns:ssb="http://sideshowbarker.net/ns"><xsl:value-of select="substring($string, 1, 1)"/></ssb:token>
       <xsl:call-template name="str.tokenize.keep.delimiters-characters">
         <xsl:with-param name="string" select="substring($string, 2)"/>
       </xsl:call-template>
@@ -340,7 +342,7 @@
     <xsl:variable name="delimiter" select="substring($delimiters, 1, 1)"/>
     <xsl:choose>
       <xsl:when test="not($delimiter)">
-        <ssb:token xmlns:ssb="http://sideshowbarker.net/ns" xmlns="http://docbook.org/ns/docbook" xmlns:src="http://nwalsh.com/xmlns/litprog/fragment" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dyn="http://exslt.org/dynamic" xmlns:saxon="http://icl.com/saxon"><xsl:value-of select="$string"/></ssb:token>
+        <ssb:token xmlns:ssb="http://sideshowbarker.net/ns"><xsl:value-of select="$string"/></ssb:token>
       </xsl:when>
       <xsl:when test="contains($string, $delimiter)">
         <xsl:if test="not(starts-with($string, $delimiter))">
@@ -497,7 +499,7 @@
   <xsl:template name="trim-left">
     <xsl:param name="contents"/>
     <xsl:choose>
-      <xsl:when test="starts-with($contents,'&#xA;') or                       starts-with($contents,'&#xD;') or                       starts-with($contents,' ') or                       starts-with($contents,'&#x9;')">
+      <xsl:when test="starts-with($contents,'&#10;') or                       starts-with($contents,'&#13;') or                       starts-with($contents,' ') or                       starts-with($contents,'&#9;')">
         <xsl:call-template name="trim-left">
           <xsl:with-param name="contents" select="substring($contents, 2)"/>
         </xsl:call-template>
@@ -514,7 +516,7 @@
       <xsl:value-of select="substring($contents, string-length($contents), 1)"/>
     </xsl:variable>
     <xsl:choose>
-      <xsl:when test="($last-char = '&#xA;') or                       ($last-char = '&#xD;') or                       ($last-char = ' ') or                       ($last-char = '&#x9;')">
+      <xsl:when test="($last-char = '&#10;') or                       ($last-char = '&#13;') or                       ($last-char = ' ') or                       ($last-char = '&#9;')">
         <xsl:call-template name="trim-right">
           <xsl:with-param name="contents" select="substring($contents, 1, string-length($contents) - 1)"/>
         </xsl:call-template>
@@ -526,3 +528,4 @@
   </xsl:template>
 
 </xsl:stylesheet>
+

@@ -20,6 +20,7 @@
 
   <xsl:import href="copy.xsl"/>
   <xsl:preserve-space elements="h:pre"/>
+  <xsl:strip-space elements="h:*"/>
   <xsl:output method="xml" omit-xml-declaration="yes" encoding="UTF-8" indent="yes"/>
   <!--<xsl:output method="xml" doctype-system="about:legacy-compat" 
     encoding="UTF-8" omit-xml-declaration="no" indent="yes"/>-->
@@ -60,6 +61,8 @@
   <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td/@style"/>
   
   <xsl:template match="@lang[.='']"/>
+  
+  <xsl:template match="@xmlns[.='']"/>
   
   <xsl:template match="@class">
     <xsl:choose>

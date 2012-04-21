@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
      $Id: refentry.xsl 8421 2009-05-04 07:49:49Z bobstayton $
@@ -189,7 +192,7 @@
 
 <xsl:template match="refclass">
   <xsl:if test="$refclass.suppress = 0">
-  <strong>
+  <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
     <xsl:if test="@role">
       <xsl:value-of select="@role"/>
       <xsl:text>: </xsl:text>

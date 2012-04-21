@@ -5,7 +5,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: subtitles.xsl 9017 2011-06-21 16:51:51Z bobstayton $
+     $Id: subtitles.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -154,6 +154,7 @@ subtitle of the element.
 <xsl:template match="section
                      |sect1|sect2|sect3|sect4|sect5
                      |refsect1|refsect2|refsect3
+                     |topic
                      |simplesect"
               mode="subtitle.markup">
   <xsl:param name="allow-anchors" select="'0'"/>

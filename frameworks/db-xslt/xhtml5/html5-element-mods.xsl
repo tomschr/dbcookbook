@@ -103,7 +103,7 @@
   <!-- Now convert to @style -->
   <xsl:variable name="colgroup">
     <xsl:call-template name="colgroup.with.style">
-      <xsl:with-param name="colgroup" select="colgroup.with.extension"/>
+      <xsl:with-param name="colgroup" select="$colgroup.with.extension"/>
     </xsl:call-template>
   </xsl:variable>
 
@@ -439,6 +439,10 @@
   <xsl:call-template name="convert.styles"/>
 </xsl:template>
 
+<xsl:template match="qandaset">
+  <xsl:call-template name="convert.styles"/>
+</xsl:template>
+
 <xsl:template match="calloutlist|revhistory|footnote|figure|co">
   <xsl:call-template name="convert.styles"/>
 </xsl:template>
@@ -447,7 +451,19 @@
   <xsl:call-template name="convert.styles"/>
 </xsl:template>
 
+<xsl:template match="variablelist">
+  <xsl:call-template name="convert.styles"/>
+</xsl:template>
+
+<xsl:template match="orderedlist[@inheritnum = 'inherit']">
+  <xsl:call-template name="convert.styles"/>
+</xsl:template>
+
 <xsl:template match="simplelist">
+  <xsl:call-template name="convert.styles"/>
+</xsl:template>
+
+<xsl:template match="blockquote">
   <xsl:call-template name="convert.styles"/>
 </xsl:template>
 
@@ -460,6 +476,106 @@
   <xsl:apply-templates mode="convert.to.style" select="$nodes"/>
 </xsl:template>
 
+<!-- Remove table summary and set border="" -->
+
+<xsl:template match="segmentedlist" mode="seglist-table">
+  <xsl:variable name="table-summary">
+    <xsl:call-template name="pi.dbhtml_table-summary"/>
+  </xsl:variable>
+
+  <xsl:variable name="list-width">
+    <xsl:call-template name="pi.dbhtml_list-width"/>
+  </xsl:variable>
+
+  <xsl:apply-templates select="title"/>
+
+  <table border="">
+    <xsl:if test="$list-width != ''">
+      <xsl:attribute name="width">
+        <xsl:value-of select="$list-width"/>
+      </xsl:attribute>
+    </xsl:if>
+    <!--
+    <xsl:if test="$table-summary != ''">
+      <xsl:attribute name="summary">
+        <xsl:value-of select="$table-summary"/>
+      </xsl:attribute>
+    </xsl:if>
+    -->
+    <thead>
+      <tr class="segtitle">
+        <xsl:call-template name="tr.attributes">
+          <xsl:with-param name="row" select="segtitle[1]"/>
+          <xsl:with-param name="rownum" select="1"/>
+        </xsl:call-template>
+        <xsl:apply-templates select="segtitle" mode="seglist-table"/>
+      </tr>
+    </thead>
+    <tbody>
+      <xsl:apply-templates select="seglistitem" mode="seglist-table"/>
+    </tbody>
+  </table>
+</xsl:template>
+
+<xsl:template name="graphical.admonition">
+  <xsl:variable name="admon.type">
+    <xsl:choose>
+      <xsl:when test="local-name(.)='note'">Note</xsl:when>
+      <xsl:when test="local-name(.)='warning'">Warning</xsl:when>
+      <xsl:when test="local-name(.)='caution'">Caution</xsl:when>
+      <xsl:when test="local-name(.)='tip'">Tip</xsl:when>
+      <xsl:when test="local-name(.)='important'">Important</xsl:when>
+      <xsl:otherwise>Note</xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:variable name="alt">
+    <xsl:call-template name="gentext">
+      <xsl:with-param name="key" select="$admon.type"/>
+    </xsl:call-template>
+  </xsl:variable>
+
+  <div>
+    <xsl:call-template name="common.html.attributes"/>
+    <xsl:if test="$admon.style != ''">
+      <xsl:attribute name="style">
+        <xsl:value-of select="$admon.style"/>
+      </xsl:attribute>
+    </xsl:if>
+
+    <xsl:variable name="content">
+      <table border="">
+        <tr>
+          <td rowspan="2" align="center" valign="top">
+            <xsl:attribute name="width">
+              <xsl:apply-templates select="." mode="admon.graphic.width"/>
+            </xsl:attribute>
+            <img alt="[{$alt}]">
+              <xsl:attribute name="src">
+                <xsl:call-template name="admon.graphic"/>
+              </xsl:attribute>
+            </img>
+          </td>
+          <th align="{$direction.align.start}">
+            <xsl:call-template name="anchor"/>
+            <xsl:if test="$admon.textlabel != 0 or title or info/title">
+              <xsl:apply-templates select="." mode="object.title.markup"/>
+            </xsl:if>
+          </th>
+        </tr>
+        <tr>
+          <td align="{$direction.align.start}" valign="top">
+            <xsl:apply-templates/>
+          </td>
+        </tr>
+      </table>
+    </xsl:variable>
+
+    <xsl:variable name="table.nodes" select="exsl:node-set($content)"/>
+
+    <xsl:apply-templates select="$table.nodes" mode="convert.to.style"/>
+  </div>
+</xsl:template>
 
 <!-- HTML5: needs special doctype -->
 <xsl:template name="user.preroot">
@@ -801,6 +917,93 @@
   </section>
 </xsl:template>
 
+<!-- HTML5: uses <ul> instead of <dl> for TOC -->
+<xsl:template match="question" mode="qandatoc.mode">
+  <xsl:variable name="firstch">
+    <!-- Use a titleabbrev or title if available -->
+    <xsl:choose>
+      <xsl:when test="../blockinfo/titleabbrev">
+        <xsl:apply-templates select="../blockinfo/titleabbrev[1]/node()"/>
+      </xsl:when>
+      <xsl:when test="../blockinfo/title">
+        <xsl:apply-templates select="../blockinfo/title[1]/node()"/>
+      </xsl:when>
+      <xsl:when test="../info/titleabbrev">
+        <xsl:apply-templates select="../info/titleabbrev[1]/node()"/>
+      </xsl:when>
+      <xsl:when test="../titleabbrev">
+        <xsl:apply-templates select="../titleabbrev[1]/node()"/>
+      </xsl:when>
+      <xsl:when test="../info/title">
+        <xsl:apply-templates select="../info/title[1]/node()"/>
+      </xsl:when>
+      <xsl:when test="../title">
+        <xsl:apply-templates select="../title[1]/node()"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="(*[local-name(.)!='label'])[1]/node()"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="deflabel">
+    <xsl:choose>
+      <xsl:when test="ancestor-or-self::*[@defaultlabel]">
+        <xsl:value-of select="(ancestor-or-self::*[@defaultlabel])[last()]
+                              /@defaultlabel"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:value-of select="$qanda.defaultlabel"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <li>
+    <a>
+      <xsl:attribute name="href">
+        <xsl:call-template name="href.target">
+          <xsl:with-param name="object" select=".."/>
+        </xsl:call-template>
+      </xsl:attribute>
+      <xsl:apply-templates select="." mode="label.markup"/>
+      <xsl:if test="contains($deflabel,'number') and not(label)">
+        <xsl:apply-templates select="." mode="intralabel.punctuation"/>
+      </xsl:if>
+      <xsl:text> </xsl:text>
+      <xsl:value-of select="$firstch"/>
+    </a>
+    <!-- * include nested qandaset/qandaentry in TOC if user wants it -->
+
+    <xsl:if test="not($qanda.nested.in.toc = 0)">
+      <xsl:apply-templates select="following-sibling::answer" mode="qandatoc.mode"/>
+    </xsl:if>
+  </li>
+</xsl:template>
+
+<xsl:template match="answer" mode="qandatoc.mode">
+  <xsl:if test="descendant::question">
+    <xsl:call-template name="process.qanda.toc"/>
+  </xsl:if>
+</xsl:template>
+
+<!-- html5 uses <ul> instead of <dl> for toc -->
+<xsl:template name="process.qanda.toc">
+  <ul>
+    <xsl:apply-templates select="qandadiv" mode="qandatoc.mode"/>
+    <xsl:apply-templates select="qandaset|qandaentry" mode="qandatoc.mode"/>
+  </ul>
+</xsl:template>
+
+<xsl:template match="qandadiv" mode="qandatoc.mode">
+  <!--
+  <dt><xsl:apply-templates select="title" mode="qandatoc.mode"/></dt>
+  <dd><xsl:call-template name="process.qanda.toc"/></dd>
+  -->
+  <li>
+    <xsl:apply-templates select="title" mode="qandatoc.mode"/>
+    <xsl:call-template name="process.qanda.toc"/>
+  </li>
+</xsl:template>
+
 <!-- HTML5: each dt must have a dd -->
 <xsl:template match="indexterm" mode="index-primary">
   <xsl:param name="scope" select="."/>
@@ -1040,18 +1243,21 @@
   </xsl:variable>
 
   <audio>
-    <xsl:apply-templates select="." mode="class.attribute"/>
+    <xsl:call-template name="common.html.attributes"/>
+
     <xsl:attribute name="src">
       <xsl:value-of select="$filename"/>
     </xsl:attribute>
-    <xsl:attribute name="controls">controls</xsl:attribute>
-    <xsl:attribute name="autoplay"></xsl:attribute>
+
+    <xsl:apply-templates select="@*"/>
+    <xsl:apply-templates select="../multimediaparam"/>
 
     <!-- add any fallback content -->
     <xsl:call-template name="audio.fallback"/>
   </audio>
 </xsl:template>
 
+<!-- generate <video> element for html5 -->
 <xsl:template match="videodata">
   <xsl:variable name="filename">
     <xsl:call-template name="mediaobject.filename">
@@ -1060,16 +1266,102 @@
   </xsl:variable>
 
   <video>
-    <xsl:apply-templates select="." mode="class.attribute"/>
+    <xsl:call-template name="common.html.attributes"/>
+
     <xsl:attribute name="src">
       <xsl:value-of select="$filename"/>
     </xsl:attribute>
-    <xsl:attribute name="controls">controls</xsl:attribute>
-    <xsl:attribute name="autoplay"></xsl:attribute>
+
+    <xsl:call-template name="video.poster"/>
+
+    <xsl:apply-templates select="@*[local-name() != 'fileref']"/>
+    <xsl:apply-templates select="../multimediaparam"/>
     
     <!-- add any fallback content -->
     <xsl:call-template name="video.fallback"/>
   </video>
+</xsl:template>
+
+<!-- use only an imageobject with @role = 'poster' -->
+<xsl:template name="video.poster">
+  <xsl:variable name="imageobject" select="../../imageobject[@role = 'poster'][1]"/>
+  <xsl:if test="$imageobject">
+    <xsl:attribute name="poster">
+      <xsl:value-of select="$imageobject/imagedata/@fileref"/>
+    </xsl:attribute> 
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="videodata/@fileref">
+  <!-- already handled by videodata template -->
+</xsl:template>
+
+<xsl:template match="audiodata/@fileref">
+  <!-- already handled by audiodata template -->
+</xsl:template>
+
+<xsl:template match="videodata/@contentwidth">
+  <xsl:attribute name="width">
+    <xsl:value-of select="."/>
+  </xsl:attribute>
+</xsl:template>
+
+<xsl:template match="videodata/@contentdepth">
+  <xsl:attribute name="height">
+    <xsl:value-of select="."/>
+  </xsl:attribute>
+</xsl:template>
+
+<xsl:template match="videodata/@depth">
+  <xsl:attribute name="height">
+    <xsl:value-of select="."/>
+  </xsl:attribute>
+</xsl:template>
+
+<!-- pass through these attributes -->
+<xsl:template match="videodata/@autoplay |
+                     videodata/@controls |
+                     audiodata/@autoplay |
+                     audiodata/@controls">
+  <xsl:copy-of select="."/>
+</xsl:template>
+
+<xsl:template match="videodata/@*" priority="-1">
+  <!-- Do nothing with the rest of the attributes -->
+</xsl:template>
+
+<xsl:template match="audiodata/@*" priority="-1">
+  <!-- Do nothing with the rest of the attributes -->
+</xsl:template>
+
+<xsl:template match="multimediaparam">
+  <xsl:call-template name="process.multimediaparam">
+    <xsl:with-param name="object" select=".."/>
+    <xsl:with-param name="param.name" select="@name"/>
+    <xsl:with-param name="param.value" select="@value"/>
+  </xsl:call-template>
+</xsl:template>
+
+<!-- Determines the best value of a media attribute from the
+  attributes and multimediaparam elements -->
+<xsl:template name="process.multimediaparam">
+  <xsl:param name="object" select="NOTANELEMENT"/>
+  <xsl:param name="param.name"/>
+  <xsl:param name="param.value"/>
+
+  <xsl:choose>
+    <xsl:when test="$object/*/@*[local-name(.) = $param.name]">
+      <!-- explicit attribute with that name takes precedence -->
+      <xsl:attribute name="{$param.name}">
+        <xsl:value-of select="$object/*/@*[local-name(.) = $param.name]"/>
+      </xsl:attribute>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:attribute name="{$param.name}">
+        <xsl:value-of select="$param.value"/>
+      </xsl:attribute>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template name="video.fallback">
@@ -1231,5 +1523,8 @@
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+
+<!-- HTML5: no body attributes -->
+<xsl:template name="body.attributes"/>
 
 </xsl:stylesheet>

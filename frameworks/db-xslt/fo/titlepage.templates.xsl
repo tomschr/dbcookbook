@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0"?>
+
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" version="1.0" exclude-result-prefixes="exsl">
 
 <!-- This stylesheet was created by template/titlepage.xsl-->
@@ -3852,6 +3853,105 @@
 </fo:block>
 </xsl:template>
 
+<xsl:template name="topic.titlepage.recto">
+  <xsl:choose>
+    <xsl:when test="topicinfo/title">
+      <xsl:apply-templates mode="topic.titlepage.recto.auto.mode" select="topicinfo/title"/>
+    </xsl:when>
+    <xsl:when test="info/title">
+      <xsl:apply-templates mode="topic.titlepage.recto.auto.mode" select="info/title"/>
+    </xsl:when>
+    <xsl:when test="title">
+      <xsl:apply-templates mode="topic.titlepage.recto.auto.mode" select="title"/>
+    </xsl:when>
+  </xsl:choose>
+
+  <xsl:choose>
+    <xsl:when test="topicinfo/subtitle">
+      <xsl:apply-templates mode="topic.titlepage.recto.auto.mode" select="topicinfo/subtitle"/>
+    </xsl:when>
+    <xsl:when test="info/subtitle">
+      <xsl:apply-templates mode="topic.titlepage.recto.auto.mode" select="info/subtitle"/>
+    </xsl:when>
+    <xsl:when test="subtitle">
+      <xsl:apply-templates mode="topic.titlepage.recto.auto.mode" select="subtitle"/>
+    </xsl:when>
+  </xsl:choose>
+
+</xsl:template>
+
+<xsl:template name="topic.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="topic.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="topic.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="topic.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="topic.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="topic.titlepage.before.recto"/>
+      <xsl:call-template name="topic.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="topic.titlepage.before.verso"/>
+      <xsl:call-template name="topic.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="topic.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="topic.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="topic.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="title" mode="topic.titlepage.recto.auto.mode">
+<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="topic.titlepage.recto.style" font-weight="bold" font-size="17.28pt" space-before="1em" space-after="1em" font-family="{$title.fontset}">
+<xsl:apply-templates select="." mode="topic.titlepage.recto.mode"/>
+</fo:block>
+</xsl:template>
+
+<xsl:template match="subtitle" mode="topic.titlepage.recto.auto.mode">
+<fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="topic.titlepage.recto.style" font-family="{$title.fontset}">
+<xsl:apply-templates select="." mode="topic.titlepage.recto.mode"/>
+</fo:block>
+</xsl:template>
+
 <xsl:template name="bibliography.titlepage.recto">
   <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="bibliography.titlepage.recto.style" margin-left="{$title.margin.left}" font-size="24.8832pt" font-family="{$title.fontset}" font-weight="bold">
 <xsl:call-template name="component.title">
@@ -5466,4 +5566,407 @@
   <xsl:apply-templates select="." mode="titlepage.mode"/>
 </xsl:template>
 
+<xsl:template name="component.list.of.tables.titlepage.recto">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="component.list.of.tables.titlepage.recto.style" space-before.minimum="1em" space-before.optimum="1em" space-before.maximum="1em" space-after="0.5em" margin-left="{$title.margin.left}" font-size="12pt" font-weight="bold" font-family="{$title.fontset}">
+<xsl:call-template name="gentext">
+<xsl:with-param name="key" select="'ListofTables'"/>
+</xsl:call-template></fo:block>
+</xsl:template>
+
+<xsl:template name="component.list.of.tables.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.tables.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="component.list.of.tables.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="component.list.of.tables.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.tables.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="component.list.of.tables.titlepage.before.recto"/>
+      <xsl:call-template name="component.list.of.tables.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="component.list.of.tables.titlepage.before.verso"/>
+      <xsl:call-template name="component.list.of.tables.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="component.list.of.tables.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.tables.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.tables.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template name="component.list.of.figures.titlepage.recto">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="component.list.of.figures.titlepage.recto.style" space-before.minimum="1em" space-before.optimum="1em" space-before.maximum="1em" space-after="0.5em" margin-left="{$title.margin.left}" font-size="12pt" font-weight="bold" font-family="{$title.fontset}">
+<xsl:call-template name="gentext">
+<xsl:with-param name="key" select="'ListofFigures'"/>
+</xsl:call-template></fo:block>
+</xsl:template>
+
+<xsl:template name="component.list.of.figures.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.figures.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="component.list.of.figures.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="component.list.of.figures.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.figures.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="component.list.of.figures.titlepage.before.recto"/>
+      <xsl:call-template name="component.list.of.figures.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="component.list.of.figures.titlepage.before.verso"/>
+      <xsl:call-template name="component.list.of.figures.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="component.list.of.figures.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.figures.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.figures.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template name="component.list.of.examples.titlepage.recto">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="component.list.of.examples.titlepage.recto.style" space-before.minimum="1em" space-before.optimum="1em" space-before.maximum="1em" space-after="0.5em" margin-left="{$title.margin.left}" font-size="12pt" font-weight="bold" font-family="{$title.fontset}">
+<xsl:call-template name="gentext">
+<xsl:with-param name="key" select="'ListofExamples'"/>
+</xsl:call-template></fo:block>
+</xsl:template>
+
+<xsl:template name="component.list.of.examples.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.examples.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="component.list.of.examples.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="component.list.of.examples.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.examples.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="component.list.of.examples.titlepage.before.recto"/>
+      <xsl:call-template name="component.list.of.examples.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="component.list.of.examples.titlepage.before.verso"/>
+      <xsl:call-template name="component.list.of.examples.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="component.list.of.examples.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.examples.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.examples.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template name="component.list.of.equations.titlepage.recto">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="component.list.of.equations.titlepage.recto.style" space-before.minimum="1em" space-before.optimum="1em" space-before.maximum="1em" space-after="0.5em" margin-left="{$title.margin.left}" font-size="12pt" font-weight="bold" font-family="{$title.fontset}">
+<xsl:call-template name="gentext">
+<xsl:with-param name="key" select="'ListofEquations'"/>
+</xsl:call-template></fo:block>
+</xsl:template>
+
+<xsl:template name="component.list.of.equations.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.equations.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="component.list.of.equations.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="component.list.of.equations.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.equations.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="component.list.of.equations.titlepage.before.recto"/>
+      <xsl:call-template name="component.list.of.equations.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="component.list.of.equations.titlepage.before.verso"/>
+      <xsl:call-template name="component.list.of.equations.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="component.list.of.equations.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.equations.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.equations.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template name="component.list.of.procedures.titlepage.recto">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="component.list.of.procedures.titlepage.recto.style" space-before.minimum="1em" space-before.optimum="1em" space-before.maximum="1em" space-after="0.5em" margin-left="{$title.margin.left}" font-size="12pt" font-weight="bold" font-family="{$title.fontset}">
+<xsl:call-template name="gentext">
+<xsl:with-param name="key" select="'ListofProcedures'"/>
+</xsl:call-template></fo:block>
+</xsl:template>
+
+<xsl:template name="component.list.of.procedures.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.procedures.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="component.list.of.procedures.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="component.list.of.procedures.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.procedures.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="component.list.of.procedures.titlepage.before.recto"/>
+      <xsl:call-template name="component.list.of.procedures.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="component.list.of.procedures.titlepage.before.verso"/>
+      <xsl:call-template name="component.list.of.procedures.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="component.list.of.procedures.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.procedures.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.procedures.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template name="component.list.of.unknowns.titlepage.recto">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format" xsl:use-attribute-sets="component.list.of.unknowns.titlepage.recto.style" space-before.minimum="1em" space-before.optimum="1em" space-before.maximum="1em" space-after="0.5em" margin-left="{$title.margin.left}" font-size="12pt" font-weight="bold" font-family="{$title.fontset}">
+<xsl:call-template name="gentext">
+<xsl:with-param name="key" select="'ListofUnknown'"/>
+</xsl:call-template></fo:block>
+</xsl:template>
+
+<xsl:template name="component.list.of.unknowns.titlepage.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.unknowns.titlepage.separator">
+</xsl:template>
+
+<xsl:template name="component.list.of.unknowns.titlepage.before.recto">
+</xsl:template>
+
+<xsl:template name="component.list.of.unknowns.titlepage.before.verso">
+</xsl:template>
+
+<xsl:template name="component.list.of.unknowns.titlepage">
+  <fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format">
+    <xsl:variable name="recto.content">
+      <xsl:call-template name="component.list.of.unknowns.titlepage.before.recto"/>
+      <xsl:call-template name="component.list.of.unknowns.titlepage.recto"/>
+    </xsl:variable>
+    <xsl:variable name="recto.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($recto.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($recto.content) != '') or ($recto.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$recto.content"/></fo:block>
+    </xsl:if>
+    <xsl:variable name="verso.content">
+      <xsl:call-template name="component.list.of.unknowns.titlepage.before.verso"/>
+      <xsl:call-template name="component.list.of.unknowns.titlepage.verso"/>
+    </xsl:variable>
+    <xsl:variable name="verso.elements.count">
+      <xsl:choose>
+        <xsl:when test="function-available('exsl:node-set')"><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:when test="contains(system-property('xsl:vendor'), 'Apache Software Foundation')">
+          <!--Xalan quirk--><xsl:value-of select="count(exsl:node-set($verso.content)/*)"/></xsl:when>
+        <xsl:otherwise>1</xsl:otherwise>
+      </xsl:choose>
+    </xsl:variable>
+    <xsl:if test="(normalize-space($verso.content) != '') or ($verso.elements.count &gt; 0)">
+      <fo:block><xsl:copy-of select="$verso.content"/></fo:block>
+    </xsl:if>
+    <xsl:call-template name="component.list.of.unknowns.titlepage.separator"/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.unknowns.titlepage.recto.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
+<xsl:template match="*" mode="component.list.of.unknowns.titlepage.verso.mode">
+  <!-- if an element isn't found in this mode, -->
+  <!-- try the generic titlepage.mode -->
+  <xsl:apply-templates select="." mode="titlepage.mode"/>
+</xsl:template>
+
 </xsl:stylesheet>
+

@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: titlepage.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -64,6 +64,9 @@
 
 <xsl:attribute-set name="sidebar.titlepage.recto.style"/>
 <xsl:attribute-set name="sidebar.titlepage.verso.style"/>
+
+<xsl:attribute-set name="topic.titlepage.recto.style"/>
+<xsl:attribute-set name="topic.titlepage.verso.style"/>
 
 <xsl:attribute-set name="section.titlepage.recto.style"/>
 <xsl:attribute-set name="section.titlepage.verso.style"/>

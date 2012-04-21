@@ -1,7 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><!-- This file is generated from param.xweb --><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<?xml version="1.0"?>
+<!-- This file is generated from param.xweb -->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- ********************************************************************
-     $Id: param.xweb 9148 2011-11-12 00:07:29Z bobstayton $
+     $Id: param.xweb 9201 2012-01-30 02:49:32Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -213,6 +215,8 @@ set       toc,title
 <xsl:param name="html.head.legalnotice.link.types">copyright</xsl:param>
 <xsl:param name="html.longdesc" select="1"/>
 <xsl:param name="html.longdesc.link" select="$html.longdesc"/>
+<xsl:param name="html.script"/>
+<xsl:param name="html.script.type">text/javascript</xsl:param>
 <xsl:param name="html.stylesheet"/>
 <xsl:param name="html.stylesheet.type">text/css</xsl:param>
 <xsl:param name="htmlhelp.alias.file">alias.h</xsl:param>
@@ -432,3 +436,4 @@ set       toc,title
 <xsl:param name="xref.with.number.and.title" select="1"/>
 
 </xsl:stylesheet>
+

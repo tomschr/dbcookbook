@@ -4,7 +4,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: block.xsl 8597 2010-03-20 04:56:04Z bobstayton $
+     $Id: block.xsl 9239 2012-03-02 18:42:41Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -14,7 +14,6 @@
      ******************************************************************** -->
 
 <!-- ==================================================================== -->
-<!-- What should we do about styling blockinfo? -->
 
 <xsl:template match="blockinfo|info">
   <!-- suppress -->
@@ -42,7 +41,7 @@
   <xsl:variable name="keep.together">
     <xsl:call-template name="pi.dbfo_keep-together"/>
   </xsl:variable>
-  <fo:block xsl:use-attribute-sets="normal.para.spacing">
+  <fo:block xsl:use-attribute-sets="para.properties">
     <xsl:if test="$keep.together != ''">
       <xsl:attribute name="keep-together.within-column"><xsl:value-of
                       select="$keep.together"/></xsl:attribute>

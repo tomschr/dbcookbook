@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0"?>
 <!--This file was created automatically by html2xhtml-->
 <!--from the HTML stylesheets.-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns:exsl="http://exslt.org/common" xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="db ng exsl exslt" version="1.0">
 
-<!-- Same as xhtml but with doctypes removed from xsl:output -->
-<!-- and including from ../xhtml directory -->
-<xsl:output method="xml" encoding="UTF-8" indent="no"/>
+<!--Same as xhtml but with doctypes removed from xsl:output -->
+<!--and including from ../xhtml directory -->
+<xslo:output xmlns:xslo="http://www.w3.org/1999/XSL/Transform" method="xml" encoding="UTF-8" indent="no"/>
 
 <!-- ********************************************************************
-     $Id: xhtml-docbook.xsl,v 1.1 2011-09-16 21:44:00 bobs Exp $
+     $Id: docbook.xsl 9202 2012-01-30 03:14:31Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -137,6 +137,12 @@
     </xsl:call-template>
   </xsl:if>
 
+  <xsl:if test="$html.script != ''">
+    <xsl:call-template name="output.html.scripts">
+      <xsl:with-param name="scripts" select="normalize-space($html.script)"/>
+    </xsl:call-template>
+  </xsl:if>
+
   <xsl:if test="$link.mailto.url != ''">
     <link rev="made" href="{$link.mailto.url}"/>
   </xsl:if>
@@ -193,6 +199,29 @@ body { background-image: url('</xsl:text>
     <xsl:when test="$stylesheets != ''">
       <xsl:call-template name="make.css.link">
         <xsl:with-param name="css.filename" select="$stylesheets"/>
+      </xsl:call-template>
+    </xsl:when>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="output.html.scripts">
+  <xsl:param name="scripts" select="''"/>
+
+  <xsl:choose>
+    <xsl:when test="contains($scripts, ' ')">
+      <xsl:variable name="script.filename" select="substring-before($scripts, ' ')"/>
+
+      <xsl:call-template name="make.script.link">
+        <xsl:with-param name="script.filename" select="$script.filename"/>
+      </xsl:call-template>
+
+      <xsl:call-template name="output.html.scripts">
+        <xsl:with-param name="scripts" select="substring-after($scripts, ' ')"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$scripts != ''">
+      <xsl:call-template name="make.script.link">
+        <xsl:with-param name="script.filename" select="$scripts"/>
       </xsl:call-template>
     </xsl:when>
   </xsl:choose>
@@ -302,6 +331,15 @@ var popup_</xsl:text>
   <xsl:param name="node" select="."/>
 </xsl:template>
 
+<!-- To use the same stripped nodeset everywhere, it should
+be created as a global variable here.
+Used by docbook.xsl, chunk-code.xsl and chunkfast.xsl -->
+<xsl:variable name="no.namespace">
+  <xsl:if test="$exsl.node.set.available != 0                     and (*/self::ng:* or */self::db:*)">
+    <xsl:apply-templates select="/*" mode="stripNS"/>
+  </xsl:if>
+</xsl:variable>
+
 <xsl:template match="/">
   <!-- * Get a title for current doc so that we let the user -->
   <!-- * know what document we are processing at this point. -->
@@ -324,16 +362,13 @@ var popup_</xsl:text>
           <xsl:text>stripped namespace before processing</xsl:text>
         </xsl:with-param>
       </xsl:call-template>
-      <xsl:variable name="nons">
-        <xsl:apply-templates mode="stripNS"/>
-      </xsl:variable>
-      <!--
+      <!-- DEBUG: to save stripped document.
       <xsl:message>Saving stripped document.</xsl:message>
       <xsl:call-template name="write.chunk">
         <xsl:with-param name="filename" select="'/tmp/stripped.xml'"/>
         <xsl:with-param name="method" select="'xml'"/>
         <xsl:with-param name="content">
-          <xsl:copy-of select="exsl:node-set($nons)"/>
+          <xsl:copy-of select="exsl:node-set($no.namespace)"/>
         </xsl:with-param>
       </xsl:call-template>
       -->
@@ -347,7 +382,7 @@ var popup_</xsl:text>
           <xsl:text>processing stripped document</xsl:text>
         </xsl:with-param>
       </xsl:call-template>
-      <xsl:apply-templates select="exsl:node-set($nons)"/>
+      <xsl:apply-templates select="exsl:node-set($no.namespace)"/>
     </xsl:when>
     <!-- Can't process unless namespace removed -->
     <xsl:when test="*/self::ng:* or */self::db:*">

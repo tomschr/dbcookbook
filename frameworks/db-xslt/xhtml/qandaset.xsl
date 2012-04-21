@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc" version="1.0">
 
 <!-- ********************************************************************
-     $Id: qandaset.xsl 8979 2011-03-21 17:55:22Z bobstayton $
+     $Id: qandaset.xsl 9205 2012-01-30 18:40:10Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -144,7 +147,7 @@
       </xsl:variable>
 
       <xsl:if test="string-length($label.content) &gt; 0">
-        <p><strong>
+        <p><strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
           <xsl:copy-of select="$label.content"/>
         </strong></p>
       </xsl:if>
@@ -152,7 +155,7 @@
     <td align="{$direction.align.start}" valign="top">
       <xsl:choose>
         <xsl:when test="$deflabel = 'none' and not(label)">
-          <strong><xsl:apply-templates select="*[local-name(.) != 'label']"/></strong>
+          <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates select="*[local-name(.) != 'label']"/></strong>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="*[local-name(.) != 'label']"/>
@@ -196,7 +199,7 @@
         <xsl:apply-templates select="." mode="label.markup"/>
       </xsl:variable>
       <xsl:if test="string-length($answer.label) &gt; 0">
-        <p><strong>
+        <p><strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
           <xsl:copy-of select="$answer.label"/>
         </strong></p>
       </xsl:if>
@@ -384,19 +387,21 @@
       </xsl:attribute>
     </xsl:if>
 
-    <col align="{$direction.align.start}">
-      <xsl:attribute name="width">
-        <xsl:choose>
-          <xsl:when test="$label-width != ''">
-            <xsl:value-of select="$label-width"/>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>1%</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
-      </xsl:attribute>
-    </col>
-    <col/>
+    <colgroup>
+      <col align="{$direction.align.start}">
+        <xsl:attribute name="width">
+          <xsl:choose>
+            <xsl:when test="$label-width != ''">
+              <xsl:value-of select="$label-width"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:text>1%</xsl:text>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:attribute>
+      </col>
+      <col/>
+    </colgroup>
     <tbody>
       <xsl:apply-templates select="qandaentry|qandadiv"/>
     </tbody>

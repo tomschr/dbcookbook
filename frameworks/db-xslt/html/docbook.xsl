@@ -12,7 +12,7 @@
             indent="no"/>
 
 <!-- ********************************************************************
-     $Id: docbook.xsl 9141 2011-10-31 20:37:22Z bobstayton $
+     $Id: docbook.xsl 9202 2012-01-30 03:14:31Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -148,6 +148,12 @@
     </xsl:call-template>
   </xsl:if>
 
+  <xsl:if test="$html.script != ''">
+    <xsl:call-template name="output.html.scripts">
+      <xsl:with-param name="scripts" select="normalize-space($html.script)"/>
+    </xsl:call-template>
+  </xsl:if>
+
   <xsl:if test="$link.mailto.url != ''">
     <link rev="made"
           href="{$link.mailto.url}"/>
@@ -223,6 +229,29 @@ body { background-image: url('</xsl:text>
     <xsl:when test="$stylesheets != ''">
       <xsl:call-template name="make.css.link">
         <xsl:with-param name="css.filename" select="$stylesheets"/>
+      </xsl:call-template>
+    </xsl:when>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="output.html.scripts">
+  <xsl:param name="scripts" select="''"/>
+
+  <xsl:choose>
+    <xsl:when test="contains($scripts, ' ')">
+      <xsl:variable name="script.filename" select="substring-before($scripts, ' ')"/>
+
+      <xsl:call-template name="make.script.link">
+        <xsl:with-param name="script.filename" select="$script.filename"/>
+      </xsl:call-template>
+
+      <xsl:call-template name="output.html.scripts">
+        <xsl:with-param name="scripts" select="substring-after($scripts, ' ')"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:when test="$scripts != ''">
+      <xsl:call-template name="make.script.link">
+        <xsl:with-param name="script.filename" select="$scripts"/>
       </xsl:call-template>
     </xsl:when>
   </xsl:choose>

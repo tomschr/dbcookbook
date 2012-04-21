@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
      $Id: biblio.xsl 9127 2011-10-10 19:41:51Z bobstayton $
@@ -381,7 +384,7 @@
       <xsl:call-template name="gentext.endquote"/>
     </xsl:when>
     <xsl:otherwise>
-      <em><xsl:apply-templates/></em>
+      <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></em>
     </xsl:otherwise>
   </xsl:choose>
   <xsl:copy-of select="$biblioentry.item.separator"/>
@@ -779,7 +782,7 @@
 <xsl:template match="title" mode="bibliography.mode">
   <span>
     <xsl:call-template name="common.html.attributes"/>
-    <em><xsl:apply-templates mode="bibliography.mode"/></em>
+    <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates mode="bibliography.mode"/></em>
     <xsl:copy-of select="$biblioentry.item.separator"/>
   </span>
 </xsl:template>
@@ -930,7 +933,7 @@
       <xsl:call-template name="gentext.endquote"/>
     </xsl:when>
     <xsl:otherwise>
-      <em><xsl:apply-templates/></em>
+      <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></em>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>

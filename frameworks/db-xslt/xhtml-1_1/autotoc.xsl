@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: autotoc.xsl 9143 2011-11-01 01:00:59Z bobstayton $
+     $Id: autotoc.xsl 9295 2012-04-19 19:05:29Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -44,7 +47,7 @@
         </xsl:when>
         <xsl:otherwise>
           <p>
-            <strong>
+            <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
               <xsl:call-template name="gentext">
                 <xsl:with-param name="key">TableofContents</xsl:with-param>
               </xsl:call-template>
@@ -169,7 +172,7 @@
   <xsl:call-template name="make.toc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="toc.title.p" select="$toc.title.p"/>
-    <xsl:with-param name="nodes" select="part|reference                                          |preface|chapter|appendix                                          |article                                          |bibliography|glossary|index                                          |refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
+    <xsl:with-param name="nodes" select="part|reference                                          |preface|chapter|appendix                                          |article                                          |topic                                          |bibliography|glossary|index                                          |refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
 
   </xsl:call-template>
 </xsl:template>
@@ -181,7 +184,7 @@
   <xsl:call-template name="make.toc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="toc.title.p" select="$toc.title.p"/>
-    <xsl:with-param name="nodes" select="section|sect1                                          |simplesect[$simplesect.in.toc != 0]                                          |refentry                                          |article|bibliography|glossary                                          |appendix|index                                          |bridgehead[not(@renderas)                                                      and $bridgehead.in.toc != 0]                                          |.//bridgehead[@renderas='sect1'                                                         and $bridgehead.in.toc != 0]"/>
+    <xsl:with-param name="nodes" select="section|sect1                                          |simplesect[$simplesect.in.toc != 0]                                          |topic                                          |refentry                                          |article|bibliography|glossary                                          |appendix|index                                          |bridgehead[not(@renderas)                                                      and $bridgehead.in.toc != 0]                                          |.//bridgehead[@renderas='sect1'                                                         and $bridgehead.in.toc != 0]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -244,6 +247,7 @@
       <xsl:when test="local-name(.) = 'refsect1'">1</xsl:when>
       <xsl:when test="local-name(.) = 'refsect2'">2</xsl:when>
       <xsl:when test="local-name(.) = 'refsect3'">3</xsl:when>
+      <xsl:when test="local-name(.) = 'topic'">1</xsl:when>
       <xsl:when test="local-name(.) = 'simplesect'">
         <!-- sigh... -->
         <xsl:choose>
@@ -255,6 +259,7 @@
           <xsl:when test="local-name(..) = 'sect3'">4</xsl:when>
           <xsl:when test="local-name(..) = 'sect4'">5</xsl:when>
           <xsl:when test="local-name(..) = 'sect5'">6</xsl:when>
+          <xsl:when test="local-name(..) = 'topic'">2</xsl:when>
           <xsl:when test="local-name(..) = 'refsect1'">2</xsl:when>
           <xsl:when test="local-name(..) = 'refsect2'">3</xsl:when>
           <xsl:when test="local-name(..) = 'refsect3'">4</xsl:when>
@@ -343,7 +348,7 @@
 
   <xsl:call-template name="subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
-    <xsl:with-param name="nodes" select="part|reference                                          |preface|chapter|appendix                                          |article                                          |bibliography|glossary|index                                          |refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
+    <xsl:with-param name="nodes" select="part|reference                                          |preface|chapter|appendix                                          |article                                          |topic                                          |bibliography|glossary|index                                          |refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -363,16 +368,16 @@
 
   <xsl:call-template name="subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
-    <xsl:with-param name="nodes" select="appendix|chapter|article                                          |index|glossary|bibliography                                          |preface|reference|refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
+    <xsl:with-param name="nodes" select="appendix|chapter|article|topic                                          |index|glossary|bibliography                                          |preface|reference|refentry                                          |bridgehead[$bridgehead.in.toc != 0]"/>
   </xsl:call-template>
 </xsl:template>
 
-<xsl:template match="preface|chapter|appendix|article" mode="toc">
+<xsl:template match="preface|chapter|appendix|article|topic" mode="toc">
   <xsl:param name="toc-context" select="."/>
 
   <xsl:call-template name="subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
-    <xsl:with-param name="nodes" select="section|sect1                                          |simplesect[$simplesect.in.toc != 0]                                          |refentry                                          |glossary|bibliography|index                                          |bridgehead[$bridgehead.in.toc != 0]"/>
+    <xsl:with-param name="nodes" select="section|sect1                                          |simplesect[$simplesect.in.toc != 0]                                          |topic                                          |refentry                                          |glossary|bibliography|index                                          |bridgehead[$bridgehead.in.toc != 0]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -428,6 +433,15 @@
 </xsl:template>
 
 <xsl:template match="section" mode="toc">
+  <xsl:param name="toc-context" select="."/>
+
+  <xsl:call-template name="subtoc">
+    <xsl:with-param name="toc-context" select="$toc-context"/>
+    <xsl:with-param name="nodes" select="section|refentry                                          |simplesect[$simplesect.in.toc != 0]                                          |bridgehead[$bridgehead.in.toc != 0]"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="topic" mode="toc">
   <xsl:param name="toc-context" select="."/>
 
   <xsl:call-template name="subtoc">
@@ -503,7 +517,7 @@
         <!-- * DocBook 5 says inlinemediaobject (among other things) -->
         <!-- * is allowed in refpurpose; so we need to run -->
         <!-- * apply-templates on refpurpose here, instead of value-of  -->
-        <xsl:apply-templates select="refnamediv/refpurpose"/>
+        <xsl:apply-templates select="refnamediv/refpurpose" mode="no.anchor.mode"/>
       </xsl:if>
     </span>
   </xsl:element>
@@ -595,7 +609,7 @@
         </xsl:when>
         <xsl:otherwise>
           <p>
-            <strong>
+            <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
               <xsl:call-template name="gentext">
                 <xsl:with-param name="key">
                   <xsl:choose>

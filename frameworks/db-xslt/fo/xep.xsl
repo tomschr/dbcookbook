@@ -5,7 +5,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: xep.xsl 8984 2011-03-27 12:18:01Z mzjn $
+     $Id: xep.xsl 9293 2012-04-19 18:42:11Z bobstayton $
      ********************************************************************
      (c) Stephane Bline Peregrine Systems 2001
      Implementation of xep extensions:
@@ -112,7 +112,7 @@
 </xsl:template>
 
 <xsl:template match="set|book|part|reference|preface|chapter|appendix|article
-                     |glossary|bibliography|index|setindex
+                     |glossary|bibliography|index|setindex|topic
                      |refentry|refsynopsisdiv
                      |refsect1|refsect2|refsect3|refsection
                      |sect1|sect2|sect3|sect4|sect5|section"
@@ -152,7 +152,7 @@
       </xsl:variable>
       <xsl:if test="contains($toc.params, 'toc')
                     and set|book|part|reference|section|sect1|refentry
-                        |article|bibliography|glossary|chapter
+                        |article|topic|bibliography|glossary|chapter
                         |appendix">
         <rx:bookmark internal-destination="toc...{$id}">
           <rx:bookmark-label>

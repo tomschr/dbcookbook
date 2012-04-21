@@ -8,7 +8,7 @@
                 version="1.0">
 
 <!-- ********************************************************************
-     $Id: chunk-code.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: chunk-code.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -371,6 +371,25 @@
       </xsl:if>
     </xsl:when>
 
+    <xsl:when test="self::topic">
+      <xsl:choose>
+        <xsl:when test="/set">
+          <!-- in a set, make sure we inherit the right book info... -->
+          <xsl:apply-templates mode="recursive-chunk-filename" select="parent::*">
+            <xsl:with-param name="recursive" select="true()"/>
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <xsl:text>to</xsl:text>
+      <xsl:number level="any" format="01" from="book"/>
+      <xsl:if test="not($recursive)">
+        <xsl:value-of select="$html.ext"/>
+      </xsl:if>
+    </xsl:when>
+
     <xsl:otherwise>
       <xsl:text>chunk-filename-error-</xsl:text>
       <xsl:value-of select="name(.)"/>
@@ -508,6 +527,7 @@
 
 <xsl:template match="set|book|part|preface|chapter|appendix
                      |article
+                     |topic
                      |reference|refentry
                      |book/glossary|article/glossary|part/glossary
                      |book/bibliography|article/bibliography|part/bibliography
@@ -580,6 +600,7 @@
 <!-- ==================================================================== -->
 <xsl:template match="set|book|part|preface|chapter|appendix
                      |article
+                     |topic
                      |reference|refentry
                      |sect1|sect2|sect3|sect4|sect5
                      |section

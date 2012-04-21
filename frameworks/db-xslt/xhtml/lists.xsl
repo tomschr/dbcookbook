@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: lists.xsl 9125 2011-10-09 21:39:38Z bobstayton $
+     $Id: lists.xsl 9203 2012-01-30 18:01:09Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -160,7 +163,9 @@
           <xsl:call-template name="generate.class.attribute">
             <xsl:with-param name="class" select="$default.class"/>
           </xsl:call-template>
-          <col align="{$direction.align.start}" valign="top"/>
+          <colgroup>
+            <col align="{$direction.align.start}" valign="top"/>
+          </colgroup>
           <tbody>
             <xsl:apply-templates mode="orderedlist-table" select="listitem                         |comment()[preceding-sibling::listitem]                         |processing-instruction()[preceding-sibling::listitem]"/>
           </tbody>
@@ -311,13 +316,15 @@
               <xsl:value-of select="$table-summary"/>
             </xsl:attribute>
           </xsl:if>
-          <col align="{$direction.align.start}" valign="top">
-            <xsl:if test="$term-width != ''">
-              <xsl:attribute name="width">
-                <xsl:value-of select="$term-width"/>
-              </xsl:attribute>
-            </xsl:if>
-          </col>
+          <colgroup>
+            <col align="{$direction.align.start}" valign="top">
+              <xsl:if test="$term-width != ''">
+                <xsl:attribute name="width">
+                  <xsl:value-of select="$term-width"/>
+                </xsl:attribute>
+              </xsl:if>
+            </col>
+          </colgroup>
           <tbody>
             <xsl:apply-templates mode="varlist-table" select="varlistentry                       |comment()[preceding-sibling::varlistentry]                       |processing-instruction()[preceding-sibling::varlistentry]"/>
           </tbody>
@@ -801,7 +808,7 @@
 <xsl:template match="step/title">
   <p>
     <xsl:call-template name="common.html.attributes"/>
-    <strong>
+    <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
       <xsl:apply-templates/>
     </strong>
   </p>

@@ -9,7 +9,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: titlepage.xsl 9165 2011-12-01 22:08:02Z bobstayton $
+     $Id: titlepage.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -35,7 +35,7 @@
   <info>
     <title>Titlepage Template Stylesheet Reference</title>
     <releaseinfo role="meta">
-      $Id: titlepage.xsl 9165 2011-12-01 22:08:02Z bobstayton $
+      $Id: titlepage.xsl 9286 2012-04-19 10:10:58Z bobstayton $
     </releaseinfo>
   </info>
   <partintro xml:id="intro_partintro">
@@ -773,6 +773,7 @@ names.</para>
       <xsl:when test="ancestor::t:titlepage/@t:element='sect5'"></xsl:when>
       <xsl:when test="ancestor::t:titlepage/@t:element='book'"></xsl:when>
       <xsl:when test="ancestor::t:titlepage/@t:element='set'"></xsl:when>
+      <xsl:when test="ancestor::t:titlepage/@t:element='topic'"></xsl:when>
       <xsl:otherwise>docinfo</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -880,6 +881,7 @@ names.</para>
       <xsl:when test="ancestor::t:titlepage/@t:element='sect5'"></xsl:when>
       <xsl:when test="ancestor::t:titlepage/@t:element='book'"></xsl:when>
       <xsl:when test="ancestor::t:titlepage/@t:element='set'"></xsl:when>
+      <xsl:when test="ancestor::t:titlepage/@t:element='topic'"></xsl:when>
       <xsl:otherwise>docinfo</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>

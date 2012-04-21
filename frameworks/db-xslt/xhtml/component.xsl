@@ -1,7 +1,10 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: component.xsl 8568 2010-01-11 03:16:56Z bobstayton $
+     $Id: component.xsl 9286 2012-04-19 10:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -52,7 +55,7 @@
 
   <xsl:if test="$subtitle">
     <h3 class="subtitle">
-      <em>
+      <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
         <xsl:apply-templates select="$node" mode="object.subtitle.markup"/>
       </em>
     </h3>
@@ -388,5 +391,49 @@
 <xsl:template match="article/subtitle"/>
 
 <!-- ==================================================================== -->
+
+<xsl:template match="topic">
+  <xsl:call-template name="id.warning"/>
+
+  <div>
+    <xsl:call-template name="common.html.attributes">
+      <xsl:with-param name="inherit" select="1"/>
+    </xsl:call-template>
+    <xsl:if test="$generate.id.attributes != 0">
+      <xsl:attribute name="id">
+        <xsl:call-template name="object.id"/>
+      </xsl:attribute>
+    </xsl:if>
+
+    <xsl:call-template name="topic.titlepage"/>
+
+    <xsl:variable name="toc.params">
+      <xsl:call-template name="find.path.params">
+        <xsl:with-param name="table" select="normalize-space($generate.toc)"/>
+      </xsl:call-template>
+    </xsl:variable>
+
+    <xsl:apply-templates/>
+
+    <xsl:call-template name="process.footnotes"/>
+  </div>
+</xsl:template>
+
+<xsl:template match="topic/title|topic/info/title" mode="titlepage.mode" priority="2">
+  <xsl:call-template name="component.title">
+    <xsl:with-param name="node" select="ancestor::topic[1]"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="topic/subtitle                      |topic/info/subtitle" mode="titlepage.mode" priority="2">
+  <xsl:call-template name="component.subtitle">
+    <xsl:with-param name="node" select="ancestor::topic[1]"/>
+  </xsl:call-template>
+</xsl:template>
+
+<xsl:template match="topic/info"/>
+<xsl:template match="topic/title"/>
+<xsl:template match="topic/titleabbrev"/>
+<xsl:template match="topic/subtitle"/>
 
 </xsl:stylesheet>

@@ -11,7 +11,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: graphics.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: graphics.xsl 9282 2012-04-16 20:41:20Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -53,9 +53,21 @@
              or $lcext = 'jpg'
              or $lcext = 'avi'
              or $lcext = 'mpg'
+             or $lcext = 'mp4'
              or $lcext = 'mpeg'
              or $lcext = 'qt'
              or $lcext = 'gif'
+             or $lcext = 'acc'
+             or $lcext = 'mp1'
+             or $lcext = 'mp2'
+             or $lcext = 'mp3'
+             or $lcext = 'mp4'
+             or $lcext = 'm4v'
+             or $lcext = 'm4a'
+             or $lcext = 'wav'
+             or $lcext = 'ogv'
+             or $lcext = 'ogg'
+             or $lcext = 'webm'
              or $lcext = 'bmp'">1</xsl:if>
 </xsl:template>
 
@@ -1019,11 +1031,13 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
     </xsl:attribute>
   </xsl:if>
 
+  <!-- Turn off longdesc attribute since not supported by browsers
   <xsl:if test="$longdesc != ''">
     <xsl:attribute name="longdesc">
       <xsl:value-of select="$longdesc"/>
     </xsl:attribute>
   </xsl:if>
+  -->
 
   <xsl:if test="@align and $viewport = 0">
     <xsl:attribute name="align">

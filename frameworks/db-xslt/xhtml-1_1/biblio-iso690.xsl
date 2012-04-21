@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 
 <!-- ********************************************************************
@@ -506,7 +509,7 @@
 </xsl:template>
 
 <xsl:template name="iso690.italic.title">
-  <em>
+  <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
     <xsl:call-template name="iso690.make.title"/>
   </em>
 </xsl:template>
@@ -1242,7 +1245,7 @@
   <xsl:param name="patcountry.sep">
     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'patcountry.sep'"/></xsl:call-template>
   </xsl:param>
-  <em>
+  <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
     <xsl:apply-templates mode="iso690.mode"/>
   </em>
   <xsl:value-of select="$patcountry.sep"/>
@@ -1253,7 +1256,7 @@
   <xsl:param name="pattype.sep">
     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'pattype.sep'"/></xsl:call-template>
   </xsl:param>
-  <em>
+  <em xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
     <xsl:apply-templates mode="iso690.mode"/>
   </em>
   <xsl:value-of select="$pattype.sep"/>

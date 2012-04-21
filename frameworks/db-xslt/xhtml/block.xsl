@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="ASCII"?><!--This file was created automatically by html2xhtml--><!--from the HTML stylesheets.--><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
+<?xml version="1.0" encoding="ASCII"?>
+<!--This file was created automatically by html2xhtml-->
+<!--from the HTML stylesheets.-->
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
      $Id: block.xsl 9158 2011-11-24 00:12:16Z bobstayton $
@@ -138,7 +141,7 @@
       </span>
     </xsl:when>
     <xsl:otherwise>
-      <strong>
+      <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
         <xsl:copy-of select="$titleStr"/>
         <xsl:if test="$lastChar != ''                       and not(contains($runinhead.title.end.punct, $lastChar))">
           <xsl:value-of select="$runinhead.default.title.end.punct"/>
@@ -199,7 +202,7 @@
     <xsl:otherwise>
       <div class="blockquote-title">
         <p>
-          <strong>
+          <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
             <xsl:apply-templates/>
           </strong>
         </p>
@@ -274,7 +277,7 @@
       </span>
     </xsl:when>
     <xsl:otherwise>
-      <strong><xsl:apply-templates/></strong>
+      <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></strong>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -291,7 +294,7 @@
       </span>
     </xsl:when>
     <xsl:otherwise>
-      <strong><xsl:apply-templates/></strong>
+      <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></strong>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -308,7 +311,7 @@
       </span>
     </xsl:when>
     <xsl:otherwise>
-      <strong><xsl:apply-templates/></strong>
+      <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform"><xsl:apply-templates/></strong>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -336,7 +339,7 @@
     </xsl:when>
     <xsl:otherwise>
       <p>
-        <strong>
+        <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
           <xsl:call-template name="gentext.template">
             <xsl:with-param name="context" select="'msgset'"/>
             <xsl:with-param name="name" select="'MsgLevel'"/>
@@ -363,7 +366,7 @@
     </xsl:when>
     <xsl:otherwise>
       <p>
-        <strong>
+        <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
           <xsl:call-template name="gentext.template">
             <xsl:with-param name="context" select="'msgset'"/>
             <xsl:with-param name="name" select="'MsgOrig'"/>
@@ -390,7 +393,7 @@
     </xsl:when>
     <xsl:otherwise>
       <p>
-        <strong>
+        <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
           <xsl:call-template name="gentext.template">
             <xsl:with-param name="context" select="'msgset'"/>
             <xsl:with-param name="name" select="'MsgAud'"/>
@@ -417,7 +420,7 @@
     </xsl:when>
     <xsl:otherwise>
       <p>
-        <strong>
+        <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
           <xsl:apply-templates/>
         </strong>
       </p>
@@ -433,7 +436,7 @@
     <table border="0" width="100%" summary="Revision history">
       <tr>
         <th align="{$direction.align.start}" valign="top" colspan="3">
-          <strong>
+          <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">
             <xsl:call-template name="gentext">
               <xsl:with-param name="key" select="'RevHistory'"/>
             </xsl:call-template>
