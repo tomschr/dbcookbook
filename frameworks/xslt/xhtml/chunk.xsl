@@ -21,5 +21,8 @@
   <xsl:include href="&db;/chunk-code.xsl"/>
   
   <xsl:param name="chunker.output.method" select="'xml'"/>
-    
+  <xsl:param name="chunker.output.doctype-system" select="''"/>
+  <xsl:param name="chunker.output.doctype-public" select="''"/>
+  <!--<xsl:param name="chunker.output.indent" select="'yes'"/>-->
+  
 </xsl:stylesheet>
