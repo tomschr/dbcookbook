@@ -8,7 +8,8 @@
   <!--<xsl:param name="chunk.tocs.and.lots" select="1"/>-->
   <xsl:param name="docbook.css.link" select="0"/>
   <xsl:param name="css.decoration" select="0"/>
-  <xsl:param name="callout.graphics.path" select="concat($img.src.path,'callouts/')"/>
+  <xsl:param name="callout.graphics.path"
+    select="concat($img.src.path,'png/callouts/')"/>
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
@@ -31,7 +32,7 @@
   <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
 
   
-  <xsl:param name="linenumbering.everyNth" select="1"/>
+  <xsl:param name="linenumbering.everyNth" select="2"/>
   <xsl:param name="make.clean.html" select="1"/>
   <xsl:param name="section.autolabel" select="1"/>
   <xsl:param name="section.label.includes.component.label" select="1"/>
