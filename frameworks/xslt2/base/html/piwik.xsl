@@ -1,1 +1,1 @@
-../../../xslt/html/piwik.xsl
+../../../xslt/xhtml/piwik.xsl
