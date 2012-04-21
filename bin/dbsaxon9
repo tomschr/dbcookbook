@@ -4,6 +4,9 @@
 # JPackage Project <http://www.jpackage.org/>
 
 source bin/common.sh
+
+framework
+
 #    -r:org.apache.xml.resolver.tools.CatalogResolver \
 # -init:docbook.Initializer
 bin/saxon9 -xi  \
