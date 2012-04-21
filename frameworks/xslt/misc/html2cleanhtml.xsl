@@ -112,6 +112,13 @@
   <!-- Remove empty anchors -->
   <xsl:template match="h:a[. = '']"/>
   
+  <!-- Copy without any changes: -->
+  <xsl:template match="h:div[@class='permalink']|
+                       h:div[@class='section-userlevel']|
+                       h:div[@class='section-navig']">
+    <xsl:copy-of select="."/>
+  </xsl:template>
+  
   <!-- ================================================ -->
   <xsl:template name="create-article">    
     <article>
