@@ -9,7 +9,6 @@
   
 <xsl:template name="sf:generate-userlevel">
   <xsl:param name="level" select="normalize-space(@userlevel)"/>
-    <xsl:if test="$generate.userlevel != 0">
       <xsl:variable name="ul">
         <xsl:choose>
           <xsl:when test="$level='hard' or $level='heavy'">hard</xsl:when>
@@ -33,7 +32,8 @@
         </xsl:choose>
       </xsl:variable>
 
-      <div class="section-userlevel" title="{$ul}">
+  <xsl:if test="$level != '' and $generate.userlevel != 0">
+    <div class="section-userlevel" title="{$ul}">
         <xsl:call-template name="gentext">
           <xsl:with-param name="key">Difficulty</xsl:with-param>
         </xsl:call-template>
