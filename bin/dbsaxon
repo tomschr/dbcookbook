@@ -32,9 +32,11 @@ for i in ${BUILDDIR}/tmp/*.html; do
 #   --tidy-mark no \
 #   --new-blocklevel-tags article,header,footer,section,aside \
 #   --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
- 
- [[ $VERBOSE != "" ]] && echo "  Cleaning up ${_base}..."
- xsltproc --html -o ${HTMLOUT}/${_base} \
+
+# We don't allow to contact the Internet, no validation is needed, so
+# we use --nonet and --novalid
+ echo "Cleaning up ${_base}..."
+ xsltproc --nonet --novalid -o ${HTMLOUT}/${_base} \
    ${BASEXSLT1}/misc/html2cleanhtml.xsl \
    $i
  sed -i '1s#??>#?>#' ${HTMLOUT}/${_base}
