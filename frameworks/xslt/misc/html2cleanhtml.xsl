@@ -48,21 +48,17 @@
     <xsl:apply-templates/>
   </xsl:template>
   
-  <xsl:template match="h:div/@xml:lang">
+  <!--<xsl:template match="h:div/@xml:lang">
     <xsl:attribute name="lang">
       <xsl:value-of select="."/>
     </xsl:attribute>
-  </xsl:template>
+  </xsl:template>-->
   
   <xsl:template match="h:div[@class='revhistory']/h:table/@border">
     <xsl:attribute name="border">0</xsl:attribute>
   </xsl:template>
   <xsl:template match="h:div[@class='revhistory']/h:table/@style"/>
   <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td/@style"/>
-  
-  <xsl:template match="@lang[.='']"/>
-  
-  <xsl:template match="@xmlns[.='']"/>
   
   <xsl:template match="@class">
     <xsl:choose>
@@ -84,12 +80,14 @@
     </xsl:choose>
   </xsl:template>
   
-  <xsl:template match="@xml:lang">
-    <xsl:attribute name="lang">
+  <!--<xsl:template match="@xml:lang">
+    <xsl:attribute name="xml:lang">
       <xsl:value-of select="."/>
     </xsl:attribute>
-  </xsl:template>
+  </xsl:template>-->
   <!-- Remove obsolete elements and attributes -->
+  <xsl:template match="@lang[.='']|@xml:lang[.='']"/>
+  <xsl:template match="@xmlns[.='']"/>  
   <xsl:template match="h:table/h:h1"/>
   <xsl:template match="/h:html/@version"/>
   <xsl:template match="h:br"/>
@@ -439,8 +437,7 @@
       </td>
     </tr>
   </xsl:template>
-  <xsl:template
-    match="h:div[@class='revhistory']/h:table/h:tr/h:td[1][not(@colspan)]">
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td[1][not(@colspan)]">
     <xsl:copy>
       <xsl:attribute name="class">revnumber</xsl:attribute>
       <xsl:apply-templates select="@*|node()"/>
@@ -458,8 +455,7 @@
       <xsl:apply-templates select="@*|node()"/>
     </xsl:copy>
   </xsl:template>
-  <xsl:template
-    match="h:div[@class='revhistory']/h:table/h:tr[h:td[@colspan] and position() > 1]">
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[h:td[@colspan] and position() > 1]">
     <xsl:copy>
       <xsl:attribute name="class">revdescription</xsl:attribute>
       <xsl:apply-templates select="@*|node()"/>
@@ -472,8 +468,7 @@
       <xsl:apply-templates />
     </xsl:copy>
   </xsl:template>
-  <xsl:template
-    match="h:div[@class='revhistory']/h:table/h:tr[count(h:td)=1 and
+  <xsl:template match="h:div[@class='revhistory']/h:table/h:tr[count(h:td)=1 and
     position() > 2]">
     <xsl:copy>
       <xsl:attribute name="class">revdescription</xsl:attribute>
