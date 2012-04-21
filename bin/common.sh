@@ -22,7 +22,9 @@ HLCONFIG="${DBXSLT5}/highlighting/xslthl-config.xml"
 HLFLAG="-Dxslthl.config=file://${HLCONFIG}"
 XINCLUDEFLAG="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"
 
-echo "Using Framework: $FRAMEWORKSDIR"
+framework() {
+ echo "Using Framework: $FRAMEWORKSDIR"
+}
 
 createEntity() {
 cat > ${BUILDDIR}/tmp/ents.ent <<EOF
