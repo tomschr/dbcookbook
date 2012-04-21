@@ -20,7 +20,7 @@ saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml/chunk.xsl
 # createEntity
 
 if true; then 
-  [[ $VERBOSE != "" ]] && echo -e "\nCleaning up HTML...\n"
+  echo -e "\nCleaning up HTML...\n"
 
 for i in ${BUILDDIR}/tmp/*.html; do
  _base=${i##*/}
@@ -35,7 +35,7 @@ for i in ${BUILDDIR}/tmp/*.html; do
 
 # We don't allow to contact the Internet, no validation is needed, so
 # we use --nonet and --novalid
- echo "Cleaning up ${_base}..."
+ echo "  Cleaning up ${_base}..."
  xsltproc --nonet --novalid -o ${HTMLOUT}/${_base} \
    ${BASEXSLT1}/misc/html2cleanhtml.xsl \
    $i
