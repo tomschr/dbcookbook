@@ -98,8 +98,10 @@
             <area xml:id="ar.pi.when" coords="9 32" units="linecolumn"/>
             <area xml:id="ar.pi.div" coords="10 45" units="linecolumn"/>
             <areaset xml:id="ar.pi.apply-imports">
-              <area coords="11 32" units="linecolumn"/>
-              <area coords="15 32" units="linecolumn"/>
+              <area coords="11 32" units="linecolumn"
+                xml:id="ar.pi.apply-imports.1"/>
+              <area coords="15 32" units="linecolumn"
+                xml:id="ar.pi.apply-imports.2"/>
             </areaset>
           </areaspec>
           <programlisting language="xml">&lt;xsl:template match="d:para">
