@@ -41,8 +41,6 @@
     </xsl:call-template>
   </xsl:variable>
   
-  
-  
   <xsl:if test="$use.downloadlink != 0 and $dl != ''">
     <xsl:variable name="html.class" select="local-name($node)"/>
     <xsl:message>f:create-downloadlink:
@@ -84,6 +82,50 @@
       <div class="{$html.class}">
         <xsl:copy-of select="$title"/>
       </div>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>
+
+
+<xsl:template match="informalexample">
+  <xsl:param name="class">
+    <xsl:apply-templates select="." mode="class.value"/>
+  </xsl:param>
+
+  <xsl:variable name="content">
+    <div class="{$class}">
+      <xsl:if test="$spacing.paras != 0"><p/></xsl:if>
+      <xsl:call-template name="anchor"/>
+      <xsl:call-template name="f:create-downloadlink">
+        <xsl:with-param name="node" select="."/>
+      </xsl:call-template>
+      <xsl:apply-templates/>
+  
+      <!-- HACK: This doesn't belong inside formal.object; it 
+           should be done by the table template, but I want 
+           the link to be inside the DIV, so... -->
+      <xsl:if test="local-name(.) = 'informaltable'">
+        <xsl:call-template name="table.longdesc"/>
+      </xsl:if>
+  
+      <xsl:if test="$spacing.paras != 0"><p/></xsl:if>
+    </div>
+  </xsl:variable>
+
+  <xsl:variable name="floatstyle">
+    <xsl:call-template name="floatstyle"/>
+  </xsl:variable>
+
+  <xsl:choose>
+    <xsl:when test="$floatstyle != ''">
+      <xsl:call-template name="floater">
+        <xsl:with-param name="class"><xsl:value-of select="$class"/>-float</xsl:with-param>
+        <xsl:with-param name="floatstyle" select="$floatstyle"/>
+        <xsl:with-param name="content" select="$content"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:copy-of select="$content"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
