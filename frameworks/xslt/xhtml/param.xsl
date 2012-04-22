@@ -46,6 +46,7 @@
   <xsl:param name="use.id.as.filename" select="1"/>
   <xsl:param name="use.extensions" select="1"/>
   <xsl:param name="use.viewport" select="0"/>
+  <xsl:param name="use.downloadlink" select="1"/>
   
   <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
   

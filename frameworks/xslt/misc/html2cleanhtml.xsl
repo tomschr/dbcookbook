@@ -115,7 +115,8 @@
   <!-- Copy without any changes: -->
   <xsl:template match="h:div[@class='permalink']|
                        h:div[@class='section-userlevel']|
-                       h:div[@class='section-navig']">
+                       h:div[@class='section-navig']|
+                       h:div[@class='example-download-link']">
     <xsl:copy-of select="."/>
   </xsl:template>
   
@@ -332,7 +333,8 @@
           <xsl:apply-templates select="@*"/>
         </xsl:otherwise>
       </xsl:choose>
-      <xsl:apply-templates select="h:div[@class=concat($class, '-title')]"/>
+      <xsl:apply-templates select="h:div[@class=concat($class, '-title')]"/>      
+      <xsl:apply-templates select="h:div[@class=concat($class, '-download-link')]"/>
       <xsl:apply-templates select="h:div[@class=concat($class,'-contents')]"/>
     </div>
   </xsl:template>
