@@ -99,6 +99,7 @@
   <xsl:template match="h:p[@class='legalnotice-title']"/>
 
   <xsl:template match="h:ul/@class"/>
+  <xsl:template match="h:ol[@class='procedure']/@class"/>
   
   <!-- Remove any id on headers as they are added to <section> -->
   <xsl:template match="h:h2[@class='title']/@id"/>
@@ -116,6 +117,8 @@
   <xsl:template match="h:div[@class='permalink']|
                        h:div[@class='section-userlevel']|
                        h:div[@class='section-navig']|
+                       h:div[@class='calloutlist']|
+                       h:div[@class='informalexample-download-link']|
                        h:div[@class='example-download-link']">
     <xsl:copy-of select="."/>
   </xsl:template>
@@ -319,12 +322,11 @@
     <p><b><xsl:apply-templates/></b></p>
   </xsl:template>
   
-  <!-- Block Structures -->
-  <xsl:template name="create-div-wrapper">
-    <xsl:param name="class" select="@class"/>
-    <div class="{$class}-wrapper"><!-- id=node-id() -->
-      <xsl:choose>
-        <xsl:when test="h:a[. = ''] and not(@id)">
+  <!-- Block Structures --> 
+  <xsl:template name="create.id">
+    <xsl:param name="node" select="."/>
+    <xsl:choose>
+        <xsl:when test="$node/h:a[. = ''] and not($node/@id)">
           <xsl:attribute name="id">
             <xsl:value-of select="h:a/@id"/>
           </xsl:attribute>
@@ -332,20 +334,44 @@
         <xsl:otherwise>
           <xsl:apply-templates select="@*"/>
         </xsl:otherwise>
-      </xsl:choose>
-      <xsl:apply-templates select="h:div[@class=concat($class, '-title')]"/>      
-      <xsl:apply-templates select="h:div[@class=concat($class, '-download-link')]"/>
-      <xsl:apply-templates select="h:div[@class=concat($class,'-contents')]"/>
+    </xsl:choose>
+  </xsl:template>
+  
+  <xsl:template match="h:div[@class='table']">
+    <figure class="table-wrapper">
+      <xsl:call-template name="create.id"/>
+      <xsl:apply-templates select="h:div[@class='table-title']"/>
+      <xsl:apply-templates select="h:div[@class='table-contents']"/>
+    </figure>
+  </xsl:template>
+  <xsl:template match="h:div[@class='table-title']">
+    <div class="title">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+  <xsl:template match="h:div[@class='table-contents']">
+    <div class="table">
+      <xsl:apply-templates/>
     </div>
   </xsl:template>
   <xsl:template match="h:div[@class='informaltable']">
-    <xsl:call-template name="create-div-wrapper"/>
+    <figure class="{@class}-wrapper">
+      <xsl:call-template name="create.id"/>
+      <div class="{@class}">
+        <xsl:apply-templates/>
+      </div>
+    </figure>
   </xsl:template>
+    
   <xsl:template match="h:div[@class='example']">
-    <xsl:call-template name="create-div-wrapper"/>
-  </xsl:template>
-  <xsl:template match="h:div[@class='figure']">
-    <xsl:call-template name="create-div-wrapper"/>
+    <figure class="{@class}-wrapper">
+      <xsl:call-template name="create.id"/>
+      <xsl:apply-templates select="h:div[@class='example-title']"/>
+      <div>
+        <xsl:apply-templates select="h:div[@class='example-download-link']"/>
+        <xsl:apply-templates select="h:div[@class='example-contents']"/>
+      </div>
+    </figure>
   </xsl:template>
   <xsl:template match="h:div[@class='example-title']">
     <div class="title">
@@ -357,6 +383,27 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
+  <xsl:template match="h:div[@class='informalexample']">
+    <figure class="{@class}-wrapper">
+      <xsl:call-template name="create.id"/>
+      <div>
+        <xsl:apply-templates select="h:div[@class='informalexample-download-link']"/>
+        <div class="{@class}">
+          <xsl:apply-templates
+            select="*[not(self::h:div[@class='informalexample-download-link'] or
+                          self::h:a)]"/>
+        </div>
+      </div>
+    </figure>
+  </xsl:template>
+  
+  <xsl:template match="h:div[@class='figure']">
+    <figure class="{@class}-wrapper">
+      <xsl:call-template name="create.id"/>
+      <xsl:apply-templates select="h:div[@class='figure-contents']"/>
+      <xsl:apply-templates select="h:div[@class='figure-title']"/>
+    </figure>
+  </xsl:template>
   <xsl:template match="h:div[@class='figure-title']">
     <div class="title">
       <xsl:apply-templates/>
@@ -367,27 +414,29 @@
       <xsl:apply-templates/>
     </div>
   </xsl:template>
-  <xsl:template match="h:div[@class='table']">
-    <figure class="table-wrapper">
-      <xsl:if test="h:a/@id">
-        <xsl:attribute name="id">
-          <xsl:value-of select="h:a/@id"/>
-        </xsl:attribute>
-      </xsl:if>
-      <xsl:apply-templates select="h:div[@class='table-title']"/>
-      <xsl:apply-templates select="h:div[@class='table-contents']"/>
+  <xsl:template match="h:div[@class='informalfigure']">
+    <figure class="{@class}-wrapper">
+      <xsl:call-template name="create.id"/>
+      <div class="{@class}">
+        <xsl:apply-templates select="*[not(self::h:a)]"/>
+      </div>
     </figure>
   </xsl:template>
   
-  <xsl:template match="h:div[@class='table-title']">
-    <div class="title">
-      <xsl:apply-templates/>
-    </div>
+  <xsl:template match="h:div[@class='procedure']">
+    <figure class="{@class}-wrapper">
+      <xsl:call-template name="create.id"/>
+      <div class="{@class}">
+        <xsl:apply-templates select="*[not(self::h:a)]"/>
+      </div>
+    </figure>
   </xsl:template>
-  <xsl:template match="h:div[@class='table-contents']">
-    <div class="table">
+  <xsl:template match="h:div[@class='procedure']/h:ol">
+    <ol>
+      <xsl:apply-templates select="@*"/>
+      <xsl:attribute name="type">1</xsl:attribute>
       <xsl:apply-templates/>
-    </div>
+    </ol>
   </xsl:template>
   
   <xsl:template match="h:div[@class='mediaobject']">
@@ -401,6 +450,12 @@
     </div>
   </xsl:template>
   
+  <xsl:template match="h:div[@class='programlistingco']">
+    <div class="programlisting">
+      <xsl:apply-templates select="h:pre"/>
+    </div>
+    <xsl:apply-templates select="*[not(self::h:pre)]"/>
+  </xsl:template>
   <xsl:template match="h:div[@class='programlisting']|h:div[@class='screen']">
     <xsl:copy>
       <xsl:apply-templates select="@*"/>
