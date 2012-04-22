@@ -10,27 +10,29 @@
   <xsl:param name="css.decoration" select="0"/>
   <xsl:param name="callout.graphics.path"
     select="concat($img.src.path,'png/callouts/')"/>
+
+  <xsl:param name="inherit.keywords" select="1"/>
+
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
   <xsl:param name="html.stylesheet">css/dbcookbook.css</xsl:param>
   <xsl:param name="html.ext">.html</xsl:param>
-  <xsl:param name="inherit.keywords" select="1"/>
-
   <xsl:param name="highlight.source" select="1"/>
   <!--<xsl:param name="highlight.xslthl.config"/>-->
-  <xsl:param name="generate.id.attributes" select="1"/>
   
-  <xsl:param name="generate.user.meta" select="1"/>
-  <xsl:param name="generate.section.navig" select="0"/>
+  <xsl:param name="generate.breadcrumbs" select="0"/>
+  <xsl:param name="generate.id.attributes" select="1"/>
   <xsl:param name="generate.javascript" select="1"/>
   <xsl:param name="generate.permalink" select="1"/>
+  <xsl:param name="generate.section.navig" select="0"/>
   <xsl:param name="generate.userlevel" select="1"/>
+  <xsl:param name="generate.user.meta" select="1"/>
+  
   <xsl:param name="permalink.text">¶</xsl:param>
   <xsl:param name="userlevel.easy"  >★☆☆</xsl:param><!-- ⚑⚐⚐ -->
   <xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
   <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
-
   
   <xsl:param name="linenumbering.everyNth" select="2"/>
   <xsl:param name="make.clean.html" select="1"/>
@@ -43,16 +45,15 @@
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
   <xsl:param name="ulink.target" select="0"/>
-  <xsl:param name="use.id.as.filename" select="1"/>
-  <xsl:param name="use.extensions" select="1"/>
-  <xsl:param name="use.viewport" select="0"/>
+
   <xsl:param name="use.downloadlink" select="1"/>
+  <xsl:param name="use.extensions" select="1"/>
+  <xsl:param name="use.id.as.filename" select="1"/>
+  <xsl:param name="use.piwik" select="0"/>
+  <xsl:param name="use.viewport" select="0"/>
   
   <xsl:param name="local.l10n.xml" select="document('../common/l10n.xml')"/>
-  
-  <xsl:param name="use.piwik" select="0"/>
-  <xsl:param name="generate.breadcrumbs" select="0"/>
-  
+ 
   <!-- ================================================== -->
   <xsl:param name="up.navigation">
     <span> &#x2191; </span><!-- &#x25b5; -->
