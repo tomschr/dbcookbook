@@ -26,6 +26,12 @@ framework() {
  echo "Using Framework: $FRAMEWORKSDIR"
 }
 
+exit_on_error() {
+  local msg=$1
+  echo $msg
+  exit 10
+}
+
 createEntity() {
 cat > ${BUILDDIR}/tmp/ents.ent <<EOF
 <!ENTITY % amsa.ent SYSTEM "/usr/share/xml/entities/xmlcharent/0.3/iso-amsa.ent">
