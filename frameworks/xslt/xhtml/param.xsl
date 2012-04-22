@@ -24,6 +24,7 @@
   <xsl:param name="generate.breadcrumbs" select="0"/>
   <xsl:param name="generate.id.attributes" select="1"/>
   <xsl:param name="generate.javascript" select="1"/>
+  <xsl:param name="generate.keywordlist" select="1"/>
   <xsl:param name="generate.permalink" select="1"/>
   <xsl:param name="generate.section.navig" select="0"/>
   <xsl:param name="generate.userlevel" select="1"/>
