@@ -44,68 +44,66 @@
       target formats. As such, <quote>the</quote> HTML does not exist,
       only a variety of HTML dialects:</para>
     
-    <variablelist>
-      <varlistentry>
-        <term><filename class="directory">html</filename></term>
-        <listitem>
-          <para>Contains stylesheets for the <quote>classical</quote>
-            HTML version 4.x.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><filename class="directory">htmlhelp</filename></term>
-        <listitem>
-          <para>Contains stylesheets for HTMLHelp, the standard help
+    <table xml:id="tab.html.intro.overview">
+      <title>Overview of Different HTML Stylesheets</title>
+      <tgroup cols="2">
+        <colspec colwidth="1*"/>
+        <colspec colwidth="5*"/>
+        <thead>
+          <row>
+            <entry>Directory</entry>
+            <entry>Explanation</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><filename class="directory">html</filename></entry>
+            <entry>Contains stylesheets for the <quote>classical</quote>
+            HTML version 4.x.</entry>
+          </row>
+          <row>
+            <entry><filename class="directory">htmlhelp</filename></entry>
+            <entry>Contains stylesheets for HTMLHelp, the standard help
             system from Windows&#xa0;3.0 through Windows XP. The main
             stylesheet <filename>htmlhelp.xsl</filename> uses code from
-            the HTML&#xa0;4.x stylesheets. </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><filename class="directory">webhelp</filename></term>
-        <listitem>
-          <para>Contains the result of the <acronym>GSOC<alt>Google
-                Summer of Code</alt></acronym> 2010.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><filename class="directory">website</filename></term>
-        <listitem>
-          <para>Contains stylesheets to create a <quote>Web
-            site</quote>.</para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><filename class="directory">xhtml</filename></term>
-        <listitem>
-          <para>Contains stylesheets for XHTML version 1.0
+            the HTML&#xa0;4.x stylesheets</entry>
+          </row>
+          <row>
+            <entry><filename class="directory">webhelp</filename></entry>
+            <entry>Contains the result of the <acronym>GSOC<alt>Google
+                Summer of Code</alt></acronym> 2010</entry>
+          </row>
+          <row>
+            <entry><filename class="directory">website</filename></entry>
+            <entry>Contains stylesheets to create a <quote>Web
+            site</quote></entry>
+          </row>
+          <row>
+            <entry><filename class="directory">xhtml</filename></entry>
+            <entry>Contains stylesheets for XHTML version 1.0
               (<quote>transitional XHTML</quote>). These stylesheets are
             generated through a XSLT transformation from the HTML core
-            stylesheets. </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><filename class="directory">xhtml-1_1</filename></term>
-        <listitem>
-          <para>Contains stylesheets for XHTML version 1.1. Like the one
+            stylesheets</entry>
+          </row>
+          <row>
+            <entry><filename class="directory">xhtml-1_1</filename></entry>
+            <entry>Contains stylesheets for XHTML version 1.1. Like the one
             for XHTML, they are generated through a XSLT transformation.
             In comparison, the XHTML 1.1 omits certain attributes which
             were allowed in XHTML or HTML. The missing part must be
             implemented by CSS.
-            The XHTML 1.1 stylesheets are also used for EPUB creation.
-          </para>
-        </listitem>
-      </varlistentry>
-      <varlistentry>
-        <term><filename class="directory">xhtml5</filename></term>
-        <listitem>
-          <para>Contains stylesheets for HTML&#xa0;5. These are
+            The XHTML 1.1 stylesheets are also used for EPUB creation.</entry>
+          </row>
+          <row>
+            <entry><filename class="directory">xhtml5</filename></entry>
+            <entry>Contains stylesheets for HTML&#xa0;5. These are
             currently (as of September 2011) pretty new and in
-            development.</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-    
+            development.</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+
   </section>
   
   <!-- 
