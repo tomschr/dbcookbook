@@ -453,6 +453,15 @@ div.note {
 }
 
 /* Footnotes */
+div.footnotes hr
+{
+  display:block;
+  border:none;
+  width:80%;
+  border-top: 1px dotted darkgray;
+  background-color: #FFFFFF;
+  height: 1px;
+}
 div.footnote p {
   font-size:small;
 }
