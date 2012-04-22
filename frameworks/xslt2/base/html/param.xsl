@@ -25,6 +25,7 @@
   <xsl:param name="linenumbering.everyNth" select="2"/>
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
+  <xsl:param name="generate.keywordlist" select="1"/>
   <xsl:param name="generate.user.meta" select="1"/>
   
   <xsl:param name="img.src.path"></xsl:param>

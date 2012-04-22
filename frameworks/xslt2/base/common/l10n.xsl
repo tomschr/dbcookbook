@@ -16,6 +16,8 @@
       <l:l10n language="en" english-language-name="English">
         <l:gentext key="Difficulty" text="Difficulty: "/>
         <l:gentext key="Ticket" text="See also Ticket#"/>
+        <l:gentext key="Keyword" text="Keyword"/>
+        <l:gentext key="Keywords" text="Keywords"/>
         <l:gentext key="Permalink" text="Permalink"/>
         <l:gentext key="permalink" text="permalink"/>
         <l:gentext key="Download" text="Download File"/>

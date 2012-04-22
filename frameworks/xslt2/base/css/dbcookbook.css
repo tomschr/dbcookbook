@@ -294,9 +294,11 @@ h3.navig {
   padding:3pt;
   background-color:#FFFCD1;
 }
-.section-navig, .section-userlevel {
+.section-navig, .section-userlevel, .keywordset {
   margin-left:.6em;
 }
+
+
 
 .section-titlepage:before,
 .section-navig:before,
@@ -349,7 +351,7 @@ h3.navig {
   font-weight:normal;
 }
 
-.section-titlepage  .section-userlevel {
+.section-titlepage  .section-userlevel, .keywordset {
   /*margin-left:1em;*/
   font-size:smaller;
 }
