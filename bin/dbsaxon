@@ -3,6 +3,9 @@
 
 source bin/common.sh
 
+SAXON_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
+XSLTHL_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/xslthl-2.0.2.jar"
+
 export ADDITIONAL_JARS="xerces-j2.jar xerces-j2-xml-apis.jar"
 export ADDITIONAL_FLAGS="-Djavax.xml.parsers.DocumentBuilderFactory=\
 org.apache.xerces.jaxp.DocumentBuilderFactoryImpl \
@@ -10,10 +13,11 @@ org.apache.xerces.jaxp.DocumentBuilderFactoryImpl \
 org.apache.xerces.jaxp.SAXParserFactoryImpl \
 ${XINCLUDEFLAG} ${HLFLAG}"
 
-export CLASSPATH="${CATALOGPROP}:${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
+
+export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
 [[ $VERBOSE != "" ]] && echo "Transforming..."
-saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml/chunk.xsl
+saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml/chunk.xsl || exit_on_error "ERROR: Something went wrong"
 
 # [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 
