@@ -61,7 +61,7 @@
               <area xml:id="ar.movetoc.call" coords="33"
                 units="linecolumn"/>
             </areaspec>
-            <programlisting language="xml"><xi:include href="move-toc/move-toc.xsl" parse="text"/></programlisting>
+            <programlisting language="xml" linenumbering="numbered"><xi:include href="move-toc/move-toc.xsl" parse="text"/></programlisting>
             <calloutlist>
               <callout arearefs="ar.movetoc.apply">
                 <para>The <tag>xsl:apply-templates</tag> creates first
