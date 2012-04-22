@@ -43,11 +43,11 @@
   
   <xsl:if test="$use.downloadlink != 0 and $dl != ''">
     <xsl:variable name="html.class" select="local-name($node)"/>
-    <xsl:message>f:create-downloadlink:
+    <!--<xsl:message>f:create-downloadlink:
       node = <xsl:value-of select="local-name($node)"/>
       html.class = <xsl:value-of select="$html.class"/>
       dl   = "<xsl:value-of select="$dl"/>"
-    </xsl:message>
+    </xsl:message>-->
     
     <div class="{$html.class}-download-link">
       <a href="{$dl}">
