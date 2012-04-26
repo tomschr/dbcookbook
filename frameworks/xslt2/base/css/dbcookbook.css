@@ -299,7 +299,6 @@ h3.navig {
 }
 
 
-
 .section-titlepage:before,
 .section-navig:before,
 .section-titlepage:after,
@@ -429,6 +428,10 @@ div.remark {
   margin-bottom:1ex;
   color:red;
   font-size:smaller;
+}
+
+span.personname span.firstname:after {
+  content:" ";
 }
 
 /* Verbatim */
