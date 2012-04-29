@@ -83,7 +83,7 @@
       </info>
       <programlistingco>
         <areaspec>
-          <area xml:id="co.xpathns.ns" coords="5" units="linecolumn"/>
+          <area xml:id="co.xpathns.ns" coords="5 50" units="linecolumn"/>
           <area xml:id="co.xpathns.nsnodes" coords="13 75" units="linecolumn"/>
           <area xml:id="co.xpathns.method" coords="18" units="linecolumn"/>
           <area xml:id="co.xpathns.choose" coords="21" units="linecolumn"/>
@@ -116,6 +116,42 @@
         </callout>
       </calloutlist>
     </example>
+ 
+    <para>The template can output the XPath in two different notations:</para>
+    <variablelist>
+      <varlistentry>
+        <term>Prefix (<literal>method="prefix"</literal>, default)</term>
+        <listitem>
+          <para>Namespace nodes are abbreviated with a prefix. The
+            prefix is definied in the <tag>namespaces</tag> element. A
+            XPath to the first chapter inside a book looks like this:</para>
+          <screen>/d:book/d:chapter[1]</screen>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Clark (<literal>method="clark"</literal>)</term>
+        <listitem>
+          <para>Namespace nodes are printed with the full namespace
+            URL. The namespace URL is definied in the
+              <tag>namespaces</tag> element. A XPath to the first
+            chapter inside a book looks like this:</para>
+          <screen>/{http://docbook.org/ns/docbook}book/{http://docbook.org/ns/docbook}chapter[1]</screen>
+          <note>
+            <title>Clark Notation not Officially Supported</title>
+            <para>The above notation is called the <emphasis>Clark
+            notation</emphasis>, after <personname>
+              <firstname>James</firstname>
+              <surname>Clark</surname>
+            </personname>, the editor of the XSLT 1.0 and XPath 1.0
+            specifications.
+            However, this notation cannot be used for XSLT as it is not
+            officially supported. Only use the prefixed version in this
+            case. The Clark notation is just useful for debugging
+            purposes when you want or need the full namespace URLs.</para>
+          </note>
+        </listitem>
+      </varlistentry>
+    </variablelist>
     <para>Be aware, the previous template is slower than the original
       version (it has to count a little bit more). For debugging purpose
       it is probably fine.
