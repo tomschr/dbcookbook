@@ -137,14 +137,14 @@
             chapter inside a book looks like this:</para>
           <screen>/{http://docbook.org/ns/docbook}book/{http://docbook.org/ns/docbook}chapter[1]</screen>
           <note>
-            <title>Clark Notation not Officially Supported</title>
+            <title>Use Clark Notation For Debugging Purposes Only</title>
             <para>The above notation is called the <emphasis>Clark
             notation</emphasis>, after <personname>
               <firstname>James</firstname>
               <surname>Clark</surname>
             </personname>, the editor of the XSLT 1.0 and XPath 1.0
             specifications.
-            However, this notation cannot be used for XSLT as it is not
+            However, this notation cannot be used in XSLT as it is not
             officially supported. Only use the prefixed version in this
             case. The Clark notation is just useful for debugging
             purposes when you want or need the full namespace URLs.</para>
