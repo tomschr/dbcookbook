@@ -171,6 +171,13 @@
       <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
     </span>
   </xsl:template>
+  <!-- Omit any linebreaks inside span: -->
+  <xsl:template match="span[@class='co']">
+    <span>
+      <xsl:apply-templates select="@*[local-name(.) != 'xmlns']"/>
+      <xsl:apply-templates select="*"/>
+    </span>
+  </xsl:template>
   <xsl:template match="em">
     <em>
       <xsl:apply-templates select="@*[local-name(.) != 'xmlns']|node()"/>
