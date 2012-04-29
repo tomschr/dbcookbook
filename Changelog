@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Son Apr 22 19:00:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Added new topic: Moving the Table of Contents (TOC)
+
+Infrastructure:
+- Added link to Atom/RSS feed
+- Added list of keywords after topic title
+- Improved chunked HTML code:
+  * Cleaned up HTML code to output HTML5
+  * Added download link for example code
+  * Added permalink "¶" for each section inside chapter
+  * Added "Difficulty" 
+
+-------------------------------------------------------------------
 Sat Feb 25 20:14:00 UTC 2012 - tom_schr@web.de
 
 Topics:
