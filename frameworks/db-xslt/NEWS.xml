@@ -14,12 +14,12 @@
 </abstract>
 </info><title>Changes since the 1.76.0 release</title>
 
-<sect1 xml:id="Vsnapshot_9296">
-<title>Release Notes: snapshot_9296</title>
+<sect1 xml:id="Vsnapshot_9308">
+<title>Release Notes: snapshot_9308</title>
 <para>The following is a list of changes that have been made
         since the 1.76.0 release.</para>
 
-<sect2 xml:id="Vsnapshot_9296_Gentext">
+<sect2 xml:id="Vsnapshot_9308_Gentext">
 <title>Gentext</title>
 <para>The following changes have been made to the
             <filename>gentext</filename> code
@@ -70,9 +70,9 @@ lexgrog, and it's unnecessarily long anyway.  I'd rather not add more
 forms to lexgrog unless absolutely necessary.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Gentext changes for snapshot_9296-->
+</sect2><!--end of Gentext changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Common">
+<sect2 xml:id="Vsnapshot_9308_Common">
 <title>Common</title>
 <para>The following changes have been made to the
             <filename>common</filename> code
@@ -119,9 +119,9 @@ mode="label.markup".</phrase></screen>
 <para><literal>Jirka Kosek: l10n.xsl</literal></para><screen><phrase role="commit-message">Fixed bug when context was lost due to usage of xsl:key</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Common changes for snapshot_9296-->
+</sect2><!--end of Common changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_FO">
+<sect2 xml:id="Vsnapshot_9308_FO">
 <title>FO</title>
 <para>The following changes have been made to the
             <filename>fo</filename> code
@@ -320,14 +320,41 @@ bug report #3029845.</phrase></screen>
 <para><literal>dleidert: pagesetup.xsl</literal></para><screen><phrase role="commit-message">Remove the namespace mistakingly added with the last upload.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of FO changes for snapshot_9296-->
+</sect2><!--end of FO changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_HTML">
+<sect2 xml:id="Vsnapshot_9308_HTML">
 <title>HTML</title>
 <para>The following changes have been made to the
             <filename>html</filename> code
             since the 1.76.0 release.</para>
 <itemizedlist>
+<listitem>
+<para><literal>Robert Stayton: lists.xsl</literal></para><screen><phrase role="commit-message">Small changes in support of HTML5 stylesheet.
+Fix bug 3510185 for output list <tag>title</tag> when inside <tag>info</tag>.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: html.xsl</literal></para><screen><phrase role="commit-message">define internal variables div.element and table.border.off to
+enable easier support of HTML5 syntax.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: callout.xsl</literal></para><screen><phrase role="commit-message">Fix handling of id attributes on callouts.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: footnote.xsl</literal></para><screen><phrase role="commit-message">Fix missing id attribute on <tag>footnote</tag> mark.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: sections.xsl</literal></para><screen><phrase role="commit-message">Bug fix for <parameter>generate.id.attributes</parameter>.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: titlepage.xsl; autoidx.xsl</literal></para><screen><phrase role="commit-message">bug fix for <parameter>generate.id.attributes</parameter> creating duplicate ids.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: division.xsl; sections.xsl; block.xsl; footnote.xsl</literal></para><screen><phrase role="commit-message">Fix minor bugs in <parameter>generate.id.attributes</parameter> implementation.</phrase></screen>
+</listitem>
+<listitem>
+<para><literal>Robert Stayton: inline.xsl; titlepage.xsl; formal.xsl; division.xsl; toc.xsl; sections.xsl⋯</literal></para><screen><phrase role="commit-message">Finish implementation of <parameter>generate.id.attributes</parameter> for all elements
+using the template named id.attribute.</phrase></screen>
+</listitem>
 <listitem>
 <para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Fix <tag>TOC</tag> entries for topic element.</phrase></screen>
 </listitem>
@@ -510,9 +537,9 @@ did not work for <tag>table</tag> or <tag>informaltable</tag>.</phrase></screen>
 <para><literal>Keith Fahlgren: highlight.xsl</literal></para><screen><phrase role="commit-message">Implementing handling for &lt;b&gt; and &lt;i&gt;: transform to &lt;strong&gt; and &lt;em&gt; for XHTML outputs and do not use in the highliting output (per Mauritz Jeanson)</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of HTML changes for snapshot_9296-->
+</sect2><!--end of HTML changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Manpages">
+<sect2 xml:id="Vsnapshot_9308_Manpages">
 <title>Manpages</title>
 <para>The following changes have been made to the
             <filename>manpages</filename> code
@@ -522,9 +549,9 @@ did not work for <tag>table</tag> or <tag>informaltable</tag>.</phrase></screen>
 <para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Manpages changes for snapshot_9296-->
+</sect2><!--end of Manpages changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Epub">
+<sect2 xml:id="Vsnapshot_9308_Epub">
 <title>Epub</title>
 <para>The following changes have been made to the
             <filename>epub</filename> code
@@ -559,9 +586,9 @@ chunk-code.xsl is xsl:included, not xsl:imported.</phrase></screen>
 <para><literal>Keith Fahlgren: bin/dbtoepub; bin/lib/docbook.rb</literal></para><screen><phrase role="commit-message">Only copy images once for the DocBook to EPUB tool to correct Windows bug reported in [#3065489]</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Epub changes for snapshot_9296-->
+</sect2><!--end of Epub changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_HTMLHelp">
+<sect2 xml:id="Vsnapshot_9308_HTMLHelp">
 <title>HTMLHelp</title>
 <para>The following changes have been made to the
             <filename>htmlhelp</filename> code
@@ -571,9 +598,9 @@ chunk-code.xsl is xsl:included, not xsl:imported.</phrase></screen>
 <para><literal>Robert Stayton: htmlhelp-common.xsl</literal></para><screen><phrase role="commit-message">Change $base.dir to $chunk.base.dir to ensure trailing slash in place.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of HTMLHelp changes for snapshot_9296-->
+</sect2><!--end of HTMLHelp changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Eclipse">
+<sect2 xml:id="Vsnapshot_9308_Eclipse">
 <title>Eclipse</title>
 <para>The following changes have been made to the
             <filename>eclipse</filename> code
@@ -583,9 +610,9 @@ chunk-code.xsl is xsl:included, not xsl:imported.</phrase></screen>
 <para><literal>Robert Stayton: eclipse.xsl; eclipse3.xsl</literal></para><screen><phrase role="commit-message">Use $chunk.base.dir instead of $base.dir to ensure trailing slash is in place.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Eclipse changes for snapshot_9296-->
+</sect2><!--end of Eclipse changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_JavaHelp">
+<sect2 xml:id="Vsnapshot_9308_JavaHelp">
 <title>JavaHelp</title>
 <para>The following changes have been made to the
             <filename>javahelp</filename> code
@@ -599,9 +626,9 @@ chunk-code.xsl is xsl:included, not xsl:imported.</phrase></screen>
 which simplifies customization. See bug #3310904.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of JavaHelp changes for snapshot_9296-->
+</sect2><!--end of JavaHelp changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Roundtrip">
+<sect2 xml:id="Vsnapshot_9308_Roundtrip">
 <title>Roundtrip</title>
 <para>The following changes have been made to the
             <filename>roundtrip</filename> code
@@ -611,9 +638,9 @@ which simplifies customization. See bug #3310904.</phrase></screen>
 <para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Roundtrip changes for snapshot_9296-->
+</sect2><!--end of Roundtrip changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Slides">
+<sect2 xml:id="Vsnapshot_9308_Slides">
 <title>Slides</title>
 <para>The following changes have been made to the
             <filename>slides</filename> code
@@ -623,9 +650,9 @@ which simplifies customization. See bug #3310904.</phrase></screen>
 <para><literal>Dave Pawson: fo/param.xweb; html/param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Slides changes for snapshot_9296-->
+</sect2><!--end of Slides changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Website">
+<sect2 xml:id="Vsnapshot_9308_Website">
 <title>Website</title>
 <para>The following changes have been made to the
             <filename>website</filename> code
@@ -635,14 +662,17 @@ which simplifies customization. See bug #3310904.</phrase></screen>
 <para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Website changes for snapshot_9296-->
+</sect2><!--end of Website changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Webhelp">
+<sect2 xml:id="Vsnapshot_9308_Webhelp">
 <title>Webhelp</title>
 <para>The following changes have been made to the
             <filename>webhelp</filename> code
             since the 1.76.0 release.</para>
 <itemizedlist>
+<listitem>
+<para><literal>David Cramer: template/common/main.js</literal></para><screen><phrase role="commit-message">Webhelp: tweaking scrolldown offset for anchors</phrase></screen>
+</listitem>
 <listitem>
 <para><literal>David Cramer: docsrc/images; docsrc/images/sample.jpg; docsrc/readme.xml; template/content⋯</literal></para><screen><phrase role="commit-message">Webhelp: updating docs. Ant version, install instructions, handling of images.</phrase></screen>
 </listitem>
@@ -987,9 +1017,9 @@ Added hooks for adding additional user defined tabs</phrase></screen>
 <para><literal>David Cramer: indexer/src/com/nexwave/nquindexer/IndexerTask.java; build.xml; indexer/src/⋯</literal></para><screen><phrase role="commit-message">Merged in changes from webhelp branch to <tag>address</tag> issue #3058244 regarding the xx.html temp file that was being created</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Webhelp changes for snapshot_9296-->
+</sect2><!--end of Webhelp changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Params">
+<sect2 xml:id="Vsnapshot_9308_Params">
 <title>Params</title>
 <para>The following changes have been made to the
             <filename>params</filename> code
@@ -1112,9 +1142,9 @@ Add caveat about this applying only to empty ulink elements.</phrase></screen>
 <para><literal>Robert Stayton: draft.mode.xml</literal></para><screen><phrase role="commit-message">Change default for <parameter>draft.mode</parameter> to 'no'.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Params changes for snapshot_9296-->
+</sect2><!--end of Params changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Highlighting">
+<sect2 xml:id="Vsnapshot_9308_Highlighting">
 <title>Highlighting</title>
 <para>The following changes have been made to the
             <filename>highlighting</filename> code
@@ -1127,9 +1157,9 @@ Add caveat about this applying only to empty ulink elements.</phrase></screen>
 <para><literal>Jirka Kosek: delphi-hl.xml</literal></para><screen><phrase role="commit-message">Additional keywords from Yuri Zhilin</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Highlighting changes for snapshot_9296-->
+</sect2><!--end of Highlighting changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Profiling">
+<sect2 xml:id="Vsnapshot_9308_Profiling">
 <title>Profiling</title>
 <para>The following changes have been made to the
             <filename>profiling</filename> code
@@ -1139,9 +1169,9 @@ Add caveat about this applying only to empty ulink elements.</phrase></screen>
 <para><literal>David Cramer: profile-mode.xsl</literal></para><screen><phrase role="commit-message">When profile.* params only consist of space characters, then ignore them.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Profiling changes for snapshot_9296-->
+</sect2><!--end of Profiling changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Lib">
+<sect2 xml:id="Vsnapshot_9308_Lib">
 <title>Lib</title>
 <para>The following changes have been made to the
             <filename>lib</filename> code
@@ -1157,9 +1187,9 @@ that way with profiling/xsl2profile.xsl.</phrase></screen>
 the paths.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Lib changes for snapshot_9296-->
+</sect2><!--end of Lib changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Template">
+<sect2 xml:id="Vsnapshot_9308_Template">
 <title>Template</title>
 <para>The following changes have been made to the
             <filename>template</filename> code
@@ -1181,9 +1211,9 @@ the paths.</phrase></screen>
 <para><literal>Jirka Kosek: titlepage.xsl</literal></para><screen><phrase role="commit-message">Titlepage mechanism is now namespace aware to support XHTML. Please note that when generating titlepage template stylesheets you have to pass FO or XHTML namespace inside ns parameter. For HTML parameter should be empty.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Template changes for snapshot_9296-->
+</sect2><!--end of Template changes for snapshot_9308-->
 
-<sect2 xml:id="Vsnapshot_9296_Extensions">
+<sect2 xml:id="Vsnapshot_9308_Extensions">
 <title>Extensions</title>
 <para>The following changes have been made to the
             <filename>extensions</filename> code
@@ -1202,7 +1232,7 @@ the paths.</phrase></screen>
 <para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">Refactoring webhelp to separate more cleanly the xsl and java code.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Extensions changes for snapshot_9296-->
+</sect2><!--end of Extensions changes for snapshot_9308-->
 
 </sect1>
 </article>

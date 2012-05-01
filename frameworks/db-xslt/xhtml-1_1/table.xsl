@@ -6,7 +6,7 @@
 <xsl:include href="../common/table.xsl"/>
 
 <!-- ********************************************************************
-     $Id: table.xsl 9158 2011-11-24 00:12:16Z bobstayton $
+     $Id: table.xsl 9297 2012-04-22 03:56:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -592,6 +592,7 @@
   </xsl:variable>
 
   <tr>
+    <xsl:call-template name="id.attribute"/>
     <xsl:call-template name="tr.attributes">
       <xsl:with-param name="rownum">
         <xsl:number from="tgroup" count="row"/>
@@ -816,6 +817,7 @@
       </xsl:variable>
 
       <xsl:element name="{$cellgi}" namespace="http://www.w3.org/1999/xhtml">
+        <xsl:call-template name="id.attribute"/>
         <xsl:if test="$bgcolor != ''">
           <xsl:attribute name="style"><xsl:text>background-color: </xsl:text>
             <xsl:value-of select="$bgcolor"/>

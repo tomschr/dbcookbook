@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: formal.xsl 9140 2011-10-30 03:42:11Z bobstayton $
+     $Id: formal.xsl 9297 2012-04-22 03:56:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -25,6 +25,9 @@
 
   <xsl:variable name="content">
     <div class="{$class}">
+      <xsl:call-template name="id.attribute">
+        <xsl:with-param name="conditional" select="0"/>
+      </xsl:call-template>
       <xsl:call-template name="anchor">
         <xsl:with-param name="conditional" select="0"/>
       </xsl:call-template>
@@ -115,6 +118,7 @@
 
   <xsl:variable name="content">
     <div class="{$class}">
+      <xsl:call-template name="id.attribute"/>
       <xsl:if test="$spacing.paras != 0"><p/></xsl:if>
       <xsl:call-template name="anchor"/>
       <xsl:apply-templates/>
@@ -234,6 +238,9 @@
 
   <xsl:variable name="content">
     <div class="{$class}">
+      <xsl:call-template name="id.attribute">
+        <xsl:with-param name="conditional" select="0"/>
+      </xsl:call-template>
       <xsl:call-template name="anchor">
         <xsl:with-param name="conditional" select="0"/>
       </xsl:call-template>

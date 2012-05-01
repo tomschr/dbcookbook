@@ -7,7 +7,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: callout.xsl 9259 2012-03-29 16:36:20Z bobstayton $
+     $Id: callout.xsl 9305 2012-04-27 21:50:53Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -52,6 +52,7 @@
                         and $linenumbering.extension != '0'">
           <div>
             <xsl:call-template name="common.html.attributes"/>
+            <xsl:call-template name="id.attribute"/>
             <xsl:call-template name="number.rtf.lines">
               <xsl:with-param name="rtf" select="$rtf-with-callouts"/>
               <xsl:with-param name="pi.context"
@@ -63,6 +64,7 @@
         <xsl:otherwise>
           <div>
             <xsl:call-template name="common.html.attributes"/>
+            <xsl:call-template name="id.attribute"/>
             <xsl:copy-of select="$rtf-with-callouts"/>
             <xsl:apply-templates select="calloutlist"/>
           </div>
@@ -72,6 +74,7 @@
     <xsl:otherwise>
       <div>
         <xsl:apply-templates select="." mode="common.html.attributes"/>
+        <xsl:call-template name="id.attribute"/>
         <xsl:apply-templates/>
       </div>
     </xsl:otherwise>
@@ -97,11 +100,19 @@
     <xsl:when test="$target">
       <a>
         <xsl:apply-templates select="." mode="common.html.attributes"/>
-        <xsl:if test="@id or @xml:id">
-          <xsl:attribute name="name">
-            <xsl:value-of select="(@id|@xml:id)[1]"/>
-          </xsl:attribute>
-        </xsl:if>
+        <xsl:choose>
+          <xsl:when test="$generate.id.attributes = 0">
+            <!-- force an id attribute here -->
+            <xsl:if test="@id or @xml:id">
+              <xsl:attribute name="name">
+                <xsl:value-of select="(@id|@xml:id)[1]"/>
+              </xsl:attribute>
+            </xsl:if>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:call-template name="id.attribute"/>
+          </xsl:otherwise>
+        </xsl:choose>
         <xsl:attribute name="href">
           <xsl:call-template name="href.target">
             <xsl:with-param name="object" select="$target"/>
@@ -111,6 +122,15 @@
       </a>
     </xsl:when>
     <xsl:otherwise>
+      <xsl:if test="$generate.id.attributes != 0">
+        <xsl:if test="@id or @xml:id">
+          <span>
+             <xsl:attribute name="id">
+                <xsl:value-of select="(@id|@xml:id)[1]"/>
+              </xsl:attribute>
+          </span>
+        </xsl:if>
+      </xsl:if>
       <xsl:call-template name="anchor"/>
       <xsl:apply-templates select="." mode="callout-bug"/>
     </xsl:otherwise>

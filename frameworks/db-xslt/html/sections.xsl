@@ -3,7 +3,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: sections.xsl 8421 2009-05-04 07:49:49Z bobstayton $
+     $Id: sections.xsl 9300 2012-04-22 10:12:19Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -22,6 +22,9 @@
   <div>
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
+    </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
     </xsl:call-template>
     <xsl:call-template name="section.titlepage"/>
 
@@ -102,6 +105,9 @@
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
 
     <xsl:choose>
       <xsl:when test="@renderas = 'sect2'">
@@ -152,6 +158,9 @@
   <div>
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
+    </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
     </xsl:call-template>
 
     <xsl:choose>
@@ -204,6 +213,9 @@
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
 
     <xsl:choose>
       <xsl:when test="@renderas = 'sect1'">
@@ -254,6 +266,9 @@
   <div>
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
+    </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
     </xsl:call-template>
 
     <xsl:choose>
@@ -306,6 +321,9 @@
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
 
     <xsl:choose>
       <xsl:when test="@renderas = 'sect1'">
@@ -356,6 +374,9 @@
   <div>
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
+    </xsl:call-template>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
     </xsl:call-template>
 
     <xsl:call-template name="simplesect.titlepage"/>
@@ -458,14 +479,11 @@
         <xsl:attribute name="style">clear: both</xsl:attribute>
       </xsl:if>
     </xsl:if>
-    <xsl:if test="$allow-anchors != 0 and $generate.id.attributes = 0">
+    <xsl:if test="$allow-anchors != 0">
       <xsl:call-template name="anchor">
         <xsl:with-param name="node" select="$section"/>
         <xsl:with-param name="conditional" select="0"/>
       </xsl:call-template>
-    </xsl:if>
-    <xsl:if test="$generate.id.attributes != 0 and not(local-name(.) = 'appendix')">
-      <xsl:attribute name="id"><xsl:value-of select="$id"/></xsl:attribute>
     </xsl:if>
     <xsl:copy-of select="$title"/>
   </xsl:element>
@@ -546,6 +564,9 @@
   </xsl:variable>
 
   <xsl:element name="h{$hlevel}">
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
     <xsl:call-template name="anchor">
       <xsl:with-param name="conditional" select="0"/>
     </xsl:call-template>

@@ -2,11 +2,11 @@ Release Notes for the DocBook XSL Stylesheets
 
 $Revision: 8934 $ $Date: 2010-11-01 20:03:14 +0000 (Mon, 01 Nov 2010) $
 
-2012-04-20
+2012-04-29
 
 This is a pre-release ?snapshot? of the DocBook XSL Stylesheets. The change
 information in the first section of this file (for ?Release Notes:
-snapshot_9296?) is auto-generated from change descriptions stored in the
+snapshot_9308?) is auto-generated from change descriptions stored in the
 project source-code repository.
 
 That means the first section contains descriptions both of bug fixes and of
@@ -19,7 +19,7 @@ descriptions that document enhancements and changes to the public APIs
 
 Table of Contents
 
-Release Notes: snapshot_9296
+Release Notes: snapshot_9308
 
     Gentext
     Common
@@ -235,7 +235,7 @@ Release 1.56.0
 Older releases
 About dot-zero releases
 
-Release Notes: snapshot_9296
+Release Notes: snapshot_9308
 
 The following is a list of changes that have been made since the 1.76.0
 release.
@@ -617,6 +617,42 @@ HTML
 
 The following changes have been made to the html code since the 1.76.0 release.
 
+  * Robert Stayton: lists.xsl
+
+    Small changes in support of HTML5 stylesheet.
+    Fix bug 3510185 for output list title when inside info.
+
+  * Robert Stayton: html.xsl
+
+    define internal variables div.element and table.border.off to
+    enable easier support of HTML5 syntax.
+
+  * Robert Stayton: callout.xsl
+
+    Fix handling of id attributes on callouts.
+
+  * Robert Stayton: footnote.xsl
+
+    Fix missing id attribute on footnote mark.
+
+  * Robert Stayton: sections.xsl
+
+    Bug fix for generate.id.attributes.
+
+  * Robert Stayton: titlepage.xsl; autoidx.xsl
+
+    bug fix for generate.id.attributes creating duplicate ids.
+
+  * Robert Stayton: division.xsl; sections.xsl; block.xsl; footnote.xsl
+
+    Fix minor bugs in generate.id.attributes implementation.
+
+  * Robert Stayton: inline.xsl; titlepage.xsl; formal.xsl; division.xsl;
+    toc.xsl; sections.xsl?
+
+    Finish implementation of generate.id.attributes for all elements
+    using the template named id.attribute.
+
   * Robert Stayton: autotoc.xsl
 
     Fix TOC entries for topic element.
@@ -960,6 +996,10 @@ Webhelp
 
 The following changes have been made to the webhelp code since the 1.76.0
 release.
+
+  * David Cramer: template/common/main.js
+
+    Webhelp: tweaking scrolldown offset for anchors
 
   * David Cramer: docsrc/images; docsrc/images/sample.jpg; docsrc/readme.xml;
     template/content?
@@ -6380,10 +6420,10 @@ Language identifier in man-page filenames and pathnames
     are output with a language identifier included in their filenames or
     pathnames as follows:
 
-      * if man.output.subdirs.enabled is non-zero, each file is output to,
+      + if man.output.subdirs.enabled is non-zero, each file is output to,
         e.g., a /$lang/man8/foo.8 pathname
 
-      * if man.output.subdirs.enabled is zero, each file is output with a
+      + if man.output.subdirs.enabled is zero, each file is output with a
         foo.$lang.8 filename
 
 index.page.number.properties property set
@@ -6785,19 +6825,19 @@ Changes to autoindexing
     order to use one of those methods, your customization layer must import one
     of the optional stylesheet modules:
 
-      * html/autoidx-kosek.xsl
-      * html/autoidx-kimber.xsl
-      * fo/autoidx-kosek.xsl
-      * fo/autoidx-kimber.xsl
+      + html/autoidx-kosek.xsl
+      + html/autoidx-kimber.xsl
+      + fo/autoidx-kosek.xsl
+      + fo/autoidx-kimber.xsl
 
     See the index.method parameter reference page for more information.
 
     Two other changes to note:
 
-      * The default indexing method now can handle accented characters in
+      + The default indexing method now can handle accented characters in
         latin-based alphabets, not just English. This means accented latin
         letters will group and sort with their unaccented counterpart.
-      * The default value for the index.method parameter was changed from
+      + The default value for the index.method parameter was changed from
         'english' to 'basic' because now the default method can handle
         latin-based alphabets, not just English.
 
@@ -9493,11 +9533,11 @@ Release 1.66.1
 
   * Rewrote olink templates to support several new features.
 
-      o Extended full olink support to FO output.
+      + Extended full olink support to FO output.
 
-      o Add support for xrefstyle attribute in olinks.
+      + Add support for xrefstyle attribute in olinks.
 
-      o New parameters to support new olink features: insert.olink.page.number,
+      + New parameters to support new olink features: insert.olink.page.number,
         insert.olink.pdf.frag, olink.debug, olink.lang.fallback.sequence,
         olink.properties, prefer.internal.olink. See the reference page for
         each parameter for more information.
@@ -9534,10 +9574,10 @@ Release 1.66.1
 
   * Added several table features:
 
-      o Added table.table.properties attribute set to add properties to the
+      + Added table.table.properties attribute set to add properties to the
         fo:table element.
 
-      o Added placeholder templates named table.cell.properties and
+      + Added placeholder templates named table.cell.properties and
         table.cell.block.properties to enable adding properties to any
         fo:table-cell or the cell's fo:block, respectively. These templates are
         a start for implementing table styles.

@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc" version="1.0">
 
 <!-- ********************************************************************
-     $Id: qandaset.xsl 9205 2012-01-30 18:40:10Z bobstayton $
+     $Id: qandaset.xsl 9297 2012-04-22 03:56:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -30,9 +30,12 @@
 
   <div>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
     <xsl:apply-templates select="$title"/>
     <xsl:if test="not($title)">
-      <!-- id is output on title if there is one -->
+      <!-- andhor is output on title if there is one -->
       <xsl:call-template name="anchor">
         <xsl:with-param name="conditional" select="0"/>
       </xsl:call-template>
@@ -109,6 +112,10 @@
 
   <xsl:element name="h{string(number($qalevel)+1)}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:apply-templates select="." mode="class.attribute"/>
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="node" select=".."/>
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
     <xsl:call-template name="anchor">
       <xsl:with-param name="node" select=".."/>
       <xsl:with-param name="conditional" select="0"/>
@@ -133,7 +140,16 @@
 
   <tr>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <!-- capture the id of the  quandaentry -->
+    <xsl:call-template name="id.attribute">
+      <xsl:with-param name="node" select=".."/>
+      <xsl:with-param name="conditional" select="0"/>
+    </xsl:call-template>
     <td align="{$direction.align.start}" valign="top">
+      <!-- and the id of the question too -->
+      <xsl:call-template name="id.attribute">
+        <xsl:with-param name="conditional" select="0"/>
+      </xsl:call-template>
       <xsl:call-template name="anchor">
         <xsl:with-param name="node" select=".."/>
         <xsl:with-param name="conditional" select="0"/>
@@ -193,6 +209,7 @@
 
   <tr>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <xsl:call-template name="id.attribute"/>
     <td align="{$direction.align.start}" valign="top">
       <xsl:call-template name="anchor"/>
       <xsl:variable name="answer.label">

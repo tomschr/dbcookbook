@@ -11,7 +11,7 @@ history, you can obtain one by running the following commands:
 
 Table of Contents
 
-Release Notes: snapshot_9296
+Release Notes: snapshot_9308
 
     Gentext
     Common
@@ -33,7 +33,7 @@ Release Notes: snapshot_9296
     Template
     Extensions
 
-Release Notes: snapshot_9296
+Release Notes: snapshot_9308
 
 The following is a list of changes that have been made since the 1.76.0
 release.
@@ -415,6 +415,42 @@ HTML
 
 The following changes have been made to the html code since the 1.76.0 release.
 
+  * Robert Stayton: lists.xsl
+
+    Small changes in support of HTML5 stylesheet.
+    Fix bug 3510185 for output list title when inside info.
+
+  * Robert Stayton: html.xsl
+
+    define internal variables div.element and table.border.off to
+    enable easier support of HTML5 syntax.
+
+  * Robert Stayton: callout.xsl
+
+    Fix handling of id attributes on callouts.
+
+  * Robert Stayton: footnote.xsl
+
+    Fix missing id attribute on footnote mark.
+
+  * Robert Stayton: sections.xsl
+
+    Bug fix for generate.id.attributes.
+
+  * Robert Stayton: titlepage.xsl; autoidx.xsl
+
+    bug fix for generate.id.attributes creating duplicate ids.
+
+  * Robert Stayton: division.xsl; sections.xsl; block.xsl; footnote.xsl
+
+    Fix minor bugs in generate.id.attributes implementation.
+
+  * Robert Stayton: inline.xsl; titlepage.xsl; formal.xsl; division.xsl;
+    toc.xsl; sections.xsl?
+
+    Finish implementation of generate.id.attributes for all elements
+    using the template named id.attribute.
+
   * Robert Stayton: autotoc.xsl
 
     Fix TOC entries for topic element.
@@ -758,6 +794,10 @@ Webhelp
 
 The following changes have been made to the webhelp code since the 1.76.0
 release.
+
+  * David Cramer: template/common/main.js
+
+    Webhelp: tweaking scrolldown offset for anchors
 
   * David Cramer: docsrc/images; docsrc/images/sample.jpg; docsrc/readme.xml;
     template/content?

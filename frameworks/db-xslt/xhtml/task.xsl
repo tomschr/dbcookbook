@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: task.xsl 8421 2009-05-04 07:49:49Z bobstayton $
+     $Id: task.xsl 9297 2012-04-22 03:56:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -34,6 +34,7 @@
 
   <div>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <xsl:call-template name="id.attribute"/>
     <xsl:call-template name="anchor"/>
 
     <xsl:if test="title and $placement = 'before'">

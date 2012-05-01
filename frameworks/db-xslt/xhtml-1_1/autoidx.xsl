@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" extension-element-prefixes="exslt" exclude-result-prefixes="exslt" version="1.0">
 
 <!-- ********************************************************************
-     $Id: autoidx.xsl 9175 2012-01-03 19:55:59Z bobstayton $
+     $Id: autoidx.xsl 9299 2012-04-22 09:59:49Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -31,11 +31,11 @@
 
 <xsl:key name="endofrange" match="indexterm[@class='endofrange']" use="@startref"/>
 
-<xsl:key name="primary-section" match="indexterm[not(secondary) and not(see)]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]))"/>
+<xsl:key name="primary-section" match="indexterm[not(secondary) and not(see)]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]))"/>
 
-<xsl:key name="secondary-section" match="indexterm[not(tertiary) and not(see)]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, normalize-space(concat(secondary/@sortas, &quot; &quot;, secondary)), &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]))"/>
+<xsl:key name="secondary-section" match="indexterm[not(tertiary) and not(see)]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, normalize-space(concat(secondary/@sortas, &quot; &quot;, secondary)), &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]))"/>
 
-<xsl:key name="tertiary-section" match="indexterm[not(see)]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, normalize-space(concat(secondary/@sortas, &quot; &quot;, secondary)), &quot; &quot;, normalize-space(concat(tertiary/@sortas, &quot; &quot;, tertiary)), &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]))"/>
+<xsl:key name="tertiary-section" match="indexterm[not(see)]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, normalize-space(concat(secondary/@sortas, &quot; &quot;, secondary)), &quot; &quot;, normalize-space(concat(tertiary/@sortas, &quot; &quot;, tertiary)), &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]))"/>
 
 <xsl:key name="see-also" match="indexterm[seealso]" use="concat(normalize-space(concat(primary/@sortas, &quot; &quot;, primary)), &quot; &quot;, normalize-space(concat(secondary/@sortas, &quot; &quot;, secondary)), &quot; &quot;, normalize-space(concat(tertiary/@sortas, &quot; &quot;, tertiary)), &quot; &quot;, seealso)"/>
 
@@ -252,13 +252,22 @@
   <dt>
     <xsl:for-each select="$refs/primary">
       <xsl:if test="@id or @xml:id">
-        <a id="{(@id|@xml:id)[1]}"/>
+        <xsl:choose>
+          <xsl:when test="$generate.id.attributes = 0">
+            <a id="{(@id|@xml:id)[1]}"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <span>
+              <xsl:call-template name="id.attribute"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </xsl:for-each>
     <xsl:value-of select="primary"/>
     <xsl:choose>
       <xsl:when test="$index.links.to.section = 1">
-        <xsl:for-each select="$refs[@zone != '' or generate-id() = generate-id(key('primary-section', concat($key, &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()])))[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))][1])]">
+        <xsl:for-each select="$refs[@zone != '' or generate-id() = generate-id(key('primary-section', concat($key, &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()])))[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))][1])]">
           <xsl:apply-templates select="." mode="reference">
             <xsl:with-param name="position" select="position()"/>
             <xsl:with-param name="scope" select="$scope"/>
@@ -321,13 +330,22 @@
   <dt>
     <xsl:for-each select="$refs/secondary">
       <xsl:if test="@id or @xml:id">
-        <a id="{(@id|@xml:id)[1]}"/>
+        <xsl:choose>
+          <xsl:when test="$generate.id.attributes = 0">
+            <a id="{(@id|@xml:id)[1]}"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <span>
+              <xsl:call-template name="id.attribute"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </xsl:for-each>
     <xsl:value-of select="secondary"/>
     <xsl:choose>
       <xsl:when test="$index.links.to.section = 1">
-        <xsl:for-each select="$refs[@zone != '' or generate-id() = generate-id(key('secondary-section', concat($key, &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()])))[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))][1])]">
+        <xsl:for-each select="$refs[@zone != '' or generate-id() = generate-id(key('secondary-section', concat($key, &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()])))[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))][1])]">
           <xsl:apply-templates select="." mode="reference">
             <xsl:with-param name="position" select="position()"/>
             <xsl:with-param name="scope" select="$scope"/>
@@ -390,13 +408,22 @@
   <dt>
     <xsl:for-each select="$refs/tertiary">
       <xsl:if test="@id or @xml:id">
-        <a id="{(@id|@xml:id)[1]}"/>
+        <xsl:choose>
+          <xsl:when test="$generate.id.attributes = 0">
+            <a id="{(@id|@xml:id)[1]}"/>
+          </xsl:when>
+          <xsl:otherwise>
+            <span>
+              <xsl:call-template name="id.attribute"/>
+            </span>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
     </xsl:for-each>
     <xsl:value-of select="tertiary"/>
     <xsl:choose>
       <xsl:when test="$index.links.to.section = 1">
-        <xsl:for-each select="$refs[@zone != '' or generate-id() = generate-id(key('tertiary-section', concat($key, &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()])))[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))][1])]">
+        <xsl:for-each select="$refs[@zone != '' or generate-id() = generate-id(key('tertiary-section', concat($key, &quot; &quot;, generate-id((ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()])))[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))][1])]">
           <xsl:apply-templates select="." mode="reference">
             <xsl:with-param name="position" select="position()"/>
             <xsl:with-param name="scope" select="$scope"/>
@@ -490,11 +517,11 @@
         <xsl:apply-templates select="." mode="class.attribute"/>
         <xsl:variable name="title">
           <xsl:choose>
-            <xsl:when test="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]/titleabbrev and $index.prefer.titleabbrev != 0">
-              <xsl:apply-templates select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]" mode="titleabbrev.markup"/>
+            <xsl:when test="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]/titleabbrev and $index.prefer.titleabbrev != 0">
+              <xsl:apply-templates select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]" mode="titleabbrev.markup"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:apply-templates select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]" mode="title.markup"/>
+              <xsl:apply-templates select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]" mode="title.markup"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:variable>
@@ -503,7 +530,7 @@
           <xsl:choose>
             <xsl:when test="$index.links.to.section = 1">
               <xsl:call-template name="href.target">
-                <xsl:with-param name="object" select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]"/>
+                <xsl:with-param name="object" select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]"/>
                 <xsl:with-param name="context" select="(//index[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))] | //setindex[count(ancestor::node()|$scope) = count(ancestor::node()) and ($role = @role or $type = @type or (string-length($role) = 0 and string-length($type) = 0))])[1]"/>
               </xsl:call-template>
             </xsl:when>
@@ -547,6 +574,7 @@
 
       <a>
         <xsl:apply-templates select="." mode="class.attribute"/>
+        <xsl:call-template name="id.attribute"/>
         <xsl:attribute name="href">
           <xsl:call-template name="href.target">
             <xsl:with-param name="object" select="$target[1]"/>
@@ -570,6 +598,7 @@
 
       <a>
         <xsl:apply-templates select="." mode="class.attribute"/>
+        <xsl:call-template name="id.attribute"/>
         <xsl:attribute name="href">
           <xsl:call-template name="href.target">
             <xsl:with-param name="object" select="$target[1]"/>
@@ -617,7 +646,7 @@
 
 <xsl:template match="*" mode="index-title-content">
   <xsl:variable name="title">
-    <xsl:apply-templates select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage)[last()]" mode="title.markup"/>
+    <xsl:apply-templates select="(ancestor-or-self::set|ancestor-or-self::book|ancestor-or-self::part|ancestor-or-self::reference|ancestor-or-self::partintro|ancestor-or-self::chapter|ancestor-or-self::appendix|ancestor-or-self::preface|ancestor-or-self::article|ancestor-or-self::section|ancestor-or-self::sect1|ancestor-or-self::sect2|ancestor-or-self::sect3|ancestor-or-self::sect4|ancestor-or-self::sect5|ancestor-or-self::refentry|ancestor-or-self::refsect1|ancestor-or-self::refsect2|ancestor-or-self::refsect3|ancestor-or-self::simplesect|ancestor-or-self::bibliography|ancestor-or-self::glossary|ancestor-or-self::index|ancestor-or-self::webpage|ancestor-or-self::topic)[last()]" mode="title.markup"/>
   </xsl:variable>
 
   <xsl:value-of select="$title"/>

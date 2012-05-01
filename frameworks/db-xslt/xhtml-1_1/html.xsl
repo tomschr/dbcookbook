@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: html.xsl 9202 2012-01-30 03:14:31Z bobstayton $
+     $Id: html.xsl 9306 2012-04-28 03:49:00Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -39,6 +39,12 @@
     <xsl:otherwise>ltr</xsl:otherwise>
   </xsl:choose>
 </xsl:variable>
+
+<!-- Support switching to <section> for HTML5 stylesheet -->
+<!-- This is an internal variable that does not need to be set by a user -->
+<xsl:variable name="div.element">div</xsl:variable>
+<!-- Support turning off table  border with border="" for HTML5 -->
+<xsl:variable name="table.border.off">0</xsl:variable>
 
 <!-- The generate.html.title template is currently used for generating HTML -->
 <!-- "title" attributes for some inline elements only, but not for any -->
@@ -169,14 +175,38 @@
 <xsl:template name="anchor">
   <xsl:param name="node" select="."/>
   <xsl:param name="conditional" select="1"/>
-  <xsl:variable name="id">
-    <xsl:call-template name="object.id">
-      <xsl:with-param name="object" select="$node"/>
-    </xsl:call-template>
-  </xsl:variable>
-  <xslo:if xmlns:xslo="http://www.w3.org/1999/XSL/Transform" test="not($node[parent::blockquote])"><xsl:if test="$conditional = 0 or $node/@id or $node/@xml:id">
-    <a id="{$id}"/>
-  </xsl:if></xslo:if>
+
+  <xsl:choose>
+    <xsl:when test="$generate.id.attributes != 0">
+      <!-- No named anchors output when this param is set -->
+    </xsl:when>
+    <xsl:when test="$conditional = 0 or $node/@id or $node/@xml:id">
+      <a>
+        <xsl:attribute name="id">
+          <xsl:call-template name="object.id">
+            <xsl:with-param name="object" select="$node"/>
+          </xsl:call-template>
+        </xsl:attribute>
+      </a>
+    </xsl:when>
+  </xsl:choose>
+</xsl:template>
+
+<xsl:template name="id.attribute">
+  <xsl:param name="node" select="."/>
+  <xsl:param name="conditional" select="1"/>
+  <xsl:choose>
+    <xsl:when test="$generate.id.attributes = 0">
+      <!-- No id attributes when this param is zero -->
+    </xsl:when>
+    <xsl:when test="$conditional = 0 or $node/@id or $node/@xml:id">
+      <xsl:attribute name="id">
+        <xsl:call-template name="object.id">
+          <xsl:with-param name="object" select="$node"/>
+        </xsl:call-template>
+      </xsl:attribute>
+    </xsl:when>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template name="href.target.uri">

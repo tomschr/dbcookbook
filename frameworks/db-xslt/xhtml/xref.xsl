@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks" xmlns:exsl="http://exslt.org/common" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="suwl exsl xlink" version="1.0">
 
 <!-- ********************************************************************
-     $Id: xref.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: xref.xsl 9297 2012-04-22 03:56:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -19,7 +19,16 @@
 <!-- ==================================================================== -->
 
 <xsl:template match="anchor">
-  <xsl:call-template name="anchor"/>
+  <xsl:choose>
+    <xsl:when test="$generate.id.attributes = 0">
+      <xsl:call-template name="anchor"/>
+    </xsl:when>
+    <xsl:otherwise>
+      <span>
+        <xsl:call-template name="id.attribute"/>
+      </span>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <!-- ==================================================================== -->
@@ -152,12 +161,14 @@
           </xsl:message>
           <a href="{$href}">
             <xsl:apply-templates select="." mode="common.html.attributes"/>
+            <xsl:call-template name="id.attribute"/>
             <xsl:text>???</xsl:text>
           </a>
         </xsl:when>
         <xsl:otherwise>
           <a href="{$href}">
             <xsl:apply-templates select="." mode="common.html.attributes"/>
+            <xsl:call-template name="id.attribute"/>
             <xsl:apply-templates select="$etarget" mode="endterm"/>
           </a>
         </xsl:otherwise>
@@ -939,9 +950,18 @@
     <a>
       <xsl:apply-templates select="." mode="common.html.attributes"/>
       <xsl:if test="@id or @xml:id">
-        <xsl:attribute name="id">
-          <xsl:value-of select="(@id|@xml:id)[1]"/>
-        </xsl:attribute>
+        <xsl:choose>
+          <xsl:when test="$generate.id.attributes = 0">
+            <xsl:attribute name="id">
+              <xsl:value-of select="(@id|@xml:id)[1]"/>
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:attribute name="id">
+              <xsl:value-of select="(@id|@xml:id)[1]"/>
+            </xsl:attribute>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:if>
       <xsl:attribute name="href"><xsl:value-of select="$url"/></xsl:attribute>
       <xsl:if test="$ulink.target != ''">
@@ -1092,13 +1112,17 @@
         <xsl:when test="$href != ''">
           <a href="{$href}">
             <xsl:apply-templates select="." mode="common.html.attributes"/>
+            <xsl:call-template name="id.attribute"/>
             <xsl:copy-of select="$hottext"/>
           </a>
           <xsl:copy-of select="$olink.page.citation"/>
           <xsl:copy-of select="$olink.docname.citation"/>
         </xsl:when>
         <xsl:otherwise>
-          <span class="olink"><xsl:copy-of select="$hottext"/></span>
+          <span class="olink">
+            <xsl:call-template name="id.attribute"/>
+            <xsl:copy-of select="$hottext"/>
+          </span>
           <xsl:copy-of select="$olink.page.citation"/>
           <xsl:copy-of select="$olink.docname.citation"/>
         </xsl:otherwise>
@@ -1148,6 +1172,7 @@
         <xsl:when test="$href != ''">
           <a href="{$href}">
             <xsl:apply-templates select="." mode="common.html.attributes"/>
+            <xsl:call-template name="id.attribute"/>
             <xsl:call-template name="olink.hottext"/>
           </a>
         </xsl:when>

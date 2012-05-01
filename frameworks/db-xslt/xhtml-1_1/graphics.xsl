@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:stext="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.TextFactory" xmlns:simg="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.ImageIntrinsics" xmlns:ximg="xalan://com.nwalsh.xalan.ImageIntrinsics" xmlns:xtext="xalan://com.nwalsh.xalan.Text" xmlns:lxslt="http://xml.apache.org/xslt" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xlink stext xtext lxslt simg ximg" extension-element-prefixes="stext xtext" version="1.0">
 
 <!-- ********************************************************************
-     $Id: graphics.xsl 9282 2012-04-16 20:41:20Z bobstayton $
+     $Id: graphics.xsl 9297 2012-04-22 03:56:16Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -38,6 +38,7 @@
 <xsl:template match="screenshot">
   <div>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <xsl:call-template name="id.attribute"/>
     <xsl:apply-templates/>
   </div>
 </xsl:template>
@@ -979,11 +980,15 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 <xsl:template match="graphic">
   <xsl:choose>
     <xsl:when test="parent::inlineequation">
-      <xsl:call-template name="anchor"/>
-      <xsl:call-template name="process.image"/>
+      <span>
+        <xsl:call-template name="id.attribute"/>
+        <xsl:call-template name="anchor"/>
+        <xsl:call-template name="process.image"/>
+      </span>
     </xsl:when>
     <xsl:otherwise>
       <div>
+        <xsl:call-template name="id.attribute"/>
         <xsl:if test="@align">
           <xsl:attribute name="style"><xsl:text>text-align: </xsl:text>
             <xsl:value-of select="@align"/>
@@ -1068,6 +1073,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
         <xsl:value-of select="$align"/>
       </xsl:attribute>
     </xsl:if>
+    <xsl:call-template name="id.attribute"/>
     <xsl:call-template name="anchor"/>
 
     <xsl:apply-templates select="$object"/>
@@ -1078,6 +1084,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 <xsl:template match="inlinemediaobject">
   <span>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <xsl:call-template name="id.attribute"/>
     <xsl:call-template name="anchor"/>
     <xsl:call-template name="select.mediaobject"/>
   </span>
@@ -1398,6 +1405,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 <xsl:template match="caption">
   <div>
     <xsl:apply-templates select="." mode="common.html.attributes"/>
+    <xsl:call-template name="id.attribute"/>
     <xsl:if test="@align = 'right' or @align = 'left' or @align='center'">
       <xsl:attribute name="style"><xsl:text>text-align: </xsl:text><xsl:value-of select="@align"/></xsl:attribute>
     </xsl:if>
