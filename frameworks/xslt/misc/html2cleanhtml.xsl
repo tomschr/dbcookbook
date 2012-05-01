@@ -121,6 +121,7 @@
                        h:div[@class='calloutlist']|
                        h:div[@class='informalexample-download-link']|
                        h:div[@class='keywordset']|
+                       h:div[@class='authorgroup']|
                        h:div[@class='example-download-link']">
     <xsl:copy-of select="."/>
   </xsl:template>
