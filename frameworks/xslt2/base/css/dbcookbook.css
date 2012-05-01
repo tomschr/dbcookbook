@@ -280,11 +280,11 @@ div.list-of-figures > p b  {
 }
 
 /* Only effective, when generate.permalink=1 */
-h3.navig {
+/*h3.navig {
   float:left;
   width:95%;
   margin-top:5px;
-}
+}*/
 .permalink {
   font-size:small;
   float:right;
@@ -292,10 +292,13 @@ h3.navig {
   text-align:center;
   margin-top:1em;
   padding:3pt;
+  margin:0;
   background-color:#FFFCD1;
 }
+
+
 .section-navig, .section-userlevel, .keywordset {
-  margin-left:.6em;
+  /*margin-left:.6em;*/
   float:none;
   clear:both;
 }
@@ -333,23 +336,20 @@ h3.navig {
   margin-top:0;
 }
 
-.section-titlepage div.authorgroup {
+.section-titlepage > div.authorgroup,
+.section-titlepage > div.author {
   border:none;
   font-size:90%;
   font-weight:normal;
-  display:inline;
 }
-.section-titlepage div.author,
-.section-titlepage div.othercredit {
-  border:none;
-  display: inline; 
-}
-.section-titlepage div.authorgroup h3,
-.section-titlepage div.othercredit h3 {
+
+.section-titlepage div.othercredit h3,
+.section-titlepage div.authorgroup h3 {
   display: inline;
   border:none;
   font-size:90%;
   font-weight:normal;
+  
 }
 
 .section-titlepage  .section-userlevel, .keywordset {
@@ -371,9 +371,11 @@ div.variablelist dd p:first-child {
   font-weight:400;
 }
 
-div.procedure ol {
+div.procedure > ol {
   counter-reset:li;
   margin-top:.25em;
+  padding-left:5pt;
+  border-left:1pt dotted gray;
 }
 
 div.procedure ol > li {
@@ -479,7 +481,7 @@ div.footnote p sup {
 }
 
 /* Verbatim */
-div.programlisting pre 
+div.programlisting pre
 {
   margin-top:2pt;
   /*text-overflow:ellipsis;
@@ -487,6 +489,9 @@ div.programlisting pre
   width: 100%;*/
 }
 
+div.example pre {
+  margin-top:0pt;
+}
 /* TODO: */
 /*div.programlisting pre:hover
 {
