@@ -44,23 +44,25 @@
 
 <xsl:template name="sf:generate-permalink">
   <xsl:param name="node" select="."/>
+  <xsl:param name="wrapper">div</xsl:param>
   
   <xsl:if test="$generate.permalink != 0">
     <xsl:variable name="permalink">
       <xsl:call-template name="gentext">
           <xsl:with-param name="key" select="'Permalink'"/>
       </xsl:call-template>
-    </xsl:variable>   
-      <div class="permalink">
+    </xsl:variable>
+    <xsl:element name="{$wrapper}" namespace="http://www.w3.org/1999/xhtml">
+      <xsl:attribute name="class">permalink</xsl:attribute>
         <a alt="{$permalink}" title="{$permalink}">
           <xsl:attribute name="href">
             <xsl:call-template name="href.target">
-              <xsl:with-param name="object"  select="."/>
+              <xsl:with-param name="object"  select="$node"/>
             </xsl:call-template>
           </xsl:attribute>
           <xsl:copy-of select="$permalink.text"/>
         </a>
-      </div>
+    </xsl:element>
   </xsl:if>
 </xsl:template>
 
@@ -108,7 +110,7 @@
     <xsl:variable name="context"
                 select="(parent::info|parent::info/parent::*)[1]"/>
     
-    <xsl:call-template name="sf:generate-permalink"/>
+    <!--<xsl:call-template name="sf:generate-permalink"/>-->
     <!-- We don't call sf:generate-prevnext-sectionlinks here as
          we have already navigation links
     -->
