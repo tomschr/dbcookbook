@@ -59,6 +59,7 @@
   </xsl:template>
   <xsl:template match="h:div[@class='revhistory']/h:table/@style"/>
   <xsl:template match="h:div[@class='revhistory']/h:table/h:tr/h:td/@style"/>
+  <xsl:template match="h:div[@class='abstract-title']"/>
   
   <xsl:template match="@class">
     <xsl:choose>
