@@ -104,6 +104,9 @@ pre { font-size:105%; /*line-height:1.1;*/ }
 
 .book-titlepage div.othercredit {
   text-align:left;
+  float:none;
+  clear:both;
+  text-align:left;
 }
 
 .book-titlepage div.legalnotice {
@@ -280,17 +283,17 @@ div.list-of-figures > p b  {
 }
 
 /* Only effective, when generate.permalink=1 */
-/*h3.navig {
+h3.navig {
   float:left;
   width:95%;
   margin-top:5px;
-}*/
+}
 .permalink {
   font-size:small;
   float:right;
   width:2em;
   text-align:center;
-  margin-top:1em;
+  /*margin-top:2em;*/
   padding:3pt;
   margin:0;
   background-color:#FFFCD1;
