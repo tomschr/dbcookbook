@@ -335,7 +335,12 @@
   <xsl:template name="create.id">
     <xsl:param name="node" select="."/>
     <xsl:choose>
-        <xsl:when test="$node/h:a[. = ''] and not($node/@id)">
+        <xsl:when test="$node/@id">
+          <xsl:attribute name="id">
+            <xsl:value-of select="$node/@id"/>
+          </xsl:attribute>
+        </xsl:when>
+        <xsl:when test="$node/h:a[. = '']">
           <xsl:attribute name="id">
             <xsl:value-of select="h:a/@id"/>
           </xsl:attribute>
@@ -347,7 +352,7 @@
   </xsl:template>
   
   <xsl:template match="h:div[@class='table']">
-    <figure class="table-wrapper">
+    <figure class="{@class}-wrapper">
       <xsl:call-template name="create.id"/>
       <xsl:apply-templates select="h:div[@class='table-title']"/>
       <xsl:apply-templates select="h:div[@class='table-contents']"/>
