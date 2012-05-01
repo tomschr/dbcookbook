@@ -3,6 +3,19 @@
 
 source bin/common.sh
 
+function print_help() {
+cat << EOF
+Transforms DocBook into XHTML chunks, adding cleanup step
+
+-h, --help       Prints this help text
+-c, --cleanup    Only perform cleanup step
+EOF
+}
+
+function saxon_db2xhtml() {
+saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml/chunk.xsl || exit_on_error "ERROR: Something went wrong"
+}
+
 SAXON_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
 XSLTHL_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/xslthl-2.0.2.jar"
 
@@ -13,11 +26,31 @@ org.apache.xerces.jaxp.DocumentBuilderFactoryImpl \
 org.apache.xerces.jaxp.SAXParserFactoryImpl \
 ${XINCLUDEFLAG} ${HLFLAG}"
 
-
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
+CLEANUP=0
+ARGS=$(getopt -o h,c -l help,cleanup -- "$@")
+eval set -- "$ARGS"
+while true ; do
+  case "$1" in
+    -h|--help)
+      print_help
+      exit
+      ;;
+    -c|--cleanup)
+      CLEANUP=1
+      shift
+      ;;
+    --)
+      shift
+      break
+      ;;  
+  esac
+done
+
+
 [[ $VERBOSE != "" ]] && echo "Transforming..."
-saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml/chunk.xsl || exit_on_error "ERROR: Something went wrong"
+[[ $CLEANUP -eq 0 ]] && saxon_db2xhtml
 
 # [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
 
@@ -47,4 +80,4 @@ for i in ${BUILDDIR}/tmp/*.html; do
 done
 fi
 
-echo -e "\nFind the HTMLs in ${BUILDDIR}/html/"
+echo -e "\nUse ${BUILDDIR}/html/"
