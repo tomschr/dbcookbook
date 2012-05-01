@@ -23,6 +23,8 @@
   <xsl:param name="chunker.output.method" select="'xml'"/>
   <xsl:param name="chunker.output.doctype-system" select="''"/>
   <xsl:param name="chunker.output.doctype-public" select="''"/>
-  <xsl:param name="chunker.output.indent" select="'yes'"/>
+  <!-- Use the following with care: Only enable it for debugging
+    purpose: -->
+  <!--<xsl:param name="chunker.output.indent" select="'yes'"/>-->
   
 </xsl:stylesheet>
