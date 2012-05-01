@@ -296,6 +296,8 @@ h3.navig {
 }
 .section-navig, .section-userlevel, .keywordset {
   margin-left:.6em;
+  float:none;
+  clear:both;
 }
 
 
