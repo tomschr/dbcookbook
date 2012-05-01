@@ -178,6 +178,13 @@ blockquote h3 {
 }
 
 
+/* Header and Footer */
+div.navfooter > table tr > td {
+  width:33%;
+  vertical-align:text-top;
+}
+
+/* Titlepages */
 .chapter-titlepage,
 .preface-titlepage
 {
