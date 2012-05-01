@@ -378,20 +378,20 @@ div.procedure > ol {
   border-left:1pt dotted gray;
 }
 
-div.procedure ol > li {
+div.procedure > ol > li {
   list-style:none; /* Disable the normal item numbering */
 }
 
-div.procedure ol > li p:first-child {
+div.procedure > ol > li p:first-child {
   margin-top:0;
 }
-div.procedure ol > li:before {
+div.procedure > ol > li:before {
   content:"Step " counter(li) ":"; /* Use the counter as content */
   counter-increment:li; /* Increment the counter by 1 */
 }
-div.procedure li ol,
-div.procedure li ul {margin-top:6px;}
-div.procedure ol ol li:last-child {margin-bottom:0;}
+div.procedure > li ol,
+div.procedure > li ul {margin-top:6px;}
+div.procedure > ol ol li:last-child {margin-bottom:0;}
 
 /* Tables */
 table tbody tr td,
