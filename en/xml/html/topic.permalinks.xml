@@ -189,7 +189,7 @@
       structure in regards to its permalink. For example, a chapter
       title looks like this in HTML:</para>
     <programlisting language="xml"
->&lt;h2 class="title">The Book Title&lt;span
+>&lt;h2 class="title">The Chapter Title&lt;span
       class="permalink">&lt;a href="..." title="Permalink"
       alt="Permalink">¶&lt;/a>&lt;/span>
 &lt;/h1></programlisting>
