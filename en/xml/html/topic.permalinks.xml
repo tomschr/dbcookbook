@@ -108,7 +108,8 @@
         <itemizedlist>
           <listitem>
             <para>For appendices, chapters, prefaces, etc. use the
-              <function>component.title</function> template:
+              <function>component.title</function> template from
+              <filename>{xhtml,xhtml-1_1,html}/component.xsl</filename>:
             </para>
             <programlisting language="xml">&lt;xsl:template name="component.title">
   &lt;xsl:param name="node" select="."/>
@@ -125,8 +126,7 @@
       &lt;xsl:with-param name="allow-anchors" select="1"/>
     &lt;/xsl:apply-templates>
     <emphasis role="bold">&lt;xsl:call-template name="permalink">
-      &lt;xsl:with-param name="id" select="$id"/>
-      &lt;xsl:with-param name="title" select="title"/>
+      &lt;xsl:with-param name="id" select="$node/@id"/>
     &lt;/xsl:call-template></emphasis>
   &lt;/xsl:element>
 &lt;/xsl:template></programlisting>
@@ -134,7 +134,7 @@
           <listitem>
             <para>For figures, examples, procedures, tables, etc. use
               the <function>formal.object.heading</function>
-              template:</para>
+              template from <filename>{xhtml,xhtml-1_1,html}/formal.xsl</filename>:</para>
             <programlisting language="xml">&lt;xsl:template name="formal.object.heading">
   &lt;xsl:param name="object" select="."/>
   &lt;xsl:param name="title">
@@ -146,17 +146,33 @@
     &lt;b>
       &lt;xsl:copy-of select="$title"/>
     &lt;/b>
-    &lt;xsl:if test="@id">
-      <emphasis role="bold">&lt;xsl:call-template name="permalink">
-        &lt;xsl:with-param name="title" select="$title"/>
-        &lt;xsl:with-param name="id" select="@id"/>
-      &lt;/xsl:call-template></emphasis>
-    &lt;/xsl:if>
+    <emphasis role="bold">&lt;xsl:call-template name="permalink">
+      &lt;xsl:with-param name="id" select="$object/@id"/>
+    &lt;/xsl:call-template></emphasis>
   &lt;/p>   
 &lt;/xsl:template></programlisting>
           </listitem>
           <listitem>
-            <para><remark>FIXME: What about parts?</remark></para>
+            <para>For parts, use the
+              <function>division.title</function> template from
+              <filename>{xhtml,xhtml-1_1,html}/division.xsl</filename>:</para>
+            <programlisting language="xml">&lt;xsl:template name="division.title">
+  &lt;xsl:param name="node" select="."/>
+  
+  &lt;h1>
+    &lt;xsl:attribute name="class">title&lt;/xsl:attribute>
+    &lt;xsl:call-template name="anchor">
+      &lt;xsl:with-param name="node" select="$node"/>
+      &lt;xsl:with-param name="conditional" select="0"/>
+    &lt;/xsl:call-template>
+    &lt;xsl:apply-templates select="$node" mode="object.title.markup">
+      &lt;xsl:with-param name="allow-anchors" select="1"/>
+    &lt;/xsl:apply-templates>
+    <emphasis role="bold">&lt;xsl:call-template name="permalink">
+      &lt;xsl:with-param name="id" select="$node/@id"/>
+    &lt;/xsl:call-template></emphasis>
+  &lt;/h1>
+&lt;/xsl:template></programlisting>
           </listitem>
         </itemizedlist>
       </step>
@@ -170,8 +186,8 @@
     <title>Discussion</title>
     <para><remark>TBD</remark></para>
   </section>
-  <section role="seealso">
+  <!--<section role="seealso">
     <title>See Also</title>
     <para><remark>TBD</remark></para>
-  </section>
+  </section>-->
 </section>
