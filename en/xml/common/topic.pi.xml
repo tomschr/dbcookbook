@@ -19,7 +19,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Extract Information from Your Own Processing Instructions</title>
+  <title>Extracting Information from Your Own Processing Instructions</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
