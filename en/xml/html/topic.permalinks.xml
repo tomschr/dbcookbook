@@ -50,7 +50,37 @@
           <filename>permalinks/permalinks.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include href="permalinks/permalinks.xsl" parse="text"/></programlisting>
+      <programlistingco>
+        <areaspec>  
+          <area xml:id="ar.html.permalinks.generate.permalink" coords="6" units="linecolumn"/>
+          <area xml:id="ar.html.permalinks.permalink.text" coords="7" units="linecolumn"/>
+          <area xml:id="ar.html.permalinks.span" coords="13" units="linecolumn"/>
+          <area xml:id="ar.html.permalinks.a" coords="14" units="linecolumn"/>
+        </areaspec>
+        <programlisting language="xml" linenumbering="numbered"
+          ><xi:include href="permalinks/permalinks.xsl" parse="text"
+          /></programlisting>
+      </programlistingco>
+      <calloutlist>
+        <callout arearefs="ar.html.permalinks.generate.permalink">
+          <para>Contains parameter
+            <parameter>generate.permalink</parameter> to switch on or
+            off permalink creation.</para>
+        </callout>
+        <callout arearefs="ar.html.permalinks.permalink.text">
+          <para>Contains parameter <parameter>permalink.text</parameter>
+          which is inserted as the permalink text.</para>
+        </callout>
+        <callout arearefs="ar.html.permalinks.span">
+          <para>Creates a <tag>span</tag> element as a wrapper element 
+            which contains all information about the permalink.</para>
+        </callout>
+        <callout arearefs="ar.html.permalinks.a">
+          <para>Creates a HTML <tag>a</tag> element. The pointer in the
+            <tag class="attribute">href</tag> attribute is used from the
+          <parameter>id</parameter> parameter.</para>
+        </callout>
+      </calloutlist>
     </example>
     <para>This is of course not enough. Use the following steps to
     include it into your customization layers:</para>
