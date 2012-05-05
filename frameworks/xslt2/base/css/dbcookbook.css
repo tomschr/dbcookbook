@@ -404,10 +404,13 @@ div.procedure > li ul {margin-top:6px;}
 div.procedure > ol ol li:last-child {margin-bottom:0;}
 
 /* Tables */
+table {
+  border-collapse: collapse;
+}
 table tbody tr td,
 table thead tr th{
   /*margin-right: 1em;*/
-  padding-right: 1em;
+  padding: 2.5pt;
 }
 
 figure {
