@@ -40,6 +40,9 @@
       <xsl:with-param name="node" select="$node"/>
     </xsl:call-template>
   </xsl:variable>
+  <xsl:variable name="fn"
+      select="($node/blockinfo/de:output/de:filename|
+               $node/info/de:output/de:filename)[1]"/>
   
   <xsl:if test="$use.downloadlink != 0 and $dl != ''">
     <xsl:variable name="html.class" select="local-name($node)"/>
@@ -54,6 +57,9 @@
         <xsl:call-template name="gentext">
           <xsl:with-param name="key" select="'Download'"/>
         </xsl:call-template>
+        <xsl:if test="$fn != ''">
+          <xsl:value-of select="concat(' &apos;', $fn, '&apos;')"/>
+        </xsl:if>
       </a>
     </div>
   </xsl:if>
