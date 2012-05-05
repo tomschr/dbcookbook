@@ -71,7 +71,9 @@
           <row>
             <entry><filename class="directory">webhelp</filename></entry>
             <entry>Contains the result of the <acronym>GSOC<alt>Google
-                Summer of Code</alt></acronym> 2010</entry>
+                Summer of Code</alt></acronym> 2010 and creates a Web
+              page with a sidebar, search form, and hierarchical
+              navigation.</entry>
           </row>
           <row>
             <entry><filename class="directory">website</filename></entry>
@@ -89,16 +91,19 @@
             <entry><filename class="directory">xhtml-1_1</filename></entry>
             <entry>Contains stylesheets for XHTML version 1.1. Like the one
             for XHTML, they are generated through a XSLT transformation.
-            In comparison, the XHTML 1.1 omits certain attributes which
+            In comparison, the XHTML&#xa0;1.1 omits certain attributes which
             were allowed in XHTML or HTML. The missing part must be
             implemented by CSS.
-            The XHTML 1.1 stylesheets are also used for EPUB creation.</entry>
+            The XHTML&#xa0;1.1 stylesheets are also used for EPUB creation.</entry>
           </row>
           <row>
             <entry><filename class="directory">xhtml5</filename></entry>
-            <entry>Contains stylesheets for HTML&#xa0;5. These are
-            currently (as of September 2011) pretty new and in
-            development.</entry>
+            <entry>Contains stylesheets for <acronym 
+              xlink:href="http://dev.w3.org/html5/spec/Overview.html">HTML&#xa0;5</acronym>.
+            These stylesheets customizes the XHTML stylesheets. As such
+            it inherits all the features and parameters.
+            The HTML&#xa0;5 stylesheets are also used for EPUB3 creation.
+            </entry>
           </row>
         </tbody>
       </tgroup>
