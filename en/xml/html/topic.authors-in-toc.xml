@@ -111,6 +111,17 @@
         <para>Rebuild your document with your customization layer.</para>
       </step>
     </procedure>
+    <para>When you process the above section with the customization
+      layer, you will receive the following line:</para>
+    <screen>Tux Penguin: How to Become a Linux Mascott</screen>
+    <para>Or in HTML notation:</para>
+    <programlisting language="xml">&lt;span class="author">Tux Penguin: &lt;/span>
+&lt;span class="section">
+  &lt;a href="...">How to Become a Linux Mascott&lt;/a> 
+&lt;/span></programlisting>
+    <para>Depending on the parameter
+      <parameter>section.autolabel</parameter> the title can be prefixed
+    with a number.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
