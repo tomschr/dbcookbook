@@ -7,11 +7,16 @@
   <xsl:param name="permalink.text">¶</xsl:param>
 
   <xsl:template name="permalink">
-    <xsl:param name="id"/>
+    <xsl:param name="node"/>
 
-    <xsl:if test="$generate.permalink != '0' and $id != ''">
+    <xsl:if test="$generate.permalink != '0'">
       <span class="permalink">
-        <a alt="Permalink" title="Permalink" href="#{$id}">
+        <a alt="Permalink" title="Permalink">
+          <xsl:attribute name="href">
+            <xsl:call-template name="href.target">
+              <xsl:with-param name="object"  select="$node"/>
+            </xsl:call-template>
+          </xsl:attribute>
           <xsl:copy-of select="$permalink.text"/>
         </a>
       </span>

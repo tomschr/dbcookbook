@@ -56,6 +56,7 @@
           <area xml:id="ar.html.permalinks.permalink.text" coords="7" units="linecolumn"/>
           <area xml:id="ar.html.permalinks.span" coords="13" units="linecolumn"/>
           <area xml:id="ar.html.permalinks.a" coords="14" units="linecolumn"/>
+          <area xml:id="ar.html.permalinks.href.target" coords="15" units="linecolumn"/>
         </areaspec>
         <programlisting language="xml" linenumbering="numbered"
           ><xi:include href="permalinks/permalinks.xsl" parse="text"
@@ -80,6 +81,10 @@
             <tag class="attribute">href</tag> attribute is used from the
           <parameter>id</parameter> parameter.</para>
         </callout>
+        <callout arearefs="ar.html.permalinks.href.target">
+          <para>Creates a <tag>href</tag> attribute with the correct
+            link, regardless if it points to a chunked file or not.</para>
+        </callout>
       </calloutlist>
     </example>
     <para>This is of course not enough. Use the following steps to
@@ -99,80 +104,72 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   &lt;!-- ... -->
   <emphasis role="bold">&lt;xsl:include href="permalinks.xsl"/></emphasis>
+  &lt;!-- Add here more xsl:include's of the following files -->
 &lt;/xsl:stylesheet></programlisting>
       </step>
       <step>
-        <para>Insert one or all of the following codes to include
-            <function>permalink</function> in their respective
-          elements:</para>
+        <para>Add <tag>xsl:include</tag> tags to your customization
+          layer with points to one or all of the following files to
+          include permalinks in their respective elements.</para>
+        <para></para>
         <itemizedlist>
           <listitem>
             <para>For appendices, chapters, prefaces, etc. use the
-              <function>component.title</function> template from
-              <filename>{xhtml,xhtml-1_1,html}/component.xsl</filename>:
-            </para>
-            <programlisting language="xml">&lt;xsl:template name="component.title">
-  &lt;xsl:param name="node" select="."/>
-  &lt;!-- Some code omitted -->
-  &lt;xsl:element name="h{$level+1}">
-    &lt;xsl:attribute name="class">title&lt;/xsl:attribute>
-    &lt;xsl:if test="$generate.id.attributes = 0">
-      &lt;xsl:call-template name="anchor">
-        &lt;xsl:with-param name="node" select="$node"/>
-        &lt;xsl:with-param name="conditional" select="0"/>
-      &lt;/xsl:call-template>
-    &lt;/xsl:if>
-    &lt;xsl:apply-templates select="$node" mode="object.title.markup">
-      &lt;xsl:with-param name="allow-anchors" select="1"/>
-    &lt;/xsl:apply-templates>
-    <emphasis role="bold">&lt;xsl:call-template name="permalink">
-      &lt;xsl:with-param name="id" select="$node/@id"/>
-    &lt;/xsl:call-template></emphasis>
-  &lt;/xsl:element>
-&lt;/xsl:template></programlisting>
+              <function>component.title</function> template (originates from
+              <filename>{xhtml,xhtml-1_1,html}/component.xsl</filename>):
+            </para>            
+            <informalexample>
+              <info>
+                <output xmlns="urn:x-toms:docbook-ext">
+                  <filename>permalinks/component.title.xsl</filename>
+                </output>
+              </info>
+              <programlisting language="xml"><xi:include
+                href="permalinks/component.title.xsl" parse="text"/></programlisting>
+            </informalexample>
           </listitem>
           <listitem>
             <para>For figures, examples, procedures, tables, etc. use
               the <function>formal.object.heading</function>
-              template from <filename>{xhtml,xhtml-1_1,html}/formal.xsl</filename>:</para>
-            <programlisting language="xml">&lt;xsl:template name="formal.object.heading">
-  &lt;xsl:param name="object" select="."/>
-  &lt;xsl:param name="title">
-    &lt;xsl:apply-templates select="$object" mode="object.title.markup">
-      &lt;xsl:with-param name="allow-anchors" select="1"/>
-    &lt;/xsl:apply-templates>
-  &lt;/xsl:param>
-  &lt;p class="title">
-    &lt;b>
-      &lt;xsl:copy-of select="$title"/>
-    &lt;/b>
-    <emphasis role="bold">&lt;xsl:call-template name="permalink">
-      &lt;xsl:with-param name="id" select="$object/@id"/>
-    &lt;/xsl:call-template></emphasis>
-  &lt;/p>   
-&lt;/xsl:template></programlisting>
+              template (originates from
+              <filename>{xhtml,xhtml-1_1,html}/formal.xsl</filename>):</para>
+            <informalexample>
+              <info>
+                <output xmlns="urn:x-toms:docbook-ext">
+                  <filename>permalinks/formal.object.heading.xsl</filename>
+                </output>
+              </info>
+              <programlisting language="xml"><xi:include
+                href="permalinks/formal.object.heading.xsl" parse="text"/></programlisting>
+            </informalexample>
           </listitem>
           <listitem>
             <para>For parts, use the
-              <function>division.title</function> template from
-              <filename>{xhtml,xhtml-1_1,html}/division.xsl</filename>:</para>
-            <programlisting language="xml">&lt;xsl:template name="division.title">
-  &lt;xsl:param name="node" select="."/>
-  
-  &lt;h1>
-    &lt;xsl:attribute name="class">title&lt;/xsl:attribute>
-    &lt;xsl:call-template name="anchor">
-      &lt;xsl:with-param name="node" select="$node"/>
-      &lt;xsl:with-param name="conditional" select="0"/>
-    &lt;/xsl:call-template>
-    &lt;xsl:apply-templates select="$node" mode="object.title.markup">
-      &lt;xsl:with-param name="allow-anchors" select="1"/>
-    &lt;/xsl:apply-templates>
-    <emphasis role="bold">&lt;xsl:call-template name="permalink">
-      &lt;xsl:with-param name="id" select="$node/@id"/>
-    &lt;/xsl:call-template></emphasis>
-  &lt;/h1>
-&lt;/xsl:template></programlisting>
+              <function>division.title</function> template (originates from
+              <filename>{xhtml,xhtml-1_1,html}/division.xsl</filename>):</para>
+            <informalexample>
+              <info>
+                <output xmlns="urn:x-toms:docbook-ext">
+                  <filename>permalinks/division.title.xsl</filename>
+                </output>
+              </info>
+              <programlisting language="xml"><xi:include
+                href="permalinks/division.title.xsl" parse="text"/></programlisting>
+            </informalexample>
+          </listitem>
+          <listitem>
+            <para>For sections, use <function>section.title</function>
+              (originates from
+              <filename>{xhtml,xhtml-1_1,html}/sections.xsl</filename>):</para>
+            <informalexample>
+              <info>
+                <output xmlns="urn:x-toms:docbook-ext">
+                  <filename>permalinks/section.title.xsl</filename>
+                </output>
+              </info>
+              <programlisting language="xml"><xi:include
+                href="permalinks/section.title.xsl" parse="text"/></programlisting>
+            </informalexample>
           </listitem>
         </itemizedlist>
       </step>
@@ -184,7 +181,20 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para><remark>TBD</remark></para>
+    <para>Permalinks are useful as it allows it easily to copy its URL.
+      The DocBook XSL stylesheets allows the addition of permalinks in
+      different locations, but the above customizations make the permalink more
+      <quote>attached</quote> to its title.</para>
+    <para>All the above customization files create almost the same
+      structure in regards to its permalink. For example, a chapter
+      title looks like this in HTML:</para>
+    <programlisting language="xml"
+>&lt;h2 class="title">The Book Title&lt;span
+      class="permalink">&lt;a href="..." title="Permalink"
+      alt="Permalink">¶&lt;/a>&lt;/span>
+&lt;/h1></programlisting>
+    <para>With CSS rules, you can add style your permalink whatever you
+      like.</para>
   </section>
   <!--<section role="seealso">
     <title>See Also</title>

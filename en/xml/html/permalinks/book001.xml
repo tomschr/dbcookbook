@@ -4,15 +4,15 @@
 <book xmlns="http://docbook.org/ns/docbook"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
   <title>Our Book Example</title>
-  <part>
+  <part xml:id="part.one">
     <title>First Part</title>
-    <chapter>
+    <chapter xml:id="cha.one">
       <title>First Chapter Title</title>
-      <sect1>
+      <sect1 xml:id="sec.one">
         <title>First Section1 Title in <quote>1st Chapter</quote></title>
         <para>Text</para>
       </sect1>
-      <sect1>
+      <sect1 xml:id="sec.two">
         <title>Second Section1 Title in 1st Chapter</title>
         <para>Text</para>
       </sect1>
@@ -22,7 +22,7 @@
       </sect1>
     </chapter>
 
-    <chapter>
+    <chapter xml:id="cha.two">
       <title>Second <quote>Chapter</quote> Title</title>
       <sect1>
         <title>First Section1 Title in 2st Chapter</title>
@@ -32,7 +32,7 @@
         <title>Second Section1 Title in 2st Chapter</title>
         <para>Text</para>
       </sect1>
-      <sect1>
+      <sect1 xml:id="sec.three">
         <title>Third Section1 Title in 2st Chapter</title>
         <para>Text</para>
       </sect1>
