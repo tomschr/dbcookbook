@@ -58,7 +58,7 @@
           <xsl:with-param name="key" select="'Download'"/>
         </xsl:call-template>
         <xsl:if test="$fn != ''">
-          <xsl:value-of select="concat(' &apos;', $fn, '&apos;')"/>
+          <xsl:value-of select='concat(" &apos;", $fn, "&apos;")'/>
         </xsl:if>
       </a>
     </div>
