@@ -9,7 +9,7 @@
   <xsl:template name="permalink">
     <xsl:param name="id"/>
 
-    <xsl:if test="$generate.permalink != '0'">
+    <xsl:if test="$generate.permalink != '0' and $id != ''">
       <span class="permalink">
         <a alt="Permalink" title="Permalink" href="#{$id}">
           <xsl:copy-of select="$permalink.text"/>
