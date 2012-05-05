@@ -71,11 +71,11 @@
         Manual of Style</citetitle>, it is desirable to distinguish
       characters <emphasis>before</emphasis> and
         <emphasis>after</emphasis> the hyphenation takes place.</para>
-    <para>All these requirements are implemented in stylesheet showed in
+    <para>All these requirements are implemented in the stylesheet showed in
       <xref linkend="ex.hyphenate-url.xsl"/>. It cuts off the protocol
       with its <literal>://</literal> and iterates through each
-      characters and checks, if it needs to be inserted a hyphenation
-      point before or after it.</para>
+      characters and checks, if a hyphenation point needs to be inserted
+      before or after it.</para>
     <example xml:id="ex.hyphenate-url.xsl">
       <title><filename>hyphenate-url.xsl</filename></title>
       <info>
@@ -83,11 +83,9 @@
           <filename>hyphen-urls/hyphenate-url.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include parse="text" 
+      <programlisting language="xml" linenumbering="numbered"><xi:include parse="text" 
         href="hyphen-urls/hyphenate-url.xsl"/></programlisting>
     </example>
-    <remark>HINT: Runtime behaviour O(n); should not be a problem as
-      URLs are short. Negligible?</remark>
     
     <para>Include the above stylesheet into your customization layer
       with additionally the following parameters:</para>
