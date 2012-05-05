@@ -109,15 +109,60 @@
   <xsl:if test="parent::chapter">
     <xsl:variable name="context"
                 select="(parent::info|parent::info/parent::*)[1]"/>
-    
-    <!--<xsl:call-template name="sf:generate-permalink"/>-->
-    <!-- We don't call sf:generate-prevnext-sectionlinks here as
-         we have already navigation links
-    -->
+
     <xsl:call-template name="sf:generate-userlevel">
       <xsl:with-param name="level" select="@userlevel"/>
     </xsl:call-template>
     <xsl:call-template name="sf:generate-keywords"/>
+  </xsl:if>
+</xsl:template>
+
+
+<xsl:template name="section.title">
+  <xsl:variable name="section" select="(ancestor::section |
+                                        ancestor::simplesect|
+                                        ancestor::sect1|
+                                        ancestor::sect2|
+                                        ancestor::sect3| 
+                                        ancestor::sect4| 
+                                        ancestor::sect5)[last()]"/>
+
+  <xsl:variable name="renderas">
+    <xsl:choose>
+      <xsl:when test="$section/@renderas = 'sect1'">1</xsl:when>
+      <xsl:when test="$section/@renderas = 'sect2'">2</xsl:when>
+      <xsl:when test="$section/@renderas = 'sect3'">3</xsl:when>
+      <xsl:when test="$section/@renderas = 'sect4'">4</xsl:when>
+      <xsl:when test="$section/@renderas = 'sect5'">5</xsl:when>
+      <xsl:otherwise><xsl:value-of select="''"/></xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+  <xsl:variable name="level">
+    <xsl:choose>
+      <xsl:when test="$renderas != ''">
+        <xsl:value-of select="$renderas"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:call-template name="section.level">
+          <xsl:with-param name="node" select="$section"/>
+        </xsl:call-template>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:variable>
+
+  <xsl:call-template name="section.heading">
+    <xsl:with-param name="section" select="$section"/>
+    <xsl:with-param name="level" select="$level"/>
+    <xsl:with-param name="title">
+      <xsl:apply-templates select="$section" mode="object.title.markup">
+        <xsl:with-param name="allow-anchors" select="1"/>
+      </xsl:apply-templates>
+    </xsl:with-param>
+  </xsl:call-template>
+  <xsl:if test="$level = 1">
+    <xsl:call-template name="sf:generate-permalink">
+      <xsl:with-param name="node" select="$section"/>
+    </xsl:call-template>
   </xsl:if>
 </xsl:template>
 

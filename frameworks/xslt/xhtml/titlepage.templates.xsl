@@ -120,23 +120,4 @@
     </div>
   </xsl:template>  
   
-  
-  <!-- Section Titlepages -->
-  <xsl:template match="title" mode="section.titlepage.recto.auto.mode">
-    <xsl:variable name="depth" select="count(ancestor::section)"/>    
-    <!--<xsl:message>match="title" mode="section.titlepage.recto.auto.mode"
-      depth: <xsl:value-of select="$depth"/>
-      node:  <xsl:value-of select="."/>
-    </xsl:message>-->
-    <div xsl:use-attribute-sets="section.titlepage.recto.style">
-      <xsl:apply-templates select="." mode="section.titlepage.recto.mode"/>
-      <!-- Only add permalinks to first section -->
-      <xsl:if test="$depth = 1">
-        <xsl:call-template name="sf:generate-permalink">
-          <xsl:with-param name="node" select=".."/>
-          <!--<xsl:with-param name="wrapper">span</xsl:with-param>-->
-        </xsl:call-template>
-      </xsl:if>
-    </div>
-  </xsl:template>
 </xsl:stylesheet>
