@@ -190,7 +190,7 @@
         <emphasis>all</emphasis> preceding elements. In a second step
       they are check against the term
         <code>not(self::d:title|self::d:info)</code>; only those
-      elements are remain in the node set which are not <tag>title</tag> or
+      elements remain in the node set which are not <tag>title</tag> or
         <tag>info</tag> elements. In our above example, this leads to a
       node set with zero nodes and is exactly what we wanted to
       achieve.</para>
