@@ -84,7 +84,7 @@
               <area xml:id="ar.html.authors-in-toc.call" coords="14" units="linecolumn"/>
               <area xml:id="ar.html.authors-in-toc.span" coords="20" units="linecolumn"/>
             </areaspec>
-            <programlisting><xi:include 
+            <programlisting language="xml" linenumbering="numbered"><xi:include 
               href="authors-in-toc/autotoc.xsl" parse="text"/></programlisting>
           </programlistingco>
           <calloutlist>
