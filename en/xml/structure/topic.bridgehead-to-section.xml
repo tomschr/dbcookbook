@@ -50,7 +50,7 @@
           <filename>bridgehead-to-section/db-bridgehead-to-section.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include 
+      <programlisting linenumbering="numbered" language="xml"><xi:include 
         href="bridgehead-to-section/db-bridgehead-to-section.xsl" 
         parse="text"/></programlisting>
     </example>

@@ -55,7 +55,8 @@
           <filename>simplenavig/simple-navigation.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include href="simplenavig/simple-navigation.xsl" parse="text"/></programlisting>
+      <programlisting linenumbering="numbered" language="xml"
+        ><xi:include href="simplenavig/simple-navigation.xsl" parse="text"/></programlisting>
     </example>
     <para>This is not enough, of course. Use the following steps to
       include it into your customization layers:</para>
@@ -75,7 +76,7 @@
           <filename>simplenavig/db-simple-navigation.xsl</filename>
         </output>
       </info>
-          <programlisting language="xml"><xi:include href="simplenavig/db-simple-navigation.xsl" parse="text"/></programlisting>      
+          <programlisting linenumbering="numbered" language="xml"><xi:include href="simplenavig/db-simple-navigation.xsl" parse="text"/></programlisting>      
         </example>        
       </step>
       <step>

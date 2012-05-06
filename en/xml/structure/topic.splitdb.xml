@@ -59,7 +59,7 @@
             <filename>splitdb/dbsplit.xsl</filename>
           </output>
         </info>
-        <programlisting language="xml"><xi:include
+        <programlisting linenumbering="numbered" language="xml"><xi:include
           href="splitdb/dbsplit.xsl" parse="text"/></programlisting>
       </example>
       <para>The <filename>chunker.xsl</filename> file is more or
@@ -76,7 +76,7 @@
             <filename>splitdb/chunker.xsl</filename>
           </output>
         </info>
-        <programlisting language="xml"><xi:include
+        <programlisting linenumbering="numbered" language="xml"><xi:include
           href="splitdb/chunker.xsl" parse="text"/></programlisting>
       </example>
       <para>It can be customized with several parameters:</para>

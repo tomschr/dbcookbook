@@ -69,7 +69,7 @@
             <area xml:id="ar.breadcrumbs.sep" coords="24" units="linecolumn"/>
             <area xml:id="ar.breadcrumbs.currentnode" coords="27" units="linecolumn"/>
           </areaspec>
-          <programlisting language="xml"><xi:include
+          <programlisting linenumbering="numbered" language="xml"><xi:include
           href="breadcrumbs/breadcrumbs.xsl" parse="text"/></programlisting>
           <calloutlist>
             <callout arearefs="ar.breadcrumbs.param">
