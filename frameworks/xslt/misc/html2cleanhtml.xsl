@@ -128,9 +128,17 @@
     <xsl:copy-of select="."/>
   </xsl:template>
   
-  <xsl:template match="h:div[h:a[starts-with(.,'License')]]">
+  <!-- The following two template relies on  -->
+  <xsl:template match="h:div[h:a[starts-with(@href, 'legalnotice')]]">
     <xsl:copy>
       <xsl:attribute name="class">legalnoticelink</xsl:attribute>
+      <xsl:copy-of select="*"/>
+    </xsl:copy>
+  </xsl:template>
+  
+  <xsl:template match="h:div[h:a[starts-with(@href, 'revisionhistory')]]">
+    <xsl:copy>
+      <xsl:attribute name="class">revhistorylink</xsl:attribute>
       <xsl:copy-of select="*"/>
     </xsl:copy>
   </xsl:template>

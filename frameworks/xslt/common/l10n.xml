@@ -14,6 +14,7 @@
       <l:template name="book" text="%t"/>
       <l:template name="legalnotice" text="%t"/>
       <l:template name="preface" text="%t"/>
+      <l:template name="revhistory" text="%t"/>
     </l:context>
     
     <l:context name="datetime">

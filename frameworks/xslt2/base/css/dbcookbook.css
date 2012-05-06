@@ -138,6 +138,12 @@ div.legalnoticelink {
   margin-bottom:30;
 }
 
+div.revhistorylink {
+  margin-top:30;
+  margin-bottom:30;
+}
+
+
 body > .chapter h2,
 .book-titlepage h2,
 .book-titlepage h3 {
