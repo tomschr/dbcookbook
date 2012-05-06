@@ -4,6 +4,10 @@
   xmlns="http://www.w3.org/1999/xhtml">
   
   <!--<xsl:param name="css.decoration" select="0"/>-->
+  <!-- base.url and base.url.path are used for Dublin Core metadata: -->
+  <xsl:param name="base.url">http://doccookbook.sourceforge.net</xsl:param>
+  <xsl:param name="base.url.path">/html/en/</xsl:param>
+  
   <xsl:param name="base.dir">build/tmp/</xsl:param>
   <!--<xsl:param name="chunk.tocs.and.lots" select="1"/>-->
   <xsl:param name="docbook.css.link" select="0"/>

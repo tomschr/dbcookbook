@@ -92,7 +92,11 @@ var popup_</xsl:text>
 
 <xsl:template name="user.meta.dublincore">
     <xsl:param name="node" select="."/>
-
+    
+    <xsl:variable name="filename">
+      <xsl:value-of select="concat($base.url,$base.url.path)"/>
+      <xsl:apply-templates select="$node" mode="recursive-chunk-filename"/>
+    </xsl:variable>
     <xsl:variable name="title">
       <!--<xsl:apply-templates select="$node" mode="object.title.markup.textonly"/>-->
       <xsl:call-template name="substitute-markup">
@@ -129,17 +133,18 @@ var popup_</xsl:text>
         </xsl:if>
       </xsl:for-each>
     </xsl:variable>
+    <xsl:variable name="lang">
+      <xsl:call-template name="l10n.language"/>
+    </xsl:variable>
 
     <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT"/>
     <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
-    <meta name="DC.Language" scheme="DCTERMS.RFC3066">
-      <xsl:attribute name="content">
-        <xsl:call-template name="l10n.language"/>
-      </xsl:attribute>
-    </meta>
+    <meta name="DC.Language" scheme="DCTERMS.RFC3066" content="{$lang}"/>
+    <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
+    <meta name="DC.identifier" scheme="DCTERMS.URI" content="{$filename}"/>
     
     <xsl:if test="normalize-space($title)">
-      <meta name="DC.title" content="{normalize-space($title)}"/>
+      <meta name="DC.title" xml:lang="{$lang}" content="{normalize-space($title)}"/>
     </xsl:if>
     <xsl:if test="normalize-space($author) != ''">
       <meta name="DC.creator" content="{normalize-space($author)}"/>
@@ -147,9 +152,10 @@ var popup_</xsl:text>
     <xsl:if test="normalize-space($contributors)">
       <meta name="DC.contributor" content="{$contributors}"/>
     </xsl:if>
- 
   
+   
     <!--<xsl:message>user.meta.dublincore:
+      filename:   <xsl:value-of select="$filename"/>
       title:      <xsl:value-of select="$title"/> 
       
       node:       <xsl:value-of select="local-name($node)"/>
@@ -164,7 +170,7 @@ var popup_</xsl:text>
     <xsl:if test="$node/d:info/d:subjectset or $node/*/subjectset">
       <xsl:for-each select="$node/d:info/d:subjectset/d:subject | 
                                 $node/*/subjectset/subject">
-        <meta name="DC.subject">
+        <meta name="DC.subject" xml:lang="{$lang}">
           <xsl:attribute name="content">
             <xsl:for-each select="d:subjectterm|subjectterm">
               <xsl:value-of select="."/>
@@ -188,6 +194,7 @@ var popup_</xsl:text>
         </xsl:attribute>
       </meta>
     </xsl:if>
+    
     <xsl:if test="$node/d:info/d:publishername or
                   $node/*/publishername or
                   $node/d:info/d:publisher or
@@ -222,23 +229,13 @@ var popup_</xsl:text>
         </xsl:attribute>
       </meta>
     </xsl:if>
-    <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
-    <xsl:if test="$node/d:info/d:biblioid[@class!='other'] or $node/*/biblioid[@class!='other']">
-      <xsl:for-each select="$node/d:info/d:biblioid[@class!='other'] | $node/*/biblioid[@class!='other']">
-        <meta name="DC.identifier" scheme="DCTERMS.URI">
-          <xsl:attribute name="content">
-            <xsl:value-of select="normalize-space(.)"/>
-          </xsl:attribute>
-        </meta>
-      </xsl:for-each>
-    </xsl:if>
     
     <meta name="DC.source"
       content="http://www.w3.org/TR/html401/struct/global.html#h-7.4.4"
       scheme="DCTERMS.URI"/> 
     <meta name="DC.relation" content="http://dublincore.org/"
       scheme="DCTERMS.URI"/>
-    <meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/><!-- FIXME -->
+    <!--<meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/>--><!-- FIXME -->
     <meta name="DC.rights" content="legalnotice"  scheme="DCTERMS.URI"/>
 </xsl:template>
   
