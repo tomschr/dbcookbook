@@ -37,7 +37,7 @@
     </rdf:RDF>
     <xi:include href="legalnotice.xml"/>
     <biblioid class="uri" role="project">http://sf.net/p/doccookbook/</biblioid>
-    <biblioid class="uri" role="home">http://doccookbook.sf.net</biblioid>
+    <biblioid class="uri" role="home">http://doccookbook.sf.net/html/en/</biblioid>
     <bibliosource class="other" otherclass="rss"  role="code"
       xlink:href="http://sf.net/p/doccookbook/code/feed.rss"
       >[DoCookBook] Recent Code Changes (RSS)</bibliosource>
