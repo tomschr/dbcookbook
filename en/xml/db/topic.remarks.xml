@@ -26,6 +26,10 @@
       <keyword>remarks</keyword>
       <keyword>show.comments</keyword>
     </keywordset>
+    <subjectset>
+      <subject>remarks</subject>
+      <subject>show.remarks</subject>
+    </subjectset>
   </info>
   
   <section role="problem">
