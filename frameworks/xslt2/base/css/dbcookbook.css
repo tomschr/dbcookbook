@@ -1,5 +1,5 @@
 /*
- * CSS File for the DocCookBook
+ * CSS File for the DoCookBook
  * https://sourceforge.net/projects/doccookbook/
  * 
  * Author: Thomas Schraitle
@@ -451,11 +451,6 @@ span.personname span.firstname:after {
   content:" ";
 }
 
-/* Verbatim */
-div.programlisting,
-div.screen {
-  white-space: pre;
-}
 
 /* Admonitions */
 div.admonition {
@@ -494,6 +489,10 @@ div.footnote p sup {
 }
 
 /* Verbatim */
+/*div.programlisting + div.calloutlist {
+  margin-bottom:0;
+}*/
+
 div.programlisting pre
 {
   margin-top:2pt;
@@ -505,6 +504,11 @@ div.programlisting pre
 div.example pre {
   margin-top:0pt;
 }
+
+div.informalexample-download-link {
+  margin-bottom:-10;
+}
+
 /* TODO: */
 /*div.programlisting pre:hover
 {
