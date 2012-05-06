@@ -9,7 +9,15 @@
   exclude-result-prefixes="d xlink date exsl">
 
   <xsl:preserve-space elements="script"/>
-  
+
+<xsl:param name="legalnotice.uri">
+  <xsl:call-template name="get-uri-identifier">
+    <xsl:with-param name="node"
+      select="/d:book/d:info/d:legalnotice[1] |
+              /book/bookinfo/legalnotice[1]"/>
+  </xsl:call-template>
+</xsl:param>
+
 <xsl:template name="system.head.content">
   <xsl:param name="node" select="."/>
 
@@ -90,12 +98,19 @@ var popup_</xsl:text>
     </xsl:if>
 </xsl:template>
 
+<xsl:template name="get-uri-identifier">
+  <xsl:param name="node" select="."/>
+  <xsl:value-of select="concat($base.url,$base.url.path)"/>
+  <xsl:apply-templates select="$node" mode="recursive-chunk-filename"/>
+</xsl:template>
+
 <xsl:template name="user.meta.dublincore">
     <xsl:param name="node" select="."/>
     
     <xsl:variable name="filename">
-      <xsl:value-of select="concat($base.url,$base.url.path)"/>
-      <xsl:apply-templates select="$node" mode="recursive-chunk-filename"/>
+      <xsl:call-template name="get-uri-identifier">
+        <xsl:with-param name="node" select="$node"/>
+      </xsl:call-template>
     </xsl:variable>
     <xsl:variable name="title">
       <!--<xsl:apply-templates select="$node" mode="object.title.markup.textonly"/>-->
@@ -234,7 +249,9 @@ var popup_</xsl:text>
     <meta name="DC.relation" content="http://dublincore.org/"
       scheme="DCTERMS.URI"/>
     <!--<meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/>--><!-- FIXME -->
-    <meta name="DC.rights" content="legalnotice"  scheme="DCTERMS.URI"/>
+    <xsl:if test="/d:book/d:info/d:legalnotice or /book/bookinfo/legalnotice">
+      <meta name="DC.rights" content="{$legalnotice.uri}" scheme="DCTERMS.URI"/>
+    </xsl:if>
 </xsl:template>
   
 <xsl:template name="javascript">

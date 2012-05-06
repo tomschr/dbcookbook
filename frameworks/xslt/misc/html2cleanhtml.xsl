@@ -128,6 +128,13 @@
     <xsl:copy-of select="."/>
   </xsl:template>
   
+  <xsl:template match="h:div[h:a[starts-with(.,'License')]]">
+    <xsl:copy>
+      <xsl:attribute name="class">legalnoticelink</xsl:attribute>
+      <xsl:copy-of select="*"/>
+    </xsl:copy>
+  </xsl:template>
+  
   <!-- ================================================ -->
   <xsl:template name="create-article">    
     <article>
