@@ -1,0 +1,1532 @@
+Changes since the 1.76.0 release
+
+Note: This document lists changes only since the 1.76.0 release. If you instead
+want a record of the complete list of changes for the codebase over its entire
+history, you can obtain one by running the following commands:
+
+  svn checkout https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/xsl
+  svn log --xml --verbose xsl > ChangeHistory.xml
+
+-------------------------------------------------------------------------------
+
+Table of Contents
+
+Release Notes: snapshot_9331
+
+    Gentext
+    Common
+    FO
+    HTML
+    Manpages
+    Epub
+    HTMLHelp
+    Eclipse
+    JavaHelp
+    Roundtrip
+    Slides
+    Website
+    Webhelp
+    Params
+    Highlighting
+    Profiling
+    Lib
+    Template
+    Extensions
+    XSL-Saxon
+
+Release Notes: snapshot_9331
+
+The following is a list of changes that have been made since the 1.76.0
+release.
+
+Gentext
+
+The following changes have been made to the gentext code since the 1.76.0
+release.
+
+  * Robert Stayton: locale/en.xml
+
+    Add topic to title-numbered context.
+
+  * Robert Stayton: locale/en.xml
+
+    Add basic topic element templates.
+
+  * Mauritz Jeanson: locale/el.xml
+
+    Updated gentext for quotation marks. Fixes bug #3512440.
+
+  * Jirka Kosek: locale/cs.xml
+
+    Adding missing context for webhelp
+
+  * David Cramer: locale/en.xml
+
+    Fixing syntax of webhelp gentext entries
+
+  * David Cramer: locale/en.xml
+
+    Moving webhelp gentext strings into a context
+
+  * tom_schr: locale/zh.xml; locale/en.xml; locale/cs.xml; locale/fr.xml;
+    locale/de.xml; local?
+
+    Moved language specific of WebHelp to gentext/locale/ as discussed with
+    Stefan following the "minimal intrusive approach". :)
+    In the long run, maybe moving the text into a context, not sure.
+
+  * Robert Stayton: locale/zh.xml; locale/ca.xml; locale/nds.xml; locale/
+    ru.xml; locale/ga.xml?
+
+    Add "or" string per Bug # 3322871, translated with Google translate.
+
+  * tom_schr: locale/en.xml; locale/de.xml
+
+    Fixed bug#3322871: simplelist: PI dbchoice and "or" does not exist
+
+  * Mauritz Jeanson: locale/ca.xml
+
+    Added patch #3363309.
+
+  * Jirka Kosek: locale/ru.xml
+
+    Aligned capitalization of first letters with English original
+
+  * dleidert: locale/es.xml
+
+    Fix http://bugs.debian.org/605696. Citing:
+
+    The English form of that section name is mandated to be NAME.  lexgrog
+    recognises NOMBRE in Spanish, which when I last looked was the common
+    form used in that language.  "NOMBRE DE REFERENCIA" is not recognised by
+    lexgrog, and it's unnecessarily long anyway.  I'd rather not add more
+    forms to lexgrog unless absolutely necessary.
+
+Common
+
+The following changes have been made to the common code since the 1.76.0
+release.
+
+  * Robert Stayton: labels.xsl; titles.xsl; entities.ent; targets.xsl;
+    subtitles.xsl; gentext.?
+
+    Add basic support for new <topic> element.
+
+  * Robert Stayton: common.xsl
+
+    Fix handling of mediatypes for video and audio files, mostly for HTML5 and EPUB3 outputs.
+
+  * Robert Stayton: olink.xsl
+
+    Generate error message if olink data in targetset is in a namespace.
+
+  * Robert Stayton: olink.xsl
+
+    Back out changes because of problems with that update.
+
+  * Robert Stayton: olink.xsl
+
+    Add support for olink data in DocBook namespace.
+
+  * Robert Stayton: common.xsl
+
+    Add support for generate.consistent.ids parameter.
+
+  * Robert Stayton: subtitles.xsl
+
+    Add verbose param to subtitle.markup templates to allow its
+    error message to be ignored.
+    Add that param to fop1.xsl application of subtitle.markup
+    to avoid unnecessary error message in document information.
+
+  * Norman Walsh: stripns.xsl
+
+    Make sure stripping doesn't delete @{xml:}id values!
+
+  * Jirka Kosek: common.xsl
+
+    These should be params, otherwise it is not possible to customize them.
+
+  * Robert Stayton: labels.xsl
+
+    Add empty templates for glossdiv, glosslist, and glossentry in
+    mode="label.markup".
+
+  * Mauritz Jeanson: Makefile
+
+    Added eu.xml and gl.xml to SOURCES.
+
+  * Jirka Kosek: l10n.xsl
+
+    Fixed bug when context was lost due to usage of xsl:key
+
+FO
+
+The following changes have been made to the fo code since the 1.76.0 release.
+
+  * Robert Stayton: biblio.xsl
+
+    Remove template for obsolete bookbiblio element.
+
+  * Robert Stayton: titlepage.templates.xml
+
+    Fix format of topic title.
+
+  * Robert Stayton: autotoc.xsl; component.xsl; fop1.xsl;
+    titlepage.templates.xml; xep.xsl
+
+    Fix TOC processing for topic element.
+
+  * Robert Stayton: component.xsl
+
+    Finish support for topic title element.
+
+  * Robert Stayton: titlepage.templates.xml
+
+    Fix typo.
+
+  * Robert Stayton: titlepage.xsl; autotoc.xsl; component.xsl; xref.xsl;
+    titlepage.templates.x?
+
+    Add basic support for new <topic> element.
+
+  * Robert Stayton: graphics.xsl
+
+    Fix handling of mediatypes for video and audio files, mostly for HTML5 and EPUB3 outputs.
+
+  * Robert Stayton: pi.xsl
+
+    In dbfo-need, replace empty list-item-label with empty block to make output valid.
+
+  * Robert Stayton: titlepage.xsl
+
+    Add default style att-sets for component.list.of.titles, etc.
+
+  * Robert Stayton: autotoc.xsl
+
+    Restore component.list.of.tables etc. now that the titlepage.templates.xsl
+    file has been updated by the Makefile.
+
+  * Robert Stayton: autotoc.xsl
+
+    Turn off component.list.of.tables because the build process is not updating
+    the titlepage.templates.xsl file which has those templates.
+    Will restore when that is working.
+
+  * Robert Stayton: autotoc.xsl; component.xsl; titlepage.templates.xml
+
+    Add make.component.tocs to support lists of tables, etc. for
+    article and other components.  Added component.list.of.tables to
+    titlepage.templates.xml to format the title.
+
+  * Robert Stayton: block.xsl
+
+    Change to new para.properties attribute-set.
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Add new para.properties attribute-set for paragraphs.
+
+  * Robert Stayton: graphics.xsl
+
+    Fix bug 3487828 valign on inlinemediaobject in fo output has wrong property.
+
+  * Robert Stayton: inline.xsl
+
+    Add template mode 'simple.xlink.properties' to allow
+    easy customization of formatting of links generated
+    from elements other than xref, link, and olink using
+    the xlink attributes.
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Add table.caption.properties to format table captions.
+
+  * Robert Stayton: table.xsl
+
+    Add support for caption in a CALS table.
+
+  * Robert Stayton: htmltbl.xsl
+
+    Fix missing fop1.extensions for table-layout="fixed" property.
+
+  * Robert Stayton: math.xsl
+
+    Remove passivetex.extension test from graphic template.
+
+  * Robert Stayton: graphics.xsl; math.xsl
+
+    Refactored the 'process.image' template to create modular
+    templates for each attribute so they can be individually
+    customized.  Also merged in support for embedded svg and
+    mml content so they can have image attributes too.
+
+  * Jirka Kosek: param.xweb; param.ent
+
+    Added missing parameter definitions (though not sure why base.dir and chunk.quietly is needed in FO, maybe olinks?)
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Check in new params for FO side regions in page masters.
+
+  * Robert Stayton: titlepage.xsl; titlepage.templates.xml
+
+    Add support for itermset in info elements, using titlepage mechanism
+    to ensure entries are placed inside page-sequence.
+
+  * Robert Stayton: pagesetup.xsl
+
+    Add support for side body margins and side static content regions.
+    Fixes bug 3389931.
+
+  * Robert Stayton: refentry.xsl
+
+    Fix bug 3424546, no TOC for top level reference element in FO output.
+
+  * Robert Stayton: autotoc.xsl
+
+    Fix bug where toc.section.depth=0 causes a book toc to ignore
+    chapters and appendixes.
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Add support for generate.consistent.ids parameter.
+
+  * Dave Pawson: param.xweb
+
+    111011T08:05
+
+  * Robert Stayton: biblio.xsl
+
+    Support author/orgname in bibliography, fixing bug 3293062.
+
+  * Robert Stayton: division.xsl
+
+    Table title with tocentry="0" attribute is now omitted from the
+    table of contents. Fixes bug 3279748.
+
+  * Robert Stayton: xref.xsl
+
+    anchor template now checks to see if fo:inline or fo:block should be used.
+    Fixes bug 3324138.
+
+  * Robert Stayton: param.xweb; param.ent; task.xsl
+
+    Add attribute-set task.properties to task element to
+    support customization.
+
+  * Robert Stayton: lists.xsl; param.xweb; param.ent
+
+    Add new attribute-sets calloutlist.properties and callout.properties
+    to  better support customization of calloutlists, fixing bug 3160341.
+
+  * Robert Stayton: pagesetup.xsl
+
+    Fix bug 3067027 set page.number.format to 'i' for book and set titlepage.
+
+  * Jirka Kosek: Makefile
+
+    Titlepage mechanism is now namespace aware to support XHTML. Please note that when generating titlepage template stylesheets you have to pass FO or XHTML namespace inside ns parameter. For HTML parameter should be empty.
+
+  * Robert Stayton: graphics.xsl
+
+    Allow selection by role for multiple imageobject elements
+    within an imageobjectco, which since Docbook 5 allows multiple imageobjects.
+
+  * Mauritz Jeanson: titlepage.xsl
+
+    Added template for collabname. Fixes bug #3414436.
+
+  * Mauritz Jeanson: table.xsl
+
+    Added test for @colwidth='*' to suppress extension error message. See bug #3404224.
+
+  * David Cramer: verbatim.xsl
+
+    Support the keep-together processing-instruction on programlisting, screen, synopsis, and literallayout. Tracker id #3396906.
+
+  * Robert Stayton: division.xsl
+
+    Set template param allow-anchors="1" in division title to support footnotes in title.
+
+  * Robert Stayton: fop1.xsl
+
+    Add verbose param to subtitle.markup templates to allow its
+    error message to be ignored.
+    Add that param to fop1.xsl application of subtitle.markup
+    to avoid unnecessary error message in document information.
+
+  * Robert Stayton: pagesetup.xsl
+
+    Pass the pageclass, sequence, and gentext-key to the template
+    named header.footer.widths to enable further customization
+    based on page master.
+
+  * Jirka Kosek: xref.xsl
+
+    hyphenation of URL content must be disabled for link, not only for ulink because od DB5
+
+  * Jirka Kosek: xref.xsl
+
+    URLs shouldn't be hyphenated as normal text
+
+  * dleidert: lists.xsl
+
+    Fix fo output for segmented lists with more than one <segtitle> (see r9001, reverted in r9006). The bug appears in table mode.
+
+    Bug report and patch from: http://bugs.debian.org/620556
+
+  * dleidert: lists.xsl
+
+    Revert change 9001 - the patch is probably useless and not necessary.
+
+  * dleidert: lists.xsl
+
+    Fix fo output for segmented lists with more than one <segtitle>.
+
+    Bug report and patch from: http://bugs.debian.org/620556
+
+  * Jirka Kosek: callout.xsl
+
+    Added support for alternative circled numbers
+
+  * Mauritz Jeanson: xep.xsl
+
+    Removed junk accidentally added to previous revision.
+
+  * Mauritz Jeanson: axf.xsl; fop1.xsl; xep.xsl
+
+    Added support for author/orgname in document metadata. Closes bug #3132862.
+
+  * Robert Stayton: fop1.xsl
+
+    Fix bug 3068509 where fop1 bookmarks converted diacritics to ascii.  In FOP 1.0, that
+    conversion is no longer needed.
+
+  * Robert Stayton: component.xsl
+
+    Add template for article/colophon to avoid nested page-sequence.
+
+  * Robert Stayton: docbook.xsl; xref.xsl; fop1.xsl
+
+    Apply patch to support named destination in fop1.xsl, per Sourceforge
+    bug report #3029845.
+
+  * dleidert: pagesetup.xsl
+
+    Remove the namespace mistakingly added with the last upload.
+
+HTML
+
+The following changes have been made to the html code since the 1.76.0 release.
+
+  * Robert Stayton: chunk-code.xsl
+
+    Take legalnotice out of find.chunks so it does not get Next and Prev.
+
+  * Robert Stayton: lists.xsl
+
+    Small changes in support of HTML5 stylesheet.
+    Fix bug 3510185 for output list title when inside info.
+
+  * Robert Stayton: html.xsl
+
+    define internal variables div.element and table.border.off to
+    enable easier support of HTML5 syntax.
+
+  * Robert Stayton: callout.xsl
+
+    Fix handling of id attributes on callouts.
+
+  * Robert Stayton: footnote.xsl
+
+    Fix missing id attribute on footnote mark.
+
+  * Robert Stayton: sections.xsl
+
+    Bug fix for generate.id.attributes.
+
+  * Robert Stayton: titlepage.xsl; autoidx.xsl
+
+    bug fix for generate.id.attributes creating duplicate ids.
+
+  * Robert Stayton: division.xsl; sections.xsl; block.xsl; footnote.xsl
+
+    Fix minor bugs in generate.id.attributes implementation.
+
+  * Robert Stayton: inline.xsl; titlepage.xsl; formal.xsl; division.xsl;
+    toc.xsl; sections.xsl?
+
+    Finish implementation of generate.id.attributes for all elements
+    using the template named id.attribute.
+
+  * Robert Stayton: autotoc.xsl
+
+    Fix TOC entries for topic element.
+
+  * Robert Stayton: autotoc.xsl; chunktoc.xsl; titlepage.xsl; chunk-code.xsl;
+    changebars.xsl; ?
+
+    Add basic support for new <topic> element.
+
+  * Robert Stayton: graphics.xsl
+
+    Fix handling of mediatypes for video and audio files, mostly for HTML5 and EPUB3 outputs.
+
+  * Robert Stayton: callout.xsl; verbatim.xsl
+
+    Restore programlisting to use <pre> instead of <div> and instead
+    wrap callout img elements in <span> to make valid HTML.
+
+  * Robert Stayton: graphics.xsl
+
+    Turn off img longdesc attribute because not supported by browsers.
+
+  * Robert Stayton: footnote.xsl
+
+    Move square brackets and <sup> inside <a> element for footnote
+    marks to fix display problems in some browsers.
+
+  * Robert Stayton: synop.xsl
+
+    Fix bug 3481385 - link elements not preserved inside funcsynopsis.
+
+  * Robert Stayton: autotoc.xsl
+
+    TOC entry for refpurpose should use no.anchor.mode to prevent duplicate ids
+    when indexterm is inside refpurpose.
+
+  * Robert Stayton: qandaset.xsl
+
+    Add colgroup around col elements in layout table.
+
+  * Robert Stayton: xref.xsl
+
+    Remove duplication of mode="xref-to" template for qandadiv.
+
+  * Robert Stayton: lists.xsl
+
+    Add colgroup around bare col element in variablelist table to
+    conform to html5.
+
+  * Robert Stayton: docbook.xsl; html.xsl
+
+    Add support for html.script param to insert Javascript references.
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Add new params html.script and html.script.type to support
+    Javascript references.
+
+  * Robert Stayton: autoidx.xsl
+
+    Fix bug that omitted duplicate indexterms in the same section but
+    with different zone attributes, which should not be omitted.
+
+  * Robert Stayton: html.xsl; table.xsl; block.xsl
+
+    Fix bug 3441149 where mode="class.value" does not work
+    for para or entry when the element does not have a role attribute.
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Add new param chunked.filename.prefix to fix bug 3087359.
+
+  * Robert Stayton: chunk-common.xsl; chunktoc.xsl; titlepage.xsl; chunker.xsl;
+    chunk-code.xsl?
+
+    Add support for chunked.filename.prefix param.
+    Make sure base.dir value has a trailing slash in
+    the chunk.base.dir internal param used by the templates.
+
+  * Robert Stayton: chunk-common.xsl
+
+    Pass empty base.dir for lot URLs to avoid problems using the ./ default
+    in make-relative-filename.
+
+  * Robert Stayton: autotoc.xsl
+
+    Fix bug when $toc.section.depth=0 causes book toc to
+    ignore chapters and appendixes.
+
+  * Robert Stayton: chunk-common.xsl; chunk-code.xsl; docbook.xsl
+
+    Fixed bug #3388088 where non-namespaced chunkfast.xsl
+    not properly handling namespaced document.
+
+  * Robert Stayton: formal.xsl; htmltbl.xsl
+
+    Now handles caption in html markup table like title,
+    so formal.object.title is used with all its features, including
+    formatting and placement.
+    Added htmlTable.with.caption template to handle the wrapper, and
+    left htmlTable template unchanged.
+    Now caption template in mode="htmlTable" does nothing, because
+    caption handled by formal.object.title template.
+
+  * Robert Stayton: html.xsl
+
+    Turn off generating the title attribute for block and hierarchical elements.
+    Should only be used for inline elements, usually using the alt element.
+    Also used for links to show the target title.
+
+  * Robert Stayton: param.xweb; param.ent
+
+    Add support for generate.consistent.ids parameter.
+
+  * Dave Pawson: param.xweb
+
+    111011T08:05
+
+  * Robert Stayton: biblio.xsl
+
+    Support author/orgname in bibliography, fixing bug 3293062.
+
+  * Robert Stayton: chunk-common.xsl; chunker.xsl
+
+    Replace duplicate undocumented parameter chunker.output.quiet
+    with the original documented parameter chunk.quietly.
+
+  * Robert Stayton: lists.xsl
+
+    The spacing="compact" attribute on lists in HTML no longer outputs compact="compact"
+    (or just "compact" in the case of Saxon 6), since that attribute is
+    deprecated and improperly supported.  Instead, the output uses a
+    multiple class attribute such as class="orderedlist compact".
+    Use CSS to style such lists without margin above.
+
+  * Robert Stayton: autotoc.xsl; chunk-common.xsl
+
+    Table title with tocentry="0" attribute is now omitted from the
+    table of contents. Fixes bug 3279748.
+
+  * Robert Stayton: inline.xsl
+
+    Add default class="phrase" when role attribute not used for class,
+    fixing bug #3076510
+
+  * Robert Stayton: graphics.xsl
+
+    Allow selection by role for multiple imageobject elements
+    within an imageobjectco, which since Docbook 5 allows multiple imageobjects.
+
+  * Robert Stayton: docbook.css.xml
+
+    Remove broken style for autotoc.xsl.
+
+  * Robert Stayton: autoidx.xsl
+
+    Fix bug: when $index.links.to.section is set to zero, the
+    primary index entry duplicates links that should be only
+    on secondary entries.  Now the links are not duplicated.
+
+  * Robert Stayton: xref.xsl
+
+    Add mode="no.anchor.mode" to remaining xref-to templates that do not
+    have it to avoid generating an invalid nested anchor in HTML output.
+
+  * Robert Stayton: pi.xsl
+
+    Improve doc descriptions of dbhtml filename and dir.
+
+  * Robert Stayton: chunk-common.xsl
+
+    Turn off fast chunking messages if chunker.output.quiet is
+    set to 1.
+
+  * Robert Stayton: autoidx.xsl
+
+    Add setindex to context param in mode="reference" to better
+    support setindex.
+
+  * Robert Stayton: autotoc.xsl
+
+    Support set as child of set in set.toc template.
+
+  * dleidert: inline.xsl
+
+    Fix Debian bug #611924 (http://bugs.debian.org/611924):
+
+    A quote element with an xml:id will lead to two anchors with the same name or
+    ID which is not allowed. So don't call the anchor template. It is already
+    called by inline.charseq.
+
+  * Robert Stayton: chunk-code.xsl
+
+    Fix call to generate.css.files so .css files can be generated
+    when in chunking mode.
+
+  * Robert Stayton: qandaset.xsl
+
+    Change question and title templates to replace hard-coded
+    class="local-name()" with mode="class.attribute" to support customization
+    of class values.
+
+  * Robert Stayton: chunktoc.xsl
+
+    Call "generate.css" in process.root so it can participate
+    in the 'make.clean.html' scheme.
+
+  * David Cramer: glossary.xsl
+
+    Fixing typo (spurious ! at the end of line).
+
+  * Norman Walsh: chunktoc.xsl
+
+    Separate book appendixes from article appendixes (so that they can be customized independently)
+
+  * Mauritz Jeanson: graphics.xsl
+
+    Added condition to prevent "Failed to interpret image" messages (SVG is not supported
+    by the graphic size extension).
+
+  * Robert Stayton: formal.xsl
+
+    Fix bug 3116969 where mode="class.value" customization
+    did not work for table or informaltable.
+
+  * Keith Fahlgren: highlight.xsl
+
+    Implementing handling for <b> and <i>: transform to <strong> and <em> for XHTML outputs and do not use in the highliting output (per Mauritz Jeanson)
+
+Manpages
+
+The following changes have been made to the manpages code since the 1.76.0
+release.
+
+  * Dave Pawson: param.xweb
+
+    111011T08:05
+
+Epub
+
+The following changes have been made to the epub code since the 1.76.0 release.
+
+  * Robert Stayton: docbook.xsl
+
+    Replace $base.dir with $chunk.base.dir to ensure trailing slash in place.
+
+  * Robert Stayton: docbook.xsl
+
+    Match template for "/" must have priority="1" since
+    chunk-code.xsl is xsl:included, not xsl:imported.
+
+  * Robert Stayton: docbook.xsl
+
+    Added support for book/info to support DocBook5.
+
+  * Robert Stayton: docbook.xsl
+
+    Remove disallowed priority attribute from the name="chunk" template.
+
+  * Keith Fahlgren: docbook.xsl
+
+    Bugfix for [#3071521] to ensure that NCX navPoints are generated for d:book root nodes with the -NS version of the stylesheets
+
+  * Keith Fahlgren: docbook.xsl
+
+    Remove unused NCX metadata elements
+
+  * Keith Fahlgren: bin/spec/epub_regressions_spec.rb; docbook.xsl; bin/spec/
+    files/test_cust.x?
+
+    Normalizing identifier lookup between NCX and OPF
+
+  * Keith Fahlgren: bin/dbtoepub
+
+    Reduce logging verbosity
+
+  * Keith Fahlgren: bin/dbtoepub; bin/lib/docbook.rb
+
+    Only copy images once for the DocBook to EPUB tool to correct Windows bug reported in [#3065489]
+
+HTMLHelp
+
+The following changes have been made to the htmlhelp code since the 1.76.0
+release.
+
+  * Robert Stayton: htmlhelp-common.xsl
+
+    Change $base.dir to $chunk.base.dir to ensure trailing slash in place.
+
+Eclipse
+
+The following changes have been made to the eclipse code since the 1.76.0
+release.
+
+  * Robert Stayton: eclipse.xsl; eclipse3.xsl
+
+    Use $chunk.base.dir instead of $base.dir to ensure trailing slash is in place.
+
+JavaHelp
+
+The following changes have been made to the javahelp code since the 1.76.0
+release.
+
+  * Robert Stayton: javahelp.xsl
+
+    Change $base.dir to $chunk.base.dir to ensure trailing slash is present.
+
+  * Mauritz Jeanson: javahelp.xsl
+
+    Replaced empty header.navigation and footer.navigation templates with parameter suppress.navigation=1,
+    which simplifies customization. See bug #3310904.
+
+Roundtrip
+
+The following changes have been made to the roundtrip code since the 1.76.0
+release.
+
+  * Dave Pawson: param.xweb
+
+    111011T08:05
+
+Slides
+
+The following changes have been made to the slides code since the 1.76.0
+release.
+
+  * Dave Pawson: fo/param.xweb; html/param.xweb
+
+    111011T08:05
+
+Website
+
+The following changes have been made to the website code since the 1.76.0
+release.
+
+  * Dave Pawson: param.xweb
+
+    111011T08:05
+
+Webhelp
+
+The following changes have been made to the webhelp code since the 1.76.0
+release.
+
+  * David Cramer: template/common/main.js
+
+    Webhelp: tweaking scrolldown offset for anchors
+
+  * David Cramer: docsrc/images; docsrc/images/sample.jpg; docsrc/readme.xml;
+    template/content?
+
+    Webhelp: updating docs. Ant version, install instructions, handling of images.
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Patch from Arun Bharadwaj to display message if JavaScript is disabled
+
+  * David Cramer: template/content/search/nwSearchFnt.js
+
+    Patch from Arun Bharadwaj to strip quotes from search query strings
+
+  * Robert Stayton: xsl/webhelp.xsl
+
+    Add basic support for new <topic> element.
+
+  * Jirka Kosek: xsl/webhelp.xsl
+
+    Put back old extensibility point.
+
+    Guys, please don't remove existing extensibility points like named templates, it will break existing customizations.
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Moving webhelp gentext strings into a context
+
+  * tom_schr: param.xweb
+
+    Fixed comment
+
+  * tom_schr: Makefile.param
+
+    Fixed indendation
+
+  * tom_schr: param.ent
+
+    Disabled branding and brandname entities for the time being
+
+  * tom_schr: Makefile.param
+
+    Added missing .param file (to be consistent with the other output formats)
+
+  * tom_schr: param.xweb
+
+    Enabled Id svn:keywords
+
+  * tom_schr: param.xweb
+
+    Included missing external entities
+
+  * tom_schr: param.xweb; param.ent
+
+    Prepared WebHelp reference documentation :)
+    Not clear about parameters brandname and branding: Should they renamed
+    to "webhelp.branding" and "webhelp.brandname"?
+    Currently, docsrc/reference.xml contains only a comment for the WebHelp
+    ref doc to be non-intrusive.
+    Idea is to enable it when it is ready
+
+  * tom_schr: xsl/webhelp.xsl
+
+    Moved language specific of WebHelp to gentext/locale/ as discussed with
+    Stefan following the "minimal intrusive approach". :)
+    In the long run, maybe moving the text into a context, not sure.
+
+  * stefanhinz: xsl/webhelp.xsl
+
+    Added comment, mainly to test if I have write permissions to the repo. If yes, this will become my first commit here, so let me say HELLO everyone. -Stefan
+
+  * David Cramer: template/common/css/positioning.css
+
+    Webhelp: Lower the minimum width of content pane
+
+  * kasunbg: xsl/webhelp.xsl; template/common/main.js
+
+    If an user moved to another page by clicking on a toc link, and then clicked on #searchDiv,
+    search should be performed if the cookie textToSearch is not empty.
+
+  * David Cramer: template/common/css/positioning.css; template/common/images/
+    search-icon.png;?
+
+    Webhelp: Small tweaks to icons, css
+
+  * David Cramer: Makefile
+
+    Webhelp: Perform xinclude if xsltproc is the processor
+
+  * David Cramer: Makefile
+
+    Webhelp: Hide remarks in readme output
+
+  * David Cramer: Makefile
+
+    Webhelp: Tweaking makefile
+
+  * David Cramer: build.properties; build.xml
+
+    Move paths to xercesImpl and xml-apis jars into build.properties
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Webhelp: Left align titles in nav header. Display  for all but the topmost page
+
+  * David Cramer: template/content/search/stemmers/en_stemmer.js; docsrc/
+    xinclude-test.xml
+
+    Webhelp: Cleanup related to en_stemmer.js changes
+
+  * David Cramer: template/common/css/positioning.css
+
+    Webhelp: Don't put borders around qandaset list
+
+  * David Cramer: template/common/main.js
+
+    Webhelp: Avoid unnecessary scroll ups when anchor is clicked on
+
+  * David Cramer: build.properties
+
+    Webhelp: Show footer nav by default
+
+  * David Cramer: build.properties; build.xml
+
+    Webhelp: Support setting suppress.footer.navigation from build.properties
+
+  * David Cramer: build.properties; build.xml
+
+    Webhelp: Support admon.graphics param in build.properties
+
+  * David Cramer: docsrc/xinclude-test.xml; docsrc/readme.xml
+
+    Webhelp: Adding xinclude example to the demo/readme doc
+
+  * David Cramer: template/common/css/positioning.css
+
+    Webhelp: Remove border around table used to format callout list
+
+  * David Cramer: xsl/webhelp.xsl; template/common/images/admon/tip.png;
+    template/common/image?
+
+    Webhelp: Support admon graphics (still off by default)
+
+  * David Cramer: xsl/webhelp.xsl; template/common/css/positioning.css
+
+    Webhelp: Turn on navfooter and fix related css
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Webhelp: Fix error about undeclared doc.title param
+
+  * David Cramer: docsrc/readme.xml
+
+    Webhelp: Adding some test search terms to the readme
+
+  * David Cramer: template/content/search/stemmers/en_stemmer.js
+
+    Handle exceptional cases listed in the Porter 2 stemming algo
+
+  * David Cramer: template/content/search/stemmers/en_stemmer.js
+
+    Webhelp: adding special case word 'say' to en js stemmer
+
+  * David Cramer: template/content/search/stemmers/en_stemmer.js
+
+    Webhelp: Refine stemming of terms that end in (only stem if there's a consonant before the -y)
+
+  * David Cramer: template/content/search/stemmers/en_stemmer.js; template/
+    content/search/nwSe?
+
+    Webhelp: fixed bug where words like key, day, and nucleus, were not found due to differences in the way the client stemmer and indexer stemmed words
+
+  * David Cramer: build.xml
+
+    Webhelp: Support xinclude and two-pass profiling in build.xml
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Fix bad link to default topic.
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Addressed tracker item #3444549: Using titleabbrev.markup mode instead of title.markup mode for webhelp toc
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Addressed #3443430, adding setindex to Webhelp toc
+
+  * David Cramer: template/common/main.js
+
+    Fixed bug where content scrolls up when search or contents tab are clicked
+
+  * kasunbg: docsrc/readme.xml
+
+    Automatically limit the size of the search description to something 140 characters
+
+  * kasunbg: xsl/webhelp.xsl
+
+    removing outline in 'contents' and 'search' buttons that is visible when clicked. tabindex for SIDEBAR button.
+
+  * kasunbg: xsl/webhelp.xsl; build.xml
+
+    Webhelp ant script changes - HTML transformation support for WebHelp - Uses Tagsoup for parsing the bad html.
+    tagsoup-1.2.1.jar is added to trunk/xsl-webhelpindexer/lib/
+
+  * kasunbg: xsl/webhelp.xsl
+
+    proper support for saxon xhtml transformation.
+
+  * kasunbg: template/common/images/callouts/10.png; template/common/images/
+    callouts/11.png; t?
+
+    webhelp - adding callouts
+
+  * kasunbg: template/common/main.js; template/content/search/nwSearchFnt.js
+
+    webhelp - some small rackspace additions, and cleaning up of main.js
+
+  * kasunbg: xsl/webhelp.xsl; template/common/main.js; template/common/css/
+    positioning.css
+
+    webhelp - animations for show/hide Sidebar
+
+  * kasunbg: build.properties
+
+    commenting about brand and brandname
+
+  * kasunbg: Makefile
+
+    parameterized MAKE for webhelp
+
+  * kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css;
+    build.properties; build.xml
+
+    webhelp xsl customization - logo
+
+  * kasunbg: Makefile
+
+    webhelp - fixing make clean
+
+  * kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css
+
+    webhelp xsl cleanup. Added the missing chapter title.
+
+  * kasunbg: template/content/search/nwSearchFnt.js
+
+    fix no. 2 - Fix for missing "No results found for..." bug
+
+  * kasunbg: template/content/search/nwSearchFnt.js
+
+    remove some JS warninings
+
+  * kasunbg: template/content/search/nwSearchFnt.js
+
+    Fix for missing "No results found for..." bug
+
+  * kasunbg: xsl/webhelp.xsl
+
+    commented about the importance of the order of css contents. Order is important between the in-html-file css and the linked css files. Some css declarations in jquery-ui-1.8.2.custom.css are over-ridden. If that's a concern, just remove the additional css contents inside these default jquery css files. I thought of keeping them intact for easier maintenance.
+
+  * Jirka Kosek: xsl/webhelp.xsl; template/common/css/positioning.css
+
+    Minor cleanup, added extensibility hook, some styling moved into CSS for easier customization
+
+  * David Cramer: template/content/search/nwSearchFnt.js
+
+    Removing onclick that came from Oxygen's dita stuff
+
+  * kasunbg: docsrc/readme.xml
+
+    webhelp - documenting about features
+
+  * kasunbg: template/common/css/positioning.css
+
+    webhelp search text box
+
+  * kasunbg: template/common/css/positioning.css
+
+    adding header background image
+
+  * kasunbg: xsl/webhelp.xsl; template/common/images/header-bg.png
+
+    new header background image
+
+  * kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css
+
+    fix left navigation
+
+  * kasunbg: template/common/css/positioning.css
+
+    some css
+
+  * kasunbg: build.xml
+
+    Adding html.extension property
+
+  * kasunbg: template/common/css/positioning.css; build.properties; build.xml
+
+    webhelp - Adding enable.stemming, toc.file build properties
+
+  * David Cramer: template/common/css/positioning.css
+
+    Make the webhelp banner slightly larger.
+
+  * David Cramer: template/common/main.js; template/common/css/positioning.css
+
+    Adjust colors and positioning of header and search/toc tabs
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Only put doc title in header
+
+  * David Cramer: template/common/css/positioning.css; template/common/images/
+    main_bg_fade.png
+
+    Adjusting default color of the header
+
+  * kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css
+
+    adjustments to header title. Now output in Opera looks good.
+
+  * kasunbg: template/common/images/sidebar.png; template/content/search/
+    punctuation.props; te?
+
+    deleting svn:executable flag from webhelp files
+
+  * kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css; template/
+    common/images/sear?
+
+    Customized the left navagation headers; Contents and Search.
+    Adding custom css for the current redmond ui of jquery-ui. These override jquery-ui's default css customizations. These are supposed to take precedence.
+
+  * kasunbg: docsrc/readme.xml
+
+    typo fix
+
+  * kasunbg: template/common/images/next-arrow.png; xsl/webhelp.xsl; template/
+    common/main.js; ?
+
+    UI improvements.
+            Moved search highligher to search tab.
+            Added nice icons for navigation buttons etc.
+            Removed footer navigation
+            Corrected tree colorings
+            Overall, some css magic
+
+  * David Cramer: docsrc/readme.xml
+
+    Added listitem thinking SyncRO Soft for their contributions.
+
+  * kasunbg: build.xml
+
+    support for default classpath for Gentoo Linux
+
+  * kasunbg: docsrc/readme.xml
+
+    webhelp - some updates to the documentation about search
+
+  * kasunbg: template/common/css/positioning.css
+
+    Fix for issue 'Keep "search" & "contents" titles always visible in webhelp - ID: 3403438'
+
+  * David Cramer: template/common/images/starsSmall.png
+
+    Changed icons used to show search weightings from stars to boxes so they won't look like user ratings
+
+  * David Cramer: xsl/webhelp.xsl; template/common/main.js; template/common/
+    images/starsSmall.?
+
+    Merged Oxygen webhelp improvements (search weightings etc) into trunk: -r9031:9039
+
+  * kasunbg: docsrc/readme.xml
+
+    webhelp documentation - search indexing, faq
+
+  * kasunbg: docsrc/readme.xml
+
+    update webhelp documentation
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Fixed bug where webhelp.default.topic was not being used if it was set
+
+  * David Cramer: xsl/webhelp.xsl; template/content/search/nwSearchFnt.js
+
+    Localize string in nwSearchFnt.js file
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Added tabindex attributes to make tab order in UI more logical in webhelp.
+
+  * David Cramer: template/common/main.js
+
+    Fixed bug where anchors in pages landed beneath the banner.
+
+  * kasunbg: xsl/webhelp.xsl
+
+    Added more comments to the xsl/webhelp/xsl/webhelp.xsl file. Removed some clutter.
+
+  * David Cramer: template/common/main.js
+
+    Fixed problem reported in IE 8. See tracker id # 373747.
+
+  * David Cramer: xsl/webhelp.xsl
+
+    Addressed tracker #3247166 by removing hard-coded reference to ch01.html.
+
+  * kasunbg: build.xml
+
+    Changed the webhelp build.xml to reflect the changes to xsl-webhelpindexer.
+    Added classpaths for xercesImpl and xml-api jars to the indexer. Paths added for *nix environments, need to look at how the current system behaves in Windows. Discussion: http://lists.oasis-open.org/archives/docbook-apps/201011/msg00116.html
+
+  * kasunbg: template/common/images/loading.gif; template/common/jquery/
+    treeview/jquery.treevi?
+
+    webhelp: Removing some unnecessary JQuery JS files
+
+  * kasunbg: template/common/main.js
+
+    webhelp: Usability improvement - when click on a node in the TOC tree, the child nodes will auto populate now.
+
+  * kasunbg: xsl/webhelp.xsl
+
+    Added google translated localizations for Japanese, German, French, and Chinese. The translations might not be pretty accurate.
+    Better translations are appreciated.
+
+  * kasunbg: docsrc/readme.xml; template/content/images; template/content/
+    images/sample.jpg
+
+    Added documentation for how to add images to WebHelp
+
+  * Jirka Kosek: xsl/webhelp.xsl
+
+    Added more customization hooks
+    Search code output only when search tab is active
+    Added cs localization
+
+  * Jirka Kosek: xsl/webhelp.xsl
+
+    Added parameter webhelp.common.dir for specifying location of common files (JS+CSS)
+    Added hooks for adding additional user defined tabs
+
+  * David Cramer: indexer
+
+    More webhelp indexer refactoring
+
+  * David Cramer: build.xml
+
+    Removed cruft from before webhelp indexer refactoring
+
+  * David Cramer: indexer/src
+
+    Refactoring webhelp to separate more cleanly the xsl and java code.
+
+  * David Cramer: indexer/lib
+
+    Refactoring webhelp to separate more cleanly the xsl and java code.
+
+  * David Cramer: Makefile; build.xml
+
+    Refactoring webhelp to separate more cleanly the xsl and java code.
+
+  * David Cramer: indexer/src/com/nexwave/nquindexer/IndexerTask.java;
+    build.xml; indexer/src/?
+
+    Merged in changes from webhelp branch to address issue #3058244 regarding the xx.html temp file that was being created
+
+Params
+
+The following changes have been made to the params code since the 1.76.0
+release.
+
+  * Mauritz Jeanson: htmlhelp.encoding.xml
+
+    Updated link (again).
+
+  * Mauritz Jeanson: admon.graphics.extension.xml
+
+    Added list of graphics formats.
+
+  * Mauritz Jeanson: htmlhelp.encoding.xml
+
+    Updated link.
+
+  * Mauritz Jeanson: passivetex.extensions.xml
+
+    Updated link.
+
+  * tom_schr: webhelp.indexer.language.xml; webhelp.default.topic.xml;
+    webhelp.tree.cookie.id.?
+
+    Fixed wrong xml:id's
+
+  * tom_schr: webhelp.indexer.language.xml; webhelp.default.topic.xml;
+    webhelp.tree.cookie.id.?
+
+    Prepared WebHelp reference documentation :)
+    Not clear about parameters brandname and branding: Should they renamed
+    to "webhelp.branding" and "webhelp.brandname"?
+    Currently, docsrc/reference.xml contains only a comment for the WebHelp
+    ref doc to be non-intrusive.
+    Idea is to enable it when it is ready
+
+  * Robert Stayton: bibliography.collection.xml
+
+    Fix well-formedness problem.
+
+  * Robert Stayton: normal.para.spacing.xml; para.properties.xml
+
+    Clarify usage of para property attribute sets.
+
+  * Robert Stayton: normal.para.spacing.xml
+
+    Clarify reuse of this attribute-set in other elements.
+
+  * Robert Stayton: bibliography.collection.xml; glossary.collection.xml
+
+    Clarify how relative paths are resolved.
+
+  * Robert Stayton: glossary.collection.xml
+
+    More explanation of relative paths in glossary.collection.
+
+  * Robert Stayton: glossary.collection.xml
+
+    Add info about relative paths.
+
+  * Robert Stayton: para.properties.xml
+
+    Special attribute-set for para only.
+
+  * Robert Stayton: table.caption.properties.xml
+
+    To format table captions.
+
+  * Robert Stayton: base.dir.xml
+
+    Add info about trailing slash added if it was omitted.
+
+  * Robert Stayton: html.script.type.xml
+
+    Fix typo in param name.
+
+  * Robert Stayton: html.script.type.xml; html.script.xml
+
+    Add support for specifying javascript references like css references.
+
+  * Jirka Kosek: body.margin.outer.xml; region.outer.extent.xml;
+    side.region.precedence.xml; b?
+
+    Fixed well-formdness
+
+  * Robert Stayton: side.region.precedence.xml
+
+    Add comment about internal individual params for each side.
+
+  * Robert Stayton: body.margin.outer.xml; region.outer.extent.xml;
+    region.inner.properties.xm?
+
+    Complete support for side regions.
+
+  * Robert Stayton: body.margin.outer.xml; region.outer.extent.xml;
+    body.margin.inner.xml; reg?
+
+    Add support for side regions in FO output.
+
+  * Robert Stayton: chunked.filename.prefix.xml
+
+    New param chunked.filename.prefix to separate any such prefix from
+    the base.dir param, which helps fix bug 3087359.
+
+  * Robert Stayton: generate.consistent.ids.xml
+
+    New param to support replacing generate-id() with xsl:number
+    for more consistent id values.
+
+  * Dave Pawson: linenumbering.everyNth.xml
+
+    111011T08:12
+
+  * Dave Pawson: hyphenate.xml; ulink.hyphenate.chars.xml; ulink.hyphenate.xml
+
+    111011T07:57
+
+  * Robert Stayton: task.properties.xml
+
+    Allow task to be customized more easily.
+
+  * Robert Stayton: calloutlist.properties.xml; callout.properties.xml
+
+    Support better customization of callout lists.
+
+  * Robert Stayton: ulink.hyphenate.xml
+
+    Remove dated (2002) reference to supported ulink characters.
+    Add caveat about this applying only to empty ulink elements.
+
+  * Dave Pawson: title.font.family.xml
+
+    Updated for multiple fonts
+
+  * Dave Pawson: monospace.font.family.xml
+
+    Updated for multiple fonts
+
+  * Dave Pawson: body.font.family.xml
+
+    Updated for multiple fonts
+
+  * Jirka Kosek: callout.unicode.start.character.xml
+
+    Added support for alternative circled numbers
+
+  * Mauritz Jeanson: refentry.title.properties.xml; qanda.title.properties.xml;
+    section.title.?
+
+    Fixed bug #3157584 (trouble with font family selection).
+
+  * David Cramer: example.properties.xml
+
+    Made example.properties use keep-together='auto' like table.properies to avoid problems where example/programlisting takes more than one page
+
+  * Mauritz Jeanson: graphicsize.extension.xml
+
+    Added info about supported image formats.
+
+  * Robert Stayton: draft.mode.xml
+
+    Change default for draft.mode to 'no'.
+
+Highlighting
+
+The following changes have been made to the highlighting code since the 1.76.0
+release.
+
+  * Jirka Kosek: csharp-hl.xml
+
+    Added LINQ keywords
+
+  * Jirka Kosek: delphi-hl.xml
+
+    Additional keywords from Yuri Zhilin
+
+Profiling
+
+The following changes have been made to the profiling code since the 1.76.0
+release.
+
+  * David Cramer: profile-mode.xsl
+
+    When profile.* params only consist of space characters, then ignore them.
+
+Lib
+
+The following changes have been made to the lib code since the 1.76.0 release.
+
+  * Robert Stayton: lib.xweb
+
+    Added two utility templates to make lib.xsl work
+    without reference to other modules since it is used
+    that way with profiling/xsl2profile.xsl.
+
+  * Robert Stayton: lib.xweb
+
+    Fix trim.common.uri.paths to first resolve any ../ in
+    the paths.
+
+Template
+
+The following changes have been made to the template code since the 1.76.0
+release.
+
+  * Robert Stayton: titlepage.xsl
+
+    Add basic support for new <topic> element.
+
+  * Robert Stayton: titlepage.xsl
+
+    Fix bug in handling of attributes in mode="copy"
+
+  * Jirka Kosek: titlepage.xsl
+
+    Handle namespaced elements without prefix in a special way in order to prevent copying excessive namespace declarations.
+
+  * Jirka Kosek: titlepage.xsl
+
+    Preserve namespace of copied elements
+
+  * Jirka Kosek: titlepage.xsl
+
+    Titlepage mechanism is now namespace aware to support XHTML. Please note that when generating titlepage template stylesheets you have to pass FO or XHTML namespace inside ns parameter. For HTML parameter should be empty.
+
+Extensions
+
+The following changes have been made to the extensions code since the 1.76.0
+release.
+
+  * kasunbg: Makefile
+
+    webhelp - Adding enable.stemming, toc.file build properties
+
+  * David Cramer: Makefile
+
+    Attempt to convince Makefile that webhelpindexer is dirty
+
+  * David Cramer: Makefile
+
+    More webhelp refactoring
+
+  * David Cramer: Makefile
+
+    Refactoring webhelp to separate more cleanly the xsl and java code.
+
+XSL-Saxon
+
+The following changes have been made to the xsl-saxon code since the 1.76.0
+release.
+
+  * Mauritz Jeanson: src/com/nwalsh/saxon/Verbatim.java; src/com/nwalsh/saxon/
+    FormatGraphicCal?
+
+    Added fixes to ensure that generated XHTML markup for callouts is in the proper namespace.
+
