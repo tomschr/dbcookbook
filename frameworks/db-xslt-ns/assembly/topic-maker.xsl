@@ -4,7 +4,6 @@
   xmlns:d="http://docbook.org/ns/docbook"
 xmlns:exsl="http://exslt.org/common"
   xmlns="http://docbook.org/ns/docbook"
-  xmlns:d="http://docbook.org/ns/docbook"
   exclude-result-prefixes="exsl d"
   version="1.0">
 
