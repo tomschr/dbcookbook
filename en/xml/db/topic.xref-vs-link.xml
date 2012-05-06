@@ -15,7 +15,7 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.xref-vs-link" remap="topic" userlevel="easy" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
+<section xml:id="dbc.markup.xref-vs-link" remap="topic" userlevel="easy" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Knowing the Difference of Crossreferences and Links</title>
   <info>
     <definitions definitionfile="defs.xml"/>
@@ -175,10 +175,10 @@
     <title>See Also</title>
     <itemizedlist>
       <listitem>
-        <para><xref linkend="dbc.db.xref"/></para>
+        <para><xref linkend="dbc.markup.xref"/></para>
       </listitem>
       <listitem>
-        <para><xref linkend="dbc.db.link"/></para>
+        <para><xref linkend="dbc.markup.link"/></para>
       </listitem>
       <listitem>
         <para><link xlink:href="http://www.docbook.org/tdg51/en/html/link.html"/></para>

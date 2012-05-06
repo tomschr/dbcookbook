@@ -15,20 +15,22 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.db.remarks" remap="topic" userlevel="easy"
+<section xml:id="dbc.markup.remarks" remap="topic" userlevel="easy"
+  version="5.1"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Inserting Remarks</title>
   <info>
-    <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>remarks</keyword>
       <keyword>show.comments</keyword>
     </keywordset>
     <subjectset>
-      <subject>remarks</subject>
-      <subject>show.remarks</subject>
+      <subject>
+        <subjectterm>remarks</subjectterm>
+        <subjectterm>show.remarks</subjectterm>
+      </subject>
     </subjectset>
   </info>
   
