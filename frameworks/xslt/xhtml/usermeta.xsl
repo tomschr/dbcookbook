@@ -137,10 +137,9 @@ var popup_</xsl:text>
       <xsl:call-template name="l10n.language"/>
     </xsl:variable>
 
-    <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT"/>
-    <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
-    <meta name="DC.Language" scheme="DCTERMS.RFC3066" content="{$lang}"/>
-    <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
+    <meta name="DC.format"     scheme="DCTERMS.IMT" content="text/html"/>
+    <meta name="DC.type"       scheme="DCTERMS.DCMIType" content="Text" />
+    <meta name="DC.language"   scheme="DCTERMS.RFC3066" content="{$lang}"/>
     <meta name="DC.identifier" scheme="DCTERMS.URI" content="{$filename}"/>
     
     <xsl:if test="normalize-space($title)">
@@ -153,7 +152,6 @@ var popup_</xsl:text>
       <meta name="DC.contributor" content="{$contributors}"/>
     </xsl:if>
   
-   
     <!--<xsl:message>user.meta.dublincore:
       filename:   <xsl:value-of select="$filename"/>
       title:      <xsl:value-of select="$title"/> 
