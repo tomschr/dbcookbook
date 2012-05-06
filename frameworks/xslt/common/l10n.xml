@@ -8,7 +8,13 @@
     <l:gentext key="Keywords" text="Keywords"/>
     <l:gentext key="Permalink" text="Permalink"/>
     <l:gentext key="permalink" text="permalink"/>
-    <l:gentext key="Download" text="Download File"/>    
+    <l:gentext key="Download" text="Download File"/>
+    
+    <l:context name="title-unnumbered">
+      <l:template name="book" text="%t"/>
+      <l:template name="preface" text="%t"/>
+    </l:context>
+    
     <l:context name="datetime">
       <l:template name="format" text="d b Y, X"/>
     </l:context>

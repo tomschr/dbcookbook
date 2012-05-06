@@ -68,7 +68,7 @@
 
 <xsl:template name="sf:generate-keywords">
   <xsl:param name="node" select="."/>
-  <xsl:variable name="keywords" select="*/keywordset"/>
+  <xsl:variable name="keywords" select="*/keywordset|*/d:keywordset"/>
   
   <!--<xsl:message>sf:generate-keywords:
     node = <xsl:value-of select="local-name($node)"/>
@@ -108,7 +108,9 @@
   <!-- Only apply it on section inside a chapters -->
   <xsl:if test="parent::chapter">
     <xsl:variable name="context"
-                select="(parent::info|parent::info/parent::*)[1]"/>
+                select="(parent::d:info|parent::d:info/parent::*|
+                         parent::sectioninfo|parent::sectioninfo/parent::*
+                        )[1]"/>
 
     <xsl:call-template name="sf:generate-userlevel">
       <xsl:with-param name="level" select="@userlevel"/>
@@ -125,7 +127,16 @@
                                         ancestor::sect2|
                                         ancestor::sect3| 
                                         ancestor::sect4| 
-                                        ancestor::sect5)[last()]"/>
+                                        ancestor::sect5 |
+                                        
+                                        ancestor::d:section |
+                                        ancestor::d:simplesect|
+                                        ancestor::d:sect1|
+                                        ancestor::d:sect2|
+                                        ancestor::d:sect3| 
+                                        ancestor::d:sect4| 
+                                        ancestor::d:sect5
+                                       )[last()]"/>
 
   <xsl:variable name="renderas">
     <xsl:choose>

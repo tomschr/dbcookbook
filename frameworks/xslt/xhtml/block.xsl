@@ -6,8 +6,8 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink">
 
-<xsl:template match="revhistory">
-  <xsl:message>**** d:revhistory</xsl:message>
+<xsl:template match="revhistory|d:revhistory">
+  <!--<xsl:message>**** d:revhistory</xsl:message>-->
   <div>
     <xsl:call-template name="common.html.attributes"/>
     <table border="0" width="100%" summary="Revision history x">
@@ -27,11 +27,13 @@
   </div>
 </xsl:template>
   
-<xsl:template match="revhistory/revision">
-  <xsl:variable name="revnumber" select="revnumber"/>
-  <xsl:variable name="revdate"   select="date"/>
-  <xsl:variable name="revauthor" select="authorinitials|author"/>
-  <xsl:variable name="revremark" select="revremark|revdescription"/>
+<xsl:template match="revhistory/revision|d:revhistory/d:revision">
+  <xsl:variable name="revnumber" select="revnumber|d:revnumber"/>
+  <xsl:variable name="revdate"   select="date|d:date"/>
+  <xsl:variable name="revauthor" select="authorinitials|author
+                                         |d:authorinitials|d:author"/>
+  <xsl:variable name="revremark" select="revremark|revdescription
+                                         |d:revremark|d:revdescription"/>
   <tr class="revision">
     <td class="revnumber">
       <xsl:if test="$revnumber">

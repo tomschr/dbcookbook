@@ -17,7 +17,7 @@
   -->
   <xsl:variable name="fn"
       select="($node/blockinfo/de:output/de:filename|
-               $node/info/de:output/de:filename)[1]"/>
+               $node/d:info/de:output/de:filename)[1]"/>
   <xsl:variable name="downloadlink">
       <xsl:if test="$fn">
         <xsl:value-of select="concat($base.example.dir, $fn)"/>
@@ -42,7 +42,7 @@
   </xsl:variable>
   <xsl:variable name="fn"
       select="($node/blockinfo/de:output/de:filename|
-               $node/info/de:output/de:filename)[1]"/>
+               $node/d:info/de:output/de:filename)[1]"/>
   
   <xsl:if test="$use.downloadlink != 0 and $dl != ''">
     <xsl:variable name="html.class" select="local-name($node)"/>
@@ -74,7 +74,7 @@
   </xsl:param>
   
   <xsl:choose>
-    <xsl:when test="$object/self::example">
+    <xsl:when test="($object/self::example | $object/self::d:example)[1]">
       <xsl:variable name="html.class" select="local-name($object)"/>
       <div class="{$html.class}-title">
         <xsl:copy-of select="$title"/>
@@ -93,7 +93,7 @@
 </xsl:template>
 
 
-<xsl:template match="informalexample">
+<xsl:template match="informalexample|d:informalexample">
   <xsl:param name="class">
     <xsl:apply-templates select="." mode="class.value"/>
   </xsl:param>

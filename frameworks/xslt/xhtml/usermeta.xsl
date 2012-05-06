@@ -93,37 +93,93 @@ var popup_</xsl:text>
 <xsl:template name="user.meta.dublincore">
     <xsl:param name="node" select="."/>
 
+    <xsl:variable name="title">
+      <!--<xsl:apply-templates select="$node" mode="object.title.markup.textonly"/>-->
+      <xsl:call-template name="substitute-markup">
+        <xsl:with-param name="allow-anchors" select="0"/>
+        <xsl:with-param name="template">
+          <xsl:call-template name="gentext.template">
+            <xsl:with-param name="context" select="'title-unnumbered'"/>
+            <xsl:with-param name="name">
+              <xsl:call-template name="xpath.location">
+                <xsl:with-param name="node" select="$node"/>
+              </xsl:call-template>
+            </xsl:with-param>
+          </xsl:call-template>
+        </xsl:with-param>
+      </xsl:call-template> 
+    </xsl:variable>
+    <xsl:variable name="author">
+      <xsl:call-template name="person.name">
+        <xsl:with-param name="node"
+          select="($node/d:info/d:author/d:personname |
+                   $node/*/author/personname |
+                   /d:book/d:info/d:author |
+                   /book/*/author)[1]"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:variable name="contributors">
+      <xsl:for-each select="$node/d:info/d:othercredit |
+                            $node/d:info/d:authorgroup/d:othercredit |
+                            $node/*/othercredit |
+                            $node/*/authorgroup/othercredit">
+        <xsl:call-template name="person.name"/>
+        <xsl:if test="position() &lt; last()">
+          <xsl:text>, </xsl:text>
+        </xsl:if>
+      </xsl:for-each>
+    </xsl:variable>
+
     <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT"/>
     <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
-    <meta name="DC.Language" content="{/*/@xml:lang}" scheme="DCTERMS.RFC3066"/>
-    <meta name="DC.title">
+    <meta name="DC.Language" scheme="DCTERMS.RFC3066">
       <xsl:attribute name="content">
-        <xsl:call-template name="get.doc.title"/>
+        <xsl:call-template name="l10n.language"/>
       </xsl:attribute>
     </meta>
-
-    <meta name="DC.creator">
-      <xsl:attribute name="content">
-        <xsl:call-template name="person.name">
-          <xsl:with-param name="node"
-            select="$node/d:info/d:author/d:personname"/>
-        </xsl:call-template>
-      </xsl:attribute>
-    </meta>
-    <xsl:if test="$node/d:info/d:subjectset">
-      <meta name="DC.subject">
-        <xsl:attribute name="content">
-          <xsl:for-each select="$node/d:info/d:subjectset/d:subject">
-            <xsl:apply-templates select="d:subjectterm"/>
-            <xsl:if test="following-sibling::d:subject">, </xsl:if>
-          </xsl:for-each>
-        </xsl:attribute>
-      </meta>
+    
+    <xsl:if test="normalize-space($title)">
+      <meta name="DC.title" content="{normalize-space($title)}"/>
     </xsl:if>
-    <xsl:if test="$node/d:info/d:abstract">
+    <xsl:if test="normalize-space($author) != ''">
+      <meta name="DC.creator" content="{normalize-space($author)}"/>
+    </xsl:if>
+    <xsl:if test="normalize-space($contributors)">
+      <meta name="DC.contributor" content="{$contributors}"/>
+    </xsl:if>
+ 
+  
+    <!--<xsl:message>user.meta.dublincore:
+      title:      <xsl:value-of select="$title"/> 
+      
+      node:       <xsl:value-of select="local-name($node)"/>
+      current:    <xsl:value-of select="local-name(.)"/>
+      parent:     <xsl:value-of select="local-name($node/parent::*[1])"/>
+      @xml:id:    <xsl:value-of select="($node/@xml:id | $node/@id)[1]"/>
+      info:       <xsl:value-of select="count($node/d:info)"/>
+      info direct:<xsl:value-of select="count(d:info)"/>
+      subjectset: <xsl:value-of select="count($node/d:info/d:subjectset)"/>
+    </xsl:message>-->
+    
+    <xsl:if test="$node/d:info/d:subjectset or $node/*/subjectset">
+      <xsl:for-each select="$node/d:info/d:subjectset/d:subject | 
+                                $node/*/subjectset/subject">
+        <meta name="DC.subject">
+          <xsl:attribute name="content">
+            <xsl:for-each select="d:subjectterm|subjectterm">
+              <xsl:value-of select="."/>
+              <xsl:if test="position() &lt; last()">, </xsl:if>
+            </xsl:for-each>    
+          </xsl:attribute>
+        </meta>  
+      </xsl:for-each>
+    </xsl:if>
+   
+    <xsl:if test="$node/d:info/d:abstract or $node/*/abstract">
       <meta name="DC.description">
         <xsl:attribute name="content">
-          <xsl:for-each select="$node/d:info/d:abstract[1]/*">
+          <xsl:for-each select="$node/d:info/d:abstract[1]/* |
+                                $node/*/abstract[1]/*">
             <xsl:value-of select="normalize-space(.)"/>
             <xsl:if test="position() &lt; last()">
               <xsl:text> </xsl:text>
@@ -133,37 +189,42 @@ var popup_</xsl:text>
       </meta>
     </xsl:if>
     <xsl:if test="$node/d:info/d:publishername or
-                  $node/d:info/d:publisher">
+                  $node/*/publishername or
+                  $node/d:info/d:publisher or
+                  $node/*/publisher">
       <meta name="DC.publisher">
         <xsl:attribute name="content">
           <xsl:for-each select="($node/d:info/d:publishername |
-                                 $node/d:info/d:publisher/d:publishername)[1]/*">
+                                 $node/*/publishername |
+                                 $node/d:info/d:publisher/d:publishername|
+                                 $node/*/publisher/publishername
+                                 )[1]/*">
             <xsl:value-of select="normalize-space(.)"/>
           </xsl:for-each>
         </xsl:attribute>
       </meta>
     </xsl:if>
-    <meta name="DC.contributor" content=""/>
+    
     <xsl:if test="function-available('date:date-time')">
-    <meta name="DC.date" scheme="DCTERMS.W3CDTF">
-      <xsl:variable name="date" select="date:date-time()"/>
-      <xsl:attribute name="content">
-        <!--content="2011-09-18T01:49:37+02:00"-->
-        <xsl:call-template name="datetime.format">
-          <xsl:with-param name="format">Y-m-d</xsl:with-param>
-          <xsl:with-param name="date" select="$date"/>
-        </xsl:call-template>
-        <xsl:text>T</xsl:text>
-        <xsl:call-template name="datetime.format">
-          <xsl:with-param name="format">X</xsl:with-param>
-          <xsl:with-param name="date" select="$date"/>
-        </xsl:call-template>
-      </xsl:attribute>
-    </meta>
+      <meta name="DC.date" scheme="DCTERMS.W3CDTF">
+        <xsl:variable name="date" select="date:date-time()"/>
+        <xsl:attribute name="content">
+          <!--content="2011-09-18T01:49:37+02:00"-->
+          <xsl:call-template name="datetime.format">
+            <xsl:with-param name="format">Y-m-d</xsl:with-param>
+            <xsl:with-param name="date" select="$date"/>
+          </xsl:call-template>
+          <xsl:text>T</xsl:text>
+          <xsl:call-template name="datetime.format">
+            <xsl:with-param name="format">X</xsl:with-param>
+            <xsl:with-param name="date" select="$date"/>
+          </xsl:call-template>
+        </xsl:attribute>
+      </meta>
     </xsl:if>
     <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType"/>
-    <xsl:if test="$node/d:info/d:biblioid">
-      <xsl:for-each select="$node/d:info/d:biblioid">
+    <xsl:if test="$node/d:info/d:biblioid[@class!='other'] or $node/*/biblioid[@class!='other']">
+      <xsl:for-each select="$node/d:info/d:biblioid[@class!='other'] | $node/*/biblioid[@class!='other']">
         <meta name="DC.identifier" scheme="DCTERMS.URI">
           <xsl:attribute name="content">
             <xsl:value-of select="normalize-space(.)"/>
@@ -172,9 +233,9 @@ var popup_</xsl:text>
       </xsl:for-each>
     </xsl:if>
     
-    <!--<meta name="DC.source"
+    <meta name="DC.source"
       content="http://www.w3.org/TR/html401/struct/global.html#h-7.4.4"
-      scheme="DCTERMS.URI"/>--> 
+      scheme="DCTERMS.URI"/> 
     <meta name="DC.relation" content="http://dublincore.org/"
       scheme="DCTERMS.URI"/>
     <meta name="DC.coverage" content="" scheme="DCTERMS.TGN"/><!-- FIXME -->
