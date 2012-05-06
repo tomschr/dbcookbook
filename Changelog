@@ -2,20 +2,32 @@
 Sat May 05 16:21:00 UTC 2012 - tom_schr@web.de
 
 Topics:
-- Extracting Language Information (common/topic.get-lang.xml)
+- Make IDs and linkends consistent. Replaced dbc.db.X -> dbc.markup.X
+(changeset 1296:469e8dbfaadb)
 - Revised topic about permalinks (html/topic.permalinks.xml)
+(changeset 1289:d03883718ab4)
+- Extracting Language Information (common/topic.get-lang.xml)
+(changeset 1273:349de5810bf9)
 
 Infrastructure:
-- Download link now shows filename
+- Created separate link for legalnotice and revision history
+(changesets 1308:0a892e2ca29b, 1306:eaeef28f250d)
+- Make customizations mostly independent of DocBook namespace
+(changeset 1300:fb2650d593b5)
+- Used DocBook namespace stylesheets now (changeset 1297:13bb4262bb4b)
+- Download link now shows filename (changeset 1287:448185d21afa)
+- Improved/corrected Dublin Core metadata
+- Added robots.txt for Web crawler (changeset 1292:a9317b10eaec)
 
 -------------------------------------------------------------------
 Son Apr 22 19:00:00 UTC 2012 - tom_schr@web.de
 
 Topics:
 - Added new topic: Moving the Table of Contents (TOC)
+(changeset 1211:6dbe288a1fec)
 
 Infrastructure:
-- Added link to Atom/RSS feed
+- Added link to Atom/RSS feed (changeset 1159:e50f84370538)
 - Added list of keywords after topic title
 - Improved chunked HTML code:
   * Cleaned up HTML code to output HTML5
@@ -28,7 +40,7 @@ Sat Feb 25 20:14:00 UTC 2012 - tom_schr@web.de
 
 Topics:
 - Added new idea (authors in TOC) with examples
-  (Changesets 6e41f665f574)
+  (Changesets 1162:6e41f665f574)
 
 Infrastructure:
 - Added subdirectory for each topic. This makes it easier to create
@@ -39,7 +51,7 @@ Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
 
 Infrastructure:
 - Added <link/> element for HTML to mark up RSS and Atom feeds
-  (Changesets fb82de3b8ace, a0560ecceb35)
+  (Changesets 1157:fb82de3b8ace, 1156:a0560ecceb35)
 
 -------------------------------------------------------------------
 Sun Feb  5 21:58:18 UTC 2012 - tom_schr@web.de
