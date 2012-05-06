@@ -133,6 +133,11 @@ div.legalnotice div.sidebar-titlepage h3 {
   font-weight:600;
 }
 
+div.legalnoticelink {
+  margin-top:10;
+  margin-bottom:30;
+}
+
 body > .chapter h2,
 .book-titlepage h2,
 .book-titlepage h3 {
