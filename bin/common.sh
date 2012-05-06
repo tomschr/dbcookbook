@@ -10,8 +10,12 @@ BUILDDIR=${ABSPATH}/build
 FRAMEWORKSDIR=${ABSPATH}/frameworks
 BASEXSLT2=${FRAMEWORKSDIR}/xslt2/base
 BASEXSLT1=${FRAMEWORKSDIR}/xslt/
+CSSFILE=${BASEXSLT2}/css/dbcookbook.css
 DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
+
+LOG=1
+LOGFILE=/tmp/docookbook.log
 
 XMLIN="en/xml/DocBook-Cookbook.xml"
 HTMLOUT="${BUILDDIR}/html"
@@ -22,17 +26,25 @@ HLCONFIG="${DBXSLT5}/highlighting/xslthl-config.xml"
 HLFLAG="-Dxslthl.config=file://${HLCONFIG}"
 XINCLUDEFLAG="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"
 
-framework() {
+function framework() {
  echo "Using Framework: $FRAMEWORKSDIR"
 }
 
-exit_on_error() {
-  local msg=$1
-  echo $msg
+function __logging() {
+  local MSG=$1
+  local DATE=$(date +"[%d-%m-%YT%H:%M:%S]")
+  
+  echo "$DATE $MSG" >> $LOGFILE
+}
+
+function exit_on_error() {
+  local MSG=$1
+  echo "ERROR: $MSG" 
+  __logging "ERROR: $MSG"  
   exit 10
 }
 
-createEntity() {
+function createEntity() {
 cat > ${BUILDDIR}/tmp/ents.ent <<EOF
 <!ENTITY % amsa.ent SYSTEM "/usr/share/xml/entities/xmlcharent/0.3/iso-amsa.ent">
 %amsa.ent;
