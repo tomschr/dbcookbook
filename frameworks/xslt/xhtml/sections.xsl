@@ -68,12 +68,13 @@
 
 <xsl:template name="sf:generate-keywords">
   <xsl:param name="node" select="."/>
-  <xsl:variable name="keywords" select="*/keywordset|*/d:keywordset"/>
+  <xsl:variable name="keywords" select="$node/*/keywordset|$node/d:info/d:keywordset"/>
   
   <!--<xsl:message>sf:generate-keywords:
     node = <xsl:value-of select="local-name($node)"/>
+    child = <xsl:value-of select="local-name(*[1])"/>
     childname <xsl:value-of select="local-name($node/*[2])"/>
-    keywordset = <xsl:value-of select="count($keywords/*)"/>
+    keywordset = <xsl:value-of select="count($keywords)"/>
   </xsl:message>-->
   
   <xsl:if test="$generate.keywordlist != 0 and count($keywords/*) > 0">
@@ -106,14 +107,14 @@
 
 <xsl:template name="section.titlepage.before.verso">
   <!-- Only apply it on section inside a chapters -->
-  <xsl:if test="parent::chapter">
+  <xsl:if test="parent::chapter or parent::d:chapter">
     <xsl:variable name="context"
                 select="(parent::d:info|parent::d:info/parent::*|
                          parent::sectioninfo|parent::sectioninfo/parent::*
                         )[1]"/>
 
     <xsl:call-template name="sf:generate-userlevel">
-      <xsl:with-param name="level" select="@userlevel"/>
+      <xsl:with-param name="node" select="$context"/>
     </xsl:call-template>
     <xsl:call-template name="sf:generate-keywords"/>
   </xsl:if>
