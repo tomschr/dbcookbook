@@ -67,7 +67,7 @@
             <filename>pretty/pretty.xsl</filename>
           </output>
         </info>
-        <programlisting language="xml"><xi:include
+        <programlisting linenumbering="numbered" language="xml"><xi:include
           href="pretty/pretty.xsl" parse="text"/></programlisting>
       </example>
     </section>

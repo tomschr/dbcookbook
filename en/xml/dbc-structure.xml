@@ -57,7 +57,7 @@
           <filename>common/copy.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml"><xi:include 
+      <programlisting linenumbering="numbered" language="xml"><xi:include 
         href="structure/common/copy.xsl" parse="text"/></programlisting>
     </example>
     

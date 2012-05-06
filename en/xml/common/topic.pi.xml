@@ -104,7 +104,7 @@
                 xml:id="ar.pi.apply-imports.2"/>
             </areaset>
           </areaspec>
-          <programlisting language="xml">&lt;xsl:template match="d:para">
+          <programlisting linenumbering="numbered" language="xml">&lt;xsl:template match="d:para">
   &lt;xsl:variable name="bg">
     &lt;xsl:call-template name="pi-attribute">
       &lt;xsl:with-param name="pis" select="processing-instruction('toms-html')"/>

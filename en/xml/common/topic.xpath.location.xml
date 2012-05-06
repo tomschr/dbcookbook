@@ -89,7 +89,9 @@
           <area xml:id="co.xpathns.choose" coords="21" units="linecolumn"/>
           <area xml:id="co.xpathns.predicate" coords="32 80" units="linecolumn"/>
         </areaspec>
-        <programlisting><xi:include href="xpath.location/xpathns.location.xsl" parse="text"/></programlisting>
+        <programlisting linenumbering="numbered" language="xml"
+          ><xi:include href="xpath.location/xpathns.location.xsl" 
+            parse="text"/></programlisting>
       </programlistingco>
       <calloutlist>
         <callout arearefs="co.xpathns.ns">
