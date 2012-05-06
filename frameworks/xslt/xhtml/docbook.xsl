@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE xsl:stylesheet
 [
-  <!--<!ENTITY db "http://docbook.sourceforge.net/release/xsl/current/xhtml">-->
-  <!ENTITY db "../../db-xslt/xhtml-1_1">
+  <!ENTITY % common.ent SYSTEM "../common/common.ent">
+  %common.ent;
 ]>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -11,7 +11,7 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink">
 
-  <xsl:import href="&db;/docbook.xsl"/>
+  <xsl:import href="&dburi;/docbook.xsl"/>
   <!--<xsl:import href="&db;/highlight.xsl"/>-->
   
   <xsl:include href="param.xsl"/>

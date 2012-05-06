@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE xsl:stylesheet
 [
-  <!--<!ENTITY db "http://docbook.sourceforge.net/release/xsl/current/xhtml">-->
-  <!ENTITY db "../../db-xslt/xhtml-1_1">
+  <!ENTITY % common.ent SYSTEM "../common/common.ent">
+  %common.ent;
 ]>
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -14,11 +14,11 @@
   extension-element-prefixes="exsl">
  
   <xsl:import href="docbook.xsl"/>
-  <xsl:import href="&db;/chunk-common.xsl"/>
+  <xsl:import href="&dburi;/chunk-common.xsl"/>
 
   <xsl:output method="xml"/>  
   
-  <xsl:include href="&db;/chunk-code.xsl"/>
+  <xsl:include href="&dburi;/chunk-code.xsl"/>
   
   <xsl:param name="chunker.output.method" select="'xml'"/>
   <xsl:param name="chunker.output.doctype-system" select="''"/>
