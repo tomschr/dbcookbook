@@ -3,17 +3,48 @@
 
 source bin/common.sh
 
+CLEANUP=0
+ROOTID=""
+
 function print_help() {
 cat << EOF
 Transforms DocBook into XHTML chunks, adding cleanup step
 
 -h, --help       Prints this help text
 -c, --cleanup    Only perform cleanup step
+-r, --rootid ROOTID
+                 Pass xml:id to only process a certain chapter, section,etc.
 EOF
 }
 
 function saxon_db2xhtml() {
-saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} ${BASEXSLT1}/xhtml/chunk.xsl || exit_on_error "ERROR: Something went wrong"
+  local ROOTIDPARAM=""
+  if [[ "$ROOTID" != '' ]]; then
+    ROOTIDPARAM="rootid=$ROOTID"
+  fi
+  saxon -o ${BUILDDIR}/tmp.txt ${XMLIN} \
+           ${BASEXSLT1}/xhtml/chunk.xsl \
+           $ROOTIDPARAM || exit_on_error "ERROR: Something went wrong"
+}
+
+function __htmlcleanup() {
+# $1 = output
+# $2 = input
+# sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
+#
+# tidy -modify -asxhtml --output-xml yes --add-xml-decl no \
+#   --numeric-entities yes --doctype omit \
+#   --tidy-mark no \
+#   --new-blocklevel-tags article,header,footer,section,aside \
+#   --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
+#
+# We don't allow to contact the Internet, no validation is needed, so
+# we use --nonet and --novalid 
+ local HTMLOUTPUT=$1, HTMLINPUT=$2
+ xsltproc --nonet --novalid -o ${HTMLOUTPUT} \
+   ${BASEXSLT1}/misc/html2cleanhtml.xsl \
+   ${HTMLINPUT}
+ sed -i '1s#??>#?>#' ${HTMLOUTPUT}
 }
 
 SAXON_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
@@ -28,8 +59,8 @@ ${XINCLUDEFLAG} ${HLFLAG}"
 
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
-CLEANUP=0
-ARGS=$(getopt -o h,c -l help,cleanup -- "$@")
+
+ARGS=$(getopt -o h,c,r: -l help,cleanup,rootid: -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
@@ -39,6 +70,9 @@ while true ; do
       ;;
     -c|--cleanup)
       CLEANUP=1
+      ;;
+    -r|--rootid)
+      ROOTID="$2"
       shift
       ;;
     --)
@@ -46,38 +80,25 @@ while true ; do
       break
       ;;  
   esac
+  shift
 done
 
 
 [[ $VERBOSE != "" ]] && echo "Transforming..."
 [[ $CLEANUP -eq 0 ]] && saxon_db2xhtml
 
-# [ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
+[[ $VERBOSE != "" ]] && echo -e "\nCleaning up HTML...\n"
 
-# createEntity
-
-if true; then 
-  echo -e "\nCleaning up HTML...\n"
-
-for i in ${BUILDDIR}/tmp/*.html; do
- _base=${i##*/}
- 
-# sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
-
-# tidy -modify -asxhtml --output-xml yes --add-xml-decl no \
-#   --numeric-entities yes --doctype omit \
-#   --tidy-mark no \
-#   --new-blocklevel-tags article,header,footer,section,aside \
-#   --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
-
-# We don't allow to contact the Internet, no validation is needed, so
-# we use --nonet and --novalid
- echo "  Cleaning up ${_base}..."
- xsltproc --nonet --novalid -o ${HTMLOUT}/${_base} \
-   ${BASEXSLT1}/misc/html2cleanhtml.xsl \
-   $i
- sed -i '1s#??>#?>#' ${HTMLOUT}/${_base}
-done
+if [[ -n "$ROOTID" ]]; then
+HTMLFILES=${BUILDDIR}/tmp/$ROOTID.html
+else
+HTMLFILES=${BUILDDIR}/tmp/*.html
 fi
 
-echo -e "\nUse ${BUILDDIR}/html/"
+for i in $HTMLFILES; do
+ _base=${i##*/}
+ echo "  Cleaning up ${_base}..."
+ __htmlcleanup ${HTMLOUT}/${_base} $i
+done
+
+echo -e "\nUse ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
