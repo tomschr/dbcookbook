@@ -31,8 +31,8 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>You want to add index entries (also known as
-        <tag>indexterm</tag>s) automatically into your document. </para>
+    <para>You want to add index entries (using the
+        <tag>indexterm</tag> element) automatically and consistently into your document. </para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -268,7 +268,7 @@
     <para>Although this method does not replace hand-written index
       entries, it can ease the pain. Especially for those entries which
       can be be inserted automatically it improves consistency. The
-      method described above can also implemented for other inline
+      method described above can also be implemented for other inline
       elements, like persons, functions, etc.</para>
     
   </section>
