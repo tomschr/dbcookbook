@@ -8,7 +8,7 @@ namespace s = "http://purl.oclc.org/dsdl/schematron"
 namespace svg = "http://www.w3.org/2000/svg"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# This file is part of DocBook Assembly V5.1b5
+# This file is part of DocBook Assembly V5.1b7
 # 
 # Copyright 2008-2011 HaL Computer Systems, Inc.,
 # O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
@@ -399,6 +399,14 @@ db.scale.attribute =
   
   ## Specifies the scaling factor
   attribute scale { xsd:positiveInteger }
+db.classid.attribute =
+  
+  ## Specifies a classid for a media object player
+  attribute classid { text }
+db.autoplay.attribute =
+  
+  ## Specifies the autoplay setting for a media object player
+  attribute autoplay { text }
 db.halign.enumeration =
   
   ## Centered horizontally
@@ -1810,13 +1818,15 @@ div {
 div {
   db.informalexample.role.attribute = attribute role { text }
   db.informalexample.width.attribute = db.width.characters.attribute
+  db.informalexample.pgwide.attribute = db.pgwide.attribute
   db.informalexample.floatstyle.attribute = db.floatstyle.attribute
   db.informalexample.attlist =
     db.informalexample.role.attribute?
     & db.common.attributes
     & db.common.linking.attributes
     & db.informalexample.floatstyle.attribute?
-    & db.informalexample.width.attribute?
+    & (db.informalexample.width.attribute
+       | db.informalexample.pgwide.attribute)?
   db.informalexample.info = db._info.title.forbidden
   db.informalexample =
     
@@ -2141,7 +2151,10 @@ div {
     
     ## A wrapper for video data and its associated meta-information
     element videoobject {
-      db.videoobject.attlist, db.videoobject.info, db.videodata
+      db.videoobject.attlist,
+      db.videoobject.info,
+      db.videodata,
+      db.multimediaparam*
     }
 }
 div {
@@ -2155,7 +2168,10 @@ div {
     
     ## A wrapper for audio data and its associated meta-information
     element audioobject {
-      db.audioobject.attlist, db.audioobject.info, db.audiodata
+      db.audioobject.attlist,
+      db.audioobject.info,
+      db.audiodata,
+      db.multimediaparam*
     }
 }
 db.imageobject.content =
@@ -2199,6 +2215,8 @@ div {
     
     ## Specifies the (horizontal) alignment of the video data
     attribute align { db.videodata.align.enumeration }
+  db.videodata.autoplay.attribute = db.autoplay.attribute
+  db.videodata.classid.attribute = db.classid.attribute
   db.videodata.valign.enumeration = db.valign.enumeration
   db.videodata.valign.attribute =
     
@@ -2226,6 +2244,8 @@ div {
     & db.videodata.scale.attribute?
     & db.videodata.depth.attribute?
     & db.videodata.contentdepth.attribute?
+    & db.videodata.autoplay.attribute?
+    & db.videodata.classid.attribute?
   db.videodata.info = db._info.title.forbidden
   db.videodata =
     
@@ -2234,10 +2254,42 @@ div {
 }
 div {
   db.audiodata.role.attribute = attribute role { text }
+  db.audiodata.align.enumeration = db.halign.enumeration
+  db.audiodata.align.attribute =
+    
+    ## Specifies the (horizontal) alignment of the video data
+    attribute align { db.audiodata.align.enumeration }
+  db.audiodata.autoplay.attribute = db.autoplay.attribute
+  db.audiodata.classid.attribute = db.classid.attribute
+  db.audiodata.contentwidth.attribute = db.contentwidth.attribute
+  db.audiodata.contentdepth.attribute = db.contentdepth.attribute
+  db.audiodata.depth.attribute = db.depth.attribute
+  db.audiodata.scale.attribute = db.scale.attribute
+  db.audiodata.scalefit.enumeration = db.scalefit.enumeration
+  db.audiodata.scalefit.attribute =
+    
+    ## Determines if anamorphic scaling is forbidden
+    attribute scalefit { db.audiodata.scalefit.enumeration }
+  db.audiodata.valign.enumeration = db.valign.enumeration
+  db.audiodata.valign.attribute =
+    
+    ## Specifies the vertical alignment of the video data
+    attribute valign { db.audiodata.valign.enumeration }
+  db.audiodata.width.attribute = db.width.attribute
   db.audiodata.attlist =
     db.audiodata.role.attribute?
     & db.common.attributes
     & db.common.data.attributes
+    & db.audiodata.align.attribute?
+    & db.audiodata.autoplay.attribute?
+    & db.audiodata.classid.attribute?
+    & db.audiodata.contentdepth.attribute?
+    & db.audiodata.contentwidth.attribute?
+    & db.audiodata.depth.attribute?
+    & db.audiodata.scale.attribute?
+    & db.audiodata.scalefit.attribute?
+    & db.audiodata.valign.attribute?
+    & db.audiodata.width.attribute?
   db.audiodata.info = db._info.title.forbidden
   db.audiodata =
     
@@ -2300,6 +2352,31 @@ div {
     
     ## Pointer to external text data
     element textdata { db.textdata.attlist, db.textdata.info }
+}
+div {
+  db.multimediaparam.role.attribute = attribute role { text }
+  db.multimediaparam.name.attribute =
+    
+    ## Specifies the name of the parameter
+    attribute name { text }
+  db.multimediaparam.value.attribute =
+    
+    ## Specifies the value of the parameter
+    attribute value { text }
+  db.multimediaparam.valuetype.attribute =
+    
+    ## Specifies the type of the value of the parameter
+    attribute valuetype { text }
+  db.multimediaparam.attlist =
+    db.multimediaparam.role.attribute?
+    & db.common.attributes
+    & db.multimediaparam.name.attribute
+    & db.multimediaparam.value.attribute
+    & db.multimediaparam.valuetype.attribute?
+  db.multimediaparam =
+    
+    ## Application specific parameters for a media player
+    element multimediaparam { db.multimediaparam.attlist, empty }
 }
 div {
   db.caption.role.attribute = attribute role { text }
@@ -8199,6 +8276,8 @@ div {
     db.informalequation.role.attribute?
     & db.common.attributes
     & db.common.linking.attributes
+    & db.pgwide.attribute?
+    & db.floatstyle.attribute?
   db.informalequation.info = db._info.title.forbidden
   db.informalequation =
     
@@ -10484,399 +10563,6 @@ start =
   | db.relationships
   | db.transforms
   | db.module
-div {
-  db._any.docbook =
-    db._emphasis
-    | db._firstterm
-    | db._foreignphrase
-    | db._glossterm
-    | db._phrase
-    | db._quote
-    | db.abbrev
-    | db.abstract
-    | db.accel
-    | db.acknowledgements
-    | db.acronym
-    | db.address
-    | db.affiliation
-    | db.alt
-    | db.anchor
-    | db.annotation
-    | db.answer
-    | db.appendix
-    | db.application
-    | db.arc
-    | db.area
-    | db.area.inareaset
-    | db.areaset
-    | db.areaspec
-    | db.arg
-    | db.article
-    | db.artpagenums
-    | db.attribution
-    | db.audiodata
-    | db.audioobject
-    | db.author
-    | db.authorgroup
-    | db.authorinitials
-    | db.bibliocoverage
-    | db.bibliodiv
-    | db.biblioentry
-    | db.bibliography
-    | db.biblioid
-    | db.bibliolist
-    | db.bibliomisc
-    | db.bibliomixed
-    | db.bibliomset
-    | db.biblioref
-    | db.bibliorelation
-    | db.biblioset
-    | db.bibliosource
-    | db.blockquote
-    | db.book
-    | db.bridgehead
-    | db.callout
-    | db.calloutlist
-    | db.cals.entrytbl.tbody
-    | db.cals.entrytbl.thead
-    | db.cals.informaltable
-    | db.cals.table
-    | db.cals.tbody
-    | db.cals.tfoot
-    | db.cals.thead
-    | db.caption
-    | db.caution
-    | db.chapter
-    | db.citation
-    | db.citebiblioid
-    | db.citerefentry
-    | db.citetitle
-    | db.city
-    | db.classname
-    | db.classsynopsis
-    | db.classsynopsisinfo
-    | db.cmdsynopsis
-    | db.co
-    | db.code
-    | db.collab
-    | db.colophon
-    | db.colspec
-    | db.command
-    | db.computeroutput
-    | db.confdates
-    | db.confgroup
-    | db.confnum
-    | db.confsponsor
-    | db.conftitle
-    | db.constant
-    | db.constraint
-    | db.constraintdef
-    | db.constructorsynopsis
-    | db.contractnum
-    | db.contractsponsor
-    | db.contrib
-    | db.copyright
-    | db.coref
-    | db.country
-    | db.cover
-    | db.database
-    | db.date
-    | db.dedication
-    | db.destructorsynopsis
-    | db.edition
-    | db.editor
-    | db.email
-    | db.emphasis
-    | db.entry
-    | db.entrytbl
-    | db.entrytbl.row
-    | db.envar
-    | db.epigraph
-    | db.equation
-    | db.errorcode
-    | db.errorname
-    | db.errortext
-    | db.errortype
-    | db.example
-    | db.exceptionname
-    | db.extendedlink
-    | db.fax
-    | db.fieldsynopsis
-    | db.figure
-    | db.filename
-    | db.firstname
-    | db.firstterm
-    | db.footnote
-    | db.footnoteref
-    | db.foreignphrase
-    | db.formalpara
-    | db.funcdef
-    | db.funcparams
-    | db.funcprototype
-    | db.funcsynopsis
-    | db.funcsynopsisinfo
-    | db.function
-    | db.givenname
-    | db.glossary
-    | db.glossdef
-    | db.glossdiv
-    | db.glossentry
-    | db.glosslist
-    | db.glosssee
-    | db.glossseealso
-    | db.glossterm
-    | db.group
-    | db.group.methodparam
-    | db.group.paramdef
-    | db.guibutton
-    | db.guiicon
-    | db.guilabel
-    | db.guimenu
-    | db.guimenuitem
-    | db.guisubmenu
-    | db.hardware
-    | db.holder
-    | db.honorific
-    | db.html.caption
-    | db.html.col
-    | db.html.colgroup
-    | db.html.informaltable
-    | db.html.table
-    | db.html.tbody
-    | db.html.td
-    | db.html.tfoot
-    | db.html.th
-    | db.html.thead
-    | db.html.tr
-    | db.imagedata
-    | db.imagedata.mathml
-    | db.imagedata.svg
-    | db.imageobject
-    | db.imageobjectco
-    | db.important
-    | db.index
-    | db.indexdiv
-    | db.indexentry
-    | db.indexterm.endofrange
-    | db.indexterm.singular
-    | db.indexterm.startofrange
-    | db.info
-    | db.informalequation
-    | db.informalexample
-    | db.informalfigure
-    | db.initializer
-    | db.inlineequation
-    | db.inlinemediaobject
-    | db.interfacename
-    | db.issuenum
-    | db.itemizedlist
-    | db.itermset
-    | db.jobtitle
-    | db.keycap
-    | db.keycode
-    | db.keycombo
-    | db.keysym
-    | db.keyword
-    | db.keywordset
-    | db.label
-    | db.legalnotice
-    | db.lhs
-    | db.lineage
-    | db.lineannotation
-    | db.link
-    | db.listitem
-    | db.literal
-    | db.literallayout
-    | db.locator
-    | db.manvolnum
-    | db.markup
-    | db.mathphrase
-    | db.mediaobject
-    | db.member
-    | db.menuchoice
-    | db.methodname
-    | db.methodparam
-    | db.methodsynopsis
-    | db.modifier
-    | db.mousebutton
-    | db.msg
-    | db.msgaud
-    | db.msgentry
-    | db.msgexplan
-    | db.msginfo
-    | db.msglevel
-    | db.msgmain
-    | db.msgorig
-    | db.msgrel
-    | db.msgset
-    | db.msgsub
-    | db.msgtext
-    | db.nonterminal
-    | db.note
-    | db.olink
-    | db.ooclass
-    | db.ooexception
-    | db.oointerface
-    | db.option
-    | db.optional
-    | db.orderedlist
-    | db.org
-    | db.orgdiv
-    | db.orgname
-    | db.otheraddr
-    | db.othercredit
-    | db.othername
-    | db.package
-    | db.pagenums
-    | db.para
-    | db.paramdef
-    | db.parameter
-    | db.part
-    | db.partintro
-    | db.person
-    | db.personblurb
-    | db.personname
-    | db.phone
-    | db.phrase
-    | db.pob
-    | db.postcode
-    | db.preface
-    | db.primary
-    | db.primaryie
-    | db.printhistory
-    | db.procedure
-    | db.production
-    | db.productionrecap
-    | db.productionset
-    | db.productname
-    | db.productnumber
-    | db.programlisting
-    | db.programlistingco
-    | db.prompt
-    | db.property
-    | db.pubdate
-    | db.publisher
-    | db.publishername
-    | db.qandadiv
-    | db.qandaentry
-    | db.qandaset
-    | db.question
-    | db.quote
-    | db.refclass
-    | db.refdescriptor
-    | db.refentry
-    | db.refentrytitle
-    | db.reference
-    | db.refmeta
-    | db.refmiscinfo
-    | db.refname
-    | db.refnamediv
-    | db.refpurpose
-    | db.refsect1
-    | db.refsect2
-    | db.refsect3
-    | db.refsection
-    | db.refsynopsisdiv
-    | db.releaseinfo
-    | db.remark
-    | db.replaceable
-    | db.returnvalue
-    | db.revdescription
-    | db.revhistory
-    | db.revision
-    | db.revnumber
-    | db.revremark
-    | db.rhs
-    | db.row
-    | db.sbr
-    | db.screen
-    | db.screenco
-    | db.screenshot
-    | db.secondary
-    | db.secondaryie
-    | db.sect1
-    | db.sect2
-    | db.sect3
-    | db.sect4
-    | db.sect5
-    | db.section
-    | db.see
-    | db.seealso
-    | db.seealsoie
-    | db.seeie
-    | db.seg
-    | db.seglistitem
-    | db.segmentedlist
-    | db.segtitle
-    | db.seriesvolnums
-    | db.set
-    | db.setindex
-    | db.shortaffil
-    | db.shortcut
-    | db.sidebar
-    | db.simpara
-    | db.simplelist
-    | db.simplemsgentry
-    | db.simplesect
-    | db.spanspec
-    | db.state
-    | db.step
-    | db.stepalternatives
-    | db.street
-    | db.subject
-    | db.subjectset
-    | db.subjectterm
-    | db.subscript
-    | db.substeps
-    | db.subtitle
-    | db.superscript
-    | db.surname
-    | db.symbol
-    | db.synopfragment
-    | db.synopfragmentref
-    | db.synopsis
-    | db.systemitem
-    | db.tag
-    | db.task
-    | db.taskprerequisites
-    | db.taskrelated
-    | db.tasksummary
-    | db.term
-    | db.termdef
-    | db.tertiary
-    | db.tertiaryie
-    | db.textdata
-    | db.textobject
-    | db.tgroup
-    | db.tip
-    | db.title
-    | db.titleabbrev
-    | db.titleforbidden.info
-    | db.titleonly.info
-    | db.titleonlyreq.info
-    | db.titlereq.info
-    | db.toc
-    | db.tocdiv
-    | db.tocentry
-    | db.token
-    | db.topic
-    | db.trademark
-    | db.type
-    | db.uri
-    | db.userinput
-    | db.varargs
-    | db.variablelist
-    | db.varlistentry
-    | db.varname
-    | db.videodata
-    | db.videoobject
-    | db.void
-    | db.volumenum
-    | db.warning
-    | db.wordasword
-    | db.xref
-    | db.year
-}
 db.grammar.attribute =
   
   ## Identifies the markup grammar of a resource
@@ -10966,21 +10652,13 @@ div {
     db.resource.role.attribute?
     & db.resource.grammar.attribute?
     & db.common.attributes
-  db.resource = db.file.resource | db.container.resource
-  db.file.resource =
+  db.resource =
     
     ## Identifies an object managed within the assembly
     element resource {
       db.resource.attlist,
       db.resource.fileref.attribute,
       db.description*
-    }
-  # FIXME: contents should be any valid DocBook content model fragment
-  db.container.resource =
-    
-    ## Identifies an object managed within the assembly
-    element resource {
-      db.resource.attlist, (text | db.description | db._any.docbook)*
     }
 }
 div {
@@ -10989,6 +10667,10 @@ div {
     
     ## Identifies the structure type of the structure
     attribute type { xsd:NMTOKEN }
+  db.structure.resourceref.attribute =
+    
+    ## Indicates a single resource from which to construct this structure
+    attribute resourceref { xsd:IDREF }
   db.structure.defaultformat.attribute =
     
     ## Identifies the default format of the structure
@@ -11000,10 +10682,11 @@ div {
   db.structure.attlist =
     db.structure.role.attribute?
     & db.structure.type.attribute?
+    & db.structure.resourceref.attribute?
     & db.structure.renderas.attribute?
     & db.structure.defaultformat.attribute?
     & db.common.attributes
-  db.structure.info = db._info.title.req
+  db.structure.info = db.info?
   db.structure =
     
     ## Describes the structure of a document
@@ -11030,11 +10713,9 @@ div {
     element structure {
       db.structure.attlist,
       (db.output* & db.filterin? & db.filterout? & db.structure.info),
-      db.override?,
+      db.merge?,
       db.revhistory?,
-      db.navigation.components*,
-      db.module+,
-      db.navigation.components*
+      db.module+
     }
 }
 div {
@@ -11081,15 +10762,19 @@ div {
     element output { db.output.attlist, empty }
 }
 div {
-  db.override.role.attribute = attribute role { text }
-  db.override.attlist =
-    db.override.role.attribute? & db.common.attributes
-  db.override =
+  db.merge.role.attribute = attribute role { text }
+  db.merge.resourceref.attribute =
+    
+    ## Indicates a single resource from which to read merged info
+    attribute resourceref { xsd:IDREF }
+  db.merge.attlist =
+    db.merge.role.attribute?
+    & db.merge.resourceref.attribute?
+    & db.common.attributes
+  db.merge =
     
     ## A wrapper for information that a module overrides in the resource it includes
-    element override {
-      db.override.attlist, (db._title & db.info.elements*)
-    }
+    element merge { db.merge.attlist, (db._title & db.info.elements*) }
 }
 div {
   db.module.role.attribute = attribute role { text }
@@ -11124,7 +10809,7 @@ div {
     
     ## Specifies the DocBook element to which this unit should be renamed
     attribute renderas { xsd:QName }
-  db.resource.module.attlist =
+  db.module.attlist =
     db.module.role.attribute?
     & db.module.chunk.attribute?
     & db.module.resourceref.attribute?
@@ -11132,9 +10817,8 @@ div {
     & db.module.contentonly.attribute?
     & db.module.renderas.attribute?
     & db.common.attributes
-  db.module.info = db._info
-  db.module = db.resource.module | db.container.module
-  db.resource.module =
+  db.module.info = db.info?
+  db.module =
     
     ## A modular component within a structure
     [
@@ -11176,65 +10860,11 @@ div {
       ]
     ]
     element module {
-      db.resource.module.attlist,
+      db.module.attlist,
       ((db.output | db.filterin | db.filterout)*,
        db.module.info,
-       db.override?,
-       db.navigation.components*,
-       db.module*,
-       db.navigation.components*)
-    }
-  db.container.module.attlist =
-    db.module.role.attribute?
-    & db.module.chunk.attribute?
-    & db.module.omittitles.attribute?
-    & db.module.contentonly.attribute?
-    & db.module.renderas.attribute?
-    & db.common.attributes
-  db.container.module =
-    
-    ## A modular component within a structure
-    [
-      s:pattern [
-        name = "Root must have version"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "/db:module"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "@version"
-            "If this element is the root element, it must have a version attribute."
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Specification of renderas"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:module"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "@renderas and db:output/@renderas"
-            "The renderas attribute can be specified on either the structure or output, but not both."
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-    ]
-    element module {
-      db.container.module.attlist,
-      ((db.output | db.filterin | db.filterout)*, db._any.docbook)
+       db.merge?,
+       db.module*)
     }
 }
 div {
