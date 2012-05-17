@@ -33,6 +33,8 @@
         some reasons or you have legacy documents which contain the
           <quote>wrong</quote> structure. This chapter shows how to
         restructure your DocBook document in the way you want.</para>
+      <para >
+      </para>
     </abstract>
   </info>
   
@@ -90,6 +92,7 @@
   <xi:include href="structure/topic.adding-indexterms.xml"/>
   <xi:include href="structure/topic.revision-list.xml"/>
   <xi:include href="structure/topic.splitting-into-topics.xml"/>
+  <xi:include href="structure/topic.assemble-topics.xml"/>
   <!--<xi:include href="structure/topic.create-topics.xml"/>-->
   <!--<xi:include href="structure/topic.preserve-entities.xml"/>-->
   <!--<xi:include href="structure/topic.impl-style-checking.xml"/>-->
