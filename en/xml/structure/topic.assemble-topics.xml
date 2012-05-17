@@ -110,6 +110,47 @@
         </tbody>
       </tgroup>
     </table>
+    <para>The following subsections shows some specific examples to
+      influence the assembling process.</para>
+    <section xml:id="sec.structure.assemble-topics.structure.id">
+      <title>Selecting a Structure by ID</title>
+      <para>For example, your assembly file looks like this:</para>
+      <screen>&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
+  &lt;resources> ... &lt;/resources>
+  &lt;structure xml:id="quickstart"> ... &lt;/structure>
+  &lt;structure xml:id="reference"> ... &lt;/structure>
+&lt;/assembly></screen>
+      <para>As you can see, you have two <tag>structure</tag> elements,
+        one for a quick start, another for a reference. To process only
+        the reference, set the parameter
+          <parameter>structure.id</parameter> to the <tag
+          class="attribute">xml:id</tag> of the reference as
+        follows:</para>
+      <screen><command>xsltproc</command> \
+    --stringparam structure.id reference \
+    $DB/assembly/assemble.xsl \
+    assembly.xml</screen>
+      <para>If you omit the <parameter>structure.id</parameter>
+        parameter, the <filename>assemble.xsl</filename> stlyesheet
+        selects always the first <tag>structure</tag> element.</para>
+    </section>
+    <section xml:id="sec.structure.assemble-topics.structure.">
+      <title>Selecting a Structure by Type</title>
+      <para>For example, your assembly file looks like this:</para>
+      <screen>&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
+  &lt;resources> ... &lt;/resources>
+  &lt;structure type="help.system"> ... &lt;/structure>
+  &lt;structure type="startup"> ... &lt;/structure>
+&lt;/assembly></screen>
+      <para>As you can see, there are two <tag>structure</tag> elements,
+        one for a help system, another for a startup. To process only
+        the startup, set the parameter
+          <parameter>output.type</parameter> as follows:</para>
+      <screen><command>xsltproc</command> \
+    --stringparam output.type startup \
+    $DB/assembly/assemble.xsl \
+    assembly.xml</screen>
+    </section>
   </section>
   <section role="seealso">
     <title>See Also</title>
