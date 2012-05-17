@@ -50,11 +50,20 @@
         <sect2 xml:id="sec.common.intro.x">
           <title>The X Section</title>
           <para>This is a para</para>
+          <sect3 xml:id="sec.common.intro.x.seealso">
+            <title>See also</title>
+            <para>Blubber bla bla bla</para>
+          </sect3>
         </sect2>
 
         <sect2 xml:id="sec.common.intro.y">
           <title>The Y Section</title>
           <para>This is a para.</para>
+          
+          <sect3 xml:id="sec.common.intro.y.seealso">
+            <title>See also</title>
+            <para>Blubber bla bla bla</para>
+          </sect3>
         </sect2>
       </sect1>
     </chapter>
