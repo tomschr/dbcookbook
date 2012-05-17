@@ -85,7 +85,9 @@
           </row>
           <row>
             <entry><parameter>structure.id</parameter></entry>
-            <entry></entry>
+            <entry>Selects one <tag>structure</tag> element from
+              several; similar to the <parameter>rootid</parameter>
+              parameter for the XHTML stylesheets</entry>
           </row>
           <row>
             <entry><parameter>topic.default.renderas</parameter></entry>
