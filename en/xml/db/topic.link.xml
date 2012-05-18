@@ -24,6 +24,7 @@
     <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>external links</keyword>
+      <keyword>simple XLinks</keyword>
       <keyword>xlink:href</keyword>
       <keyword>ulink</keyword>
     </keywordset>
@@ -243,7 +244,6 @@
           context</quote> (see <link 
             xlink:href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</link>).
         Of course, this is only useful for online formats. </para>
-      
     </section>
   </section>
   <section role="seealso">
