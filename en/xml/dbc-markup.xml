@@ -90,6 +90,7 @@
   <xi:include href="db/topic.xref-vs-link.xml"/>
   <xi:include href="db/topic.xref.xml"/>
   <xi:include href="db/topic.link.xml"/>
+  <xi:include href="db/topic.extended-xlinks.xml"/>
   <!-- TODO: Needs to investigate alt in acronym more: -->
   <!--<xi:include href="db/topic.acronym.xml"/>-->
   <xi:include href="db/topic.quotes.xml"/>
