@@ -15,8 +15,8 @@
 -->
 <?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 
-<section xml:id="dbc.markup.link" remap="topic" userlevel="easy"
-   xmlns="http://docbook.org/ns/docbook" version="5.1"
+<section xml:id="dbc.markup.link" remap="topic" userlevel="easy" version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Choosing Between Link Methods</title>
@@ -232,7 +232,7 @@
     </section>
     
     <section xml:id="sec.db.link.xlinks">
-      <title>Further Notes on Links</title>
+      <title>Shortening Links</title>
       <para>DocBook 5 also adds new concepts. One of this new concept is
         that <emphasis>every</emphasis> element can become a link. In
         other words, you do <emphasis role="italic">not</emphasis> have
@@ -258,6 +258,19 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para><link xlink:href="http://www.docbook.org/tdg5/en/html/link.html"/></para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.xref"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.markup.xref-vs-link"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.db.ext-xlinks"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg5/en/html/link.html"/></para>
+      </listitem>
+    </itemizedlist>
   </section>
 </section>
