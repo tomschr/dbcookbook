@@ -115,7 +115,7 @@
     
       <para>Note, validation is only performed when using <tag
           class="attribute">linkend</tag>, not with <tag
-          class="attribute">xlink:href</tag>. The reason for this is the
+          class="attribute">xlink:href</tag>! The reason for this is the
         different datatypes. The XML parser can only validate a
           <property>xsd:ID</property> and <property>xsd:IDREF</property>
         connection.</para>
@@ -194,8 +194,16 @@
               validation check, use this code:</para>
             <programlisting language="xml"
             >&lt;link xlink:href="#cha.intro"/></programlisting>
-            <para>Be aware, if the ID does not exist in your document,
-              the link will be broken.</para>
+            <para>This is equivalent to the following <tag>xref</tag>
+              notation:</para>
+            <screen>&lt;xref linkend="cha.intro"/></screen>
+            <para>Note the absense of the <literal>#</literal>
+              character. Regardless if it is an empty <tag>link</tag>
+              with <tag class="attribute">xlink:href</tag> or a
+                <tag>xref</tag> with <tag class="attribute"
+                >linkend</tag>, the ID has to exist somewhere in the
+              document. Otherwise, the element cannot be resolved during
+              processing and and the link will be broken.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -212,23 +220,25 @@
         </varlistentry>
       </variablelist>
       
-      <para>In most cases, it is enough to just use an empty link element.
-        As such, you should avoid this notation:</para>
+      <para>In most cases, it is enough to just use an empty link
+        element. As such, avoid the following notation when the URL in
+          <tag class="attribute">xlink:href</tag> is the same than the
+        text:</para>
       <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">https://doccookbook.sf.net&lt;/link></programlisting>
-      <para>This is mostly unnecessary as it is overly verbose, difficult
-        to read, and does not add any value. Correct such links to this
-        notations: </para>
+      <para>This is mostly unnecessary as it is overly verbose,
+        difficult to read, and does not add any value. Correct such
+        links and remove the text: </para>
       <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>     
     </section>
     
     <section xml:id="sec.db.link.xlinks">
       <title>Further Notes on Links</title>
-      <para>DocBook 5 also adds new concepts. One of this new concept is that
-        <emphasis>every</emphasis> element can become a link. In other
-        words, you do <emphasis role="italic">not</emphasis> have to use a
-        <tag>link</tag> element anymore. For example, if you want to
-        insert a book title with an additional link, it could be   
-        marked up like this:</para>
+      <para>DocBook 5 also adds new concepts. One of this new concept is
+        that <emphasis>every</emphasis> element can become a link. In
+        other words, you do <emphasis role="italic">not</emphasis> have
+        to use a <tag>link</tag> element anymore. For example, if you
+        want to insert a book title with an additional link, in
+        DocBook&#xa0;4 it has to be written like this:</para>
       <programlisting>&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
       <para>or this, depending on what you prefer:</para>
       <programlisting>&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
