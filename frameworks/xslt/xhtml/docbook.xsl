@@ -19,10 +19,11 @@
   <xsl:include href="sections.xsl"/>
   <xsl:include href="footer.xsl"/>
   <xsl:include href="block.xsl"/>
+  <xsl:include href="inline.xsl"/>
   <xsl:include href="titlepage.templates.xsl"/>
 
   <!--<xsl:include href="google-webfont.xsl"/>-->
   <xsl:include href="usermeta.xsl"/> 
   <xsl:include href="piwik.xsl"/>
-  
+  <xsl:include href="xlink.xsl"/>
 </xsl:stylesheet>
