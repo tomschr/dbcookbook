@@ -39,13 +39,13 @@
       <listitem>
         <formalpara>
           <title>Internal Links or Cross References</title>
-          <para>use primarily <tag>xref</tag></para>
+          <para>used primarily with <tag>xref</tag></para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title>External Links</title>
-          <para>use primarily <tag>link</tag></para>
+          <para>used primarily with <tag>link</tag></para>
         </formalpara>
       </listitem>
     </itemizedlist>    
@@ -60,14 +60,15 @@
     <example xml:id="ex.xref-vs-link.xref">
       <title>A Cross Reference</title>
       <programlisting language="xml">&lt;chapter xml:id="tea">
-  &lt;title>Tea&lt;/title>
-  &lt;section xml:id="about-tea">
+  &lt;title>All About Tea&lt;/title>
+  &lt;section <emphasis role="bold">xml:id="about-tea"</emphasis>>
     &lt;title>About Tea&lt;/title>
     &lt;para>This section gives you an introduction about tea.&lt;/para>
   &lt;/section>
   &lt;section xml:id="prepar">
     &lt;title>Preparing Tea&lt;/title>
-    &lt;para>Read an introduction in &lt;xref linkend="about-tea"/>.&lt;/para>
+    &lt;para>Read an introduction in <emphasis role="bold"
+      >&lt;xref linkend="about-tea"/></emphasis>.&lt;/para>
   &lt;/section>      
 &lt;/chapter></programlisting>
     </example>
@@ -83,23 +84,25 @@
       <title>Advantages of Cross References Using <tag>xref</tag></title>
       <listitem>
         <para>Whenever a text of a title changes, all <tag>xref</tag>s
-          pointing to it will automatically change too.</para>
+          pointing to it will automatically change too</para>
       </listitem>
       <listitem>
-        <para>During validation, the <tag class="attribute">linkend</tag> attribute is checked, if this ID
-          exists.</para>
+        <para>During validation, the <tag class="attribute"
+            >linkend</tag> attribute is checked, if this ID
+          exists</para>
       </listitem>
       <listitem>
         <para>During resolution, additonal words like
-          <quote>Section</quote>, <quote>Chapter</quote>, or
-          <quote>Figure</quote> are automatically inserted according to
-          the used document language.</para>
+            <quote>Section</quote>, <quote>Chapter</quote>, or
+            <quote>Figure</quote> are automatically inserted according
+          to the used document language</para>
       </listitem>
       <listitem>
-        <para>You do not have to care about numbering.</para>
+        <para>You do not have to care about numbering</para>
       </listitem>
       <listitem>
-        <para>For further customization use the <tag class="attribute">xrefstyle</tag> attribute.</para>
+        <para>For further customization, use the <tag class="attribute"
+            >xrefstyle</tag> attribute</para>
       </listitem>
     </itemizedlist>
     
@@ -117,13 +120,16 @@
       <title>Advantages of External Links Using <tag>link</tag></title>
       <listitem>
         <para>Usually no automatic resolution performed (only if you use
-          <tag class="attribute">xlink:href</tag>).</para>
+            <tag class="attribute">xlink:href</tag>)</para>
       </listitem>
       <listitem>
-        <para>No validation necessary.</para>
+        <para>No validation necessary</para>
       </listitem>
       <listitem>
-        <para>Additional inline elements allowed.</para>
+        <para>Link content can be manually created</para>
+      </listitem>
+      <listitem>
+        <para>Additional inline elements allowed</para>
       </listitem>
     </itemizedlist>
     
@@ -153,14 +159,17 @@
             <entry>text and inline elements</entry>
           </row>
           <row>
-            <entry>Automatic text</entry>
-            <entry>Yes</entry>
-            <entry>No</entry>
+            <entry>Resolution</entry>
+            <entry>Yes, automatically during transformation</entry>
+            <entry>No, link content can be definied</entry>
           </row>
           <row>
             <entry>ID/IDREF Checking</entry>
             <entry>Yes</entry>
-            <entry>Only when used with <tag class="attribute">linkend</tag></entry>
+            <entry>No<footnote>
+                <para>Checking can be performed, when <tag class="attribute"
+                    >linkend</tag> attribute is used.</para>
+              </footnote></entry>
           </row>
           <row>
             <entry>Restrictions</entry>
