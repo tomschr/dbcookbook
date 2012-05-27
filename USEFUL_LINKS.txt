@@ -11,17 +11,29 @@ SourceForge Links
 
 Other Links
 -----------
+
+* Logical Links
+http://de.selfhtml.org/html/verweise/typisierte.htm
+
+
+DocBook
+-------
+
+* DocBook XSLT 2.0 stylesheets
+http://docbook.github.com/
+
+* A Creative Commons Licenced Docbook Article
+http://article.tree.se/tools/docbook/cc.html
+
+
+CSS & Design
+------------
+
 * CSS Design: Taming Lists
 http://www.alistapart.com/articles/taminglists/
 
 * Nested list with inherited numbering
 http://www.student.oulu.fi/~laurirai/muuta/koulujutut/kalifornia.html
-
-* Logical Links
-http://de.selfhtml.org/html/verweise/typisierte.htm
-
-* DocBook XSLT 2.0 stylesheets
-http://docbook.github.com/
 
 * CSS-Tricks
 http://css-tricks.com
