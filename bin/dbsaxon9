@@ -14,7 +14,7 @@ bin/saxon9 -xi  \
    -xsl:${BASEXSLT2}/html/docbook.xsl \
    -o:${SINGLEHTMLOUT} $@
 
-[ -e ${BUILDDIR}/html/css ] || ln -s ${BASEXSLT}/css/ ${BUILDDIR}/html/
+__createlinks
 
 echo "Find the HTML in ${BUILDDIR}/html/DoCookBook.html "
 echo "Done"
