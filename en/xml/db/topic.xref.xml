@@ -367,9 +367,9 @@
       <listitem>
         <para><xref linkend="dbc.markup.link"/></para>
       </listitem>
-      <listitem>
+      <!--<listitem>
         <para><xref linkend="dbc.db.ext-xlinks"/></para>
-      </listitem>
+      </listitem>-->
       <listitem>
         <para><link xlink:href="http://www.docbook.org/tdg5/en/html/xref.html"/></para>
       </listitem>
