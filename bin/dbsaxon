@@ -101,7 +101,7 @@ __logging "Started. Commandline arguments: $ARGS"
 [[ $VERBOSE != "" ]] && echo "Transforming..."
 [[ $CLEANUP -eq 0 ]] && saxon_db2xhtml
 
-# __saxon_nstest
+__createlinks
 
 echo -e "\nCleaning up HTML..."
 

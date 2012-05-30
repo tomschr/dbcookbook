@@ -265,9 +265,9 @@
       <listitem>
         <para><xref linkend="dbc.markup.xref-vs-link"/></para>
       </listitem>
-      <listitem>
+      <!--<listitem>
         <para><xref linkend="dbc.db.ext-xlinks"/></para>
-      </listitem>
+      </listitem>-->
       <listitem>
         <para><link xlink:href="http://www.docbook.org/tdg5/en/html/link.html"/></para>
       </listitem>

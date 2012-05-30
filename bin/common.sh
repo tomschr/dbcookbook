@@ -30,6 +30,14 @@ function framework() {
  echo "Using Framework: $FRAMEWORKSDIR"
 }
 
+function __createlinks() {
+  pushd ${HTMLOUT}
+  [[ -e css ]] || ln -s ../../frameworks/xslt2/base/css
+  [[ -e js ]]  || ln -s ../../frameworks/db-xslt2/xslt/base/js
+  [[ -e png ]] || ln -s ../../images/png
+  popd
+}
+
 function __logging() {
   local MSG=$1
   local DATE=$(date +"[%d-%m-%YT%H:%M:%S]")
