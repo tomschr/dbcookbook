@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 09 17:57:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Included topic.extended-xlinks.xml 
+(changeset 1338:2432191bb3da) 
+- Explained lots of issues for <xref/> (db/topic.xref.xml)
+(changeset 1335:6fffd5c73d3e)
+- Renamed topic.create-topics.xml -> topic.create-assembly-file.xml
+(changeset 1328:8f76032eeb39)
+- dbc.structure.remove-blocks-in-para -> dbc.structure.move-blocks-in-para (structure/topic.move-blocks-in-para.xml)
+(changeset 1262:a6aa229cee1f)
+- Added new topic: Extracting Language Information (common/topic.get-lang.xml)
+(changeset 1273:349de5810bf9) 
+
+
+Infrastructure:
+- Automatically created css, png, and js links
+(changeset 1344:ee34c02bcb33)
+- Added separate colophon.xml 
+(changeset 1318:8f439a256826)
+- Downloaded 5.1b7 from http://snapshots.docbook.org/xsl/assembly/schema/
+(changeset 1316:08fcb754fead)
+- Added namespace-aware stylesheets (release 8935)
+(changeset 1297:13bb4262bb4b)
+- Added robots.txt for Web crawler
+(changeset 1292:a9317b10eaec) 
+- Added DocBook stylesheets snapshot release 8935
+(changeset 1268:38d4cb71a373) 
+
+-------------------------------------------------------------------
 Sat May 05 16:21:00 UTC 2012 - tom_schr@web.de
 
 Topics:
