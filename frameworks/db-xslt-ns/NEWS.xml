@@ -4,7 +4,7 @@
 <info>
 <abstract>
 <para><emphasis role="strong">Note:</emphasis> This
-            document lists changes only since the 1.76.0 release.
+            document lists changes only since the 1.77.0 release.
             If you instead want a record of the complete list of
             changes for the codebase over its entire history, you
             can obtain one by running the following commands:
@@ -12,1245 +12,144 @@
 <screen>  <code>svn checkout https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/xsl</code>
   <code>svn log --xml --verbose xsl &gt; ChangeHistory.xml</code></screen></para>
 </abstract>
-</info><title>Changes since the 1.76.0 release</title>
+</info><title>Changes since the 1.77.0 release</title>
 
-<sect1 xml:id="Vsnapshot_9331">
-<title>Release Notes: snapshot_9331</title>
+<sect1 xml:id="V1.77.1">
+<title>Release Notes: 1.77.1</title>
 <para>The following is a list of changes that have been made
-        since the 1.76.0 release.</para>
+        since the 1.77.0 release.</para>
 
-<sect2 xml:id="Vsnapshot_9331_Gentext">
-<title>Gentext</title>
-<para>The following changes have been made to the
-            <filename>gentext</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: locale/en.xml</literal></para><screen><phrase role="commit-message">Add topic to title-numbered context.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: locale/en.xml</literal></para><screen><phrase role="commit-message">Add basic topic element templates.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: locale/el.xml</literal></para><screen><phrase role="commit-message">Updated gentext for quotation marks. Fixes bug #3512440.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: locale/cs.xml</literal></para><screen><phrase role="commit-message">Adding missing context for webhelp</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: locale/en.xml</literal></para><screen><phrase role="commit-message">Fixing syntax of webhelp gentext entries</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: locale/en.xml</literal></para><screen><phrase role="commit-message">Moving webhelp gentext strings into a context</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: locale/zh.xml; locale/en.xml; locale/cs.xml; locale/fr.xml; locale/de.xml; local⋯</literal></para><screen><phrase role="commit-message">Moved language specific of WebHelp to gentext/locale/ as discussed with
-Stefan following the "minimal intrusive approach". :)
-In the long run, maybe moving the text into a context, not sure.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: locale/zh.xml; locale/ca.xml; locale/nds.xml; locale/ru.xml; locale/ga.xml⋯</literal></para><screen><phrase role="commit-message">Add "or" string per Bug # 3322871, translated with Google translate.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: locale/en.xml; locale/de.xml</literal></para><screen><phrase role="commit-message">Fixed bug#3322871: <tag>simplelist</tag>: PI dbchoice and "or" does not exist</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: locale/ca.xml</literal></para><screen><phrase role="commit-message">Added patch #3363309.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: locale/ru.xml</literal></para><screen><phrase role="commit-message">Aligned capitalization of first letters with English original</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>dleidert: locale/es.xml</literal></para><screen><phrase role="commit-message">Fix http://bugs.debian.org/605696. Citing:
-
-The English form of that <tag>section</tag> name is mandated to be NAME.  lexgrog
-recognises NOMBRE in Spanish, which when I last looked was the common
-form used in that language.  "NOMBRE DE REFERENCIA" is not recognised by
-lexgrog, and it's unnecessarily long anyway.  I'd rather not add more
-forms to lexgrog unless absolutely necessary.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Gentext changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Common">
-<title>Common</title>
-<para>The following changes have been made to the
-            <filename>common</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: labels.xsl; titles.xsl; entities.ent; targets.xsl; subtitles.xsl; gentext.⋯</literal></para><screen><phrase role="commit-message">Add basic support for new &lt;topic&gt; element.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: common.xsl</literal></para><screen><phrase role="commit-message">Fix handling of mediatypes for video and audio files, mostly for HTML5 and EPUB3 outputs.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: olink.xsl</literal></para><screen><phrase role="commit-message">Generate error message if <tag>olink</tag> data in targetset is in a namespace.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: olink.xsl</literal></para><screen><phrase role="commit-message">Back out changes because of problems with that update.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: olink.xsl</literal></para><screen><phrase role="commit-message">Add support for <tag>olink</tag> data in DocBook namespace.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: common.xsl</literal></para><screen><phrase role="commit-message">Add support for <parameter>generate.consistent.ids</parameter> parameter.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: subtitles.xsl</literal></para><screen><phrase role="commit-message">Add verbose param to subtitle.markup templates to allow its
-error message to be ignored. 
-Add that param to fop1.xsl <tag>application</tag> of subtitle.markup
-to avoid unnecessary error message in document information.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Norman Walsh: stripns.xsl</literal></para><screen><phrase role="commit-message">Make sure stripping doesn't delete @{xml:}id values!</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: common.xsl</literal></para><screen><phrase role="commit-message">These should be params, otherwise it is not possible to customize them.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: labels.xsl</literal></para><screen><phrase role="commit-message">Add empty templates for <tag>glossdiv</tag>, <tag>glosslist</tag>, and <tag>glossentry</tag> in
-mode="label.markup".</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: Makefile</literal></para><screen><phrase role="commit-message">Added eu.xml and gl.xml to SOURCES.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: l10n.xsl</literal></para><screen><phrase role="commit-message">Fixed bug when context was lost due to usage of xsl:key</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Common changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_FO">
+<sect2 xml:id="V1.77.1_FO">
 <title>FO</title>
 <para>The following changes have been made to the
             <filename>fo</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>Robert Stayton: biblio.xsl</literal></para><screen><phrase role="commit-message">Remove template for obsolete bookbiblio element.</phrase></screen>
+<para><literal>Robert Stayton: docbook.xsl</literal></para><screen><phrase role="commit-message">Import the VERSION.xsl file instead of VERSION so mimetype is interpreted correctly
+from the <tag>filename</tag>.</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Robert Stayton: titlepage.templates.xml</literal></para><screen><phrase role="commit-message">Fix format of topic <tag>title</tag>.</phrase></screen>
+<para><literal>Robert Stayton: block.xsl</literal></para><screen><phrase role="commit-message">In <tag>sidebar</tag>, turn off space before first <tag>para</tag> if there is no <tag>title</tag>.</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Robert Stayton: autotoc.xsl; component.xsl; fop1.xsl; titlepage.templates.xml; xep.xsl</literal></para><screen><phrase role="commit-message">Fix <tag>TOC</tag> processing for topic element.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: component.xsl</literal></para><screen><phrase role="commit-message">Finish support for topic <tag>title</tag> element.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: titlepage.templates.xml</literal></para><screen><phrase role="commit-message">Fix typo.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: titlepage.xsl; autotoc.xsl; component.xsl; xref.xsl; titlepage.templates.x⋯</literal></para><screen><phrase role="commit-message">Add basic support for new &lt;topic&gt; element.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl</literal></para><screen><phrase role="commit-message">Fix handling of mediatypes for video and audio files, mostly for HTML5 and EPUB3 outputs.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: pi.xsl</literal></para><screen><phrase role="commit-message">In dbfo-need, replace empty list-item-label with empty block to make output valid.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: titlepage.xsl</literal></para><screen><phrase role="commit-message">Add default style att-sets for component.list.of.titles, etc.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Restore component.list.of.tables etc. now that the titlepage.templates.xsl
-file has been updated by the Makefile.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Turn off component.list.of.tables because the build process is not updating
-the titlepage.templates.xsl file which has those templates.
-Will restore when that is working.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl; component.xsl; titlepage.templates.xml</literal></para><screen><phrase role="commit-message">Add make.component.tocs to support lists of tables, etc. for
-<tag>article</tag> and other components.  Added component.list.of.tables to
-titlepage.templates.xml to format the <tag>title</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: block.xsl</literal></para><screen><phrase role="commit-message">Change to new <parameter>para.properties</parameter> attribute-set.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add new <parameter>para.properties</parameter> attribute-set for paragraphs.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3487828 valign on <tag>inlinemediaobject</tag> in fo output has wrong property.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: inline.xsl</literal></para><screen><phrase role="commit-message">Add template mode 'simple.xlink.properties' to allow
-easy customization of formatting of links generated
-from elements other than <tag>xref</tag>, <tag>link</tag>, and <tag>olink</tag> using
-the xlink attributes.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add <parameter>table.caption.properties</parameter> to format <tag>table</tag> captions.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: table.xsl</literal></para><screen><phrase role="commit-message">Add support for <tag>caption</tag> in a CALS <tag>table</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: htmltbl.xsl</literal></para><screen><phrase role="commit-message">Fix missing <parameter>fop1.extensions</parameter> for table-layout="fixed" property.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: math.xsl</literal></para><screen><phrase role="commit-message">Remove passivetex.extension test from graphic template.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl; math.xsl</literal></para><screen><phrase role="commit-message">Refactored the 'process.image' template to create modular
-templates for each attribute so they can be individually
-customized.  Also merged in support for embedded svg and
-mml content so they can have image attributes too.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Added missing parameter definitions (though not sure why <parameter>base.dir</parameter> and <parameter>chunk.quietly</parameter> is needed in FO, maybe olinks?)</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Check in new params for FO side regions in page masters.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: titlepage.xsl; titlepage.templates.xml</literal></para><screen><phrase role="commit-message">Add support for <tag>itermset</tag> in <tag>info</tag> elements, using titlepage mechanism
-to ensure entries are placed inside page-sequence.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: pagesetup.xsl</literal></para><screen><phrase role="commit-message">Add support for side body margins and side static content regions.
-Fixes bug 3389931.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: refentry.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3424546, no <tag>TOC</tag> for top level <tag>reference</tag> element in FO output.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Fix bug where <parameter>toc.section.depth</parameter>=0 causes a <tag>book</tag> <tag>toc</tag> to ignore
-chapters and appendixes.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add support for <parameter>generate.consistent.ids</parameter> parameter.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: biblio.xsl</literal></para><screen><phrase role="commit-message">Support <tag>author</tag>/<tag>orgname</tag> in <tag>bibliography</tag>, fixing bug 3293062.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: division.xsl</literal></para><screen><phrase role="commit-message"><tag>Table</tag> <tag>title</tag> with <tag>tocentry</tag>="0" attribute is now omitted from the
-<tag>table</tag> of contents. Fixes bug 3279748.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: xref.xsl</literal></para><screen><phrase role="commit-message"><tag>anchor</tag> template now checks to see if fo:inline or fo:block should be used.
-Fixes bug 3324138.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent; task.xsl</literal></para><screen><phrase role="commit-message">Add attribute-set <parameter>task.properties</parameter> to <tag>task</tag> element to
-support customization.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: lists.xsl; param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add new attribute-sets <parameter>calloutlist.properties</parameter> and <parameter>callout.properties</parameter>
-to  better support customization of calloutlists, fixing bug 3160341.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: pagesetup.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3067027 set page.number.format to 'i' for <tag>book</tag> and set titlepage.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: Makefile</literal></para><screen><phrase role="commit-message">Titlepage mechanism is now namespace aware to support XHTML. Please note that when generating titlepage template stylesheets you have to pass FO or XHTML namespace inside ns parameter. For HTML parameter should be empty.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl</literal></para><screen><phrase role="commit-message">Allow selection by role for multiple <tag>imageobject</tag> elements
-within an <tag>imageobjectco</tag>, which since Docbook 5 allows multiple imageobjects.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: titlepage.xsl</literal></para><screen><phrase role="commit-message">Added template for collabname. Fixes bug #3414436.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: table.xsl</literal></para><screen><phrase role="commit-message">Added test for @colwidth='*' to suppress extension error message. See bug #3404224.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: verbatim.xsl</literal></para><screen><phrase role="commit-message">Support the keep-together processing-instruction on <tag>programlisting</tag>, <tag>screen</tag>, <tag>synopsis</tag>, and <tag>literallayout</tag>. Tracker id #3396906.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: division.xsl</literal></para><screen><phrase role="commit-message">Set template param allow-anchors="1" in division <tag>title</tag> to support footnotes in <tag>title</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: fop1.xsl</literal></para><screen><phrase role="commit-message">Add verbose param to subtitle.markup templates to allow its
-error message to be ignored. 
-Add that param to fop1.xsl <tag>application</tag> of subtitle.markup
-to avoid unnecessary error message in document information.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: pagesetup.xsl</literal></para><screen><phrase role="commit-message">Pass the pageclass, sequence, and gentext-key to the template
-named header.footer.widths to enable further customization
-based on page master.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: xref.xsl</literal></para><screen><phrase role="commit-message">hyphenation of URL content must be disabled for <tag>link</tag>, not only for ulink because od DB5</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: xref.xsl</literal></para><screen><phrase role="commit-message">URLs shouldn't be hyphenated as normal text</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>dleidert: lists.xsl</literal></para><screen><phrase role="commit-message">Fix fo output for segmented lists with more than one &lt;<tag>segtitle</tag>&gt; (see r9001, reverted in r9006). The bug appears in <tag>table</tag> mode.
-
-Bug report and patch from: http://bugs.debian.org/620556</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>dleidert: lists.xsl</literal></para><screen><phrase role="commit-message">Revert change 9001 - the patch is probably useless and not necessary.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>dleidert: lists.xsl</literal></para><screen><phrase role="commit-message">Fix fo output for segmented lists with more than one &lt;<tag>segtitle</tag>&gt;.
-
-Bug report and patch from: http://bugs.debian.org/620556</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: callout.xsl</literal></para><screen><phrase role="commit-message">Added support for alternative circled numbers</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: xep.xsl</literal></para><screen><phrase role="commit-message">Removed junk accidentally added to previous <tag>revision</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: axf.xsl; fop1.xsl; xep.xsl</literal></para><screen><phrase role="commit-message">Added support for <tag>author</tag>/<tag>orgname</tag> in document metadata. Closes bug #3132862.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: fop1.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3068509 where fop1 bookmarks converted diacritics to ascii.  In FOP 1.0, that
-conversion is no longer needed.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: component.xsl</literal></para><screen><phrase role="commit-message">Add template for <tag>article</tag>/<tag>colophon</tag> to avoid nested page-sequence.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: docbook.xsl; xref.xsl; fop1.xsl</literal></para><screen><phrase role="commit-message">Apply patch to support named destination in fop1.xsl, per Sourceforge
-bug report #3029845.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>dleidert: pagesetup.xsl</literal></para><screen><phrase role="commit-message">Remove the namespace mistakingly added with the last upload.</phrase></screen>
+<para><literal>Robert Stayton: math.xsl</literal></para><screen><phrase role="commit-message">Restored templates for mml:* elements that were accidentally deleted.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of FO changes for snapshot_9331-->
+</sect2><!--end of FO changes for 1.77.1-->
 
-<sect2 xml:id="Vsnapshot_9331_HTML">
+<sect2 xml:id="V1.77.1_HTML">
 <title>HTML</title>
 <para>The following changes have been made to the
             <filename>html</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>Robert Stayton: chunk-code.xsl</literal></para><screen><phrase role="commit-message">Take <tag>legalnotice</tag> out of find.chunks so it does not get Next and Prev.</phrase></screen>
+<para><literal>Robert Stayton: docbook.xsl</literal></para><screen><phrase role="commit-message">Import the VERSION.xsl file instead of VERSION so mimetype is interpreted correctly
+from the <tag>filename</tag>.</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Robert Stayton: lists.xsl</literal></para><screen><phrase role="commit-message">Small changes in support of HTML5 stylesheet.
-Fix bug 3510185 for output list <tag>title</tag> when inside <tag>info</tag>.</phrase></screen>
+<para><literal>Robert Stayton: sections.xsl</literal></para><screen><phrase role="commit-message">Use $div.element variable in place of div to support html5 <tag>section</tag> element.
+output</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Robert Stayton: html.xsl</literal></para><screen><phrase role="commit-message">define internal variables div.element and table.border.off to
-enable easier support of HTML5 syntax.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: callout.xsl</literal></para><screen><phrase role="commit-message">Fix handling of id attributes on callouts.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: footnote.xsl</literal></para><screen><phrase role="commit-message">Fix missing id attribute on <tag>footnote</tag> mark.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: sections.xsl</literal></para><screen><phrase role="commit-message">Bug fix for <parameter>generate.id.attributes</parameter>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: titlepage.xsl; autoidx.xsl</literal></para><screen><phrase role="commit-message">bug fix for <parameter>generate.id.attributes</parameter> creating duplicate ids.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: division.xsl; sections.xsl; block.xsl; footnote.xsl</literal></para><screen><phrase role="commit-message">Fix minor bugs in <parameter>generate.id.attributes</parameter> implementation.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: inline.xsl; titlepage.xsl; formal.xsl; division.xsl; toc.xsl; sections.xsl⋯</literal></para><screen><phrase role="commit-message">Finish implementation of <parameter>generate.id.attributes</parameter> for all elements
-using the template named id.attribute.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Fix <tag>TOC</tag> entries for topic element.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl; chunktoc.xsl; titlepage.xsl; chunk-code.xsl; changebars.xsl; ⋯</literal></para><screen><phrase role="commit-message">Add basic support for new &lt;topic&gt; element.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl</literal></para><screen><phrase role="commit-message">Fix handling of mediatypes for video and audio files, mostly for HTML5 and EPUB3 outputs.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: callout.xsl; verbatim.xsl</literal></para><screen><phrase role="commit-message">Restore <tag>programlisting</tag> to use &lt;pre&gt; instead of &lt;div&gt; and instead
-wrap <tag>callout</tag> img elements in &lt;span&gt; to make valid HTML.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl</literal></para><screen><phrase role="commit-message">Turn off img longdesc attribute because not supported by browsers.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: footnote.xsl</literal></para><screen><phrase role="commit-message">Move square brackets and &lt;sup&gt; inside &lt;a&gt; element for <tag>footnote</tag>
-marks to fix display problems in some browsers.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: synop.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3481385 - <tag>link</tag> elements not preserved inside <tag>funcsynopsis</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message"><tag>TOC</tag> <tag>entry</tag> for <tag>refpurpose</tag> should use no.anchor.mode to prevent duplicate ids
-when <tag>indexterm</tag> is inside <tag>refpurpose</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: qandaset.xsl</literal></para><screen><phrase role="commit-message">Add <tag>colgroup</tag> around <tag>col</tag> elements in layout <tag>table</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: xref.xsl</literal></para><screen><phrase role="commit-message">Remove duplication of mode="xref-to" template for <tag>qandadiv</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: lists.xsl</literal></para><screen><phrase role="commit-message">Add <tag>colgroup</tag> around bare <tag>col</tag> element in <tag>variablelist</tag> <tag>table</tag> to
-conform to html5.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: docbook.xsl; html.xsl</literal></para><screen><phrase role="commit-message">Add support for <parameter>html.script</parameter> param to insert Javascript references.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add new params <parameter>html.script</parameter> and <parameter>html.script.type</parameter> to support
-Javascript references.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autoidx.xsl</literal></para><screen><phrase role="commit-message">Fix bug that omitted duplicate indexterms in the same <tag>section</tag> but
-with different zone attributes, which should not be omitted.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: html.xsl; table.xsl; block.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3441149 where mode="class.value" does not work
-for <tag>para</tag> or <tag>entry</tag> when the element does not have a role attribute.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add new param <parameter>chunked.filename.prefix</parameter> to fix bug 3087359.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunk-common.xsl; chunktoc.xsl; titlepage.xsl; chunker.xsl; chunk-code.xsl⋯</literal></para><screen><phrase role="commit-message">Add support for <parameter>chunked.filename.prefix</parameter> param.
-Make sure <parameter>base.dir</parameter> value has a trailing slash in
-the chunk.base.dir internal param used by the templates.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunk-common.xsl</literal></para><screen><phrase role="commit-message">Pass empty <parameter>base.dir</parameter> for lot URLs to avoid problems using the ./ default
-in make-relative-filename.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Fix bug when $toc.section.depth=0 causes <tag>book</tag> <tag>toc</tag> to
-ignore chapters and appendixes.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunk-common.xsl; chunk-code.xsl; docbook.xsl</literal></para><screen><phrase role="commit-message">Fixed bug #3388088 where non-namespaced chunkfast.xsl
-not properly handling namespaced document.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: formal.xsl; htmltbl.xsl</literal></para><screen><phrase role="commit-message">Now handles <tag>caption</tag> in html markup <tag>table</tag> like <tag>title</tag>,
-so formal.object.title is used with all its features, including 
-formatting and placement.
-Added htmlTable.with.caption template to handle the wrapper, and
-left htmlTable template unchanged.
-Now <tag>caption</tag> template in mode="htmlTable" does nothing, because
-<tag>caption</tag> handled by formal.object.title template.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: html.xsl</literal></para><screen><phrase role="commit-message">Turn off generating the <tag>title</tag> attribute for block and hierarchical elements.
-Should only be used for inline elements, usually using the <tag>alt</tag> element.
-Also used for links to show the target <tag>title</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Add support for <parameter>generate.consistent.ids</parameter> parameter.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: biblio.xsl</literal></para><screen><phrase role="commit-message">Support <tag>author</tag>/<tag>orgname</tag> in <tag>bibliography</tag>, fixing bug 3293062.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunk-common.xsl; chunker.xsl</literal></para><screen><phrase role="commit-message">Replace duplicate undocumented parameter chunker.output.quiet
-with the original documented parameter <parameter>chunk.quietly</parameter>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: lists.xsl</literal></para><screen><phrase role="commit-message">The spacing="compact" attribute on lists in HTML no longer outputs compact="compact"
-(or just "compact" in the case of Saxon 6), since that attribute is
-deprecated and improperly supported.  Instead, the output uses a 
-multiple class attribute such as class="<tag>orderedlist</tag> compact".
-Use CSS to style such lists without margin above.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl; chunk-common.xsl</literal></para><screen><phrase role="commit-message"><tag>Table</tag> <tag>title</tag> with <tag>tocentry</tag>="0" attribute is now omitted from the
-<tag>table</tag> of contents. Fixes bug 3279748.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: inline.xsl</literal></para><screen><phrase role="commit-message">Add default class="<tag>phrase</tag>" when role attribute not used for class,
-fixing bug #3076510</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: graphics.xsl</literal></para><screen><phrase role="commit-message">Allow selection by role for multiple <tag>imageobject</tag> elements
-within an <tag>imageobjectco</tag>, which since Docbook 5 allows multiple imageobjects.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: docbook.css.xml</literal></para><screen><phrase role="commit-message">Remove broken style for autotoc.xsl.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autoidx.xsl</literal></para><screen><phrase role="commit-message">Fix bug: when $index.links.to.section is set to zero, the
-<tag>primary</tag> <tag>index</tag> <tag>entry</tag> duplicates links that should be only
-on <tag>secondary</tag> entries.  Now the links are not duplicated.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: xref.xsl</literal></para><screen><phrase role="commit-message">Add mode="no.anchor.mode" to remaining xref-to templates that do not
-have it to avoid generating an invalid nested <tag>anchor</tag> in HTML output.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: pi.xsl</literal></para><screen><phrase role="commit-message">Improve doc descriptions of dbhtml <tag>filename</tag> and dir.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunk-common.xsl</literal></para><screen><phrase role="commit-message">Turn off fast chunking messages if chunker.output.quiet is
-set to 1.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autoidx.xsl</literal></para><screen><phrase role="commit-message">Add <tag>setindex</tag> to context param in mode="<tag>reference</tag>" to better 
-support <tag>setindex</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: autotoc.xsl</literal></para><screen><phrase role="commit-message">Support set as child of set in set.toc template.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>dleidert: inline.xsl</literal></para><screen><phrase role="commit-message">Fix Debian bug #611924 (http://bugs.debian.org/611924):
-
-A <tag>quote</tag> element with an xml:id will lead to two anchors with the same name or
-ID which is not allowed. So don't call the <tag>anchor</tag> template. It is already
-called by inline.charseq.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunk-code.xsl</literal></para><screen><phrase role="commit-message">Fix call to generate.css.files so .css files can be generated
-when in chunking mode.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: qandaset.xsl</literal></para><screen><phrase role="commit-message">Change <tag>question</tag> and <tag>title</tag> templates to replace hard-coded
-class="local-name()" with mode="class.attribute" to support customization
-of class values.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunktoc.xsl</literal></para><screen><phrase role="commit-message">Call "generate.css" in process.root so it can participate
-in the '<parameter>make.clean.html</parameter>' scheme.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: glossary.xsl</literal></para><screen><phrase role="commit-message">Fixing typo (spurious ! at the end of line).</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Norman Walsh: chunktoc.xsl</literal></para><screen><phrase role="commit-message">Separate <tag>book</tag> appendixes from <tag>article</tag> appendixes (so that they can be customized independently)</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: graphics.xsl</literal></para><screen><phrase role="commit-message">Added condition to prevent "Failed to interpret image" messages (SVG is not supported 
-by the graphic size extension).</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: formal.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3116969 where mode="class.value" customization
-did not work for <tag>table</tag> or <tag>informaltable</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Keith Fahlgren: highlight.xsl</literal></para><screen><phrase role="commit-message">Implementing handling for &lt;b&gt; and &lt;i&gt;: transform to &lt;strong&gt; and &lt;em&gt; for XHTML outputs and do not use in the highliting output (per Mauritz Jeanson)</phrase></screen>
+<para><literal>Robert Stayton: autoidx.xsl</literal></para><screen><phrase role="commit-message">Fix bug 3528673, missing "separator" param on template with
+match="<tag>indexterm</tag>" mode="<tag>reference</tag>".  That param is passed 
+for endofrange processing to output the range separator.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of HTML changes for snapshot_9331-->
+</sect2><!--end of HTML changes for 1.77.1-->
 
-<sect2 xml:id="Vsnapshot_9331_Manpages">
-<title>Manpages</title>
-<para>The following changes have been made to the
-            <filename>manpages</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Manpages changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Epub">
-<title>Epub</title>
-<para>The following changes have been made to the
-            <filename>epub</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: docbook.xsl</literal></para><screen><phrase role="commit-message">Replace $base.dir with $chunk.base.dir to ensure trailing slash in place.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: docbook.xsl</literal></para><screen><phrase role="commit-message">Match template for "/" must have priority="1" since
-chunk-code.xsl is xsl:included, not xsl:imported.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: docbook.xsl</literal></para><screen><phrase role="commit-message">Added support for <tag>book</tag>/<tag>info</tag> to support DocBook5.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: docbook.xsl</literal></para><screen><phrase role="commit-message">Remove disallowed priority attribute from the name="chunk" template.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Keith Fahlgren: docbook.xsl</literal></para><screen><phrase role="commit-message">Bugfix for [#3071521] to ensure that NCX navPoints are generated for d:<tag>book</tag> root nodes with the -NS version of the stylesheets</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Keith Fahlgren: docbook.xsl</literal></para><screen><phrase role="commit-message">Remove unused NCX metadata elements</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Keith Fahlgren: bin/spec/epub_regressions_spec.rb; docbook.xsl; bin/spec/files/test_cust.x⋯</literal></para><screen><phrase role="commit-message">Normalizing identifier lookup between NCX and OPF</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Keith Fahlgren: bin/dbtoepub</literal></para><screen><phrase role="commit-message">Reduce logging verbosity</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Keith Fahlgren: bin/dbtoepub; bin/lib/docbook.rb</literal></para><screen><phrase role="commit-message">Only copy images once for the DocBook to EPUB tool to correct Windows bug reported in [#3065489]</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Epub changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_HTMLHelp">
-<title>HTMLHelp</title>
-<para>The following changes have been made to the
-            <filename>htmlhelp</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: htmlhelp-common.xsl</literal></para><screen><phrase role="commit-message">Change $base.dir to $chunk.base.dir to ensure trailing slash in place.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of HTMLHelp changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Eclipse">
-<title>Eclipse</title>
-<para>The following changes have been made to the
-            <filename>eclipse</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: eclipse.xsl; eclipse3.xsl</literal></para><screen><phrase role="commit-message">Use $chunk.base.dir instead of $base.dir to ensure trailing slash is in place.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Eclipse changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_JavaHelp">
-<title>JavaHelp</title>
-<para>The following changes have been made to the
-            <filename>javahelp</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: javahelp.xsl</literal></para><screen><phrase role="commit-message">Change $base.dir to $chunk.base.dir to ensure trailing slash is present.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: javahelp.xsl</literal></para><screen><phrase role="commit-message">Replaced empty header.navigation and footer.navigation templates with parameter <parameter>suppress.navigation</parameter>=1,
-which simplifies customization. See bug #3310904.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of JavaHelp changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Roundtrip">
+<sect2 xml:id="V1.77.1_Roundtrip">
 <title>Roundtrip</title>
 <para>The following changes have been made to the
             <filename>roundtrip</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
+<para><literal>Robert Stayton: dbk2ooo.xsl; dbk2pages.xsl; dbk2wordml.xsl; dbk2wp.xsl</literal></para><screen><phrase role="commit-message">Import the VERSION.xsl file instead of VERSION so mimetype is interpreted correctly
+from the <tag>filename</tag>.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Roundtrip changes for snapshot_9331-->
+</sect2><!--end of Roundtrip changes for 1.77.1-->
 
-<sect2 xml:id="Vsnapshot_9331_Slides">
+<sect2 xml:id="V1.77.1_Slides">
 <title>Slides</title>
 <para>The following changes have been made to the
             <filename>slides</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>Dave Pawson: fo/param.xweb; html/param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
+<para><literal>Robert Stayton: html/slides-common.xsl</literal></para><screen><phrase role="commit-message">Import the VERSION.xsl file instead of VERSION so mimetype is interpreted correctly
+from the <tag>filename</tag>.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Slides changes for snapshot_9331-->
+</sect2><!--end of Slides changes for 1.77.1-->
 
-<sect2 xml:id="Vsnapshot_9331_Website">
+<sect2 xml:id="V1.77.1_Website">
 <title>Website</title>
 <para>The following changes have been made to the
             <filename>website</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>Dave Pawson: param.xweb</literal></para><screen><phrase role="commit-message">111011T08:05</phrase></screen>
+<para><literal>Robert Stayton: website-common.xsl</literal></para><screen><phrase role="commit-message">Import the VERSION.xsl file instead of VERSION so mimetype is interpreted correctly
+from the <tag>filename</tag>.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Website changes for snapshot_9331-->
+</sect2><!--end of Website changes for 1.77.1-->
 
-<sect2 xml:id="Vsnapshot_9331_Webhelp">
+<sect2 xml:id="V1.77.1_Webhelp">
 <title>Webhelp</title>
 <para>The following changes have been made to the
             <filename>webhelp</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>David Cramer: template/common/main.js</literal></para><screen><phrase role="commit-message">Webhelp: tweaking scrolldown offset for anchors</phrase></screen>
+<para><literal>David Cramer: xsl/webhelp-common.xsl</literal></para><screen><phrase role="commit-message">Webhelp: Increase default value for <parameter>chunk.section.depth</parameter></phrase></screen>
 </listitem>
 <listitem>
-<para><literal>David Cramer: docsrc/images; docsrc/images/sample.jpg; docsrc/readme.xml; template/content⋯</literal></para><screen><phrase role="commit-message">Webhelp: updating docs. Ant version, install instructions, handling of images.</phrase></screen>
+<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">updated webhelp documentation</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Patch from Arun Bharadwaj to display message if JavaScript is disabled</phrase></screen>
+<para><literal>kasunbg: template/content/search/nwSearchFnt.js; xsl/webhelp-common.xsl</literal></para><screen><phrase role="commit-message">Removed the script htmlFileList.js since it's content is in htmlFileInfoList.js</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>David Cramer: template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">Patch from Arun Bharadwaj to strip quotes from search query strings</phrase></screen>
+<para><literal>Robert Stayton: xsl/webhelp-common.xsl</literal></para><screen><phrase role="commit-message">In the &lt;h1&gt; output, replace call to 'get.doc.title' with
+mode="title.markup" because get.doc.title returns only
+the string value of the <tag>title</tag>, losing any markup such
+as &lt;<tag>trademark</tag>&gt; or &lt;<tag>superscript</tag>&gt;.</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Robert Stayton: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Add basic support for new &lt;topic&gt; element.</phrase></screen>
+<para><literal>kasunbg: template/common/css/positioning.css; template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">Remove unnecessary bits of code from webhelp</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Jirka Kosek: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Put back old extensibility point.
-
-Guys, please don't remove existing extensibility points like named templates, it will break existing customizations.</phrase></screen>
+<para><literal>David Cramer: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">Webhelp: Minor edits to the readme</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Moving webhelp gentext strings into a context</phrase></screen>
+<para><literal>David Cramer: xsl/webhelp.xsl; xsl/titlepage.templates.xsl; xsl/titlepage.templates.xml</literal></para><screen><phrase role="commit-message">Webhelp: Suppress abstracts from titlepages. These are used to create the search result summary sentence and should not be shown</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>tom_schr: param.xweb</literal></para><screen><phrase role="commit-message">Fixed comment</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: Makefile.param</literal></para><screen><phrase role="commit-message">Fixed indendation</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: param.ent</literal></para><screen><phrase role="commit-message">Disabled branding and brandname entities for the time being</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: Makefile.param</literal></para><screen><phrase role="commit-message">Added missing .param file (to be consistent with the other output formats)</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: param.xweb</literal></para><screen><phrase role="commit-message">Enabled Id svn:keywords</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: param.xweb</literal></para><screen><phrase role="commit-message">Included missing external entities</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: param.xweb; param.ent</literal></para><screen><phrase role="commit-message">Prepared WebHelp <tag>reference</tag> documentation :)
-Not clear about parameters brandname and branding: Should they renamed
-to "webhelp.branding" and "webhelp.brandname"?
-Currently, docsrc/reference.xml contains only a comment for the WebHelp
-ref doc to be non-intrusive.
-Idea is to enable it when it is ready</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Moved language specific of WebHelp to gentext/locale/ as discussed with
-Stefan following the "minimal intrusive approach". :)
-In the long run, maybe moving the text into a context, not sure.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>stefanhinz: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Added comment, mainly to test if I have write permissions to the repo. If yes, this will become my first commit here, so let me say HELLO everyone. -Stefan</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Webhelp: Lower the minimum width of content pane</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/main.js</literal></para><screen><phrase role="commit-message">If an user moved to another page by clicking on a <tag>toc</tag> <tag>link</tag>, and then clicked on #searchDiv,
-search should be performed if the cookie textToSearch is not empty.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/css/positioning.css; template/common/images/search-icon.png;⋯</literal></para><screen><phrase role="commit-message">Webhelp: Small tweaks to icons, css</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">Webhelp: Perform xinclude if xsltproc is the processor</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">Webhelp: Hide remarks in readme output</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">Webhelp: Tweaking makefile</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: build.properties; build.xml</literal></para><screen><phrase role="commit-message">Move paths to xercesImpl and xml-apis jars into build.properties</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Webhelp: Left align titles in nav header. Display  for all but the topmost page</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/content/search/stemmers/en_stemmer.js; docsrc/xinclude-test.xml</literal></para><screen><phrase role="commit-message">Webhelp: Cleanup related to en_stemmer.js changes</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Webhelp: Don't put borders around <tag>qandaset</tag> list</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/main.js</literal></para><screen><phrase role="commit-message">Webhelp: Avoid unnecessary scroll ups when <tag>anchor</tag> is clicked on</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: build.properties</literal></para><screen><phrase role="commit-message">Webhelp: Show footer nav by default</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: build.properties; build.xml</literal></para><screen><phrase role="commit-message">Webhelp: Support setting <parameter>suppress.footer.navigation</parameter> from build.properties</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: build.properties; build.xml</literal></para><screen><phrase role="commit-message">Webhelp: Support <parameter>admon.graphics</parameter> param in build.properties</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: docsrc/xinclude-test.xml; docsrc/readme.xml</literal></para><screen><phrase role="commit-message">Webhelp: Adding xinclude example to the demo/readme doc</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Webhelp: Remove border around <tag>table</tag> used to format <tag>callout</tag> list</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl; template/common/images/admon/tip.png; template/common/image⋯</literal></para><screen><phrase role="commit-message">Webhelp: Support admon graphics (still off by default)</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Webhelp: Turn on navfooter and fix related css</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Webhelp: Fix error about undeclared doc.title param</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">Webhelp: Adding some test search terms to the readme</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/content/search/stemmers/en_stemmer.js</literal></para><screen><phrase role="commit-message">Handle exceptional cases listed in the Porter 2 stemming algo</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/content/search/stemmers/en_stemmer.js</literal></para><screen><phrase role="commit-message">Webhelp: adding special case word 'say' to en js stemmer</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/content/search/stemmers/en_stemmer.js</literal></para><screen><phrase role="commit-message">Webhelp: Refine stemming of terms that end in (only stem if there's a consonant before the -y)</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/content/search/stemmers/en_stemmer.js; template/content/search/nwSe⋯</literal></para><screen><phrase role="commit-message">Webhelp: fixed bug where words like key, day, and nucleus, were not found due to differences in the way the client stemmer and indexer stemmed words</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: build.xml</literal></para><screen><phrase role="commit-message">Webhelp: Support xinclude and two-pass profiling in build.xml</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Fix bad <tag>link</tag> to default topic.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Addressed tracker item #3444549: Using titleabbrev.markup mode instead of title.markup mode for webhelp <tag>toc</tag></phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Addressed #3443430, adding <tag>setindex</tag> to Webhelp <tag>toc</tag></phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/main.js</literal></para><screen><phrase role="commit-message">Fixed bug where content scrolls up when search or contents tab are clicked</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">Automatically limit the size of the search description to something 140 characters</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">removing outline in 'contents' and 'search' buttons that is visible when clicked. tabindex for <tag>SIDEBAR</tag> button.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; build.xml</literal></para><screen><phrase role="commit-message">Webhelp ant script changes - HTML transformation support for WebHelp - Uses Tagsoup for parsing the bad html.
-tagsoup-1.2.1.jar is added to trunk/xsl-webhelpindexer/lib/</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">proper support for saxon xhtml transformation.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/images/callouts/10.png; template/common/images/callouts/11.png; t⋯</literal></para><screen><phrase role="commit-message">webhelp - adding callouts</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/main.js; template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">webhelp - some small rackspace additions, and cleaning up of main.js</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/main.js; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">webhelp - animations for show/hide <tag>Sidebar</tag></phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: build.properties</literal></para><screen><phrase role="commit-message">commenting about brand and brandname</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: Makefile</literal></para><screen><phrase role="commit-message">parameterized MAKE for webhelp</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css; build.properties; build.xml</literal></para><screen><phrase role="commit-message">webhelp xsl customization - logo</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: Makefile</literal></para><screen><phrase role="commit-message">webhelp - fixing make clean</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">webhelp xsl cleanup. Added the missing <tag>chapter</tag> <tag>title</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">fix no. 2 - Fix for missing "No results found for..." bug</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">remove some JS warninings</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">Fix for missing "No results found for..." bug</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">commented about the importance of the order of css contents. Order is <tag>important</tag> between the in-html-file css and the linked css files. Some css declarations in jquery-ui-1.8.2.custom.css are over-ridden. If that's a concern, just remove the additional css contents inside these default jquery css files. I thought of keeping them intact for easier maintenance.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: xsl/webhelp.xsl; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Minor cleanup, added extensibility hook, some styling moved into CSS for easier customization</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">Removing onclick that came from Oxygen's dita stuff</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">webhelp - documenting about features</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">webhelp search text box</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">adding header background image</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/images/header-bg.png</literal></para><screen><phrase role="commit-message">new header background image</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">fix left navigation</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">some css</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: build.xml</literal></para><screen><phrase role="commit-message">Adding html.extension property</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/css/positioning.css; build.properties; build.xml</literal></para><screen><phrase role="commit-message">webhelp - Adding enable.stemming, toc.file build properties</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Make the webhelp banner slightly larger.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/main.js; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Adjust colors and positioning of header and search/<tag>toc</tag> tabs</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Only put doc <tag>title</tag> in header</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/css/positioning.css; template/common/images/main_bg_fade.png</literal></para><screen><phrase role="commit-message">Adjusting default color of the header</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">adjustments to header <tag>title</tag>. Now output in Opera looks good.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/images/sidebar.png; template/content/search/punctuation.props; te⋯</literal></para><screen><phrase role="commit-message">deleting svn:executable flag from webhelp files</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl; template/common/css/positioning.css; template/common/images/sear⋯</literal></para><screen><phrase role="commit-message">Customized the left navagation headers; Contents and Search.
-Adding custom css for the current redmond ui of jquery-ui. These override jquery-ui's default css customizations. These are supposed to take precedence.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">typo fix</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/images/next-arrow.png; xsl/webhelp.xsl; template/common/main.js; ⋯</literal></para><screen><phrase role="commit-message">UI improvements. 
-	Moved search highligher to search tab.
-	Added nice icons for navigation buttons etc.
-	Removed footer navigation
-	Corrected tree colorings
-	Overall, some css magic</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">Added <tag>listitem</tag> thinking SyncRO Soft for their contributions.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: build.xml</literal></para><screen><phrase role="commit-message">support for default classpath for Gentoo Linux</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">webhelp - some updates to the documentation about search</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/css/positioning.css</literal></para><screen><phrase role="commit-message">Fix for issue 'Keep "search" &amp; "contents" titles always visible in webhelp - ID: 3403438'</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/images/starsSmall.png</literal></para><screen><phrase role="commit-message">Changed icons used to show search weightings from stars to boxes so they won't look like user ratings</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl; template/common/main.js; template/common/images/starsSmall.⋯</literal></para><screen><phrase role="commit-message">Merged Oxygen webhelp improvements (search weightings etc) into trunk: -r9031:9039</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">webhelp documentation - search indexing, faq</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml</literal></para><screen><phrase role="commit-message">update webhelp documentation</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Fixed bug where webhelp.default.topic was not being used if it was set</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl; template/content/search/nwSearchFnt.js</literal></para><screen><phrase role="commit-message">Localize string in nwSearchFnt.js file</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Added tabindex attributes to make tab order in UI more logical in webhelp.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/main.js</literal></para><screen><phrase role="commit-message">Fixed bug where anchors in pages landed beneath the banner.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Added more comments to the xsl/webhelp/xsl/webhelp.xsl file. Removed some clutter.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: template/common/main.js</literal></para><screen><phrase role="commit-message">Fixed problem reported in IE 8. See tracker id # 373747.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Addressed tracker #3247166 by removing hard-coded <tag>reference</tag> to ch01.html.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: build.xml</literal></para><screen><phrase role="commit-message">Changed the webhelp build.xml to reflect the changes to xsl-webhelpindexer.
-Added classpaths for xercesImpl and xml-api jars to the indexer. Paths added for *nix environments, need to look at how the current system behaves in Windows. Discussion: http://lists.oasis-open.org/archives/docbook-apps/201011/msg00116.html</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/images/loading.gif; template/common/jquery/treeview/jquery.treevi⋯</literal></para><screen><phrase role="commit-message">webhelp: Removing some unnecessary JQuery JS files</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: template/common/main.js</literal></para><screen><phrase role="commit-message">webhelp: Usability improvement - when click on a node in the <tag>TOC</tag> tree, the child nodes will auto populate now.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Added google translated localizations for Japanese, German, French, and Chinese. The translations might not be pretty accurate. 
-Better translations are appreciated.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>kasunbg: docsrc/readme.xml; template/content/images; template/content/images/sample.jpg</literal></para><screen><phrase role="commit-message">Added documentation for how to add images to WebHelp</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Added more customization hooks
-Search code output only when search tab is active
-Added cs localization</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: xsl/webhelp.xsl</literal></para><screen><phrase role="commit-message">Added parameter webhelp.common.dir for specifying location of common files (JS+CSS)
-Added hooks for adding additional user defined tabs</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: indexer</literal></para><screen><phrase role="commit-message">More webhelp indexer refactoring</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: build.xml</literal></para><screen><phrase role="commit-message">Removed cruft from before webhelp indexer refactoring</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: indexer/src</literal></para><screen><phrase role="commit-message">Refactoring webhelp to separate more cleanly the xsl and java code.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: indexer/lib</literal></para><screen><phrase role="commit-message">Refactoring webhelp to separate more cleanly the xsl and java code.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile; build.xml</literal></para><screen><phrase role="commit-message">Refactoring webhelp to separate more cleanly the xsl and java code.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: indexer/src/com/nexwave/nquindexer/IndexerTask.java; build.xml; indexer/src/⋯</literal></para><screen><phrase role="commit-message">Merged in changes from webhelp branch to <tag>address</tag> issue #3058244 regarding the xx.html temp file that was being created</phrase></screen>
+<para><literal>David Cramer: build.xml</literal></para><screen><phrase role="commit-message">Webhelp: calculate path to profile.xsl from main build.xml file</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Webhelp changes for snapshot_9331-->
+</sect2><!--end of Webhelp changes for 1.77.1-->
 
-<sect2 xml:id="Vsnapshot_9331_Params">
-<title>Params</title>
-<para>The following changes have been made to the
-            <filename>params</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Mauritz Jeanson: htmlhelp.encoding.xml</literal></para><screen><phrase role="commit-message">Updated <tag>link</tag> (again).</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: admon.graphics.extension.xml</literal></para><screen><phrase role="commit-message">Added list of graphics formats.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: htmlhelp.encoding.xml</literal></para><screen><phrase role="commit-message">Updated <tag>link</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: passivetex.extensions.xml</literal></para><screen><phrase role="commit-message">Updated <tag>link</tag>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: webhelp.indexer.language.xml; webhelp.default.topic.xml; webhelp.tree.cookie.id.⋯</literal></para><screen><phrase role="commit-message">Fixed wrong xml:id's</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>tom_schr: webhelp.indexer.language.xml; webhelp.default.topic.xml; webhelp.tree.cookie.id.⋯</literal></para><screen><phrase role="commit-message">Prepared WebHelp <tag>reference</tag> documentation :)
-Not clear about parameters brandname and branding: Should they renamed
-to "webhelp.branding" and "webhelp.brandname"?
-Currently, docsrc/reference.xml contains only a comment for the WebHelp
-ref doc to be non-intrusive.
-Idea is to enable it when it is ready</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: bibliography.collection.xml</literal></para><screen><phrase role="commit-message">Fix well-formedness problem.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: normal.para.spacing.xml; para.properties.xml</literal></para><screen><phrase role="commit-message">Clarify usage of <tag>para</tag> property attribute sets.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: normal.para.spacing.xml</literal></para><screen><phrase role="commit-message">Clarify reuse of this attribute-set in other elements.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: bibliography.collection.xml; glossary.collection.xml</literal></para><screen><phrase role="commit-message">Clarify how relative paths are resolved.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: glossary.collection.xml</literal></para><screen><phrase role="commit-message">More explanation of relative paths in <parameter>glossary.collection</parameter>.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: glossary.collection.xml</literal></para><screen><phrase role="commit-message">Add <tag>info</tag> about relative paths.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: para.properties.xml</literal></para><screen><phrase role="commit-message">Special attribute-set for <tag>para</tag> only.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: table.caption.properties.xml</literal></para><screen><phrase role="commit-message">To format <tag>table</tag> captions.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: base.dir.xml</literal></para><screen><phrase role="commit-message">Add <tag>info</tag> about trailing slash added if it was omitted.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: html.script.type.xml</literal></para><screen><phrase role="commit-message">Fix typo in param name.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: html.script.type.xml; html.script.xml</literal></para><screen><phrase role="commit-message">Add support for specifying javascript references like css references.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: body.margin.outer.xml; region.outer.extent.xml; side.region.precedence.xml; b⋯</literal></para><screen><phrase role="commit-message">Fixed well-formdness</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: side.region.precedence.xml</literal></para><screen><phrase role="commit-message">Add comment about internal individual params for each side.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: body.margin.outer.xml; region.outer.extent.xml; region.inner.properties.xm⋯</literal></para><screen><phrase role="commit-message">Complete support for side regions.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: body.margin.outer.xml; region.outer.extent.xml; body.margin.inner.xml; reg⋯</literal></para><screen><phrase role="commit-message">Add support for side regions in FO output.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: chunked.filename.prefix.xml</literal></para><screen><phrase role="commit-message">New param <parameter>chunked.filename.prefix</parameter> to separate any such prefix from
-the <parameter>base.dir</parameter> param, which helps fix bug 3087359.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: generate.consistent.ids.xml</literal></para><screen><phrase role="commit-message">New param to support replacing generate-id() with xsl:number
-for more consistent id values.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: linenumbering.everyNth.xml</literal></para><screen><phrase role="commit-message">111011T08:12</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: hyphenate.xml; ulink.hyphenate.chars.xml; ulink.hyphenate.xml</literal></para><screen><phrase role="commit-message">111011T07:57</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: task.properties.xml</literal></para><screen><phrase role="commit-message">Allow <tag>task</tag> to be customized more easily.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: calloutlist.properties.xml; callout.properties.xml</literal></para><screen><phrase role="commit-message">Support better customization of <tag>callout</tag> lists.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: ulink.hyphenate.xml</literal></para><screen><phrase role="commit-message">Remove dated (2002) <tag>reference</tag> to supported ulink characters.
-Add caveat about this applying only to empty ulink elements.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: title.font.family.xml</literal></para><screen><phrase role="commit-message">Updated for multiple fonts</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: monospace.font.family.xml</literal></para><screen><phrase role="commit-message">Updated for multiple fonts</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Dave Pawson: body.font.family.xml</literal></para><screen><phrase role="commit-message">Updated for multiple fonts</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: callout.unicode.start.character.xml</literal></para><screen><phrase role="commit-message">Added support for alternative circled numbers</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: refentry.title.properties.xml; qanda.title.properties.xml; section.title.⋯</literal></para><screen><phrase role="commit-message">Fixed bug #3157584 (trouble with font family selection).</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: example.properties.xml</literal></para><screen><phrase role="commit-message">Made <parameter>example.properties</parameter> use keep-together='auto' like table.properies to avoid problems where example/<tag>programlisting</tag> takes more than one page</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Mauritz Jeanson: graphicsize.extension.xml</literal></para><screen><phrase role="commit-message">Added <tag>info</tag> about supported image formats.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: draft.mode.xml</literal></para><screen><phrase role="commit-message">Change default for <parameter>draft.mode</parameter> to 'no'.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Params changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Highlighting">
-<title>Highlighting</title>
-<para>The following changes have been made to the
-            <filename>highlighting</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Jirka Kosek: csharp-hl.xml</literal></para><screen><phrase role="commit-message">Added LINQ keywords</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: delphi-hl.xml</literal></para><screen><phrase role="commit-message">Additional keywords from Yuri Zhilin</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Highlighting changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Profiling">
-<title>Profiling</title>
-<para>The following changes have been made to the
-            <filename>profiling</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>David Cramer: profile-mode.xsl</literal></para><screen><phrase role="commit-message">When profile.* params only consist of space characters, then ignore them.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Profiling changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Lib">
-<title>Lib</title>
-<para>The following changes have been made to the
-            <filename>lib</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Robert Stayton: lib.xweb</literal></para><screen><phrase role="commit-message">Added two utility templates to make lib.xsl work
-without <tag>reference</tag> to other modules since it is used
-that way with profiling/xsl2profile.xsl.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Robert Stayton: lib.xweb</literal></para><screen><phrase role="commit-message">Fix trim.common.uri.paths to first resolve any ../ in
-the paths.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Lib changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Template">
+<sect2 xml:id="V1.77.1_Template">
 <title>Template</title>
 <para>The following changes have been made to the
             <filename>template</filename> code
-            since the 1.76.0 release.</para>
+            since the 1.77.0 release.</para>
 <itemizedlist>
 <listitem>
-<para><literal>Robert Stayton: titlepage.xsl</literal></para><screen><phrase role="commit-message">Add basic support for new &lt;topic&gt; element.</phrase></screen>
+<para><literal>Robert Stayton: titlepage.xsl</literal></para><screen><phrase role="commit-message">Undo last change because not implemented correctly.</phrase></screen>
 </listitem>
 <listitem>
-<para><literal>Robert Stayton: titlepage.xsl</literal></para><screen><phrase role="commit-message">Fix bug in handling of attributes in mode="copy"</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: titlepage.xsl</literal></para><screen><phrase role="commit-message">Handle namespaced elements without prefix in a special way in order to prevent copying excessive namespace declarations.</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: titlepage.xsl</literal></para><screen><phrase role="commit-message">Preserve namespace of copied elements</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>Jirka Kosek: titlepage.xsl</literal></para><screen><phrase role="commit-message">Titlepage mechanism is now namespace aware to support XHTML. Please note that when generating titlepage template stylesheets you have to pass FO or XHTML namespace inside ns parameter. For HTML parameter should be empty.</phrase></screen>
+<para><literal>Robert Stayton: titlepage.xsl</literal></para><screen><phrase role="commit-message">Fix xsl:element to not overwrite the incoming fo: namespace
+if the $ns param is not set.</phrase></screen>
 </listitem>
 </itemizedlist>
-</sect2><!--end of Template changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_Extensions">
-<title>Extensions</title>
-<para>The following changes have been made to the
-            <filename>extensions</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>kasunbg: Makefile</literal></para><screen><phrase role="commit-message">webhelp - Adding enable.stemming, toc.file build properties</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">Attempt to convince Makefile that webhelpindexer is dirty</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">More webhelp refactoring</phrase></screen>
-</listitem>
-<listitem>
-<para><literal>David Cramer: Makefile</literal></para><screen><phrase role="commit-message">Refactoring webhelp to separate more cleanly the xsl and java code.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of Extensions changes for snapshot_9331-->
-
-<sect2 xml:id="Vsnapshot_9331_XSL-Saxon">
-<title>XSL-Saxon</title>
-<para>The following changes have been made to the
-            <filename>xsl-saxon</filename> code
-            since the 1.76.0 release.</para>
-<itemizedlist>
-<listitem>
-<para><literal>Mauritz Jeanson: src/com/nwalsh/saxon/Verbatim.java; src/com/nwalsh/saxon/FormatGraphicCal⋯</literal></para><screen><phrase role="commit-message">Added fixes to ensure that generated XHTML markup for callouts is in the proper namespace.</phrase></screen>
-</listitem>
-</itemizedlist>
-</sect2><!--end of XSL-Saxon changes for snapshot_9331-->
+</sect2><!--end of Template changes for 1.77.1-->
 
 </sect1>
 </article>

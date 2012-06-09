@@ -12,7 +12,7 @@ xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: common.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: common.xsl 9347 2012-05-11 03:49:49Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -25,7 +25,7 @@ xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
   <info>
     <title>Common » Base Template Reference</title>
     <releaseinfo role="meta">
-      $Id: common.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+      $Id: common.xsl 9347 2012-05-11 03:49:49Z bobstayton $
     </releaseinfo>
   </info>
   <!-- * yes, partintro is a valid child of a reference... -->
@@ -48,7 +48,7 @@ xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
 d:abstract d:affiliation d:anchor d:answer d:appendix d:area d:areaset d:areaspec
 d:artheader d:article d:audiodata d:audioobject d:author d:authorblurb d:authorgroup
 d:beginpage d:bibliodiv d:biblioentry d:bibliography d:biblioset d:blockquote d:book
-d:bookbiblio d:bookinfo d:callout d:calloutlist d:caption d:caution d:chapter
+d:bookinfo d:callout d:calloutlist d:caption d:caution d:chapter
 d:citerefentry d:cmdsynopsis d:co d:collab d:colophon d:colspec d:confgroup
 d:copyright d:dedication d:docinfo d:editor d:entrytbl d:epigraph d:equation
 d:example d:figure d:footnote d:footnoteref d:formalpara d:funcprototype
@@ -974,6 +974,20 @@ recursive process.</para>
     
         <xsl:variable name="useobject">
           <xsl:choose>
+            <!-- select videoobject or audioobject before textobject -->
+            <xsl:when test="local-name($object) = 'videoobject'">
+              <xsl:text>1</xsl:text> 
+            </xsl:when>
+            <xsl:when test="local-name($object) = 'audioobject'">
+              <xsl:text>1</xsl:text> 
+            </xsl:when>
+            <!-- skip textobject if also video, audio, or image out of order -->
+            <xsl:when test="local-name($object) = 'textobject' and
+                            ../d:imageobject or
+                            ../d:audioobject or
+                            ../d:videoobject">
+              <xsl:text>0</xsl:text> 
+            </xsl:when>
             <!-- The phrase is used only when contains TeX Math and output is FO -->
             <xsl:when test="local-name($object)='textobject' and $object/d:phrase
                             and $object/@role='tex' and $stylesheet.result.type = 'fo'
