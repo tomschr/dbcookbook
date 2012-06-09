@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: block.xsl 9298 2012-04-22 06:23:51Z bobstayton $
+     $Id: block.xsl 9353 2012-05-12 23:24:54Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -170,7 +170,15 @@
 
     <xsl:choose>
       <xsl:when test="attribution">
-        <table border="0" width="100%" cellspacing="0" cellpadding="0" class="blockquote" summary="Block quote">
+        <table border="{$table.border.off}" class="blockquote">
+          <xsl:if test="$css.decoration != 0">
+            <xsl:attribute name="style">
+              <xsl:text>width: 100%; cellspacing: 0; cellpadding: 0;</xsl:text>
+            </xsl:attribute>
+          </xsl:if>
+          <xsl:if test="$div.element != 'section'">
+            <xsl:attribute name="summary">Block quote</xsl:attribute>
+          </xsl:if>
           <tr>
             <td width="10%" valign="top">&#160;</td>
             <td width="80%" valign="top">
@@ -442,7 +450,20 @@
   <div>
     <xsl:call-template name="common.html.attributes"/>
     <xsl:call-template name="id.attribute"/>
-    <table border="0" width="100%" summary="Revision history">
+    <table>
+      <xsl:if test="$css.decoration != 0">
+        <xsl:attribute name="style">
+          <xsl:text>border-style:solid; width:100%;</xsl:text>
+        </xsl:attribute>
+      </xsl:if>
+      <!-- include summary attribute if not HTML5 -->
+      <xsl:if test="$div.element != 'section'">
+        <xsl:attribute name="summary">
+          <xsl:call-template name="gentext">
+            <xsl:with-param name="key">revhistory</xsl:with-param>
+          </xsl:call-template>
+        </xsl:attribute>
+      </xsl:if>
       <tr>
         <th align="{$direction.align.start}" valign="top" colspan="3">
           <strong xmlns:xslo="http://www.w3.org/1999/XSL/Transform">

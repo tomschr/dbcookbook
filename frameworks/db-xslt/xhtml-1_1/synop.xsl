@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: synop.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: synop.xsl 9357 2012-05-12 23:36:14Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -358,7 +358,13 @@ paramdef      ::= (#PCDATA|type|replaceable|parameter|funcparams)*
 <!-- funcprototype: kr, tabular -->
 
 <xsl:template match="funcprototype" mode="kr-tabular">
-  <table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" class="funcprototype-table">
+  <table border="{$table.border.off}" class="funcprototype-table">
+    <xsl:if test="$div.element != 'section'">
+      <xsl:attribute name="summary">Function synopsis</xsl:attribute>
+    </xsl:if>
+    <xsl:if test="$css.decoration != 0">
+      <xsl:attribute name="style">cellspacing: 0; cellpadding: 0;</xsl:attribute>
+    </xsl:if>
     <tr>
       <td>
         <xsl:apply-templates select="funcdef" mode="kr-tabular"/>
@@ -610,7 +616,13 @@ paramdef      ::= (#PCDATA|type|replaceable|parameter|funcparams)*
 <!-- funcprototype: ansi, tabular -->
 
 <xsl:template match="funcprototype" mode="ansi-tabular">
-  <table border="0" summary="Function synopsis" cellspacing="0" cellpadding="0" class="funcprototype-table">
+  <table border="{$table.border.off}" class="funcprototype-table">
+    <xsl:if test="$div.element != 'section'">
+      <xsl:attribute name="summary">Function synopsis</xsl:attribute>
+    </xsl:if>
+    <xsl:if test="$css.decoration != 0">
+      <xsl:attribute name="style">cellspacing: 0; cellpadding: 0;</xsl:attribute>
+    </xsl:if>
     <tr>
       <td>
         <xsl:apply-templates select="funcdef" mode="ansi-tabular"/>

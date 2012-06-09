@@ -11,7 +11,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: common.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: common.xsl 9347 2012-05-11 03:49:49Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -24,7 +24,7 @@
   <info>
     <title>Common » Base Template Reference</title>
     <releaseinfo role="meta">
-      $Id: common.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+      $Id: common.xsl 9347 2012-05-11 03:49:49Z bobstayton $
     </releaseinfo>
   </info>
   <!-- * yes, partintro is a valid child of a reference... -->
@@ -47,7 +47,7 @@
 abstract affiliation anchor answer appendix area areaset areaspec
 artheader article audiodata audioobject author authorblurb authorgroup
 beginpage bibliodiv biblioentry bibliography biblioset blockquote book
-bookbiblio bookinfo callout calloutlist caption caution chapter
+bookinfo callout calloutlist caption caution chapter
 citerefentry cmdsynopsis co collab colophon colspec confgroup
 copyright dedication docinfo editor entrytbl epigraph equation
 example figure footnote footnoteref formalpara funcprototype
@@ -973,6 +973,20 @@ recursive process.</para>
     
         <xsl:variable name="useobject">
           <xsl:choose>
+            <!-- select videoobject or audioobject before textobject -->
+            <xsl:when test="local-name($object) = 'videoobject'">
+              <xsl:text>1</xsl:text> 
+            </xsl:when>
+            <xsl:when test="local-name($object) = 'audioobject'">
+              <xsl:text>1</xsl:text> 
+            </xsl:when>
+            <!-- skip textobject if also video, audio, or image out of order -->
+            <xsl:when test="local-name($object) = 'textobject' and
+                            ../imageobject or
+                            ../audioobject or
+                            ../videoobject">
+              <xsl:text>0</xsl:text> 
+            </xsl:when>
             <!-- The phrase is used only when contains TeX Math and output is FO -->
             <xsl:when test="local-name($object)='textobject' and $object/phrase
                             and $object/@role='tex' and $stylesheet.result.type = 'fo'

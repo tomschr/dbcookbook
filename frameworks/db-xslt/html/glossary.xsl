@@ -9,7 +9,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: glossary.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: glossary.xsl 9364 2012-05-12 23:43:04Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -24,7 +24,7 @@
   &setup-language-variable;
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}">
     <xsl:apply-templates select="." mode="common.html.attributes"/>
     <xsl:call-template name="id.attribute">
       <xsl:with-param name="conditional" select="0"/>
@@ -70,7 +70,7 @@
     <xsl:if test="not(parent::article)">
       <xsl:call-template name="process.footnotes"/>
     </xsl:if>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="glossary/glossaryinfo"></xsl:template>

@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:suwl="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.UnwrapLinks" xmlns:exsl="http://exslt.org/common" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="suwl exsl xlink" version="1.0">
 
 <!-- ********************************************************************
-     $Id: xref.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: xref.xsl 9365 2012-05-12 23:43:49Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -202,7 +202,7 @@
 
       <a href="{$href}">
         <xsl:apply-templates select="." mode="class.attribute"/>
-        <xsl:if test="$target/title or $target/*/title">
+        <xsl:if test="$target/title or $target/info/title">
           <xsl:attribute name="title">
             <xsl:apply-templates select="$target" mode="xref-title"/>
           </xsl:attribute>

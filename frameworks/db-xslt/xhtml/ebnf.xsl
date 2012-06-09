@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc" version="1.0">
 
 <!-- ********************************************************************
-     $Id: ebnf.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: ebnf.xsl 9358 2012-05-12 23:37:10Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -16,7 +16,7 @@
 <doc:reference xmlns="">
 <referenceinfo xmlns="http://www.w3.org/1999/xhtml">
 <releaseinfo role="meta">
-$Id: ebnf.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+$Id: ebnf.xsl 9358 2012-05-12 23:37:10Z bobstayton $
 </releaseinfo>
 <author><surname>Walsh</surname>
 <firstname>Norman</firstname></author>
@@ -64,17 +64,17 @@ to be incomplete. Don't forget to read the source, too :-)</para>
     </xsl:attribute>
     <xsl:attribute name="summary">
       <xsl:text>EBNF</xsl:text>
-      <xsl:if test="title">
+      <xsl:if test="title|info/title">
         <xsl:text> for </xsl:text>
-        <xsl:value-of select="title"/>
+        <xsl:value-of select="title|info/title[1]"/>
       </xsl:if>
     </xsl:attribute>
 
-    <xsl:if test="title">
+    <xsl:if test="title|info/title">
       <tr>
         <th align="{$direction.align.start}" valign="top">
           <xsl:apply-templates select="." mode="class.attribute"/>
-          <xsl:apply-templates select="title"/>
+          <xsl:apply-templates select="title|info/title[1]"/>
         </th>
       </tr>
     </xsl:if>

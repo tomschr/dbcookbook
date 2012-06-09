@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: division.xsl 9298 2012-04-22 06:23:51Z bobstayton $
+     $Id: division.xsl 9366 2012-05-12 23:44:25Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -18,7 +18,7 @@
 <xsl:template match="set">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:apply-templates select="." mode="common.html.attributes"/>
     <xsl:call-template name="id.attribute">
       <xsl:with-param name="conditional" select="0"/>
@@ -51,7 +51,7 @@
     </xsl:call-template>
 
     <xsl:apply-templates/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="set/setinfo"/>

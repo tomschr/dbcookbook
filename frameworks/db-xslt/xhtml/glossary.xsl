@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xlink" version="1.0">
 
 <!-- ********************************************************************
-     $Id: glossary.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: glossary.xsl 9364 2012-05-12 23:43:04Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -35,7 +35,7 @@
 
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:apply-templates select="." mode="common.html.attributes"/>
     <xsl:call-template name="id.attribute">
       <xsl:with-param name="conditional" select="0"/>
@@ -81,7 +81,7 @@
     <xsl:if test="not(parent::article)">
       <xsl:call-template name="process.footnotes"/>
     </xsl:if>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="glossary/glossaryinfo"/>

@@ -216,18 +216,18 @@
 <l:gentext key="hyphenation-character" text="-"/>
 <l:gentext key="hyphenation-push-character-count" text="2"/>
 <l:gentext key="hyphenation-remain-character-count" text="2"/>
-<l:context name="webhelp"><l:template name="Search" text="Search" lang="en"/>
-<l:template name="Enter_a_term_and_click" text="Enter a term and click " lang="en"/>
-<l:template name="Go" text="Go" lang="en"/>
-<l:template name="to_perform_a_search" text=" to perform a search." lang="en"/>
-<l:template name="txt_filesfound" text="Results" lang="en"/>
-<l:template name="txt_enter_at_least_1_char" text="You must enter at least one character." lang="en"/>
-<l:template name="txt_browser_not_supported" text="Your browser is not supported. Use of Mozilla Firefox is recommended." lang="en"/>
-<l:template name="txt_please_wait" text="Please wait. Search in progress..." lang="en"/>
-<l:template name="txt_results_for" text="Results for: " lang="en"/>
-<l:template name="TableofContents" text="Contents" lang="en"/>
-<l:template name="HighlightButton" text="Toggle search result highlighting" lang="en"/>
-<l:template name="Your_search_returned_no_results" text="Your search returned no results." lang="en"/>
+<l:context name="webhelp"><l:template name="Search" text="Rechercher"/>
+<l:template name="Enter_a_term_and_click" text="Saisissez un terme et cliquer "/>
+<l:template name="Go" text="Go"/>
+<l:template name="to_perform_a_search" text=" to perform a search."/>
+<l:template name="txt_filesfound" text="Résultats"/>
+<l:template name="txt_enter_at_least_1_char" text="Vous devez entrer au moins un caractère.x"/>
+<l:template name="txt_browser_not_supported" text="JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site."/>
+<l:template name="txt_please_wait" text="S'il vous plaît attendre. La recherche est en cours ..."/>
+<l:template name="txt_results_for" text="Résultats pour: "/>
+<l:template name="TableofContents" text="Contents"/>
+<l:template name="HighlightButton" text="Toggle search result highlighting"/>
+<l:template name="Your_search_returned_no_results" text="Your search returned no results."/>
 </l:context>
 <l:context name="styles"><l:template name="person-name" text="first-last"/>
 </l:context>

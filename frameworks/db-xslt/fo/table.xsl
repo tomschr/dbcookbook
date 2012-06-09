@@ -13,7 +13,7 @@
 <xsl:include href="../common/table.xsl"/>
 
 <!-- ********************************************************************
-     $Id: table.xsl 9197 2012-01-24 21:31:48Z bobstayton $
+     $Id: table.xsl 9345 2012-05-11 03:46:46Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -27,7 +27,7 @@
   <info>
     <title>Formatting Object Table Reference</title>
     <releaseinfo role="meta">
-      $Id: table.xsl 9197 2012-01-24 21:31:48Z bobstayton $
+      $Id: table.xsl 9345 2012-05-11 03:46:46Z bobstayton $
     </releaseinfo>
   </info>
   <partintro xml:id="partintro">
@@ -1678,6 +1678,12 @@ proportional-column-width() function.</para>
     <xsl:when test="$units = '' and $width != ''">pt</xsl:when>
     <xsl:otherwise><xsl:value-of select="$units"/></xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template match="table/caption">
+  <fo:block xsl:use-attribute-sets="table.caption.properties">
+    <xsl:apply-templates/>
+  </fo:block>
 </xsl:template>
 
 <!-- ==================================================================== -->

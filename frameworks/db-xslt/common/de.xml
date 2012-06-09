@@ -216,18 +216,18 @@
 <l:gentext key="hyphenation-character" text="-"/>
 <l:gentext key="hyphenation-push-character-count" text="2"/>
 <l:gentext key="hyphenation-remain-character-count" text="3"/>
-<l:context name="webhelp"><l:template name="Search" text="Search" lang="en"/>
-<l:template name="Enter_a_term_and_click" text="Enter a term and click " lang="en"/>
-<l:template name="Go" text="Go" lang="en"/>
-<l:template name="to_perform_a_search" text=" to perform a search." lang="en"/>
-<l:template name="txt_filesfound" text="Results" lang="en"/>
-<l:template name="txt_enter_at_least_1_char" text="You must enter at least one character." lang="en"/>
-<l:template name="txt_browser_not_supported" text="Your browser is not supported. Use of Mozilla Firefox is recommended." lang="en"/>
-<l:template name="txt_please_wait" text="Please wait. Search in progress..." lang="en"/>
-<l:template name="txt_results_for" text="Results for: " lang="en"/>
-<l:template name="TableofContents" text="Contents" lang="en"/>
-<l:template name="HighlightButton" text="Toggle search result highlighting" lang="en"/>
-<l:template name="Your_search_returned_no_results" text="Your search returned no results." lang="en"/>
+<l:context name="webhelp"><l:template name="Search" text="Suchen"/>
+<l:template name="Enter_a_term_and_click" text="Geben Sie einen Begriff ein und wählen Sie "/>
+<l:template name="Go" text="Go"/>
+<l:template name="to_perform_a_search" text=", um eine Suche durchzuführen."/>
+<l:template name="txt_filesfound" text="Ergebnisse"/>
+<l:template name="txt_enter_at_least_1_char" text="Sie müssen mindestens ein Zeichen eingeben."/>
+<l:template name="txt_browser_not_supported" text="JavaScript ist in Ihrem Browser abgeschaltet. Bitte schalten Sie JavaScript an, damit diese Seiten vollständig dargestellt werden."/>
+<l:template name="txt_please_wait" text="Bitte warten Sie. Die Suche ist im Gange ..."/>
+<l:template name="txt_results_for" text="Ergebnisse für: "/>
+<l:template name="TableofContents" text="Inhalt"/>
+<l:template name="HighlightButton" text="Markierte Suchergebnisse ein/ausschalten"/>
+<l:template name="Your_search_returned_no_results" text="Ihre Suche erbrachte kein Ergebnis."/>
 </l:context>
 <l:context name="styles"><l:template name="person-name" text="first-last"/>
 </l:context>

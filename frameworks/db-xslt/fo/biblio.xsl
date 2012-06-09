@@ -4,7 +4,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: biblio.xsl 9127 2011-10-10 19:41:51Z bobstayton $
+     $Id: biblio.xsl 9330 2012-05-05 22:48:55Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -418,13 +418,6 @@
 </xsl:template>
 
 <!-- ================================================== -->
-
-<xsl:template match="bookbiblio" mode="bibliography.mode">
-  <fo:inline>
-    <xsl:apply-templates mode="bibliography.mode"/>
-    <xsl:value-of select="$biblioentry.item.separator"/>
-  </fo:inline>
-</xsl:template>
 
 <xsl:template match="citetitle" mode="bibliography.mode">
   <fo:inline>

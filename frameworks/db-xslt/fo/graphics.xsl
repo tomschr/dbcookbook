@@ -14,7 +14,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: graphics.xsl 9282 2012-04-16 20:41:20Z bobstayton $
+     $Id: graphics.xsl 9346 2012-05-11 03:47:30Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -763,7 +763,7 @@
 
 <!-- ==================================================================== -->
 
-<xsl:template match="caption">
+<xsl:template match="mediaobject/caption">
   <fo:block>
     <xsl:if test="@align = 'right' or @align = 'left' or @align='center'">
       <xsl:attribute name="text-align"><xsl:value-of

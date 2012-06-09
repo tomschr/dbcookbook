@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: component.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: component.xsl 9356 2012-05-12 23:33:15Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -15,11 +15,20 @@
 
 <!-- ==================================================================== -->
 
+<!-- Set to 2 for backwards compatibility -->
+<xsl:param name="component.heading.level" select="2"/>
+
 <xsl:template name="component.title">
   <xsl:param name="node" select="."/>
 
+  <!-- This handles the case where a component (bibliography, for example)
+       occurs inside a section; will we need parameters for this? -->
+
+  <!-- This "level" is a section level.  To compute <h> level, add 1. -->
   <xsl:variable name="level">
     <xsl:choose>
+      <!-- chapters and other book children should get <h1> -->
+      <xsl:when test="$node/parent::book">0</xsl:when>
       <xsl:when test="ancestor::section">
         <xsl:value-of select="count(ancestor::section)+1"/>
       </xsl:when>
@@ -31,9 +40,6 @@
       <xsl:otherwise>1</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-
-  <!-- Let's handle the case where a component (bibliography, for example)
-       occurs inside a section; will we need parameters for this? -->
 
   <xsl:element name="h{$level+1}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:attribute name="class">title</xsl:attribute>
@@ -166,7 +172,7 @@
 <xsl:template match="preface">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -191,7 +197,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="preface/title" mode="titlepage.mode" priority="2">
@@ -217,7 +223,7 @@
 <xsl:template match="chapter">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -241,7 +247,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="chapter/title|chapter/chapterinfo/title|chapter/info/title" mode="titlepage.mode" priority="2">
@@ -271,7 +277,7 @@
 
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -312,7 +318,7 @@
     <xsl:if test="not(parent::article) or $ischunk != 0">
       <xsl:call-template name="process.footnotes"/>
     </xsl:if>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="appendix/title|appendix/appendixinfo/title" mode="titlepage.mode" priority="2">
@@ -338,7 +344,7 @@
 <xsl:template match="article">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -365,7 +371,7 @@
 
     <xsl:apply-templates/>
     <xsl:call-template name="process.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="article/title|article/articleinfo/title" mode="titlepage.mode" priority="2">
@@ -391,7 +397,7 @@
 <xsl:template match="topic">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -410,7 +416,7 @@
     <xsl:apply-templates/>
 
     <xsl:call-template name="process.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="topic/title|topic/info/title" mode="titlepage.mode" priority="2">

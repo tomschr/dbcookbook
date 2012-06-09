@@ -149,6 +149,8 @@ article  toc,title,figure,table,example,equation
 <xsl:param name="epub.mimetype.pathname"
            select="concat($epub.package.dir, $epub.mimetype.filename)"/>
 
+<xsl:param name="kindle.extensions" select="0"/>
+
 <!--==============================================================-->
 <!--  Internal variables used for computing certain metadata      -->
 <!--==============================================================-->
@@ -298,6 +300,7 @@ article  toc,title,figure,table,example,equation
     <xsl:call-template name="metadata.title"/>
     <xsl:call-template name="metadata.language"/>
     <xsl:call-template name="metadata.modified"/>
+    <xsl:call-template name="metadata.cover"/>
     <xsl:call-template name="metadata.other.info"/>
     
   </xsl:element>
@@ -377,9 +380,11 @@ article  toc,title,figure,table,example,equation
 
   <xsl:if test="$epub.include.metadata.dc.elements != 0">
     <dc:language>
-      <xsl:attribute name="id">
-        <xsl:value-of select="$epub.dc.language.id"/>
-      </xsl:attribute>
+      <xsl:if test="$kindle.extensions = 0">
+        <xsl:attribute name="id">
+          <xsl:value-of select="$epub.dc.language.id"/>
+        </xsl:attribute>
+      </xsl:if>
       <xsl:value-of select="$lang"/>
     </dc:language>
   </xsl:if>
@@ -431,6 +436,22 @@ article  toc,title,figure,table,example,equation
   <!-- Currently it just converts the local time to this format, which is
        not the correct UTC time. -->
   <xsl:value-of select="concat(substring($date,1,19), 'Z')"/>
+</xsl:template>
+
+<!-- This cover meta element used by kindlegen, at least -->
+<xsl:template name="metadata.cover">
+  <xsl:variable name="info" select="./*[contains(local-name(.), 'info')][1]"/>
+  <xsl:variable name="cover.image" 
+                select="$info//mediaobject[@role='cover' or ancestor::cover]"/>
+
+  <xsl:if test="$cover.image">
+    <xsl:element name="meta" namespace="{$opf.namespace}">
+      <xsl:attribute name="content">
+        <xsl:value-of select="$epub.cover.image.id"/>
+      </xsl:attribute>
+      <xsl:attribute name="name">cover</xsl:attribute>
+    </xsl:element>
+  </xsl:if>
 </xsl:template>
 
 <xsl:template name="metadata.other.info">
@@ -1081,13 +1102,9 @@ article  toc,title,figure,table,example,equation
 
 <xsl:template name="manifest.css">
   <xsl:if test="$html.stylesheet != ''">
-    <xsl:element namespace="{$opf.namespace}" name="item">
-      <xsl:attribute name="media-type">text/css</xsl:attribute>
-      <xsl:attribute name="id">html-css</xsl:attribute>
-      <xsl:attribute name="href">
-        <xsl:value-of select="$html.stylesheet"/>
-      </xsl:attribute>
-    </xsl:element>
+    <xsl:call-template name="css.item">
+      <xsl:with-param name="stylesheets" select="$html.stylesheet"/>
+    </xsl:call-template>
   </xsl:if>
   <xsl:if test="string-length($docbook.css.source) != 0">
     <xsl:variable name="dfilename">
@@ -1117,6 +1134,52 @@ article  toc,title,figure,table,example,equation
       </xsl:attribute>
     </xsl:element>
   </xsl:if>
+</xsl:template>
+
+<xsl:template name="css.item">
+  <xsl:param name="stylesheets" select="''"/>
+  <xsl:param name="count" select="1"/>
+
+  <xsl:choose>
+    <xsl:when test="contains($stylesheets, ' ')">
+      <xsl:variable name="css.filename" select="substring-before($stylesheets, ' ')"/>
+      <xsl:if test="$css.filename != ''">
+        <xsl:element namespace="{$opf.namespace}" name="item">
+          <xsl:attribute name="media-type">text/css</xsl:attribute>
+          <xsl:attribute name="id">
+            <xsl:text>html-css</xsl:text>
+            <xsl:if test="$count &gt; 1">
+              <xsl:value-of select="$count"/>
+            </xsl:if>
+          </xsl:attribute>
+          <xsl:attribute name="href">
+            <xsl:value-of select="$css.filename"/>
+          </xsl:attribute>
+        </xsl:element>
+      </xsl:if>
+
+      <xsl:call-template name="css.item">
+        <xsl:with-param name="stylesheets" select="substring-after($stylesheets, ' ')"/>
+        <xsl:with-param name="count" select="$count + 1"/>
+      </xsl:call-template>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:if test="$stylesheets != ''">
+        <xsl:element namespace="{$opf.namespace}" name="item">
+          <xsl:attribute name="media-type">text/css</xsl:attribute>
+          <xsl:attribute name="id">
+            <xsl:text>html-css</xsl:text>
+            <xsl:if test="$count &gt; 1">
+              <xsl:value-of select="$count"/>
+            </xsl:if>
+          </xsl:attribute>
+          <xsl:attribute name="href">
+            <xsl:value-of select="$stylesheets"/>
+          </xsl:attribute>
+        </xsl:element>
+      </xsl:if>
+    </xsl:otherwise>
+  </xsl:choose>
 </xsl:template>
 
 <xsl:template name="manifest.ncx">
@@ -1591,6 +1654,40 @@ article  toc,title,figure,table,example,equation
     </xsl:for-each>
 
   </xsl:if>
+</xsl:template>
+
+<xsl:template match="co" mode="enumerate-images">
+  <!-- process co to get name of callout bug image file -->
+  <xsl:if test="$callout.graphics != 0">
+    <xsl:variable name="result">
+      <xsl:apply-templates select="." mode="callout-bug"/>
+    </xsl:variable>
+
+    <xsl:variable name="nodes" select="exsl:node-set($result)"/>
+
+    <xsl:for-each select="$nodes//*[@src]">
+      <xsl:variable name="image.filename" select="@src"/>
+
+      <xsl:variable name="image.type">
+        <xsl:call-template name="graphic.format.content-type">
+          <xsl:with-param name="format" select="translate(
+                 substring-after($callout.graphics.extension,'.'), 
+                     &lowercase;, &uppercase;)"/>
+        </xsl:call-template>
+      </xsl:variable>
+
+      <xsl:element name="tmp-filename" namespace="">
+        <xsl:element name="tmp-href" namespace="">
+          <xsl:value-of select="$image.filename"/>
+        </xsl:element>
+        <xsl:element name="media-type" namespace="">
+          <xsl:value-of select="$image.type"/>
+        </xsl:element>
+      </xsl:element>
+    </xsl:for-each>
+
+  </xsl:if>
+
 </xsl:template>
 
 <!-- ======================================================== -->

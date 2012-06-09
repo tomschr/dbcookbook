@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: admon.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: admon.xsl 9352 2012-05-12 23:17:11Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -70,14 +70,17 @@
       </xsl:attribute>
     </xsl:if>
 
-    <table border="0">
-      <xsl:attribute name="summary">
-        <xsl:value-of select="$admon.type"/>
-        <xsl:if test="title|info/title">
-          <xsl:text>: </xsl:text>
-          <xsl:value-of select="(title|info/title)[1]"/>
-        </xsl:if>
-      </xsl:attribute>
+    <table border="{$table.border.off}">
+      <!-- omit summary attribute in html5 output -->
+      <xsl:if test="$div.element != 'section'">
+        <xsl:attribute name="summary">
+          <xsl:value-of select="$admon.type"/>
+          <xsl:if test="title|info/title">
+            <xsl:text>: </xsl:text>
+            <xsl:value-of select="(title|info/title)[1]"/>
+          </xsl:if>
+        </xsl:attribute>
+      </xsl:if>
       <tr>
         <td rowspan="2" align="center" valign="top">
           

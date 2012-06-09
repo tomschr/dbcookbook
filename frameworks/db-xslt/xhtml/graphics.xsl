@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:stext="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.TextFactory" xmlns:simg="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.ImageIntrinsics" xmlns:ximg="xalan://com.nwalsh.xalan.ImageIntrinsics" xmlns:xtext="xalan://com.nwalsh.xalan.Text" xmlns:lxslt="http://xml.apache.org/xslt" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xlink stext xtext lxslt simg ximg" extension-element-prefixes="stext xtext" version="1.0">
 
 <!-- ********************************************************************
-     $Id: graphics.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: graphics.xsl 9367 2012-05-12 23:46:35Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -623,7 +623,13 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 
   <xsl:choose>
     <xsl:when test="$use.viewport">
-      <table border="0" summary="manufactured viewport for HTML img" cellspacing="0" cellpadding="0">
+      <table border="{$table.border.off}">
+        <xsl:if test="$div.element != 'section'">
+          <xsl:attribute name="summary">manufactured viewport for HTML img</xsl:attribute>
+        </xsl:if>
+        <xsl:if test="$css.decoration != ''">
+          <xsl:attribute name="style">cellpadding: 0; cellspacing: 0;</xsl:attribute>
+        </xsl:if>
         <xsl:if test="$html.width != ''">
           <xsl:attribute name="width">
             <xsl:value-of select="$html.width"/>

@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: sections.xsl 9300 2012-04-22 10:12:19Z bobstayton $
+     $Id: sections.xsl 9392 2012-06-02 20:10:58Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -20,7 +20,7 @@
 
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -43,7 +43,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.chunk.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template name="section.title">
@@ -92,7 +92,7 @@
 <xsl:template match="sect1">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -132,7 +132,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.chunk.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="sect1/title                     |sect1/info/title                     |sect1info/title" mode="titlepage.mode" priority="2">
@@ -142,7 +142,7 @@
 <xsl:template match="sect2">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -182,7 +182,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.chunk.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="sect2/title                     |sect2/info/title                     |sect2info/title" mode="titlepage.mode" priority="2">
@@ -192,7 +192,7 @@
 <xsl:template match="sect3">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -232,7 +232,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.chunk.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="sect3/title                     |sect3/info/title                     |sect3info/title" mode="titlepage.mode" priority="2">
@@ -242,7 +242,7 @@
 <xsl:template match="sect4">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -282,7 +282,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.chunk.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="sect4/title                     |sect4/info/title                     |sect4info/title" mode="titlepage.mode" priority="2">
@@ -292,7 +292,7 @@
 <xsl:template match="sect5">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -332,7 +332,7 @@
     </xsl:if>
     <xsl:apply-templates/>
     <xsl:call-template name="process.chunk.footnotes"/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="sect5/title                     |sect5/info/title                     |sect5info/title" mode="titlepage.mode" priority="2">
@@ -342,7 +342,7 @@
 <xsl:template match="simplesect">
   <xsl:call-template name="id.warning"/>
 
-  <div>
+  <xsl:element name="{$div.element}" namespace="http://www.w3.org/1999/xhtml">
     <xsl:call-template name="common.html.attributes">
       <xsl:with-param name="inherit" select="1"/>
     </xsl:call-template>
@@ -352,7 +352,7 @@
 
     <xsl:call-template name="simplesect.titlepage"/>
     <xsl:apply-templates/>
-  </div>
+  </xsl:element>
 </xsl:template>
 
 <xsl:template match="simplesect/title|simplesect/info/title" mode="titlepage.mode" priority="2">

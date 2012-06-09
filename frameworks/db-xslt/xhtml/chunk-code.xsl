@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="exsl cf ng db" version="1.0">
 
 <!-- ********************************************************************
-     $Id: chunk-code.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: chunk-code.xsl 9328 2012-05-03 16:28:23Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -420,6 +420,9 @@
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+
+<!-- Leave legalnotice chunk out of the list for Next and Prev -->
+<xsl:template match="legalnotice" mode="find.chunks"/>
 
 <xsl:template match="/">
   <!-- * Get a title for current doc so that we let the user -->

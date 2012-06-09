@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:cf="http://docbook.sourceforge.net/xmlns/chunkfast/1.0" xmlns:ng="http://docbook.org/docbook-ng" xmlns:db="http://docbook.org/ns/docbook" xmlns="http://www.w3.org/1999/xhtml" version="1.0" exclude-result-prefixes="exsl cf ng db">
 
 <!-- ********************************************************************
-     $Id: chunk-common.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: chunk-common.xsl 9362 2012-05-12 23:41:56Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -596,8 +596,24 @@
   <!-- Only bother to do this if there's at least one non-table footnote -->
   <xsl:if test="$fcount &gt; 0">
     <div class="footnotes">
+      <xsl:call-template name="footnotes.attributes"/>
       <br/>
-      <hr width="100" align="{$direction.align.start}"/>
+      <hr>
+        <xsl:choose>
+          <xsl:when test="$make.clean.html != 0">
+            <xsl:attribute name="class">footnote-hr</xsl:attribute>
+          </xsl:when>
+          <xsl:when test="$css.decoration != 0">
+            <xsl:attribute name="style">
+              <xsl:value-of select="concat('width:100; align:',                                             $direction.align.start,                                             ';')"/>
+            </xsl:attribute>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:attribute name="width">100</xsl:attribute>
+            <xsl:attribute name="align"><xsl:value-of select="$direction.align.start"/></xsl:attribute>
+          </xsl:otherwise>
+        </xsl:choose>
+      </hr>
       <xsl:call-template name="process.footnotes.in.this.chunk">
         <xsl:with-param name="node" select="."/>
         <xsl:with-param name="footnotes" select="$footnotes"/>
@@ -1050,7 +1066,8 @@
     <xsl:call-template name="system.head.content"/>
     <xsl:call-template name="head.content"/>
 
-    <xsl:if test="$home">
+    <!-- home link not valid in HTML5 -->
+    <xsl:if test="$home and $div.element != 'section'">
       <link rel="home">
         <xsl:attribute name="href">
           <xsl:call-template name="href.target">
@@ -1063,7 +1080,8 @@
       </link>
     </xsl:if>
 
-    <xsl:if test="$up">
+    <!-- up link not valid in HTML5 -->
+    <xsl:if test="$up and $div.element != 'section'">
       <link rel="up">
         <xsl:attribute name="href">
           <xsl:call-template name="href.target">
@@ -1488,6 +1506,7 @@
   <xsl:call-template name="user.preroot"/>
 
   <html>
+    <xsl:call-template name="root.attributes"/>
     <xsl:call-template name="html.head">
       <xsl:with-param name="prev" select="$prev"/>
       <xsl:with-param name="next" select="$next"/>
@@ -1495,7 +1514,12 @@
 
     <body>
       <xsl:call-template name="body.attributes"/>
-      <xsl:call-template name="user.header.navigation"/>
+
+      <xsl:call-template name="user.header.navigation">
+        <xsl:with-param name="prev" select="$prev"/>
+        <xsl:with-param name="next" select="$next"/>
+        <xsl:with-param name="nav.context" select="$nav.context"/>
+      </xsl:call-template>
 
       <xsl:call-template name="header.navigation">
         <xsl:with-param name="prev" select="$prev"/>
@@ -1515,7 +1539,11 @@
         <xsl:with-param name="nav.context" select="$nav.context"/>
       </xsl:call-template>
 
-      <xsl:call-template name="user.footer.navigation"/>
+      <xsl:call-template name="user.footer.navigation">
+        <xsl:with-param name="prev" select="$prev"/>
+        <xsl:with-param name="next" select="$next"/>
+        <xsl:with-param name="nav.context" select="$nav.context"/>
+      </xsl:call-template>
     </body>
   </html>
   <xsl:value-of select="$chunk.append"/>

@@ -8,7 +8,7 @@
                 version="1.0">
 
 <!-- ********************************************************************
-     $Id: chunk-code.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: chunk-code.xsl 9328 2012-05-03 16:28:23Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -429,6 +429,9 @@
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
+
+<!-- Leave legalnotice chunk out of the list for Next and Prev -->
+<xsl:template match="legalnotice" mode="find.chunks"/>
 
 <xsl:template match="/">
   <!-- * Get a title for current doc so that we let the user -->

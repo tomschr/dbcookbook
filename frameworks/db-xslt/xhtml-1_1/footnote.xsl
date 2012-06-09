@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="exsl" version="1.0">
 
 <!-- ********************************************************************
-     $Id: footnote.xsl 9301 2012-04-23 09:43:31Z bobstayton $
+     $Id: footnote.xsl 9361 2012-05-12 23:39:44Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -245,6 +245,7 @@ linkend/id: <xsl:value-of select="@linkend"/>
   <!-- Only bother to do this if there's at least one non-table footnote -->
   <xsl:if test="count($footnotes)&gt;count($table.footnotes)">
     <div class="footnotes">
+      <xsl:call-template name="footnotes.attributes"/>
       <br/>
       <hr/>
       <xsl:apply-templates select="$footnotes" mode="process.footnote.mode"/>
@@ -262,6 +263,10 @@ linkend/id: <xsl:value-of select="@linkend"/>
       <xsl:apply-templates select="//annotation" mode="annotation-popup"/>
     </div>
   </xsl:if>
+</xsl:template>
+
+<xsl:template name="footnotes.attributes">
+  <!-- customizable for footnotes attributes -->
 </xsl:template>
 
 <xsl:template name="process.chunk.footnotes">

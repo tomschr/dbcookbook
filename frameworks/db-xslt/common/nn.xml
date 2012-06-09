@@ -222,7 +222,7 @@
 <l:template name="to_perform_a_search" text=" to perform a search." lang="en"/>
 <l:template name="txt_filesfound" text="Results" lang="en"/>
 <l:template name="txt_enter_at_least_1_char" text="You must enter at least one character." lang="en"/>
-<l:template name="txt_browser_not_supported" text="Your browser is not supported. Use of Mozilla Firefox is recommended." lang="en"/>
+<l:template name="txt_browser_not_supported" text="JavaScript is disabled on your browser. Please enable JavaScript to enjoy all the features of this site." lang="en"/>
 <l:template name="txt_please_wait" text="Please wait. Search in progress..." lang="en"/>
 <l:template name="txt_results_for" text="Results for: " lang="en"/>
 <l:template name="TableofContents" text="Contents" lang="en"/>
