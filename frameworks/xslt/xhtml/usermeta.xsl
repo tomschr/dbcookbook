@@ -66,24 +66,6 @@ var popup_</xsl:text>
        have a lower CSS precedence than the users stylesheet. -->
 </xsl:template>
 
-<xsl:template name="user.head.content">
-    <xsl:param name="node" select="."/>
-
-    <xsl:if test="$generate.user.meta != 0">
-      <xsl:call-template name="user.meta.dublincore">
-        <xsl:with-param name="node" select="$node"/>
-      </xsl:call-template>
-      <xsl:call-template name="user.meta.author">
-        <xsl:with-param name="node" select="$node/d:info/d:author"/>
-      </xsl:call-template>
-    </xsl:if>
-    <xsl:if test="$generate.javascript != 0">
-      <xsl:call-template name="javascript"/>
-    </xsl:if>
-    <xsl:if test="$html.stylesheet != ''">
-      <link rel="stylesheet" type="text/css" href="{$html.stylesheet}" />
-    </xsl:if>
-</xsl:template>
   
 <xsl:template name="user.meta.author">
     <xsl:param name="node" select="."/>
@@ -253,9 +235,74 @@ var popup_</xsl:text>
       <meta name="DC.rights" content="{$legalnotice.uri}" scheme="DCTERMS.URI"/>
     </xsl:if>
 </xsl:template>
+
+<xsl:template name="user.link.feeds">
+  <xsl:param name="node" select="."/>
+  <xsl:variable name="thisfeedsource"
+    select="$node/ancestor-or-self::d:info/d:extendedlink/*"/>
+  <xsl:variable name="rootfeeds"
+    select="/*/d:info/d:extendedlink/*"/>
+  <xsl:variable name="feedsource"
+    select="($thisfeedsource|$rootfeeds)"/>
   
+  <!--<xsl:message>user.link.feeds: <xsl:value-of
+    select="concat(count($feedsource), ' - ', 
+            count($rootfeeds) )"/>
+    <xsl:value-of select="local-name($feedsource)"/>
+  </xsl:message>-->
+  
+  <xsl:if test="$feedsource">
+    <xsl:if test="$feedsource[@xlink:role='rss'][@xlink:label='code']">
+      <link
+          href="{$feedsource[@xlink:role='rss'][@xlink:label='code']/@xlink:href}"
+          type="application/rss+xml" rel="alternate"
+          title="{$feedsource[@xlink:role='rss'][@xlink:label='code']/@xlink:title}"/>
+    </xsl:if>
+    <xsl:if test="$feedsource[@xlink:role='atom'][@xlink:label='code']">
+      <link
+          href="{$feedsource[@xlink:role='atom'][@xlink:label='code']/@xlink:href}"
+          type="application/atom+xml" rel="alternate"
+          title="{$feedsource[@xlink:role='atom'][@xlink:label='code']/@xlink:title}"/>
+    </xsl:if>
+    <xsl:if test="$feedsource[@xlink:role='rss'][@xlink:label='ticket']">
+      <link
+          href="{$feedsource[@xlink:role='rss'][@xlink:label='ticket']/@xlink:href}"
+          type="application/rss+xml" rel="alternate"
+          title="{$feedsource[@xlink:role='rss'][@xlink:label='ticket']/@xlink:title}"/>
+    </xsl:if>
+    <xsl:if test="$feedsource[@xlink:role='atom'][@xlink:label='ticket']">
+      <link
+          href="{$feedsource[@xlink:role='atom'][@xlink:label='ticket']/@xlink:href}"
+          type="application/atom+xml" rel="alternate"
+          title="{$feedsource[@xlink:role='atom'][@xlink:label='ticket']/@xlink:title}"/>
+    </xsl:if>
+  </xsl:if>
+</xsl:template>
+
 <xsl:template name="javascript">
     <script type="text/javascript" src="js/dbmodnizr.js">/**/</script>
+</xsl:template>
+
+<xsl:template name="user.head.content">
+    <xsl:param name="node" select="."/>
+
+    <xsl:if test="$generate.user.meta != 0">
+      <xsl:call-template name="user.meta.dublincore">
+        <xsl:with-param name="node" select="$node"/>
+      </xsl:call-template>
+      <xsl:call-template name="user.meta.author">
+        <xsl:with-param name="node" select="$node/d:info/d:author"/>
+      </xsl:call-template>
+    </xsl:if>
+    <xsl:call-template name="user.link.feeds">
+      <xsl:with-param name="node" select="$node"/>
+    </xsl:call-template>
+    <xsl:if test="$generate.javascript != 0">
+      <xsl:call-template name="javascript"/>
+    </xsl:if>
+    <xsl:if test="$html.stylesheet != ''">
+      <link rel="stylesheet" type="text/css" href="{$html.stylesheet}" />
+    </xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>

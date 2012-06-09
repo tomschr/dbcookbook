@@ -46,10 +46,24 @@
       >[DoCookBook] Recent Code Changes (Atom)</bibliosource>
     <bibliosource class="other" otherclass="rss"  role="ticket" 
       xlink:href="http://sf.net/p/doccookbook/tickets/feed.rss"
-      >[DoCookBook] Recent Changes to Tickets (RSS)</bibliosource>
+      >[DoCookBook] Recent Ticket Changes (RSS)</bibliosource>
     <bibliosource class="other" otherclass="atom" role="ticket" 
       xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"
-      >[DoCookBook] Recent Changes to Tickets (Atom)</bibliosource>
+      >[DoCookBook] Recent Ticket Changes (Atom)</bibliosource>
+    <extendedlink role="feeds">
+      <locator xlink:label="code" xlink:role="rss"
+        xlink:title="[DoCookBook] Recent Code Changes (RSS)"
+        xlink:href="http://sf.net/p/doccookbook/code/feed.rss"/>
+      <locator xlink:label="code" xlink:role="atom"
+        xlink:title="[DoCookBook] Recent Code Changes (Atom)"
+        xlink:href="http://sf.net/p/doccookbook/code/feed.atom"/>
+      <locator xlink:label="ticket" xlink:role="rss"
+        xlink:title="[DoCookBook] Recent Ticket Changes (RSS)"
+        xlink:href="http://sf.net/p/doccookbook/tickets/feed.rss"/>
+      <locator xlink:label="ticket" xlink:role="atom"
+        xlink:title="[DoCookBook] Recent Ticket Changes (Atom)"
+        xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"/>
+    </extendedlink>
     <author>
       <personname>
         <firstname>Thomas</firstname>
