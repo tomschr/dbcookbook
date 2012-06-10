@@ -253,25 +253,25 @@ var popup_</xsl:text>
   
   <xsl:if test="$feedsource">
     <xsl:if test="$feedsource[@xlink:role='rss'][@xlink:label='code']">
-      <link
+      <link target="_blank"
           href="{$feedsource[@xlink:role='rss'][@xlink:label='code']/@xlink:href}"
           type="application/rss+xml" rel="alternate"
           title="{$feedsource[@xlink:role='rss'][@xlink:label='code']/@xlink:title}"/>
     </xsl:if>
     <xsl:if test="$feedsource[@xlink:role='atom'][@xlink:label='code']">
-      <link
+      <link target="_blank"
           href="{$feedsource[@xlink:role='atom'][@xlink:label='code']/@xlink:href}"
           type="application/atom+xml" rel="alternate"
           title="{$feedsource[@xlink:role='atom'][@xlink:label='code']/@xlink:title}"/>
     </xsl:if>
     <xsl:if test="$feedsource[@xlink:role='rss'][@xlink:label='ticket']">
-      <link
+      <link target="_blank"
           href="{$feedsource[@xlink:role='rss'][@xlink:label='ticket']/@xlink:href}"
           type="application/rss+xml" rel="alternate"
           title="{$feedsource[@xlink:role='rss'][@xlink:label='ticket']/@xlink:title}"/>
     </xsl:if>
     <xsl:if test="$feedsource[@xlink:role='atom'][@xlink:label='ticket']">
-      <link
+      <link target="_blank"
           href="{$feedsource[@xlink:role='atom'][@xlink:label='ticket']/@xlink:href}"
           type="application/atom+xml" rel="alternate"
           title="{$feedsource[@xlink:role='atom'][@xlink:label='ticket']/@xlink:title}"/>
