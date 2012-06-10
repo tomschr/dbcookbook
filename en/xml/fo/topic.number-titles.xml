@@ -379,7 +379,7 @@ II. The Python Library
       <function>autolabel.format</function> from
       <filename>common/labels.xsl</filename>.</para>
     
-    <example>
+    <example xml:id="ex.fo.extending-autolabel.format">
       <title>Extending <function>autolabel.format</function></title>
       <programlisting language="xml">&lt;xsl:template name="autolabel.format">
   &lt;xsl:param name="context" select="."/>

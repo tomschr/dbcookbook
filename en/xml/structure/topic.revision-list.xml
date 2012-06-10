@@ -53,7 +53,7 @@
         <package>xmloutput</package> plugin first. This brings the
         <option>--xml</option> option to the <command>log</command>
         subcommand. Proceed as follows:</para>
-      <procedure>
+      <procedure xml:id="pro.structure.revision-list.bazaar">
         <title>Installing the Bazaar Plugin xmloutput</title>
         <step>
           <para>Download the tar archive from <link xlink:href="http://wiki.bazaar.canonical.com/XMLOutput"/>.</para>
@@ -91,7 +91,7 @@
         >REPO</replaceable> > bzr-log.xml</screen>
       <para>To convert the previous log file into DocBook's
         <tag>revhistory</tag>, use the following stylesheet:</para>
-      <example>
+      <example xml:id="ex.structure.convert-bazaar-logfile">
         <title>Stylesheet to Convert Bazaar's Log File</title>
         <programlisting>TBD</programlisting>
       </example>

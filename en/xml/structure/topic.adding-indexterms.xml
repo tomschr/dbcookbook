@@ -40,7 +40,7 @@
       procedure demonstrate this for the element
       <tag>envar</tag>.</para>
     
-    <procedure>
+    <procedure xml:id="pro.structure.adding-indexterms">
       <title>Adding <tag>indexterm</tag> Elements to <tag>envar</tag></title>
       <step>
         <para>Use the element <tag>envar</tag> in your document as
@@ -50,7 +50,7 @@
           value <tag class="attvalue">noindex</tag> to suppress
           indexterm generation. This is done in the second
             <tag>para</tag> element:</para>
-        <example xml:id="ex.profile-envar.xml">
+        <example xml:id="ex.structure.profile-envar.xml">
           <title><filename>profile-envar.xml</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
@@ -64,7 +64,7 @@
       <step>
         <para>Create a stylesheet <filename>profile-tags.xsl</filename>
         with the following content:</para>
-        <example xml:id="ex.profile-tag.xsl">
+        <example xml:id="ex.structure.profile-tag.xsl">
           <title><filename>profile-tag.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
@@ -82,7 +82,7 @@
           stylesheets. It contains the special mode
             <literal>profile</literal> to process elements to observe
           profiling conditions.</para>
-        <example>
+        <example xml:id="ex.structure.add-indexterms.xsl">
           <title><filename>add-indexterms.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
@@ -102,7 +102,7 @@
     <para>After applying the stylesheet
         <filename>add-indexterms.xsl</filename> you will get the
       following output:</para>
-    <example>
+    <example xml:id="ex.structure.profile-envar-result.xml">
       <title>Output of the Transformation</title>
       <programlisting language="xml"><xi:include
         href="adding-indexterms/profile-envar-result.xml" parse="text"/></programlisting>
@@ -163,7 +163,7 @@
     </itemizedlist>
     
     <para>All of the above problems can be solved with the stylesheet
-      from <xref linkend="ex.profile-tag.xsl"/>. It exploits the DocBook
+      from <xref linkend="ex.structure.profile-tag.xsl"/>. It exploits the DocBook
       XSL stylesheet´s profiling mechanism. Normally, profiling is a
       method to <emphasis>remove</emphasis> certain structures from a
       document rather than <emphasis>add</emphasis> something. In our

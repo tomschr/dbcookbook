@@ -42,7 +42,7 @@
       hierarchy, a stylesheet need to collect all nodes between a
         <tag>bridgehead</tag> element and the next one. The following
       stylesheet uses a set difference method:</para>
-    <example>
+    <example xml:id="ex.structure.bridgehead-to-section">
       <title>Transforms every <tag>bridgehead</tag> Element into
          a <tag>section</tag> Element</title>
       <info>
