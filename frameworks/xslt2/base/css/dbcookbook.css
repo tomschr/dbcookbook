@@ -63,10 +63,10 @@ div.programlisting, div.screen {
 .book-titlepage div.author h3 { font-size:162.5%; }
 body > .chapter h2,
 body > .preface h2,
-.appendix-titlepage h2,
-.chapter-titlepage h2,
-.glossary-titlepage h2,
-.preface-titlepage h2 { font-size:262.5%; }
+.appendix-titlepage h1,
+.chapter-titlepage h1,
+.glossary-titlepage h1,
+.preface-titlepage h1 { font-size:262.5%; }
 body > .section .section-titlepage h3,
 .appendix .section-titlepage h3,
 .chapter .section-titlepage h3,
