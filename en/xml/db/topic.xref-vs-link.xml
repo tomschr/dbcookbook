@@ -25,6 +25,13 @@
       <keyword>links</keyword>
       <keyword>localization</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>links</subjectterm>
+        <subjectterm>xref</subjectterm>
+        <subjectterm>l10n</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">
