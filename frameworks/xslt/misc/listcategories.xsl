@@ -15,11 +15,13 @@
     <xsl:for-each select="$allsubjectterms[generate-id(.) = 
                                              generate-id(key('terms', self::d:subjectterm))]">
       <xsl:sort select="."/>
-      <xsl:value-of select="concat(., ' ',
-        count($allsubjectterms[.=current()]), ': ')"/>
-      <xsl:for-each select="$allsubjectterms[.=current()]">
+      <xsl:value-of select="concat(., ' ',  count($allsubjectterms[.=current()]), ': ')"/>
+      <xsl:text>&#10;   </xsl:text>
+      <xsl:for-each select="$allsubjectterms[.=current()]">        
         <xsl:value-of select="ancestor::d:section[@remap='topic']/@xml:id"/>
-        <xsl:if test="position() &lt; last()">, </xsl:if>
+        <xsl:if test="position() &lt; last()">
+          <xsl:text>&#10;   </xsl:text>
+        </xsl:if>
       </xsl:for-each>
       <xsl:text>&#10;</xsl:text>
     </xsl:for-each>
