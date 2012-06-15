@@ -8,6 +8,7 @@ ABSPATH=${ABSPATH%/*}
 # 
 BUILDDIR=${ABSPATH}/build
 FRAMEWORKSDIR=${ABSPATH}/frameworks
+CATEGORYXSL=${FRAMEWORKSDIR}/xslt/misc/resolvecategories.xsl
 BASEXSLT2=${FRAMEWORKSDIR}/xslt2/base
 BASEXSLT1=${FRAMEWORKSDIR}/xslt/
 CSSFILE=${BASEXSLT2}/css/dbcookbook.css

@@ -11,6 +11,7 @@ frameworks/tests/xspec/*
 *.orig
 *.html
 
+en/xml/*.resolved
 
 xml/fo/*.fo
 xml/fo/xslt/*.fo

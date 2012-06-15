@@ -5,6 +5,7 @@ source bin/common.sh
 
 # set -x
 
+CATEGORY=1
 CLEANUP=0
 ROOTID=""
 
@@ -12,21 +13,30 @@ function print_help() {
 cat << EOF
 Transforms DocBook into XHTML chunks, adding cleanup step
 
--h, --help       Prints this help text
--c, --cleanup    Only perform cleanup step
+-h, --help         Prints this help text
+-c, --cleanup      Only perform cleanup step
+-C, --no-category  Don't create links to other categories
+-v, --verbose      Be more verbose
 -r, --rootid ROOTID
-                 Pass xml:id to only process a certain chapter, section,etc.
+                   Pass xml:id to only process a certain chapter, section,etc.
 EOF
 }
 
 function saxon_db2xhtml() {
+  local xmlin=${XMLIN}
   
-  saxon -o ${BUILDDIR}/tmp.txt \
-           ${XMLIN} \
-           ${BASEXSLT1}/xhtml/chunk.xsl \
-           ${ROOTID:+rootid=$ROOTID} \
-  || exit_on_error "Something went wrong"
+  if [[ $CATEGORY -eq 1 ]]; then
+      __logging "Resolving categories links..."
+      [[ $VERBOSE -gt 0 ]] && echo "*** Resolving category links..."
+      saxon -o ${XMLIN}.resolved ${XMLIN} ${CATEGORYXSL}
+      xmlin=${XMLIN}.resolved
+  fi
+  [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> XHTML ..."
+  saxon -o ${BUILDDIR}/tmp.txt ${xmlin} \
+     ${BASEXSLT1}/xhtml/chunk.xsl \
+     ${ROOTID:+rootid=$ROOTID} || exit_on_error "Something went wrong"
   __logging "Transformed ${XMLIN} with ${BASEXSLT1}/xhtml/chunk.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
+   ## [[  $CATEGORY -eq 1 ]] && rm ${xmlin}
 }
 
 function __saxon_nstest() {
@@ -74,7 +84,7 @@ ${XINCLUDEFLAG} ${HLFLAG}"
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
 
-ARGS=$(getopt -o h,c,r: -l help,cleanup,rootid: -- "$@")
+ARGS=$(getopt -o h,c,r:,C,v -l help,cleanup,rootid:,no-category,verbose -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
@@ -88,6 +98,12 @@ while true ; do
     -r|--rootid)
       ROOTID="$2"
       shift
+      ;;
+    --no-category|-C)
+      CATEGORY=0
+      ;;
+    --verbose|-v)
+      VERBOSE=1
       ;;
     --)
       shift
