@@ -27,6 +27,11 @@
       <keyword>XPath</keyword>
       <keyword>debugging</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>xpath</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

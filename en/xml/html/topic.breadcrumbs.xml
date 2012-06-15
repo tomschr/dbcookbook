@@ -27,6 +27,11 @@
       <keyword>breadcrumbs</keyword>
       <keyword>navigation</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>navigation</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">
@@ -140,7 +145,7 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <itemizedlist>
+    <itemizedlist role="category">
       <listitem>
         <para><link xlink:href="http://www.sagehill.net/docbookxsl/HTMLHeaders.html#BreadCrumbs"/></para>
       </listitem>

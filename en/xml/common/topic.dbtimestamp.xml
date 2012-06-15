@@ -28,6 +28,12 @@
       <keyword>processing-instruction</keyword>
       <keyword>context</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>dbpi</subjectterm>
+        <subjectterm>datetime</subjectterm>
+      </subject>
+    </subjectset>
   </info>
     
   <section role="problem">

@@ -27,6 +27,11 @@
       <keyword>label.markup</keyword>
       <keyword>title.markup</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>titles</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

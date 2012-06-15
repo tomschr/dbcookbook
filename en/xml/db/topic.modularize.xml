@@ -29,8 +29,8 @@
     </keywordset>
     <subjectset>
       <subject>
+        <subjectterm>modules</subjectterm>
         <subjectterm>markup</subjectterm>
-        <subjectterm>module</subjectterm>
         <!--<subjectterm>xref</subjectterm>-->
         <subjectterm>xinclude</subjectterm>
       </subject>

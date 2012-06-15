@@ -29,6 +29,11 @@
       <keyword>verso page</keyword>
       <keyword>title page template</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>titlepage</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">
@@ -517,6 +522,10 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para><link xlink:href="http://www.sagehill.net/docbookxsl/HTMLTitlePage.html"/></para>
+    <itemizedlist role="category">
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/HTMLTitlePage.html"/></para>
+      </listitem>
+    </itemizedlist>
   </section>
 </section>

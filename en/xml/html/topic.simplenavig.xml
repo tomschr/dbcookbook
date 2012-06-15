@@ -30,6 +30,11 @@
       <keyword>sections</keyword>
       <keyword>generate.simple.navigation</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>navigation</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   <section role="problem">
     <title>Problem</title>
@@ -226,8 +231,12 @@
       </xsl:message>
 -->
   </section>
-  <!--<section role="seealso">
+  <section role="seealso">
     <title>See Also</title>
-    <para></para>
-  </section>-->
+    <!--<itemizedlist role="category">
+      <listitem>
+        <para/>
+      </listitem>
+    </itemizedlist>-->
+  </section>
 </section>

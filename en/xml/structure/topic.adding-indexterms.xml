@@ -27,6 +27,11 @@
       <keyword>automatically insert indices</keyword>
       <keyword>consistency</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>profiling</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

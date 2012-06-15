@@ -27,6 +27,11 @@
       <keyword>zero width space</keyword>
       <keyword>soft hyphen</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>hyphenation</subjectterm>
+      </subject>
+    </subjectset>
     <definitions definitionfile="defs.xml"/>
   </info>
   

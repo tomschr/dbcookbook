@@ -25,9 +25,14 @@
     <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>topic</keyword>
-      <keyword>assembly</keyword>
       <keyword>assemblies</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>assemblies</subjectterm>
+        <subjectterm>topics</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">
@@ -96,17 +101,17 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <itemizedlist>
+    <itemizedlist role="category">
       <listitem>
         <para><link
           xlink:href="http://www.docbook.org/tdg51/en/html/ch06.html"/></para>
       </listitem>
-      <listitem>
+      <!--<listitem>
         <para><xref linkend="dbc.structure.splitting-into-topics"/></para>
       </listitem>
       <listitem>
         <para><xref linkend="dbc.structure.assemble-topics"/></para>
-      </listitem>
+      </listitem>-->
     </itemizedlist>
   </section>
 </section>

@@ -29,6 +29,11 @@
       <keyword>authors</keyword>
       <keyword>proceedings</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>tocs</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

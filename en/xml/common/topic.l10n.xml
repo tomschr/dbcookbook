@@ -31,6 +31,12 @@
       <keyword>gentext</keyword>
       <keyword>http://docbook.sourceforge.net/xmlns/l10n/1.0</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>l10n</subjectterm>
+        <subjectterm>languages</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

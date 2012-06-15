@@ -24,10 +24,16 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>assemble</keyword>
       <keyword>assemblies</keyword>
       <keyword>topic</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>assemblies</subjectterm>
+        <subjectterm>modules</subjectterm>
+        <subjectterm>topics</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

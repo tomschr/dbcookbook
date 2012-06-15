@@ -27,6 +27,11 @@
       <keyword>processing instructions</keyword>
       <keyword>pseudo-attributes</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>pi</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

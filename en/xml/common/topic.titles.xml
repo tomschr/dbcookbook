@@ -23,9 +23,14 @@
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>title</keyword>
+      <keyword>titles</keyword>
       <keyword>title.markup</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>titles</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

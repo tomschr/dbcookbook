@@ -34,6 +34,11 @@
         <surname>Graham</surname>
       </personname>
     </othercredit>
+    <subjectset>
+      <subject>
+        <subjectterm>fontsize</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

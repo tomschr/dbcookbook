@@ -37,6 +37,11 @@
       <keyword>label.from.part</keyword>
       <keyword>section.autolabel.max.depth</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>titles</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

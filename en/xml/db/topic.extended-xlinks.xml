@@ -30,6 +30,11 @@
       <keyword>arc</keyword>
       <keyword>traversal</keyword>
     </keywordset>
+   <subjectset>
+     <subject>
+       <subjectterm>xlinks</subjectterm>
+     </subject>
+   </subjectset>
     <!-- Playing with extended XLinks, not useful for now -toms 2012-05-19 -->
     <!--<extendedlink>
       <locator xlink:href="#dbc.markup.xref"   xlink:label="target"/>

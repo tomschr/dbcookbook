@@ -28,6 +28,11 @@
       <keyword>xref</keyword>
       <keyword>cross-references</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>rootid</subjectterm>
+      </subject>
+    </subjectset>
   </info>
   
   <section role="problem">

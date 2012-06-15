@@ -25,6 +25,12 @@
       <keyword>header</keyword>
       <keyword>footer</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>headers</subjectterm>
+        <subjectterm>footer</subjectterm>
+      </subject>
+    </subjectset>
   </info>
    <!--How to remove headers
 Von:	Mauritz Jeanson <mj@johanneberg.com>-->
