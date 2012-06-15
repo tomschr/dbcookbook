@@ -5,10 +5,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
   <xsl:import href="copy.xsl"/>
-
-  <xsl:output method="xml" indent="yes"/>
-  
-  <xsl:param name="category"/>
+  <xsl:output method="xml" indent="yes"/>  
   <xsl:variable name="allsubjectterms" select="//d:subjectterm"/>
     
   <xsl:template match="d:itemizedlist[@role='category']">
@@ -24,11 +21,11 @@
         <xsl:copy-of select="@*"/>
         <xsl:apply-templates/>
         <xsl:for-each select="$sbjcategories">
-          <xsl:variable name="other" select="current()/ancestor::d:info/.."/>
+          <xsl:variable name="other" select="ancestor::d:info/.."/>
           <!-- Only find other topics: -->
           <xsl:if test="$topic/@xml:id != $other/@xml:id">
-            <xsl:message>topic: <xsl:value-of
-              select="concat($other/d:title, ' ', $other/@xml:id)"/></xsl:message>
+            <xsl:message>  topic: <xsl:value-of
+              select="concat($other/d:title, ' (', $other/@xml:id, ')')"/></xsl:message>
             <listitem>
               <para><xref linkend="{$other/@xml:id}"/></para>
             </listitem>
