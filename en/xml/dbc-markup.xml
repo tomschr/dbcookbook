@@ -42,8 +42,8 @@
   
   <section xml:id="dbc.markup.intro">
     <title>Introduction</title>
-    <para><remark>TBD</remark>To successfully use DocBook you basically
-      need to know how to transform your ideas into (DocBook's)
+    <para>To successfully use DocBook you basically
+      need to know how to <quote>transform</quote> your ideas into (DocBook's)
       structure. Usually, the DocBook elements are mostly
       self-explanatory: if you want to write a book, use
       <tag>book</tag>, for a chapter use <tag>chapter</tag> and so on.
