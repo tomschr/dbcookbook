@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<appendix xml:id="dbc.tools" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Installing and Configuring Tools for DocBook</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <!--<biblioid class="other" otherclass="ticket">19</biblioid>-->
+    <keywordset>
+      <keyword>docbook tools</keyword>
+    </keywordset>
+    <abstract>
+      <para>DocBook is based on XML so you can use all XML tools---be it
+      commercial or open source. As long as they behave standard
+      conform, they will produce the same results.</para>
+      <para>This chapter deals with how to setup open source tools for
+        the DocBook workflow.</para>
+    </abstract>
+  </info>
+  
+  <section xml:id="dbc.tools.intro">
+    <title>Introduction</title>
+    <para>Tools for DocBook falls in one of the following category:</para>
+    <variablelist>
+      <varlistentry>
+        <term>Validators</term>
+        <listitem>
+          <para>These were used to validate your XML source. DocBook can
+          be validated through DTD, RELAX NG, or W3C schema. Some
+          validators supports only DTD, other supports more.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>XML editors</term>
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>XSLT processors</term>
+        <listitem>
+          <para>Currently, there are XSLT processors for XSLT1 and
+            XSLT2. For XSLT2 there is only Saxon 9 available.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+    
+  <!--
+  -->
+  <xi:include href="tools/topic.saxon6.xml"/>
+  
+</appendix>

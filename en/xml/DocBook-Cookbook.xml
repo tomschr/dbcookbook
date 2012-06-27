@@ -117,6 +117,7 @@
   <xi:include href="dbc-html.xml"/>
   <!-- <xi:include href="dbc-epub.xml"/> -->
   
+  <xi:include href="dbc-tools.xml"
   <xi:include href="cc-by-nc-sa-30-de.xml"/>
   <xi:include href="cc-by-nc-sa-30-unported.xml"/>
   
