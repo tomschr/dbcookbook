@@ -28,7 +28,7 @@ are properly rewrited. So it is posible to use B<dbautosplit> (with maximum
 level depth set to zero) as inteligent C<xml:base> attribute remover and so as
 intelignet DocBook copyier.
 
-If no output teplate is specified, default F<out/index.xml> is used. See B<TEMPALTE EXPANSION> below.
+If no output template is specified, default F<out/index.xml> is used. See B<TEMPALTE EXPANSION> below.
 
 =head1 OPTIONS
 
