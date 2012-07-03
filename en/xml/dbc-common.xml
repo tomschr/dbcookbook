@@ -81,5 +81,6 @@
   <xi:include href="common/topic.xpath.location.xml"/>
   <xi:include href="common/topic.l10n.xml"/>
   <xi:include href="common/topic.get-lang.xml"/>
+  <xi:include href="common/topic.enumerate-figures.xml"/>
   
 </chapter>

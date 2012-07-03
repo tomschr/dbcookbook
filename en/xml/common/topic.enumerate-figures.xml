@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.enum-figures" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Numbering Figures and the like Consistently Through your Document</title>
+  <info>
+    <keywordset>
+      <keyword>numbering</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to enumerate your figures, tables, programlisting or
+      examples consistently through your document.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use a customization layer and insert the following template:</para>
+    <example xml:id="ex.common.enumerate">
+      <title>Template to Number Figures Consistently</title>
+      <programlisting language="xml"
+>&lt;xsl:template match="d:figure" mode="label.markup"> <co
+  xml:id="co.common.enumerate.match"/>
+    &lt;xsl:choose>
+      &lt;xsl:when test="@label"> <co xml:id="co.common.enumerate.when"/>
+        &lt;xsl:value-of select="@label"/>
+      &lt;/xsl:when>
+      &lt;xsl:otherwise>
+        &lt;xsl:number format="1" from="d:book|d:article" level="any"/> <co 
+          xml:id="co.common.enumerate.number"/>
+      &lt;/xsl:otherwise>
+    &lt;/xsl:choose>
+  &lt;/xsl:template></programlisting>
+      <calloutlist>
+        <callout arearefs="co.common.enumerate.match">
+          <para>Matches for <tag>figure</tag> elements in
+            <literal>label.markup</literal> mode (a special mode for
+            getting or calculating numbers).</para>
+        </callout>
+        <callout arearefs="co.common.enumerate.when">
+          <para>If the figure contains a <tag
+            class="attribute">label</tag> attribute, it will be used.
+            This gives you the possibility to overwrite the displayed
+            label.</para>
+        </callout>
+        <callout arearefs="co.common.enumerate.number">
+          <para>Calculates the number of the current <tag>figure</tag>
+            element, starting on a book or article level.</para>
+        </callout>
+      </calloutlist>
+    </example>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The template shown in <xref linkend="ex.common.enumerate"
+      xrefstyle="select:label"/> matches only <tag>figure</tag>s. It can
+    be extended to match also <tag>procedure</tag>s, <tag>tables</tag>,
+      <tag>examples</tag> etc. If you do not need the support for the <tag
+            class="attribute">label</tag> attribute, remove the
+      <tag>xsl:choose</tag> and its children, but leaving the
+      <tag>xsl:number</tag> element.</para>
+  </section>
+  <!--<section role="seealso">
+    <title>See Also</title>
+    <para>Include URL or bibliographic references.</para>
+  </section>-->
+</section>
