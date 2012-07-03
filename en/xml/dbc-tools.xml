@@ -19,7 +19,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Installing and Configuring Tools for DocBook</title>
+  <title>Tools<!-- for DocBook--></title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <!--<biblioid class="other" otherclass="ticket">19</biblioid>-->
@@ -27,7 +27,7 @@
       <keyword>docbook tools</keyword>
     </keywordset>
     <abstract>
-      <para>DocBook is based on XML so you can use all XML tools---be it
+      <para>DocBook is based on XML so you can use all XML tools―be it
       commercial or open source. As long as they behave standard
       conform, they will produce the same results.</para>
       <para>This chapter deals with how to setup open source tools for
@@ -42,28 +42,38 @@
       <varlistentry>
         <term>Validators</term>
         <listitem>
-          <para>These were used to validate your XML source. DocBook can
+          <para>These tools were used to validate your XML source. DocBook can
           be validated through DTD, RELAX NG, or W3C schema. Some
-          validators supports only DTD, other supports more.</para>
+          validators support only DTD, other more.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term>XML editors</term>
+        <term>XML Editors</term>
         <listitem>
-          <para></para>
+          <para>Needed to write your DocBook XML source. Basically, you
+            can use whatever editor you like as XML is just text.
+            However, entering your structure and text is more convenient
+            with a XML editor. It gives you a context sensitive hint
+            what is allowed and what not. Some gives you even a tooltip
+            and shows a short explanation of the element. </para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term>XSLT processors</term>
         <listitem>
-          <para>Currently, there are XSLT processors for XSLT1 and
-            XSLT2. For XSLT2 there is only Saxon 9 available.</para>
+          <para>Currently, there are XSLT processors for XSLT1, XSLT2,
+            and XSLT3. For XSLT2 and XSLT3 there is only Saxon 9
+            available. </para>
         </listitem>
       </varlistentry>
     </variablelist>
   </section>
     
   <!--
+    * Using Saxon6
+    * USing Saxon9
+    * XMLStarlet
+    *
   -->
   <xi:include href="tools/topic.saxon6.xml"/>
   
