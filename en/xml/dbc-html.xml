@@ -47,21 +47,37 @@
     <table xml:id="tab.html.intro.overview">
       <title>Overview of Different HTML Stylesheets</title>
       <tgroup cols="2">
-        <colspec colwidth="1*"/>
+        <colspec colwidth="1.5*"/>
         <colspec colwidth="5*"/>
         <thead>
           <row>
-            <entry>Directory</entry><entry>Explanation</entry>
+            <entry>Main Stylesheets</entry>
+            <entry>Explanation</entry>
           </row>
         </thead>
         <tbody>
           <row>
-            <entry><filename class="directory">html/</filename></entry>
-            <entry>Contains stylesheets for the <quote>classical</quote>
+            <entry><simplelist>
+                <member><filename>eclipse/eclipse.xsl</filename></member>
+                <member><filename>eclipse/eclipse3.xsl</filename></member>
+            </simplelist>
+            </entry>
+            <entry>Contains stylesheet to document for the <link
+              xlink:href="http://www.ibm.com/developerworks/opensource/library/os-echelp/"
+              >Eclipse help system</link>. The main stylesheets use code
+            from the HTML&#xa0;4.x stylesheets</entry>
+          </row>
+          <row>
+            <entry><simplelist>
+                <member><filename>html/chunk.xsl</filename></member>
+                <member><filename>html/docbook.xsl</filename></member>
+              </simplelist>
+            </entry>
+            <entry>Contains stylesheets the <quote>classical</quote>&#xa0;
             <acronym xlink:href="http://www.w3.org/TR/html4/">HTML&#xa0;4</acronym>.</entry>
           </row>
           <row>
-            <entry><filename class="directory">htmlhelp/</filename></entry>
+            <entry><filename>htmlhelp/htmlhelp.xsl</filename></entry>
             <entry>Contains stylesheets for <acronym 
               xlink:href="http://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help">HTMLHelp</acronym>, the standard help
             system from Windows&#xa0;3.0 through Windows XP. The main
@@ -69,7 +85,7 @@
             the HTML&#xa0;4.x stylesheets</entry>
           </row>
           <row>
-            <entry><filename class="directory">webhelp/</filename></entry>
+            <entry><filename>webhelp/xsl/webhelp.xsl</filename></entry>
             <entry>Contains the result of the <acronym>GSOC<alt>Google
                 Summer of Code</alt></acronym> 2010 and creates a Web
               page with a sidebar, search form, and hierarchical
@@ -77,12 +93,20 @@
               stylesheets.</entry>
           </row>
           <row>
-            <entry><filename class="directory">website/</filename></entry>
+            <entry><simplelist>
+                <member><filename>website/chunk-website.xsl</filename></member>
+                <member><filename>website/website.xsl</filename></member>
+              </simplelist>
+            </entry>
             <entry>Contains stylesheets to create a <quote>Web
             site</quote></entry>
           </row>
           <row>
-            <entry><filename class="directory">xhtml/</filename></entry>
+            <entry><simplelist>
+                <member><filename>xhtml/chunk.xsl</filename></member>
+                <member><filename>xhtml/docbook.xsl</filename></member>
+              </simplelist>
+            </entry>
             <entry>Contains stylesheets for <acronym xlink:href="http://www.w3.org/TR/xhtml1/"
               >XHTML&#xa0;1.0</acronym>
               (<quote>transitional XHTML</quote>). These stylesheets are
@@ -90,7 +114,11 @@
             stylesheets</entry>
           </row>
           <row>
-            <entry><filename class="directory">xhtml-1_1/</filename></entry>
+            <entry><simplelist>
+                <member><filename>xhtml-1_1/chunk.xsl</filename></member>
+                <member><filename>xhtml-1_1/docbook.xsl</filename></member>
+              </simplelist>
+            </entry>
             <entry>Contains stylesheets for <acronym xlink:href="http://www.w3.org/TR/xhtml11/"
               >XHTML&#xa0;1.1</acronym>. Like the one
             for XHTML, they are generated through a XSLT transformation.
@@ -100,7 +128,11 @@
             The XHTML&#xa0;1.1 stylesheets are also used for EPUB creation.</entry>
           </row>
           <row>
-            <entry><filename class="directory">xhtml5/</filename></entry>
+            <entry><simplelist>
+                <member><filename>xhtml5/chunk.xsl</filename></member>
+                <member><filename>xhtml5/docbook.xsl</filename></member>
+              </simplelist>
+            </entry>
             <entry>Contains stylesheets for <acronym 
               xlink:href="http://dev.w3.org/html5/spec/Overview.html">HTML&#xa0;5</acronym>.
             These stylesheets customizes the XHTML stylesheets. As such
@@ -111,7 +143,6 @@
         </tbody>
       </tgroup>
     </table>
-
   </section>
   
   <!-- 
