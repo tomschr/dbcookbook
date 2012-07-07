@@ -19,10 +19,11 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Numbering Figures and the like Consistently Through your Document</title>
+  <title>Numbering Figures and the Like Consistently Through your Document</title>
   <info>
     <keywordset>
       <keyword>numbering</keyword>
+      <keyword>figures</keyword>
     </keywordset>
   </info>
   
@@ -33,22 +34,20 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>Use a customization layer and insert the following template:</para>
+    <para>Use a customization layer and insert the following template in
+      your customization layer:</para>
     <example xml:id="ex.common.enumerate">
       <title>Template to Number Figures Consistently</title>
-      <programlisting language="xml"
->&lt;xsl:template match="d:figure" mode="label.markup"> <co
-  xml:id="co.common.enumerate.match"/>
+      <programlisting language="xml">&lt;xsl:template match="d:figure" mode="label.markup"> <co xml:id="co.common.enumerate.match"/>
     &lt;xsl:choose>
       &lt;xsl:when test="@label"> <co xml:id="co.common.enumerate.when"/>
         &lt;xsl:value-of select="@label"/>
       &lt;/xsl:when>
       &lt;xsl:otherwise>
-        &lt;xsl:number format="1" from="d:book|d:article" level="any"/> <co 
-          xml:id="co.common.enumerate.number"/>
+        &lt;xsl:number format="1" from="d:book|d:article" level="any"/> <co xml:id="co.common.enumerate.number"/>
       &lt;/xsl:otherwise>
     &lt;/xsl:choose>
-  &lt;/xsl:template></programlisting>
+&lt;/xsl:template></programlisting>
       <calloutlist>
         <callout arearefs="co.common.enumerate.match">
           <para>Matches for <tag>figure</tag> elements in
@@ -71,12 +70,18 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>The template shown in <xref linkend="ex.common.enumerate"
-      xrefstyle="select:label"/> matches only <tag>figure</tag>s. It can
-    be extended to match also <tag>procedure</tag>s, <tag>tables</tag>,
-      <tag>examples</tag> etc. If you do not need the support for the <tag
-            class="attribute">label</tag> attribute, remove the
-      <tag>xsl:choose</tag> and its children, but leaving the
-      <tag>xsl:number</tag> element.</para>
+        xrefstyle="select:label"/> matches only <tag>figure</tag>s. It
+      can be extended to match also <tag>procedure</tag>s,
+        <tag>tables</tag>, <tag>examples</tag> etc. If you do not need
+      the support for the <tag class="attribute">label</tag> attribute,
+      remove the <tag>xsl:choose</tag> and its children, but leave the
+        <tag>xsl:number</tag> element.</para>
+    <para>If you need a different numbering schema, modify the
+      <tag class="attribute">format</tag> attribute in the
+      <tag>xsl:number</tag> start-tag. For example, if you write
+      <literal>[a]</literal> you will get consecutive numerals in
+      brackets like  <literal>[a]</literal>, <literal>[b]</literal>,
+      <literal>[c]</literal> etc.</para>
   </section>
   <!--<section role="seealso">
     <title>See Also</title>
