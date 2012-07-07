@@ -33,6 +33,48 @@ hurt if you know CSS and XSLT.
 As such, it is aimed more for DocBook developers than writers.
 
 
+Structure of the Book and Organization
+--------------------------------------
+
+The main file is "en/xml/DocBook-Cookbook.xml". It contains xi:include
+elements which refers to chapters, appendices and other second level
+elements.
+
+  # Struture of Book with Main Chapters 
+  en/xml/DocBook-Cookbook.xml
+  |
+  +-- 5.1/        # (1)
+  |
+  +-- common/     # (2)
+  |
+  +-- db/         # (3)
+  |
+  +-- epub/       # (4)
+  | 
+  +-- fo/         # (5)
+  |
+  +-- html/       # (6)
+  |
+  +--- structure/ # (7)
+
+  (1) Contains the DocBook Schema and possible customizations
+  (2) Contains topics to common customizations
+  (3) Contains topics to DocBook's markup
+  (4) Planned: will contain customizations to EPUB output format
+  (5) Contains topics to FO customizations
+  (6) Contains topics to HTML, XHTML, and other customizations based on HTML
+  (7) Contains topics how to manipulate DocBook's structure
+
+
+Some topics contain directories which stores XSLT, XML, or other example files.
+In some cases these are incorporated into the XML source, sometimes they are
+just lying around for testing purposes.
+
+Each topic is a self-contained matter of a specific problem and its solution
+with discussion. Use the skeleton file "en/xml/topic.empty.xml"  as a starting point.
+It contains the basic structure and you just need to add the flesh of your topic.
+
+
 Contribute
 ----------
 Do you miss anything? Have you discovered an error? Have an idea about how
