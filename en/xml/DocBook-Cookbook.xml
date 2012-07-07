@@ -85,7 +85,7 @@
       <keyword>XSLT</keyword>
     </keywordset>
     <pubdate role="currentdatetime">Published: </pubdate>
-    <releaseinfo role="draft">Draft (Version 0.6)</releaseinfo>
+    <releaseinfo role="draft">Draft (Version 0.6a)</releaseinfo>
     
     <cover xml:id="draftahead">
       <para>
@@ -117,7 +117,8 @@
   <xi:include href="dbc-html.xml"/>
   <!-- <xi:include href="dbc-epub.xml"/> -->
   
-  <xi:include href="dbc-tools.xml"/>
+  <!--<xi:include href="dbc-tools.xml"/>-->
+  
   <xi:include href="cc-by-nc-sa-30-de.xml"/>
   <xi:include href="cc-by-nc-sa-30-unported.xml"/>
   
