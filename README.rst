@@ -40,6 +40,7 @@ The main file is "en/xml/DocBook-Cookbook.xml". It contains xi:include
 elements which refers to chapters, appendices and other second level
 elements.
 
+::
   # Struture of Book with Main Chapters 
   en/xml/DocBook-Cookbook.xml
   |
