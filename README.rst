@@ -1,6 +1,10 @@
 ===================================
 Welcome to "The DoCookBook"
 ===================================
+:Info: See https://sourceforge.net/p/doccookbook/code/
+:Author: Thomas Schraitle <tom_schr AT web DOT de>
+:Description: Short overview of this project
+
 
 License
 -------
@@ -41,6 +45,7 @@ elements which refers to chapters, appendices and other second level
 elements.
 
 ::
+  
   # Struture of Book with Main Chapters 
   en/xml/DocBook-Cookbook.xml
   |
@@ -58,6 +63,8 @@ elements.
   |
   +--- structure/ # (7)
 
+::
+  
   (1) Contains the DocBook Schema and possible customizations
   (2) Contains topics to common customizations
   (3) Contains topics to DocBook's markup
