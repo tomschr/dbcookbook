@@ -23,8 +23,8 @@ EOF
 }
 
 function copyprettifier() {
-  if [[ -e ${BUILDDIR}/html/highlighter ]]; then
-    cp -a ${FRAMEWORKSDIR}/google-code-prettify/src/ ${BUILDDIR}/html/highlighter
+  if [[ ! -e ${BUILDDIR}/html/highlighter/ ]]; then
+    cp -av ${FRAMEWORKSDIR}/google-code-prettify/src/ ${BUILDDIR}/html/highlighter
   fi
   cp -vi ${FRAMEWORKSDIR}/google-code-prettify/styles/*.css ${BUILDDIR}/html/highlighter/
 }
@@ -125,6 +125,7 @@ __logging "Started. Commandline arguments: $ARGS"
 [[ $CLEANUP -eq 0 ]] && saxon_db2xhtml
 
 __createlinks
+copyprettifier
 
 echo -e "\nCleaning up HTML..."
 
