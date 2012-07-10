@@ -300,9 +300,6 @@ var popup_</xsl:text>
     <xsl:if test="$generate.javascript != 0">
       <xsl:call-template name="javascript"/>
     </xsl:if>
-    <xsl:if test="$html.stylesheet != ''">
-      <link rel="stylesheet" type="text/css" href="{$html.stylesheet}" />
-    </xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>
