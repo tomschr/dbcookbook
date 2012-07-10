@@ -121,11 +121,11 @@
     <section xml:id="sec.structure.assemble-topics.structure.id">
       <title>Selecting a Structure by ID</title>
       <para>For example, your assembly file looks like this:</para>
-      <screen>&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
+      <programlisting language="xml">&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
   &lt;resources> ... &lt;/resources>
   &lt;structure xml:id="quickstart"> ... &lt;/structure>
   &lt;structure xml:id="reference"> ... &lt;/structure>
-&lt;/assembly></screen>
+&lt;/assembly></programlisting>
       <para>As you can see, you have two <tag>structure</tag> elements,
         one for a quick start, another for a reference. To process only
         the reference, set the parameter
@@ -143,11 +143,11 @@
     <section xml:id="sec.structure.assemble-topics.structure.">
       <title>Selecting a Structure by Type</title>
       <para>For example, your assembly file looks like this:</para>
-      <screen>&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
+      <programlisting language="xml">&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
   &lt;resources> ... &lt;/resources>
   &lt;structure type="help.system"> ... &lt;/structure>
   &lt;structure type="startup"> ... &lt;/structure>
-&lt;/assembly></screen>
+&lt;/assembly></programlisting>
       <para>As you can see, there are two <tag>structure</tag> elements,
         one for a help system, another for a startup. To process only
         the startup, set the parameter

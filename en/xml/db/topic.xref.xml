@@ -61,10 +61,10 @@
     
     <para>For example, you want to reference to the introduction chapter in your book.
       The chapter looks like this:</para>
-    <screen>&lt;chapter xml:id="intro">
+    <programlisting language="xml">&lt;chapter xml:id="intro">
   &lt;title>Introduction&lt;/title>
   ...      
-&lt;/chapter></screen>
+&lt;/chapter></programlisting>
     
     <para>As you can see, the chapter contains a title but most
       importantly, it also has a <tag class="attribute">xml:id</tag>

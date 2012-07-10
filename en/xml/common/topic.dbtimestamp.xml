@@ -47,10 +47,10 @@
       instruction (PI). For example, integrate it into the
         <tag>pubdate</tag> to show the current publication date on the
       titlepage: </para>
-    <screen language="xml">&lt;info>
+    <programlisting language="xml">&lt;info>
   &lt;!-- ... -->
   &lt;pubdate><emphasis role="strong">&lt;?dbtimestamp?></emphasis>&lt;/pubdate>
-&lt;/info></screen>
+&lt;/info></programlisting>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -74,9 +74,9 @@
       <para>Each language contains in its language files<remark>add
           xref</remark> the context <code>datetime</code>. The following
         code shows it for the English language file:</para>
-      <screen language="xml">&lt;l:context name="datetime">
+      <programlisting language="xml">&lt;l:context name="datetime">
   &lt;l:template name="format" text="m/d/Y"/>
-&lt;/l:context></screen>
+&lt;/l:context></programlisting>
       <para>This is only useful, if you want to completely change the appearance of
         a date in your document. </para>
       <!-- Add procedure to explain how to change? -->

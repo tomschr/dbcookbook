@@ -246,11 +246,11 @@
         to use a <tag>link</tag> element anymore. For example, if you
         want to insert a book title with an additional link, in
         DocBook&#xa0;4 it has to be written like this:</para>
-      <programlisting>&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
+      <programlisting language="xml">&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
       <para>or this, depending on what you prefer:</para>
-      <programlisting>&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
+      <programlisting language="xml">&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
       <para>With DocBook 5 this can be shortend:</para>
-      <programlisting>&lt;citetitle xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/citetitle></programlisting>
+      <programlisting language="xml">&lt;citetitle xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/citetitle></programlisting>
       <para>Apart from the previous described link concept,
         DocBook&#xa0;5 allows to control the link behavior. For example,
         to open a new window when clicking a link, use the <tag

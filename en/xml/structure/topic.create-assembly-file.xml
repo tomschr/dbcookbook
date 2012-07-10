@@ -78,7 +78,7 @@
       <tag>topic</tag> root elements, except for the
       <filename>glossary.xml</filename> file (which is comprised by a
       <tag>glossary</tag> element). </para>
-    <screen>&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
+    <programlisting language="xml">&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
   &lt;resources>
     &lt;resource fileref="intro.xml" xml:id="intro"/>
     &lt;resource fileref="kde.xml" xml:id="kde"/>
@@ -92,7 +92,7 @@
     &lt;module resourceref="gnome"/>
     &lt;module resourceref="glossary"/>
   &lt;/structure>
-&lt;/assembly></screen>
+&lt;/assembly></programlisting>
     <para>The <tag></tag></para>
   </section>
   <section role="discussion">

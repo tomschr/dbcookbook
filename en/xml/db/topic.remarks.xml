@@ -46,9 +46,9 @@
         how to use it:</para>
     <example xml:id="ex.db.inlineremark">
       <title>A Remark Inside a Paragraph</title>
-      <screen>&lt;para>
+      <programlisting language="xml">&lt;para>
 This is a small text.&lt;remark>Add more content&lt;/remark>
-&lt;/para></screen>
+&lt;/para></programlisting>
     </example>    
   </section>
   <section role="discussion">
@@ -67,9 +67,9 @@ This is a small text.&lt;remark>Add more content&lt;/remark>
       document. It is a very common method to give yourself or others
       some hints. This can be done with XML comments 
       like in this example:</para>
-    <screen linenumbering="unnumbered">&lt;para>
+    <programlisting language="xml" linenumbering="unnumbered">&lt;para>
 This is a text &lt;!-- Ohh, we should add more -->
-&lt;/para></screen>
+&lt;/para></programlisting>
     <para>However, XML comments has one drawback: They are suppressed
       during transformation. As such, they are unavailable in your
       output format and can not be displayed anymore. Usually, you <emphasis>do

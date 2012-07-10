@@ -43,7 +43,7 @@
     <para>The DocBook XSL stylesheets offers the
       <literal>title.markup</literal> mode for this purpose. Usually,
       insert the following code in the appropriate place:</para>
-    <programlisting>&lt;xsl:apply-templates select="." mode="title.markup"/></programlisting>
+    <programlisting language="xml">&lt;xsl:apply-templates select="." mode="title.markup"/></programlisting>
     <para>The <tag>xsl:apply-templates</tag> recursively finds the
       correct title, regardless where you currently are. It also looks
       into an <tag>info</tag> element, if necessary.</para>
@@ -52,14 +52,14 @@
     <title>Discussion</title>
     <para>To further elaborate why you should use the mode, let's assume
     you have this chapter title:</para>
-    <programlisting>&lt;chapter>
+    <programlisting language="xml">&lt;chapter>
    &lt;title>Programming in Python&lt;/title>
    &lt;!-- further substructure pruned -->
 &lt;/chapter></programlisting>
     <para>Let's assume further, you have a template where you need the
       title of the enclosing section, chapter, etc. One solution simple,
       yet unfavorable solution could be coded like this:</para>
-    <programlisting>&lt;xsl:template name="...">
+    <programlisting language="xml">&lt;xsl:template name="...">
    &lt;xsl:value-of select="ancestor::d:title"/>
 &lt;/xsl:template></programlisting>
     <para>This has several disadvantages:</para>

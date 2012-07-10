@@ -129,7 +129,7 @@
             <tag>xi:include</tag> with the content of the referenced
           file. After the XInclude elements are resolved, the file looks
           now like this:</para>
-        <programlisting>&lt;book version="5.0"
+        <programlisting language="xml">&lt;book version="5.0"
   xmlns="http://docbook.org/ns/docbook"
   xmlns:xi="http://www.w3.org/2001/XInclude">
   &lt;title>...&lt;/title>
