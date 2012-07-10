@@ -75,7 +75,7 @@
         <para>Add the named template
             <function>user.footer.content</function> with the following
           content:</para>
-        <programlisting>&lt;xsl:template name="user.footer.content">
+        <programlisting language="xsl">&lt;xsl:template name="user.footer.content">
    &lt;xsl:param name="node" select="."/>
    &lt;script src="highlighter/prettify.js">&lt;/script>
    &lt;script>prettyPrint();&lt;/script>
@@ -90,7 +90,7 @@
           matches, when you add a <tag class="attribute">language</tag>
           attribute. Use the <literal>class.value</literal> mode as
           follows:</para>
-        <programlisting>&lt;xsl:template match="d:programlisting[@language]" mode="class.value">
+        <programlisting language="xsl">&lt;xsl:template match="d:programlisting[@language]" mode="class.value">
   &lt;xsl:param name="class" select="local-name(.)"/>
   &lt;xsl:choose>
     &lt;xsl:when test="@linenumbering = 'numbered'">

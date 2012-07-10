@@ -13,7 +13,7 @@
   <xsl:param name="html.stylesheet">styles/sunburst.css</xsl:param>
   
   <xsl:template name="user.footer.content">
-     <xsl:param name="node" select="."/>
+    <xsl:param name="node" select="."/>
     <script src="highlighter/prettify.js"></script>
     <script>prettyPrint();</script>
   </xsl:template>
