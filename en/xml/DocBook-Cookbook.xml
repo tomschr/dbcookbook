@@ -13,7 +13,8 @@
    http://creativecommons.org/licenses/by-nc-sa/3.0/
    
 -->
-
+<?xml-model href="5.1/dbref.rng" 
+  schematypens="http://relaxng.org/ns/structure/1.0"?>
 <book version="5.1" xml:lang="en" xml:id="dbcookbook" status="draft"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
