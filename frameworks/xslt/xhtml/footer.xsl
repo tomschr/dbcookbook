@@ -10,6 +10,14 @@
     <xsl:if test="$use.piwik != 0">
       <xsl:call-template name="generate.piwik"/>
     </xsl:if>
+    
+  </xsl:template>
+  
+  <xsl:template name="user.footer.navigation">
+    <xsl:param name="prev" />
+    <xsl:param name="next" />
+    <script src="highlighter/prettify.js">/* */</script>
+    <script>prettyPrint();</script>
   </xsl:template>
   
 </xsl:stylesheet>

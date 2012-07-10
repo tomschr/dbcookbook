@@ -20,7 +20,8 @@
   <xsl:param name="html.cleanup" select="1"/>
   <xsl:param name="html.longdesc" select="0"/>
   <xsl:param name="html.extra.head.links" select="1"/>
-  <xsl:param name="html.stylesheet">css/dbcookbook.css</xsl:param>
+  <xsl:param name="html.stylesheet"
+    >highlighter/prettify.css css/dbcookbook.css</xsl:param>
   <xsl:param name="html.ext">.html</xsl:param>
   <xsl:param name="highlight.source" select="1"/>
   <!--<xsl:param name="highlight.xslthl.config"/>-->
@@ -41,6 +42,7 @@
   <xsl:param name="userlevel.medium">★★☆</xsl:param><!-- ⚑⚑⚐ -->
   <xsl:param name="userlevel.hard"  >★★★</xsl:param><!-- ⚑⚑⚑ -->
   
+  <xsl:param name="linenumbering.extension" select="0"/>
   <xsl:param name="linenumbering.everyNth" select="2"/>
   <xsl:param name="make.clean.html" select="1"/>
   <xsl:param name="section.autolabel" select="1"/>

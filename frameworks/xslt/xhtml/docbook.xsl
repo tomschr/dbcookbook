@@ -20,6 +20,7 @@
   <xsl:include href="footer.xsl"/>
   <xsl:include href="block.xsl"/>
   <xsl:include href="inline.xsl"/>
+  <xsl:include href="html.xsl"/>
   <xsl:include href="titlepage.templates.xsl"/>
 
   <!--<xsl:include href="google-webfont.xsl"/>-->
