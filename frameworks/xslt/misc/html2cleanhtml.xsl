@@ -502,6 +502,19 @@
     </xsl:copy>
   </xsl:template>
   
+  <xsl:template match="h:pre[@class='screen']">
+    <xsl:variable name="firsttext"
+      select="text()[1][following-sibling::h:span[@class]]"/>
+    <xsl:choose>
+      <xsl:when test="normalize-space($firsttext) = ''">
+        <xsl:apply-templates select="node()[position()>1]"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:copy-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  
   <xsl:template match="h:div[@class='itemizedlist' or
                              @class='variablelist' or 
                              @class='orderedlist']">
