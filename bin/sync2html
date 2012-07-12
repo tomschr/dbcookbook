@@ -5,7 +5,7 @@
 USER=${1:-tom_schr}
 PROJECT=doccookbook
 SFSITE=web.sourceforge.net
-TOSYNC="build/html/*.html frameworks/db-xslt2/xslt/base/js frameworks/xslt2/base/css build/html/png build/html/examples"
+TOSYNC="build/html/*.html build/html/highlighter frameworks/db-xslt2/xslt/base/js frameworks/xslt2/base/css build/html/png build/html/examples"
 
 rsync -aiv --copy-links --exclude '*~' ${TOSYNC} ${USER},${PROJECT}@${SFSITE}:htdocs/html/en/
 
