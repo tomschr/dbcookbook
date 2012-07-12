@@ -24,9 +24,9 @@ EOF
 
 function copyprettifier() {
   if [[ ! -e ${BUILDDIR}/html/highlighter/ ]]; then
-    cp -av ${FRAMEWORKSDIR}/google-code-prettify/src/ ${BUILDDIR}/html/highlighter
+    cp -av ${FRAMEWORKSDIR}/js/google-code-prettify/src/ ${BUILDDIR}/html/highlighter
   fi
-  cp -vi ${FRAMEWORKSDIR}/google-code-prettify/styles/*.css ${BUILDDIR}/html/highlighter/
+  cp -v ${FRAMEWORKSDIR}/js/google-code-prettify/styles/*.css ${BUILDDIR}/html/highlighter/
 }
 
 function saxon_db2xhtml() {
