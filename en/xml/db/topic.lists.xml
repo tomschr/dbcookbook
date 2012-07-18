@@ -92,8 +92,7 @@
     </itemizedlist>
     
     <para>The previous lists are used to maintain semantic
-      distinction.</para>
-    
+      distinction.</para>    
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -103,7 +102,7 @@
     <para>The <tag>variablelist</tag> is slightly different and contains
       the <tag>term</tag> element for its term.</para>
    
-    <section>
+    <section xml:id="markup.lists.itemizedlist">
       <title>Features of <tag>itemizedlist</tag></title>
       <para>An <tag>itemizedlist</tag> is a unordered list and can be
         written as shown in the following example:</para>
@@ -172,7 +171,7 @@
   &lt;/listitem>
 &lt;/itemizedlist></programlisting>
     </section>
-    <section>
+    <section xml:id="markup.lists.orderedlist">
       <title>Features of <tag>orderedlist</tag></title>
       <para>An <tag>orderedlist</tag> can be written as shown in the
       following example:</para>
@@ -244,11 +243,11 @@
           <member>arabicindic</member>
         </simplelist>.</para>
     </section>
-    <section>
+    <section xml:id="markup.lists.variablelist">
       <title>Features of <tag>variablelist</tag></title>
       <para>An <tag>variablelist</tag>, despite its confusing name,
         holds all sort of terms and their definition. It is not limited
-        to variables only. The following example shows how to mark a
+        to variables only. The following example shows how to use a
         <tag>variablelist</tag>.</para>
       <example>
         <title>Definition List with Two Entries</title>
@@ -269,8 +268,8 @@
       </example>
       <para>A <tag>varlistentry</tag> can contain more than one term.
         How the terms are displayed depends usually on the output
-        formats. By default, each <tag>term</tag> is printed on a
-        separate line.</para>
+        formats. Each <tag>term</tag> can be printed on a
+        separate line or on the same line separated by commas.</para>
     </section>
   </section>
   <section role="seealso">
