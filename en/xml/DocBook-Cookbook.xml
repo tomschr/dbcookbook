@@ -20,7 +20,7 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>The DoCookBook</title>
-  <subtitle>Recipies for DocBook Developers</subtitle>
+  <subtitle>Recipes for DocBook Developers</subtitle>
   <info>
     <definitions definitionfile="defs.xml"/>
     <rdf:RDF
