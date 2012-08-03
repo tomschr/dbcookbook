@@ -49,7 +49,7 @@
         xlink:href="https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/docbook/relaxng/tools/db4-upgrade.xsl"
       />. You just need to apply this stylesheet to your source DocBook
       document, for example:</para>
-    <screen><command>xsltproc</command> doc.xml db4-upgrade.xsl</screen>
+    <screen><command>xsltproc</command> db4-upgrade.xsl doc.xml</screen>
   </section>
   <section role="discussion">
     <title>Discussion</title>
