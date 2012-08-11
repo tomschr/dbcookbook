@@ -80,11 +80,11 @@
           </info>
         <programlisting linenumbering="numbered" language="xml"
           >&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
-  &lt;l:l10n language="en">
+  &lt;l:l10n language="en" english-language-name="English">
     &lt;l:gentext key="Authors" text="Authors"/>
     &lt;l:gentext key="lastbuilt" text="Last built: "/>
   &lt;/l:l10n>
-  &lt;l:l10n language="de">
+  &lt;l:l10n language="de" english-language-name="German">
     &lt;l:gentext key="Authors" text="Authoren"/>
     &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
   &lt;/l:l10n>
