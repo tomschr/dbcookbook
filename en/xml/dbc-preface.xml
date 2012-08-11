@@ -193,8 +193,9 @@
   
   <section xml:id="dbc.preface.feedback">
     <title>Feedback</title>
-    <para>The project is hosted on <link xlink:show="new"
-      xlink:href="https://sourceforge.net">SourceForge</link> under the
+    <para>The project is hosted on <trademark xlink:show="new"
+      xlink:href="https://sourceforge.net"
+      class="registered">SourceForge.net</trademark> under the
       name <link xlink:show="new"
         xlink:href="https://sourceforge.net/projects/doccookbook/">DocCookBook</link>.
       Feel free to send me praise, constructive criticism, suggestions,
