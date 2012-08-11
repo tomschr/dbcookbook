@@ -19,6 +19,7 @@
   <xsl:output method="xml"/>  
   
   <xsl:include href="&dburi;/chunk-code.xsl"/>
+  <xsl:include href="navigation.xsl"/>
   
   <xsl:param name="chunker.output.method" select="'xml'"/>
   <xsl:param name="chunker.output.doctype-system" select="''"/>

@@ -5,7 +5,9 @@
   
   <!--<xsl:param name="css.decoration" select="0"/>-->
   <!-- base.url and base.url.path are used for Dublin Core metadata: -->
-  <xsl:param name="base.url">http://doccookbook.sourceforge.net</xsl:param>
+  <xsl:param name="base.url">http://doccookbook.sf.net</xsl:param>
+  <xsl:param name="base.project.url">http://sf.net/projects/doccookbook/</xsl:param>
+  <xsl:param name="base.code.url">http://sourceforge.net/p/doccookbook/code</xsl:param>
   <xsl:param name="base.url.path">/html/en/</xsl:param>
   
   <xsl:param name="base.dir">build/tmp/</xsl:param>
