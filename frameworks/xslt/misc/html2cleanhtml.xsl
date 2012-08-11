@@ -10,6 +10,8 @@
    Output:
      XHTML code which (should) be identical as it would be created by
      the XSLT 2.0 stylesheets
+     
+   Copyright 2012, Thomas Schraitle <tom_schr AT web DOT de>
 -->
 <xsl:stylesheet version="1.0"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -34,10 +36,7 @@
     </xsl:copy>
   </xsl:template>
   
-  <xsl:template match="h:meta[@http-equiv='Content-Type']">
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  </xsl:template>
-  
+   
   <!-- ================================================ -->
   <!-- Remove or otherwise leave out elements and attributes -->
   <xsl:template match="h:div">
@@ -124,6 +123,7 @@
                        h:div[@class='authorgroup']|
                        h:div[@class='navfooter']|
                        h:div[@class='navheader']|
+                       h:div[@class='ticket']|
                        h:div[@class='example-download-link']">
     <xsl:copy-of select="."/>
   </xsl:template>
@@ -507,7 +507,11 @@
       select="text()[1][following-sibling::h:span[@class]]"/>
     <xsl:choose>
       <xsl:when test="normalize-space($firsttext) = ''">
-        <xsl:apply-templates select="node()[position()>1]"/>
+        <xsl:copy>
+          <xsl:copy-of select="@*"/>
+          <!-- Cut off first text node -->
+          <xsl:apply-templates select="node()[position()>1]"/>
+        </xsl:copy>
       </xsl:when>
       <xsl:otherwise>
         <xsl:copy-of select="."/>
