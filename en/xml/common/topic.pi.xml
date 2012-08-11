@@ -161,7 +161,7 @@
       following XPath in the <tag class="attribute">select</tag>
       attribute of <function>pi-attribute</function>:</para>
     <screen>( processing-instruction('toms-html') | 
-  dpreceding-sibling::processing-instruction('toms-html')[1] 
+  preceding-sibling::processing-instruction('toms-html')[1] 
 )[last()]</screen>
     <para>If two PIs are available (one inside, another outside), the
       one which is located inside takes precedence.</para>
