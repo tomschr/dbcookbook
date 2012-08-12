@@ -172,6 +172,19 @@ div.revhistory table .authorinitials {
   text-align:left;
 }
 
+.abstract {
+  /*background-color: #DDE2EB;*/
+  margin-top:0pt;
+  margin-bottom:1.2em;
+  margin-left: 5em;
+  margin-right:5em;
+  padding-top:0pt;
+}
+
+.abstract * {
+  margin-top:0pt;
+  margin-bottom:0pt;
+}
 
 div.legalnotice div.sidebar div.sidebar-content {
   padding-top:0;
@@ -503,6 +516,11 @@ div.footnote p sup {
 /*div.programlisting + div.calloutlist {
   margin-bottom:0;
 }*/
+
+pre.prettyprint, .programlisting pre, .screen
+{
+  background-color:whiteSmoke;
+}
 
 div.programlisting pre
 {
