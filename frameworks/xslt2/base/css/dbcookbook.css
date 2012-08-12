@@ -175,12 +175,15 @@ div.revhistory table .authorinitials {
 .abstract {
   /*background-color: #DDE2EB;*/
   margin-top:0pt;
-  margin-bottom:1.2em;
+  margin-bottom:2em;
   margin-left: 5em;
   margin-right:5em;
   padding-top:0pt;
 }
 
+.abstract p {
+  text-align:justify;
+}
 .abstract * {
   margin-top:0pt;
   margin-bottom:0pt;
