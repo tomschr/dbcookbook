@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug 11 20:45:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Fixed typos; thanks to Gábor, Frank, and Barton
+(changeset 1409:9d2bb0da766d, 1407:b97addebdcc4, 1404:5901a251793b)
+- Added new topic about how to implement syntax highlighting with 
+Google Code Prettify (client side)
+(changeset 1390:9a9e63c7e80b)
+
+
+Infrastructure:
+- Improved footer navigation (added user.footer.navigation) and added
+link to project's home page, Ticket#, and code link
+(changeset 1412:f9a9490b94e9)
+- Implemented syntax highlighting for this project
+(changeset 1395:b01b17a68953)
+- Added new parent topic about "Tools". First topic is Saxon6
+(changeset 1370:ec2401953641)
+- Added first round of categories
+(changeset 1366:0d0497e6595a)
+
+-------------------------------------------------------------------
 Sat Jun 09 17:57:00 UTC 2012 - tom_schr@web.de
 
 Topics:
