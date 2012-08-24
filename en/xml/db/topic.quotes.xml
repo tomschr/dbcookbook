@@ -61,5 +61,18 @@
         class="attribute">xml:lang</tag> attribute:</para>
     <programlisting language="xml"
     >&lt;para>This is a &lt;quote xml:lang="de">German quote&lt;/quote>.&lt;/para></programlisting>
+    <!--
+       TODO: 
+        Often in literary (fiction and sometimes nonfiction) text, quotation 
+        marks are unbalanced - an open quote is not closed at the end of a
+        paragraph, and is the quotation resumes with an open quote in the
+        following paragraph.  
+        For example:
+          “I advise against this usage....
+ 	  “Because it makes things difficult for DocBook developers.”
+        The writer Joseph Conrad did this all the time, for pages on
+        end-when a character tells a long story to his shipmates.  So I call
+        them "Conrad Quotes."
+    -->
   </section>
 </section>
