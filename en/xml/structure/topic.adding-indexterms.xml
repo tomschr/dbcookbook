@@ -30,6 +30,7 @@
     <subjectset>
       <subject>
         <subjectterm>profiling</subjectterm>
+        <subjectterm>index</subjectterm>
       </subject>
     </subjectset>
   </info>
@@ -274,11 +275,15 @@
       entries, it can ease the pain. Especially for those entries which
       can be be inserted automatically it improves consistency. The
       method described above can also be implemented for other inline
-      elements, like persons, functions, etc.</para>
-    
+      elements, like persons, functions, etc.</para>    
   </section>
-  <!--<section role="seealso">
+  
+  <section role="seealso">
     <title>See Also</title>
-    <para></para>
-  </section>-->
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.multiple-indices"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
 </section>
