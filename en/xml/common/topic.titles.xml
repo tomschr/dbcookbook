@@ -19,12 +19,14 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Accessing Titles</title>
+  <title>Accessing Title Contents</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>titles</keyword>
       <keyword>title.markup</keyword>
+      <keyword>subtitle.markup</keyword>
+      <keyword>titleabbrev.markup</keyword>
     </keywordset>
     <subjectset>
       <subject>
@@ -35,8 +37,8 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>You need to retrieve a title, but your current node is not
-      <tag>title</tag>.</para>
+    <para>You need to retrieve a title (or subtitle), but your current
+      node is a not <tag>title</tag>.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -45,20 +47,82 @@
       insert the following code in the appropriate place:</para>
     <programlisting language="xml">&lt;xsl:apply-templates select="." mode="title.markup"/></programlisting>
     <para>The <tag>xsl:apply-templates</tag> recursively finds the
-      correct title, regardless where you currently are. It also looks
+      correct <tag>title</tag> node, regardless where you are. It also looks
       into an <tag>info</tag> element, if necessary.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>To further elaborate why you should use the mode, let's assume
-    you have this chapter title:</para>
+    <para>DocBook contains three elements which are used for title
+      markup:</para>
+    <variablelist>
+      <varlistentry>
+        <term><tag xlink:href="http://www.docbook.org/tdg51/en/html/title.html">title</tag></term>
+        <listitem>
+          <para>The main title. According to the <acronym>TDG</acronym> 
+            <quote>it identifies the titles of documents and parts of
+              documents, and is the required caption on formal
+              objects.</quote>
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag xlink:href="http://www.docbook.org/tdg51/en/html/subtitle.html">subtitle</tag></term>
+        <listitem>
+          <para>A optional subtitle is an alternative or explanatory title in
+            addition to its main title. Usually a subtitle is printed below the
+            main title on the same page.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag xlink:href="http://www.docbook.org/tdg51/en/html/titleabbrev.html">titleabbrev</tag></term>
+        <listitem>
+          <para>The optional, abbreviated title is used in case the main
+            title is overly verbose. Usually this element is not printed
+            with the main title on the same page. However, it is used in
+            the table of content, for example.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+    <para>All of the above title elements contains a special mode to get
+      the content of this node:</para>
+    
+    <table xml:id="tab.common.titles.modes">
+      <title>Modes for Title Elements</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Element</entry>
+            <entry>Mode</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><tag>title</tag></entry>
+            <entry><code>title.markup</code></entry>
+          </row>
+          <row>
+            <entry><tag>subtitle</tag></entry>
+            <entry><code>subtitle.markup</code></entry>
+          </row>
+          <row>
+            <entry><tag>titleabbrev</tag></entry>
+            <entry><code>titleabbrev.markup</code></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    
+    <para>To further elaborate why you should use one of the previous
+      modes, let's assume you have this chapter title:</para>
     <programlisting language="xml">&lt;chapter>
    &lt;title>Programming in Python&lt;/title>
    &lt;!-- further substructure pruned -->
 &lt;/chapter></programlisting>
-    <para>Let's assume further, you have a template where you need the
-      title of the enclosing section, chapter, etc. One solution simple,
-      yet unfavorable solution could be coded like this:</para>
+    <para>Let's further assume, you have a template where you need the
+      title from the above chapter. One simple, yet unfavorable, solution
+      could be coded like this:</para>
     <programlisting language="xml">&lt;xsl:template name="...">
    &lt;xsl:value-of select="ancestor::d:title"/>
 &lt;/xsl:template></programlisting>
@@ -77,8 +141,103 @@
       </listitem>
     </itemizedlist>
     <para>Replacing <tag>xsl:value-of</tag> through the
-      <tag>xsl:apply-templates</tag> ensures processing of child
-      elements inside <tag>title</tag>.</para>
+        <tag>xsl:apply-templates</tag> as shown in the solution section,
+      ensures correct processing of child elements inside
+      <tag>title</tag>.</para>
+    
+    <para>The same is true for <tag>subtitle</tag> and
+      <tag>titleabbrev</tag>. Using the <code>subtitle.markup</code> or
+      <code>titleabbrev.markup</code> mode ensure you get always the
+      correct content. </para>
+    <para>To see what combination results in what string, find an
+      overview in <xref linkend="tab.common.titles.results"/>.</para>  
+    
+    
+    <table xml:id="tab.common.titles.results">
+      <title>Different Combinations and Their Results on
+        <code>*.markup</code> Modes</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Code</entry>
+            <entry>Results</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><screen language="xml">&lt;title>Programming in Python&lt;/title></screen></entry>
+            <entry>
+              <itemizedlist>
+                <listitem>
+                  <para><code>title.markup</code>: <quote>Programming in Python</quote></para>
+                </listitem>
+                <listitem>
+                  <para><code>subtitle.markup</code>: <quote/> (empty
+                    string)</para>
+                </listitem>
+                <listitem>
+                  <para><code>titleabbrev.markup</code>: <quote>Programming in Python</quote></para>
+                </listitem>
+              </itemizedlist>
+            </entry>
+          </row>
+          <row>
+            <entry><screen language="xml">&lt;title>Programming in Python&lt;/title>
+&lt;subtitle>With an IDE&lt;/subtitle></screen></entry>
+            <entry>
+              <itemizedlist>
+                <listitem>
+                  <para><code>title.markup</code>: <quote>Programming in Python</quote></para>
+                </listitem>
+                <listitem>
+                  <para><code>subtitle.markup</code>: <quote>With an IDE</quote></para>
+                </listitem>
+                <listitem>
+                  <para><code>titleabbrev.markup</code>: <quote>Programming in Python</quote></para>
+                </listitem>
+              </itemizedlist>
+            </entry>
+          </row>
+          <row>
+            <entry><screen language="xml">&lt;title>Programming in Python&lt;/title>
+&lt;titleabbrev>Python&lt;/titleabbrev></screen></entry>
+            <entry>
+              <itemizedlist>
+                <listitem>
+                  <para><code>title.markup</code>: <quote>Programming in Python</quote></para>
+                </listitem>
+                <listitem>
+                  <para><code>subtitle.markup</code>: <quote/> (empty
+                    string)</para>
+                </listitem>
+                <listitem>
+                  <para><code>titleabbrev.markup</code>: <quote>Python</quote></para>
+                </listitem>
+              </itemizedlist>
+            </entry>
+          </row>
+          <row>
+            <entry><screen language="xml">&lt;title>Programming in Python&lt;/title>
+&lt;subtitle>With an IDE&lt;/subtitle>
+&lt;titleabbrev>Python&lt;/titleabbrev></screen></entry>
+            <entry>
+              <itemizedlist>
+                <listitem>
+                  <para><code>title.markup</code>: <quote>Programming in Python</quote></para>
+                </listitem>
+                <listitem>
+                  <para><code>subtitle.markup</code>: <quote>With an IDE</quote></para>
+                </listitem>
+                <listitem>
+                  <para><code>titleabbrev.markup</code>: <quote>Python</quote></para>
+                </listitem>
+              </itemizedlist>
+            </entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    
   </section>
   <section role="seealso">
     <title>See Also</title>
