@@ -183,19 +183,19 @@
     <xsl:param name="next" select="/d:foo"/>
     <xsl:param name="nav.context"/>
     <xsl:variable name="ticketnr" 
-      select="ancestor-or-self::d:chapter/d:info/d:biblioid[@class='other'][@otherclass='ticket']"/>
+      select="ancestor-or-self::d:*/d:info/d:biblioid[@class='other'][@otherclass='ticket']"/>
 
     <div class="userfooter">
       <hr/>
-      <table width="100%">
+      <table width="100%" class="userfooter">
         <tbody>
           <tr>
             <td><a href="{$base.project.url}">Project @Sourceforge.net®</a></td>
             <td>
               <xsl:if test="$ticketnr">
-                <a href="{concat($ticket.url, $ticketnr, '/')}" title="Ticket#{$ticketnr}">
-                  Ticket#<xsl:value-of select="$ticketnr"/>
-                </a>
+                <a href="{concat($ticket.url, $ticketnr, '/')}" 
+                  title="Ticket#{$ticketnr}">Ticket#<xsl:value-of 
+                    select="$ticketnr"/></a>
               </xsl:if>
             </td>
             <td align="right"><a href="{$base.code.url}">Code @Sourceforge.net®</a></td>
