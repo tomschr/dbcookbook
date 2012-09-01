@@ -16,11 +16,11 @@ DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
 
 LOG=1
-LOGFILE=/tmp/docookbook.log
+LOGFILE="/tmp/docookbook.log"
 
 XMLIN="en/xml/DocBook-Cookbook.xml"
 HTMLOUT="${BUILDDIR}/html"
-SINGLEHTMLOUT=${HTMLOUT}/DoCookBook.html
+SINGLEHTMLOUT="${HTMLOUT}/DoCookBook.html"
 CATALOGPROP="CatalogManager.properties"
 
 HLCONFIG="${DBXSLT5}/highlighting/xslthl-config.xml"
@@ -32,11 +32,11 @@ function framework() {
 }
 
 function __createlinks() {
-  pushd ${HTMLOUT}
+  pushd ${HTMLOUT} 2>/dev/null
   [[ -e css ]] || ln -s ../../frameworks/xslt2/base/css
   [[ -e js ]]  || ln -s ../../frameworks/db-xslt2/xslt/base/js
   [[ -e png ]] || ln -s ../../images/png
-  popd
+  popd 2>/dev/null
 }
 
 function __logging() {

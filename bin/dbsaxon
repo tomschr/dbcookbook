@@ -39,7 +39,7 @@ function saxon_db2xhtml() {
       xmlin=${XMLIN}.resolved
   fi
   [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> XHTML ..."
-  saxon -o ${BUILDDIR}/tmp.txt ${xmlin} \
+  saxon -o ${BUILDDIR}/log.txt ${xmlin} \
      ${BASEXSLT1}/xhtml/chunk.xsl \
      ${ROOTID:+rootid=$ROOTID} || exit_on_error "Something went wrong"
   __logging "Transformed ${XMLIN} with ${BASEXSLT1}/xhtml/chunk.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
@@ -86,7 +86,8 @@ export ADDITIONAL_FLAGS="-Djavax.xml.parsers.DocumentBuilderFactory=\
 org.apache.xerces.jaxp.DocumentBuilderFactoryImpl \
     -Djavax.xml.parsers.SAXParserFactory=\
 org.apache.xerces.jaxp.SAXParserFactoryImpl \
-${XINCLUDEFLAG} ${HLFLAG}"
+${XINCLUDEFLAG}"
+
 
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 

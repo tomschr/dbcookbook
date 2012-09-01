@@ -25,7 +25,7 @@
   <xsl:param name="html.stylesheet"
     >highlighter/prettify.css css/dbcookbook.css</xsl:param>
   <xsl:param name="html.ext">.html</xsl:param>
-  <xsl:param name="highlight.source" select="1"/>
+  <!--<xsl:param name="highlight.source" select="1"/>-->
   <!--<xsl:param name="highlight.xslthl.config"/>-->
   
   <xsl:param name="generate.breadcrumbs" select="0"/>
