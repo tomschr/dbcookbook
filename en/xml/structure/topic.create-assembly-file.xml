@@ -62,7 +62,7 @@
               >fileref</tag> attributes:</para>
           <screen>&lt;resource xml:id="preface" fileref="preface.xml"/></screen>
           <para>An assembly file can contain more than one
-            <tag>resources</tag> elements.</para>
+            <tag>resource</tag> elements.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -93,11 +93,12 @@
     &lt;module resourceref="glossary"/>
   &lt;/structure>
 &lt;/assembly></programlisting>
-    <para>The <tag></tag></para>
+    <para></para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about the problem and solution.</para>
+    <para>TDB
+    </para>
   </section>
   <section role="seealso">
     <title>See Also</title>
