@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.case" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Converting Lowercase to Uppercase or Vice Versa</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>lowercase</keyword>
+      <keyword>uppercase</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need to convert a text string lowercase or uppercase, respectively.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the utility template <function>string.lower</function> or
+      <function>string.upper</function>:</para>
+    <programlisting language="xml"
+>&lt;xsl:call-template name="string.upper">
+   &lt;xsl:with-param name="string">This is a string&lt;/xsl:with-param>
+&lt;/xsl:call-template></programlisting>
+    <para>Or:</para>
+    <programlisting language="xml"
+>&lt;xsl:call-template name="string.lower">
+   &lt;xsl:with-param name="string">This is a string&lt;/xsl:with-param>
+&lt;/xsl:call-template></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>To transform a string into uppercase letters, XSLT offers the
+        <function>translate</function> function. The
+        <function>translate</function> function expects three
+      parameters: the string you want to change, a string of lowercase
+      letters, and a string of uppercase letters. Your code looks like
+      this: </para>
+    <programlisting>&lt;xsl:value-of select="translate($string, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></programlisting>
+    <para>When called by the XSLT processor, the content of the
+        <varname>string</varname> variable is transformed into
+      uppercase. This works pretty well if your language is English or
+      your string does not contain any accented characters. However, if
+      your string contains, for example, the German lowercase letter
+        <quote>ö</quote>, <function>translate</function> does not
+      transform it into the uppercase letter <quote>Ö</quote>. </para>
+    <para>This solves the above templates
+        <function>string.lower</function> and
+        <function>string.upper</function>. They use the language files
+      of the DocBook stylesheets and get the lowercase and uppercase
+      letters from a so called <quote>gentext templates</quote>. The
+        <property>uppercase.alpha</property> and
+        <property>lowercase.alpha</property> entries are used in the
+      current locale.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para>Include URL or bibliographic references.</para>
+    <itemizedlist>
+      <listitem>
+        <para><filename>common/common.xsl</filename></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
