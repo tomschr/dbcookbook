@@ -94,6 +94,7 @@
   <xi:include href="structure/topic.splitting-into-topics.xml"/>
   <xi:include href="structure/topic.assemble-topics.xml"/>
   <xi:include href="structure/topic.create-assembly-file.xml"/>
+  <!--<xi:include href="structure/topic.programlistings.xml"/>-->
   <!--<xi:include href="structure/topic.preserve-entities.xml"/>-->
   <!--<xi:include href="structure/topic.impl-style-checking.xml"/>-->
 </chapter>
