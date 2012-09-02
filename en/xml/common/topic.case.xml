@@ -30,20 +30,20 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>You need to convert a text string lowercase or uppercase, respectively.</para>
+    <para>You need to convert a text string from lowercase or uppercase,
+      respectively, taking care of the current locale.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
     <para>Use the utility template <function>string.lower</function> or
-      <function>string.upper</function>:</para>
-    <programlisting language="xml"
->&lt;xsl:call-template name="string.upper">
-   &lt;xsl:with-param name="string">This is a string&lt;/xsl:with-param>
+        <function>string.upper</function> from the DocBook
+      stylesheets:</para>
+    <programlisting language="xml">&lt;xsl:call-template name="string.upper">
+   &lt;xsl:with-param name="string">This is your string&lt;/xsl:with-param>
 &lt;/xsl:call-template></programlisting>
     <para>Or:</para>
-    <programlisting language="xml"
->&lt;xsl:call-template name="string.lower">
-   &lt;xsl:with-param name="string">This is a string&lt;/xsl:with-param>
+    <programlisting language="xml">&lt;xsl:call-template name="string.lower">
+   &lt;xsl:with-param name="string">This is your string&lt;/xsl:with-param>
 &lt;/xsl:call-template></programlisting>
   </section>
   <section role="discussion">
@@ -54,7 +54,8 @@
       parameters: the string you want to change, a string of lowercase
       letters, and a string of uppercase letters. Your code looks like
       this: </para>
-    <programlisting>&lt;xsl:value-of select="translate($string, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></programlisting>
+    <programlisting language="xml"
+      >&lt;xsl:value-of select="translate($string, 'abcdefghijklmnopqrstuvwxyz', 'ABCDEFGHIJKLMNOPQRSTUVWXYZ')"/></programlisting>
     <para>When called by the XSLT processor, the content of the
         <varname>string</varname> variable is transformed into
       uppercase. This works pretty well if your language is English or
