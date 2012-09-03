@@ -48,7 +48,7 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>To transform a string into uppercase letters, XSLT offers the
+    <para>To transform a string into uppercase letters, XPath offers the
         <function>translate</function> function. The
         <function>translate</function> function expects three
       parameters: the string you want to change, a string of lowercase
@@ -74,10 +74,13 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para>Include URL or bibliographic references.</para>
     <itemizedlist>
       <listitem>
         <para><filename>common/common.xsl</filename></para>
+      </listitem>
+      <listitem>
+        <para>XPath 1.0 <function xlink:href="http://www.w3.org/TR/xpath/#function-translate"
+          >translate(string, fromString, toString)</function> function</para>
       </listitem>
     </itemizedlist>
   </section>
