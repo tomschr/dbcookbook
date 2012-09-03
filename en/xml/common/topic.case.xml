@@ -71,6 +71,26 @@
         <property>uppercase.alpha</property> and
         <property>lowercase.alpha</property> entries are used in the
       current locale.</para>
+    <para>However, this transformation is not always perfect. For
+      example, it is recommend to transform the German sharp
+        <quote>ß</quote> (lowercase) into <quote>SS</quote> 
+      (uppercase).<footnote>
+        <para>Since 2008, Unicode contains the capital sharp ß (see
+            <link
+            xlink:href="http://en.wikipedia.org/wiki/Capital_%E1%BA%9E"
+          /> which is located at position U+1E9E. Most fonts contain
+          this glyphs now, but not all. You should carefully investigate
+          your fonts before you change anything. For a German keyboard
+          layout under X11, press <keycombo>
+            <keycap>Caps Lock</keycap>
+            <keycap>ß</keycap>
+          </keycombo> to display the capital sharp ß which is printed as
+            <quote>ẞ</quote>.</para>
+      </footnote> This makes the <function>translate</function> function
+      unusable for such corner cases. Only XPath 2.0 support
+      local-sensitive mappings with <function
+        xlink:href="http://www.w3.org/TR/xpath-functions/#func-upper-case"
+        >fn:upper-case</function>.</para>
   </section>
   <section role="seealso">
     <title>See Also</title>
