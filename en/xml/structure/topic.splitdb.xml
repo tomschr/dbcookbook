@@ -44,8 +44,8 @@
     <para>There are three solutions to this problems:</para>
     <itemizedlist>
       <listitem>
-        <para>Apply a XSLT stylesheet which uses an extension element
-          like <function>exsl:document</function></para>
+        <para>Apply a XSLT stylesheet which uses the extension element
+          <function>exsl:document</function></para>
       </listitem>
       <listitem>
         <para>Run the <command>dbautosplit</command> Perl script</para>
@@ -63,7 +63,7 @@
     <section xml:id="sec.structure.splitdb.xsl">
       <title>Splitting with XSLT</title>
       <para>The stylesheet in <xref linkend="ex.dbsplit.xsl"/> uses 
-        extension elements to create separate documents from the main
+        the extension element  to create separate documents from the main
         output. It uses code from
         <filename>html/chunk-code.xsl</filename>.</para>
       <example xml:id="ex.dbsplit.xsl">
@@ -202,7 +202,7 @@ Creating file : out/index.xml</screen>
         </thead>
         <tbody>
           <row>
-            <entry>Changing Splitting Level?</entry>
+            <entry>Change Splitting Level?</entry>
             <entry>yes</entry>
             <entry>yes</entry>
             <entry>yes</entry>
