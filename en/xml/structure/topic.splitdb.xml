@@ -141,8 +141,9 @@
         is only be available in <link
           xlink:href="http://www.opensuse.org">openSUSE Linux</link>
         distribution. As such, you can <link
-          xlink:href="splitdb/dbautosplit">download
-            <command>dbautosplit</command></link> from this server.
+          xlink:href="http://software.opensuse.org/package/dbsplit-tools?search_term=dbsplit-tools">search
+          for the command <command>dbautosplit</command></link> or
+        download it from <link xlink:href="http://rpmfind.net/linux/rpm2html/search.php?query=dbautosplit"/>.        
         Additionaly it needs the <package>XML-DOM</package> and
           <package>XML-RegExp</package> packages. Download and install
         these package from <link xlink:href="http://www.cpan.org"
