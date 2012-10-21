@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.splitheader.modes" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Splitting Header Into Label and Title With Modes</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>title</keyword>
+      <keyword>label</keyword>
+      <keyword>numbers</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>title</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>Your header contains a consecutive number and a title. As you
+      want to style them differently, you need to split them in this two
+      pieces.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The DocBook stylesheets have two modes which are
+      <quote>responsible</quote> for generating the labels and titles:
+      the modes <varname>label.markup</varname> and
+      <varname>title.markup</varname>.</para>
+    
+    <para>To <quote>split</quote> the header, you need to introduce an
+      inline element for styling. For HTML this is <tag>span</tag> with
+        <tag class="attribute">class</tag> attribute, for XSL-FO it is
+        <tag>fo:inline</tag>. The principle is the same, but this topic
+      shows only HTML for better readability. </para>
+    <para>Customize the <varname>label.markup</varname> and
+        <varname>title.markup</varname> templates for the specific
+      DocBook element. To simplify the maintenance and customization,
+      use the XSLT <tag class="emptytag">xsl:apply-imports</tag> tag.
+      This allows you to call the original template without repeating it
+      and to introduce your changes. Save the result from <tag
+        class="emptytag">xsl:apply-imports</tag> in a variable and and
+      output it only, if the variable is not empty. The following
+      template shows this approach for a chapter label:</para>
+    
+    <programlisting language="xml"
+><![CDATA[<xsl:template match="d:chapter" mode="label.markup">
+  <xsl:variable name="number">
+    <xsl:apply-imports/>
+  </xsl:variable>
+   
+  <xsl:if test="string($number) != ''">
+    <span class="number"><xsl:value-of select="$number"/></span>
+  </xsl:if>
+</xsl:template>]]></programlisting>
+    
+    <para>For a chapter title the template is even simpler:</para>
+    <programlisting language="xml"
+><![CDATA[<xsl:template match="d:chapter" mode="title.markup">
+  <span class="title">
+    <xsl:apply-imports/>
+  </span>
+</xsl:template>]]></programlisting>
+    
+    <para>Add the same changes for all elements that you need a
+      different styling. After you have included this changes in your
+      customization layer, a chapter title in HTML is shown as follows:</para>
+    <programlisting language="html"
+>&lt;h2 class="title">&lt;a id="id275730">&lt;/a>Chapter
+  &lt;span class="number">1&lt;/span>. &lt;span class="title">...&lt;/span>
+&lt;/h2></programlisting>
+    
+    <para>To style the number in bold and the title in a normal weight,
+      use the following CSS rule:</para>
+    <programlisting language="css">h2.title > .number {
+  font-weight: bold;
+}
+h2.title > .title {
+  font-weight: normal;
+}</programlisting>
+    
+    <para>Of course, you can apply all CSS rules you want.</para>
+    
+    <!-- ************** -->
+    <!--
+      <para>The DocBook stylesheets distinguish between a division,
+      component, section, and formal titles. Each is styled by a
+      different template (see <xref linkend="tab.common.splitheader"/>).</para>
+     
+    <table xml:id="tab.common.splitheader">
+      <title>Division, Component, Section, and Formal Titles and Their
+        Templates</title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>Elements</entry>
+            <entry>Template</entry>
+            <entry>XSLT File</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><tag>book</tag>, <tag>part</tag>,
+              <tag>set</tag></entry>
+            <entry><function>division.title</function></entry>
+            <entry><filename>division.xsl</filename></entry>
+          </row>
+          <row>
+            <entry><tag>appendix</tag>,
+            <tag>article</tag>,
+            <tag>bibliography</tag>,
+            <tag>colophon</tag>,
+            <tag>dedication</tag>, 
+            <tag>glossary</tag>,   
+            <tag>index</tag>, 
+            and <tag>preface</tag></entry>
+            <entry><function>component.title</function></entry>
+            <entry><filename>component.xsl</filename></entry>
+          </row>
+          <row>
+            <entry><tag>sect<replaceable>X</replaceable></tag>,
+                <tag>section</tag>, <tag>simplesect</tag></entry>
+            <entry><function>section.title</function>,
+                <function>section.heading</function></entry>
+            <entry><filename>sections.xsl</filename></entry>
+          </row>
+          <row>
+            <entry><tag>equation</tag>, <tag>example</tag>,
+                <tag>figure</tag>, <tag>procedure</tag>,
+                <tag>table</tag></entry>
+            <entry><function>formal.object.heading</function></entry>
+            <entry><filename>formal.xsl</filename></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    -->
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Although the customization has some benefits (simple, easy to
+      maintain, support the language files), you should be aware of some
+      issues.</para>
+    <para>The <varname>label.markup</varname> and
+        <varname>title.markup</varname> modes are very basic modes; as
+      such, they are used in other templates as well, not only for
+      titles. This can lead to side effects, which you may or may not
+      want. For example, the modes are used also for the table of
+      content and for resolving cross references.</para>
+    <para>To deal with this situation is two-fold:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Leave it as it is and customize it at the CSS level.</para>
+      </listitem>
+      <listitem>
+        <para>Only </para>
+      </listitem>
+    </itemizedlist>
+    
+    <section xml:id="sec.common.splitheader.modes.xref">
+      <title>Protecting Cross References</title>
+      <para> To prevent the splitting in cross references, customize the
+          <varname>insert.title.markup</varname> and
+          <varname>insert.label.markup</varname>modes as follows:</para>
+      <programlisting language="xml"><![CDATA[<xsl:template match="*" mode="insert.label.markup">
+  <xsl:param name="purpose"/>
+  <xsl:param name="xrefstyle"/>
+  <xsl:param name="label"/>
+    
+  <xsl:value-of select="$label"/>
+</xsl:template>
+      
+<xsl:template match="d:chapter" mode="insert.title.markup">
+  <xsl:param name="purpose"/>
+  <xsl:param name="xrefstyle"/>
+  <xsl:param name="title"/>
+
+  <xsl:choose>
+    <xsl:when test="$purpose = 'xref'">
+      <em><xsl:copy-of select="$title"/></em>
+    </xsl:when>
+    <xsl:otherwise>
+      <xsl:value-of select="$title"/>
+    </xsl:otherwise>
+  </xsl:choose>
+</xsl:template>]]></programlisting>
+      <para>The difference between the original and the above
+        customization is the <tag>xsl:copy-of</tag> tag. In the above
+        customization it is replaced by <tag>xsl:value-of</tag>. This
+        small change ensure only the string value is copied, not any
+        elements.</para>
+    </section>
+    <section xml:id="sec.common.splitheader.modes.toc">
+      <title>Protecting the Table of Contents</title>
+      <para>To avoid the same structure in table of contents, customize
+        the <function>toc.line</function> template as follows:</para>
+      <programlistingco>
+        <areaspec units="linecolumn">
+          <area xml:id="co.splitheader.modes.toc.title" coords="5 32" 
+           linkends="ca.splitheader.modes.toc.title"/>          
+          <areaset xml:id="co.splitheader.modes.toc.value-of.label"
+            linkends="ca.splitheader.modes.toc.value-of.label">
+            <area coords="14 40"/>
+            <area coords="33"/>
+          </areaset>
+          <area xml:id="co.splitheader.modes.toc.value-of.title" coords="38"
+           linkends="ca.splitheader.modes.toc.value-of.title"/>
+        </areaspec>        
+      <programlisting language="xml"><![CDATA[<xsl:template name="toc.line">
+  <xsl:param name="toc-context" select="."/>
+  <xsl:param name="depth" select="1"/>
+  <xsl:param name="depth.from.context" select="8"/>
+  <xsl:variable name="title"> 
+    <xsl:apply-templates select="." mode="titleabbrev.markup"/>
+  </xsl:variable>
+
+  <span class="{local-name(.)}">
+    <xsl:if test="$autotoc.label.in.hyperlink = 0">
+      <xsl:variable name="label">
+        <xsl:apply-templates select="." mode="label.markup"/>
+      </xsl:variable>
+      <xsl:value-of select="$label"/>
+      <xsl:if test="$label != ''">
+        <xsl:value-of select="$autotoc.label.separator"/>
+      </xsl:if>
+    </xsl:if>
+
+    <a>
+      <xsl:attribute name="href">
+        <xsl:call-template name="href.target">
+          <xsl:with-param name="context" select="$toc-context"/>
+          <xsl:with-param name="toc-context" select="$toc-context"/>
+        </xsl:call-template>
+      </xsl:attribute>
+      <!-- * if $autotoc.label.in.hyperlink is non-zero, then output the label -->
+      <!-- * as part of the hyperlinked title -->
+      <xsl:if test="not($autotoc.label.in.hyperlink = 0)">
+        <xsl:variable name="label">
+          <xsl:apply-templates select="." mode="label.markup"/>
+        </xsl:variable>
+        <xsl:value-of select="$label"/>
+        <xsl:if test="$label != ''">
+          <xsl:value-of select="$autotoc.label.separator"/>
+        </xsl:if>
+      </xsl:if>
+      <xsl:value-of select="$title"/>
+    </a>
+  </span>
+</xsl:template>]]></programlisting>
+        <calloutlist>
+          <callout arearefs="co.splitheader.modes.toc.title" xml:id="ca.splitheader.modes.toc.title">
+            <para>Saves the output from <tag class="emptytag">xsl:apply-templates</tag>
+              in the variable <varname>title</varname> to use it later</para>
+          </callout>
+          <callout arearefs="co.splitheader.modes.toc.value-of.label"
+            xml:id="ca.splitheader.modes.toc.value-of.label">
+            <para>Use <tag class="emptytag">xsl:value-of</tag> to get
+              the string from the <varname>label</varname> variable</para>
+          </callout>
+          <callout arearefs="co.splitheader.modes.toc.value-of.title"
+            xml:id="ca.splitheader.modes.toc.value-of.title">
+            <para>Insert the string content of variable <varname>title</varname></para>
+          </callout>
+        </calloutlist>
+      </programlistingco>
+      
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para>.</para>
+  </section>
+</section>
