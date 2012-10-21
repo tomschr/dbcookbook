@@ -26,8 +26,8 @@ URL='https://sourceforge.net/apps/piwik/doccookbook/index.php?module=API'
 METHOD="Actions.getPageTitles"
 FORMAT="Html"
 IDSITE="1"
+DATE="today"
 PERIOD="month"
-DATE="2012-08-01"
 FILTER_LIMIT="100"
 FILEXT=$(echo $FORMAT | tr "[:upper:]" "[:lower:]")
 METHODLOWER=$(echo $METHOD | tr "[:upper:]" "[:lower:]")
