@@ -121,6 +121,21 @@ Here is a procedure about how to clone the repository:
 Find more information about Mercurial at http://mercurial.selenic.com/.
 
 
+How to build the book
+---------------------
+
+Currently, building the book works but it's not as nice as I would
+like to see it.
+
+* Building chunked HTML: use ./bin/dbsaxon
+* Building single HTML: use bin/dbsaxon9 
+
+At the moment, it is a mixture of XSLT 1.0 and XSLT 2.0 stylesheets.
+To avoid maintaing two different CSS files (one for the XSLT 1.0 output,
+the other for 2.0), the HTML files coming from XSLT 1.0 are "cleaned up".
+This cleanup step makes the structure compatible to the XSLT 2.0 output.
+
+
 How you can help
 ----------------
 
