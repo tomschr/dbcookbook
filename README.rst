@@ -8,7 +8,7 @@ Welcome to "The DoCookBook"
 
 License
 -------
-This work is licensed as Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany License
+The book is licensed as Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Germany License
 (CC by-nc-sa 3.0 DE) See http://creativecommons.org/licenses/by-nc-sa/3.0/de/
 
 
@@ -126,6 +126,6 @@ How you can help
 
 * Find typos, grammar problems, inconsistencies, or plain errors
 * Send me patches
-* Write your owm topic
+* Write your own topic
 
 
