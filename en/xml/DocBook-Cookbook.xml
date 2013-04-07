@@ -22,8 +22,8 @@
   <title>The DoCookBook</title>
   <subtitle>Recipes for DocBook Developers</subtitle>
   <info>
-    <pubdate role="currentdatetime">Published: </pubdate>
-    <releaseinfo role="draft">Draft (Version 0.6d)</releaseinfo>
+    <pubdate role="currentdatetime">2013-04-03</pubdate>
+    <releaseinfo role="draft">Draft (Version 0.6e)</releaseinfo>
     <definitions definitionfile="defs.xml"/>
     <rdf:RDF
       xmlns="http://creativecommons.org/ns#"
