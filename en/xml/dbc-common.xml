@@ -81,6 +81,7 @@
   <xi:include href="common/topic.xpath.location.xml"/>
   <xi:include href="common/topic.l10n.xml"/>
   <xi:include href="common/topic.get-lang.xml"/>
+  <xi:include href="common/topic.get-personname.xml"/>
   <xi:include href="common/topic.splitheader-into-numbers-and-titles.xml"/>
   <xi:include href="common/topic.enumerate-figures.xml"/>
   <xi:include href="common/topic.case.xml"/>
