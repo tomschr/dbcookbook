@@ -10,7 +10,7 @@ namespace svg = "http://www.w3.org/2000/svg"
 namespace xi = "http://www.w3.org/2001/XInclude"
 namespace xlink = "http://www.w3.org/1999/xlink"
 
-# This file is part of DocBook XInclude V5.1b5
+# This file is part of DocBook XInclude V5.1b8
 # 
 # Copyright 1992-2011 HaL Computer Systems, Inc.,
 # O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
@@ -144,6 +144,10 @@ db.wordsize.attribute =
   
   ## Indicates the word size (width in bits) of the computer architecture to which the element applies
   attribute wordsize { text }
+db.outputformat.attribute =
+  
+  ## Indicates the output format (for example, print or epub) to which the element applies
+  attribute outputformat { text }
 db.effectivity.attributes =
   db.arch.attribute?
   & db.audience.attribute?
@@ -155,6 +159,7 @@ db.effectivity.attributes =
   & db.userlevel.attribute?
   & db.vendor.attribute?
   & db.wordsize.attribute?
+  & db.outputformat.attribute?
 db.endterm.attribute =
   
   ## Points to the element whose content is to be used as the text of the link
@@ -457,6 +462,14 @@ db.scale.attribute =
   
   ## Specifies the scaling factor
   attribute scale { xsd:positiveInteger }
+db.classid.attribute =
+  
+  ## Specifies a classid for a media object player
+  attribute classid { text }
+db.autoplay.attribute =
+  
+  ## Specifies the autoplay setting for a media object player
+  attribute autoplay { text }
 db.halign.enumeration =
   
   ## Centered horizontally
@@ -2100,96 +2113,6 @@ div {
         "            "
       ]
       s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:example"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:caution)"
-            "caution must not occur among the children or descendants of example"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:example"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:important)"
-            "important must not occur among the children or descendants of example"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:example"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:note)"
-            "note must not occur among the children or descendants of example"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:example"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:tip)"
-            "tip must not occur among the children or descendants of example"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:example"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:warning)"
-            "warning must not occur among the children or descendants of example"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
         name = "Root must have version"
         "\x{a}" ~
         "               "
@@ -2215,13 +2138,15 @@ div {
 div {
   db.informalexample.role.attribute = attribute role { text }
   db.informalexample.width.attribute = db.width.characters.attribute
+  db.informalexample.pgwide.attribute = db.pgwide.attribute
   db.informalexample.floatstyle.attribute = db.floatstyle.attribute
   db.informalexample.attlist =
     db.informalexample.role.attribute?
     & db.common.attributes
     & db.common.linking.attributes
     & db.informalexample.floatstyle.attribute?
-    & db.informalexample.width.attribute?
+    & (db.informalexample.width.attribute
+       | db.informalexample.pgwide.attribute)?
   db.informalexample.info = db._info.title.forbidden
   db.informalexample =
     
@@ -2460,96 +2385,6 @@ div {
         "            "
       ]
       s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:figure"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:caution)"
-            "caution must not occur among the children or descendants of figure"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:figure"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:important)"
-            "important must not occur among the children or descendants of figure"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:figure"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:note)"
-            "note must not occur among the children or descendants of figure"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:figure"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:tip)"
-            "tip must not occur among the children or descendants of figure"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:figure"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:warning)"
-            "warning must not occur among the children or descendants of figure"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
         name = "Root must have version"
         "\x{a}" ~
         "               "
@@ -2724,7 +2559,10 @@ div {
       ]
     ]
     element videoobject {
-      db.videoobject.attlist, db.videoobject.info, db.videodata
+      db.videoobject.attlist,
+      db.videoobject.info,
+      db.videodata,
+      db.multimediaparam*
     }
 }
 div {
@@ -2758,7 +2596,10 @@ div {
       ]
     ]
     element audioobject {
-      db.audioobject.attlist, db.audioobject.info, db.audiodata
+      db.audioobject.attlist,
+      db.audioobject.info,
+      db.audiodata,
+      db.multimediaparam*
     }
 }
 db.imageobject.content =
@@ -2842,6 +2683,8 @@ div {
     
     ## Specifies the (horizontal) alignment of the video data
     attribute align { db.videodata.align.enumeration }
+  db.videodata.autoplay.attribute = db.autoplay.attribute
+  db.videodata.classid.attribute = db.classid.attribute
   db.videodata.valign.enumeration = db.valign.enumeration
   db.videodata.valign.attribute =
     
@@ -2869,6 +2712,8 @@ div {
     & db.videodata.scale.attribute?
     & db.videodata.depth.attribute?
     & db.videodata.contentdepth.attribute?
+    & db.videodata.autoplay.attribute?
+    & db.videodata.classid.attribute?
   db.videodata.info = db._info.title.forbidden
   db.videodata =
     
@@ -2897,10 +2742,42 @@ div {
 }
 div {
   db.audiodata.role.attribute = attribute role { text }
+  db.audiodata.align.enumeration = db.halign.enumeration
+  db.audiodata.align.attribute =
+    
+    ## Specifies the (horizontal) alignment of the video data
+    attribute align { db.audiodata.align.enumeration }
+  db.audiodata.autoplay.attribute = db.autoplay.attribute
+  db.audiodata.classid.attribute = db.classid.attribute
+  db.audiodata.contentwidth.attribute = db.contentwidth.attribute
+  db.audiodata.contentdepth.attribute = db.contentdepth.attribute
+  db.audiodata.depth.attribute = db.depth.attribute
+  db.audiodata.scale.attribute = db.scale.attribute
+  db.audiodata.scalefit.enumeration = db.scalefit.enumeration
+  db.audiodata.scalefit.attribute =
+    
+    ## Determines if anamorphic scaling is forbidden
+    attribute scalefit { db.audiodata.scalefit.enumeration }
+  db.audiodata.valign.enumeration = db.valign.enumeration
+  db.audiodata.valign.attribute =
+    
+    ## Specifies the vertical alignment of the video data
+    attribute valign { db.audiodata.valign.enumeration }
+  db.audiodata.width.attribute = db.width.attribute
   db.audiodata.attlist =
     db.audiodata.role.attribute?
     & db.common.attributes
     & db.common.data.attributes
+    & db.audiodata.align.attribute?
+    & db.audiodata.autoplay.attribute?
+    & db.audiodata.classid.attribute?
+    & db.audiodata.contentdepth.attribute?
+    & db.audiodata.contentwidth.attribute?
+    & db.audiodata.depth.attribute?
+    & db.audiodata.scale.attribute?
+    & db.audiodata.scalefit.attribute?
+    & db.audiodata.valign.attribute?
+    & db.audiodata.width.attribute?
   db.audiodata.info = db._info.title.forbidden
   db.audiodata =
     
@@ -3023,6 +2900,31 @@ div {
       ]
     ]
     element textdata { db.textdata.attlist, db.textdata.info }
+}
+div {
+  db.multimediaparam.role.attribute = attribute role { text }
+  db.multimediaparam.name.attribute =
+    
+    ## Specifies the name of the parameter
+    attribute name { text }
+  db.multimediaparam.value.attribute =
+    
+    ## Specifies the value of the parameter
+    attribute value { text }
+  db.multimediaparam.valuetype.attribute =
+    
+    ## Specifies the type of the value of the parameter
+    attribute valuetype { text }
+  db.multimediaparam.attlist =
+    db.multimediaparam.role.attribute?
+    & db.common.attributes
+    & db.multimediaparam.name.attribute
+    & db.multimediaparam.value.attribute
+    & db.multimediaparam.valuetype.attribute?
+  db.multimediaparam =
+    
+    ## Application specific parameters for a media player
+    element multimediaparam { db.multimediaparam.attlist, empty }
 }
 div {
   db.caption.role.attribute = attribute role { text }
@@ -4025,9 +3927,6 @@ div {
       ## A graphic designer
       "graphicdesigner"
     | 
-      ## Some other contributor
-      "other"
-    | 
       ## A production editor
       "productioneditor"
     | 
@@ -4904,7 +4803,9 @@ db.component.contentmodel =
   db.navigation.components*
 db.setindex.components = notAllowed | db.setindex
 db.toc.components = notAllowed | db.toc
-db.set.components = (db.set | db.book) | db.xi.include
+db.set.components =
+  ((db.set | db.book)+ | db.article+)
+  | db.xi.include
 div {
   db.set.status.attribute = db.status.attribute
   db.set.role.attribute = attribute role { text }
@@ -4942,7 +4843,7 @@ div {
       db.set.attlist,
       db.set.info,
       db.toc.components?,
-      db.set.components+,
+      db.set.components,
       db.setindex.components?
     }
 }
@@ -5332,6 +5233,7 @@ div {
     element section {
       db.section.attlist,
       db.section.info,
+      db.navigation.components*,
       db.recursive.blocks.or.sections?,
       db.navigation.components*
     }
@@ -5547,7 +5449,7 @@ db.xlink.locator.type.attribute =
         "\x{a}" ~
         "               "
         s:assert [
-          test = "not(parent::*[@xlink:type='extended'])"
+          test = "parent::*[@xlink:type='extended']"
           "An XLink locator type element must occur as the direct child of an XLink extended type element."
         ]
         "\x{a}" ~
@@ -5603,7 +5505,7 @@ db.xlink.resource.type.attribute =
         "\x{a}" ~
         "               "
         s:assert [
-          test = "not(parent::*[@xlink:type='extended'])"
+          test = "parent::*[@xlink:type='extended']"
           "An XLink resource type element must occur as the direct child of an XLink extended type element."
         ]
         "\x{a}" ~
@@ -5632,7 +5534,7 @@ db.xlink.title.type.attribute =
         "               "
         s:assert [
           test =
-            "not(parent::*[@xlink:type='extended']) and not(parent::*[@xlink:type='locator']) and not(parent::*[@xlink:type='arc'])"
+            "parent::*[@xlink:type='extended'] or parent::*[@xlink:type='locator'] or parent::*[@xlink:type='arc']"
           "An XLink title type element must occur as the direct child of an XLink extended, locator, or arc type element."
         ]
         "\x{a}" ~
@@ -5790,6 +5692,7 @@ div {
     element sect1 {
       db.sect1.attlist,
       db.sect1.info,
+      db.navigation.components,
       ((db.all.blocks+, db.sect1.sections?) | db.sect1.sections)?,
       db.navigation.components*
     }
@@ -5833,6 +5736,7 @@ div {
     element sect2 {
       db.sect2.attlist,
       db.sect2.info,
+      db.navigation.components*,
       ((db.all.blocks+, db.sect2.sections?) | db.sect2.sections)?,
       db.navigation.components*
     }
@@ -5876,6 +5780,7 @@ div {
     element sect3 {
       db.sect3.attlist,
       db.sect3.info,
+      db.navigation.components*,
       ((db.all.blocks+, db.sect3.sections?) | db.sect3.sections)?,
       db.navigation.components*
     }
@@ -5919,6 +5824,7 @@ div {
     element sect4 {
       db.sect4.attlist,
       db.sect4.info,
+      db.navigation.components*,
       ((db.all.blocks+, db.sect4.sections?) | db.sect4.sections)?,
       db.navigation.components*
     }
@@ -5960,6 +5866,7 @@ div {
     element sect5 {
       db.sect5.attlist,
       db.sect5.info,
+      db.navigation.components*,
       ((db.all.blocks+, db.sect5.sections?) | db.sect5.sections)?,
       db.navigation.components*
     }
@@ -7082,13 +6989,11 @@ div {
     element itermset { db.itermset.attlist, db.indexterm.singular+ }
 }
 db.indexterm.contentmodel =
-  db.primary?,
-  ((db.secondary,
-    ((db.tertiary, (db.see | db.seealso+)?)
-     | db.see
-     | db.seealso+)?)
-   | db.see
-   | db.seealso+)?
+  (db.primary,
+   (db.secondary,
+    ((db.tertiary, (db.see | db.seealso+)?)?
+     | (db.see | db.seealso+)?)?)?)?,
+  (db.see | db.seealso+)?
 div {
   db.indexterm.singular.role.attribute = attribute role { text }
   db.indexterm.singular.class.attribute =
@@ -8199,6 +8104,9 @@ db.rowheader.attribute =
     ## Indicates that entries in the first column of the table are functionally row headers (analogous to the way that a thead provides column headers).
     "firstcol"
     | 
+      ## Indicates that row headers are identified by use of the headers attribute on entries in the table.
+      "headers"
+    | 
       ## Indicates that entries in the first column have no special significance with respect to column headers.
       "norowheader"
   }
@@ -8323,6 +8231,7 @@ div {
     & db.colname.attribute?
     & db.rowsep.attribute?
     & db.align.attribute?
+    & db.rowheader.attribute?
   db.colspec =
     
     ## Specifications for a column in a table
@@ -8421,6 +8330,27 @@ div {
         ## Rotate the cell 90 degrees counter-clockwise.
         "1"
     }
+  db.entry.scope.attribute =
+    
+    ## Specifies the scope of a header.
+    attribute scope {
+      
+      ## Applies to the row
+      "row"
+      | 
+        ## Applies to the column
+        "col"
+      | 
+        ## Applies to the row group
+        "rowgroup"
+      | 
+        ## Applies to the column group
+        "colgroup"
+    }
+  db.entry.headers.attribute =
+    
+    ## Specifies the entry or entries which serve as headers for this element.
+    attribute headers { xsd:IDREFS }
   db.entry.attlist =
     db.entry.role.attribute?
     & db.common.attributes
@@ -8434,6 +8364,8 @@ div {
     & db.rowsep.attribute?
     & db.entry.rotate.attribute?
     & db.align.attribute?
+    & db.entry.scope.attribute?
+    & db.entry.headers.attribute?
   db.entry =
     
     ## A cell in a table
@@ -8639,96 +8571,6 @@ div {
           s:assert [
             test = "not(.//db:equation)"
             "equation must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:caution)"
-            "caution must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:important)"
-            "important must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:note)"
-            "note must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:tip)"
-            "tip must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:warning)"
-            "warning must not occur among the children or descendants of table"
           ]
           "\x{a}" ~
           "               "
@@ -9102,96 +8944,6 @@ div {
           s:assert [
             test = "not(.//db:equation)"
             "equation must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:caution)"
-            "caution must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:important)"
-            "important must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:note)"
-            "note must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:tip)"
-            "tip must not occur among the children or descendants of table"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:table"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:warning)"
-            "warning must not occur among the children or descendants of table"
           ]
           "\x{a}" ~
           "               "
@@ -10137,96 +9889,6 @@ div {
         "            "
       ]
       s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:equation"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:caution)"
-            "caution must not occur among the children or descendants of equation"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:equation"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:important)"
-            "important must not occur among the children or descendants of equation"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:equation"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:note)"
-            "note must not occur among the children or descendants of equation"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:equation"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:tip)"
-            "tip must not occur among the children or descendants of equation"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
-        name = "Element exclusion"
-        "\x{a}" ~
-        "               "
-        s:rule [
-          context = "db:equation"
-          "\x{a}" ~
-          "                  "
-          s:assert [
-            test = "not(.//db:warning)"
-            "warning must not occur among the children or descendants of equation"
-          ]
-          "\x{a}" ~
-          "               "
-        ]
-        "\x{a}" ~
-        "            "
-      ]
-      s:pattern [
         name = "Root must have version"
         "\x{a}" ~
         "               "
@@ -10259,6 +9921,8 @@ div {
     db.informalequation.role.attribute?
     & db.common.attributes
     & db.common.linking.attributes
+    & db.pgwide.attribute?
+    & db.floatstyle.attribute?
   db.informalequation.info = db._info.title.forbidden
   db.informalequation =
     
@@ -10882,6 +10546,9 @@ div {
     ## The "Alt" key
     "alt"
     | 
+      ## The "Alt Graph" key
+      "altgr"
+    | 
       ## The "Backspace" key
       "backspace"
     | 
@@ -10900,7 +10567,7 @@ div {
       ## The "End" key
       "end"
     | 
-      ## The "Enter" or "Return" key
+      ## The "Enter" key
       "enter"
     | 
       ## The "Escape" key
@@ -10929,6 +10596,9 @@ div {
     | 
       ## The right arrow
       "right"
+    | 
+      ## The "Return" key
+      "return"
     | 
       ## The "Shift" key
       "shift"
