@@ -130,7 +130,7 @@
             <tag class="attribute">xlink:href</tag>)</para>
       </listitem>
       <listitem>
-        <para>No validation necessary</para>
+        <para>No validation necessary between source and target</para>
       </listitem>
       <listitem>
         <para>Link content can be manually created</para>
@@ -147,6 +147,9 @@
     <table xml:id="tab.xref-vs-link">
       <title>Differences Between <tag>xref</tag> and <tag>link</tag></title>
       <tgroup cols="3">
+        <colspec colnum="1" colname="c1" colwidth="1*"/>
+        <colspec colnum="2" colname="c2" colwidth="2*"/>
+        <colspec colnum="3" colname="c3" colwidth="2*"/>
         <thead>
           <row>
             <entry>Topic</entry>
@@ -156,19 +159,21 @@
         </thead>
         <tbody>
           <row>
-            <entry>TDG Definition</entry>
+            <entry>TDG<footnote>
+              <para>The Definitive Guide, see <link xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"/></para>
+            </footnote> Definition</entry>
             <entry>A cross reference to another part of the document</entry>
             <entry>A hypertext link</entry>
           </row>
           <row>
             <entry>Content Model</entry>
-            <entry>empty</entry>
-            <entry>text and inline elements</entry>
+            <entry><link xlink:href="http://www.docbook.org/tdg51/en/html/xref.html">empty</link></entry>
+            <entry><link xlink:href="http://www.docbook.org/tdg51/en/html/link.html">text and inline elements</link></entry>
           </row>
           <row>
             <entry>Resolution</entry>
             <entry>Yes, automatically during transformation</entry>
-            <entry>No, link content can be definied</entry>
+            <entry>No, link content must be definied manually</entry>
           </row>
           <row>
             <entry>ID/IDREF Checking</entry>

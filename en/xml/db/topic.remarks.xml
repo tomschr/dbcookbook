@@ -90,7 +90,7 @@ This is a text &lt;!-- Ohh, we should add more -->
       following table gives you a quick overview.</para>
     
     <table xml:id="tab.db.xmlcomments-vs-remarks">
-      <title>Comparison XML Comments versus Remarks</title>
+      <title>Comparison of XML Comments versus Remarks</title>
       <tgroup cols="3">
         <thead>
           <row>

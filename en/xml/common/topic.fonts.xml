@@ -40,7 +40,7 @@
   
   <section role="problem">
     <title>Problem</title>
-    <para>You need to find professional fonts, preferebly released under
+    <para>You need to find professional fonts, preferably released under
       an open source license which can be used for print or Web formats.</para>
   </section>
   <section role="solution">
@@ -50,7 +50,7 @@
         xlink:href="http://scripts.sil.org/OFL">Open Font License</link>
       or other free or open licenses. The following list is a small
       overview which is by no means complete (use also your favorite
-      search enginge):</para>
+      search engine):</para>
     <variablelist>
       <varlistentry>
         <term><link xlink:href="http://scripts.sil.org"/></term>
@@ -101,17 +101,20 @@
       <varlistentry>
         <term><link xlink:href="http://dejavu-fonts.org"/></term>
         <listitem>
-          <para><remark>FIXME</remark>
+          <para>
           The DejaVu font family are derived from the Bitstream Vera fonts.
           Due to license issues, the font has to be renamed. The fonts
-          contain now lots of glyphs.
+          contain now lots of glyphs and supports Latin, Greek, Cyrillic, 
+          Armenian, Georgian, and other languages.
           </para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><link xlink:href="http://www.stixfonts.org"/></term>
         <listitem>
-          <para><remark>TBD</remark></para>
+          <para>The STIX fonts (Scientific and Technical Information Exchange)
+          is a set of comprehensive fonts for scientific and engineering 
+          manuscripts. They can be used both for print and online publishing. </para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -126,7 +129,7 @@
           <title>Supported Languages and Amount of Glyphs</title>
           <para>Does your font support your language? Although modern
             fonts use Unicode thesedays, nevertheless your language
-            might be not supported. Especially if you need
+            might not be supported. Especially if you need
               <quote>uncommon</quote> languages or rarely used glyphs.
           </para>
         </formalpara>
@@ -167,9 +170,9 @@
           <title>Quality</title>
           <para>This is a broad topic and it depends heavily where you want to
             use the font. Is it primarily used for Web content or only
-            for print? Or both? Some fonts looks only good in a Web
+            for print? Or both? Some fonts looks only good on a Web
             page, other work only for printed documents. Sometimes the
-            <emphasis>Hinting</emphasis> (adjustment of a font to a
+            <emphasis>hinting</emphasis> (adjustment of a font to a
             certain resolution) may or may not be implemented.
           </para>
         </formalpara>

@@ -308,7 +308,7 @@
           <literal>select:title nopage</literal> is the same than
           <literal>select:nopage title</literal>. The order is taken
           from the language files in <filename
-            class="directory">common/</filename>. For example, following
+            class="directory">common/</filename>. For example, the following
           English language file defines the order of a chapter title
           (number followed by the title):</para>
         <screen>&lt;l:context name="title-numbered">
@@ -345,9 +345,9 @@
       <para>When using <tag>xref</tag>s, it can be sometimes difficult
         to write a <quote>fluent</quote> sentence. For example, you
         could be inclined to start a sentence like this:</para>
-      <screen>The following chapter &lt;xref linkend="dbc.markup"/>, explains...</screen>
+      <screen>The following chapter &lt;xref linkend="dbc.markup"/> explains...</screen>
       <para>However, the output is undesireable:</para>
-      <screen>The following chapter <xref linkend="dbc.markup"/>, explains...</screen>
+      <screen>The following chapter <xref linkend="dbc.markup"/> explains...</screen>
       <para>Removing the word <quote>chapter</quote> makes it less ugly,
       but the problem still persists: how to create fluent, easy to read
       sentences where cross references are nicely resolved?</para>
