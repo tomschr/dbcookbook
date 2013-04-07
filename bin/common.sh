@@ -14,6 +14,7 @@ BASEXSLT1=${FRAMEWORKSDIR}/xslt/
 CSSFILE=${BASEXSLT2}/css/dbcookbook.css
 DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
+DB5NS="http://docbook.org/ns/docbook"
 
 LOG=1
 LOGFILE="/tmp/docookbook.log"
