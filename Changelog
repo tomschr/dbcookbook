@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Apr 07 18:40:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Fixed typos, strange grammar style, added missing text
+(changeset 1460:dc0cb9ac64db)
+- Added new topic: Extracting and Formatting Person and Author Information
+(changeset 1459:0a4f3c35d536)
+- Added new topic: Writing glossaries
+(changeset 1452:61e75e46f971)
+
+Infrastructure:
+- Added DocBook V5.1b8 RELAX NG compact syntax
+(changeset 1457:33aefbdf2856)
+
+-------------------------------------------------------------------
 Sat Sep 01 14:11:00 UTC 2012 - tom_schr@web.de
 
 Topics:
