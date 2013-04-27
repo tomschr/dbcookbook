@@ -5,7 +5,7 @@
 xmlns:sverb="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.Verbatim" xmlns:xverb="xalan://com.nwalsh.xalan.Verbatim" xmlns:lxslt="http://xml.apache.org/xslt" xmlns:exsl="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="sverb xverb lxslt exsl d" version="1.0">
 
 <!-- ********************************************************************
-     $Id: verbatim.xsl 9297 2012-04-22 03:56:16Z bobstayton $
+     $Id: verbatim.xsl 9589 2012-09-02 20:52:15Z tom_schr $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -359,7 +359,7 @@ xmlns:sverb="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.Verbatim" xmlns:xverb="
     </xsl:when>
     <xsl:when test="$listings[1]/@continuation='continues'">
       <xsl:call-template name="lastLineNumber">
-        <xsl:with-param name="listings" select="d:listings[position() &gt; 1]"/>
+        <xsl:with-param name="listings" select="$listings[position() &gt; 1]"/>
         <xsl:with-param name="number" select="$number + $lines"/>
       </xsl:call-template>
     </xsl:when>

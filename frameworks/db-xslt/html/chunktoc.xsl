@@ -1,10 +1,12 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:doc="http://nwalsh.com/xsl/documentation/1.0"
+                xmlns:db="http://docbook.org/ns/docbook"
+                xmlns:ng="http://docbook.org/docbook-ng"
 		version="1.0"
-                exclude-result-prefixes="doc">
+                exclude-result-prefixes="doc db ng">
 
 <!-- ********************************************************************
-     $Id: chunktoc.xsl 9286 2012-04-19 10:10:58Z bobstayton $
+     $Id: chunktoc.xsl 9750 2013-04-24 06:35:21Z tom_schr $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

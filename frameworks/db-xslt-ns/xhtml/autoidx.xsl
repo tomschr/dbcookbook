@@ -5,7 +5,7 @@
 xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" extension-element-prefixes="exslt" exclude-result-prefixes="exslt d" version="1.0">
 
 <!-- ********************************************************************
-     $Id: autoidx.xsl 9376 2012-05-24 18:32:40Z bobstayton $
+     $Id: autoidx.xsl 9707 2013-01-21 17:18:44Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -540,7 +540,7 @@ xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" exten
         <xsl:apply-templates select="." mode="class.attribute"/>
         <xsl:variable name="title">
           <xsl:choose>
-            <xsl:when test="(ancestor-or-self::d:set|ancestor-or-self::d:book|ancestor-or-self::d:part|ancestor-or-self::d:reference|ancestor-or-self::d:partintro|ancestor-or-self::d:chapter|ancestor-or-self::d:appendix|ancestor-or-self::d:preface|ancestor-or-self::d:article|ancestor-or-self::d:section|ancestor-or-self::d:sect1|ancestor-or-self::d:sect2|ancestor-or-self::d:sect3|ancestor-or-self::d:sect4|ancestor-or-self::d:sect5|ancestor-or-self::d:refentry|ancestor-or-self::d:refsect1|ancestor-or-self::d:refsect2|ancestor-or-self::d:refsect3|ancestor-or-self::d:simplesect|ancestor-or-self::d:bibliography|ancestor-or-self::d:glossary|ancestor-or-self::d:index|ancestor-or-self::d:webpage|ancestor-or-self::d:topic)[last()]/d:titleabbrev and $index.prefer.titleabbrev != 0">
+            <xsl:when test="$index.prefer.titleabbrev != 0">
               <xsl:apply-templates select="(ancestor-or-self::d:set|ancestor-or-self::d:book|ancestor-or-self::d:part|ancestor-or-self::d:reference|ancestor-or-self::d:partintro|ancestor-or-self::d:chapter|ancestor-or-self::d:appendix|ancestor-or-self::d:preface|ancestor-or-self::d:article|ancestor-or-self::d:section|ancestor-or-self::d:sect1|ancestor-or-self::d:sect2|ancestor-or-self::d:sect3|ancestor-or-self::d:sect4|ancestor-or-self::d:sect5|ancestor-or-self::d:refentry|ancestor-or-self::d:refsect1|ancestor-or-self::d:refsect2|ancestor-or-self::d:refsect3|ancestor-or-self::d:simplesect|ancestor-or-self::d:bibliography|ancestor-or-self::d:glossary|ancestor-or-self::d:index|ancestor-or-self::d:webpage|ancestor-or-self::d:topic)[last()]" mode="titleabbrev.markup"/>
             </xsl:when>
             <xsl:otherwise>

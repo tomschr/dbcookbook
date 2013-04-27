@@ -5,7 +5,7 @@
 xmlns:saxon="http://icl.com/saxon" xmlns:lxslt="http://xml.apache.org/xslt" xmlns:redirect="http://xml.apache.org/xalan/redirect" xmlns:exsl="http://exslt.org/common" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns="http://www.w3.org/1999/xhtml" version="1.0" exclude-result-prefixes="saxon lxslt redirect exsl doc d" extension-element-prefixes="saxon redirect lxslt exsl">
 
 <!-- ********************************************************************
-     $Id: chunker.xsl 9147 2011-11-12 00:05:44Z bobstayton $
+     $Id: chunker.xsl 9741 2013-04-11 21:57:59Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -30,8 +30,9 @@ xmlns:saxon="http://icl.com/saxon" xmlns:lxslt="http://xml.apache.org/xslt" xmln
 <xsl:param name="chunker.output.media-type" select="''"/>
 <xsl:param name="chunker.output.cdata-section-elements" select="''"/>
 
-<!-- Make sure base.dir has a trailing slash now -->
-<xsl:param name="chunk.base.dir">
+<!-- Make sure base.dir has a trailing slash. -->
+<!-- This is an internal-only variable. Customize $base.dir instead. -->
+<xsl:variable name="chunk.base.dir">
   <xsl:choose>
     <xsl:when test="string-length($base.dir) = 0"/>
     <!-- make sure to add trailing slash if omitted by user -->
@@ -42,7 +43,7 @@ xmlns:saxon="http://icl.com/saxon" xmlns:lxslt="http://xml.apache.org/xslt" xmln
       <xsl:value-of select="concat($base.dir, '/')"/>
     </xsl:otherwise>
   </xsl:choose>
-</xsl:param>
+</xsl:variable>
 
 <xsl:param name="saxon.character.representation" select="'entity;decimal'"/>
 
@@ -56,13 +57,13 @@ xmlns:saxon="http://icl.com/saxon" xmlns:lxslt="http://xml.apache.org/xslt" xmln
     <!-- put Saxon first to work around a bug in libxslt -->
     <xsl:when test="element-available('saxon:output')">
       <!-- Saxon doesn't make the chunks relative -->
-      <xsl:value-of select="concat($chunk.base.dir,$base.name)"/>
+      <xsl:value-of select="concat($base.dir,$base.name)"/>
     </xsl:when>
     <xsl:when test="element-available('exsl:document')">
       <!-- EXSL document does make the chunks relative, I think -->
       <xsl:choose>
         <xsl:when test="count(parent::*) = 0">
-          <xsl:value-of select="concat($chunk.base.dir,$base.name)"/>
+          <xsl:value-of select="concat($base.dir,$base.name)"/>
         </xsl:when>
         <xsl:otherwise>
           <xsl:value-of select="$base.name"/>
@@ -71,7 +72,7 @@ xmlns:saxon="http://icl.com/saxon" xmlns:lxslt="http://xml.apache.org/xslt" xmln
     </xsl:when>
     <xsl:when test="element-available('redirect:write')">
       <!-- Xalan doesn't make the chunks relative -->
-      <xsl:value-of select="concat($chunk.base.dir,$base.name)"/>
+      <xsl:value-of select="concat($base.dir,$base.name)"/>
     </xsl:when>
     <xsl:otherwise>
       <xsl:message terminate="yes">
@@ -302,7 +303,7 @@ xmlns:saxon="http://icl.com/saxon" xmlns:lxslt="http://xml.apache.org/xslt" xmln
     <xsl:with-param name="method" select="$method"/>
     <xsl:with-param name="encoding" select="$encoding"/>
     <xsl:with-param name="indent" select="'no'"/>
-    <xsl:with-param name="omit-xml-declaration" select="'no'"/>
+    <xsl:with-param name="omit-xml-declaration" select="'yes'"/>
     <xsl:with-param name="standalone" select="'no'"/>
     <xsl:with-param name="doctype-public"/>
     <xsl:with-param name="doctype-system"/>

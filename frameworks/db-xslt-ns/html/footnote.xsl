@@ -6,7 +6,7 @@ xmlns:exsl="http://exslt.org/common"
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: footnote.xsl 9361 2012-05-12 23:39:44Z bobstayton $
+     $Id: footnote.xsl 9665 2012-11-08 14:26:20Z kosek $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -20,21 +20,27 @@ The footnote text is handled in name="process.footnote".
 The footnote marker gets an id of @id, while the
 footnote text gets an id of #ftn.@id. They cross link to each other. -->
 <xsl:template match="d:footnote">
-  <xsl:variable name="href">
-    <xsl:text>#ftn.</xsl:text>
+  <xsl:variable name="name">
     <xsl:call-template name="object.id">
       <xsl:with-param name="conditional" select="0"/>
     </xsl:call-template>
   </xsl:variable>
+  <xsl:variable name="href">
+    <xsl:text>#ftn.</xsl:text>
+    <xsl:value-of select="$name"/>
+  </xsl:variable>
 
   <a href="{$href}">
     <xsl:apply-templates select="." mode="class.attribute"/>
+    <xsl:if test="$generate.id.attributes = 0">
+      <xsl:attribute name="name">
+        <xsl:value-of select="$name"/>
+      </xsl:attribute>
+    </xsl:if>
+    
     <sup>
       <xsl:apply-templates select="." mode="class.attribute"/>
       <xsl:call-template name="id.attribute">
-        <xsl:with-param name="conditional" select="0"/>
-      </xsl:call-template>
-      <xsl:call-template name="anchor">
         <xsl:with-param name="conditional" select="0"/>
       </xsl:call-template>
       <xsl:text>[</xsl:text>
@@ -260,9 +266,10 @@ linkend/id: <xsl:value-of select="@linkend"/>
           </xsl:when>
           <xsl:when test="$css.decoration != 0">
             <xsl:attribute name="style">
-              <xsl:value-of select="concat('width:100; align:',
+              <xsl:value-of select="concat('width:100; text-align:',
                                             $direction.align.start,
-                                            ';')"/>
+                                            ';',
+					    'margin-', $direction.align.start, ': 0')"/>
             </xsl:attribute>
           </xsl:when>
           <xsl:otherwise>

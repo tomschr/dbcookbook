@@ -11,7 +11,7 @@ xmlns:exslt="http://exslt.org/common"
                 version="1.0">
 
 <!-- ********************************************************************
-     $Id: autoidx.xsl 9376 2012-05-24 18:32:40Z bobstayton $
+     $Id: autoidx.xsl 9707 2013-01-21 17:18:44Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -599,7 +599,7 @@ xmlns:exslt="http://exslt.org/common"
         <xsl:apply-templates select="." mode="class.attribute"/>
         <xsl:variable name="title">
           <xsl:choose>
-            <xsl:when test="&section;/d:titleabbrev and $index.prefer.titleabbrev != 0">
+            <xsl:when test="$index.prefer.titleabbrev != 0">
               <xsl:apply-templates select="&section;" mode="titleabbrev.markup"/>
             </xsl:when>
             <xsl:otherwise>

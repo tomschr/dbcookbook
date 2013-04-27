@@ -7,7 +7,7 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: component.xsl 9293 2012-04-19 18:42:11Z bobstayton $
+     $Id: component.xsl 9647 2012-10-26 17:42:03Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -52,14 +52,6 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
       <xsl:otherwise>1</xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
-
-  <xsl:if test="$passivetex.extensions != 0">
-    <fotex:bookmark xmlns:fotex="http://www.tug.org/fotex"
-                    fotex-bookmark-level="2"
-                    fotex-bookmark-label="{$id}">
-      <xsl:value-of select="$titleabbrev"/>
-    </fotex:bookmark>
-  </xsl:if>
 
   <fo:block xsl:use-attribute-sets="component.title.properties">
     <xsl:if test="$pagewide != 0">
@@ -721,14 +713,6 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
       <xsl:attribute name="axf:outline-title">
         <xsl:value-of select="normalize-space($titleabbrev)"/>
       </xsl:attribute>
-    </xsl:if>
-
-    <xsl:if test="$passivetex.extensions != 0">
-      <fotex:bookmark xmlns:fotex="http://www.tug.org/fotex" 
-                      fotex-bookmark-level="{count(ancestor::*)+2}" 
-                      fotex-bookmark-label="{$id}">
-        <xsl:value-of select="$titleabbrev"/>
-      </fotex:bookmark>
     </xsl:if>
 
     <fo:block xsl:use-attribute-sets="article.appendix.title.properties">
