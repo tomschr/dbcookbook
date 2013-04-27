@@ -6,7 +6,7 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: lists.xsl 9115 2011-10-05 20:12:49Z bobstayton $
+     $Id: lists.xsl 9746 2013-04-11 23:47:50Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -138,17 +138,9 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
       </fo:block>
     </fo:list-item-label>
     <fo:list-item-body start-indent="body-start()">
-      <xsl:choose>
-        <!-- * work around broken passivetex list-item-body rendering -->
-        <xsl:when test="$passivetex.extensions = '1'">
-          <xsl:apply-templates/>
-        </xsl:when>
-        <xsl:otherwise>
-          <fo:block>
-            <xsl:apply-templates/>
-          </fo:block>
-        </xsl:otherwise>
-      </xsl:choose>
+      <fo:block>
+        <xsl:apply-templates/>
+      </fo:block>
     </fo:list-item-body>
   </xsl:variable>
 
@@ -387,15 +379,7 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
           </xsl:when>
           <xsl:otherwise>
             <xsl:value-of select="@termlength"/>
-            <xsl:choose>
-              <!-- workaround for passivetex lack of support for non-constant expressions -->
-              <xsl:when test="$passivetex.extensions != 0">
-                <xsl:text>em</xsl:text>
-              </xsl:when>
-              <xsl:otherwise>
-                <xsl:text>em * 0.60</xsl:text>
-              </xsl:otherwise>
-            </xsl:choose>
+            <xsl:text>em * 0.60</xsl:text>
           </xsl:otherwise>
         </xsl:choose>
       </xsl:when>
@@ -404,15 +388,7 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
           <xsl:with-param name="terms" select="d:varlistentry/d:term"/>
           <xsl:with-param name="maxlength" select="$variablelist.max.termlength"/>
         </xsl:call-template>
-        <xsl:choose>
-          <!-- workaround for passivetex lack of support for non-constant expressions -->
-          <xsl:when test="$passivetex.extensions != 0">
-            <xsl:text>em</xsl:text>
-          </xsl:when>
-          <xsl:otherwise>
-            <xsl:text>em * 0.60</xsl:text>
-          </xsl:otherwise>
-        </xsl:choose>
+        <xsl:text>em * 0.60</xsl:text>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -426,17 +402,9 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
 
   <xsl:variable name="label-separation">1em</xsl:variable>
   <xsl:variable name="distance-between-starts">
-    <xsl:choose>
-      <!-- workaround for passivetex lack of support for non-constant expressions -->
-      <xsl:when test="$passivetex.extensions != 0">
-        <xsl:value-of select="$termlength"/>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:value-of select="$termlength"/>
-        <xsl:text>+</xsl:text>
-        <xsl:value-of select="$label-separation"/>
-      </xsl:otherwise>
-    </xsl:choose>
+    <xsl:value-of select="$termlength"/>
+    <xsl:text>+</xsl:text>
+    <xsl:value-of select="$label-separation"/>
   </xsl:variable>
 
   <xsl:if test="d:title">
@@ -1097,6 +1065,31 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
   </fo:block>
 </xsl:template>
 
+<!-- Add (Optional) when the step is optional -->
+<xsl:template match="d:step[@performance = 'optional']/*[1][self::d:para]" priority="3">
+  <xsl:variable name="keep.together">
+    <xsl:call-template name="pi.dbfo_keep-together"/>
+  </xsl:variable>
+  <fo:block xsl:use-attribute-sets="para.properties">
+    <xsl:if test="$keep.together != ''">
+      <xsl:attribute name="keep-together.within-column"><xsl:value-of
+                      select="$keep.together"/></xsl:attribute>
+    </xsl:if>
+    <xsl:call-template name="anchor"/>
+    <xsl:if test="$mark.optional.procedure.steps != 0">
+      <xsl:call-template name="optional.step.marker"/>
+    </xsl:if>
+    <xsl:apply-templates/>
+  </fo:block>
+</xsl:template>
+
+<xsl:template name="optional.step.marker">
+  <fo:inline>
+    <xsl:call-template name="gentext">
+      <xsl:with-param name="key">optional-step</xsl:with-param>
+    </xsl:call-template>
+  </fo:inline>
+</xsl:template>
 <!-- ==================================================================== -->
 
 <xsl:template match="d:segmentedlist">
@@ -1354,7 +1347,9 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
       <xsl:text>: ???</xsl:text>
     </xsl:when>
     <xsl:when test="local-name($target)='co'">
-      <xsl:apply-templates select="$target" mode="callout-bug"/>
+      <fo:basic-link internal-destination="{$arearef}">
+        <xsl:apply-templates select="$target" mode="callout-bug"/>
+      </fo:basic-link>
     </xsl:when>
     <xsl:when test="local-name($target)='areaset'">
       <xsl:call-template name="callout-bug">

@@ -7,7 +7,7 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id: division.xsl 9124 2011-10-09 21:04:08Z bobstayton $
+     $Id: division.xsl 9730 2013-03-15 15:26:25Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -30,14 +30,6 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
       <xsl:with-param name="allow-anchors" select="1"/>
     </xsl:apply-templates>
   </xsl:variable>
-
-  <xsl:if test="$passivetex.extensions != 0">
-    <fotex:bookmark xmlns:fotex="http://www.tug.org/fotex"
-                    fotex-bookmark-level="1"
-                    fotex-bookmark-label="{$id}">
-      <xsl:value-of select="$title"/>
-    </fotex:bookmark>
-  </xsl:if>
 
   <fo:block keep-with-next.within-column="always"
             hyphenate="false">
@@ -503,14 +495,14 @@ xmlns:fo="http://www.w3.org/1999/XSL/Format"
     </xsl:call-template>
   </xsl:variable>
 
-  <xsl:variable name="nodes" select="d:reference|
-                                     d:preface|
-                                     d:chapter|
-                                     d:appendix|
-                                     d:article|
-                                     d:bibliography|
-                                     d:glossary|
-                                     d:index"/>
+  <xsl:variable name="nodes" select="$part/d:reference|
+                                     $part/d:preface|
+                                     $part/d:chapter|
+                                     $part/d:appendix|
+                                     $part/d:article|
+                                     $part/d:bibliography|
+                                     $part/d:glossary|
+                                     $part/d:index"/>
 
   <xsl:if test="count($nodes) &gt; 0 and contains($toc.params, 'toc')">
     <fo:page-sequence hyphenate="{$hyphenate}"

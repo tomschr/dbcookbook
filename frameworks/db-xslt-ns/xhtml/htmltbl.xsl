@@ -6,7 +6,7 @@
 xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 
 <!-- ********************************************************************
-     $Id: htmltbl.xsl 9140 2011-10-30 03:42:11Z bobstayton $
+     $Id: htmltbl.xsl 9501 2012-07-16 00:14:50Z bobstayton $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -20,9 +20,6 @@ xmlns="http://www.w3.org/1999/xhtml" version="1.0">
 <xsl:template match="d:table" mode="htmlTable">
   <xsl:element name="table" namespace="http://www.w3.org/1999/xhtml">
     <xsl:apply-templates select="@*" mode="htmlTableAtt"/>
-    <xsl:attribute name="id">
-      <xsl:call-template name="object.id"/>
-    </xsl:attribute>
     <xsl:call-template name="htmlTable"/>
   </xsl:element>
 </xsl:template>
