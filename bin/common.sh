@@ -16,6 +16,7 @@ DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
 DB5NS="http://docbook.org/ns/docbook"
 
+DEBUG_SCRIPT=
 LOG=1
 LOGFILE="/tmp/docookbook.log"
 
@@ -27,6 +28,14 @@ CATALOGPROP="CatalogManager.properties"
 HLCONFIG="${DBXSLT5}/highlighting/xslthl-config.xml"
 HLFLAG="-Dxslthl.config=file://${HLCONFIG}"
 XINCLUDEFLAG="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration"
+
+function my_debug() {
+# Syntax: my_debug "MESSAGE" [MORE ARGUMENTS...]
+# Prints debug messages, if DEBUG_SCRIPT is non-empty
+    if [[ "$DEBUG_SCRIPT" ]]; then
+        echo -e "[debug] ${0}: $@\n" >&2;
+    fi
+}
 
 function framework() {
  echo "Using Framework: $FRAMEWORKSDIR"
