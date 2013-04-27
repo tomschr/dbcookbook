@@ -15,5 +15,10 @@
   <xsl:param name="img.src.path">img/</xsl:param>
   <xsl:param name="callout.graphics" select="0"/>
   <xsl:param name="callout.unicode" select="1"/>
+  <xsl:param name="section.autolabel" select="1"/>
+  <xsl:param name="section.label.includes.component.label" select="1"/>
+  <xsl:param name="section.autolabel.max.depth">1</xsl:param>
+  
+  <xsl:param name="toc.section.depth">1</xsl:param>
   
 </xsl:stylesheet>
