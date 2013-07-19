@@ -23,7 +23,7 @@
   <subtitle>Recipes for DocBook Developers</subtitle>
   <info>
     <pubdate role="currentdatetime">2013-04-03</pubdate>
-    <releaseinfo role="draft">Draft (Version 0.6e)</releaseinfo>
+    <releaseinfo role="draft">Draft (Version 0.6f)</releaseinfo>
     <definitions definitionfile="defs.xml"/>
     <rdf:RDF
       xmlns="http://creativecommons.org/ns#"
@@ -67,13 +67,14 @@
         xlink:title="[DoCookBook] Recent Ticket Changes (Atom)"
         xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"/>
     </extendedlink>
-    <author>
+    <xi:include href="../author.xml"/>
+    <!--<author>
       <personname>
         <firstname>Thomas</firstname>
         <surname>Schraitle</surname>
       </personname>
       <email>docbook-xml@online.ms</email>
-    </author>
+    </author>-->
     <othercredit class="proofreader">
       <personname>
         <firstname>Antje</firstname>
