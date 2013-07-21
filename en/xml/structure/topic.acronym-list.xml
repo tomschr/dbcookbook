@@ -26,15 +26,14 @@
       <keyword>acronym</keyword>
       <keyword>generated list</keyword>
     </keywordset>
-    <collab>
-      <person>
-        <personname>
+    <othercredit>
+      <personname>
           <firstname>Peter</firstname>
           <surname>Lavin</surname>
         </personname>
-        <email>lavin.peter@gmail.com</email>
-      </person>      
-    </collab>
+      <email>lavin.peter@gmail.com</email>
+      <contrib>Contributed idea and stylesheet</contrib>
+    </othercredit>
   </info>
   
   <section role="problem">
@@ -58,16 +57,24 @@
       <listitem>
         <para>The following stylesheet to apply it to your XML
           structure:</para>
+        <example xml:id="ex.structure.profile-envar.xml">
+          <title><filename>make_acronyms.xsl</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>acronym-sorted/make_acronyms.xsl</filename>
+            </output>
+          </info>
         <programlisting language="xslt"><xi:include
           href="acronym-sorted/make_acronyms.xsl" 
           parse="text"/></programlisting>
+        </example>
       </listitem>
     </orderedlist>
     
     <para>The result will look like this:</para>
     
     <programlisting><xi:include
-      href="acronym-listdiff/acronym-result.xml" 
+      href="acronym-sorted/acronym-sorted.xml" 
       parse="text"/></programlisting>
     
   </section>
