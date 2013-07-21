@@ -218,7 +218,7 @@
       Getting a copy takes just a few seconds. 
       If you have Mercurial already installed on your system, run the 
       following command:</para>
-    <screen>hg clone https://hg.code.sf.net/p/doccookbook/code doccookbook</screen>
+    <screen>hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook</screen>
     <para>Mercurial is a free, distributed version control system and
       available for Mac, Linux, and Windows. Download it from <link 
         xlink:href="http://mercurial.selenic.com"/>.</para>
