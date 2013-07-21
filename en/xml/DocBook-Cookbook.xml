@@ -93,17 +93,18 @@
       <para>
         <note>
           <title>Draft Ahead!</title>
-          <para>This book is a draft and still work in progress. You
-            will find funny typos, embarrassing English grammar mistakes
-            from a German native speaker, annoying inconsistencies,
+          <para>This book is a draft and is still a work in progress. You
+            will find funny typos, mistakes in English grammar 
+            (being a native German speaker) annoying inconsistencies,
             missing topics, and plain errors. Nevertheless, I hope the
-            topics are useful and should give you an idea.</para>
+            topics are useful and a source of ideas.</para>
+          
           <para>Visit this site from time to time and see how the book
-            grows and how more and more of these annoyances will vanish.
+            grows and how more and more of these irritants vanish.
             To accelerate this process, send me praise, critisism,
             patches, donations, or even write a topic. Read <xref
-              linkend="dbc.preface.contrib"/> to find more how to
-            support this project.</para>
+              linkend="dbc.preface.contrib"/> to find out more about
+            supporting this project.</para>
         </note>
       </para>      
     </cover>
