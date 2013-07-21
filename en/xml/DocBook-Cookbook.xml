@@ -67,14 +67,14 @@
         xlink:title="[DoCookBook] Recent Ticket Changes (Atom)"
         xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"/>
     </extendedlink>
-    <xi:include href="../author.xml"/>
-    <!--<author>
+    
+    <author>
       <personname>
         <firstname>Thomas</firstname>
         <surname>Schraitle</surname>
       </personname>
       <email>docbook-xml@online.ms</email>
-    </author>-->
+    </author>
     <othercredit class="proofreader">
       <personname>
         <firstname>Antje</firstname>
