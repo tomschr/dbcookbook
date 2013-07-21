@@ -38,7 +38,7 @@
   <section role="problem">
     <title>Problem</title>
     <para>You need to retrieve a title (or subtitle), but your current
-      node is a not <tag>title</tag>.</para>
+      node is not a <tag>title</tag>.</para>
   </section>
   <section role="solution">
     <title>Solution</title>

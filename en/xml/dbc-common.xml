@@ -50,7 +50,7 @@
       contains all the stylesheets which are not specific to any
       formats. On the contrary, <filename class="directory"
         >fo</filename>, <filename class="directory">html</filename>,
-      etc. contains the respective customizations for their target
+      etc. contain the respective customizations for their target
       formats. </para>
     <para>Furthermore, it is recommended to use the same file name than
       the original from the DocBook XSL stylesheets. This makes it
@@ -77,6 +77,7 @@
   <xi:include href="common/topic.dbxsl-customization.xml"/>
   <xi:include href="common/topic.dbtimestamp.xml"/>
   <xi:include href="common/topic.titles.xml"/>
+  <xi:include href="common/topic.doctitle.xml"/>
   <xi:include href="common/topic.pi.xml"/>
   <xi:include href="common/topic.xpath.location.xml"/>
   <xi:include href="common/topic.l10n.xml"/>
