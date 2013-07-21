@@ -32,9 +32,8 @@ several steps.
 Target Group
 ------------
 It is assumed you have a decent knowledge about XML and DocBook. It doesn't
-hurt if you know CSS and XSLT.
-
-As such, it is aimed more for DocBook developers than writers.
+hurt if you know CSS and XSLT. As such, it is aimed more for DocBook 
+developers than writers.
 
 
 Structure of the Book and Organization
