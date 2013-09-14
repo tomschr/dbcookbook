@@ -16,6 +16,7 @@ DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
 DB5NS="http://docbook.org/ns/docbook"
 
+
 DEBUG_SCRIPT=
 LOG=1
 LOGFILE="/tmp/docookbook.log"
