@@ -85,4 +85,5 @@
   <xi:include href="common/topic.splitheader-into-numbers-and-titles.xml"/>
   <xi:include href="common/topic.enumerate-figures.xml"/>
   <xi:include href="common/topic.case.xml"/>
+  <xi:include href="common/topic.xref-suffix-or-prefix.xml"/>
 </chapter>
