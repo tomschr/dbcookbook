@@ -25,7 +25,7 @@ Transforms our DocBook Document into EPUB
 EOF
 }
 
-ARGS=$(getopt -o h,2,3,v -l help,epub2,epub3,verbose -- "$@")
+ARGS=$(getopt -o h,d,2,3,v -l help,debug,epub2,epub3,verbose -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
@@ -44,6 +44,8 @@ while true ; do
     --verbose|-v)
       VERBOSE=1
       ;;
+    -d|--debug)
+      DEBUG_SCRIPT=1
     --)
       shift
       break
@@ -54,9 +56,11 @@ done
 
 [[ -e ${EPUBPATH} ]] && rm -rf ${EPUBPATH}
 
-xsltproc --xinclude --stringparam base.dir ${EPUBPATH} \
+x="xsltproc --xinclude --stringparam base.dir ${EPUBPATH} \
          ${DB2EPUB} \
-         ${XMLIN}
+         ${XMLIN}"
+my_debug "$x"
+$x
 RESULT=$?
 
 if [[ $FORMAT = "2" ]]; then
