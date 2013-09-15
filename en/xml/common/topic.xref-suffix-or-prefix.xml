@@ -73,7 +73,7 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>If you have insert text before or after your reference only,
+    <para>If you have to insert text before or after your reference only,
       you can use one of the templates described above. However, if you
       need to display a graphic, you need to insert FO or HTML specific
       code. For HTML, this could look like this: </para>
@@ -104,6 +104,10 @@
       <emphasis>before</emphasis> your cross-reference. In this case,
       replace the <literal>xref-to-suffix</literal> mode with
       <literal>xref-to-prefix</literal>.</para>
+    
+    <!--<para>Since version 1.78.2, the DocBook stylesheets support the
+      <parameter>referrer</parameter> parameter; this can be used to get
+      the original <tag>xref</tag> element. </para>-->
   </section>
   <!--<section role="seealso">
     <title>See Also</title>
