@@ -191,6 +191,84 @@
     </itemizedlist>
   </section>
   
+  <section xml:id="dbc.preface.code">
+    <title>About the Code Examples</title>
+    <para>As XML code tend to be verbose, code examples are
+      intentionally kept concise. That means, in same cases, only the
+      relevant portions of the code is shown to avoid distraction. Code
+      that is not important is reduced to three dots
+        (<literal>...</literal>). Not all examples are
+      well-formed.</para>
+    
+    <para>Another point about the examples are namespaces. They are
+      usually not shown if they aren't necessary. In most cases it is
+      recommended to declare them in the root element anyway. In this
+      book namespace prefix (if given) and namespace URL are collected  
+      in <xref linkend="tab.prefix-and-ns"/>. Although namespace prefixes can
+      be selected freely, it is common practise to use these 
+      well-established names.</para>
+    <para>For example, to use the namespace for XLink, declare them in
+      the root element by using the prefix (here: <tag
+        class="prefix">xlink</tag>) with the XLink namespace:</para>
+    <screen>&lt;book <emphasis 
+      role="bold">xmlns:xlink="http://www.w3.org/1999/xlink"</emphasis
+      > ...></screen>
+    
+    <table xml:id="tab.prefix-and-ns">
+      <title>Common Prefixes and Their Namespaces</title>
+      <tgroup cols="2">
+        <thead>
+          <row>
+            <entry>Prefix</entry>
+            <entry>Namespace</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><tag class="prefix">db</tag></entry>
+            <entry><tag class="namespace">http://docbook.org/ns/docbook</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">fo</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/1999/XSL/Format</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">h</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/1999/xhtml</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">mml</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/1998/Math/MathML</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">rng</tag></entry>
+            <entry><tag class="namespace">http://relaxng.org/ns/structure/1.0</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">svg</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/2000/svg</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">xi</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/2001/XInclude</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">xlink</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/1999/xlink</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">xsd</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/2001/XMLSchema</tag></entry>
+          </row>
+          <row>
+            <entry><tag class="prefix">xsl</tag></entry>
+            <entry><tag class="namespace">http://www.w3.org/1999/XSL/Transform</tag></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+  
   <section xml:id="dbc.preface.feedback">
     <title>Feedback</title>
     <para>The project is hosted on <trademark xlink:show="new"
