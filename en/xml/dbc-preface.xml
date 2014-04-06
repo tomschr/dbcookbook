@@ -193,26 +193,32 @@
   
   <section xml:id="dbc.preface.code">
     <title>About the Code Examples</title>
-    <para>As XML code tend to be verbose, code examples are
-      intentionally kept concise. That means, in same cases, only the
-      relevant portions of the code is shown to avoid distraction. Code
-      that is not important is reduced to three dots
-        (<literal>...</literal>). Not all examples are
-      well-formed.</para>
+    <para>As XML code tend to be verbose, all code examples in this book
+      are intentionally kept concise. That means, in same cases, only
+      the relevant portions of the code is shown to avoid distraction.
+      Code that is not important is reduced to three dots
+        (<literal>...</literal>). Unfortunately, this could lead to
+      examples which are not well-formed or even invalid.</para>
     
-    <para>Another point about the examples are namespaces. They are
-      usually not shown if they aren't necessary. In most cases it is
+    <para>Another important point about the examples are namespaces. The
+      namespace declarations are usually not shown if they aren't
+      necessary or <quote>well-known</quote>. In most cases it is
       recommended to declare them in the root element anyway. In this
-      book namespace prefix (if given) and namespace URL are collected  
-      in <xref linkend="tab.prefix-and-ns"/>. Although namespace prefixes can
-      be selected freely, it is common practise to use these 
-      well-established names.</para>
-    <para>For example, to use the namespace for XLink, declare them in
-      the root element by using the prefix (here: <tag
-        class="prefix">xlink</tag>) with the XLink namespace:</para>
+      book all the well-known namespace prefixes (if given) and
+      namespace URLs are collected in <xref linkend="tab.prefix-and-ns"
+      />. Although a namespace prefix can be selected freely, it is
+      common practise to use the well-established name in the
+      table.</para>
+    <para>For example, to use XLink (a syntax for referencing content),
+      declare the XLink namespace in the root element by using the
+      prefix (here: <tag class="prefix">xlink</tag>) with the XLink
+      namespace:</para>
     <screen>&lt;book <emphasis 
       role="bold">xmlns:xlink="http://www.w3.org/1999/xlink"</emphasis
       > ...></screen>
+    <para>Once declared, the namespace prefix is bound to its namespace
+      URL and can be used wherever it is needed:</para>
+    <screen>&lt;link <emphasis role="bold">xlink</emphasis>:href="...">...&lt;/link></screen>
     
     <table xml:id="tab.prefix-and-ns">
       <title>Common Prefixes and Their Namespaces</title>
