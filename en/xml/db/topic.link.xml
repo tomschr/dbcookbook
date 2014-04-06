@@ -63,7 +63,11 @@
         <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/link></programlisting>
       </listitem>
     </itemizedlist>
-    
+    <para>Don't forget to add the XLink namespace declaration into the
+      root element of your document, for example:</para>
+    <screen>&lt;book <emphasis 
+      role="bold">xmlns:xlink="http://www.w3.org/1999/xlink"</emphasis
+      > ...></screen>
   </section>
   <section role="discussion">
     <title>Discussion</title>
