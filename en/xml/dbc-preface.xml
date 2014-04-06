@@ -223,6 +223,8 @@
     <table xml:id="tab.prefix-and-ns">
       <title>Common Prefixes and Their Namespaces</title>
       <tgroup cols="2">
+        <colspec colwidth="1*"/>
+        <colspec colwidth="3*"/>
         <thead>
           <row>
             <entry>Prefix</entry>
