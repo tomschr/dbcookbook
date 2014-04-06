@@ -59,32 +59,38 @@
   <xsl:template match="othercredit|d:othercredit" mode="book.titlepage.recto.auto.mode"/>
   
   <xsl:template match="pubdate|d:pubdate" mode="book.titlepage.recto.auto.mode">
-    <xsl:variable name="date">
-      <xsl:choose>
-        <xsl:when test="function-available('date:date-time')">
-          <xsl:value-of select="date:date-time()"/>
-        </xsl:when>
-        <xsl:when test="function-available('date:dateTime')">
-          <!-- Xalan quirk -->
-          <xsl:value-of select="date:dateTime()"/>
-        </xsl:when>
-      </xsl:choose>
-    </xsl:variable>
-    <xsl:variable name="format">
-      <xsl:call-template name="gentext.template">
-        <xsl:with-param name="context" select="'datetime'"/>
-        <xsl:with-param name="name" select="'format'"/>
-      </xsl:call-template>
-    </xsl:variable>
     
     <div xsl:use-attribute-sets="book.titlepage.recto.style" class="pubdate">
       <p>
-        <xsl:apply-templates/>
-        <xsl:call-template name="datetime.format">
-          <xsl:with-param name="date" select="$date"/>
-          <xsl:with-param name="format" select="$format"/>
-          <xsl:with-param name="padding" select="1"/>
-        </xsl:call-template>
+        <xsl:choose>
+          <xsl:when test="normalize-space() != ''">
+            <xsl:apply-templates/>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:variable name="date">
+              <xsl:choose>
+                <xsl:when test="function-available('date:date-time')">
+                  <xsl:value-of select="date:date-time()"/>
+                </xsl:when>
+                <xsl:when test="function-available('date:dateTime')">
+                  <!-- Xalan quirk -->
+                  <xsl:value-of select="date:dateTime()"/>
+                </xsl:when>
+              </xsl:choose>
+            </xsl:variable>
+            <xsl:variable name="format">
+              <xsl:call-template name="gentext.template">
+                <xsl:with-param name="context" select="'datetime'"/>
+                <xsl:with-param name="name" select="'format'"/>
+              </xsl:call-template>
+            </xsl:variable>
+            <xsl:call-template name="datetime.format">
+              <xsl:with-param name="date" select="$date"/>
+              <xsl:with-param name="format" select="$format"/>
+              <xsl:with-param name="padding" select="1"/>
+            </xsl:call-template>
+          </xsl:otherwise>
+        </xsl:choose>
       </p>
     </div>
   </xsl:template>
