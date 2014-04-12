@@ -82,7 +82,7 @@
     </citerefentry>
    * Inserting Inline Quotes
   -->
-  <!-- <xi:include href="db/topic.toplevel.xml"/> -->
+  <xi:include href="db/topic.toplevel.xml"/> 
   <xi:include href="db/topic.modularize.xml"/>
   <xi:include href="db/topic.glossary.xml"/>
   <xi:include href="db/topic.multiple-indices.xml"/>

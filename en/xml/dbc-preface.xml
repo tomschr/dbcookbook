@@ -191,7 +191,7 @@
     </itemizedlist>
   </section>
   
-  <section xml:id="dbc.preface.code">
+<!--  <section xml:id="dbc.preface.code">
     <title>About the Code Examples</title>
     <para>As XML code tend to be verbose, all code examples in this book
       are intentionally kept concise. That means, in same cases, only
@@ -233,7 +233,10 @@
         </thead>
         <tbody>
           <row>
-            <entry><tag class="prefix">db</tag></entry>
+            <entry><tag class="prefix">d</tag><footnote>
+              <para>In this book the DocBook prefix is omitted and the
+                standard namespace is used.</para>
+            </footnote>, <tag class="prefix">db</tag></entry>
             <entry><tag class="namespace">http://docbook.org/ns/docbook</tag></entry>
           </row>
           <row>
@@ -275,7 +278,7 @@
         </tbody>
       </tgroup>
     </table>
-  </section>
+  </section>-->
   
   <section xml:id="dbc.preface.feedback">
     <title>Feedback</title>
