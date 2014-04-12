@@ -31,6 +31,7 @@ function copyprettifier() {
 
 function saxon_db2xhtml() {
   local xmlin=${XMLIN}
+  __logging "Transforming to Chunked XHTML..."
   
   if [[ $CATEGORY -eq 1 ]]; then
       __logging "Resolving categories links..."
@@ -45,6 +46,31 @@ function saxon_db2xhtml() {
   __logging "Transformed ${XMLIN} with ${BASEXSLT1}/xhtml/chunk.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
    ## [[  $CATEGORY -eq 1 ]] && rm ${xmlin}
 }
+
+function saxon_db2singlexhtml() {
+  local xmlin=${XMLIN}
+  __logging "Transforming to Single XHTML..."
+  
+  if [[ $CATEGORY -eq 1 ]]; then
+      __logging "Resolving categories links..."
+      if [[ ! -e ${XMLIN}.resolved ]]; then
+        [[ $VERBOSE -gt 0 ]] && echo "*** Resolving category links..."
+        saxon -o ${XMLIN}.resolved ${XMLIN} ${CATEGORYXSL}
+          xmlin=${XMLIN}.resolved
+      else
+        __logging "Using existing ${XMLIN}.resolved"
+        xmlin=${XMLIN}.resolved 
+      fi
+  fi
+  [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> Single XHTML ..."
+  cmd="saxon -o ${BUILDDIR}/tmp/DoCookBook.html  ${xmlin} \
+     ${BASEXSLT1}/xhtml/docbook.xsl \
+     ${ROOTID:+rootid=$ROOTID}"
+  __logging "Using command: $cmd"
+  $cmd || exit_on_error "Something went wrong"
+  __logging "Transformed ${XMLIN} with ${BASEXSLT1}/xhtml/docbook.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
+}
+
 
 function __saxon_nstest() {
   local ROOTIDPARAM=""
@@ -123,7 +149,10 @@ done
 
 __logging "Started. Commandline arguments: $ARGS"
 [[ $VERBOSE != "" ]] && echo "Transforming..."
-[[ $CLEANUP -eq 0 ]] && saxon_db2xhtml
+if [[  $CLEANUP -eq 0 ]]; then
+  saxon_db2xhtml 
+  saxon_db2singlexhtml
+fi
 
 __createlinks
 copyprettifier
@@ -144,6 +173,6 @@ done
 
 echo -e "\nUse ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
 __logging "Finished ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
-__logging ""
+__logging "---------------------------------------------------"
 
 # EOF
