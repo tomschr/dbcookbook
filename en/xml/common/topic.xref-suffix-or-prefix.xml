@@ -47,7 +47,7 @@
       or after the <tag>xref</tag> is being resolved. As such it makes
       it pretty easy to add text or graphics.
     </para>
-    <para>For example, the <link linkend="ex.common.xref-to-suffix.txt"
+    <para>For example, the <link linkend="ex.common.all.xref-to-suffix.txt"
         >following example</link> appends the text <quote>[x]</quote> to
       each <tag>xref</tag>, regardless where it points to:</para>
     
