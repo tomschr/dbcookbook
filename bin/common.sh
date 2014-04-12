@@ -12,6 +12,8 @@ CATEGORYXSL=${FRAMEWORKSDIR}/xslt/misc/resolvecategories.xsl
 BASEXSLT2=${FRAMEWORKSDIR}/xslt2/base
 BASEXSLT1=${FRAMEWORKSDIR}/xslt/
 CSSFILE=${BASEXSLT2}/css/dbcookbook.css
+
+# Paths should be better resolved through catalog resolution:
 DBXSLT5="/usr/share/xml/docbook/stylesheet/nwalsh5/current"
 DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
 DB5NS="http://docbook.org/ns/docbook"
@@ -34,7 +36,7 @@ function my_debug() {
 # Syntax: my_debug "MESSAGE" [MORE ARGUMENTS...]
 # Prints debug messages, if DEBUG_SCRIPT is non-empty
     if [[ "$DEBUG_SCRIPT" ]]; then
-        echo -e "[debug] ${0}: $@\n" >&2;
+        echo "[debug] ${0}: $@" >&2;
     fi
 }
 
@@ -43,6 +45,7 @@ function framework() {
 }
 
 function __createlinks() {
+  [[ ! -e ${HTMLOUT} ]] && mkdir -p ${HTMLOUT}
   pushd ${HTMLOUT} 2>/dev/null
   [[ -e css ]] || ln -s ../../frameworks/xslt2/base/css
   [[ -e js ]]  || ln -s ../../frameworks/db-xslt2/xslt/base/js
