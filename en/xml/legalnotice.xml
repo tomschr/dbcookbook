@@ -48,9 +48,11 @@
                 linkend="dbc.preface.license"/> <!--or go to <link
                 xlink:show="new"
                 xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
-              /></para>
-            <para>See also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
-              and <xref linkend="cc-by-nc-sa-30-unported"/>-->.</para></td>
+              />-->
+            </para>
+            <!--<para>See also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
+              and <xref linkend="cc-by-nc-sa-30-unported"/>.</para>-->
+          </td>
         </tr>
       </tbody>
     </informaltable>
