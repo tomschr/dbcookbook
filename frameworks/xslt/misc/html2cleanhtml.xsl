@@ -242,7 +242,16 @@
         <xsl:apply-templates select="h:div[@class='titlepage']" />
       </header>
       <div class="sidebar-content">
-        <xsl:apply-templates select="h:table" />
+        <xsl:choose>
+          <xsl:when test="h:div[@class='informaltable']">
+            <div class="informaltable">
+              <xsl:apply-templates select="h:div[@class='informaltable']/*" />
+            </div>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates/>
+          </xsl:otherwise>
+        </xsl:choose>
       </div>
     </xsl:copy>
   </xsl:template>
