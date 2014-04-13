@@ -6,6 +6,7 @@ source bin/common.sh
 # set -x
 
 CATEGORY=1
+EXAMPLES=1
 CLEANUP=0
 ROOTID=""
 
@@ -16,6 +17,7 @@ Transforms DocBook into XHTML chunks, adding cleanup step
 -h, --help         Prints this help text
 -c, --cleanup      Only perform cleanup step
 -C, --no-category  Don't create links to other categories
+-E, --no-examples  Don't generate examples
 -v, --verbose      Be more verbose
 -r, --rootid ROOTID
                    Pass xml:id to only process a certain chapter, section,etc.
@@ -23,7 +25,7 @@ EOF
 }
 
 function copyprettifier() {
-  if [[ ! -e ${BUILDDIR}/html/highlighter/ ]]; then
+  if [[ ! -e ${HTMLOUT}/highlighter/ ]]; then
     cp -av ${FRAMEWORKSDIR}/js/google-code-prettify/src/ ${BUILDDIR}/html/highlighter
   fi
   cp -v ${FRAMEWORKSDIR}/js/google-code-prettify/styles/*.css ${BUILDDIR}/html/highlighter/
@@ -104,6 +106,35 @@ function __htmlcleanup() {
  sed -i '1s#??>#?>#' ${HTMLOUTPUT}
 }
 
+
+function collectexamples() {
+# $1 = input
+  local xmlin=${XMLIN}
+  local params
+  
+  if [[ $EXAMPLES -eq 1 ]]; then
+    __logging "Creating examples..."
+    [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Creating examples ..."
+    if [[ $CATEGORY -eq 1 ]]; then
+        xmlin=${XMLIN}.resolved
+    fi
+    if [[ $VERBOSE -eq 1 ]]; then
+        params="--stringparam chunk.quietly 0"
+    fi
+    xsltproc  --nonet --novalid \
+        --stringparam base.dir "${HTMLOUT}" $params \
+        ${COLLECTEXAMPLES} \
+        ${xmlin}
+  else
+    __logging "Skipped generation of examples."
+  fi
+}
+
+
+##
+## main
+##
+
 SAXON_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
 XSLTHL_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/xslthl-2.0.2.jar"
 
@@ -118,7 +149,7 @@ ${XINCLUDEFLAG}"
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
 
-ARGS=$(getopt -o h,c,r:,C,v -l help,cleanup,rootid:,no-category,verbose -- "$@")
+ARGS=$(getopt -o h,c,r:,C,E,v -l help,cleanup,rootid:,no-category,no-examples,verbose -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
@@ -135,6 +166,9 @@ while true ; do
       ;;
     --no-category|-C)
       CATEGORY=0
+      ;;
+    --no-examples|-E)
+      EXAMPLES=0
       ;;
     --verbose|-v)
       VERBOSE=1
@@ -157,7 +191,7 @@ fi
 __createlinks
 copyprettifier
 
-echo -e "\nCleaning up HTML..."
+echo -e "\n*** Cleaning up HTML..."
 
 # Shell trick: Depending on $ROOTID, you get either
 # ${BUILDDIR}/tmp/*.html or ${BUILDDIR}/tmp/$ROOTID.html
@@ -170,6 +204,9 @@ for i in ${HTMLFILES}; do
  __logging "Cleaning ${_base}"
  __htmlcleanup ${HTMLOUT}/${_base} $i
 done
+echo
+
+collectexamples
 
 echo -e "\nUse ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
 __logging "Finished ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
