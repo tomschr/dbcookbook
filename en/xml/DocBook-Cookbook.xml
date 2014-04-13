@@ -22,7 +22,7 @@
   <title>The DoCookBook</title>
   <subtitle>Recipes for DocBook Developers</subtitle>
   <info>
-    <pubdate role="currentdatetime">2014-04-12</pubdate>
+    <pubdate role="currentdatetime">2014-04-13</pubdate>
     <releaseinfo role="draft">Draft (Version 0.6i)</releaseinfo>
     <definitions definitionfile="defs.xml"/>
     <rdf:RDF
