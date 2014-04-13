@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:dct="http://purl.org/dc/terms/">
+  <head profile="http://dublincore.org/documents/dc-html/">
+    <title>DoCookBook | Recipies for DocBook XSL Developers</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--  -->
+    <meta http-equiv="content-language" content="en" />
+    <meta name="date" content="2014-04-13T13:30:00+01:00" />
+    <meta name="DC.date" content="2014-04-13T13:30:00+01:00"
+      scheme="DCTERMS.W3CDTF" />
+    <meta name="description" xml:lang="en"
+      content="DoCookBook - Recipies for DocBook XSL Developers" />
+    <meta name="keywords" xml:lang="en"
+      content="DocBook, DocBook XSL, XML, RELAX NG, DTD, XSLT, XPath, XSL-FO, EPUB, E-Book, Customization" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="Thomas Schraitle" />
+    <meta name="generator" content="Toms" />
+    <!-- Dublin Core: -->
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+    <link rel="schema.DCTERMS" href="http://purl.org/dc/terms/" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <meta name="DC.title" content="DoCookBook" />
+    <meta name="DC.creator" content="Thomas Schraitle" />
+    <meta name="DC.subject"
+      content="Recipies for DocBook XSL Developers" />
+    <meta name="DC.description"
+      content="Recipies for DocBook XSL Developers" />
+    <!--<meta name="DC.publisher" content=""/>-->
+    <meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType" />
+    <meta name="DC.format" content="text/html" scheme="DCTERMS.IMT" />
+    <meta name="DC.identifier"
+      content="http://sourceforge.net/projects/doccookbook/"
+      scheme="DCTERMS.URI" />
+    <meta name="DC.language" content="en" scheme="DCTERMS.RFC3066" />
+    <meta name="DC.relation" content="http://dublincore.org/"
+      scheme="DCTERMS.URI" />
+    <!--  -->
+    <link rel="alternate" type="application/rss+xml"
+      title="[DoCookBook] Recent Code Changes (RSS)"
+      href="http://sourceforge.net/p/doccookbook/code/feed.rss" />
+    <link rel="alternate" type="application/atom+xml"
+      title="[DoCookBook] Recent Code Changes (Atom)"
+      href="http://sourceforge.net/p/doccookbook/code/feed.atom" />
+    <link rel="alternate" type="application/rss+xml"  
+      title="[DoCookBook] Recent Changes to Tickets (RSS)"
+      href="http://sourceforge.net/p/doccookbook/tickets/feed.rss" />
+    <link rel="alternate" type="application/atom+xml"  
+      title="[DoCookBook] Recent Changes to Tickets (Atom)"
+      href="http://sourceforge.net/p/doccookbook/tickets/feed.atom" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="bs/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="fa/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <link href="site.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="wrap">
+      <nav class="navbar nav-justified navbar-default navbar-inverse hidden-print" role="navigation">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#dbc-navigation">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="http://sourceforge.net/projects/doccookbook/"><i
+                    class="fa fa-home"></i> Home</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="dbc-navigation">
+            <ul class="nav navbar-nav">
+              <li><a href="#mission"><i class="fa fa-eye"></i>
+                  Mission</a></li>
+              <!--<li><a href="#project"><i class="fa fa-thumb-tack"></i> SF
+                  Project</a></li>-->
+              <!-- <span class="glyphicon glyphicon-screenshot"></span> -->
+              <li><a href="#download"><i class="fa fa-bitbucket"></i>
+                  Repository</a></li>
+              <!--<li><a href="#about"><span
+                    class="glyphicon glyphicon-user"></span>
+                About</a></li>-->
+              
+              <!-- glyphicon glyphicon-envelope -->
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#contact"><i class="fa fa-envelope"></i>
+                  Contact</a></li>
+            </ul>
+            <!-- /.navbar-collapse -->
+          </div>
+        <!-- /.container-fluid -->  
+        </div>
+      </nav>
+            
+      <!-- Jumbotron -->
+      <div class="jumbotron jumpotron-ad hidden-print">
+        <div class="container">
+          <h1 ><i class="fa fa-magic"></i> DoCookBook</h1>
+          <h2><small><span class="label label-warning"
+              >Draft</span></small></h2>
+          <h2><small>Created by Thomas Schraitle</small></h2>
+          <p>Write better XSLT code with deeper understanding of your DocBook
+            stylesheets.</p>
+          <!--<div class="btn-group">
+            <button type="button" class="btn btn-default">
+              <a href="html/en/"><span
+                  class="glyphicon glyphicon-list-alt"></span> Read
+                HTML</a>
+            </button>
+            <button type="button" class="btn btn-default">
+              <a href="html/en/DocCookBook.html"><span
+                  class="glyphicon glyphicon-list-alt"></span> Read
+                Single HTML</a>
+            </button>
+          </div>-->
+          <div class="btn-group">
+            <a class="btn btn-default btn-lg" title="Read offline" href="http://sourceforge.net/projects/doccookbook/files/?source=navbar">
+              <i class="fa fa-download fa-lg"></i> Download</a>
+            <a class="btn btn-default btn-lg" href="html/en/index.html">
+              <i class="fa fa-html5"></i> Read Online
+            </a>
+          </div>
+        </div>
+     </div>
+      
+      <div class="container">
+        <section id="mission">
+          <div class="alert alert-warning">
+            <h2><!--<i class="fa fa-quote-left"></i>--><i class="fa fa-eye"></i> Mission</h2>
+            <!--<blockquote>-->
+              <p>The DoCookBook project aims to create an open source
+              book about <a href="http://www.docbook.org" class="alert-link"
+                title="DocBook.org">DocBook</a> and the <a class="alert-link"
+                  href="http://docbook.sourceforge.net/release/xsl/current/doc/"
+                  >DocBook XSL stylesheets</a> written in a cookbook
+              style and released under a Creative Commons
+              license.</p>
+            <!--</blockquote>-->
+          </div>
+        </section>
+        <section>
+          <p class="aldusleaf">❦</p>
+          <p class="lead">
+            This project is written in a topic oriented manner: it
+            presents problems and their solution to help DocBook
+            developers to quickly get to the point.
+          </p>
+          <p class="aldusleaf">❦</p>
+        </section>
+        <section id="download">
+          <div class="row">
+<!--            <div id="project" class="col-md-4 col-sm-6">
+              <h2><i class="fa fa-thumb-tack"></i> Project Summary</h2>
+              <p>Find out about the project on the <a
+                  href="http://sf.net/projects/doccookbook/">Project’s
+                  summary page</a>, its ticket system, mailinglists, 
+                repository and more.</p>
+            </div>-->
+            
+            <div class="col-md-4 col-sm-6">
+              <h2><i class="fa fa-bitbucket"></i> Repository</h2>
+              <p>If you are interested in the source code, clone it with
+                the Mercurial command <code>hg</code>:</p>
+              <div>
+                <pre><b>hg</b> clone http://hg.code.sf.net/p/doccookbook/code</pre>
+              </div>
+            </div>
+            
+            <div id="license" class="col-md-4 col-sm-6">
+              <h2><i class="fa fa-gavel"></i> License</h2>
+              <p><span>DoCookBook</span> is currently licensed under a 
+                <a rel="license" title="CC BY SA 3.0 EN"
+              href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
+              >Creative Commons Attribution-NonCommercial-ShareAlike 3.0
+              Germany License</a>.
+              </p>
+              <p>It will be released in the future under a
+            <a rel="license" title="CC BY SA 3.0 DE"
+              href="http://creativecommons.org/licenses/by-sa/3.0/de/deed.en"
+              >Creative Commons Attribution-ShareAlike 3.0 Germany
+              License</a>. Permissions beyond the scope of this license may
+            be available at <a
+              href="http://doccookbook.sourceforge.net/html/en/dbc.preface.license.html"
+              rel="cc:morePermissions">Legalnotice</a>.
+              </p>
+            </div>
+            
+            <div id="feeds" class="col-md-4 col-sm-6">
+              <h2><i class="fa fa-rss"></i> Feeds</h2>
+              <p>You can also follow some RSS/Atom feeds:</p>
+              <div class="btn-group">
+                <p>The Code Changes Feed</p>
+                <button type="button" class="btn btn-default">
+                  <a href="http://sf.net/p/doccookbook/code/feed.rss"
+                    role="button">RSS</a>
+                </button>
+                <button type="button" class="btn btn-default">
+                  <a href="http://sf.net/p/doccookbook/code/feed.atom"
+                    role="button">Atom</a>
+                </button>
+              </div>
+              <div class="btn-group">
+                <p>The Ticket Feed</p>
+                <button type="button" class="btn btn-default">
+                  <a href="http://sf.net/p/doccookbook/tickets/feed.rss"
+                    >RSS</a>
+                </button>
+                <button type="button" class="btn btn-default">
+                  <a
+                    href="http://sf.net/p/doccookbook/tickets/feed.atom"
+                    >Atom</a>
+                </button>
+              </div>
+            </div>
+            
+            <div id="contact" class="col-md-4 col-sm-6">
+              <h2><i class="fa fa-envelope"></i> Contact</h2>
+              <p>Do you want to write me some praise? Critism? Found an
+                error or would like to give me some new ideas? Select
+                one of the following methods: </p>
+              <ul>
+                <li>Write me a mail to <a              href="mailto:tom_schr&#064;users&#x2e;sourceforge&#x2e;net"
+                >tom_schr&#064;users&#x2e;sourceforge&#x2e;net</a>.</li>
+                <li>Open a ticket on <a
+                    href="http://sf.net/p/doccookbook/tickets"
+                    >Sourceforge</a>.</li>
+              </ul>
+            </div>
+            <div id="donate" class="col-md-4 col-sm-6">
+              <h2><i class="fa fa-money"></i> Donate</h2>
+              <p>If you find this website useful and want to support
+                this project, please consider to donate a small amount
+                of money:</p>
+              <form action="https://www.paypal.com/cgi-bin/webscr"
+                method="post">
+                <input type="hidden" name="cmd" value="_s-xclick"
+                   /><input type="hidden" name="hosted_button_id"
+                  value="8XQXHPHCCWRQW" /><input type="image"
+                  src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                  name="submit"
+                  alt="PayPal - The safer, easier way to pay online!"
+                   /><img alt=""
+                  src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif"
+                  width="1" height="1" /></form>
+              <div class="flattr"><a target="_blank"
+                  href="http://flattr.com/thing/448652/The-DoCookBook-Project"
+                    ><img
+                    src="http://api.flattr.com/button/flattr-badge-large.png"
+                    alt="Flattr this" title="Flattr this" border="0"
+                   /></a></div>
+            </div>
+            <div id="others" class="col-md-4 col-sm-6">
+              <h2> <i class="fa fa-comments"></i> What others say</h2>
+              <p><q>I discovered your project via web search and found it very useful.</q></q></p>
+              <p><q>Very nice one!!!</q></p>
+              <p><q>Cool!</q></p>
+              <p><q>Very interesting project, I'll include it into my Blog
+                roll!</q></p>
+            </div>
+          </div>
+        </section>
+      
+      <section id="thanks-to">
+        <h2 class="page-header">Thanks To</h2>
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <p>Thanks to Norman Walsh, Robert Stayton, and all the
+              developers of DocBook and the DocBook XSL stylesheets.</p>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <p>A HUGE thanks goes to all my proofreaders, people which
+              gave me feedback, or discussed things.</p>
+          </div>
+          <div class="col-md-4 col-sm-4">
+            <p>A big <q>thank you</q> for Bootstrap, Font Awesome, Exo
+              font, Piwik, and all the other great open source projects.</p>
+          </div>
+        </div>
+      </section>
+      </div>
+      
+      <!-- Site footer -->
+      <footer id="footer" class="footer hidden-print">
+        <div class="container">
+          <div>
+            <p>
+              <!--<a href="http://validator.w3.org/check?uri=referer"><img
+              src="http://www.w3.org/Icons/valid-xhtml-rdfa"
+              alt="Valid XHTML + RDFa" height="31" width="88" /></a>-->
+              <!--<a href="http://jigsaw.w3.org/css-validator/check/referer"
+              ><img src="http://jigsaw.w3.org/css-validator/images/vcss"
+              width="88" height="31" alt="CSS is valid!" /></a>-->
+              <a href="http://opensuse.org"><img width="110px"
+                  height="32px" style="border: 0px solid;"
+                  alt="openSUSE.org" title="openSUSE.org"
+                  src="http://files.opensuse.org/opensuse/en/f/ff/Opensuse_1.png"
+                 /></a>
+              <a rel="license"
+                href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/"
+                  ><img alt="Creative Commons License" width="88px"
+                  height="31px" style="border-width:0"
+                  src="http://i.creativecommons.org/l/by-nc-sa/3.0/de/88x31.png"
+                 /></a>
+            </p>
+          </div>
+          <div>
+            <p>This page uses:</p>
+            <ul>
+              <li><a href="http://fontawesome.io"><i
+                  class="fa fa-flag"></i> Font Awesome</a>
+              <span class="hide-xs">·</span> Created by <a
+                href="http://twitter.com/davegandy">Dave Gandy</a></li>
+              <li><a href="http://getbootstrap.com"><i class="fa fa-btc"></i>
+                Bootstrap</a></li>
+              <li><a href="http://piwik.org">Piwik</a>, an
+              open source programm for real time web analytics. If you
+              are concerned, <a href="html/dbc.preface.piwik.html">find
+                out why I use it</a>.</li>
+            </ul>
+          </div>
+        </div>
+      </footer>      
+    </div>
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bs/js/jquery-1.11.0.min.js"></script>
+    <script src="bs/js/bootstrap.min.js"></script>
+    <!-- Piwik -->
+<!--<script type="text/javascript">
+var pkBaseURL = (("https:" == document.location.protocol) ? "https://sourceforge.net/apps/piwik/doccookbook/" : "http://sourceforge.net/apps/piwik/doccookbook/");
+document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script type="text/javascript;">
+try {
+var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 1);
+piwikTracker.trackPageView();
+piwikTracker.enableLinkTracking();
+} catch( err ) {}
+</script><noscript><p><img src="http://sourceforge.net/apps/piwik/doccookbook/piwik.php?idsite=1" style="border:0" alt=""/></p></noscript>-->
+<!-- End Piwik Tag -->
+  </body>
+</html>
