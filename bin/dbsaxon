@@ -9,6 +9,7 @@ CATEGORY=1
 EXAMPLES=1
 CLEANUP=0
 ARCHIVE=0
+UPLOAD=0
 INIT=0
 ROOTID=""
 
@@ -18,6 +19,7 @@ Transforms DocBook code into single and chunked XHTML.
 
 -h, --help         Prints this help text
 -A, --archive      Create archive (default no)
+-U, --upload       Upload archive (built with -A/--archive, default no)
 -I, --init         Remove any old build directory before starting
 -c, --cleanup      Only perform cleanup step
 -C, --no-category  Don't create links to other categories
@@ -42,6 +44,12 @@ function archive_dbcookbook() {
   tar -hcvjpf ${ARCHIVE_BASE}-${VERSION}.tar.bz2 ${ARCHIVE_BASE}-${VERSION}
   tar -hcvjpf ${ARCHIVE_BASE}-${VERSION}-examples.tar.bz2 ${ARCHIVE_BASE}-${VERSION}/examples/
   popd 2>/dev/null
+}
+
+function upload_archive() {
+  local VERSION="v0.6"
+ 
+  scp ${BUILDDIR}/*.tar.bz2 ${SFUSER}@${SFSITE}:${SFPATH}/${VERSION}
 }
 
 function copyprettifier() {
@@ -170,7 +178,7 @@ ${XINCLUDEFLAG}"
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
 
-ARGS=$(getopt -o h,c,I,A,r:,C,E,v -l help,cleanup,init,archive,rootid:,no-category,no-examples,verbose -- "$@")
+ARGS=$(getopt -o h,c,I,A,U,r:,C,E,v -l help,cleanup,init,archive,upload,rootid:,no-category,no-examples,verbose -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
@@ -183,6 +191,9 @@ while true ; do
       ;;
     -A|--archive)
       ARCHIVE=1
+      ;;
+    -U|--upload)
+      UPLOAD=1
       ;;
     -c|--cleanup)
       CLEANUP=1
@@ -242,14 +253,15 @@ if [[ $ARCHIVE -eq 1 ]]; then
   archive_dbcookbook
 fi
 
+if [[ $UPLOAD -eq 1 ]]; then
+  upload_archive
+fi
+
 # Shell trick:
 # Depending on if ROOTID is set (or not), the following line expands to
 # either "index.html" or "$ROOTID" + ".html"
 echo -e "\nUse ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
 __logging "Finished ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
-
-
-
 
 __logging "---------------------------------------------------"
 
