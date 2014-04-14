@@ -8,6 +8,7 @@ source bin/common.sh
 CATEGORY=1
 EXAMPLES=1
 CLEANUP=0
+ARCHIVE=0
 INIT=0
 ROOTID=""
 
@@ -16,6 +17,7 @@ cat << EOF
 Transforms DocBook code into single and chunked XHTML.
 
 -h, --help         Prints this help text
+-A, --archive      Create archive (default no)
 -I, --init         Remove any old build directory before starting
 -c, --cleanup      Only perform cleanup step
 -C, --no-category  Don't create links to other categories
@@ -28,6 +30,18 @@ EOF
 
 function initenv() {
   [[ $INIT -eq 1 ]] && rm -rf ${BUILDDIR}
+}
+
+function archive_dbcookbook() {
+  local x
+  local VERSION=0.6
+
+  cp README.rst ${HTMLOUT}/
+  pushd ${BUILDDIR} 2>/dev/null
+  ln -sf html ${ARCHIVE_BASE}-${VERSION}
+  tar -hcvjpf ${ARCHIVE_BASE}-${VERSION}.tar.bz2 ${ARCHIVE_BASE}-${VERSION}
+  tar -hcvjpf ${ARCHIVE_BASE}-${VERSION}-examples.tar.bz2 ${ARCHIVE_BASE}-${VERSION}/examples/
+  popd 2>/dev/null
 }
 
 function copyprettifier() {
@@ -73,6 +87,7 @@ function saxon_db2singlexhtml() {
   [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> Single XHTML ..."
   cmd="saxon -o ${BUILDDIR}/tmp/DoCookBook.html  ${xmlin} \
      ${BASEXSLT1}/xhtml/docbook.xsl \
+     generate.revhistory.link=0 generate.legalnotice.link=0 \
      ${ROOTID:+rootid=$ROOTID}"
   __logging "Using command: $cmd"
   $cmd || exit_on_error "Something went wrong"
@@ -155,7 +170,7 @@ ${XINCLUDEFLAG}"
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
 
-ARGS=$(getopt -o h,c,I,r:,C,E,v -l help,cleanup,init,rootid:,no-category,no-examples,verbose -- "$@")
+ARGS=$(getopt -o h,c,I,A,r:,C,E,v -l help,cleanup,init,archive,rootid:,no-category,no-examples,verbose -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
@@ -165,6 +180,9 @@ while true ; do
       ;;
     -I|--init)
       INIT=1
+      ;;
+    -A|--archive)
+      ARCHIVE=1
       ;;
     -c|--cleanup)
       CLEANUP=1
@@ -220,11 +238,19 @@ echo
 
 collectexamples
 
+if [[ $ARCHIVE -eq 1 ]]; then
+  archive_dbcookbook
+fi
+
 # Shell trick:
-# Depending on if ROOTID is set, the following line expands to
+# Depending on if ROOTID is set (or not), the following line expands to
 # either "index.html" or "$ROOTID" + ".html"
 echo -e "\nUse ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
 __logging "Finished ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
+
+
+
+
 __logging "---------------------------------------------------"
 
 # EOF
