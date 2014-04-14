@@ -59,7 +59,6 @@
   <xsl:template match="othercredit|d:othercredit" mode="book.titlepage.recto.auto.mode"/>
   
   <xsl:template match="pubdate|d:pubdate" mode="book.titlepage.recto.auto.mode">
-    
     <div xsl:use-attribute-sets="book.titlepage.recto.style" class="pubdate">
       <p>
         <xsl:choose>
@@ -95,6 +94,22 @@
     </div>
   </xsl:template>
   
+  <xsl:template match="releaseinfo|d:releaseinfo" mode="book.titlepage.recto.auto.mode">
+    <div xsl:use-attribute-sets="book.titlepage.recto.style">
+      <xsl:call-template name="paragraph">
+        <xsl:with-param name="class" select="local-name(.)"/>
+        <xsl:with-param name="content">
+          <xsl:if test="@role = 'draft'">
+            <xsl:call-template name="gentext">
+              <xsl:with-param name="key" select="'Draft'"/>
+            </xsl:call-template>
+            <xsl:text> </xsl:text>
+          </xsl:if>
+          <xsl:apply-templates mode="titlepage.mode"/>
+        </xsl:with-param>
+      </xsl:call-template>
+    </div>
+  </xsl:template>
   
   <!-- Chapter Titlepages -->
   <xsl:template name="chapter.titlepage.recto">
