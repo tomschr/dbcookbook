@@ -57,7 +57,7 @@
       <listitem>
         <para>The following stylesheet to apply it to your XML
           structure:</para>
-        <example xml:id="ex.structure.profile-envar.xml">
+        <example xml:id="ex.structure.make_acronyms.xsl">
           <title><filename>make_acronyms.xsl</filename></title>
           <info>
             <output xmlns="urn:x-toms:docbook-ext">
