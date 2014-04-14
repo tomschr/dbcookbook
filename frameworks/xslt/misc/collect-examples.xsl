@@ -17,7 +17,7 @@
   <xsl:param name="base.dir"/>
   <xsl:param name="base.example.dir">examples/</xsl:param>
   <xsl:param name="stylesheet.result.type" select="'xhtml'"/>
-  <xsl:param name="chunk.quietly" select="0"/>
+  <xsl:param name="chunk.quietly" select="1"/>
   <xsl:param name="verbosity" select="0"/>
   
   <xsl:variable name="direction.align.start">left</xsl:variable>
