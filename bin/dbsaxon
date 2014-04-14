@@ -122,7 +122,7 @@ function collectexamples() {
         params="--stringparam chunk.quietly 0"
     fi
     xsltproc  --nonet --novalid \
-        --stringparam base.dir "${HTMLOUT}" $params \
+        --stringparam base.dir "${HTMLOUT}/" $params \
         ${COLLECTEXAMPLES} \
         ${xmlin}
   else
