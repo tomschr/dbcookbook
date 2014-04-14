@@ -56,11 +56,10 @@
 
     <!-- Bootstrap core CSS -->
     <link href="bs/css/bootstrap.min.css" rel="stylesheet" />
-
     <link href="fa/css/font-awesome.css" rel="stylesheet" />
 
     <!-- Custom styles for this template -->
-    <link href="site.css" rel="stylesheet" />
+    <link href="dbcookbook.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -111,14 +110,13 @@
         <!-- /.container-fluid -->  
         </div>
       </nav>
-            
-      <!-- Jumbotron -->
-      <div class="jumbotron jumpotron-ad hidden-print">
+
+      <div class="jumbotron jumpotron-ad">
         <div class="container">
           <h1 ><i class="fa fa-magic"></i> DoCookBook</h1>
           <h2><small><span class="label label-warning"
               >Draft</span></small></h2>
-          <h2><small>Created by Thomas Schraitle</small></h2>
+          <!--<h2><small>Created by Thomas Schraitle</small></h2>-->
           <p>Write better XSLT code with deeper understanding of your DocBook
             stylesheets.</p>
           <!--<div class="btn-group">
@@ -140,6 +138,14 @@
               <i class="fa fa-html5"></i> Read Online
             </a>
           </div>
+        
+          <div class="self-promotion">
+            <a class="" href="http://sourceforge.net/projects/doccookbook/">SF Project</a>
+             ·
+            <a class="" href="#hg-repo">Mercurial Repository</a>
+             ·
+            <span>Created by Thomas Schraitle</span>
+          </div>
         </div>
      </div>
       
@@ -158,7 +164,7 @@
             <!--</blockquote>-->
           </div>
         </section>
-        <section>
+        <section id="summary">
           <p class="aldusleaf">❦</p>
           <p class="lead">
             This project is written in a topic oriented manner: it
@@ -167,7 +173,7 @@
           </p>
           <p class="aldusleaf">❦</p>
         </section>
-        <section id="download">
+        <section>
           <div class="row">
 <!--            <div id="project" class="col-md-4 col-sm-6">
               <h2><i class="fa fa-thumb-tack"></i> Project Summary</h2>
@@ -177,7 +183,7 @@
                 repository and more.</p>
             </div>-->
             
-            <div class="col-md-4 col-sm-6">
+            <div id="hg-repo" class="col-md-4 col-sm-6">
               <h2><i class="fa fa-bitbucket"></i> Repository</h2>
               <p>If you are interested in the source code, clone it with
                 the Mercurial command <code>hg</code>:</p>
@@ -204,7 +210,6 @@
               rel="cc:morePermissions">Legalnotice</a>.
               </p>
             </div>
-            
             <div id="feeds" class="col-md-4 col-sm-6">
               <h2><i class="fa fa-rss"></i> Feeds</h2>
               <p>You can also follow some RSS/Atom feeds:</p>
@@ -232,7 +237,6 @@
                 </button>
               </div>
             </div>
-            
             <div id="contact" class="col-md-4 col-sm-6">
               <h2><i class="fa fa-envelope"></i> Contact</h2>
               <p>Do you want to write me some praise? Critism? Found an
@@ -271,13 +275,66 @@
             </div>
             <div id="others" class="col-md-4 col-sm-6">
               <h2> <i class="fa fa-comments"></i> What others say</h2>
-              <p><q>I discovered your project via web search and found it very useful.</q></q></p>
+              <p><q>I discovered your project via web search and found it very useful.</q></p>
               <p><q>Very nice one!!!</q></p>
               <p><q>Cool!</q></p>
               <p><q>Very interesting project, I'll include it into my Blog
                 roll!</q></p>
             </div>
           </div>
+        </section>
+      
+        <section id="benefits" class="feature-list">
+          <h2 class="page-header">Benefits</h2>
+          <div class="row">
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-thumbs-o-up"></i> Made for DocBook
+                5</h3>
+              <p>Designed from scratch to support <a
+                href="http://docbook.org/tdg51/">DocBook&#xa0;5</a>.</p>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-lightbulb-o"></i> Focused on Problems
+                and Solutions</h3>
+              <p>Each topic is written with a problem, the solution, and
+              some discussion.</p>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-bitbucket"></i> Source Available</h3>
+              <p>Download the source code from the <a href="#hg-repo">Mercurial repository</a>
+                at Sourceforge.</p>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-wrench"></i> For DocBook
+                Developers</h3>
+              <p>Topics helps developers to quickly understand the
+                problem.</p>
+            </div>
+            
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-umbrella"></i> Lots of Examples!</h3>
+              <p>We learn with examples. The book is full of commented 
+                examples, easy to follow.</p>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-check-square-o"></i> Easyness
+                ahead!</h3>
+              <p>Each topic contains a marker to show how easy (or
+                difficult) this topic is.</p>
+            </div>
+            
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-smile-o"></i> Available in Different Formats</h3>
+              <p>Choose whatever format you prefer, be it XHTML, PDF, or
+                EPUB.</p>
+            </div>
+            <div class="col-md-4 col-sm-6">
+              <h3><i class="fa fa-legal"></i> CC License</h3>
+              <p>DoCookBook is free to read and to adapt under the terms
+                of <a href="http://creativecommons.org">Creative Commons</a>.</p>
+            </div>
+          </div>
+          
         </section>
       
       <section id="thanks-to">
