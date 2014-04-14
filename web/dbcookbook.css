@@ -6,7 +6,7 @@
  */
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);*/
 
-@import url(http://fonts.googleapis.com/css?family=Exo+2:300,400,700,800|Ubuntu+Mono:400,400italic,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Exo+2:300,400,700,800|Ubuntu+Mono:400,700);
 
 body
 {
@@ -61,4 +61,5 @@ h2 {
 
 pre, code {
   font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', monospace;
+  font-style: normal;
 }
