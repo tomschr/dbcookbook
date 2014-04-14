@@ -6,7 +6,7 @@
  */
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);*/
 
-@import url(http://fonts.googleapis.com/css?family=Exo+2:300,400,700,800|Ubuntu+Mono:400,700);
+@import url(http://fonts.googleapis.com/css?family=Exo+2:300,400,700|Ubuntu+Mono:400,700);
 
 body
 {
@@ -26,15 +26,18 @@ nav.navbar {
 }
 
 .jumbotron h1 {
-  font-family: "Exo 2";
   font-weight: 700;
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.149);
 }
 
-h2 {
-  font-family: "Exo 2";
+h1, h2, h3, h4, h5 {
+  font-family: "Exo 2", "Open Sans", 'DejaVu Sans', sans-serif;
+}
+
+h2, h3 {  
   font-weight: 400;
 }
+
 
 #footer {
   display:block;
@@ -61,5 +64,9 @@ h2 {
 
 pre, code {
   font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', monospace;
-  font-style: normal;
+  font-weight: 400;
+}
+
+pre b {
+  font-weight:700;
 }
