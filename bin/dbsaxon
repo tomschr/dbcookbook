@@ -220,8 +220,11 @@ echo
 
 collectexamples
 
-echo -e "\nUse ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
-__logging "Finished ${BUILDDIR}/html/${ROOTID:+$ROOTID.html}"
+# Shell trick:
+# Depending on if ROOTID is set, the following line expands to
+# either "index.html" or "$ROOTID" + ".html"
+echo -e "\nUse ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
+__logging "Finished ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
 __logging "---------------------------------------------------"
 
 # EOF
