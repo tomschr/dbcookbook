@@ -8,13 +8,15 @@ source bin/common.sh
 CATEGORY=1
 EXAMPLES=1
 CLEANUP=0
+INIT=0
 ROOTID=""
 
 function print_help() {
 cat << EOF
-Transforms DocBook into XHTML chunks, adding cleanup step
+Transforms DocBook code into single and chunked XHTML.
 
 -h, --help         Prints this help text
+-I, --init         Remove any old build directory before starting
 -c, --cleanup      Only perform cleanup step
 -C, --no-category  Don't create links to other categories
 -E, --no-examples  Don't generate examples
@@ -22,6 +24,10 @@ Transforms DocBook into XHTML chunks, adding cleanup step
 -r, --rootid ROOTID
                    Pass xml:id to only process a certain chapter, section,etc.
 EOF
+}
+
+function initenv() {
+  [[ $INIT -eq 1 ]] && rm -rf ${BUILDDIR}
 }
 
 function copyprettifier() {
@@ -149,13 +155,16 @@ ${XINCLUDEFLAG}"
 export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
 
 
-ARGS=$(getopt -o h,c,r:,C,E,v -l help,cleanup,rootid:,no-category,no-examples,verbose -- "$@")
+ARGS=$(getopt -o h,c,I,r:,C,E,v -l help,cleanup,init,rootid:,no-category,no-examples,verbose -- "$@")
 eval set -- "$ARGS"
 while true ; do
   case "$1" in
     -h|--help)
       print_help
       exit
+      ;;
+    -I|--init)
+      INIT=1
       ;;
     -c|--cleanup)
       CLEANUP=1
@@ -182,6 +191,9 @@ while true ; do
 done
 
 __logging "Started. Commandline arguments: $ARGS"
+
+initenv
+
 [[ $VERBOSE != "" ]] && echo "Transforming..."
 if [[  $CLEANUP -eq 0 ]]; then
   saxon_db2xhtml 
