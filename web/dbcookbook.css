@@ -62,6 +62,14 @@ h2, h3 {
   font-size: 200%;
 }
 
+.bs-booticon {
+  text-align:center;
+  background-color: transparent;
+  padding: 1px 4px;
+  border-radius: 15%;
+  border: 1px solid #428BCA;
+}
+
 pre, code {
   font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', monospace;
   font-weight: 400;
