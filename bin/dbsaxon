@@ -37,9 +37,20 @@ function initenv() {
   copyprettifier
 }
 
+function getofficialversion() {
+# Get the "official" public version (marked as a Mercurial tag)
+# The "last(tag(),1)" expression returns the last used tag
+#
+  local version=$(hg log -r "last(tag(),1)" --template "{tags}")
+  
+  __logging "getofficialversion: Found public version '${version}'"
+  
+  echo $version
+}
+
 function archive_dbcookbook() {
   local x
-  local VERSION=0.6
+  local VERSION=$(getofficialversion)
 
   cp README.rst ${HTMLOUT}/
   pushd ${BUILDDIR} 2>/dev/null
@@ -50,7 +61,7 @@ function archive_dbcookbook() {
 }
 
 function upload_archive() {
-  local VERSION="v0.6"
+  local VERSION=$(getofficialversion)
  
   scp ${BUILDDIR}/*.tar.bz2 ${SFUSER}@${SFSITE}:${SFPATH}/${VERSION}
 }
@@ -60,17 +71,6 @@ function copyprettifier() {
     cp -a ${FRAMEWORKSDIR}/js/google-code-prettify/src/ ${HTMLOUT}/highlighter
   fi
   cp ${FRAMEWORKSDIR}/js/google-code-prettify/styles/*.css ${HTMLOUT}/highlighter/
-}
-
-function getofficialversion() {
-# Get the "official" public version (marked as a Mercurial tag)
-# The "last(tag(),1)" expression returns the last used tag
-#
-  local version=$(hg log -r "last(tag(),1)" --template "{tags}")
-  
-  __logging "getofficialversion: Found public version '${version}'"
-  
-  echo $version
 }
 
 
