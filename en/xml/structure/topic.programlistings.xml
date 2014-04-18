@@ -26,8 +26,6 @@
     <keywordset>
       <keyword>programlistings</keyword>
       <keyword>code</keyword>
-      <keyword>XInclude</keyword>
-      <keyword>textdata</keyword>
     </keywordset>
   </info>
   
@@ -271,7 +269,8 @@ sayhello("Tux")</programlisting>
     </section>
     <section xml:id="dbc.structure.programlistings.externals">
       <title>Incorporating External Files</title>
-      <para>TBD</para>
+      <para>To incorporate external files is explained in a separate
+        topic. Refer to <xref linkend="dbc.structure.programlistings-external"/>.</para>
     </section>
     
   </section>
@@ -280,6 +279,9 @@ sayhello("Tux")</programlisting>
     <itemizedlist>
       <listitem>
         <para><link xlink:href="http://www.sagehill.net/docbookxsl/ProgramListings.html"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.structure.programlistings-external"/></para>
       </listitem>
     </itemizedlist>
   </section>
