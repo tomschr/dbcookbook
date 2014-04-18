@@ -22,7 +22,7 @@ DBXSLT="/usr/share/xml/docbook/stylesheet/nwalsh/current"
 DB5NS="http://docbook.org/ns/docbook"
 
 ARCHIVE_BASE=DoCookBook
-SFUSER=${1:-tom_schr}
+SFUSER=tom_schr
 SFPROJECT=doccookbook
 SFSITE=frs.sourceforge.net
 SFPATH=/home/frs/project/${SFPROJECT}
