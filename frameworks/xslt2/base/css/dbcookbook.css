@@ -52,7 +52,7 @@ p {
   font-weight:normal;
   font-size:110%;
 }
-code, .command, pre,
+code, .command, pre, .property,
 div.programlisting, div.screen {
   font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
 }
