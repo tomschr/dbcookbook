@@ -31,7 +31,10 @@ EOF
 }
 
 function initenv() {
+  [[ $VERSION -gt 0 ]] && echo "*** Initializing build environment..."
   [[ $INIT -eq 1 ]] && rm -rf ${BUILDDIR}
+  __createlinks
+  copyprettifier
 }
 
 function archive_dbcookbook() {
@@ -54,63 +57,112 @@ function upload_archive() {
 
 function copyprettifier() {
   if [[ ! -e ${HTMLOUT}/highlighter/ ]]; then
-    cp -av ${FRAMEWORKSDIR}/js/google-code-prettify/src/ ${HTMLOUT}/highlighter
+    cp -a ${FRAMEWORKSDIR}/js/google-code-prettify/src/ ${HTMLOUT}/highlighter
   fi
-  cp -v ${FRAMEWORKSDIR}/js/google-code-prettify/styles/*.css ${HTMLOUT}/highlighter/
+  cp ${FRAMEWORKSDIR}/js/google-code-prettify/styles/*.css ${HTMLOUT}/highlighter/
+}
+
+function getofficialversion() {
+# Get the "official" public version (marked as a Mercurial tag)
+# The "last(tag(),1)" expression returns the last used tag
+#
+  local version=$(hg log -r "last(tag(),1)" --template "{tags}")
+  
+  __logging "getofficialversion: Found public version '${version}'"
+  
+  echo $version
+}
+
+
+function updatereleaseinfo() {
+    local xmlin=$1
+    local version=$(getofficialversion)
+    local changeweb=0
+    
+    __logging "updatereleaseinfo: Update releaseinfo for file '${xmlin}'"
+    
+    if [[ $CATEGORY -eq 0 ]]; then
+        cp "${xmlin}" "${xmlin}.tmp"
+        xmlin=${xmlin}.tmp
+    fi
+    
+    # Update releaseinfo[@role='draft'] with current version number
+    xml ed --inplace -N d=http://docbook.org/ns/docbook \
+        --update "/d:book/d:info/d:releaseinfo[@role='draft'][1]" \
+        -v "${version}" "${xmlin}"
+    __logging "updatereleaseinfo: Inserted version '${version}' in file '${xmlin}'"
+    
+    # Change the web/index.html too?
+#     if [[ $changeweb -eq 1 ]]; then
+#       xml ed --inplace \
+#         --update "/html/body//div[@class='self-promotion']/span[@class='version'][1]"
+#         -v "${version}" "${WEBINDEX}"
+#       __logging "updatereleaseinfo: Inserted version '${version}' in file '${WEBINDEX}'"
+#     fi
+    
+    # Return our changed file
+    echo $xmlin
+}
+
+function resolvecategories() {
+  local xmlin=$1
+  
+  __logging "resolvecategories: Got file ${xmlin}"
+  
+  if [[ $CATEGORY -eq 1 ]]; then
+    __logging "resolvecategories: Resolving category links..."
+    
+    if [[ ! -e ${xmlin}.resolved ]]; then
+        saxon -o "${xmlin}.resolved" "${xmlin}" "${CATEGORYXSL}"
+        __logging "resolvecategories: Done"
+    else
+        __logging "resolvecategories: Using existing ${xmlin}.resolved"
+    fi
+    
+    # Return the .resolved file
+    echo ${xmlin}.resolved
+  else
+    # Return the unchanged file
+    echo $xmlin
+  fi
 }
 
 function saxon_db2xhtml() {
-  local xmlin=${XMLIN}
-  __logging "Transforming to Chunked XHTML..."
-  
-  if [[ $CATEGORY -eq 1 ]]; then
-      __logging "Resolving categories links..."
-      [[ $VERBOSE -gt 0 ]] && echo "*** Resolving category links..."
-      saxon -o ${XMLIN}.resolved ${XMLIN} ${CATEGORYXSL}
-      xmlin=${XMLIN}.resolved
-  fi
+  local xmlin=${1:-${XMLIN}}
+  __logging "saxon_db2xhtml: Transforming to Chunked XHTML..."
+ 
   [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> XHTML ..."
-  saxon -o ${BUILDDIR}/log.txt ${xmlin} \
+  saxon -o ${BUILDDIR}/log.txt "${xmlin}" \
      ${BASEXSLT1}/xhtml/chunk.xsl \
      ${ROOTID:+rootid=$ROOTID} || exit_on_error "Something went wrong"
-  __logging "Transformed ${XMLIN} with ${BASEXSLT1}/xhtml/chunk.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
+  __logging "saxon_db2xhtml: Transformed ${xmlin} with ${BASEXSLT1}/xhtml/chunk.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
    ## [[  $CATEGORY -eq 1 ]] && rm ${xmlin}
 }
 
 function saxon_db2singlexhtml() {
-  local xmlin=${XMLIN}
-  __logging "Transforming to Single XHTML..."
+  local xmlin=${1:-${XMLIN}}
+  __logging "saxon_db2singlexhtml: Transforming to Single XHTML..."
   
-  if [[ $CATEGORY -eq 1 ]]; then
-      __logging "Resolving categories links..."
-      if [[ ! -e ${XMLIN}.resolved ]]; then
-        [[ $VERBOSE -gt 0 ]] && echo "*** Resolving category links..."
-        saxon -o ${XMLIN}.resolved ${XMLIN} ${CATEGORYXSL}
-          xmlin=${XMLIN}.resolved
-      else
-        __logging "Using existing ${XMLIN}.resolved"
-        xmlin=${XMLIN}.resolved 
-      fi
-  fi
   [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> Single XHTML ..."
   cmd="saxon -o ${BUILDDIR}/tmp/DoCookBook.html  ${xmlin} \
      ${BASEXSLT1}/xhtml/docbook.xsl \
      generate.revhistory.link=0 generate.legalnotice.link=0 \
      ${ROOTID:+rootid=$ROOTID}"
-  __logging "Using command: $cmd"
+  __logging "saxon_db2singlexhtml: Using command: $cmd"
   $cmd || exit_on_error "Something went wrong"
-  __logging "Transformed ${XMLIN} with ${BASEXSLT1}/xhtml/docbook.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
+  __logging "saxon_db2singlexhtml: Transformed ${xmlin} with ${BASEXSLT1}/xhtml/docbook.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
 }
 
 
 function __saxon_nstest() {
   local ROOTIDPARAM=""
+  local xmlin=${1:-${XMLIN}}
   
   if [[ "$ROOTID" != '' ]]; then
     ROOTIDPARAM="rootid=$ROOTID"
   fi
   
-  saxon ${XMLIN} ${FRAMEWORKSDIR}/db-xslt-ns/xhtml/chunk.xsl \
+  saxon "${xmlin}" ${FRAMEWORKSDIR}/db-xslt-ns/xhtml/chunk.xsl \
      base.dir=build/tmp/ \
      $ROOTIDPARAM || exit_on_error "ERROR: Something went wrong"
 }
@@ -225,12 +277,18 @@ initenv
 
 [[ $VERBOSE != "" ]] && echo "Transforming..."
 if [[  $CLEANUP -eq 0 ]]; then
-  saxon_db2xhtml 
-  saxon_db2singlexhtml
+  # First, resolve any categories
+  [[ $VERBOSE -gt 0 ]] && echo "*** Resolving category links..."
+  _x=$(resolvecategories ${XMLIN})
+  __logging "After resolvecategories: '${_x}'"
+  # Second, replace version string from hg tag
+  _x=$(updatereleaseinfo "${_x}")
+  __logging "After updatereleaseinfo '${_x}'"
+
+  saxon_db2xhtml "${_x}"
+  saxon_db2singlexhtml "${_x}"
 fi
 
-__createlinks
-copyprettifier
 
 echo -e "\n*** Cleaning up HTML..."
 
