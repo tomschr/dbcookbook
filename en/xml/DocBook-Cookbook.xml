@@ -68,7 +68,7 @@
         xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"/>
     </extendedlink>
     
-    <author>
+    <author xml:id="author">
       <personname>
         <firstname>Thomas</firstname>
         <surname>Schraitle</surname>
