@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Apr 04 19:50:00 UTC 2014 - tom_schr@web.de
+
+Topics:
+- Added "Incorporating External Files in Program Listings" (db/topic.programlistings-external.xml)
+(changeset 1547:86c162117863, 1544:501380fe7980)
+- Enable structure/topic.programlistings.xml
+(changeset 1505:a56a6591ee90)
+- Append Text or Graphics in Cross-References (common/topic.xref-suffix-or-prefix.xml)
+(changeset 1486:aa5a8566d413)
+- New topic: Incorporating Code Listings (db/topic.programlistings.xml)
+(changeset 1439:f84aa8396f81)
+
+
+Infrastructure:
+- Make dbsaxon script work again; extended script with more options
+(changeset 1524:fa593d0dab4b, 1522:a33199e51263, 1520:9ea42318b6dd, 1518:50cb29eda0dc, 1499:9910da0cc253)
+- Cleaned TOSYNC variable in bin/sync2web
+(changeset 1537:9f6803cf0622)
+- Used Twitter Bootstrap and Font Awesome for entry Web page
+(changeset 1534:3de6895fa6cc, 1514:51dc9b8363c5, 1513:1eb1f0076626, 1512:ab7887e601cd, 1511:82318fa24b02)
+- Added prettify-1-Jun-2011.tar.bz2
+(changeset 1397:42fa57fd4df1)
+- Added dbautosplit from openSUSE package dbsplit-tools-0.6
+(changeset 1373:cb98ef3fd464)
+- Added DocBook stylesheets version 1.77.1
+(changeset 1353:913c25e5b4d0, 1351:9d6f564977ff)
+
+
+Bugfix:
+- #32: Added a note about the XLink namespace declaration in root element
+(changeset 1497:b43d535a1fa3
+
+-------------------------------------------------------------------
 Sun Apr 07 18:40:00 UTC 2012 - tom_schr@web.de
 
 Topics:
