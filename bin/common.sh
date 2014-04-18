@@ -7,6 +7,8 @@ ABSPATH=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
 ABSPATH=${ABSPATH%/*}
 # 
 BUILDDIR=${ABSPATH}/build
+WEBDIR=${ABSPATH}/web
+WEBINDEX=${WEBDIR}/index.html
 FRAMEWORKSDIR=${ABSPATH}/frameworks
 CATEGORYXSL=${FRAMEWORKSDIR}/xslt/misc/resolvecategories.xsl
 COLLECTEXAMPLES=${FRAMEWORKSDIR}/xslt/misc/collect-examples.xsl
