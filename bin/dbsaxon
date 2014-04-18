@@ -77,7 +77,7 @@ function copyprettifier() {
 function updatereleaseinfo() {
     local xmlin=$1
     local version=$(getofficialversion)
-    local changeweb=0
+    local changeweb=1
     
     __logging "updatereleaseinfo: Update releaseinfo for file '${xmlin}'"
     
@@ -93,12 +93,16 @@ function updatereleaseinfo() {
     __logging "updatereleaseinfo: Inserted version '${version}' in file '${xmlin}'"
     
     # Change the web/index.html too?
-#     if [[ $changeweb -eq 1 ]]; then
+    if [[ $changeweb -eq 1 ]]; then
+## Currently, xmlstarlet changes some things which is not what I intended.
+## Therefor, ATM it is better (although a bit dangerous) to use sed instead.
 #       xml ed --inplace \
-#         --update "/html/body//div[@class='self-promotion']/span[@class='version'][1]"
+#         --update "/html/body//div[@class='self-promotion']/span[@class='version'][1]" \
 #         -v "${version}" "${WEBINDEX}"
-#       __logging "updatereleaseinfo: Inserted version '${version}' in file '${WEBINDEX}'"
-#     fi
+      sed -i "s#<span class=\"version\">\(.*\)</span>#<span class=\"version\">${version}</span>#g" \
+          "${WEBINDEX}"
+      __logging "updatereleaseinfo: Inserted version '${version}' in file '${WEBINDEX}'"
+    fi
     
     # Return our changed file
     echo $xmlin
