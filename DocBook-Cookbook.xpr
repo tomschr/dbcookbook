@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="14.0">
+<project version="15.2">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="14.0" xml:space="preserve">
+            <serialized version="15.2" xml:space="preserve">
                 <map>
                     <entry>
                         <String>document.types</String>
@@ -17,6 +17,9 @@
                                 </field>
                                 <field name="classpath">
                                     <String-array/>
+                                </field>
+                                <field name="parentClassLoaderID">
+                                    <null/>
                                 </field>
                                 <field name="authorExtensionDescriptor">
                                     <authorExtension>
@@ -202,6 +205,9 @@
                                 <field name="externalObjectInsertionHandler">
                                     <null/>
                                 </field>
+                                <field name="customAttributeValueEditor">
+                                    <null/>
+                                </field>
                             </documentTypeDescriptor>
                             <documentTypeDescriptor>
                                 <field name="name">
@@ -219,6 +225,9 @@
                                 </field>
                                 <field name="classpath">
                                     <String-array/>
+                                </field>
+                                <field name="parentClassLoaderID">
+                                    <null/>
                                 </field>
                                 <field name="authorExtensionDescriptor">
                                     <authorExtension>
@@ -427,6 +436,9 @@
                                 <field name="externalObjectInsertionHandler">
                                     <null/>
                                 </field>
+                                <field name="customAttributeValueEditor">
+                                    <null/>
+                                </field>
                             </documentTypeDescriptor>
                         </documentTypeDescriptor-array>
                     </entry>
@@ -468,6 +480,14 @@
                             <documentTypeEntry>
                                 <field name="documentTypeID">
                                     <String>6/dita/ditaval.framework/DITAVAL</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/daisy/daisy.framework/Daisy</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -523,7 +543,23 @@
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>6/mathml2/mathml.framework/MathML</String>
+                                    <String>6/mathml/mathml.framework/MathML</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/maven/maven.framework/Maven Project</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/maven/maven.framework/Maven Settings</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -571,7 +607,7 @@
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>6/odf/odf.framework/ODF</String>
+                                    <String>6/odf/odf.framework/ODF 1.2</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -643,7 +679,7 @@
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>6/stratml/startml1.framework/StratML Part 1 (Strategic Plan)</String>
+                                    <String>6/stratml/stratml1.framework/StratML Part 1 (Strategic Plan)</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -651,7 +687,7 @@
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>6/stratml/startml2.framework/StratML Part 2 (Perfomance Plans and Reports)</String>
+                                    <String>6/stratml/stratml2.framework/StratML Part 2 (Perfomance Plans and Reports)</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -667,7 +703,7 @@
                             </documentTypeEntry>
                             <documentTypeEntry>
                                 <field name="documentTypeID">
-                                    <String>6/tei/teip4.framework/TEI P4</String>
+                                    <String>6/tei/teip4.framework/TEI P4 (deprecated)</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -676,6 +712,14 @@
                             <documentTypeEntry>
                                 <field name="documentTypeID">
                                     <String>6/tei/teip5.framework/TEI P5</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/wsdl/wsdl.framework/WSDL</String>
                                 </field>
                                 <field name="enable">
                                     <Boolean>true</Boolean>
@@ -737,11 +781,43 @@
                                     <Boolean>true</Boolean>
                                 </field>
                             </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/samples/application_form.framework/Application Form (Sample)</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/samples/form-controls.framework/Form Controls (Sample)</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/samples/personal.framework/Personal (Sample)</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
+                            <documentTypeEntry>
+                                <field name="documentTypeID">
+                                    <String>6/samples/travel-guide.framework/Travel Guide (Sample)</String>
+                                </field>
+                                <field name="enable">
+                                    <Boolean>true</Boolean>
+                                </field>
+                            </documentTypeEntry>
                         </documentTypeEntry-array>
                     </entry>
                     <entry>
                         <String>editor.font</String>
-                        <String>Droid Sans Mono,0,13</String>
+                        <String>DejaVu Sans Mono,0,13</String>
                     </entry>
                     <entry>
                         <String>editor.print.margin.columns</String>
@@ -757,10 +833,12 @@
                             <field name="jvmVersions">
                                 <String-array>
                                     <String>1.6</String>
+                                    <String>1.7</String>
                                 </String-array>
                             </field>
                             <field name="aaValues">
                                 <String-array>
+                                    <String>ON</String>
                                     <String>ON</String>
                                 </String-array>
                             </field>
@@ -1284,6 +1362,9 @@
                                                 <field name="traceXPathExpression">
                                                     <Boolean>true</Boolean>
                                                 </field>
+                                                <field name="expandAttributeDefaults">
+                                                    <Boolean>false</Boolean>
+                                                </field>
                                                 <field name="errorRecoverPolicy">
                                                     <String>saxon.recover.with.warning</String>
                                                 </field>
@@ -1648,6 +1729,18 @@
                         <Boolean>true</Boolean>
                     </entry>
                     <entry>
+                        <String>search.resources.filter.history</String>
+                        <filterPanelHistoryItems>
+                            <field name="expressionsLists">
+                                <list>
+                                    <String>XSLT</String>
+                                    <String>doc</String>
+                                    <String>le</String>
+                                </list>
+                            </field>
+                        </filterPanelHistoryItems>
+                    </entry>
+                    <entry>
                         <String>spell.check.options</String>
                         <spellCheckOptions>
                             <field name="automaticSpellCheck">
@@ -1804,6 +1897,9 @@
                                                     <field name="dtdSchemaPublicID">
                                                         <null/>
                                                     </field>
+                                                    <field name="schematronPhase">
+                                                        <null/>
+                                                    </field>
                                                     <field name="type">
                                                         <Integer>3</Integer>
                                                     </field>
@@ -1868,6 +1964,7 @@
                 <file name="en/xml/structure/topic.splitdb.xml"/>
                 <file name="en/xml/structure/topic.splitting-into-topics.xml"/>
             </folder>
+            <folder path="en/xml/common/"/>
             <file name="en/xml/dbc-common.xml"/>
             <file name="en/xml/dbc-fo.xml"/>
             <file name="en/xml/dbc-html.xml"/>
