@@ -105,10 +105,16 @@
             </xsl:call-template>
             <xsl:text> </xsl:text>
           </xsl:if>
-          <xsl:apply-templates mode="titlepage.mode"/>
+          <xsl:apply-templates select="." mode="book.titlepage.recto.mode"/>
         </xsl:with-param>
       </xsl:call-template>
     </div>
+  </xsl:template>
+  
+  <xsl:template match="releaseinfo|d:releaseinfo" mode="book.titlepage.recto.mode">
+    <xsl:text>Version </xsl:text>
+    <xsl:apply-templates/>
+    <xsl:text></xsl:text>
   </xsl:template>
   
   <!-- Chapter Titlepages -->
