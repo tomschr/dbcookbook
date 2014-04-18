@@ -26,6 +26,8 @@
     <keywordset>
       <keyword>programlistings</keyword>
       <keyword>code</keyword>
+      <keyword>XInclude</keyword>
+      <keyword>textdata</keyword>
     </keywordset>
   </info>
   
@@ -252,21 +254,20 @@ sayhello("Tux")</programlisting>
         <tag>programlisting</tag> without any whitespace:</para>
       <programlisting language="xml"
         linenumbering="unnumbered">&lt;programlisting>&lt;?dbhtml 
-        linenumbering.everyNth="2" 
-        linenumbering.width="2" ?>#!/usr/bin/python
+   linenumbering.everyNth="2" 
+   linenumbering.width="2" ?>#!/usr/bin/python
 ...
 &lt;/programlisting></programlisting>
-      <para></para>
-      <programlisting language="xml" linenumbering="numbered"><?dbhtml 
-        linenumbering.everyNth="2" 
+      <para>This will create the following output:</para>
+      <programlisting language="xml" linenumbering="numbered"><?dbhtml linenumbering.everyNth="2" 
         linenumbering.width="2" 
-?> 1| #!/usr/bin/python
+?>  | #!/usr/bin/python
  2| 
- 3| def sayhello(name):
+  | def sayhello(name):
  4| """Say hello to someone"""
- 5| return "Hello %s" % name
+  | return "Hello %s" % name
  6|
- 7| sayhello("Tux")</programlisting>
+  | sayhello("Tux")</programlisting>
     </section>
     <section xml:id="dbc.structure.programlistings.externals">
       <title>Incorporating External Files</title>
