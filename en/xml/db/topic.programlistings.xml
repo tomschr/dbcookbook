@@ -15,7 +15,7 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.structure.programlistings" remap="topic"
+<section xml:id="dbc.markup..programlistings" remap="topic"
    userlevel="medium"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -35,8 +35,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>Use the <tag xlink:href="http://www.docbook.org/tdg51/en/html/programlisting.html"
-      >programlisting</tag> element. For example, the following markup
+    <para>Use the <tag>programlisting</tag> element. For example, the following markup
       shows some Python code:</para>
     <programlisting language="python" linenumbering="unnumbered">&lt;programlisting>#!/usr/bin/python
 
@@ -76,7 +75,7 @@ sayhello("Tux")&lt;/programlisting></programlisting>
     <para>The above features are explained in the following
       subsections.</para>
     
-    <section xml:id="dbc.structure.programlistings.lineannotation">
+    <section xml:id="dbc.markup.programlistings.lineannotation">
       <title>Using Line Annotatations</title>
       <para>Annotated lines are short comments created by
         <tag>lineannotation</tag>:</para>
@@ -115,7 +114,7 @@ def sayhello(name):
       <para>With this method, an annotated line does not create any
         syntax errors.</para>
     </section>
-    <section xml:id="dbc.structure.programlistings.callout">
+    <section xml:id="dbc.markup.programlistings.callout">
       <title>Using Callouts</title>
       <remark>toms, 2012-09-02: Refer to its own topic</remark>
       <para>Callouts are little marks in your code which refers to a
@@ -166,7 +165,7 @@ sayhello("Tux")</programlisting>
       <para>Callouts are a good way to give your reader more
         explanations. Find more information in <remark>TODO: Add xref</remark>.</para>
     </section>
-    <section xml:id="dbc.structure.programlistings.numbering">
+    <section xml:id="dbc.markup.programlistings.numbering">
       <title>Setting Line Numbering</title>
       <para>Numbering program listings can be done with the attribute
         <tag class="attribute">linenumbering</tag>:</para>
@@ -267,10 +266,10 @@ sayhello("Tux")</programlisting>
  6|
   | sayhello("Tux")</programlisting>
     </section>
-    <section xml:id="dbc.structure.programlistings.externals">
+    <section xml:id="dbc.markup.programlistings.externals">
       <title>Incorporating External Files</title>
       <para>To incorporate external files is explained in a separate
-        topic. Refer to <xref linkend="dbc.structure.programlistings-external"/>.</para>
+        topic. Refer to <xref linkend="dbc.markup.programlistings-external"/>.</para>
     </section>
     
   </section>
@@ -281,7 +280,7 @@ sayhello("Tux")</programlisting>
         <para><link xlink:href="http://www.sagehill.net/docbookxsl/ProgramListings.html"/></para>
       </listitem>
       <listitem>
-        <para><xref linkend="dbc.structure.programlistings-external"/></para>
+        <para><xref linkend="dbc.markup.programlistings-external"/></para>
       </listitem>
     </itemizedlist>
   </section>
