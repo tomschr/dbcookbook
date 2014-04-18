@@ -88,6 +88,8 @@
   <xi:include href="db/topic.multiple-indices.xml"/>
   <xi:include href="db/topic.section.vs.sectx.xml"/>
   <xi:include href="db/topic.lists.xml"/>
+  <xi:include href="db/topic.programlistings.xml"/>
+  <xi:include href="db/topic.programlistings-external.xml"/>
   <xi:include href="db/topic.remarks.xml"/>
   <xi:include href="db/topic.xref-vs-link.xml"/>
   <xi:include href="db/topic.xref.xml"/>
