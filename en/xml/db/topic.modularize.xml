@@ -225,11 +225,12 @@
       </example>
       <para>The important line is <code>parse="text"</code>. This
         advises the XInclude processor to handle the referenced file
-        just as text and not as XML. The default value for <tag
+        as text and not as XML. The default value for <tag
           class="attribute">parse</tag> is <tag class="attvalue">xml</tag>.</para>
       <para>It is recommended to remove any whitespaces inside
           <tag>programlisting</tag> as shown above to avoid spurious
         indendation or linebreaks.</para>
+      <para>More explanations can be found in <xref linkend="dbc.markup.programlistings-external"/>.</para>
     </section>
     
     <!-- TODO: Move it to another topic? -->
@@ -252,6 +253,9 @@
   <section role="seealso">
     <title>See Also</title>
     <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.programlistings-external"/></para>
+      </listitem>
       <listitem>
         <para><link xlink:href="http://www.w3.org/TR/xinclude/">XML Inclusions (XInclude) Version 1.0</link></para>
       </listitem>
