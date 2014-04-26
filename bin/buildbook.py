@@ -48,10 +48,57 @@ def __test():
     doctest.testmod()
 
     
+def initenv(parser, args=None):
+    from shutil import copytree, rmtree
+    builddir=config.get('Common', 'builddir')
+    htmlbuilddir=os.path.join(builddir, "html")
+    cssdir=config.get('XSLT2', 'cssdir')
+    jsdir=config.get('XSLT2', 'jsdir')
+    pngdir=config.get('Common', 'pngdir')
+    highlighterdir=config.get('Common', 'highlighterdir')
+    
+    if os.path.exists(builddir) and args.init:
+        logger.debug(" Removing {builddir}".format(**locals()))
+        rmtree(buildir)
+    else:
+        logger.debug(" Creating {builddir}...".format(**locals()))
+        os.makedirs(builddir, exist_ok=True)
+        os.makedirs(htmlbuilddir, exist_ok=True)
+
+    pwd=os.getcwd()
+    os.chdir(htmlbuilddir)
+    rp = os.path.relpath(cssdir)
+    os.symlink(rp, os.path.join(htmlbuilddir, "css"))
+    logger.debug("Creating symlink: {rp} -> {dest}".format(
+        dest=os.path.join(htmlbuilddir, "css"), 
+        **locals()) )
+    
+    rp = os.path.relpath(jsdir)
+    os.symlink(rp, os.path.join(htmlbuilddir, "js"))
+    logger.debug("Creating symlink: {rp} -> {dest}".format(
+        dest=os.path.join(htmlbuilddir, "js"), 
+        **locals()))
+    
+    rp = os.path.relpath(pngdir)
+    os.symlink(rp, os.path.join(htmlbuilddir, "png"))
+    logger.debug("Creating symlink: {rp} -> {dest}".format(
+        dest=os.path.join(htmlbuilddir, "png"), 
+        **locals()))
+    
+    #
+    copytree(highlighterdir, os.path.join(htmlbuilddir, "highlighter") )
+    logger.debug("Copy tree: {highlighterdir} -> {dest}".format(
+        dest=os.path.join(htmlbuilddir, "highlighter"), 
+        **locals()))
+       
+    os.chdir(pwd)
+    
 if __name__=="__main__":
     import configparser
     try:
         parser, args = main()
+        initenv(parser, args)
+        
     except configparser.InterpolationMissingOptionError as error:
         logger.critical(error)
         sys.exit(10)
