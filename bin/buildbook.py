@@ -12,19 +12,25 @@ from dbcookbook.config import config
 from dbcookbook.config import __version__
 
 
-_abspath=os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+_abspath=os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+"/"
 
 
 def main():
     parser, args=parsecommandline()
     createlogger(args.verbose)
 
+    logger.debug("{line} START {line}".format(line="-"*10))
     logger.debug("Found these sections = {sects}".format(sects=config.sections()))
-    
+
     # Set the absolute path, so we always resolve correctly:
     config.set('Common', 'abspath', _abspath)
+
+    logger.debug("""Environment:
+    xhtmldir={xhtmldir}
+    fodir={fodir}
+    """.format( **dict(config["XSLT1"].items()) ))
     
-    logger.debug("{line} START {line}".format(line="-"*10))
+    
     logger.debug("CLI arguments: {args}".format(args=args))
     logger.debug("Abspath={path}".format(
         path=_abspath,  #os.path.abspath(os.path.dirname(__file__)),
