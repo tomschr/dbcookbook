@@ -23,7 +23,7 @@ class trace(object):
     ENTRY_MESSAGE = '[ Entering {}{sig} called with args={args}, kwargs={kwargs} ]'
     EXIT_MESSAGE =  '[ Exiting  {}() ]'
 
-    def __init__(self, logger=None):
+    def __init__(self, logger=logger):
         self.logger = logger
 
     def __call__(self, func, enable=True):
@@ -65,7 +65,7 @@ def parsecommandline():
     from .config import __version__, LOGFILE, MAINFILE
 
     parser = argparse.ArgumentParser(
-        description='Transforms an AsciiDoc file into a target format',
+        description='Transforms an DocBook XML file into a target format',
     )
 
     parser.add_argument('--version',
