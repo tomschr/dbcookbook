@@ -43,15 +43,18 @@
   <section xml:id="dbc.markup.intro">
     <title>Introduction</title>
     <para>To successfully use DocBook you basically
-      need to know how to <quote>transform</quote> your ideas into (DocBook's)
+      need to know how to <quote>transform</quote> your ideas into DocBook’s
       structure. Usually, the DocBook elements are mostly
       self-explanatory: if you want to write a book, use
       <tag>book</tag>, for a chapter use <tag>chapter</tag> and so on.
-      All you need is covered in the <citetitle>Definitive
+      All you need is covered in the <citetitle 
+        xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html">Definitive
         Guide</citetitle> with examples and the reference of all
       elements.</para>
-    <para>However, a reference usually do not cover the finer details,
-      what is the recommended practise, or recommendations.</para>
+    <para>However, a reference usually do not cover the finer details.
+      For example, should I use <tag>sect1</tag> or <tag>section</tag>?
+      How do I modularize my documentation? What is the recommendation
+      to use multiple indices?</para>
   </section>
   
   <!-- 
