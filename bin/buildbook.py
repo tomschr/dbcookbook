@@ -20,24 +20,17 @@ def main():
     createlogger(args.verbose)
 
     logger.debug("{line} START {line}".format(line="-"*10))
-    logger.debug("Found these sections = {sects}".format(sects=config.sections()))
+    logger.debug("CLI arguments: {args}".format(args=args))
+    logger.debug("Found these sections in INI: {sects}".format(sects=config.sections()))
 
     # Set the absolute path, so we always resolve correctly:
     config.set('Common', 'abspath', _abspath)
 
     logger.debug("""Environment:
+    absolute path={path}
     xhtmldir={xhtmldir}
     fodir={fodir}
-    """.format( **dict(config["XSLT1"].items()) ))
-    
-    
-    logger.debug("CLI arguments: {args}".format(args=args))
-    logger.debug("Abspath={path}".format(
-        path=_abspath,  #os.path.abspath(os.path.dirname(__file__)),
-        ))
-    logger.debug("framework={fw}".format(
-        fw=config.get('Common', 'framework')
-        ))
+    """.format(path=_abspath, **dict(config["XSLT1"].items()) ))
     
     return parser, args
 
