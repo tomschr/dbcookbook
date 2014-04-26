@@ -5,7 +5,6 @@ import sys
 import os
 
 import argparse
-import configparser
 import logging
 import inspect
 from functools import wraps
@@ -21,6 +20,8 @@ CONFIGFILE=".dbcookbook.ini"
 LOGFILE='/var/tmp/%s.log' % os.path.splitext(os.path.basename(__file__))[0]
 ENABLE_TRACE=True
 MAINFILE="en/xml/DocBook-Cookbook.xml"
+
+
 
 # Need to be global to make use of it in trace decorator
 logger = logging.getLogger(os.path.basename(__file__))
@@ -141,17 +142,18 @@ def createlogger(level):
         1: logging.INFO,
         2: logging.DEBUG,
         }
-    
-    loglevel=maptable.get(level, "None")
+    # Map the verbose level from argparse to log level:
+    loglevel=maptable.get(level, logging.NOTSET)
     
     logger.setLevel(loglevel)
     # create file handler which logs even debug messages
     fh = logging.FileHandler(LOGFILE)
     fh.setLevel(logging.DEBUG)
     
-    # create console handler with a higher log level
+    # create console handler with our log level from verbose option
     ch = logging.StreamHandler()
     ch.setLevel(loglevel)
+    
     # create formatter and add it to the handlers
     formatter = logging.Formatter('{asctime} - {levelname:8s} - {funcName} {message}', style='{')
     ch.setFormatter(formatter)
@@ -167,7 +169,7 @@ def main():
     return parser, args
 
 
-def test():
+def internaltest():
     @trace(logger)
     def test_logger(a, b=5, c=10, x=None):
         pass
@@ -182,6 +184,11 @@ def test():
     test_logger(55)
     logger.debug("-------")
     test_logger(x=100, a=10)
+    
+    logger.debug("Testing if MAINFILE({main}) exists={result}".format(
+        main=MAINFILE,
+        result=os.path.exists(MAINFILE),
+        ))
 
     
 if __name__=="__main__":
@@ -191,6 +198,6 @@ if __name__=="__main__":
     logger.debug("CLI arguments: {args}".format(args=args))
     
     if args.test:
-        test()
+        internaltest()
 
 # EOF
