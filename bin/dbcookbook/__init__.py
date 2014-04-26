@@ -43,7 +43,10 @@ class trace(object):
         def logwrap(*args, **kwargs):
             sig=inspect.signature(func)
             
-            self.logger.debug(self.ENTRY_MESSAGE.format(func.__name__, sig=str(sig), args=str(args), kwargs=kwargs))
+            self.logger.debug(self.ENTRY_MESSAGE.format(func.__name__, 
+                sig=str(sig), 
+                args=str(args), 
+                kwargs=kwargs))
             # self.logger.debug("  Full spec:{}".format(inspect.getfullargspec(func)))
             
             f_result = func(*args, **kwargs)
