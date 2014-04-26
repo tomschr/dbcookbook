@@ -43,7 +43,12 @@ def __test():
 
     
 if __name__=="__main__":
-    parser, args = main()
+    import configparser
+    try:
+        parser, args = main()
+    except configparser.InterpolationMissingOptionError as error:
+        logger.critical(error)
+        sys.exit(10)
     
     if args.test:
         internaltest()
