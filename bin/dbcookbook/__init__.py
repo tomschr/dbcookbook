@@ -145,8 +145,9 @@ def createlogger(level):
     ch.setLevel(loglevel)
     
     # create formatter and add it to the handlers
-    formatter = logging.Formatter('{asctime} {levelname:8s}: {funcName}: {message}', style='{')
+    formatter = logging.Formatter('{levelname}: {message}', style='{')
     ch.setFormatter(formatter)
+    formatter = logging.Formatter('{asctime} {levelname:8s}: {funcName}: {message}', style='{')
     fh.setFormatter(formatter)
     # add the handlers to logger
     logger.addHandler(ch)
