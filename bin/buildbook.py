@@ -190,6 +190,10 @@ def internaltest():
         result=os.path.exists(MAINFILE),
         ))
 
+def __test():
+    import doctest
+    doctest.testmod()
+
     
 if __name__=="__main__":
         
