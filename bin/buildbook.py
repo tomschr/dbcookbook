@@ -47,7 +47,7 @@ def __test():
     import doctest
     doctest.testmod()
 
-    
+@trace(logger)
 def initenv(parser, args=None):
     from shutil import copytree, rmtree
     builddir=config.get('Common', 'builddir')
@@ -67,27 +67,22 @@ def initenv(parser, args=None):
 
     pwd=os.getcwd()
     os.chdir(htmlbuilddir)
-    rp = os.path.relpath(cssdir)
-    os.symlink(rp, os.path.join(htmlbuilddir, "css"))
-    logger.debug("Creating symlink: {rp} -> {dest}".format(
-        dest=os.path.join(htmlbuilddir, "css"), 
-        **locals()) )
     
-    rp = os.path.relpath(jsdir)
-    os.symlink(rp, os.path.join(htmlbuilddir, "js"))
-    logger.debug("Creating symlink: {rp} -> {dest}".format(
-        dest=os.path.join(htmlbuilddir, "js"), 
-        **locals()))
+    for path in (cssdir, jsdir, pngdir):
+        rp = os.path.relpath(path)
+        try:
+            os.symlink(rp, os.path.join(htmlbuilddir, path))
+        except FileExistsError:
+            pass
+        logger.debug(" Created symlink: {rp} -> {path}".format(
+            #p=os.path.join(htmlbuilddir, path), 
+            **locals()) )
     
-    rp = os.path.relpath(pngdir)
-    os.symlink(rp, os.path.join(htmlbuilddir, "png"))
-    logger.debug("Creating symlink: {rp} -> {dest}".format(
-        dest=os.path.join(htmlbuilddir, "png"), 
-        **locals()))
-    
-    #
-    copytree(highlighterdir, os.path.join(htmlbuilddir, "highlighter") )
-    logger.debug("Copy tree: {highlighterdir} -> {dest}".format(
+    try:
+        copytree(highlighterdir, os.path.join(htmlbuilddir, "highlighter") )
+    except FileExistsError:
+            pass
+    logger.debug(" Copy tree: {highlighterdir} -> {dest}".format(
         dest=os.path.join(htmlbuilddir, "highlighter"), 
         **locals()))
        
