@@ -6,23 +6,42 @@ __author__ = "Thomas Schraitle"
 __version__ = "0.5"
 __docformat__ = "epytext"
 
+import sys
 
-# Where to write logfiles:
-LOGFILE='/var/tmp/%s.log' % os.path.splitext(os.path.basename(__package__))[0]
+# We use configparser in order to make interpolation much more easier
+# Furthermore it is possible to use a INI config style
+#
+# Conventions:
+#  - Sections are capitalized, e.g. "PATHS"
+#  - Entrys are written in lower case
+from configparser import ConfigParser, ExtendedInterpolation, NoOptionError
+
+class MyConfigParser(ConfigParser):
+    """MyConfigParser using extended interpolation."""
+    _DEFAULT_INTERPOLATION = ExtendedInterpolation()
+
+# Read the INI file
+INIFILE=os.path.join(os.path.dirname(__file__), 'dbcookbook.ini')
+config = MyConfigParser()
+
+try:
+    config.read(INIFILE)
+    assert config.sections() is not None
+except AssertionError:
+    raise FileNotFoundError("Could not find {ini} file!".format(ini=INIFILE))
 
 # Our main XML file:
-MAINFILE="en/xml/DocBook-Cookbook.xml"
+# MAINBASEFILE="DocBook-Cookbook.xml"
+# MAINFILE="en/xml/{main}".format(main=MAINBASEFILE)
 
-# INI config file for configparser:
-CONFIGFILE=".dbcookbook.ini"
+# Where to write logfiles:
+LOGFILE=os.path.splitext(os.path.basename(__package__))[0]
+# This strange expression makes sure the logfile is *always* set
+LOGFILE=config.get('DEFAULT', 'logfile', fallback=LOGFILE ) % LOGFILE
 
-# About this Sourceforge project:
-SFPROJECT={
- 'user':    'tom_schr',
- 'project': 'doccookbook',
- 'site':    'frs.sourceforge.net',
- # 'path':    '/home/frs/project/${SFPROJECT}',
-}
-SFPROJECT['path']='/home/frs/project/{project}'.format(**SFPROJECT)
+try:    
+    MAINFILE=config.get('DEFAULT', 'mainfile')
+except NoOptionError as err:
+    sys.stderr.write("ERROR: {error}".format(error=err)
 
-
+# EOF
