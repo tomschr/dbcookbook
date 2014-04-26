@@ -26,5 +26,6 @@ xml/fo/xslt/*.pdf
 
 
 build/*
+build-20??????/*
 test-output/*
 tmp/
