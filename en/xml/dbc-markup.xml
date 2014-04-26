@@ -98,4 +98,5 @@
   <!-- TODO: Needs to investigate alt in acronym more: -->
   <!--<xi:include href="db/topic.acronym.xml"/>-->
   <xi:include href="db/topic.quotes.xml"/>
+  <xi:include href="db/topic.citerefentry4manpages.xml"/>
 </chapter>
