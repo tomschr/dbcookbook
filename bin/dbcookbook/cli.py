@@ -7,7 +7,7 @@ def parsecommandline():
     @return: tuple of (parser object, parsed arguments)
     """
     import argparse
-    from .config import __version__, LOGFILE, MAINFILE
+    from .config import __version__, __author__, LOGFILE, MAINFILE
 
     parser = argparse.ArgumentParser(
         description='Transforms an DocBook XML file into a target format',
@@ -15,7 +15,7 @@ def parsecommandline():
 
     parser.add_argument('--version',
         action='version',
-        version='%(prog)s v{0}'.format(__version__)
+        version='%(prog)s v{0} by {1}'.format(__version__, __author__)
         )
     parser.add_argument('-v', '--verbose',
         action='count',
