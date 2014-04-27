@@ -22,11 +22,10 @@ def initenv(parser, args=None):
     if os.path.exists(builddir) and args.init:
         logger.debug(" Removing {builddir}".format(**locals()))
         rmtree(builddir)
-    else:
-        # logger.debug(" Creating {builddir}...".format(**locals()))
-        for entry in (builddir, htmlbuilddir, tempdir):
-            os.makedirs(entry, exist_ok=True)
-            logger.debug(" Created {entry}...".format(**locals()))
+    
+    for entry in (builddir, htmlbuilddir, tempdir):
+        os.makedirs(entry, exist_ok=True)
+        logger.debug(" Created {entry}...".format(**locals()))
 
     pwd=os.getcwd()
     os.chdir(htmlbuilddir)
