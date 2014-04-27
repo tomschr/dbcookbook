@@ -5,7 +5,8 @@ import sys
 import os
 
 from dbcookbook.config import config,  __version__
-from dbcookbook import internaltest, parsecommandline
+from dbcookbook import internaltest
+from dbcookbook.cli import parsecommandline
 from dbcookbook.log import logger, trace, createlogger
 from dbcookbook.env import initenv
 
