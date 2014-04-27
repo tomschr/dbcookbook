@@ -9,13 +9,14 @@ from dbcookbook import internaltest
 from dbcookbook.cli import parsecommandline
 from dbcookbook.log import logger, trace, createlogger
 from dbcookbook.env import initenv
-
+from dbcookbook.categories import resolvecategories
 
 _abspath=os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+"/"
 
 
 def main():
-    parser, args=parsecommandline()
+    parserobj=parsecommandline()
+    args=parserobj[1]
     createlogger(args.verbose)
 
     logger.debug("{line} START {line}".format(line="-"*10))
@@ -31,7 +32,10 @@ def main():
     fodir={fodir}
     """.format(path=_abspath, **dict(config["XSLT1"].items()) ))
     
-    return parser, args
+    initenv(*parserobj)
+    resolvecategories(*parserobj)
+    
+    return parserobj
 
 
 def __test():
@@ -40,16 +44,21 @@ def __test():
 
     
 if __name__=="__main__":
-    import configparser
+    from configparser import InterpolationMissingOptionError
+    
     try:
-        parser, args = main()
-        initenv(parser, args)
+        obj = main()
         
-    except configparser.InterpolationMissingOptionError as error:
+    except (InterpolationMissingOptionError, NameError, ) as error:
         logger.critical(error)
         sys.exit(10)
     
-    if args.test:
+    except FileNotFoundError as error:
+        logger.critical(error)
+        logger.critical("{error}\n  filename={error.filename}\n  errno={error.errno}".format(error))
+        sys.exit(error.errno)
+    
+    if obj[1].test:
         internaltest()
     
     logger.debug("{line} END {line}".format(line="-"*10))
