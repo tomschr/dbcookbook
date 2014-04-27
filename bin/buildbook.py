@@ -47,18 +47,18 @@ def __test():
     
 if __name__=="__main__":
     from configparser import InterpolationMissingOptionError
+    from lxml.etree import XSLTApplyError
     
     try:
         obj = main()
         
-    except (InterpolationMissingOptionError, NameError, ) as error:
-        logger.critical(error)
+    except (InterpolationMissingOptionError, 
+            NameError, 
+            XSLTApplyError, 
+            FileNotFoundError
+           ) as error:
+        logger.critical("{classname}: {error}".format(classname=error.__class__.__name__, error=error))
         sys.exit(10)
-    
-    except FileNotFoundError as error:
-        logger.critical(error)
-        logger.critical("{error}\n  filename={error.filename}\n  errno={error.errno}".format(error))
-        sys.exit(error.errno)
     
     if obj[1].test:
         internaltest()
