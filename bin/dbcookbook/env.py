@@ -10,6 +10,7 @@ from .config import config
 def initenv(parser, args=None):
     from shutil import copytree, rmtree
     builddir=config.get('Common', 'builddir')
+    tempdir=config.get('Common', 'tempdir')
     htmlbuilddir=os.path.join(builddir, "html")
     cssdir=config.get('XSLT2', 'cssdir')
     jsdir=config.get('XSLT2', 'jsdir')
@@ -18,31 +19,33 @@ def initenv(parser, args=None):
     
     if os.path.exists(builddir) and args.init:
         logger.debug(" Removing {builddir}".format(**locals()))
-        rmtree(buildir)
+        rmtree(builddir)
     else:
-        logger.debug(" Creating {builddir}...".format(**locals()))
-        os.makedirs(builddir, exist_ok=True)
-        os.makedirs(htmlbuilddir, exist_ok=True)
+        # logger.debug(" Creating {builddir}...".format(**locals()))
+        for entry in (builddir, htmlbuilddir, tempdir):
+            os.makedirs(entry, exist_ok=True)
+            logger.debug(" Created {entry}...".format(**locals()))
 
     pwd=os.getcwd()
     os.chdir(htmlbuilddir)
     
     for path in (cssdir, jsdir, pngdir):
-        rp = os.path.relpath(path)
+        src=os.path.relpath(path)
+        dest=os.path.split(path)[-1]
+        logger.debug(" Trying to symlink {path} ({src}) -> {dest}".format(**locals()) )
         try:
-            os.symlink(rp, os.path.join(htmlbuilddir, path))
+            os.symlink(src, dest, target_is_directory=True)
+            logger.debug(" Created symlink: {src} -> {dest}".format(**locals()) )
         except FileExistsError:
-            pass
-        logger.debug(" Created symlink: {rp} -> {path}".format(
-            #p=os.path.join(htmlbuilddir, path), 
-            **locals()) )
+            logger.debug(" Symlink {src} already found.".format(**locals()))        
     
     try:
-        copytree(highlighterdir, os.path.join(htmlbuilddir, "highlighter") )
+        dest=os.path.join(htmlbuilddir, "highlighter")
+        copytree(highlighterdir, dest)
+        logger.debug(" Copied tree: {highlighterdir} -> {dest}".format(**locals()))
     except FileExistsError:
             pass
-    logger.debug(" Copy tree: {highlighterdir} -> {dest}".format(
-        dest=os.path.join(htmlbuilddir, "highlighter"), 
-        **locals()))
+
+    
        
     os.chdir(pwd)
