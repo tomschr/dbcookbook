@@ -9,13 +9,15 @@ from .config import config
 @trace(logger)
 def initenv(parser, args=None):
     from shutil import copytree, rmtree
-    builddir=config.get('Common', 'builddir')
-    tempdir=config.get('Common', 'tempdir')
-    htmlbuilddir=os.path.join(builddir, "html")
-    cssdir=config.get('XSLT2', 'cssdir')
-    jsdir=config.get('XSLT2', 'jsdir')
-    pngdir=config.get('Common', 'pngdir')
-    highlighterdir=config.get('Common', 'highlighterdir')
+    
+    # We use os.path.normpath here to avoid problems with a trailing slash later
+    builddir=os.path.normpath(config.get('Common', 'builddir'))
+    tempdir=os.path.normpath(config.get('Common', 'tempdir'))
+    htmlbuilddir=os.path.normpath(os.path.join(builddir, "html"))
+    cssdir=os.path.normpath(config.get('XSLT2', 'cssdir'))
+    jsdir=os.path.normpath(config.get('XSLT2', 'jsdir'))
+    pngdir=os.path.normpath(config.get('Common', 'pngdir'))
+    highlighterdir=os.path.normpath(config.get('Common', 'highlighterdir'))
     
     if os.path.exists(builddir) and args.init:
         logger.debug(" Removing {builddir}".format(**locals()))
@@ -29,6 +31,11 @@ def initenv(parser, args=None):
     pwd=os.getcwd()
     os.chdir(htmlbuilddir)
     
+    # HINT:
+    # The os.path.split function expects no trailing slash, so every path
+    # is "normalized".
+    # For example, the path="...images/png/" leads with os.path.split(path)[-1] -> ''
+    # whereas path="...iamges/png" leads to 'png' (which is the expected result)
     for path in (cssdir, jsdir, pngdir):
         src=os.path.relpath(path)
         dest=os.path.split(path)[-1]
