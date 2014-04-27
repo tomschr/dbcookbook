@@ -41,7 +41,7 @@ LOGFILE=config.get('DEFAULT', 'logfile', fallback=LOGFILE ) % LOGFILE
 
 try:    
     MAINFILE=config.get('DEFAULT', 'mainfile')
-except NoOptionError as err:
-    sys.stderr.write("ERROR: {error}".format(error=err))
+except NoOptionError as error:
+    sys.stderr.write("ERROR: {error}".format( **locals() ))
 
 # EOF
