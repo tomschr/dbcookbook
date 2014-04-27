@@ -3,8 +3,6 @@
 import os
 from .log import logger
 
-# Need to be global to make use of it in trace decorator
-#logger = logging.getLogger(os.path.basename(__package__))
         
 def internaltest():
     from .config import MAINFILE, LOGFILE
