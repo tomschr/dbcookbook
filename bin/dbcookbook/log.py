@@ -63,16 +63,19 @@ def createlogger(level):
         1: logging.INFO,
         2: logging.DEBUG,
         }
+        
     # Map the verbose level from argparse to log level:
     loglevel=maptable.get(level, logging.NOTSET)
     
-    logger.setLevel(loglevel)
+    # Set the global level, we want to see "all":
+    logger.setLevel(logging.DEBUG)
     # create file handler which logs even debug messages
     fh = logging.FileHandler(LOGFILE)
     fh.setLevel(logging.DEBUG)
     
     # create console handler with our log level from verbose option
     ch = logging.StreamHandler()
+    # But change for the console handler the current loglevel
     ch.setLevel(loglevel)
     
     # create formatter and add it to the handlers
