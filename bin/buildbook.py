@@ -4,12 +4,10 @@
 import sys
 import os
 
-import argparse
-import logging
-
-from dbcookbook import logger, trace, internaltest, createlogger, parsecommandline
-from dbcookbook.config import config
-from dbcookbook.config import __version__
+from dbcookbook.config import config,  __version__
+from dbcookbook import internaltest, parsecommandline
+from dbcookbook.log import logger, trace, createlogger
+from dbcookbook.env import initenv
 
 
 _abspath=os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+"/"
@@ -35,51 +33,10 @@ def main():
     return parser, args
 
 
-
 def __test():
     import doctest
     doctest.testmod()
 
-@trace(logger)
-def initenv(parser, args=None):
-    from shutil import copytree, rmtree
-    builddir=config.get('Common', 'builddir')
-    htmlbuilddir=os.path.join(builddir, "html")
-    cssdir=config.get('XSLT2', 'cssdir')
-    jsdir=config.get('XSLT2', 'jsdir')
-    pngdir=config.get('Common', 'pngdir')
-    highlighterdir=config.get('Common', 'highlighterdir')
-    
-    if os.path.exists(builddir) and args.init:
-        logger.debug(" Removing {builddir}".format(**locals()))
-        rmtree(buildir)
-    else:
-        logger.debug(" Creating {builddir}...".format(**locals()))
-        os.makedirs(builddir, exist_ok=True)
-        os.makedirs(htmlbuilddir, exist_ok=True)
-
-    pwd=os.getcwd()
-    os.chdir(htmlbuilddir)
-    
-    for path in (cssdir, jsdir, pngdir):
-        rp = os.path.relpath(path)
-        try:
-            os.symlink(rp, os.path.join(htmlbuilddir, path))
-        except FileExistsError:
-            pass
-        logger.debug(" Created symlink: {rp} -> {path}".format(
-            #p=os.path.join(htmlbuilddir, path), 
-            **locals()) )
-    
-    try:
-        copytree(highlighterdir, os.path.join(htmlbuilddir, "highlighter") )
-    except FileExistsError:
-            pass
-    logger.debug(" Copy tree: {highlighterdir} -> {dest}".format(
-        dest=os.path.join(htmlbuilddir, "highlighter"), 
-        **locals()))
-       
-    os.chdir(pwd)
     
 if __name__=="__main__":
     import configparser
