@@ -24,11 +24,14 @@ class MyConfigParser(ConfigParser):
 INIFILE=os.path.join(os.path.dirname(__file__), 'dbcookbook.ini')
 config = MyConfigParser()
 
-try:
-    config.read(INIFILE)
-    assert config.sections() is not None
-except AssertionError:
-    raise FileNotFoundError("Could not find {ini} file!".format(ini=INIFILE))
+res = config.read(INIFILE)
+if res is None:
+    # Not sure why FileNotFoundError doesn't take keyword arguments
+    _E=FileNotFoundError("Could not find INI file")
+    _E.filename = INIFILE
+    _E.errno=12
+    raise _E
+
 
 # Our main XML file:
 # MAINBASEFILE="DocBook-Cookbook.xml"
