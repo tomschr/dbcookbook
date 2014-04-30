@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+
+<section xml:id="dbc.db.link1-to-n" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Linking to an Unknown Amount of Targets</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>links</keyword>
+      <keyword>annotations</keyword>
+      <keyword>1:n relationship</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>links</subjectterm>
+        <subjectterm>annotations</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have several topics which belong to a certain category. In
+      your text you want to link to this category as one unit and resolve all the
+      links automatically. In other words, you want to establish a 1:n
+      relationship: one source, but many targets.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>
+      DocBook 5 includes the <tag>annotation</tag> element which is
+      used in this solution. By default, it is not processed by the
+      DocBook stylesheets which allows you to define any behavior 
+      by creating  your own customizations. 
+      You need:</para>
+    <orderedlist>
+      <listitem>
+        <para>An <tag>annotation</tag> element inside
+          <tag>info</tag>. This identifies the group or category:</para>
+        <programlisting language="xml">&lt;annotation role="linking" annotates="topicid"/></programlisting>
+      </listitem>
+      <listitem>
+        <para>The location where you want to appear the complete list of
+        this group:</para>
+        <programlisting language="xml"
+          >&lt;para role="seealso">linking&lt;/para></programlisting>
+      </listitem>
+      <listitem>
+        <para>Your XSLT customization that resolves this structure and
+          implements your behavior.</para>
+      </listitem>
+    </orderedlist>
+    
+    <para></para>
+  </section>
+  
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>DocBook contains the <tag>xref</tag> or <tag>link</tag>
+      elements to create cross references or remote links. However,
+      these elements establish a 1:1 relationship which does not work
+      here.
+    </para>
+  </section>
+  
+  <section role="seealso">
+    <title>See Also</title>
+    <para role="seealso">links</para>
+  </section>
+</section>
