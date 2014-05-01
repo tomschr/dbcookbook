@@ -9,6 +9,36 @@ from .config import config
 from lxml import etree
 
 
+def consistencycheck(dirs):
+    """Checks if all directories in dirs are available, 
+       otherwise raise FileNotFoundError
+    """
+    for d in dirs:
+        logger.info("Checking for {}".format(d))
+        if not os.path.exists(d):
+            raise FileNotFoundError("Expected directory {} not found".format(d))
+
+def get_html_paths(folder, rootid=None):
+    """Returns iterator of one or more entries. 
+       If rootid is set, return only one single entry '{rootid}.html'
+    """
+    if rootid:
+        htmlfiles = [ "{rootid}.html".format(**locals()) ]
+        logger.info("Using rootid={rootid} with file {htmlfiles[0]}".format(**locals()))
+    else:
+        import glob
+        pwd=os.getcwd()
+        os.chdir(folder)
+        htmlfiles = iter(glob.glob("*.html".format(**locals())))
+        os.chdir(pwd)
+        
+    return htmlfiles
+    
+
+#@trace(logger)
+def cleanup_parallel(parser, args):
+    pass
+
 @trace(logger)
 def cleanup(parser, args):
     """xsltproc --nonet --novalid -o ${HTMLOUTPUT} \
@@ -17,25 +47,14 @@ def cleanup(parser, args):
     """
     tempdir=os.path.normpath(config.get('Common', 'tempdir'))
     htmldir=os.path.normpath(config.get('Common', 'htmldir'))
+    cleanhtml=config.get('XSLT1', 'cleanhtml')
     
     # Consistency check
-    for d in (tempdir, htmldir):
-        logger.info("Checking for {}".format(d))
-        if not os.path.exists(d):
-            raise FileNotFoundError("Expected directory {} not found".format(d))
+    consistencycheck( (tempdir, htmldir) )
     
-    cleanhtml=config.get('XSLT1', 'cleanhtml')
-    if args.rootid:
-        htmlfiles = [ "{args.rootid}.html".format(**locals()) ]
-        logger.info("Using rootid={args.rootid} with file {htmlfiles[0]}".format(**locals()))
-    else:
-        import glob
-        pwd=os.getcwd()
-        os.chdir(tempdir)
-        htmlfiles = iter(glob.glob("*.html".format(**locals())))
-        os.chdir(pwd)
+    # Populate all files
+    htmlfiles = get_html_paths(tempdir, args.rootid)
         
-    
     xmlparser = etree.XMLParser(
         dtd_validation=False,  # use default (False)
         no_network=False,
