@@ -20,16 +20,21 @@ def cleanup(parser, args):
     
     # Consistency check
     for d in (tempdir, htmldir):
+        logger.info("Checking for {}".format(d))
         if not os.path.exists(d):
             raise FileNotFoundError("Expected directory {} not found".format(d))
     
     cleanhtml=config.get('XSLT1', 'cleanhtml')
     if args.rootid:
-        htmlfiles = [ "{tempdir}/{args.rootid}.html".format(**locals()) ]
+        htmlfiles = [ "{args.rootid}.html".format(**locals()) ]
         logger.info("Using rootid={args.rootid} with file {htmlfiles[0]}".format(**locals()))
     else:
         import glob
-        htmlfiles = iter(glob.glob("{tempdir}/*.html".format(**locals())))
+        pwd=os.getcwd()
+        os.chdir(tempdir)
+        htmlfiles = iter(glob.glob("*.html".format(**locals())))
+        os.chdir(pwd)
+        
     
     xmlparser = etree.XMLParser(
         dtd_validation=False,  # use default (False)
@@ -39,9 +44,10 @@ def cleanup(parser, args):
     
     transform = etree.XSLT(etree.parse(cleanhtml))
     for entry in htmlfiles:
-        logger.info("Cleaning up {entry}...".format(**locals()))
+        logger.info("Cleaning up '{entry}'...".format(**locals()))
+        resultfile=os.path.join(htmldir, entry)
         params={}
-        xmldoc = etree.parse(entry, xmlparser)
+        xmldoc = etree.parse( os.path.join(tempdir, entry), xmlparser)
         resulttree = transform(xmldoc, **params)
         
         #logger.debug("-- Return from XSLT processor (Start) --")
@@ -49,8 +55,10 @@ def cleanup(parser, args):
             logger.debug("{e.message}".format(**locals()))
         #logger.debug("-- Return from XSLT processor (End) --")
         
-        resulttree.write( os.path.join(htmldir, entry), 
-                          encoding="utf-8",
+        logger.debug("Writing result from cleanup to '{resultfile}'".format(**locals()))
+        resulttree.write( resultfile, 
+                          method="xml",
+                          encoding="UTF-8",
                           standalone=True,
                          )
 
@@ -72,7 +80,7 @@ def singlehtml(parser, args):
     xmldoc = etree.parse(xmlfile, xmlparser)
     transform = etree.XSLT(etree.parse(xhtmlsingle))
     
-    logger.debug("Transforming {xmlfile} with {xhtmlsingle}".format(**locals()))
+    logger.info("*** Transforming {xmlfile} with {xhtmlsingle}".format(**locals()))
     params = {
              #'base.dir':       etree.XSLT.strparam(tempdir),
              'use.extensions': etree.XSLT.strparam('0'),
@@ -107,7 +115,7 @@ def chunkedhtml(parser, args):
     xmldoc = etree.parse(xmlfile, xmlparser)
     transform = etree.XSLT(etree.parse(xhtmlchunk))
     
-    logger.debug("Transforming {xmlfile} with {xhtmlchunk}".format(**locals()))
+    logger.info("*** Transforming {xmlfile} with {xhtmlchunk}".format(**locals()))
     params = {
              'base.dir':       etree.XSLT.strparam(tempdir),
              'use.extensions': etree.XSLT.strparam('0'),
@@ -120,7 +128,7 @@ def chunkedhtml(parser, args):
     
     logger.debug("-- Return from XSLT processor (Start) --")
     for entry in transform.error_log:
-        logger.debug("{entry.message}".format(**locals()))
+        logger.info("{entry.message}".format(**locals()))
     logger.debug("-- Return from XSLT processor (End) --")
     
     
