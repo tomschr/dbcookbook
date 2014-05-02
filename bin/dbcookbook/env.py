@@ -13,7 +13,7 @@ def initenv(parser, args=None):
     # We use os.path.normpath here to avoid problems with a trailing slash later
     builddir=os.path.normpath(config.get('Common', 'builddir'))
     tempdir=os.path.normpath(config.get('Common', 'tempdir'))
-    htmlbuilddir=os.path.normpath(os.path.join(builddir, "html"))
+    htmlbuilddir=os.path.normpath(config.get('Common', 'htmldir'))
     cssdir=os.path.normpath(config.get('XSLT2', 'cssdir'))
     jsdir=os.path.normpath(config.get('XSLT2', 'jsdir'))
     pngdir=os.path.normpath(config.get('Common', 'pngdir'))
