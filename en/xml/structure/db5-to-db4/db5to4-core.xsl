@@ -132,4 +132,10 @@
       select="local-name()"/>" element into DocBook 4</xsl:message>
   </xsl:template>
   
+  <xsl:template match="d:orgname">
+     <othername>
+       <xsl:apply-templates select="@*|node()"/>
+     </othername>
+   </xsl:template>
+
 </xsl:stylesheet>
