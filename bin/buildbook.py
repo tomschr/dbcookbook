@@ -19,8 +19,7 @@ def main():
     parserobj=parsecommandline()
     args=parserobj[1]
     createlogger(args.verbose)
-
-    logger.debug("{line} START {line}".format(line="-"*10))
+    
     logger.debug("CLI arguments: {args}".format(args=args))
     logger.debug("Found these sections in INI: {sects}".format(sects=config.sections()))
 
@@ -48,8 +47,10 @@ def __test():
 if __name__=="__main__":
     from configparser import InterpolationMissingOptionError
     from lxml.etree import XSLTApplyError
+    line="-"*10
     
     try:
+        logger.debug("{line} START {line}".format(**locals()))
         obj = main()
         
     except (InterpolationMissingOptionError, 
@@ -63,6 +64,6 @@ if __name__=="__main__":
     if obj[1].test:
         internaltest()
     
-    logger.debug("{line} END {line}".format(line="-"*10))
+    logger.debug("{line} END {line}".format(**locals()))
 
 # EOF
