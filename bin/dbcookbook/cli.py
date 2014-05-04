@@ -54,6 +54,12 @@ def parsecommandline():
         action='store_true',
         default=False,
         )
+    parser.add_argument('-j', '--jobs',
+        help="Allow N jobs at once (default: %(default)s)",
+        metavar='N',
+        type=int,
+        default=None,
+        )
     parser.add_argument('mainfile',
         help="Use main XML file  (default: %(default)s)",
         default=MAINFILE,
@@ -66,4 +72,10 @@ def parsecommandline():
         default=False,
         )
     
-    return parser, parser.parse_args()
+    args=parser.parse_args()
+    
+    if args.jobs < 0:
+        parser.error("argument -j/--job: negative int value: {}. "
+                     "Job values have to be positive.".format(args.jobs))
+        
+    return parser, args
