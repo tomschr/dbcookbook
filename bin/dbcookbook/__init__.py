@@ -1,8 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import os
-from .log import logger
-
+from .log import logger, trace
         
 def internaltest():
     from .config import MAINFILE, LOGFILE
