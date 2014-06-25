@@ -58,7 +58,7 @@ def parsecommandline():
         help="Allow N jobs at once (default: %(default)s)",
         metavar='N',
         type=int,
-        default=None,
+        default=1,
         )
     parser.add_argument('mainfile',
         help="Use main XML file  (default: %(default)s)",
