@@ -163,6 +163,18 @@
             </informalexample>
           </listitem>
           <listitem>
+            <para>For glossary terms, use the following template</para>
+            <informalexample>
+              <info>
+                <output xmlns="urn:x-toms:docbook-ext">
+                  <filename>permalinks/glossterm.title.xsl</filename>
+                </output>
+              </info>
+              <programlisting language="xml"><xi:include
+                href="permalinks/glossterm.title.xsl" parse="text"/></programlisting>
+            </informalexample>
+          </listitem>
+          <listitem>
             <para>For sections, use <function>section.title</function>
               (originates from
               <filename>{xhtml,xhtml-1_1,html}/sections.xsl</filename>):</para>

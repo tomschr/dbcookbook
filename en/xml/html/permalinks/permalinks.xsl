@@ -7,7 +7,7 @@
   <xsl:param name="permalink.text">¶</xsl:param>
 
   <xsl:template name="permalink">
-    <xsl:param name="node"/>
+    <xsl:param name="node" select="."/>
 
     <xsl:if test="$generate.permalink != '0'">
       <span class="permalink">

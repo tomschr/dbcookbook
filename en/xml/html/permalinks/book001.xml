@@ -38,4 +38,23 @@
       </sect1>
     </chapter>
   </part>
+
+  <glossary>
+    <title>Glossary of XML Terms</title>
+    <glossentry xml:id="xml">
+      <glossterm>Extensible Markup Language</glossterm>
+      <acronym>XML</acronym>
+      <glossdef>
+        <para>Definition of XML.</para>
+      </glossdef>
+    </glossentry>
+    
+    <glossentry xml:id="g.xslt">
+      <glossterm xml:id="xslt">eXtensible Stylesheet Language</glossterm>
+      <acronym>XSLT</acronym>
+      <glossdef>
+        <para>Definition of XSLT</para>
+      </glossdef>
+    </glossentry>
+  </glossary>
 </book>
