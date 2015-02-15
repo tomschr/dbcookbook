@@ -124,7 +124,6 @@ Here is a procedure about how to clone the repository:
 8. When you are finished, publish your feature branch:
 ::
   $ hg flow feature publish FEATURE_NAME
-  $ hg diff > foo.patch
 
 9. Create a pull request.
 
