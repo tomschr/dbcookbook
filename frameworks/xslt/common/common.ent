@@ -1,5 +1,8 @@
 <!-- 
-
+   Common entities
 -->
-<!--<!ENTITY db "http://docbook.sourceforge.net/release/xsl/current/xhtml">-->
-<!ENTITY dburi "../../db-xslt-ns/xhtml-1_1">
+<!--<!ENTITY dburi "http://docbook.sourceforge.net/release/xsl/current/">-->
+<!ENTITY dburi    "../../db-xslt-ns/">
+<!ENTITY dbhtml   "&dburi;xhtml-1_1/">
+<!ENTITY dbfo     "&dburi;fo/">
+<!ENTITY dbepub3  "&dburi;epub3/">

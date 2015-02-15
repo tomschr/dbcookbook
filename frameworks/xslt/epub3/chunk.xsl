@@ -3,14 +3,13 @@
 [
   <!ENTITY % common.ent SYSTEM "../common/common.ent">
   %common.ent;
-  <!ENTITY dbdir "../../db-xslt">
 ]>
 <xsl:stylesheet version="1.0"
   xmlns:d="http://docbook.org/ns/docbook"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   exclude-result-prefixes="d">  
   
-  <xsl:import href="&dbdir;/epub3/chunk.xsl"/>
+  <xsl:import href="&dbepub3;chunk.xsl"/>
   
   <xsl:param name="use.id.as.filename" select="1"/>
   <!--<xsl:param name="css.decoration" select="0"/>

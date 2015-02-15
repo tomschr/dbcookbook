@@ -14,11 +14,11 @@
   extension-element-prefixes="exsl">
  
   <xsl:import href="docbook.xsl"/>
-  <xsl:import href="&dburi;/chunk-common.xsl"/>
+  <xsl:import href="&dbhtml;chunk-common.xsl"/>
 
   <xsl:output method="xml"/>  
   
-  <xsl:include href="&dburi;/chunk-code.xsl"/>
+  <xsl:include href="&dbhtml;chunk-code.xsl"/>
   <xsl:include href="navigation.xsl"/>
   
   <xsl:param name="chunker.output.method" select="'xml'"/>

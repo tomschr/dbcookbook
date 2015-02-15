@@ -11,8 +11,8 @@
   xmlns="http://www.w3.org/1999/xhtml"
   exclude-result-prefixes="d xlink">
 
-  <xsl:import href="&dburi;/docbook.xsl"/>
-  <!--<xsl:import href="&db;/highlight.xsl"/>-->
+  <xsl:import href="&dbhtml;docbook.xsl"/>
+  <!--<xsl:import href="&dbhtml;highlight.xsl"/>-->
   
   <xsl:include href="param.xsl"/>
   <xsl:include href="formal.xsl"/>
