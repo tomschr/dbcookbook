@@ -9,7 +9,7 @@ from dbcookbook import internaltest
 from dbcookbook.cli import parsecommandline
 from dbcookbook.log import logger, trace, createlogger
 from dbcookbook.env import initenv
-from dbcookbook.formats import html
+from dbcookbook.formats import delegateformat
 from dbcookbook.categories import resolvecategories
 
 _abspath=os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+"/"
@@ -30,11 +30,12 @@ def main():
     absolute path={path}
     xhtmldir={xhtmldir}
     fodir={fodir}
-    """.format(path=_abspath, **dict(config["XSLT1"].items()) ))
+    formats={target}
+    """.format(path=_abspath, target=args.target, **dict(config["XSLT1"].items()) ))
     
     initenv(*parserobj)
     resolvecategories(*parserobj)
-    html(*parserobj)
+    delegateformat(*parserobj)
     
     return parserobj
 

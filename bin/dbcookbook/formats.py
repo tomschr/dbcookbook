@@ -89,7 +89,7 @@ def singlehtml(parser, args):
     tempdir=config.get('Common', 'tempdir')
     xmlfile = os.path.join(tempdir, basefile)
     xhtmlsingle = config.get('XSLT1', 'xhtmlsingle')
-    
+
     if not os.path.exists(xmlfile):
         raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
 
@@ -98,23 +98,23 @@ def singlehtml(parser, args):
         ns_clean=True)
     xmldoc = etree.parse(xmlfile, xmlparser)
     transform = etree.XSLT(etree.parse(xhtmlsingle))
-    
+
     logger.info("*** Transforming {xmlfile} with {xhtmlsingle}".format(**locals()))
     params = {
              #'base.dir':       etree.XSLT.strparam(tempdir),
              'use.extensions': etree.XSLT.strparam('0'),
              }
-             
+
     if args.rootid:
          params.update(rootid=args.rootid)
-    
+
     resulttree = transform(xmldoc, **params)
-    
+
     logger.debug("-- Return from XSLT processor (Start) --")
     for entry in transform.error_log:
         logger.debug("{entry.message}".format(**locals()))
     logger.debug("-- Return from XSLT processor (End) --")
-    
+
        
 @trace(logger)
 def chunkedhtml(parser, args):
@@ -151,11 +151,32 @@ def chunkedhtml(parser, args):
     logger.debug("-- Return from XSLT processor (End) --")
     
     
-
 def html(parser, args):
     """Generate HTML files"""
     chunkedhtml(parser, args)
     singlehtml(parser, args)
     cleanup(parser, args)
+
+
+def pdf(parser, args):
+    """Generate FO file"""
+    logger.debug("Building PDF...")
+
+
+def unknown(parser, args):
+    """For unknown formats"""
+    parser.error("Unknown format {t}".format(t=args.target))
+
+
+def delegateformat(parser, args):
+    """Delegates to formats
+    """
+    d={"html": html,
+       "pdf":  pdf,
+      }
+    logger.debug("Formats: {t}".format(t=args.target))
+
+    for t in args.target.split(","):
+        d.get(t, unknown)(parser, args)
 
 # EOF
