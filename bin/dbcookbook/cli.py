@@ -15,12 +15,12 @@ def htmlparser(subparser):
     
 def pdfparser(subparser):
     """Create PDF subparser"""
-
+    from .formatters import supported, default_fo
     pdfparser = subparser.add_parser('pdf', help='Generate PDF')
     pdfparser.add_argument('-F', '--formatter',
         help="Select the FO formatter  (default: %(default)s)",
-        choices=["xep", "fop", "axf"],
-        default="fop",
+        choices=supported, # ["xep", "fop", "axf"],
+        default=default_fo,
         )
     return pdfparser
 

@@ -158,16 +158,75 @@ def html(parser, args):
     cleanup(parser, args)
 
 
-def pdf(parser, args):
+def fo(parser, args):
     """Generate FO file"""
     logger.debug("Building PDF...")
+    basefile=os.path.basename(args.mainfile)
+    tempdir=config.get('Common', 'tempdir')
+    xmlfile = os.path.join(tempdir, basefile)
+    foxsl= config.get('XSLT1', 'fo')
+    fofile = os.path.join(tempdir, os.path.splitext(basefile)[0]+".fo")
+    
+    if not os.path.exists(xmlfile):
+        raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
+
+    xmlparser = etree.XMLParser(
+        # dtd_validation=False, 
+        # use default (False)
+        no_network=True,
+        ns_clean=True)
+    xmldoc = etree.parse(xmlfile, xmlparser)
+    transform = etree.XSLT(etree.parse(foxsl))
+    
+    logger.debug("*** Transforming {xmlfile} to {fofile} with {foxsl}".format(**locals()))
+    params = {
+             'base.dir':       etree.XSLT.strparam(tempdir),
+             'use.extensions': etree.XSLT.strparam('0'),
+             }
+
+    if args.rootid:
+         params.update(rootid=args.rootid)
+
+    resulttree = transform(xmldoc, **params)
+
+    logger.debug("Writing FO transformation result to {fofile}".format(**locals()))
+    resulttree.write(fofile, encoding="utf-8", standalone=True,)
 
 
-def unknown(parser, args):
+def foformat(parser, args):
+    """Format FO file
+    """
+    from . import formatters
+    
+    def not_found():
+        """Fake function"""
+        pass
+    
+    f=formatters.funcname.format(args.formatter)
+    logger.debug("Formatting of FO not implemented yet!")
+    logger.info("Trying to format with {t}, function {f}".format(t=args.formatter,
+            f=getattr(formatters, f, not_found).__name__))
+    FF = getattr(formatters, f, unknown_formatter)
+    FF(parser, args)
+
+
+@trace(logger)
+def pdf(parser, args):
+    """Generate PDF"""
+    fo(parser, args)
+    foformat(parser, args)
+
+def unknown_formatter(parser, args,):
+    unknown(parser, args, msg="Unknown formatter {}".format(args.formatter))
+
+def unknown_format(parser, args):
+    unknown(parser, args, msg="Unknown format {}".format(args.target))
+
+def unknown(parser, args, msg=None):
     """For unknown formats"""
-    parser.error("Unknown format {t}".format(t=args.target))
+    parser.error(msg)
 
-
+@trace(logger)
 def delegateformat(parser, args):
     """Delegates to formats
     """
