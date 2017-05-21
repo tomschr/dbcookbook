@@ -1,5 +1,0 @@
-# robots.txt for http://doccookbook.sourceforge.net
-User-agent: *
-Disallow: /html/en/js/
-Disallow: /html/en/css/
-Disallow: /html/en/png/

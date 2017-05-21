@@ -1,1 +1,0 @@
-../../../en/xml/structure/common/copy.xsl
