@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<article xml:lang="en" xmlns="http://docbook.org/ns/docbook">
-  <title>The Article Title</title>
-  <!--<subtitle>Test</subtitle>-->
-    <sect1>
-        <title>The Section1 Title</title>
-        <para>The quick brown fox jumps over the lazy dog.</para>
-    </sect1>
-</article>

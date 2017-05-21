@@ -1,3 +1,0 @@
-xslt10 = external "xslt10.rnc"
-xslt20 = external "xslt20.rnc"
-start = xslt10 | xslt20
