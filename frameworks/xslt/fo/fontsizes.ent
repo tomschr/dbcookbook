@@ -1,0 +1,40 @@
+<!-- $Id:$ -->
+<!ENTITY tiny         "5pt">
+<!ENTITY scriptsize   "7pt">
+<!ENTITY footnotesize "8pt">
+<!ENTITY small        "9pt">
+<!ENTITY normal       "10pt"><!-- hsize0 -->
+<!ENTITY large        "12pt">
+<!ENTITY Large        "14.4pt">
+<!ENTITY LARGE        "17.28pt">
+<!ENTITY huge         "20.736pt">
+<!ENTITY Huge         "24.8832pt">
+<!ENTITY HUGE         "29.8598pt">
+<!ENTITY titanic      "35.8318pt">
+<!ENTITY Titanic      "42.9982pt">
+<!ENTITY TITANIC      "51.5978pt">
+
+<!ENTITY normalspace "7.5pt"> <!-- 0.75 * normal -->
+<!ENTITY largespace "9pt"> <!-- 0.75 * large -->
+<!ENTITY Largespace "10.8pt"> <!-- 0.75 * Large -->
+<!ENTITY LARGEspace "12.96pt"> <!-- 0.75 * LARGE -->
+<!ENTITY hugespace "15.552pt"> <!-- 0.75 * huge -->
+<!ENTITY Hugespace "18.6624pt"> <!-- 0.75 * Huge -->
+<!ENTITY HUGEspace "22.3948pt"> <!-- 0.75 * HUGE -->
+<!ENTITY titanicspace "26.87385pt"> <!-- 0.75 * titanic -->
+<!ENTITY Titanicspace "32.24865pt"> <!-- 0.75 * Titanic -->
+<!ENTITY TITANICspace "38.69835pt"> <!-- 0.75 * TITANIC -->
+
+
+<!ENTITY hsize0 "10pt"><!-- normal -->
+<!ENTITY hsize1 "12pt">
+<!ENTITY hsize2 "14.4pt">
+<!ENTITY hsize3 "17.28pt">
+<!ENTITY hsize4 "20.736pt">
+<!ENTITY hsize5 "24.8832pt">
+<!ENTITY hsize0space "7.5pt"> <!-- 0.75 * hsize0 -->
+<!ENTITY hsize1space "9pt"> <!-- 0.75 * hsize1 -->
+<!ENTITY hsize2space "10.8pt"> <!-- 0.75 * hsize2 -->
+<!ENTITY hsize3space "12.96pt"> <!-- 0.75 * hsize3 -->
+<!ENTITY hsize4space "15.552pt"> <!-- 0.75 * hsize4 -->
+<!ENTITY hsize5space "18.6624pt"> <!-- 0.75 * hsize5 -->

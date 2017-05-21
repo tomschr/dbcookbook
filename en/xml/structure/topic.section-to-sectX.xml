@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.section-to-sectX" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Transforming <tag>section</tag> Elements into <tag>sectX</tag> Elements</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>sectX</keyword>
+      <keyword>section</keyword>
+      <keyword>section to sectX</keyword>
+    </keywordset>
+  </info>
+  
+  <section>
+    <title>Problem</title>
+    <para>You need to transform every <tag>sectX</tag> element into a
+        <tag>section</tag> element.</para>
+  </section>
+  <section>
+    <title>Solution</title>
+    <para>This problem is solved through the following XSLT stylesheet:</para>
+    <example xml:id="ex.structure.section-to-sectX">
+      <title>Transforms every <tag>sectX</tag> Element into a
+          <tag>section</tag> Element</title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>section-to-sectX/db-section-to-sectX.xsl</filename>
+        </output>
+      </info>
+      <programlisting linenumbering="numbered" language="xml"><xi:include
+        href="section-to-sectX/db-section-to-sectX.xsl" parse="text"/></programlisting>
+    </example>
+  </section>
+  <section>
+    <title>Discussion</title>
+    <para>The above stylesheet calculates the section level with the
+        <function>ancestor</function> axis, because the amount of
+      elements is directly correlated with the level of the
+      corresponding section. With an <emphasis 
+        xlink:href="http://www.w3.org/TR/xslt#attribute-value-templates">attribute value template</emphasis> it is
+      inserted in the <tag class="attribute">name</tag>
+      attribute.</para>
+    <para>There is one caveat: The stylesheet does not check if the
+      limit is reached. Currently (with version 5.1), DocBook supports
+      levels up to 5. If you nest your <tag>section</tag> elements too
+      deep, you can end up with, let's say, <tag>sect8</tag> which
+      is not allowed in DocBook. To avoid making 
+      mistakes, it is better to check the level:</para>
+    <example xml:id="ex.structure.sectX-to-section.check">
+      <title>Error Checking of Section Levels</title>
+      <programlisting linenumbering="numbered" language="xml">&lt;xsl:template match="d:section">
+  &lt;xsl:variable name="level" select="count(ancestor::*)"/>
+  &lt;xsl:choose>
+    &lt;xsl:when test="$level &amp;lt;= 5">
+      &lt;xsl:element name="sect{$level}"
+          namespace="http://docbook.org/ns/docbook">
+        &lt;xsl:copy-of select="@*"/>
+        &lt;xsl:apply-templates/>
+      &lt;/xsl:element>
+    &lt;/xsl:when>
+    &lt;xsl:otherwise>
+      &lt;xsl:message>ERROR: section &lt;xsl:value-of
+          select="normalize-space(d:title)"/> to deep&lt;/xsl:message>
+      &lt;!-- What to do if the section is too deeply nested? -->
+    &lt;/xsl:otherwise>
+  &lt;/xsl:choose>    
+&lt;/xsl:template></programlisting>
+    </example>
+    <para>Amend the stylesheet when the section is too
+      deeply nested (see above comment). You could avoid the section
+      level (which is a bad idea) but it's better to rework the source
+      document.</para>
+    <para>If you want, you can stop the transformation if the section
+      level is too high. Change the <tag>xsl:message</tag> as
+      follows:</para>
+    <programlisting language="xslt">&lt;xsl:message <emphasis
+      role="strong">terminate="yes"</emphasis>>...</programlisting>
+  </section>
+</section>

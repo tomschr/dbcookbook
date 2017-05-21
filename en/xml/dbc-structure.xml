@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<chapter xml:id="dbc.structure" version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Manipulating DocBook Document Structure</title>
+  
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <biblioid class="other" otherclass="ticket">21</biblioid>
+    <keywordset>
+      <keyword>docbook structure</keyword>
+    </keywordset>
+    <abstract>
+      <para>DocBook files can be created manually or by tools.
+        Sometimes tools create a structure which is inconvenient for
+        some reasons or you have legacy documents which contain the
+          <quote>wrong</quote> structure. This chapter shows how to
+        restructure your DocBook document in the way you want.</para>
+      <para >
+      </para>
+    </abstract>
+  </info>
+  
+  
+  <section xml:id="dbc.structure.intro">
+    <title>Introduction</title>
+    <para>The methods described in this chapter are mostly XSLT
+      solutions where you can find more or less in any XSLT book.
+      Actually, some ideas origin from
+          <personname><firstname>Sal</firstname>
+            <surname>Mangano</surname></personname>´s excellent
+        <citetitle>XSLT Cookbook</citetitle>. However, the solutions in
+      this chapter are targeted exclusively on DocBook.</para>
+    <para>Most of these solutions are based on an <emphasis>identity
+    transformation</emphasis> stylesheet which is shown in <xref 
+      linkend="ex.copy.xsl"/>.</para>
+    
+    <example xml:id="ex.copy.xsl">
+      <title><filename>copy.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>common/copy.xsl</filename>
+        </output>
+      </info>
+      <programlisting linenumbering="numbered" language="xml"><xi:include 
+        href="structure/common/copy.xsl" parse="text"/></programlisting>
+    </example>
+    
+    <para>This simple stylesheet copies everything from the input
+      document to the output document without any modifications.
+      Although it seems quite useless at a first glance, it reveals its
+      full power when combining it with customizations. </para>
+  </section>
+  
+  <!-- 
+    * Combining two DocBook documents
+    * Resolving XInclude Elements
+    * Autogenerate indexterm ranges
+    * Preserving Entities
+    * Renaming Image Filenames
+    * Checking Style Guide Issues with XSLT
+    * Using the xmllint Shell to test XPath expressions
+    * Using Placeholders (Entities, PIs, XIncludes, phrase, ref)
+    * Creating a RevHistory from RSS and Atom
+  -->
+  <xi:include href="structure/topic.pretty-print.xml"/>
+  <xi:include href="structure/topic.db4-to-db5.xml"/>
+  <xi:include href="structure/topic.db5-to-db4.xml"/>
+  <xi:include href="structure/topic.splitdb.xml"/>
+  <xi:include href="structure/topic.extract-element.xml"/>
+  <xi:include href="structure/topic.sectX-to-section.xml"/>
+  <xi:include href="structure/topic.section-to-sectX.xml"/>
+  <xi:include href="structure/topic.bridgehead-to-section.xml"/>
+  <xi:include href="structure/topic.move-blocks-in-para.xml"/>
+  <xi:include href="structure/topic.adding-indexterms.xml"/>
+  <xi:include href="structure/topic.revision-list.xml"/>
+  <xi:include href="structure/topic.acronym-list.xml"/>
+  <xi:include href="structure/topic.splitting-into-topics.xml"/>
+  <xi:include href="structure/topic.assemble-topics.xml"/>
+  <xi:include href="structure/topic.create-assembly-file.xml"/>
+  <!--<xi:include href="structure/topic.preserve-entities.xml"/>-->
+  <!--<xi:include href="structure/topic.impl-style-checking.xml"/>-->
+</chapter>

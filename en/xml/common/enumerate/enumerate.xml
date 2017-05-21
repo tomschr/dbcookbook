@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+    <title>Figure Test</title>
+  <chapter>
+    <title>First Chapter</title>
+    <para>There is </para>
+    <figure xml:id="simple">
+      <title>A Simple Sentence</title>
+      <mediaobject>
+        <textobject>
+          <screen>The quick brown fox jumps over the lazy dog.</screen>
+        </textobject>
+      </mediaobject>
+    </figure>
+    <para>And here another:</para>
+    <figure xml:id="lore-ipsum">
+      <title>A Short Lore Ipsum</title>
+      <mediaobject>
+        <textobject>
+          <screen>Lore ipsum</screen>
+        </textobject>
+      </mediaobject>
+    </figure>
+    
+    <para>And here are the xrefs:</para>
+    <para><xref linkend="simple"/></para>
+    <para><xref linkend="lore-ipsum"/></para>
+    <para><xref linkend="lore-ipsum-ext"/></para>
+  </chapter>
+  
+  
+  <chapter>
+    <title>The Second Chapter</title>
+    <para>Here is a sentence.</para>
+    <figure xml:id="lore-ipsum-ext">
+      <title>Lore Ipsum Extended</title>
+      <mediaobject>
+        <textobject>
+          <screen>Lore ipsum dolor sit amet.</screen>
+        </textobject>
+      </mediaobject>
+    </figure>
+  </chapter>
+</book>

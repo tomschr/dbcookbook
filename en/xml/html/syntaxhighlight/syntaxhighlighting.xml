@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<article xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+    <title>Syntax Highlighting</title>
+    <sect1>
+      <title>Example</title>
+      <example>
+        <title>Python </title>
+        <programlisting language="python" linenumbering="numbered">def accumulate(iterable):
+    'Return running totals'
+    # accumulate([1,2,3,4,5]) --> 1 3 6 10 15
+    it = iter(iterable)
+    total = next(it)
+    yield total
+    for element in it:
+        total = total + element
+        yield total</programlisting>
+      </example>
+    </sect1>
+</article>

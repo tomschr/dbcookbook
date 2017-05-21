@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.dbtimestamp" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Inserting Date and Time</title>
+  <info>
+    <keywordset>
+      <keyword>date and time</keyword>
+      <keyword>datetime</keyword>
+      <keyword>dbtimestamp</keyword>
+      <keyword>processing-instruction</keyword>
+      <keyword>context</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>dbpi</subjectterm>
+        <subjectterm>datetime</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+    
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to insert the current date, time, or both in your
+      output format (for example, to show the date of creation).</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <tag class="xmlpi">dbtimestamp</tag> processing
+      instruction (PI). For example, integrate it into the
+        <tag>pubdate</tag> to show the current publication date on the
+      titlepage: </para>
+    <programlisting language="xml">&lt;info>
+  &lt;!-- ... -->
+  &lt;pubdate><emphasis role="strong">&lt;?dbtimestamp?></emphasis>&lt;/pubdate>
+&lt;/info></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The above PI includes the date in its
+        <emphasis>localized</emphasis> form, or in other words: the
+      output depends on the current language. If you do not have set any
+      language, the default is English (<code>en_US</code>) which is 
+      <code>month/day/year</code>. If you want to
+      change the default format, use one of the two options: </para>
+    <itemizedlist>
+      <listitem>
+        <para>Change the default format</para>
+      </listitem>
+      <listitem>
+        <para>Add pseudo-attributes</para>
+      </listitem>
+    </itemizedlist>
+    
+    <section xml:id="dbc.common.dbtimestamp.default-format">
+      <title>Changing the Default Format</title>
+      <para>Each language contains in its language files<remark>add
+          xref</remark> the context <code>datetime</code>. The following
+        code shows it for the English language file:</para>
+      <programlisting language="xml">&lt;l:context name="datetime">
+  &lt;l:template name="format" text="m/d/Y"/>
+&lt;/l:context></programlisting>
+      <para>This is only useful, if you want to completely change the appearance of
+        a date in your document. </para>
+      <!-- Add procedure to explain how to change? -->
+    </section>
+    <section xml:id="dbc.common.dbtimestamp.pseudo-attrib">
+      <title>Adding Pseudo-Attributes</title>
+      <para>The simpler method is to change the PI directly. Especially
+        if you do not want to customize the date for the complete
+        document or you want it change individually. Basically, add a
+          <emphasis>pseudo-attribute</emphasis><footnote>
+          <para>A <emphasis>pseudo-attribute</emphasis> looks like an
+            XML attribute due to its similar syntax. However, it is not.
+            A processing instruction can only contain text and no
+            attributes. For more information about PIs, refer to the XML
+            specification at <link
+              xlink:href="http://www.w3.org/TR/REC-xml/#sec-pi"
+            />.</para>
+        </footnote> into the <tag class="xmlpi">dbtimestamp</tag> PI.
+        For example, if you want to insert only the year, add the <tag
+          class="attribute">format</tag> pseudo-attribute: </para>
+      <screen language="xml">&lt;?dbtimestamp format="Y"?></screen>
+      <para>More format-letters can be found in the reference page (see
+        link at the <citetitle>See Also</citetitle> section).</para>
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:show="new" 
+      xlink:href="http://www.sagehill.net/docbookxsl/Datetime.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:show="new" 
+          xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbtimestamp.html"/>,
+        the reference page for the PI</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

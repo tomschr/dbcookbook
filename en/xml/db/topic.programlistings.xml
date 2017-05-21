@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.markup.programlistings" remap="topic"
+   userlevel="medium"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Incorporating Code Listings</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>programlistings</keyword>
+      <keyword>code</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need to add an element which is used for code listings.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <tag>programlisting</tag> element. For example, the following markup
+      shows some Python code:</para>
+    <programlisting language="python" linenumbering="unnumbered">&lt;programlisting>#!/usr/bin/python
+
+def sayhello(name):
+  """Say hello to someone"""
+  return "Hello %s" % name
+
+sayhello("Tux")&lt;/programlisting></programlisting>
+    <para>If you want to benefit from syntax highlighting later, use the
+        <tag class="attribute">language</tag> attribute
+      additionally:</para>
+    <programlisting linenumbering="unnumbered">&lt;programlisting <emphasis role="strong"
+      >language="python"</emphasis
+      >>...&lt;/programlisting></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>In most cases, <tag>programlisting</tag> is probably enough
+      for all your needs. However, DocBook and the DocBook stylesheets
+      supports some neat features you should know:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Annotated lines for short comments</para>
+      </listitem>
+      <listitem>
+        <para>Callouts, for more exhaustive explanations</para>        
+      </listitem>
+      <listitem>
+        <para>Line numbering, if refering to a number is enough</para>
+      </listitem>
+      <listitem>
+        <para>External code files, if you want to incorporate files from
+        outside your DocBook document</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>The above features are explained in the following
+      subsections.</para>
+    
+    <section xml:id="dbc.markup.programlistings.lineannotation">
+      <title>Using Line Annotatations</title>
+      <para>Annotated lines are short comments created by
+        <tag>lineannotation</tag>:</para>
+      <programlisting language="xml" linenumbering="unnumbered"
+>&lt;programlisting>#!/usr/bin/python &lt;lineannotation>She-bang line&lt;/lineannotation>
+
+def sayhello(name):
+  """Say hello to someone""" &lt;lineannotation>Python's doc comment&lt;/lineannotation>
+  return "Hello %s" % name
+
+sayhello("Tux")
+&lt;programlisting></programlisting>
+      <para>Line annotations are printed in italic by default:</para>
+      <programlisting language="python" linenumbering="unnumbered"
+>#!/usr/bin/python <lineannotation>Shebang line</lineannotation>
+
+def sayhello(name):
+  """Say hello to someone""" <lineannotation>Python's doc comment</lineannotation>
+  return "Hello %s" % name
+
+sayhello("Tux")</programlisting>
+      <para>They are only useful, if you have short comments. If you need 
+        further explanations, callouts are better suited for this task.</para>
+      <para>Problems can arise when a reader wants to copy and paste
+        text containing line annotations. Such text usually creates
+        syntax problems. In this case, use a comment symbol for the
+        appropriate programming language. For Python, it is the hash
+        sign which can be combined in a <tag>programlisting</tag>
+        context as follows:</para>
+      <programlisting language="python" linenumbering="unnumbered"
+>&lt;programlisting> ...
+# &lt;lineannotation>Function to output a warm welcome message&lt;/lineannotation>
+def sayhello(name):
+  ...
+&lt;/programlisting></programlisting>
+      <para>With this method, an annotated line does not create any
+        syntax errors.</para>
+    </section>
+    <section xml:id="dbc.markup.programlistings.callout">
+      <title>Using Callouts</title>
+      <remark>toms, 2012-09-02: Refer to its own topic</remark>
+      <para>Callouts are little marks in your code which refers to a
+        more exhaustive explanation, usually <emphasis>after</emphasis> the code.
+        Such an explanation is marked up as a <tag>calloutlist</tag>:</para>
+      
+      <programlisting language="xml" linenumbering="unnumbered"><![CDATA[<programlisting language="python"
+>#!/usr/bin/python <co xml:id="co.shebang"/>
+
+def sayhello(name):
+  """Say hello to someone""" <co xml:id="co.doccomment"/>
+  return "Hello %s" % name
+
+sayhello("Tux")</programlisting>
+<calloutlist>
+   <callout arearefs="co.shebang">
+     <para>A Shebang line. Unix-like operating systems can parse
+           this line, execute the corresponding interpreter and pass
+           the script as first argument.</para>
+   </callout>
+   <callout arearefs="co.doccomment">
+     <para>A Python doc comment. Usually, written as triple quotes
+           or as triple apostrophs marks the doc comment for a function
+           or class.</para>
+   </callout>
+</calloutlist>]]></programlisting>
+      <para>The result will look like this:</para>
+      <programlisting language="python" linenumbering="unnumbered"
+>#!/usr/bin/python <co xml:id="co.shebang"/>
+
+def sayhello(name):
+  """Say hello to someone""" <co xml:id="co.doccomment"/>
+  return "Hello %s" % name
+
+sayhello("Tux")</programlisting>
+      <calloutlist>
+        <callout arearefs="co.shebang">
+          <para>A Shebang line. Unix-like operating systems can parse
+            this line, execute the corresponding interpreter and pass
+            the script as first argument.</para>
+        </callout>
+        <callout arearefs="co.doccomment">
+          <para>A Python doc comment. Usually, written as triple quotes
+            or as triple apostrophs marks the doc comment for a function
+            or class.</para>
+        </callout>
+      </calloutlist>
+      <para>Callouts are a good way to give your reader more
+        explanations. Find more information in <remark>TODO: Add xref</remark>.</para>
+    </section>
+    <section xml:id="dbc.markup.programlistings.numbering">
+      <title>Setting Line Numbering</title>
+      <para>Numbering program listings can be done with the attribute
+        <tag class="attribute">linenumbering</tag>:</para>
+      <programlisting>&lt;programlisting linenumbering="numbered">...</programlisting>
+      <para>The result can look like this:</para>
+      <programlisting linenumbering="unnumbered"> 1 | #!/usr/bin/python
+ 2 | 
+ 3 | def sayhello(name):
+ 4 | """Say hello to someone"""
+ 5 | return "Hello %s" % name
+ 6 |
+ 7 | sayhello("Tux")</programlisting>
+      <para>To influence the numbering, DocBook and the DocBook
+        stylesheets has several ways:</para>
+      <variablelist>
+        <varlistentry>
+          <term><tag class="attribute">startinglinenumber</tag></term>
+          <listitem>
+            <para>This attribute in <tag class="starttag">programlisting</tag>
+              specifies the initial line number.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><tag class="attribute">continuation</tag></term>
+          <listitem>
+            <para>This attribute in <tag class="starttag"
+                >programlisting</tag> determines whether line numbering
+              continues from the previous element or restarts. Possible
+              values are <tag class="attvalue">continues</tag> or <tag
+                class="attvalue">restarts</tag> (default).</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><tag class="xmlpi" 
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbhtml_linenumbering.everyNth.html"
+            >dbhtml linenumbering.everyNth="<replaceable>N</replaceable>"</tag></term>
+          <term><tag class="xmlpi" 
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbfo_linenumbering.everyNth.html"
+            >dbfo linenumbering.everyNth="<replaceable>N</replaceable>"</tag></term>
+          <listitem>
+            <para>This processing instruction (PI) specifies interval
+              for line numbers. By default, every 5th line displays its
+              number.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><tag class="xmlpi"
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbhtml_linenumbering.separator.html"
+            >dbhtml linenumbering.separator="<replaceable>text</replaceable>"</tag></term>
+          <term><tag class="xmlpi"
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbfo_linenumbering.separator.html"
+            >dbfo linenumbering.separator="<replaceable>text</replaceable>"</tag></term>
+          <listitem>
+            <para>This PI specifies separator text for line numbers. By
+              default it is a single space. This text is printed after
+              the line number but before the line from the program
+              listing.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><tag class="xmlpi"
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbhtml_linenumbering.width.html"
+            >dbhtml linenumbering.width="<replaceable>width</replaceable>"</tag></term>
+          <term><tag class="xmlpi"
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbfo_linenumbering.width.html"
+            >dbfo linenumbering.width="<replaceable>width</replaceable>"</tag></term>
+          <listitem>
+            <para>This PI specifies width for line numbers. By default,
+              this value is set to three which gives you a reserved
+              space of numbers up to 999. </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter 
+            xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/html/linenumbering.extension.html"
+            >linenumbering.extension</parameter></term>
+          <listitem>
+            <para>Parameter which enables the line numbering extension</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      <para>To use the processing instructions, add them in
+        <tag>programlisting</tag> without any whitespace:</para>
+      <programlisting language="xml"
+        linenumbering="unnumbered">&lt;programlisting>&lt;?dbhtml 
+   linenumbering.everyNth="2" 
+   linenumbering.width="2" ?>#!/usr/bin/python
+...
+&lt;/programlisting></programlisting>
+      <para>This will create the following output:</para>
+      <programlisting language="xml" linenumbering="numbered"><?dbhtml linenumbering.everyNth="2" 
+        linenumbering.width="2" 
+?>  | #!/usr/bin/python
+ 2| 
+  | def sayhello(name):
+ 4| """Say hello to someone"""
+  | return "Hello %s" % name
+ 6|
+  | sayhello("Tux")</programlisting>
+    </section>
+    <section xml:id="dbc.markup.programlistings.externals">
+      <title>Incorporating External Files</title>
+      <para>To incorporate external files is explained in a separate
+        topic. Refer to <xref linkend="dbc.markup.programlistings-external"/>.</para>
+    </section>
+    
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/ProgramListings.html"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.markup.programlistings-external"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

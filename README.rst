@@ -1,7 +1,7 @@
 ===================================
 Welcome to "The DoCookBook"
 ===================================
-:Info: See https://sourceforge.net/p/doccookbook/code/
+:Info: See https://github/tomschr/doccookbook
 :Author: Thomas Schraitle <tom_schr AT web DOT de>
 :Description: Short overview of this project
 
@@ -89,43 +89,45 @@ to improve the book? Great! If you want to contribute to the book, you can
 do it in different ways:
 
 * Write me a mail to <tom_schr (AT) web.de> and send me your comments
-* Extend the tickets (Ideas for New Topics) at http://sf.net/p/doccookbook/tickets/
+* Extend the tickets (Ideas for New Topics) at http://github/tomschr/doccookbook/issues
 * Clone my repository on Sourcforge and send me patches
 
-This repository uses `hg flow` from https://bitbucket.org/yujiewu/hgflow/wiki/Home
-from `Vincent Driessen Git branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_
+This repository uses `git flow` from https://github.com/petervanderdoes/gitflow-avh 
+see `Vincent Driessen Git branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_
+
 
 Here is a procedure about how to clone the repository:
 
 1. Download Mercurial from http://mercurial.selenic.com and install it on your system.
 
-2. Clone my Sourceforge repository with the Mercurial command hg:
-::
+2. Clone my Sourceforge repository with the Mercurial command hg::
+
   $ hg clone http://hg.code.sf.net/p/doccookbook/code dbcookbook
 
-3. Install `hg flow` from above URL and enter:
-::
+3. Install `hg flow` from above URL and enter::
+
   $ hg flow init
 
-4. Create a new feature branch by using:
-::
+4. Create a new feature branch by using::
+
   $ hg flow feature start FEATURE_NAME
 
-5. If you want to create a new topic, decide in which chapter it could belong (markup, common customizations, structure, fo, html, or any other). For example, if you want an addition to DocBook´s structure chapter, use the existing template and copy it (where 'FOO' is an abstract term; replace it with something meaningful):
-::
+5. If you want to create a new topic, decide in which chapter it could belong (markup, common customizations, structure, fo, html, or any other). For example, if you want an addition to DocBook´s structure chapter, use the existing template and copy it (where 'FOO' is an abstract term; replace it with something meaningful)::
+
   $ hg copy en/xml/topic.empty.xml en/xml/structure/topic.FOO.xml
 
-6. Open the XML file which contains a chapter element. In our example, it would be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and insert the following code:
-::
+6. Open the XML file which contains a chapter element. In our example, it would be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and insert the following code::
+
   <xi:include href="structure/topic.foo.xml"/>
 
 7. Open the XML file en/xml/structure/topic.foo.xml and write your topic.
 
-8. When you are finished, publish your feature branch:
-::
+8. When you are finished, publish your feature branch::
+
   $ hg flow feature publish FEATURE_NAME
 
 9. Create a pull request.
+
 
 
 Find more information about Mercurial at http://mercurial.selenic.com/.
@@ -152,5 +154,3 @@ How you can help
 * Find typos, grammar problems, inconsistencies, or plain errors
 * Send me patches
 * Write your own topic
-
-

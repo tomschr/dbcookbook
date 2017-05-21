@@ -1,0 +1,552 @@
+#! /usr/bin/perl
+
+=head1 NAME
+
+dbautosplit - automaticaly split DocBook document
+
+=head1 SYNOPSIS
+
+B<dbautosplit> [I<options>] I<input_file> [I<output_template>]
+
+B<dbautosplit> B<--help>
+
+=head1 DESCRIPTION
+
+B<dbautosplit> is tool for automaticaly splitting DocBook documents. It use
+XInclude (see L<http://www.w3.org/TR/xinclude/>) for include document fragments.
+This allow split large XML file to smaler files withal preserve validation.
+
+Splitting is possible in any element. Default is 
+C<book>, C<part>, C<chapter>, C<article>, C<preface>, C<reference> and C<refentry>.
+Morewer you may specify maximum depth level. Output file
+names are full customizable. It is possible to get tree structure corespond to
+hiearchy of sections in DocBook document.
+
+All C<xml:base> attributes (see L<http://www.w3.org/TR/xmlbase/>) are processed
+and them removed. Relative references in C<fileref> and C<url> attributes
+are properly rewrited. So it is posible to use B<dbautosplit> (with maximum
+level depth set to zero) as inteligent C<xml:base> attribute remover and so as
+intelignet DocBook copyier.
+
+If no output template is specified, default F<out/index.xml> is used. See B<TEMPALTE EXPANSION> below.
+
+=head1 OPTIONS
+
+=over
+
+=item B<--split>=I<ELEMENTS>
+
+Coma-separated list of XML elements in which is required spliting. Asterisk ('*') means any tag.
+The default is C<book>, C<part>, C<chapter>, C<article>, C<preface> C<reference> and C<refentry>.
+
+=item B<--split-add>=I<ELEMENTS>
+
+Coma-separate list of XML elements which are addeded to previously specified tags list
+or to the default list. See B<--split> otpion.
+
+=item B<--split-del>=I<ELEMENTS>
+
+Coma-separated list of XML elements which are removed from previously specified tags list
+or from the default list. See B<--split> option.
+
+=item B<-l> I<DEPTH>, B<--level>=I<DEPTH>
+
+Specify recursion maximum depth level to I<DEPTH>. The default maximum depth is 1.
+
+=item B<--lo-dirs>=I<PATHS>
+
+Coma-separated list of paths in which are located local objects (see B<LOCAL OBJECTS> below).
+All paths are expanded as the standart Unix shell would do, see L<File::Glob(3perl)> for details.
+Relative paths is related to curent working directory. If path contains C<$XML_BASE> at the begining
+it is replaced by real base of input document, see option
+B<--xmlbase> below. Default paths are F<LocalObjects>, F<MediaObjects>, F<ImageObjects> and F<#Pictures>
+in base directory of input document.
+
+=item B<--lo-dirs-add>=I<PATHS>
+
+Coma-separeted list of paths which are addeded to preiously specified or the default 
+local objects paths. See B<--lo-dirs> option.
+
+=item B<--lo-dir>=I<DIRECTORY>
+
+Name of local objects directory for newly created documents (see B<LOCAL OBJECTS> below).
+Relative path is related to newly
+created documents. Default directory is F<LocalObjects>.
+
+=item B<--lo-move>
+
+Move local objects instead copy them. See B<LOCAL OBJECTS> below.
+
+=item B<-o>=I<TEMPLATE>, B<--output-other>=I<TEMPLATE>
+
+I<TEMPLATE> for other (included) output files (see B<TEMPALTE EXPANSIONS> below).
+Relative path is related to parent. The default is F<%attr(id)?:%text(%name()-%02index())/index.xml>.
+
+=item B<--xmlbase>=I<URI>
+
+XML base URI (Uniform Resource Identifier) for input document.
+See L<http://www.w3.org/TR/xmlbase/> for details.
+You may need change default if you simple copy an DocBook document
+without copying referenced files nor changing C<fileref> attributes.
+On this case set XML base to orginal location. Note, URI is required not (unix)
+file name.
+
+=item B<--xi-dtd>[=I<FILE>]
+
+Append minimal internal subset for support C<xi:include> element.
+If I<FILE> is specified then entiry reference to this external subset is inserted instead.
+Relative path is related to curent work directory.
+
+=item B<--encoding>=I<ENCODING>
+
+Enforce encoding for all output files.
+
+=item B<-v>, B<--verbose>
+
+Increase verbosity level.
+
+=item B<-q>, B<--quiet>
+
+Decrease verbosity level.
+
+=item B<-V>, B<--version>
+
+Dump version information and exit.
+
+=item B<-h>, B<-?>, B<--help>
+
+Dump help screen and exit.
+
+=item B<--man>
+
+Show this manual page and exit.
+
+=back
+
+=head1 LOCAL OBJECTS
+
+I<Local objects> are special files (pictures, audio files, ...) in
+directories specified by B<--lo-dirs> option.
+If DocBook document refer (via C<fileref> attribute) to this directory, 
+the files are copied (or moved) to local "Local Objects Directory"
+specified by B<--lo-dir> option. 
+Moreower all files with same name and differ suffix (after last dot)
+are copied (or moved) too.
+
+=head1 TEMPLATE EXPANSIONS
+
+In output file names are recognized special templates with following syntax:
+
+I<TEMPLATE> := B<%>[I<FORMAT>]I<COMMAND>B<(>I<OPTIONS>B<)>[B<?>I<TEMPLATE>[B<:>I<TEMPLATE>]]
+
+where I<FORMAT> is format modifier as for "%s" format in C<printf> command,
+and I<COMMAND>B<(>I<OPTIONS>BI<)> is one of (case insensible):
+
+=over
+
+=item B<Attribute>(I<NAME>), B<Attr>(I<NAME>)
+
+Replace template by attribute value.
+
+=item B<NodeName>(), B<Name>()
+
+Replace template by name of node.
+
+=item B<Depth>()
+
+Replace template by current depth.
+
+=item B<Index>()
+
+Replace template by an unique increasing integer.
+
+=item B<Text>(I<STRING>), B<Txt>(I<STRING>)
+
+Replace template by arbritrary string. All templates in I<STRING> are expanded at first.
+
+=item B<PerlEval>(I<CODE>), B<Eval>(I<CODE>)
+
+Replace template by result of evalution arbritraty perl code. All templates in I<CODE> are expanded at first.
+
+=back
+
+Optionaly the first template can by folloved question mark, second temlate, colon mark
+and third temlpate. On this case if expansion of the first template is emty the second
+template is expanded otherwise third template is expanded.
+
+=head1 EXAMPLES
+
+=over 0
+
+=item B<dbautosplit> B<--level>=I<0> B<--om>=F<new/mydoc.xml> F<old/mydoc.xml>
+
+Copy file F<mydoc.xml> from F<old/> to F<new/> directory, remove all I<xml:base> attributes
+and properly rewrite all relative I<fileref> references so they refer to same files.
+If they are reference to files in local objects directoryes, they will be copyed.
+
+=item B<dbautosplit> B<--om>=F<new/mydoc.xml> B<--split-add>=C<section> F<old/mydoc.xml>
+
+Same as above, but F<new/mydox.xml> is now splited in defaults
+elements plus in element C<section>. Name of output files according to default output template
+(except main output file which is specified) which is 
+F<%attr(id)?:%text(%name()-%02index())/index.xml>. That mean every splited part create own directory
+in F<new> directory and file F<index.xml> in this directory. Name of this directory will be the value
+of C<id> attribute or name of splited element followed by dash and an integer if there is no C<id>
+attribute specified.
+
+=item B<dbautosplit> B<--oo>=F<'%eval(uc("%attr(id)?:%text(%name()-%index())/index.xml"))'> F<old/mydoc.xml>
+
+The output files names will have the same name as in default case but in uper case.
+
+=back
+
+
+=head1 BUGS AND TODO
+
+=over
+
+=item *
+
+How about cross-document ID/IDREF? Help me.
+
+=item *
+
+Magnle entity referenced by I<entityref> and I<targetdoent> attributes.
+
+=back
+
+=head1 SEE ALSO
+
+L<dbmerge(3)>, 
+"DocBook: The Definitive Guide" L<http://www.docbook.org/tdg/en/html/docbook.html>
+
+=head1 AUTHOR
+
+Martin Lazar <mlazar@suse.cz>
+
+=cut
+
+use strict;
+use warnings;
+
+use Getopt::Long qw(:config no_ignore_case bundling);
+use XML::DOM;
+use URI::file;
+use URI::WithBase;
+use File::Basename;
+use File::Path;
+use File::Copy;
+use Pod::Usage;
+
+our $VERSION = "0.6";
+
+## configuration, help, version and usage
+#####################################################################
+our %opt_split = map {$_, 1} qw(book part article chapter preface reference refentry);
+our $opt_level = 1;
+our @opt_lo_abs_uris = map "\$XML_BASE/$_", (qw(LocalObjects MediaObjects ImageObjects) , "#Pictures");
+our $opt_lodir = "LocalObjects";
+our $opt_lomove;
+our $opt_om = "out/index.xml";
+our $opt_oo = '%attr(id)?:%text(%name()-%02index())/index.xml';
+our $opt_xmlbase;
+our $opt_encoding;
+our $opt_xidtd;
+our $verbosity_level = 1; # -1 - none, 0 - only warnings, 1 - normal messages, 2 - more messages, 3 - more more ...
+
+GetOptions(
+	"split|split-set=s" => sub { %opt_split = ( map {$_, 1} split ",", $_[1]) },
+	"split-add=s" => sub { %opt_split = ( %opt_split, map {$_,1} split ",", $_[1]) },
+	"split-del=s" => sub { map {delete $opt_split{$_}} split ",", $_[1] },
+	"lo-dirs|lo-dirs-set=s" => sub { @opt_lo_abs_uris = ( split ",", $_[1]) },
+	"lo-dirs-add=s" => sub { @opt_lo_abs_uris = ( @opt_lo_abs_uris, split ",", $_[1]) },
+	"lo-dir=s" => \$opt_lodir,
+	"level|l=i" => \$opt_level,
+#	"output-main|om|mo=s" => \$opt_om,
+	"output-other|oo|o=s" => \$opt_oo,
+	"xmlbase=s" => \$opt_xmlbase,
+	"lo-move!" => \$opt_lomove,
+	"verbose|v+" 	=> \$verbosity_level,
+	"quiet|q" 	=> sub { $verbosity_level-- },
+	"help|?|h!" 	=> \&help,
+	"version|V!" 	=> \&version,
+	"encoding=s"	=> \$opt_encoding,
+	"xi-dtd:s"	=> \$opt_xidtd,
+	"man!"		=> sub { pod2usage(-verbose => 2) },
+	) or usage();
+usage("to many arguments") if @ARGV>2;
+usage("missing input file") unless @ARGV;
+$opt_om = $ARGV[1] if $ARGV[1];
+
+sub help {
+	print <<"EOHELP";
+Usage: $0 [options] input_file [output_template]
+Split an DocBook document.
+
+Options:
+  --split[-add|-del]=TAG[,...]	   splitting tags ('*' means any tag)
+  -l, --level DEPTH		   maximum recursion depth level
+  
+  --lo-dirs=GLOB[,...]             local objects search paths
+  --lo-dir=DIRECTORY		   local objects directory
+  --lo-move			   move local objects instead copy them
+  
+  -o, --output-other=TEMPLATE	   template for other output file names
+  --xmlbase=URI		 	   base URI for relative URIs
+  --xi-dtd[=FILE]		   insert xi:include DTD [from FILE]
+  --encoding=ENC		   enforce output encoding
+
+  -v, --verbose			   increase verbosity level
+  -q, --quiet			   decrease verbosity level
+  -V, --version			   print version information
+  -h, --help			   print this help
+  --man				   show manual page
+
+TEMPLATE has form %[FMT]CMD(OPT)[?TEMPLATE[:TEMPLATE]], where FMT is format
+specification (for \%s in sprintf) and CMD is template command. Available
+command are: Attribute, NodeName, Depth, Index, Text and PerlEval.
+ 
+Report bugs to <anicka\@suse.cz>
+EOHELP
+	exit 0;
+}
+
+sub version {
+	(my $progname = $0) =~ s|.*/||;
+	print $progname, " version ", $VERSION, " (", scalar(localtime($^T-(3600*24*(-M $0)))), ")\n";
+	exit 0;
+}
+
+sub usage {
+	print STDERR "$0: @_\n" if @_;
+	print STDERR "Try `$0 --help' for more information.\n";
+	exit 1;
+}
+
+## sub parents($str) - match fisrt parent in string
+# output: ($prematch, $match, $postmatch)
+sub parents {
+	my $s = shift;
+	my $op = index $s, "(";
+	my $cp;
+	if ($op<0) {return ($s, undef, undef);}
+	my $prematch = substr $s, 0, $op, "";
+	substr($s, 0, 1) = "";
+	my $match = "";
+	while ($s) {
+		$op = index $s, "(";
+		$cp = index $s, ")";
+		if ($cp<0) {return ($prematch . "(" . $match . $s , undef, undef);}
+		if ($op<0 || $op>$cp) {return ($prematch, $match . substr($s, 0, $cp), substr($s, $cp+1));}
+		my ($pre, $mr, $post) = parents($s);
+		return ($prematch . "(" . $match . $s, undef, undef) unless defined $mr;
+		$match .= $pre . "(" . $mr . ")";
+		$s = $post;
+	}
+	return ($prematch . "(" . $match . $s, undef, undef);
+}
+
+## sub opatern_subst($str, $vars) - output pattern substitution
+#####################################################################
+sub opattern_subst {
+	my ($s, $node, $vars) = @_;
+	while ($s) {
+		last unless my ($fmt, $dummy, $cmd) = $s =~ /(%[-+0# ]?[0-9]*(\.[0-9]+)?)([a-z]+)\(/i;
+		my $pre = $`;
+		($dummy, my ($match, $post)) = parents( $& . $');
+		last unless defined $match; # parse error
+		my $result;
+		$result = $match if $cmd =~ /^te?xt$/i;
+		$match = opattern_subst($match, $node, $vars);
+		$result = $node->getAttribute($match) if $cmd=~/^attr(ibute)?$/i;
+		$result = $vars->{index} if $cmd =~ /^index$/i;
+		$result = $vars->{depth} if $cmd =~ /^depth$|^level$/i;
+		$result = $node->getNodeName if $cmd =~ /^(node)?name$/i;
+		$result = eval($match)if $cmd =~ /^(perl)?eval$|^(eval)?perl$/i;
+		undef $result if defined $result and not length $result;
+		my ($match2, $match3) = (defined $result?sprintf($fmt . "s", $result):"<nic>", "");
+		if ($post =~ /^\?(%[-+0 ]?[0-9]*(\.[0-9]+)?[a-z]+\()/i) {
+			($dummy, $match2, $post) = parents($1 . $');
+			last unless defined $match2;
+			$match2 = $dummy."(".$match2.")";
+		}
+		if ($post =~ /^\??:(%[-+0 ]?[0-9]*(\.[0-9]+)?[a-z]+\()/i) {
+			($dummy, $match3, $post) = parents($1 . $');
+			last unless defined $match3;
+			$match3 = $dummy."(".$match3.")";
+		}
+		$s = $pre . (defined $result ? $match2 : $match3) . $post;
+	}
+	return $s;
+}
+
+our (%ofiles, $xmlbase, $main_ourl);
+sub is_abs { $_[0]->path =~ m|^/| || $_[0]->scheme }
+
+sub dom_autosplit {
+	my ($node, $out_baseuri, $in_baseuri, $depth) = @_;
+	my $owner = $node->getOwnerDocument;
+	my %count;
+	my $doc = $owner->createDocumentFragment;
+
+	# accept xml:base attribute
+	if ($node->getAttribute("xml:base")) {
+		$in_baseuri = URI::WithBase->new($node->getAttribute("xml:base"), $in_baseuri->abs);
+		$node->removeAttribute("xml:base");
+	}
+
+	my $root = $doc->appendChild($node->cloneNode(0));
+
+
+	my $fileref = $root->getAttribute("fileref");
+	if ($fileref) {
+	
+		# copy/move local objects
+		my $abs = URI::file->new($fileref)->abs($in_baseuri->abs)->file;
+		for (grep {substr($abs, 0, length($_)) eq $_} @opt_lo_abs_uris) {
+			my $dir = $opt_lodir . "/" . substr($abs, length($_));
+			$root->setAttribute("fileref", $dir);
+			$dir = URI::file->new(dirname $dir)->abs($out_baseuri->abs)->file;
+			mkpath $dir;
+			$abs =~ s|\.[^./]*$|.*|;
+			print STDERR $opt_lomove?"Move":"Copy", " local objects: ", 
+				URI::file->new_abs($abs)->rel(URI::file->cwd), "\n" if $verbosity_level > 1;
+			for(glob($abs)) {
+				my ($dev1, $ino1) = stat $_;
+				my ($dev2, $ino2) = stat $dir . "/" . basename $_;
+				next if defined $dev2 && $dev1 == $dev2 && $ino1 == $ino2;
+				$opt_lomove ? move($_, $dir) : copy($_, $dir) ;
+			}
+			goto SKIP_FIXUP_FILEREF;
+		}
+	
+		# fixup @fileref (NOTE: it is file name, not URI)
+		if ($fileref !~ m|^/|) {
+			my $furi = URI::WithBase->new(URI::file->new($fileref), $in_baseuri->abs);
+			if (is_abs($furi) || is_abs($in_baseuri)) {
+				$furi = $furi->abs;
+			} else {
+				$furi = $furi->abs->rel($out_baseuri->abs);
+			}
+			print STDERR "Fixup fileref: $fileref => ", $furi->file, "\n" if $verbosity_level > 1;
+			$fileref = $furi->file;
+			$root->setAttribute("fileref", $fileref);
+		}
+SKIP_FIXUP_FILEREF:
+	}
+
+	# proces children
+	for my $child ($node->getChildNodes) {
+		if ($child->getNodeType != ELEMENT_NODE) {
+			$root->appendChild($child->cloneNode(1));
+			next;
+		}
+		my $ourl = $out_baseuri;
+		my $do_split = $depth <= $opt_level && ($opt_split{$child->getNodeName} || $opt_split{"*"});
+
+		if ($do_split) {
+			# output file name and URL
+			my $ofilename = opattern_subst($opt_oo, $child, {index => ++$count{$child->getNodeName}, depth => $depth});
+			my $oabs = URI::file->new($ofilename)->abs($out_baseuri->abs)->file;
+			if (defined $ofiles{$oabs}) {
+				my $nfile = $ofilename;
+				my $num = 0;
+				do {
+					$num++;
+					$nfile = "$ofilename.$num";
+					$oabs = URI::file->new($nfile)->abs($out_baseuri->abs)->file;
+				} while defined $ofiles{$oabs};
+				print STDERR "File '$ofilename' already exists, using '$nfile'.\n" if $verbosity_level >= 0;
+				$ofilename = $nfile;
+			}
+			$ofiles{$oabs} = 1;
+			$ourl = URI::WithBase->new(URI::file->new($ofilename), $out_baseuri->abs);
+		}
+		
+		my $fragment = dom_autosplit($child, $ourl, $in_baseuri, $depth+1);
+		
+		if ($do_split) {
+			my_dom_write($ourl, $fragment);
+			my $xi = $owner->createElement("xi:include");
+			$xi->setAttribute("href", $ourl);
+			$xi->setAttribute("xmlns:xi", "http://www.w3.org/2001/XInclude");
+			$root->appendChild($xi);
+		} else {
+			$root->appendChild($fragment);
+		}
+			
+	}
+	return $doc;
+}
+
+
+$xmlbase = URI::WithBase->new($opt_xmlbase||URI::file->new($ARGV[0]), URI::file->cwd);
+
+@opt_lo_abs_uris = map m|^\$XML_BASE/(.*)|?URI::file->new($1)->abs($xmlbase->abs)->file:$_, @opt_lo_abs_uris;
+@opt_lo_abs_uris = map URI::file->new_abs($_)->file . "/", map glob, @opt_lo_abs_uris;
+
+XML::DOM::ignoreReadOnly(1);
+my $parser = new XML::DOM::Parser(KeepCDATA => 1, ParseParamEnt => 0);
+my $doc = $parser->parsefile($ARGV[0]);
+
+if (defined $opt_xidtd) {
+	$doc->setDoctype($doc->createDocumentType(
+		$doc->getDocumentElement->getNodeName,
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd",
+		"-//OASIS//DTD DocBook XML V4.2//EN"))
+		unless $doc->getDoctype;
+	if ($opt_xidtd) {
+#		$doc->getDoctype->addEntity("xinclude", undef, $opt_xidtd, undef, undef, 1);
+#		$doc->getDoctype->addText("%xinclude;");
+	} else {
+		$doc->getDoctype->addElementDecl("xi:include", "EMPTY");
+		$doc->getDoctype->addAttDef("xi:include", "href", "CDATA", "#REQUIRED");
+		$doc->getDoctype->addAttDef("xi:include", "xmlns:xi", "CDATA", "#REQUIRED");
+		for (qw(local.chapter.class local.divcomponent.mix local.para.char.mix local.info.class)) {
+			$doc->getDoctype->addEntity($_, "| xi:include", undef, undef, undef, 1);
+		}
+	}
+}
+
+my $ofilename = opattern_subst($opt_om, $doc->getDocumentElement, {index => 1});
+$main_ourl = URI::WithBase->new(URI::file->new($ofilename), URI::file->cwd);
+
+my $fragment = dom_autosplit($doc->getDocumentElement, $main_ourl, $xmlbase, 1);
+my_dom_write($main_ourl, $fragment);
+
+
+sub my_dom_write {
+	my ($url, $fragment) = @_;
+	my $owner = $fragment->getOwnerDocument;
+	my $encoding = $opt_encoding || ($owner->getXMLDecl ? $owner->getXMLDecl->getEncoding : "UTF-8");
+	
+	mkpath dirname $url->abs->file;
+	open OUT, ">:utf8", $url->abs->file or die "Can't open file '".$url->abs->file."': $!\n";
+	print STDERR "Creating file ", ($verbosity_level > 1 ? "(encoding $encoding)" : ""), ": ",
+		is_abs($main_ourl)?$url->abs->file:$url->abs->rel(URI::file->cwd), "\n" if $verbosity_level > 0;
+	$owner->setXMLDecl($owner->createXMLDecl("1.0")) unless $owner->getXMLDecl;
+	$owner->getXMLDecl->setEncoding($encoding);
+	print OUT $owner->getXMLDecl->toString, "\n" if $owner->getXMLDecl;
+
+	if ($opt_xidtd) {
+		my $xi = $doc->getDoctype->cloneNode;
+		$xi->setName($fragment->getFirstChild->getNodeName);
+		my $xiref = $opt_xidtd;
+		if ($xiref !~ m|^/|) {
+			$xiref = URI::file->new_abs($xiref)->rel($url->abs);
+		}
+		$xi->addEntity("xinclude", undef, $xiref, undef, undef, 1);
+		$xi->addText("%xinclude;");
+		print OUT $xi->toString, "\n";
+	} elsif ($owner->getDoctype) {
+		$owner->getDoctype->setName($fragment->getFirstChild->getNodeName);
+		print OUT $owner->getDoctype->toString, "\n";
+	}
+	
+	print OUT $fragment->toString;
+	print OUT "\n";
+
+	close OUT;
+}
+
+

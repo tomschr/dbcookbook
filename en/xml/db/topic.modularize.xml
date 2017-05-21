@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<?xml-model href="../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<section xml:id="dbc.markup.xincludes" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Modularize Your Document with XIncludes</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>XInclude</keyword>
+      <keyword>module</keyword>
+      <keyword>assemblies</keyword>
+      <keyword>XPointer</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>modules</subjectterm>
+        <subjectterm>markup</subjectterm>
+        <!--<subjectterm>xref</subjectterm>-->
+        <subjectterm>xinclude</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need a method to split your document into several
+        <quote>modules</quote> and put it together afterwards.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use <emphasis role="italic">XInclude</emphasis>. It is a <acronym>W3C<alt
+        >World Wide Web Consortium</alt></acronym>
+      specification and defines the elements <tag>xi:include</tag> and
+        <tag>xi:fallback</tag>. They are not DocBook elements (as they
+      are definied by the <acronym>W3C</acronym> and not <acronym>OASIS<alt
+          >Organization for the Advancement of Structured Information Standards</alt
+          ></acronym>), however 
+      they have been integrated in version 5.x<footnote>
+        <para>To use XInclude with DocBook 5.x, use the
+            <filename>docbookxi.rnc</filename> RELAX NG schema. </para>
+      </footnote>. Note, XIncludes work in DocBook regardless which
+      version (4.x or 5.x) you use.</para>
+    <para>If you want to use XIncludes, you need these things:</para>
+    <itemizedlist>
+      <listitem>
+        <para>A XML parser who supports XIncludes.</para>
+      </listitem>
+      <listitem>
+        <para>The element <tag>xi:include</tag>. In general, it can be
+          placed everywhere where you can place DocBook elements. It is
+          a placeholder for the real content and works as a
+          <quote>pointer</quote>. </para>
+      </listitem>
+      <listitem>
+        <para>The attribute <tag class="attribute">href</tag> inside the
+            <tag class="starttag">xi:include</tag> start tag. It is an URI which refers to
+          your included file.</para>
+      </listitem>
+      <listitem>
+        <para>The file which is referenced by the <tag
+          class="attribute">href</tag> attribute. The content of the
+          file will replace the <tag>xi:include</tag> element. It
+          contains usually a DocBook element with its content.</para>
+      </listitem>
+    </itemizedlist>
+    <para>The following example shows a book which points to a
+      substructure assuming chapters:</para>
+    <example xml:id="ex.db.xincludes.book-with-3-chapters">
+      <title>A Book with XIncluded Chapters</title>
+      <programlisting language="xml">&lt;book version="5.0"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  &lt;title>...&lt;/title>
+  <emphasis role="bold">&lt;xi:include href="intro.xml"/>
+  &lt;xi:include href="conceptual-overview.xml"/></emphasis>
+&lt;/book></programlisting>
+    </example>
+    <para>The above book contains an introduction (file
+        <filename>intro.xml</filename>) and a conceptual overview (file
+        <filename>conceptual-overview.xml</filename>). Both are
+      referenced by the XInclude´s <tag class="attribute">href</tag>
+      attribute. </para>
+    <para>Before you transform your document, you need to resolve your
+      XIncludes, either by your XML parser or <quote>manually</quote> by
+      a XSLT transformation. The following procedure shows a typical
+      workflow:</para>
+    <procedure>
+      <title>Typical Workflow with XIncludes</title>
+      <step>
+        <para>Write your document structure, usually it will be a book
+          or an article. Do not forget to include the XInclude namespace
+            <uri>http://www.w3.org/2001/XInclude</uri> into the root
+          element. It is common to use the prefix <tag class="prefix"
+            >xi</tag>.</para>
+      </step>
+      <step>
+        <para>Add <tag>xi:include</tag> elements for those content you
+          want to maintain in a separate file. Typically, this can be an
+          appendix, chapter, preface, glossary, or any other top level
+          elements.</para>
+      </step>
+      <step>
+        <para>Resolve your XIncludes. Use a XML parser who supports
+          XIncludes, for example, <command>xmllint</command> from the
+            <link xlink:href="http://xmlsoft.org">libxml2
+          library</link>. This XML parser brings the
+            <option>--xinclude</option> option to resolve all your
+          XInclude elements in one step:</para>
+        <screen><command>xmllint</command> --xinclude --output big.xml book.xml</screen>
+        <para>The above command resolves all XIncludes and saves the
+          result in the file <filename>big.xml</filename>. Note, this
+          does not perform any validation! It just replaces
+            <tag>xi:include</tag> with the content of the referenced
+          file. After the XInclude elements are resolved, the file looks
+          now like this:</para>
+        <programlisting language="xml">&lt;book version="5.0"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude">
+  &lt;title>...&lt;/title>
+  &lt;chapter>
+    &lt;title>Introduction&lt;/title>
+    &lt;para>...&lt;/para>
+  &lt;/chapter>
+  &lt;chapter>
+   &lt;title>Conceptual Overview&lt;/title>
+   &lt;para>...&lt;/para>
+  &lt;/chapter>
+&lt;/book></programlisting>
+      </step>
+      <step>
+        <para>Validate the result (in our example, it is
+            <filename>big.xml</filename>) with your DocBook schema. </para>
+      </step>
+      <step>
+        <para>Transform the result file with your stylesheets into your
+          target format.</para>
+      </step>
+    </procedure>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The previous procedure showed a book with xincluded chapters.
+      It is possible to even go deeper and include also section into a
+      chapter. Actually, there is no limit. You should only be aware
+      that you do not create circular references (file A includes file B
+      and B includes A).</para>
+    <para>As XIncludes are very common nowadays, resolving
+        <tag>xi:include</tag> and transforming into the output format
+      can be done in one step. This is the case for
+        <command>xsltproc</command> from the libxslt library. Use the
+        <option>--xinclude</option> option as shown:</para>
+    <screen><command>xsltproc</command> --xinclude<!--
+    --> <replaceable>STYLESHEET</replaceable><!--
+    --> <replaceable>XMLFILE</replaceable></screen>
+    <remark>Add reference to Saxon 6</remark>
+    <para>If you prefer Saxon, version 9 contains the
+      <option>-xi</option> option to resolve XIncludes:</para>
+    <screen><command>saxon9</command> -xi<!-- 
+    --> -xsl:<replaceable>STYLESHEET</replaceable><!-- 
+    --> -s:<replaceable>XMLFILE</replaceable></screen>
+    <para>The last section showed a general method to work with
+      XIncludes. In most cases this is enough. However, XIncludes offers
+      more benefits which are discovered in the following
+      subsections.</para>
+    
+    <section xml:id="sec.db.modularize.xifallback">
+      <title>Fallbacks</title>
+      <para>If the referenced file in the <tag>xi:include</tag> element
+        is not available, the XInclude step will fail. How can you avoid
+        that? The XInclude specification defines also the
+          <tag>xi:fallback</tag> element. This element can be used to
+        add code when a referenced resource could not be retrieved:</para>
+      <example xml:id="ex.db.modularize.xifallback">
+        <title>Fallback Possibility with <tag>xi:fallback</tag></title>        
+        <programlisting language="xml">&lt;xi:include href="revhistory.xml">
+  &lt;xi:fallback>
+    &lt;para>The revision history could not be retrieved.&lt;/para>
+  &lt;/xi:fallback>
+&lt;/xi:include></programlisting>
+      </example>
+      <para>The previous code does the following: When the
+          <tag>xi:include</tag> element is being processed, the XML
+        parser tries to include the file
+          <filename>revhistory.xml</filename>. If the file can not be
+        retrieved, the XML parser will consider the <tag>xi:fallback</tag> element
+        and include the contents. In the above case it includes a
+        <tag>para</tag> element showing the failed attempt.</para>
+      <para>This method is useful when you want to process files which
+        cannot be expected to always be there. For example, the previous
+        revision history needs to be generated first. However, it is not
+        always sure that the revision history can be generated from an
+        possible offline version control system.</para>
+    </section>
+    
+    <section xml:id="sec.db.modularize.include-text">
+      <title>Including Text</title>
+      <para>The previous examples dealt with included resources in XML
+        only. If you need to include text, this can also be done with
+        XInclude.</para>
+      <para>Most common usecase is including source code which is
+      maintained separately. The following example points to a C source
+      code which needs to be included as text:</para>
+      <example xml:id="ex.db.modularize.include-text">
+        <title>Included Text in a Programlisting</title>
+        <programlisting language="xml"
+>&lt;programlisting language="c">&lt;xi:include
+   <emphasis role="bold">parse="text"</emphasis>
+   href="parser.c"/>&lt;/programlisting></programlisting>
+      </example>
+      <para>The important line is <code>parse="text"</code>. This
+        advises the XInclude processor to handle the referenced file
+        as text and not as XML. The default value for <tag
+          class="attribute">parse</tag> is <tag class="attvalue">xml</tag>.</para>
+      <para>It is recommended to remove any whitespaces inside
+          <tag>programlisting</tag> as shown above to avoid spurious
+        indendation or linebreaks.</para>
+      <para>More explanations can be found in <xref linkend="dbc.markup.programlistings-external"/>.</para>
+    </section>
+    
+    <!-- TODO: Move it to another topic? -->
+    <!--
+    <section xml:id="sec.db.modularize.xpointer">
+      <title>Partial Inclusion with XPointer</title>
+      <para>Previous examples showed how to include a file with an XML
+        structure. The inclusion pulled always the
+          <emphasis>complete</emphasis> file. If you need only a
+        fragment of this file (for example, a note) use
+          <emphasis>XPointers</emphasis>. </para>
+      <para>However, XPointers are only partially implemented and some
+        parts of the specification are not released as a W3C
+        recommendation. Nevertheless they are sometimes helpful if
+        used carefully.
+      </para>
+    </section>
+    -->
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.programlistings-external"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://www.w3.org/TR/xinclude/">XML Inclusions (XInclude) Version 1.0</link></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.sagehill.net/docbookxsl/ModularDoc.html#UsingXinclude"
+          >Using XInclude</link></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

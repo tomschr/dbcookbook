@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.html.sh.google-code-prettifiy" remap="topic"
+   userlevel="easy" version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Implementing Syntax Highlighting with Google Code
+    Prettify</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>programlisting</keyword>
+      <keyword>syntax highlighting</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>syntax highlighting</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to highlight your source codes in
+        <tag>programlisting</tag> elements with <link
+        xlink:href="http://code.google.com/p/google-code-prettify/"
+        >Google Code Prettifiy</link>.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Syntax highlighting makes source code easier to read as
+      keywords, strings, etc. appear in different colors. Use the
+      following procedure to implement syntax highlighting with Google
+      Code Prettifiy:</para>
+    <procedure>
+      <step>
+        <para>Download the source code bundle from the project's home
+          page at <link
+            xlink:href="http://code.google.com/p/google-code-prettify/"
+          />.</para>
+      </step>
+      <step>
+        <para>Copy the <filename>src</filename> directory to your HTML
+          output directory and rename it to <filename class="directory"
+            >highlighter</filename>.</para>
+      </step>
+      <step>
+        <para>Create a customization layer as explained in <xref linkend="dbc.common.dbcustomize"/>.</para>
+      </step>
+      <step>
+        <para>Set the <parameter>html.stylesheet</parameter> stylesheet
+          parameter:</para>
+        <programlisting language="xml"
+>&lt;xsl:param name="html.stylesheet">highlighter/prettify.css&lt;/xsl:param></programlisting>
+        <para>This value is needed to add the default style into the
+          header of the HTML output.</para>
+      </step>
+      <step>
+        <para>Add the named template
+            <function>user.footer.content</function> with the following
+          content:</para>
+        <programlisting language="xsl">&lt;xsl:template name="user.footer.content">
+   &lt;xsl:param name="node" select="."/>
+   &lt;script src="highlighter/prettify.js">&lt;/script>
+   &lt;script>prettyPrint();&lt;/script>
+&lt;/xsl:template></programlisting>
+        <para>This template is called before the end of <tag
+            class="endtag">body</tag> tag. Inside the template, load the
+            <filename>prettify.js</filename> and call the function
+            <function>prettyPrint()</function></para>
+      </step>
+      <step xml:id="st.html.sh.google.class.value">
+        <para>Add a template for <tag>programlisting</tag> which only
+          matches, when you add a <tag class="attribute">language</tag>
+          attribute. Use the <literal>class.value</literal> mode as
+          follows:</para>
+        <programlisting language="xsl">&lt;xsl:template match="d:programlisting[@language]" mode="class.value">
+  &lt;xsl:param name="class" select="local-name(.)"/>
+  &lt;xsl:choose>
+    &lt;xsl:when test="@linenumbering = 'numbered'">
+       &lt;xsl:value-of select="concat('prettyprint linenums ', $class)"/>
+    &lt;/xsl:when>
+    &lt;xsl:otherwise>
+       &lt;xsl:value-of select="concat('prettyprint ', $class)"/>
+    &lt;/xsl:otherwise>
+  &lt;/xsl:choose>
+&lt;/xsl:template></programlisting>
+      </step>
+      <step>
+        <para>If you want to enable syntax highlighting, make sure you add
+          a <tag class="attribute">language</tag> attribute in your 
+          <tag>programlisting</tag> tag.</para>
+        <para>If you want to enable line numbering, add the attribute
+          <tag class="attribute">linenumbering</tag> with the value
+          <tag class="attvalue">linenums</tag>.</para>
+      </step>
+      <step>
+        <para>Rebuild your HTML with your customization layer.</para>
+      </step>
+    </procedure>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The current implementation uses a JavaScript solution to
+      render the result in your browser. This has the advantage that you
+      do not need any extensions in your customization layer during
+      transformation. You only need to add the above additions to your
+      customization layer and your source code to enable syntax highlighting.</para>
+    <para>However, if JavaScript is disabled it won't work anymore. If
+      you rely on minimal HTML without any JavaScript code, this
+      solution is not for you. Use the highlighting mechanism which uses
+      a XSLT extension. <remark>Add link to highlighting extension topic
+        with JAR</remark></para>
+    
+    <section>
+      <title>Using the Language Attribute</title>
+      <para>As you could see above, the code in <xref
+          linkend="st.html.sh.google.class.value"/> uses the
+          <tag>language</tag> attribute, but doesn't pass it to the HTML
+        code. This is not needed as Google Code Prettify will guess.<footnote>
+          <para><quote>You don't need to specify the language since
+              prettyprint() will guess.</quote> cited from <link
+              xlink:href="http://google-code-prettify.googlecode.com/svn/trunk/README.html"
+            />, July 10, 2012.</para>
+        </footnote> If you do not want to rely on this algorithm, change
+        the above code and insert the language explitly:</para>
+      <programlisting language="xsl">&lt;xsl:template match="d:programlisting[@language]" mode="class.value">
+  &lt;xsl:param name="class" select="local-name(.)"/>
+  &lt;xsl:variable name="lang" select="concat('lang-', @language, ' ')"/>
+  &lt;xsl:choose>
+    &lt;xsl:when test="@linenumbering = 'numbered'">
+      &lt;xsl:value-of select="concat('prettyprint ', $lang, 'linenums ', $class)"/>
+    &lt;/xsl:when>
+    &lt;xsl:otherwise>
+      &lt;xsl:value-of select="concat('prettyprint ', $lang, $class)"/>
+    &lt;/xsl:otherwise>
+  &lt;/xsl:choose>
+&lt;/xsl:template></programlisting>
+      <para>Be aware that the above code does not make any checks, it
+        just copies the value. If your <tag
+          class="attribute">language</tag> attribute contains an
+        unsupported value, it may work not as expected.
+      </para>
+    </section>
+    <section>
+      <title>Using a Different Style</title>
+      <para>If you do not like the default style from
+        <filename>highlighter/prettify.css</filename>, use one of the
+        CSS files from the <filename class="directory">styles</filename>
+      directory. You can view an example in the <link
+        xlink:href="http://google-code-prettify.googlecode.com/svn/trunk/styles/index.html"
+        >Gallery</link>.
+      </para>
+      <para>Copy your favorite style into the <filename class="directory"
+        >highlighter</filename> directory and change the
+        <parameter>html.stylesheet</parameter> pointing to your CSS
+        file.</para>
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para>Include URL or bibliographic references.</para>
+  </section>
+</section>

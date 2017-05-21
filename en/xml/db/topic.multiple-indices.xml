@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.markup.multiple-indices" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Mastering Multiple Indices</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>index</keyword>
+      <keyword>indices</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>index</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need in your document two separate indices, a general one
+      and another one for persons.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <tag class="attribute">type</tag> attribute both on
+      <tag>indexterm</tag> and <tag>index</tag>. The content of the <tag
+        class="attribute">type</tag> attribute can be any value. Usually
+      it is a descriptive name (in our case, <quote>persons</quote> would be fine).
+    </para>
+    <para>For example, the following paragraph contains two indexterms.
+      However, Guido is marked up as a <quote>person's index</quote>:</para>
+    <programlisting language="xml">&lt;para> The Python&lt;indexterm>
+   &lt;primary>Python&lt;/primary>&lt;/indexterm> programming
+   language was designed by 
+   Guido van Rossum.&lt;indexterm type="persons">
+   &lt;primary>van Rossum, Guido&lt;/primary>&lt;/indexterm> 
+&lt;/para></programlisting>
+    <para>Use two <tag>index</tag> element at the end of your document
+      to distinguish between the two:</para>
+    <programlisting language="xml">&lt;index/> <co
+      xml:id="co.idx.type.normal"/>
+    
+&lt;index type="persons"> <co xml:id="co.idx.type.persons"/>
+  &lt;title>Persons&lt;/title>
+&lt;/index></programlisting>
+    <calloutlist>
+      <callout arearefs="co.idx.type.normal">
+        <para>Generates the <quote>normal</quote> index as it has no
+          <tag class="attribute">type</tag> attribute.</para>
+      </callout>
+      <callout arearefs="co.idx.type.persons">
+        <para>Collects only those index entries which contains a
+          <tag class="attribute">type</tag> attribute with the value
+          <tag class="attvalue">persons</tag> (as with Guido in the
+          above example).</para>
+      </callout>
+    </calloutlist>
+    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some documents contain two indices, a general and one for
+      persons. This is quite common thesedays as it simplifies where to
+      find your search term.  You can add as many indices as you need,
+      but more than two are normally uncommon.</para>
+    <para>By default, multiple indices are turned on by the DocBook
+      stylesheets. So no special customization are needed. However, if
+      you want to collect all index terms in one index, set the
+      parameter <parameter
+        xlink:href="http://docbook.sf.net/release/xsl/current/doc/html/index.on.type.html"
+        >index.on.type</parameter> to <literal>0</literal> (zero). In
+      that case, the <tag class="attribute">type</tag> attribute has no
+      effect.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.structure.adding-indexterms"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

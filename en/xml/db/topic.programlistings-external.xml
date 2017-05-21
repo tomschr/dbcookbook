@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.markup.programlistings-external" remap="topic"
+   userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Incorporating External Files in Code Listings</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>programlistings</keyword>
+      <keyword>code</keyword>
+      <keyword>XInclude</keyword>
+      <keyword>textdata</keyword>
+      <keyword>DocBook extensions</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have external files (codes, example files, and others) that you 
+      want to incorporate into a
+      <tag>programlisting</tag> element, but you want to keep your files
+      separate from your documentation files.</para>
+  </section>
+  
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use one of the following methods to incorporate external files
+      into your <tag>programlisting</tag> element:</para>
+    <itemizedlist>
+      <listitem>
+        <para><tag>textobject</tag>/<tag>textdata</tag></para>
+      </listitem>
+      <listitem>
+        <para><tag>xi:include</tag> (XIncludes)</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>You can mix both, but for consistency reasons, it is better to
+    stick to one method.</para>
+    
+    <section xml:id="sec.programlisting-external-textdata">
+      <title>Incorporating External Files with <tag>textdata</tag></title>
+      <para>Usually, <tag>textdata</tag> is included inside a
+          <tag>textobject</tag> which is then included inside a
+          <tag>programlisting</tag> element.</para>
+      <para>To refer to a file <filename>foo.py</filename> with
+        <tag>textdata</tag>, use the code in <xref linkend="ex.programlisting.textdata"
+        />.</para>
+      <example xml:id="ex.programlisting.textdata">
+        <title>External File Markuped up with <tag>textdata</tag></title>
+        <programlisting>&lt;programlisting><emphasis role="strong">&lt;textobject>
+   &lt;textdata fileref="foo.py"/>
+&lt;/textobject></emphasis>&lt;/programlisting></programlisting>
+      </example>
+    </section>
+    
+    <section xml:id="sec.programlisting-external-xinclude">
+      <title>Incorporating External Files with XIncludes</title>
+      <para>The same code in <xref linkend="ex.programlisting.textdata"
+        /> can be expressed with XInclude:</para>
+      <example>
+        <title>External File Markuped up with <tag>xi:include</tag></title>
+        <programlisting>&lt;programlisting><emphasis role="strong">&lt;xi:include 
+  href="foo.py" parse="text"
+/></emphasis>&lt;programlisting></programlisting>
+      </example>
+      <para>Do not forget to declare the namespace URI <tag
+        class="namespace">http://www.w3.org/2001/XInclude</tag>. This
+        can be done either on the <tag>xi:include</tag> element itself,
+        or in the root element of your documentation. Preferably, it is
+        easier to declare it once inside the root element.</para>
+    </section>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Keeping your external files separate from your
+      documentation can have several reasons. Probably you need to
+      change the files very often or you do not have control over these
+      files. In such cases, it is better to leave them as separate files
+      and don't include them directly into your XML code. Otherwise it
+      would be tedious to include them manually whenever your code
+      changes. </para>
+    <para>To avoid such tedious tasks, the <tag>textdata</tag> and
+        <tag>xi:include</tag> elements were invented. The element
+        <tag>textdata</tag> was introduced in DocBook&#xa0;4.2, released
+      in 2002. At that time the XInclude specification was not written
+      yet, the first public release was published in 2006. Too late for
+      DocBook to incorporate it into its schema.</para>
+    <para>Nowadays, in the light of XInclude, the element <tag>textdata</tag> 
+      can be considered as obsolete—especially for DocBook&#xa0;5
+      documents. Therefor, for new documents, prefer the XInclude element(s) 
+      as this has more advantages (see <xref
+       linkend="tab.comp.textdata-vs-xinclude"/>).</para>
+    
+    <table xml:id="tab.comp.textdata-vs-xinclude">
+      <title>Comparision Between <tag>textdata</tag> and <tag>xi:include</tag></title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry>Topic</entry>
+            <entry><tag>textdata</tag></entry>
+            <entry><tag>xi:include</tag></entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Needs DocBook extension?</entry>
+            <entry>Yes</entry>
+            <entry>No</entry>
+          </row>
+          <row>
+            <entry>Can be used elsewhere in the document?</entry>
+            <entry>No</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry>Can include text?</entry>
+            <entry>Yes</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry>Can include XML markup?</entry>
+            <entry>No</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry>Can use fallback mechanism?</entry>
+            <entry>No</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry>Included in DocBook 4?</entry>
+            <entry>Yes</entry>
+            <entry>No<footnote>
+              <para>Not included in the DTD, but can be used anyway.</para>
+            </footnote></entry>
+          </row>
+          <row>
+            <entry>Included in DocBook 5?</entry>
+            <entry>Yes</entry>
+            <entry>Yes<footnote>
+              <para>Only available in the separate files
+                <filename>docbookxi.rn{c,g}</filename></para>
+            </footnote></entry>
+          </row>
+          
+        </tbody>
+      </tgroup>
+    </table>
+    
+    <para>If you still want (or have) to use <tag>textdata</tag> you
+      need to transform your DocBook documents with Saxon or Xalan.
+      Currently, the extension functions are only available for these
+      XSLT processor, not xsltproc.
+      Make sure the DocBook extension JAR file(s) are 
+      included into your <envar>CLASSPATH</envar> variable. Furthermore, 
+      set the parameters <parameter>use.extensions</parameter> and
+      <parameter>textinsert.extension</parameter> to the value of 
+      <literal>1</literal> to enable this functionality.</para>
+  </section>
+  
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/ProgramListings.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg51/en/html/textdata.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

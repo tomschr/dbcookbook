@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+
+<section xml:id="dbc.markup.link" remap="topic" userlevel="easy" version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Choosing Between Link Methods</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>external links</keyword>
+      <keyword>simple XLinks</keyword>
+      <keyword>xlink:href</keyword>
+      <keyword>ulink</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>links</subjectterm>
+        <subjectterm>xlinks</subjectterm>
+        <subjectterm>xref</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need some ideas how to markup links.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <tag>link</tag><footnote>
+      <para>In DocBook 4 use the <tag>ulink</tag> element</para>
+    </footnote> element. Usually, external links are used in two ways:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Without Text</title>
+          <para>The link element is completely empty:</para>
+        </formalpara>
+        <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>With Text</title>
+          <para>The link element contains some text or even other
+          elements:</para>
+        </formalpara>
+        <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/link></programlisting>
+      </listitem>
+    </itemizedlist>
+    <para>Don't forget to add the XLink namespace declaration into the
+      root element of your document, for example:</para>
+    <screen>&lt;book <emphasis 
+      role="bold">xmlns:xlink="http://www.w3.org/1999/xlink"</emphasis
+      > ...></screen>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The <tag>link</tag> element has several features for creating
+      internal or external links. It is allowed to use text content or
+      leave a <tag>link</tag> completely empty. Regardless of the text
+      content, you have to choose between the attributes <tag
+        class="attribute">xlink:href</tag> or <tag class="attribute"
+        >linkend</tag>. </para>
+    
+    <section xml:id="sec.db.link.attributes">
+      <title>Knowing the Properties of the <tag class="attribute">xlink:href</tag> and
+          <tag class="attribute">linkend</tag> Attributes</title>
+      <para>Using <tag class="attribute">linkend</tag> leads always to
+        an internal link and is semantically equivalent to
+          <tag>xref</tag>. You cannot create external links with the
+          <tag class="attribute">linkend</tag> attribute. </para>
+      <para>On the other hand, the XLink attribute <tag
+          class="attribute">xlink:href</tag> can be used for both types:
+        internal or external links. An example is shown in <xref
+          linkend="tab.db.link.internal-vs.external"/>.</para>
+
+      <table xml:id="tab.db.link.internal-vs.external">
+        <title>Internal and External Links Examples With <tag
+            class="attribute">linkend</tag> vs. <tag class="attribute"
+            >xlink:href</tag></title>
+        <titleabbrev>Internal and External Links Examples</titleabbrev>
+        <tgroup cols="3">
+          <thead>
+            <row>
+              <entry/>
+              <entry><tag class="attribute">xlink:href</tag></entry>
+              <entry><tag class="attribute">linkend</tag></entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>Datatype</entry>
+              <entry>xsd:anyURI</entry>
+              <entry>xsd:IDREF</entry>
+            </row>
+            <row>
+              <entry>Internal</entry>
+              <entry><tag class="attvalue">#cha.intro</tag></entry>
+              <entry><tag class="attvalue">cha.intro</tag></entry>
+            </row>
+            <row>
+              <entry>External</entry>
+              <entry><tag class="attvalue"
+                >http://www.docbook.org</tag></entry>
+              <entry align="center">―</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+    
+      <para>Note, validation is only performed when using <tag
+          class="attribute">linkend</tag>, not with <tag
+          class="attribute">xlink:href</tag>! The reason for this is the
+        different datatypes. The XML parser can only validate a
+          <property>xsd:ID</property> and <property>xsd:IDREF</property>
+        connection.</para>
+    </section>
+    
+    <section xml:id="sec.db.link.matrix">
+      <title>Choosing the Needed Combination</title>
+      <para>With text content, you have several combinations which is
+        shown in <xref linkend="tab.db.link"/>:</para>
+      <table xml:id="tab.db.link">
+        <title>Different Possibilities for Links</title>
+        <tgroup cols="4">
+          <colspec colname="c0" colwidth="1*"/>
+          <colspec colname="c1" colwidth="1*"/>
+          <colspec colname="c2" colwidth="4*"/>
+          <colspec colname="c3" colwidth="4*"/>
+          <thead>
+            <row>
+              <entry morerows="1" namest="c0" nameend="c1"/>
+              <entry namest="c2" nameend="c3" align="center">Content</entry>
+            </row>
+            <row>
+              <!--<entry/>-->
+              <entry>With Content</entry>
+              <entry>Empty</entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry morerows="1" valign="middle"><emphasis role="strong">Linking Attributes</emphasis></entry>
+              <entry><tag>xlink:href</tag></entry>
+              <entry>Content is a link to the specified URI</entry>
+              <entry>The specified URI is used as the content</entry>
+            </row>
+            <row>
+              <!-- <entry/> -->
+              <entry><tag>linkend</tag></entry>
+              <entry>Content is an internal link to the element identified</entry>
+              <entry>Semantically equivalent to an <tag>xref</tag>
+                (internal link)</entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </table>
+      
+      <para>The following list shows some examples:</para>
+      
+      <variablelist>
+        <varlistentry xml:id="vl.db.link.content-xlinkhref">
+          <term>Links With Content Using <tag class="attribute">xlink:href</tag></term>
+          <listitem>
+            <para>Use this code to create an external link with a text
+              different than the URL:</para>
+            <programlisting language="xml"
+      >&lt;link xlink:href="https://doccookbook.sf.net">My Project&lt;/link></programlisting>     
+          </listitem>
+        </varlistentry>
+        <varlistentry xml:id="vl.db.link.content-linkend">
+          <term>Links With Content Using <tag class="attribute">linkend</tag></term>
+          <listitem>
+            <para>Use this code to create an internal link (cross
+              reference). The <quote>hot text</quote>
+              is created from the content of <tag>link</tag>:</para>
+            <programlisting language="xml"
+      >&lt;link linkend="cha.intro">Introduction&lt;/link></programlisting>
+          </listitem>
+        </varlistentry>
+        <varlistentry xml:id="vl.db.link.empty-xlinkhref">
+          <term>Empty Links Using <tag class="attribute">xlink:href</tag></term>
+          <listitem>
+            <para>Use this code to create an external link where the <quote>hot text</quote>
+              is taken from the URL:</para>
+            <programlisting language="xml"
+      >&lt;link xlink:href="http://www.example.org/Intro"/></programlisting>
+            <para>If you want to create an internal link without ID
+              validation check, use this code:</para>
+            <programlisting language="xml"
+            >&lt;link xlink:href="#cha.intro"/></programlisting>
+            <para>This is equivalent to the following <tag>xref</tag>
+              notation:</para>
+            <screen>&lt;xref linkend="cha.intro"/></screen>
+            <para>Note the absense of the <literal>#</literal>
+              character. Regardless if it is an empty <tag>link</tag>
+              with <tag class="attribute">xlink:href</tag> or a
+                <tag>xref</tag> with <tag class="attribute"
+                >linkend</tag>, the ID has to exist somewhere in the
+              document. Otherwise, the element cannot be resolved during
+              processing and and the link will be broken.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>Empty Links Using <tag class="attribute">linkend</tag></term>
+          <listitem>
+            <para>This notation is semantically equivalent to an
+              <tag>xref</tag>. See also <xref linkend="dbc.markup.xref"/>:</para>
+            <programlisting language="xml">&lt;link linkend="cha.intro"/></programlisting>
+            <para>The only difference of the previous example is the ID
+              <tag class="attvalue">cha.intro</tag> must be unique and
+              is checked if it is available in your document. If not, it
+            is an validation error.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+      
+      <para>In most cases, it is enough to just use an empty link
+        element. As such, avoid the following notation when the URL in
+          <tag class="attribute">xlink:href</tag> is the same than the
+        text:</para>
+      <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">https://doccookbook.sf.net&lt;/link></programlisting>
+      <para>This is mostly unnecessary as it is overly verbose,
+        difficult to read, and does not add any value. Correct such
+        links and remove the text: </para>
+      <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>     
+    </section>
+    
+    <section xml:id="sec.db.link.xlinks">
+      <title>Shortening Links</title>
+      <para>DocBook 5 also adds new concepts. One of this new concept is
+        that <emphasis>every</emphasis> element can become a link. In
+        other words, you do <emphasis role="italic">not</emphasis> have
+        to use a <tag>link</tag> element anymore. For example, if you
+        want to insert a book title with an additional link, in
+        DocBook&#xa0;4 it has to be written like this:</para>
+      <programlisting language="xml">&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
+      <para>or this, depending on what you prefer:</para>
+      <programlisting language="xml">&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
+      <para>With DocBook 5 this can be shortend:</para>
+      <programlisting language="xml">&lt;citetitle xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/citetitle></programlisting>
+      <para>Apart from the previous described link concept,
+        DocBook&#xa0;5 allows to control the link behavior. For example,
+        to open a new window when clicking a link, use the <tag
+          class="attribute">xlink:show</tag> attribute: </para>
+      <programlisting language="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/></programlisting>
+      <para>The attribute value <tag class="attvalue">show</tag> opens a
+        <quote>new window, frame, pane, or other relevant presentation
+          context</quote> (see <link 
+            xlink:href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</link>).
+        Of course, this is only useful for online formats. </para>
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.xref"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.markup.xref-vs-link"/></para>
+      </listitem>
+      <!--<listitem>
+        <para><xref linkend="dbc.db.ext-xlinks"/></para>
+      </listitem>-->
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg5/en/html/link.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

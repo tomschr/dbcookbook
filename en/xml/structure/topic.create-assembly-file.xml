@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.structure.assembly-file" remap="topic"
+  userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Creating an Assembly File Manually</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>topic</keyword>
+      <keyword>assemblies</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>assemblies</subjectterm>
+        <subjectterm>topics</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want create topic oriented documents with the
+      <tag xlink:href="http://www.docbook.org/tdg51/en/html/assembly.html"
+      >assembly</tag> element manually.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>In its simplest form, an assembly file contains the following elements:</para>
+    <variablelist>
+      <varlistentry>
+        <term><tag>assembly</tag></term>
+        <listitem>
+          <para>The root element of an assembly file. It is bound to the
+            DocBook&#xa0;5 namespace
+              <uri>http://docbook.org/ns/docbook</uri>.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag>resources</tag></term>
+        <listitem>
+          <para>Wrapper element for a collection of topics. Each topic
+            is identified by a <tag>resource</tag> element and its <tag
+              class="attribute">xml:id</tag> or <tag class="attribute"
+              >fileref</tag> attributes:</para>
+          <screen>&lt;resource xml:id="preface" fileref="preface.xml"/></screen>
+          <para>An assembly file can contain more than one
+            <tag>resource</tag> elements.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag>structure</tag></term>
+        <listitem>
+          <para>Wrapper element for a document to be assembled.
+            Primarily it contains of <tag>module</tag>s which refers to
+            a <tag>resource</tag> elements.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>The following example assumes, the files are composed of
+      <tag>topic</tag> root elements, except for the
+      <filename>glossary.xml</filename> file (which is comprised by a
+      <tag>glossary</tag> element). </para>
+    <programlisting language="xml">&lt;assembly version="5.1" xmlns="http://docbook.org/ns/docbook">
+  &lt;resources>
+    &lt;resource fileref="intro.xml" xml:id="intro"/>
+    &lt;resource fileref="kde.xml" xml:id="kde"/>
+    &lt;resource fileref="gnome.xml" xml:id="gnome"/>
+    &lt;resource fileref="glossary.xml" xml:id=""/>
+  &lt;/resources>
+  &lt;structure xml:id="user-guide">
+    &lt;output renderas="book"/>
+    &lt;module resourceref="intro"/>
+    &lt;module resourceref="kde"/>
+    &lt;module resourceref="gnome"/>
+    &lt;module resourceref="glossary"/>
+  &lt;/structure>
+&lt;/assembly></programlisting>
+    <para></para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>TDB
+    </para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist role="category">
+      <listitem>
+        <para><link
+          xlink:href="http://www.docbook.org/tdg51/en/html/ch06.html"/></para>
+      </listitem>
+      <!--<listitem>
+        <para><xref linkend="dbc.structure.splitting-into-topics"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.structure.assemble-topics"/></para>
+      </listitem>-->
+    </itemizedlist>
+  </section>
+</section>

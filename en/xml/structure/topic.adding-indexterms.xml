@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.adding-indexterms" remap="topic" userlevel="medium"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Adding Index Entries (Semi-)Automatically</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>index</keyword>
+      <keyword>automatically insert indices</keyword>
+      <keyword>consistency</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>profiling</subjectterm>
+        <subjectterm>index</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to add index entries (using the
+        <tag>indexterm</tag> element) automatically and consistently into your document. </para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>To see how the automatic addition works, the following
+      procedure demonstrate this for the element
+      <tag>envar</tag>.</para>
+    
+    <procedure xml:id="pro.structure.adding-indexterms">
+      <title>Adding <tag>indexterm</tag> Elements to <tag>envar</tag></title>
+      <step>
+        <para>Use the element <tag>envar</tag> in your document as
+          usual. By default all <tag>envar</tag> elements get an
+            <tag>indexterm</tag>. In cases you do not want this, add the
+          attribute <tag class="attribute">condition</tag> with its
+          value <tag class="attvalue">noindex</tag> to suppress
+          indexterm generation. This is done in the second
+            <tag>para</tag> element:</para>
+        <example xml:id="ex.structure.profile-envar.xml">
+          <title><filename>profile-envar.xml</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>adding-indexterms/profile-envar.xml</filename>
+            </output>
+          </info>
+          <programlisting language="xml" linenumbering="numbered"><xi:include
+            href="adding-indexterms/profile-envar.xml" parse="text"/></programlisting>
+        </example>
+      </step>
+      <step>
+        <para>Create a stylesheet <filename>profile-tags.xsl</filename>
+        with the following content:</para>
+        <example xml:id="ex.structure.profile-tag.xsl">
+          <title><filename>profile-tag.xsl</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>adding-indexterms/profile-tags.xsl</filename>
+            </output>
+          </info>
+          <programlisting language="xml" linenumbering="numbered"><xi:include 
+            href="adding-indexterms/profile-tags.xsl" parse="text"/></programlisting>
+        </example>
+      </step>
+      <step>
+        <para>Create the stylesheet
+            <filename>add-indexterms.xsl</filename>. This stylesheet is
+          based on <filename>profile.xsl</filename> of the DocBook XSL
+          stylesheets. It contains the special mode
+            <literal>profile</literal> to process elements to observe
+          profiling conditions.</para>
+        <example xml:id="ex.structure.add-indexterms.xsl">
+          <title><filename>add-indexterms.xsl</filename></title>
+          <info>
+            <output xmlns="urn:x-toms:docbook-ext">
+              <filename>adding-indexterms/add-indexterms.xsl</filename>
+            </output>
+          </info>
+          <programlisting language="xml" linenumbering="numbered"><xi:include
+        href="adding-indexterms/add-indexterms.xsl" parse="text"/></programlisting>
+        </example>
+      </step>
+      <step>
+        <para>Transform your document:</para>
+        <screen><command>xsltproc</command> add-indexterms.xsl profile-envar.xml</screen>
+      </step>
+    </procedure>
+    
+    <para>After applying the stylesheet
+        <filename>add-indexterms.xsl</filename> you will get the
+      following output:</para>
+    <example xml:id="ex.structure.profile-envar-result.xml">
+      <title>Output of the Transformation</title>
+      <programlisting language="xml"><xi:include
+        href="adding-indexterms/profile-envar-result.xml" parse="text"/></programlisting>
+    </example>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Let´s go back at the beginning first. Assume you want to show
+      an environment variable in the index. Usually you would mark up
+      the text with the <tag>envar</tag> element and add an
+        <tag>indexterm</tag> right after the first one. As is is useful
+      to find the index term also under the primary term
+        <quote>environment variables</quote>, you add an additional
+        <tag>indexterm</tag>. This could look like this:</para>
+    <programlisting language="xml">&lt;para>Use the &lt;envar>PATH&lt;/envar>&lt;indexterm>
+        &lt;primary>PATH&lt;/primary>
+      &lt;/indexterm>&lt;indexterm>
+        &lt;primary>environment variables&lt;/primary>
+        &lt;secondary>PATH&lt;/secondary>
+      &lt;/indexterm>
+      to do ...
+&lt;/para></programlisting>
+    <para>Although this is the usual method, it has some
+      drawbacks:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>It is hard to read</title>
+          <para>If you are get used to read the bare XML code, it is
+            hard to read as the text is broken into pieces. The text is
+            cluttered with <tag>indexterm</tag> elements all
+            along.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>It may be inconsistent</title>
+          <para>If you forgot the <quote>s</quote> in the primary index
+            term it will lead to double entries (one singular and one
+            plural form). This lead to inconsistencies. It can be
+            painful if you have to go through the complete document just
+            to fix the singular form into the plural form (or vice
+            versa).</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Whitespace could matter</title>
+          <para>The <tag>indexterm</tag> element(s) start
+              <emphasis>directly</emphasis> after your term. If you or
+            your editor introduces one or more whitespaces after your
+            dedicated index term, in the worst case it could lead to a
+            wrong page number in the index. This mainly affects the PDF
+            rather than any online formats but could confuse your
+            readers.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    
+    <para>All of the above problems can be solved with the stylesheet
+      from <xref linkend="ex.structure.profile-tag.xsl"/>. It exploits the DocBook
+      XSL stylesheet´s profiling mechanism. Normally, profiling is a
+      method to <emphasis>remove</emphasis> certain structures from a
+      document rather than <emphasis>add</emphasis> something. In our
+      case we use the special <literal>profile</literal> mode to
+      customize the automatic index term addition.</para>
+    <para>With the above stylesheet, it is possible to influence how
+      your index terms appear. This is done with the
+      <tag class="attribute">condition</tag><footnote>
+        <para>Theoretically you could use any of the several common
+          attributes available on every DocBook element. The <tag
+            class="attribute">condition</tag> was the one attribute 
+          that has fitted the best in the authors mind.</para>
+      </footnote> attribute, demonstrated on our <tag>envar</tag>
+      example:</para>
+    <variablelist>
+      <varlistentry>
+        <term><tag class="starttag">envar</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Adds the <tag>indexterm</tag>s directly after the
+            <tag>envar</tag> element.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="starttag">envar condition="index"</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Same as the previous entry.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="starttag">envar condition="noindex"</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Suppresses any automatic generation of index entries.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="starttag">envar condition="pref"</tag>…<tag class="endtag">envar</tag></term>
+        <listitem>
+          <para>Adds an <emphasis>preferred</emphasis> index entry. The
+            keyword <quote>pref</quote> can be customized through the 
+            <parameter>preferred</parameter> parameter. If the keyword
+            is added in the <tag class="attribute">condition</tag>
+            attribute, the following code is created:</para>
+          <programlisting language="xml"
+  >&lt;indexterm significance="preferred">...&lt;/indexterm></programlisting>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+        
+    <para>This method can not solve all index problems. You should know
+      some of its limits:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Document Type</title>
+          <para>Technical documents are more applicable than novels as
+            the former contains usually a set of elements which are
+            consistently used. </para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Consistent Elements</title>
+          <para>The document needs not only consistently use the same
+            elements for the same structure, it has to use a specific
+            element in the first place. For example, if you want to show
+            your configuration files in your index, you need to mark
+            it up with <tag>filename</tag>, otherwise this method has no
+            chance.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Needed Elements</title>
+          <para>Similar to the previous point, you have to know which
+            elements you need to show up in the index. You have to
+            select from all possible inline elements only a handful
+            which you consider important enough.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Only for Inline Elements</title>
+          <para>This method works only for inline elements well.
+            DocBook´s inline elements occur usually inside a paragraph
+            but can also show up in a title.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>Hard-coded Primary Entry</title>
+          <para>It can be critized to add hard-coded text into the
+            stylesheet <filename>profile-tag.xsl</filename> (here:
+            <quote>environment variables</quote>). If you maintain 
+            different languages, you should replace it with a more
+            general solution and move the language specific text into
+            language files as described in <xref linkend="dbc.common.l10n"/>.</para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+     
+    <para>Although this method does not replace hand-written index
+      entries, it can ease the pain. Especially for those entries which
+      can be be inserted automatically it improves consistency. The
+      method described above can also be implemented for other inline
+      elements, like persons, functions, etc.</para>    
+  </section>
+  
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.multiple-indices"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.db.ext-xlinks" remap="topic" userlevel="medium"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Harnessing Extended XLinks</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>XLinks</keyword>
+      <keyword>extended XLinks</keyword>
+      <keyword>locator</keyword>
+      <keyword>resource</keyword>
+      <keyword>arc</keyword>
+      <keyword>traversal</keyword>
+    </keywordset>
+   <subjectset>
+     <subject>
+       <subjectterm>xlinks</subjectterm>
+     </subject>
+   </subjectset>
+    <!-- Playing with extended XLinks, not useful for now -toms 2012-05-19 -->
+    <!--<extendedlink>
+      <locator xlink:href="#dbc.markup.xref"   xlink:label="target"/>
+      <locator xlink:href="#dbc.db.ext-xlinks" xlink:label="target"/>
+      <locator xlink:href="#dbc.markup.xref-vs-link" xlink:label="target"/>
+      <locator xlink:href="http://www.docbook.org/tdg5/en/html/link.html" xlink:label="target"/>
+      <!-\-<locator xlink:href="#xpointer(//d:section[contains(@xlink:role,'links')])"/>-\->
+      <link xlink:type="resource" xlink:label="source">See Also</link>
+      <arc  xlink:from="source" xlink:to="target"/>
+    </extendedlink>-->
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have heard about additional features of XLinks
+      (<quote>extended XLink</quote>), but you do
+      not know how to use it.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>XLinks are a <acronym><alt>World Wide Web</alt>W3C</acronym>
+      specification available at <link
+        xlink:href="http://www.w3.org/TR/xlink/"/>. Generally, a XLink
+      can be used in one of the following ways:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>As Simple XLink</title>
+          <para>create a single one-to-one relationship between a
+            reference element and an anchor. Simple XLinks can be used
+            to create cross references or remote links. This topic is
+            covered in <xref linkend="dbc.markup.link"/>.</para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>As Extended XLink</title>
+          <para>create a one-to-many relationship.  </para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>
+    <!--<para>simplelist with type="horiz" xlink:type="extended": 
+        [[<simplelist type="inline" xlink:type="extended">
+          <member xlink:type="title">Hallo Titel</member>
+          <member xlink:type="locator"
+            xlink:href="#dbc.structure.assemble-topics"
+            xlink:label="target"
+            >Assembling Topics</member>
+          <member xlink:type="locator"
+            xlink:href="#dbc.structure.splitting-into-topics"
+            xlink:label="target"
+            >Splitting DocBook&#xa0;5 Documents Into Topics</member>
+          <member xlink:type="locator"
+            xlink:href="#dbc.structure.assembly-file"
+            xlink:label="target"
+            >Creating an Assembly File Manually</member>
+          <!-\-  -\->
+          <member xlink:type="resource" xlink:label="source">Topic Themes</member>
+          <member xlink:type="arc" 
+            xlink:from="source" xlink:to="target"/>
+        </simplelist>]]
+      </para>-->
+    <para>
+      <phrase xlink:type="extended">
+        <phrase xlink:type="title">Additional Topics</phrase>
+        <link xlink:type="locator"
+          xlink:href="#dbc.structure.assemble-topics"
+          xlink:label="target">abc</link>
+        <link xlink:type="locator"
+          xlink:href="#dbc.structure.splitting-into-topics"
+          xlink:label="target"/>
+        <link xlink:type="locator"
+          xlink:href="#dbc.structure.assembly-file"
+          xlink:title="Hallo Assembly File"
+          xlink:label="target"></link>
+        <!--<link xlink:type="locator"
+          xlink:href="http://www.w3.org/TR/xlink11/#extended-link"
+          xlink:label="target">klm</link>-->
+        <phrase xlink:type="resource" xlink:label="source"
+          >Further Themes about topics</phrase>
+        <link xlink:type="arc" 
+          xlink:from="source" xlink:to="target">arc link</link>
+      </phrase>
+    </para>
+    <!--<para>
+        <citetitle xlink:type="extended">
+          <phrase xlink:type="resource" 
+                  xlink:label="source">DocBook</phrase>
+          <link xlink:type="locator" xlink:href="http://docbook.org/"
+            xlink:label="target" xlink:title="DocBook.org"/>
+          <link xlink:type="locator"
+            xlink:href="http://en.wikipedia.org/wiki/DocBook"
+            xlink:label="target" xlink:title="DocBook on Wikipedia"/>          
+          <link xlink:type="arc" xlink:from="source" xlink:to="target"/>
+        </citetitle>
+      </para>-->
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Some discussion about the problem and solution.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.w3.org/TR/xlink/"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.common.get-lang" remap="topic" userlevel="easy"
+   version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Extracting Language Information</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>language</keyword>
+      <keyword>l10n.language</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>languages</subjectterm>
+        <subjectterm>l10n</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need the language of the current element or of your DocBook document.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <function>l10n.language</function> template from
+      <filename>common/l10n.xsl</filename>. It extracts the language attribute 
+      from the current context node or its ancestors:</para>
+    <programlisting language="xml">&lt;xsl:variable name="language">
+   &lt;xsl:call-template name="l10n.language"/>
+&lt;/xsl:variable></programlisting>
+    <para>It returns a <quote>normalized</quote> string which is
+      RFC1766 compliant.
+    </para>
+    <para>If you need to change the current node, use the
+      <parameter>target</parameter> parameter. For example, the
+      following code extracts the language from the root element:</para>
+    <programlisting language="xml">&lt;xsl:variable name="lang">
+   &lt;xsl:call-template name="l10n.language">
+      &lt;xsl:with-param name="target" select="/*"/>
+   &lt;/xsl:call-template>
+&lt;/xsl:variable></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Language information is stored in DocBook either in the <tag
+        class="attribute">lang</tag> (4.x) or <tag class="attribute"
+        >xml:lang</tag> (>5.x) attributes. These attributes can be set on every
+      DocBook element.</para>
+    <para>For example, if you have a chapter inside a book and want to
+      extract the contents of the language attribute from this chapter,
+      the following XPath expression gives you this information:</para>
+    <screen><!--
+-->/book/chapter/@lang             <lineannotation>DocBook 4.x</lineannotation>
+/db:book/db:chapter/@xml:lang   <lineannotation>DocBook 5.x</lineannotation></screen>
+    <para>Although the XPath expressions are simple, they have some drawbacks:</para>
+    <itemizedlist>
+      <listitem>
+        <para>If no language attribute is set, no content can be
+          retrieved. The used language is undefined.</para>
+      </listitem>
+      <listitem>
+        <para>There is no default language when a language is not set.</para>
+      </listitem>
+      <listitem>
+        <para>Language information can be written inconsistently, for
+          example, <literal>en</literal> or <literal>EN</literal>.</para>
+      </listitem>
+      <listitem>
+        <para>The above expressions do not take into account the current
+          context node. For example, the language in a <tag>foreignphrase</tag>
+          element is usually different than a chapter or other parts of the
+          document. </para>
+      </listitem>
+      <listitem>
+        <para>There are no checks for RFC compliance.</para>
+      </listitem>
+    </itemizedlist>
+    <para>All the previous problems are considered by the
+        <function>l10n.language</function> template. It searches for the
+      nearest anchestor who contains a language attribute and returns
+      its content. For example, consider the following structure:</para>
+    <screen>book xml:lang="en"
+  chapter
+    section
+      para
+        foreignphrase xml:lang="de"</screen>
+    <para>If your current context is on the <tag>foreignphrase</tag>
+      element, <function>l10n.language</function> will return
+        <literal>de</literal> as language. However, if your context is
+      on the <tag>para</tag> element, you will get
+      <literal>en</literal>. The <tag>para</tag>, <tag>section</tag>,
+      and <tag>chapter</tag> elements are children of <tag>book</tag>
+      and therefore in the scope of the language attribute which gives
+      you <literal>en</literal>.
+      In the case no language is given, the template returns a
+      default language from the
+      <parameter>l10n.gentext.default.language</parameter> parameter (usually
+      English).</para>    
+    <para>Sometimes, returning only the language is not enough. The
+      following table gives you some additional functions from <filename>common/l10n.xsl</filename>
+      which can be useful for your code (Question marks(?) denote an
+      optional parameter):</para>
+    <table xml:id="tab.common.get-lang.overview">
+      <title>Extracting Language Information</title>
+      <tgroup cols="2">
+        <colspec colname="c1"/>
+        <colspec colname="c2"/>
+        <thead>
+          <row>
+            <entry>Template</entry>
+            <entry>Description</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry><!--<funcsynopsis>
+              <funcprototype>
+                <funcdef>ATTRNODE <function>language.attribute</function></funcdef>
+                <paramdef> <parameter>node</parameter></paramdef>
+              </funcprototype>
+            </funcsynopsis>-->
+            <synopsis>attrnode = <function>language.attribute</function>(node="."?)</synopsis>
+            </entry>
+            <entry>Useful for HTML. Returns an attribute node <tag
+              class="attribute">lang</tag> with the extracted language
+              from the current node or one of its ancestors</entry>
+          </row>
+          <row>
+            <entry><synopsis>attrnode = <function>xml.language.attribute</function>(node="."?)</synopsis>
+            </entry>
+            <entry>Useful for XHTML. Returns an attribute node <tag
+              class="attribute">xml:lang</tag> with the extracted language
+              from the current node or one of its ancestors</entry>
+          </row>
+          <row>
+            <entry><synopsis>string = <function>l10n.language.name</function>(lang?)</synopsis></entry>
+            <entry>Returns the English language name</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+    <para></para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.ietf.org/rfc/rfc1766.txt"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/html/l10n.gentext.default.language.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/html/l10n.lang.value.rfc.compliant.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

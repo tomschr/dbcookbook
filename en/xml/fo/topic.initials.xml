@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.fo.initials" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Creating Initials and Drop Caps</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>initials</keyword>
+      <keyword>drop caps</keyword>
+      <keyword>floats</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need a <quote>drop cap</quote>, or <link
+        xlink:href="http://en.wikipedia.org/wiki/Initial">Initial</link>,
+      which is a <quote>a letter at the beginning of a work, a chapter,
+        or a paragraph that is larger than the rest of the
+      text.</quote></para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Typographically, you have different options to place initials:</para>
+    <itemizedlist>
+      <listitem>
+        <para>on the same baseline as the first line of text,</para>
+      </listitem>
+      <listitem>
+        <para>as floats, embedded between two or more lines,</para>
+      </listitem>
+      <listitem>
+        <para>besides the left margin of the text block without
+          indentation.</para>
+      </listitem>
+    </itemizedlist>
+    <para>Additionally you can design your initials as graphics, but we
+    will come to this later.</para>
+    
+    <section xml:id="sec.fo.initials.baseline">
+      <title>Place Initials on the Same Baseline</title>
+      <para>This is the easiest method to implement. The stylesheet
+        normalizes the text node of the first paragraph, extract the first character
+        and wrap it between an <tag>fo:inline</tag> element with font
+        size, family, and weight:</para>
+      <example xml:id="ex.initials-baseline.xsl">
+        <title><filename>initials-baseline.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>initials/initials-baseline.xsl</filename>
+          </output>
+        </info>
+        <programlisting language="xml"><xi:include
+          href="initials/initials-baseline.xsl" parse="text"
+        /></programlisting>
+      </example>
+      <para>To use it, include it into your customization layer. It is
+        usually called in text nodes like the first paragraph from a
+        section which parent is an article:</para>
+      
+      <informalexample>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>initials/db-initials.xsl</filename>
+          </output>
+        </info>
+        <programlisting language="xml"><xi:include 
+        href="initials/db-initials.xsl" parse="text"
+        /></programlisting>
+      </informalexample>
+      
+      <para>It is easy to extend it to chapters, you just have to copy
+        the template and correct the content in the <tag
+          class="attribute">match</tag> attribute to:</para>
+      <programlisting>&lt;xsl:template<!--
+       --> match="d:chapter/d:section/d:para[1]/text()"></programlisting>
+    </section>
+    <section xml:id="sec.fo.initials.floats">
+      <title>Implement Initials as Floats</title>
+      <para><remark>TBD</remark></para>
+    </section>
+    <section xml:id="sec.fo.initials.margin">
+      <title>Place Initials in Left Margin</title>
+      <para><remark>TBD</remark></para>
+    </section>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The solution described in <xref
+      linkend="sec.fo.initials.baseline"/> is in most cases sufficient.
+      However, if the first character is <emphasis>not</emphasis> a
+      letter, any character is incorrectly made an initial.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para>Find information about the property <tag class="attribute"
+        >line-height</tag> in <xref linkend="dbc.fo.line-height"
+      />.</para>
+  </section>
+</section>
