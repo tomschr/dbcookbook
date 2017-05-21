@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.extract" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Extracting One Element from DocBook Document</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>extracting one element</keyword>
+      <keyword>rootid</keyword>
+      <keyword>xref</keyword>
+      <keyword>cross-references</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>rootid</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a big DocBook document and you need to extract one
+      structural element like a <tag>chapter</tag>, <tag>appendix</tag>
+      etc. to edit or process it separately from the main document.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>To make the solution work, the structural element needs an ID
+    attribute. If this is available, use the following stylesheet:</para>
+    <example xml:id="ex.rootid.xsl">
+      <title>Extracting Stylesheet <filename>rootid.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>extract/rootid.xsl</filename>
+        </output>
+      </info>
+      <programlisting linenumbering="numbered"
+        language="xml"><xi:include href="extract/rootid.xsl" parse="text"/></programlisting>
+    </example>
+    <para>Pass the <parameter>rootid</parameter> parameter to your XSLT
+    processor with the corresponding ID, for example:</para>
+    <screen><command>xsltproc</command
+      > --stringparam rootid intro rootid.xsl <replaceable
+        >XML_FILE</replaceable></screen>
+    <para>The result contains only the element with the corresponding ID
+      value and everything inside it.</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>This solution cuts off the element with the corresponding ID
+      and copies the element itself and its children to the output
+      stream. The copying is done in the <literal>process.root</literal>
+      mode. The stylesheet does not apply any further processing. This can be a
+      disadvantage, for example, a <tag>xref</tag> pointing outside of
+      the respective element. If the resulting file contains such a
+      cross reference, it will not be valid anymore.</para>
+    <para>It is possible to convert such cross references into a
+      <quote>resolved form</quote> by using the following code:</para>
+    <example xml:id="ex.rootid-resolve-xrefs.xsl">
+      <title><filename>rootid-resolve-xrefs.xsl</filename></title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>extract/rootid-resolve-xrefs.xsl</filename>
+        </output>
+      </info>
+      <programlisting language="xml" linenumbering="numbered"><xi:include 
+      href="extract/rootid-resolve-xrefs.xsl" parse="text"/></programlisting>
+    </example>
+    <para>The stylesheet in <xref
+      linkend="ex.rootid-resolve-xrefs.xsl"/> imports the
+      <filename>rootid.xsl</filename> and inherits all templates. To
+      implement a different behaviour we need to add a new template
+      matching for the <tag>xref</tag> element in mode
+      <literal>process.root</literal>.</para>
+    <para>The template contains mostly code from the DocBook XSL
+      stylesheets with some minor changes. The general behaviour is
+      described in the following sequence:</para>
+    <orderedlist>
+      <listitem>
+        <para>Make sure, everything is in place and a <tag
+          class="attribute">xlink:href</tag> attribute does not contain
+          a <literal>://</literal> string. If this is the case emit an
+          error message.</para>
+      </listitem>
+      <listitem>
+        <para>Populate the variables <varname>xlink.targets</varname>
+          and <varname>linkend.targets</varname> with the target node.
+          For <varname>xlink.targets</varname> use the XLink attribute <tag
+          class="attribute">xlink:href</tag>, for the variable
+          <varname>linkend.targets</varname> use the <tag class="attribute">linkend</tag>
+          attribute. As only one of these attributes can be available,
+          but not both, the variables are filled with zero nodes or
+          more.</para>
+      </listitem>
+      <listitem>
+        <para>Create the set union of the variables
+            <varname>xlink.targets</varname> and
+            <varname>linkend.targets</varname> and select only one node.
+        </para>
+      </listitem>
+      <listitem>
+        <para>Now it gets interesting: our context node is in
+            <tag>xref</tag>. We need to know the node where  the value
+          of the <tag class="attribute">xml:id</tag> attribute equals
+          our <parameter>rootid</parameter> parameter. We climb up tree
+          with the <function>ancestor-or-self</function> axis specifier
+          and select every DocBook element. With the predicate
+            <markup>[@xml:id = $rootid]</markup> the node set is
+          filtered and only those element(s) are preserved where this
+          expression is true. Only one node from the node set is
+          selected.</para>
+        <para>This is done also for the target node and the result is
+          saved in the variable <varname>target.div</varname></para>
+      </listitem>
+      <listitem>
+        <para>The two node from the previous operation are compared
+          through the <function>generate-id</function> function. That
+          leaves two options:</para>
+        <itemizedlist>
+          <listitem>
+            <formalpara>
+              <title>Both nodes are equal</title>
+              <para>The <tag>xref</tag> points somewhere inside the tree
+                under the <parameter>rootid</parameter> element. That
+                means, we can copy the <tag>xref</tag> element.</para>
+            </formalpara>
+          </listitem>
+          <listitem>
+            <formalpara>
+              <title>Both nodes are not equal</title>
+              <para>The <tag>xref</tag> points outside of the
+                  <parameter>rootid</parameter> element. That means, you
+                need to <quote>resolve</quote> the <tag>xref</tag>
+                element to prevent validation errors.</para>
+            </formalpara>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+      <listitem>
+        <para>If the <tag>xref</tag> needs to be revamped, we use the
+            <tag>phrase</tag> element, copy all attributes (except <tag
+            class="attribute">linkend</tag> and <tag class="attribute"
+            >xlink:href</tag>), and copy anything inside the title of
+          the target node. As the target node could not be a title
+          itself, we use again the <function>ancestor-or-self</function>
+          axis to climb up the tree and select the first emerging
+          title.</para>
+      </listitem>
+    </orderedlist>
+    
+    <remark>TODO: Add graphic to illustrate the method</remark>
+    
+<!--    <programlisting language="xml" linenumbering="numbered"
+>&lt;&#x21;&#x2d;&#x2d; From lib/lib.xsl &#x2d;&#x2d;>
+&lt;xsl:template name="xpointer.idref">
+  &lt;xsl:param name="xpointer">http://...&lt;/xsl:param>
+  &lt;xsl:choose>
+    &lt;xsl:when test="starts-with($xpointer, '#xpointer(id(')">
+      &lt;xsl:variable name="rest"
+         select="substring-after($xpointer, '#xpointer(id(')"/>
+      &lt;xsl:variable name="quote" select="substring($rest, 1, 1)"/>
+      &lt;xsl:value-of
+         select="substring-before(substring-after($xpointer, $quote), $quote)"
+        />
+    &lt;/xsl:when>
+    &lt;xsl:when test="starts-with($xpointer, '#')">
+      &lt;xsl:value-of select="substring-after($xpointer, '#')"/>
+    &lt;/xsl:when>
+    &lt;&#x21;&#x2d;&#x2d; otherwise it's a pointer to some other document &#x2d;&#x2d;>
+  &lt;/xsl:choose>
+&lt;/xsl:template></programlisting>
+-->
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para><xref linkend="dbc.structure.splitdb"/> uses a different
+      approach without needing an ID attribute.</para>
+  </section>
+</section>

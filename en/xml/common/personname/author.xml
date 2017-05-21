@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://docbook.org/xml/5.0/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://docbook.org/xml/5.0/rng/docbook.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<article version="5.0"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <info>
+    <title>Article Template Title</title>
+    <author>
+      <personname>
+        <honorific>Dr</honorific>
+        <firstname>Tux</firstname>
+        <othername>Tuxy</othername>
+        <surname>Penguin</surname>
+        <lineage>Jr</lineage>
+      </personname>
+    </author>
+    <author>
+      <personname>
+        <firstname>Wilber</firstname>
+        <surname>Gimp</surname>
+        <othername>The GIMP</othername>
+      </personname>
+    </author>
+    <author>
+      <personname>
+        <surname>Konqui</surname>
+        <firstname>Tux</firstname>
+        <othername>KDE</othername>
+      </personname>
+    </author>
+    <author>
+      <personname>
+        <honorific>Dr</honorific>
+        <firstname>Pinky</firstname>
+        <surname>van Example</surname>
+      </personname>
+    </author>
+    <author>
+      <personname>
+        <surname>Konqi</surname>
+        <firstname>Wilber</firstname>
+        <lineage>Jr</lineage>
+      </personname>
+    </author>
+    <author>
+      <personname>
+        <honorific>Prof</honorific>
+        <honorific>Dr</honorific>
+        <honorific>Dr</honorific>
+        <firstname>Don</firstname>
+        <firstname>Dot</firstname>
+        <surname>Blub</surname>
+        <surname>Bla</surname>
+      </personname>
+    </author>
+    
+    <authorgroup>
+      <author>
+        <personname>
+          <firstname>Tux</firstname>
+          <surname>Penguin</surname>
+        </personname>
+      </author>
+      <author>
+      <personname>
+        <surname>Konqui</surname>
+        <firstname>Tux</firstname>
+        <othername>KDE</othername>
+      </personname>
+    </author>
+      <author>
+        <personname>
+          <honorific>Prof</honorific>
+          <honorific>Dr</honorific>
+          <honorific>Dr</honorific>
+          <firstname>Tox</firstname>
+          <firstname>Dot</firstname>
+          <surname>Blub</surname>
+          <surname>Bla</surname>
+        </personname>
+      </author>
+    </authorgroup>
+  </info>
+  <sect1>
+    <title>A Useless Section</title>
+    <para>The quick brown fox jumps over the lazy dog.</para>
+  </sect1>
+</article>

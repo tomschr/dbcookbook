@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<section xml:id="dbc.structure.splitdb" version="5.1" 
+  remap="topic" userlevel="medium"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Splitting DocBook Documents</title>
+  <info>
+    <!--<definitions definitionfile="defs.xml"/>-->
+    <keywordset>
+      <keyword>splitting</keyword>
+      <keyword>exsl:document</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>modules</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a big DocBook document, like a book, and you want to
+      split each <tag>chapter</tag>, <tag>appendix</tag> etc. into a
+      separate file.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>There are three solutions to this problems:</para>
+    <itemizedlist>
+      <listitem>
+        <para>Apply a XSLT stylesheet which uses the extension element
+          <function>exsl:document</function></para>
+      </listitem>
+      <listitem>
+        <para>Run the <command>dbautosplit</command> Perl script</para>
+      </listitem>
+      <listitem>
+        <para>Use the assembly stylesheet
+          <filename>topic-maker-chunk.xsl</filename> (see <xref 
+            linkend="dbc.structure.splitting-into-topics"/> for
+          more information).</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>The following subsections describe each method.</para>
+    
+    <section xml:id="sec.structure.splitdb.xsl">
+      <title>Splitting with XSLT</title>
+      <para>The stylesheet in <xref linkend="ex.dbsplit.xsl"/> uses 
+        the extension element  to create separate documents from the main
+        output. It uses code from
+        <filename>html/chunk-code.xsl</filename>.</para>
+      <example xml:id="ex.dbsplit.xsl">
+        <title><filename>dbsplit.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>splitdb/dbsplit.xsl</filename>
+          </output>
+        </info>
+        <programlisting linenumbering="numbered" language="xml"><xi:include
+          href="splitdb/dbsplit.xsl" parse="text"/></programlisting>
+      </example>
+      <para>The <filename>chunker.xsl</filename> file is more or
+        less a stripped down version of the
+          <filename>html/chunker.xsl</filename> file from the DocBook XSL
+        stylesheets. It is used to create processor independent writing
+        of our XML chunks. The file was integrated into
+          <filename>dbsplit.xsl</filename> to make it more independent
+        from the DocBook XSL stylesheets.</para>
+      <example>
+        <title><filename>chunker.xsl</filename></title>
+        <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>splitdb/chunker.xsl</filename>
+          </output>
+        </info>
+        <programlisting linenumbering="numbered" language="xml"><xi:include
+          href="splitdb/chunker.xsl" parse="text"/></programlisting>
+      </example>
+      <para>It can be customized with several parameters:</para>
+      <variablelist>
+        <varlistentry>
+          <term><parameter>base.dir</parameter></term>
+          <listitem>
+            <para>Determines the output directory</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>dbsplit.chunk.depth</parameter></term>
+          <listitem>
+            <para>Controls the depth where to split </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>dbsplit.ext</parameter></term>
+          <listitem>
+            <para>Defines the file extension for each filename written.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>dbsplit.root.filename</parameter></term>
+          <listitem>
+            <para>Identifies the name of the root filename when splitted 
+            </para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>use.id.as.filename</parameter></term>
+          <listitem>
+            <para>Uses ID values as filenames</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><parameter>rootid</parameter></term>
+          <listitem>
+            <para>Specify the root element to split</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    <section xml:id="sec.structure.splitdb.dbsplit">
+      <title>Splitting with the <command>dbautosplit</command></title>
+      <para>The <command>dbautosplit</command> command is a <link
+          xlink:href="http://www.perl.org">Perl</link> script which
+        is only be available in <link
+          xlink:href="http://www.opensuse.org">openSUSE Linux</link>
+        distribution. As such, you can <link
+          xlink:href="http://software.opensuse.org/package/dbsplit-tools?search_term=dbsplit-tools">search
+          for the command <command>dbautosplit</command></link> or
+        download it from <link xlink:href="http://rpmfind.net/linux/rpm2html/search.php?query=dbautosplit"/>.        
+        Additionaly it needs the <package>XML-DOM</package> and
+          <package>XML-RegExp</package> packages. Download and install
+        these package from <link xlink:href="http://www.cpan.org"
+          >CPAN</link>, the Comprehensive Perl Archive Network, before
+        you proceed.</para>
+      <para>For example, if you have a book with a preface and five
+        chapters, use the following command to split it:</para>
+      <screen><command>dbautosplit</command> --level 1 MyBook.xml</screen>
+      <para>It will generate this output:</para>
+      <screen>Creating file : out/preface-01/index.xml
+Creating file : out/chapter-01/index.xml
+Creating file : out/chapter-02/index.xml
+Creating file : out/chapter-03/index.xml
+Creating file : out/chapter-04/index.xml
+Creating file : out/chapter-05/index.xml
+Creating file : out/index.xml</screen>
+      <para>By default, <command>dbautosplit</command> creates an
+        <filename class="directory">out/</filename> directory. Each
+        preface and chapter is stored in a separate subdirectory, named
+        <filename class="directory">preface</filename> or
+        <filename class="directory">chapter</filename> and with a
+        consecutive number. The book itself is saved with
+        <tag>xi:include</tag> elements in
+        <filename>out/index.xml</filename>.</para>
+      <para>You can change the output behavior by using a template system
+        similar to <function>printf</function> function (see manpage).
+        If you want to name the chapters by their <tag
+          class="attribute">xml:id</tag> attribute, use the following
+        commandline:</para>
+      <screen><command>dbautosplit</command> -l 1 -o "%attr(xml:id)%txt(.xml)"<!--
+      --> MyBook.xml</screen>
+      <para>A possible output could look like this:</para>
+      <screen>Creating file : out/preface.xml
+Creating file : out/markup.xml
+Creating file : out/common.xml
+Creating file : out/structure.xml
+Creating file : out/fo.xml
+Creating file : out/html.xml
+Creating file : out/index.xml</screen>
+      <para></para>
+    </section>
+    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para> The shown methods have both advantages and drawbacks.</para>
+    <table>
+      <title>Comparison of Splitting Method</title>
+      <tgroup cols="4">
+        <thead>
+          <row>
+            <entry></entry>
+            <entry><filename>splitdb/chunker.xsl</filename></entry>
+            <entry><command>dbautosplit</command></entry>
+            <entry><filename>topic-maker-chunk.xsl</filename></entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>Change Splitting Level?</entry>
+            <entry>yes</entry>
+            <entry>yes</entry>
+            <entry>yes</entry>
+          </row>
+          <row>
+            <entry>Special Support for Assemblies?</entry>
+            <entry>no</entry>
+            <entry>no</entry>
+            <entry>yes</entry>
+          </row>
+          <row>
+            <entry/>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist role="category">
+      <!--<listitem>
+        <para></para>
+      </listitem>-->
+    </itemizedlist>
+  </section>
+</section>

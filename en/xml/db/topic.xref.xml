@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<?xml-model href="../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+
+<section xml:id="dbc.markup.xref" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Inserting Cross References</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>cross references</keyword>
+      <keyword>internal link</keyword>
+      <keyword>xref</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>xref</subjectterm>
+        <subjectterm>links</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to create a cross reference from one part of your
+      document into another.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <tag>xref</tag> element for this purpose. A cross
+      reference is a one-to-one relationship from your <tag>xref</tag>
+      to your target. To create such a relationship you need two things:
+    </para>
+    <orderedlist>
+      <listitem>
+        <para>The ID of your target. This is the value of the <tag
+            class="attribute">xml:id</tag> attribute. Make sure, it
+          points to the structure itself, not the title.</para>
+      </listitem>
+      <listitem>
+        <para>The empty <tag>xref</tag> element and a <tag
+          class="attribute">linkend</tag> attribute which holds the ID
+          of your target.</para>
+      </listitem>
+    </orderedlist>
+    
+    <para>For example, you want to reference to the introduction chapter in your book.
+      The chapter looks like this:</para>
+    <programlisting language="xml">&lt;chapter xml:id="intro">
+  &lt;title>Introduction&lt;/title>
+  ...      
+&lt;/chapter></programlisting>
+    
+    <para>As you can see, the chapter contains a title but most
+      importantly, it also has a <tag class="attribute">xml:id</tag>
+      attribute. This is our <quote>anchor</quote> or ID.</para>
+    <para>If you want to create a cross reference to your introduction
+      chapter, use the <tag>xref</tag> element as follows:</para>
+    
+    <screen>&lt;para>Get basic information in &lt;xref linkend="intro"/>.&lt;/para></screen>
+    <para>The previous <tag>xref</tag> is rendered as follows:</para>
+    <screen>Get basic information in Chapter 1. “Introduction”.</screen>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Cross referencing is important in your documents as it makes
+      your text accessible for your reader. The previous section showed
+      the simplest form of a cross reference. However, there is more to
+      find out about <tag>xref</tag>. The following subsections gives 
+      you some useful tips and tricks:</para>
+    
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="sec.markup.xref.titlesonly"
+          xrefstyle="select:title"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="sec.markup.xref.xrefstyle" 
+          xrefstyle="select:title"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="sec.markup.xref.xreflabel"
+          xrefstyle="select:title"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="sec.markup.xref.langpitfalls"
+          xrefstyle="select:title"/></para>
+      </listitem>
+    </itemizedlist>
+    
+    <section xml:id="sec.markup.xref.titlesonly">
+      <title>Reference to Elements with Titles Only</title>
+      <para>Basically, DocBook allows you to insert a <tag class="attribute"
+        >xml:id</tag> attribute on <emphasis>every</emphasis> element if
+        you wish. However, that does not mean, you should insert one. 
+        As you could see from the previous section, when the <tag>xref</tag> is resolved,
+        the DocBook stylesheets uses the <tag>title</tag> element to
+        create the reference to its target. 
+        If you refer to a element where no title is allowed
+        (for example, a <tag>para</tag>), the cross reference cannot 
+        resolved correctly. Depending on the version of the DocBook
+        stylesheets, you get either an error or the <tag>xref</tag> uses
+        the title of its nearest ancestor (for example, the parent's section
+        where the above child para is included).</para>
+    </section>
+
+    <section xml:id="sec.markup.xref.xrefstyle">
+      <title>Fine-tuning Cross References</title>
+      <para>In cases where it is not enough to just refer to a target,
+        use the <tag
+          class="attribute">xrefstyle</tag> attribute to fine-tune the
+        appearance of the resolved cross reference. The <tag
+          class="attribute">xrefstyle</tag> attribute expects one of the
+      following values:</para>
+      <variablelist>
+        <varlistentry>
+          <term><literal>template: <replaceable>TEMPLATE_KEYWORDS</replaceable></literal></term>
+          <listitem>
+            <para>After the <literal>template:</literal> text, use the
+              <literal>%</literal> placeholders to define where title,
+              number, etc. should appear.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><literal>select: <replaceable>SELECT_KEYWORDS</replaceable></literal></term>
+          <listitem>
+            <para>After the <literal>select:</literal>, use specific
+              keywords which maps to title, number, etc.</para>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term><literal><replaceable>ANY_NAME</replaceable></literal></term>
+          <listitem>
+            <para>If the <tag class="attribute">xrefstyle</tag>
+              attribute does not start with neither
+                <literal>select</literal> nor
+                <literal>template</literal>, it is interpreted as a name
+              which can be found in a language file. This solution is
+              not covered in this topic.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    
+      <section xml:id="sec.markup.xref.xrefstyle.template">
+        <title>Using <literal>template</literal></title>
+        <para>The <literal>template</literal> method contains an
+          immutable string including placeholders. These
+          placeholders are replaced with its real values during
+          transformation. For example, if you want a different text to
+          this section than the default, you could use the following
+          code:</para>
+        <screen>Section &lt;xref linkend="dbc.markup.xref"<!--
+         --> xrefstyle="template:%t"/> helps you with the xref element.</screen>
+        <para>During transformation, the <varname>%t</varname>
+          placeholder is replaced by the target's title:</para>
+        <screen>Section <xref linkend="dbc.markup.xref"
+          xrefstyle="template:%t"
+/> helps you with the xref element.</screen>
+        <para>As you could see, any other string not starting with
+          <literal>%</literal> is untouched and literally copied. 
+          <xref linkend="tab.markup.xref.xrefstyle.template.placeholders"
+           /> gives you an overview about all
+          available placeholders.</para>
+        
+        <table xml:id="tab.markup.xref.xrefstyle.template.placeholders">
+          <title>Available Placeholders for <literal>template</literal></title>
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>Placeholder</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><literal>%d</literal></entry>
+                <entry>Direction (<quote>above</quote> or
+                  <quote>below</quote>)</entry>
+              </row>
+              <row>
+                <entry><literal>%n</literal></entry>
+                <entry>Number</entry>
+              </row>
+              <row>
+                <entry><literal>%o</literal></entry>
+                <entry>Document name (only for <tag>olink</tag>s)</entry>
+              </row>
+              <row>
+                <entry><literal>%p</literal></entry>
+                <entry>Page number, if applicable</entry>
+              </row>
+              <row>
+                <entry><literal>%s</literal></entry>
+                <entry>Subtitle, if applicable</entry>
+              </row>
+              <row>
+                <entry><literal>%t</literal></entry>
+                <entry>Title</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+      </section>
+      <section xml:id="sec.markup.xref.xrefstyle.select">
+        <title>Using <literal>select</literal></title>
+        <para>The <literal>select</literal> method expects several
+          self-explanatory keywords which are also replaced during
+          transformation. The difference is, you cannot use free text as
+          in <literal>template</literal> and as such gives you less
+          freedom. For instance, the first example in <xref linkend="sec.markup.xref.xrefstyle.template"
+            xrefstyle="select:title"/> can also be
+          expressed by using <literal>select</literal>:</para>
+        <screen>Section &lt;xref linkend="dbc.markup.xref"<!--
+         --> xrefstyle="select:title"/> helps you with the xref element.</screen>
+        <para></para>
+        <table>
+          <title>Available Keywords for <literal>select</literal></title>
+          <tgroup cols="3">
+            <colspec colname="c1"/>
+            <colspec colname="c2"/>
+            <colspec colname="c3"/>
+            <thead>
+              <row>
+                <entry>Keyword</entry>
+                <entry>Example</entry>
+                <entry>Description</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry namest="c1" nameend="c3">Labels</entry>
+              </row>
+              <row>
+                <entry><literal>label</literal></entry>
+                <entry><literal>Chapter 5</literal></entry>
+                <entry>label and number</entry>
+              </row>
+              <row>
+                <entry><literal>labelname</literal></entry>
+                <entry><literal>Chapter</literal></entry>
+                <entry>Name of the referencing element</entry>
+              </row>
+              <row>
+                <entry><literal>labelnumber</literal></entry>
+                <entry><literal>5</literal></entry>
+                <entry>Only the number</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c3">Titels</entry>
+              </row>
+              <row>
+                <entry><literal>title</literal></entry>
+                <entry><literal>Inserting Cross References</literal></entry>
+                <entry>Title without quotes</entry>
+              </row>
+              <row>
+                <entry><literal>quotedtitle</literal></entry>
+                <entry><literal>“Inserting Cross References”</literal></entry>
+                <entry>Title with quotes</entry>
+              </row>
+              <row>
+                <entry namest="c1" nameend="c3">Pagenumber</entry>
+              </row>
+              <row>
+                <entry><literal>page</literal></entry>
+                <entry><literal>(page 100)</literal></entry>
+                <entry>Page number in brackets</entry>
+              </row>
+              <row>
+                <entry><literal>Page</literal></entry>
+                <entry><literal>“Page 100”</literal></entry>
+                <entry>Uppercase <quote>page</quote></entry>
+              </row>
+              <row>
+                <entry><literal>pageabbrev</literal></entry>
+                <entry><literal>(p. 100)</literal></entry>
+                <entry>Abbreviated page</entry>
+              </row>
+              <row>
+                <entry><literal>pagenumber</literal></entry>
+                <entry><literal>100</literal></entry>
+                <entry>Only the page number</entry>
+              </row>
+              <row>
+                <entry><literal>nopage</literal></entry>
+                <entry>n/a</entry>
+                <entry>Suppressed page number</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </table>
+        <para>The order of the keywords does not matter; a
+          <literal>select:title nopage</literal> is the same than
+          <literal>select:nopage title</literal>. The order is taken
+          from the language files in <filename
+            class="directory">common/</filename>. For example, the following
+          English language file defines the order of a chapter title
+          (number followed by the title):</para>
+        <screen>&lt;l:context name="title-numbered">
+  &lt;l:template name="article/appendix" text="%n. %t"/>
+&lt;/l:context></screen>
+      </section>
+    </section>
+    
+    <section xml:id="sec.markup.xref.xreflabel">
+      <title>Using <tag class="attribute">xreflabel</tag> Only in Rare Cases</title>
+      <para>In rare cases, you have to reference to an element which
+        does not allow a title. For example, if you want to reference to
+        a paragraph. In such a case, use the <tag
+          class="attribute">xreflabel</tag>.</para>
+      <para xml:id="_para1">For example, if you reference to this
+        paragraph with an ID of <tag class="attvalue">_para1</tag>, your
+          <tag>xref</tag> will be resolved as follows:</para>
+      <screen>&lt;xref linkend="_para1"/>: <xref linkend="_para1"/></screen>
+      <para xml:id="_para2" xreflabel="A better test">As you can see, it prints the
+        title of its ancestor element. However, if you add a
+        <tag class="attribute">xreflabel</tag> to this paragraph, you
+        will end up with this:</para>
+      <screen
+>&lt;para xml:id="_para2" xreflabel="A better test"> ... &lt;para
+...
+&lt;xref linkend="_para2"/>: <xref linkend="_para2"/></screen>
+      <para>Remember, this should not be your default markup when cross
+        referencing. Always try to refer to a element which contains a title as
+        noted in <xref linkend="sec.markup.xref.titlesonly"/>.</para>
+    </section>
+
+    <section xml:id="sec.markup.xref.langpitfalls">
+      <title>Watch For Language Pitfalls</title>
+      <para>When using <tag>xref</tag>s, it can be sometimes difficult
+        to write a <quote>fluent</quote> sentence. For example, you
+        could be inclined to start a sentence like this:</para>
+      <screen>The following chapter &lt;xref linkend="dbc.markup"/> explains...</screen>
+      <para>However, the output is undesireable:</para>
+      <screen>The following chapter <xref linkend="dbc.markup"/> explains...</screen>
+      <para>Removing the word <quote>chapter</quote> makes it less ugly,
+      but the problem still persists: how to create fluent, easy to read
+      sentences where cross references are nicely resolved?</para>
+      <para>One solution is to rewrite the sentence and start with the
+        <tag>xref</tag>:</para>
+      <screen>&lt;xref linkend="dbc.markup"/> explains ...</screen>
+      <para>If you do not like this style, you can switch to passive
+        voice as another solution:</para>
+      <screen>The topic ABC is explained in &lt;xref linkend="dbc.markup"/>.</screen>
+      <para>Sometimes passive voice is not appropriate. In cases where
+        you do not want to change the tense or grammar, use the
+        <literal>template</literal> or <literal>select</literal>
+        methods. Applied to the first example, you can rewrite the
+        <tag>xref</tag> with <tag class="attribute">xrefstyle</tag>:</para>
+      <screen>The following &lt;xref linkend="dbc.markup" xrefstyle="chapter %t"/>, explains...</screen>
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>    
+    <itemizedlist role="category">
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg5/en/html/xref.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

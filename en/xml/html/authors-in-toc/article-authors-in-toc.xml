@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<article version="5.0"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Article TOC with Authors</title>
+    <toc/>
+  
+    <sect1 xml:id="tux">
+      <title>How to Become a Linux Mascott</title>
+      <info>
+        <!--<authorgroup>-->
+          <author>
+          <personname>
+            <firstname>Tux</firstname>
+            <surname>Penguin</surname>
+          </personname>
+        </author>
+        <!--<author>
+          <personname>
+            <firstname>Py</firstname>
+            <surname>Python</surname>
+          </personname>
+        </author>
+        </authorgroup>-->
+      </info>
+      <para>Bla bla...</para>
+    </sect1>
+  
+    <sect1 xml:id="wilber">
+      <title>How to Become a Graphic Artist</title>
+      <info>
+        <author>
+          <personname>
+            <firstname>Wilber</firstname>
+            <surname>Gimp</surname>
+          </personname>
+        </author>
+        <author>
+          <personname>
+            <firstname>Konqui</firstname>
+            <surname>Konqueror</surname>
+          </personname>
+        </author>
+      </info>
+      <para>Bla bla...</para>
+      <para>Bla bla...</para>
+    </sect1>
+</article>

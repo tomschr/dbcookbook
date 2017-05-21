@@ -1,0 +1,330 @@
+#!/bin/bash
+# 
+
+source bin/common.sh
+
+# set -x
+
+CATEGORY=1
+EXAMPLES=1
+CLEANUP=0
+ARCHIVE=0
+UPLOAD=0
+INIT=0
+ROOTID=""
+
+function print_help() {
+cat << EOF
+Transforms DocBook code into single and chunked XHTML.
+
+-h, --help         Prints this help text
+-A, --archive      Create archive (default no)
+-U, --upload       Upload archive (built with -A/--archive, default no)
+-I, --init         Remove any old build directory before starting
+-c, --cleanup      Only perform cleanup step
+-C, --no-category  Don't create links to other categories
+-E, --no-examples  Don't generate examples
+-v, --verbose      Be more verbose
+-r, --rootid ROOTID
+                   Pass xml:id to only process a certain chapter, section,etc.
+EOF
+}
+
+function initenv() {
+  [[ $VERSION -gt 0 ]] && echo "*** Initializing build environment..."
+  [[ $INIT -eq 1 ]] && rm -rf ${BUILDDIR}
+  __createlinks
+  copyprettifier
+}
+
+function getofficialversion() {
+# Get the "official" public version (marked as a Mercurial tag)
+# The "last(tag(),1)" expression returns the last used tag
+#
+  local version=$(hg log -r "last(tag(),1)" --template "{tags}")
+  
+  __logging "getofficialversion: Found public version '${version}'"
+  
+  echo $version
+}
+
+function archive_dbcookbook() {
+  local x
+  local VERSION=$(getofficialversion)
+
+  cp README.rst ${HTMLOUT}/
+  pushd ${BUILDDIR} 2>/dev/null
+  ln -sf html ${ARCHIVE_BASE}-${VERSION}
+  tar -hcvjpf ${ARCHIVE_BASE}-${VERSION}.tar.bz2 ${ARCHIVE_BASE}-${VERSION}
+  tar -hcvjpf ${ARCHIVE_BASE}-${VERSION}-examples.tar.bz2 ${ARCHIVE_BASE}-${VERSION}/examples/
+  popd 2>/dev/null
+}
+
+function upload_archive() {
+  local VERSION=$(getofficialversion)
+ 
+  scp ${BUILDDIR}/*.tar.bz2 ${SFUSER}@${SFSITE}:${SFPATH}/${VERSION}
+}
+
+function copyprettifier() {
+  if [[ ! -e ${HTMLOUT}/highlighter/ ]]; then
+    cp -a ${FRAMEWORKSDIR}/js/google-code-prettify/src/ ${HTMLOUT}/highlighter
+  fi
+  cp ${FRAMEWORKSDIR}/js/google-code-prettify/styles/*.css ${HTMLOUT}/highlighter/
+}
+
+
+function updatereleaseinfo() {
+    local xmlin=$1
+    local version=$(getofficialversion)
+    local changeweb=1
+    
+    __logging "updatereleaseinfo: Update releaseinfo for file '${xmlin}'"
+    
+    if [[ $CATEGORY -eq 0 ]]; then
+        cp "${xmlin}" "${xmlin}.tmp"
+        xmlin=${xmlin}.tmp
+    fi
+    
+    # Update releaseinfo[@role='draft'] with current version number
+    xml ed --inplace -N d=http://docbook.org/ns/docbook \
+        --update "/d:book/d:info/d:releaseinfo[@role='draft'][1]" \
+        -v "${version}" "${xmlin}"
+    __logging "updatereleaseinfo: Inserted version '${version}' in file '${xmlin}'"
+    
+    # Change the web/index.html too?
+    if [[ $changeweb -eq 1 ]]; then
+## Currently, xmlstarlet changes some things which is not what I intended.
+## Therefor, ATM it is better (although a bit dangerous) to use sed instead.
+#       xml ed --inplace \
+#         --update "/html/body//div[@class='self-promotion']/span[@class='version'][1]" \
+#         -v "${version}" "${WEBINDEX}"
+      sed -i "s#<span class=\"version\">\(.*\)</span>#<span class=\"version\">${version}</span>#g" \
+          "${WEBINDEX}"
+      __logging "updatereleaseinfo: Inserted version '${version}' in file '${WEBINDEX}'"
+    fi
+    
+    # Return our changed file
+    echo $xmlin
+}
+
+function resolvecategories() {
+  local xmlin=$1
+  
+  __logging "resolvecategories: Got file ${xmlin}"
+  
+  if [[ $CATEGORY -eq 1 ]]; then
+    __logging "resolvecategories: Resolving category links..."
+    
+    if [[ ! -e ${xmlin}.resolved ]]; then
+        saxon -o "${xmlin}.resolved" "${xmlin}" "${CATEGORYXSL}"
+        __logging "resolvecategories: Done"
+    else
+        __logging "resolvecategories: Using existing ${xmlin}.resolved"
+    fi
+    
+    # Return the .resolved file
+    echo ${xmlin}.resolved
+  else
+    # Return the unchanged file
+    echo $xmlin
+  fi
+}
+
+function saxon_db2xhtml() {
+  local xmlin=${1:-${XMLIN}}
+  __logging "saxon_db2xhtml: Transforming to Chunked XHTML..."
+ 
+  [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> XHTML ..."
+  saxon -o ${BUILDDIR}/log.txt "${xmlin}" \
+     ${BASEXSLT1}/xhtml/chunk.xsl \
+     ${ROOTID:+rootid=$ROOTID} || exit_on_error "Something went wrong"
+  __logging "saxon_db2xhtml: Transformed ${xmlin} with ${BASEXSLT1}/xhtml/chunk.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
+   ## [[  $CATEGORY -eq 1 ]] && rm ${xmlin}
+}
+
+function saxon_db2singlexhtml() {
+  local xmlin=${1:-${XMLIN}}
+  __logging "saxon_db2singlexhtml: Transforming to Single XHTML..."
+  
+  [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Transforming XML -> Single XHTML ..."
+  cmd="saxon -o ${BUILDDIR}/tmp/DoCookBook.html  ${xmlin} \
+     ${BASEXSLT1}/xhtml/docbook.xsl \
+     generate.revhistory.link=0 generate.legalnotice.link=0 \
+     ${ROOTID:+rootid=$ROOTID}"
+  __logging "saxon_db2singlexhtml: Using command: $cmd"
+  $cmd || exit_on_error "Something went wrong"
+  __logging "saxon_db2singlexhtml: Transformed ${xmlin} with ${BASEXSLT1}/xhtml/docbook.xsl (Parameter: ${ROOTID:+rootid=$ROOTID})"
+}
+
+
+function __saxon_nstest() {
+  local ROOTIDPARAM=""
+  local xmlin=${1:-${XMLIN}}
+  
+  if [[ "$ROOTID" != '' ]]; then
+    ROOTIDPARAM="rootid=$ROOTID"
+  fi
+  
+  saxon "${xmlin}" ${FRAMEWORKSDIR}/db-xslt-ns/xhtml/chunk.xsl \
+     base.dir=build/tmp/ \
+     $ROOTIDPARAM || exit_on_error "ERROR: Something went wrong"
+}
+
+function __htmlcleanup() {
+# $1 = output
+# $2 = input
+# sed -i 's#<!DOCTYPE html>#<!DOCTYPE html \[<!ENTITY % ents SYSTEM \"ents.ent\"> %ents; \]>#' $i
+#
+# tidy -modify -asxhtml --output-xml yes --add-xml-decl no \
+#   --numeric-entities yes --doctype omit \
+#   --tidy-mark no \
+#   --new-blocklevel-tags article,header,footer,section,aside \
+#   --new-inline-tags video,audio,canvas,ruby,rt,rp $i 2>/dev/null
+#
+# We don't allow to contact the Internet, no validation is needed, so
+# we use --nonet and --novalid 
+ local HTMLOUTPUT=$1 HTMLINPUT=$2
+ xsltproc --nonet --novalid -o ${HTMLOUTPUT} \
+   ${BASEXSLT1}/misc/html2cleanhtml.xsl \
+   ${HTMLINPUT}
+ sed -i '1s#??>#?>#' ${HTMLOUTPUT}
+}
+
+
+function collectexamples() {
+# $1 = input
+  local xmlin=${XMLIN}
+  local params
+  
+  if [[ $EXAMPLES -eq 1 ]]; then
+    __logging "Creating examples..."
+    [[ $VERBOSE -gt 0 ]] && echo -e "\n*** Creating examples ..."
+    if [[ $CATEGORY -eq 1 ]]; then
+        xmlin=${XMLIN}.resolved
+    fi
+    if [[ $VERBOSE -eq 1 ]]; then
+        params="--stringparam chunk.quietly 0"
+    fi
+    xsltproc  --nonet --novalid \
+        --stringparam base.dir "${HTMLOUT}/" $params \
+        ${COLLECTEXAMPLES} \
+        ${xmlin}
+  else
+    __logging "Skipped generation of examples."
+  fi
+}
+
+
+##
+## main
+##
+
+SAXON_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/saxon65.jar"
+XSLTHL_JAR="${FRAMEWORKSDIR}/db-xslt/extensions/xslthl-2.0.2.jar"
+
+export ADDITIONAL_JARS="xerces-j2.jar xerces-j2-xml-apis.jar"
+export ADDITIONAL_FLAGS="-Djavax.xml.parsers.DocumentBuilderFactory=\
+org.apache.xerces.jaxp.DocumentBuilderFactoryImpl \
+    -Djavax.xml.parsers.SAXParserFactory=\
+org.apache.xerces.jaxp.SAXParserFactoryImpl \
+${XINCLUDEFLAG}"
+
+
+export CLASSPATH="${CATALOGPROP}:${SAXON_JAR}"
+
+
+ARGS=$(getopt -o h,c,I,A,U,r:,C,E,v -l help,cleanup,init,archive,upload,rootid:,no-category,no-examples,verbose -- "$@")
+eval set -- "$ARGS"
+while true ; do
+  case "$1" in
+    -h|--help)
+      print_help
+      exit
+      ;;
+    -I|--init)
+      INIT=1
+      ;;
+    -A|--archive)
+      ARCHIVE=1
+      ;;
+    -U|--upload)
+      UPLOAD=1
+      ;;
+    -c|--cleanup)
+      CLEANUP=1
+      ;;
+    -r|--rootid)
+      ROOTID="$2"
+      shift
+      ;;
+    --no-category|-C)
+      CATEGORY=0
+      ;;
+    --no-examples|-E)
+      EXAMPLES=0
+      ;;
+    --verbose|-v)
+      VERBOSE=1
+      ;;
+    --)
+      shift
+      break
+      ;;  
+  esac
+  shift
+done
+
+__logging "Started. Commandline arguments: $ARGS"
+
+initenv
+
+[[ $VERBOSE != "" ]] && echo "Transforming..."
+if [[  $CLEANUP -eq 0 ]]; then
+  # First, resolve any categories
+  [[ $VERBOSE -gt 0 ]] && echo "*** Resolving category links..."
+  _x=$(resolvecategories ${XMLIN})
+  __logging "After resolvecategories: '${_x}'"
+  # Second, replace version string from hg tag
+  _x=$(updatereleaseinfo "${_x}")
+  __logging "After updatereleaseinfo '${_x}'"
+
+  saxon_db2xhtml "${_x}"
+  saxon_db2singlexhtml "${_x}"
+fi
+
+
+echo -e "\n*** Cleaning up HTML..."
+
+# Shell trick: Depending on $ROOTID, you get either
+# ${BUILDDIR}/tmp/*.html or ${BUILDDIR}/tmp/$ROOTID.html
+# which is passed to the ls command:
+HTMLFILES=$(ls ${BUILDDIR}/tmp/${ROOTID:-$ROOTID*}.html)
+ 
+for i in ${HTMLFILES}; do
+ _base=${i##*/}
+ echo -en "."
+ __logging "Cleaning ${_base}"
+ __htmlcleanup ${HTMLOUT}/${_base} $i
+done
+echo
+
+collectexamples
+
+if [[ $ARCHIVE -eq 1 ]]; then
+  archive_dbcookbook
+fi
+
+if [[ $UPLOAD -eq 1 ]]; then
+  upload_archive
+fi
+
+# Shell trick:
+# Depending on if ROOTID is set (or not), the following line expands to
+# either "index.html" or "$ROOTID" + ".html"
+echo -e "\nUse ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
+__logging "Finished ${BUILDDIR}/html/${ROOTID:-index.html}${ROOTID:+.html}"
+
+__logging "---------------------------------------------------"
+
+# EOF

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.db.acronym" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Utilize Alternative Descriptions in Acronyms</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>acronyms</keyword>
+      <keyword>alt</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to show your acronyms and their descriptions in a
+      consistent way, independant from any output formats.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use an <tag>acronym</tag> element and insert an <tag>alt</tag>
+    element as shown in the following example:</para>
+    <programlisting language="xml">&lt;para>
+  The &lt;acronym>XML&lt;alt>eXtensible Markup Language&lt;/alt>&lt;/acronym>
+  is used for...
+&lt;/para></programlisting>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>
+    </para>
+  </section>
+</section>

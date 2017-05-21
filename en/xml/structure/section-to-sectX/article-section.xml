@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<article xmlns="http://docbook.org/ns/docbook" version="5.0">
+  <title>Test XML File for Transforming section into sectX</title>
+  <section>
+    <title>Section1 Title</title>
+    <para>Text</para>
+    <section>
+      <title>Section2 Title</title>
+      <para>Text</para>
+    </section>
+  </section>
+</article>

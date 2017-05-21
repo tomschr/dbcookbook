@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.markup.xref-vs-link" remap="topic" userlevel="easy" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Knowing the Difference of Cross References and Links</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>crossreference</keyword>
+      <keyword>xref</keyword>
+      <keyword>links</keyword>
+      <keyword>localization</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>links</subjectterm>
+        <subjectterm>xref</subjectterm>
+        <subjectterm>l10n</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to set a <quote>link</quote> but you do not know
+      which DocBook element to use.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>DocBook distinguishes between two link types:</para>
+    <itemizedlist>
+      <listitem>
+        <formalpara>
+          <title>Internal Links or Cross References</title>
+          <para>used primarily with <tag>xref</tag></para>
+        </formalpara>
+      </listitem>
+      <listitem>
+        <formalpara>
+          <title>External Links</title>
+          <para>used primarily with <tag>link</tag></para>
+        </formalpara>
+      </listitem>
+    </itemizedlist>    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>There are several difference between <tag>xref</tag> and
+        <tag>link</tag>. An <tag>xref</tag> is used for cross
+      referencing another part of the document. In its simplest form,
+      you need only an ID value of the object where you want to link
+      to:</para>
+    <example xml:id="ex.xref-vs-link.xref">
+      <title>A Cross Reference</title>
+      <programlisting language="xml">&lt;chapter xml:id="tea">
+  &lt;title>All About Tea&lt;/title>
+  &lt;section <emphasis role="bold">xml:id="about-tea"</emphasis>>
+    &lt;title>About Tea&lt;/title>
+    &lt;para>This section gives you an introduction about tea.&lt;/para>
+  &lt;/section>
+  &lt;section xml:id="prepar">
+    &lt;title>Preparing Tea&lt;/title>
+    &lt;para>Read an introduction in <emphasis role="bold"
+      >&lt;xref linkend="about-tea"/></emphasis>.&lt;/para>
+  &lt;/section>      
+&lt;/chapter></programlisting>
+    </example>
+    <para>The DocBook XSL stylesheets take care of resolving the
+      <tag>xref</tag>. By default, it replaces the <tag>xref</tag>
+      element with a number and the title of the reference. It could
+      look like this:</para>
+    <screen>Read an introduction in Section 1.1, “About Tea”.</screen>
+    <para>The text <code>Section 1.1, “About Tea”</code> is a <quote>hot
+    link</quote> and points to the respective section. Using
+      <tag>xref</tag> for cross references has several advantages:</para>
+    <itemizedlist>
+      <title>Advantages of Cross References Using <tag>xref</tag></title>
+      <listitem>
+        <para>Whenever a text of a title changes, all <tag>xref</tag>s
+          pointing to it will automatically change too</para>
+      </listitem>
+      <listitem>
+        <para>During validation, the <tag class="attribute"
+            >linkend</tag> attribute is checked, if this ID
+          exists</para>
+      </listitem>
+      <listitem>
+        <para>During resolution, additonal words like
+            <quote>Section</quote>, <quote>Chapter</quote>, or
+            <quote>Figure</quote> are automatically inserted according
+          to the used document language</para>
+      </listitem>
+      <listitem>
+        <para>You do not have to care about numbering</para>
+      </listitem>
+      <listitem>
+        <para>For further customization, use the <tag class="attribute"
+            >xrefstyle</tag> attribute</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>In contrast, an <tag>link</tag> is used in most cases for
+      <emphasis>external</emphasis> links.</para>
+    <example xml:id="ex.xref-vs-link.link">
+      <title>A Hyperlink</title>
+      <programlisting language="xml">&lt;section xml:id="about-tea">
+  &lt;title>About Tea&lt;/title>
+  &lt;para>See &lt;link xlink:href="http://www.example.org/tea"/> for further information.&lt;/para>
+&lt;/section></programlisting>
+    </example>
+    <para>Using an <tag>link</tag> has the following advantages:</para>
+    <itemizedlist>
+      <title>Advantages of External Links Using <tag>link</tag></title>
+      <listitem>
+        <para>Usually no automatic resolution performed (only if you use
+            <tag class="attribute">xlink:href</tag>)</para>
+      </listitem>
+      <listitem>
+        <para>No validation necessary between source and target</para>
+      </listitem>
+      <listitem>
+        <para>Link content can be manually created</para>
+      </listitem>
+      <listitem>
+        <para>Additional inline elements allowed</para>
+      </listitem>
+    </itemizedlist>
+    
+    <para>The differences between <tag>xref</tag> and <tag>link</tag>
+      are collected in <xref linkend="tab.xref-vs-link"/>.      
+    </para>
+    
+    <table xml:id="tab.xref-vs-link">
+      <title>Differences Between <tag>xref</tag> and <tag>link</tag></title>
+      <tgroup cols="3">
+        <colspec colnum="1" colname="c1" colwidth="1*"/>
+        <colspec colnum="2" colname="c2" colwidth="2*"/>
+        <colspec colnum="3" colname="c3" colwidth="2*"/>
+        <thead>
+          <row>
+            <entry>Topic</entry>
+            <entry><tag xlink:href="http://www.docbook.org/tdg51/en/html/xref.html">xref</tag></entry>
+            <entry><tag xlink:href="http://www.docbook.org/tdg51/en/html/link.html">link</tag></entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>TDG<footnote>
+              <para>The Definitive Guide, see <link xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"/></para>
+            </footnote> Definition</entry>
+            <entry>A cross reference to another part of the document</entry>
+            <entry>A hypertext link</entry>
+          </row>
+          <row>
+            <entry>Content Model</entry>
+            <entry><link xlink:href="http://www.docbook.org/tdg51/en/html/xref.html">empty</link></entry>
+            <entry><link xlink:href="http://www.docbook.org/tdg51/en/html/link.html">text and inline elements</link></entry>
+          </row>
+          <row>
+            <entry>Resolution</entry>
+            <entry>Yes, automatically during transformation</entry>
+            <entry>No, link content must be definied manually</entry>
+          </row>
+          <row>
+            <entry>ID/IDREF Checking</entry>
+            <entry>Yes</entry>
+            <entry>No<footnote>
+                <para>Checking can be performed, when <tag class="attribute"
+                    >linkend</tag> attribute is used.</para>
+              </footnote></entry>
+          </row>
+          <row>
+            <entry>Restrictions</entry>
+            <entry>Only cross referencing to elements which contains a <tag>title</tag></entry>
+            <entry>No restrictions</entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.markup.xref"/></para>
+      </listitem>
+      <listitem>
+        <para><xref linkend="dbc.markup.link"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg51/en/html/link.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://www.docbook.org/tdg51/en/html/xref.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

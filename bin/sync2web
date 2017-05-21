@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+# Synchronize the main entry Web page on http://doccookbook.sf.net/
+
+
+usage () {
+  cat << EOF
+${0##*/} [USER]
+
+Purpose:
+  Synchronize the main entry Web page on http://doccookbook.sf.net/
+
+Parameters:
+ USER = user name/account on SourceForge
+
+EOF
+}
+
+
+USER=${1:-tom_schr}
+PROJECT=doccookbook
+SFSITE=web.sourceforge.net
+WEBPATH="/home/project-web/${PROJECT}/htdocs/"
+TOSYNC="web/bs web/fa web/*.css web/index.html web/*.ico"
+
+if [[ $1 = "-h" || $1 = "--help" ]]; then
+  usage
+  exit 1
+fi
+
+rsync -aiv --exclude '*~' --exclude '*.orig' ${TOSYNC} ${USER},${PROJECT}@${SFSITE}:${WEBPATH}
+

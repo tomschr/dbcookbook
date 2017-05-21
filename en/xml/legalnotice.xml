@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<legalnotice version="5.1" xml:lang="en" xml:id="legalnotice"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns="http://docbook.org/ns/docbook">
+  <title>Licensed under Creative Commons</title>
+  <info>
+    <keywordset>
+      <keyword>license</keyword>
+      <keyword>Creative Commons</keyword>
+      <keyword>CC</keyword>
+      <keyword>CC BY-NC-SA 3.0 DE</keyword>
+    </keywordset>
+  </info>
+  
+  <sidebar>
+    <title>This Work is Licensed under Creative Commons</title>
+    <informaltable border="0" frame="void" rules="none" class="ccbox">
+      <tbody>
+        <tr>
+          <td valign="top"><inlinemediaobject>
+              <imageobject>
+                <imagedata
+                  fileref="png/by-nc-sa-3.0-de-88x31.png"
+                  width="88px"/>
+              </imageobject>
+              <textobject>
+                <phrase>Creative Commons License Agreement</phrase>
+              </textobject>
+            </inlinemediaobject></td>
+          <td><para>This work is licensed as Creative Commons
+              Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
+              BY-NC-SA 3.0 DE). For more information, refer to <xref 
+                linkend="dbc.preface.license"/> <!--or go to <link
+                xlink:show="new"
+                xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
+              />-->
+            </para>
+            <!--<para>See also the license texts <xref linkend="cc-by-nc-sa-30-de"/>
+              and <xref linkend="cc-by-nc-sa-30-unported"/>.</para>-->
+          </td>
+        </tr>
+      </tbody>
+    </informaltable>
+  </sidebar>
+  
+</legalnotice>

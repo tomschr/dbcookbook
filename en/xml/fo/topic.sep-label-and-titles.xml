@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.fo.sep-numbers-and-title" remap="topic"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Styling Numbers Differently than Titles in Divisions</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>styling title</keyword>
+      <keyword>label.markup</keyword>
+      <keyword>title.markup</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>titles</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to layout the number differently from the title. As
+      such, you search for an solution how these information can be
+      independently get.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The DocBook XSL stylesheets contain two modes which are 
+      important in this regard: <literal>label.markup</literal>
+      and <literal>title.markup</literal>.</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para><remark>TDB</remark></para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <para><remark>TDB</remark></para>
+  </section>
+</section>

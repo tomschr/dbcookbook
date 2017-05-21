@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.fo.line-height" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Influencing the Leading</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>line height</keyword>
+      <keyword>leading</keyword>
+      <keyword>half-leading</keyword>
+      <keyword>font size</keyword>
+    </keywordset>
+    <othercredit>
+      <personname>
+        <firstname>Tony</firstname>
+        <surname>Graham</surname>
+      </personname>
+    </othercredit>
+    <subjectset>
+      <subject>
+        <subjectterm>fontsize</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to change the leading between consecutive lines of text.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Leading is the distance from one baseline to the next, or in
+      other words, the <quote>interlinear space.</quote> It is not the
+      same as the line height. Unfortunately, the FO specification named
+      the property for influencing the leading
+        <property>line-height</property> which makes it confusing. </para>
+    <para>The DocBook stylesheets introduce the parameter
+        <parameter>line-height</parameter> with the same name and
+      functionality. It acts as a placeholder for the above
+        <property>line-height</property> property. The following
+      examples do all the same (except for the value <tag
+        class="attvalue">normal</tag>). It is assumed, you have a base
+      font size of 10pt; negative values in
+        <property>line-height</property> are not allowed:</para>
+    <variablelist>
+      <varlistentry>
+        <term><tag class="attvalue">normal</tag></term>
+        <listitem>
+          <para>This is the default value. The real value is set by the
+            formatter and depends on the font size, usually it is a
+            value between 1.0 and 1.2. <remark>Say more about the real
+              value</remark></para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Length</term>
+        <listitem>
+          <para>Sets the line height of the respective value:</para>
+          <screen>&lt;xsl:param name="line-height">12pt&lt;/xsl:param></screen>
+          <para>The leading is 2pt (12pt &#x2212; 10pt).</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Number</term>
+        <listitem>
+          <para>Sets the line height is the result of  the value
+            multiplied by the font size:</para>
+          <screen>&lt;xsl:param name="line-height">1.2&lt;/xsl:param></screen>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Percentage</term>
+        <listitem>
+          <para>Sets the line height is the result of the percentage
+            value multiplied by the font size:</para>
+          <screen>&lt;xsl:param name="line-height">120%&lt;/xsl:param></screen>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Unfortunately, the situation with line height in FO is a bit more
+      complicated as it first seems. Usually, this is what most people
+      expects:</para>
+    <screen>First line
+ [Gap]
+Second Line
+ [Gap]
+Third Line
+ [Gap]</screen>
+    <para>However, the <property>line-height</property> property is a
+      <quote>half-leading</quote> value which are added before and
+      after a line. This leads to the more realistic picture:</para>
+    <screen> [1/2 Gap]
+First line
+ [1/2 Gap]
+ [1/2 Gap]
+Second Line
+ [1/2 Gap]
+ [1/2 Gap]
+Third Line
+ [1/2 Gap]</screen>
+    <para>If the line height is constant in each line, the effect is the
+      same (except at the top or bottom of a reference area). According
+      to the FO specification of <tag class="attribute"
+        >line-height</tag> the FO property is a <emphasis
+        xlink:href="http://www.w3.org/TR/xsl11/#spacecond">compound
+        datatype</emphasis> which has minimum, optimum, maximum, conditionally,
+      and precedence. The minimum, optimum, and maximum constraints are
+      length</para>
+    
+    <para>That said, leading has a direct influence on how easy a text
+      is read. If the value is too small, consecutive lines gets
+      overlapped. If the value is too big, the cohersion of text gets
+      lost. Most text requires positive leading. Usually 9pt/11pt,
+      10pt/12pt, 11pt/13pt, and 12pt/15pt are the most common (the two
+      values depicting the font size and line height).</para>
+    <para>According to <personname>
+        <firstname>Robert</firstname>
+        <surname>Bringhurst</surname></personname> in his book
+        <citetitle>The Elements of Typographic Style</citetitle> he
+      recommends more lead in the following situations (cited from his
+      book from page 37):</para>
+    <itemizedlist>
+      <listitem>
+        <para>Dark faces need more lead than light ones</para>
+      </listitem>
+      <listitem>
+        <para>Large-bodied faces need more lead than smaller-bodied ones</para>
+      </listitem>
+      <listitem>
+        <para>Unserifed faces often need more lead (or a shorter line)
+          than their serifed counterparts</para>
+      </listitem>
+      <listitem>
+        <para>Text with thickened by superscripts, subscripts,
+          mathematical expressions, or the frequent use of full
+          capitals</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link
+      xlink:href="http://en.wikipedia.org/wiki/Leading"/>, the Wikipedia
+        article about leading</para>
+      </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://www.w3.org/TR/xsl11/#line-height"/>, the
+          definition of line-height in the XSL-FO specification</para>
+      </listitem>
+      <listitem>
+        <para><link
+            xlink:href="http://old.nabble.com/Line-height-vs.-line-spacing-td30185507.html"
+          />, the answer from <personname>
+            <firstname>Tony</firstname>
+            <surname>Graham</surname>
+          </personname> about the question <quote>Line height vs. line
+            spacing</quote> which influenced this topic</para>
+      </listitem>
+    </itemizedlist>
+
+  </section>
+</section>

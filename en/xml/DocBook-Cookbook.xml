@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<?xml-model href="5.1/dbref.rng" 
+  schematypens="http://relaxng.org/ns/structure/1.0"?>
+<book version="5.1" xml:lang="en" xml:id="dbcookbook" status="draft"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>The DoCookBook</title>
+  <subtitle>Recipes for DocBook Developers</subtitle>
+  <info>
+    <pubdate role="currentdatetime">2014-04-18</pubdate>
+    <releaseinfo role="draft">n/a</releaseinfo>
+    <definitions definitionfile="defs.xml"/>
+    <rdf:RDF
+      xmlns="http://creativecommons.org/ns#"
+      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <License rdf:about="http://creativecommons.org/licenses/by-nc-sa/3.0/de/">
+        <permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+        <permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+        <requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+        <requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+        <prohibits rdf:resource="http://creativecommons.org/ns#CommercialUse"/>
+        <permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+        <requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+      </License>
+    </rdf:RDF>
+    <xi:include href="legalnotice.xml"/>
+    <biblioid class="uri" role="project">http://sf.net/p/doccookbook/</biblioid>
+    <biblioid class="uri" role="home">http://doccookbook.sf.net/html/en/</biblioid>
+    <bibliosource class="other" otherclass="rss"  role="code"
+      xlink:href="http://sf.net/p/doccookbook/code/feed.rss"
+      >[DoCookBook] Recent Code Changes (RSS)</bibliosource>
+    <bibliosource class="other" otherclass="atom" role="code" 
+      xlink:href="http://sf.net/p/doccookbook/code/feed.atom"
+      >[DoCookBook] Recent Code Changes (Atom)</bibliosource>
+    <bibliosource class="other" otherclass="rss"  role="ticket" 
+      xlink:href="http://sf.net/p/doccookbook/tickets/feed.rss"
+      >[DoCookBook] Recent Ticket Changes (RSS)</bibliosource>
+    <bibliosource class="other" otherclass="atom" role="ticket" 
+      xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"
+      >[DoCookBook] Recent Ticket Changes (Atom)</bibliosource>
+    <extendedlink role="feeds">
+      <locator xlink:label="code" xlink:role="rss"
+        xlink:title="[DoCookBook] Recent Code Changes (RSS)"
+        xlink:href="http://sf.net/p/doccookbook/code/feed.rss"/>
+      <locator xlink:label="code" xlink:role="atom"
+        xlink:title="[DoCookBook] Recent Code Changes (Atom)"
+        xlink:href="http://sf.net/p/doccookbook/code/feed.atom"/>
+      <locator xlink:label="ticket" xlink:role="rss"
+        xlink:title="[DoCookBook] Recent Ticket Changes (RSS)"
+        xlink:href="http://sf.net/p/doccookbook/tickets/feed.rss"/>
+      <locator xlink:label="ticket" xlink:role="atom"
+        xlink:title="[DoCookBook] Recent Ticket Changes (Atom)"
+        xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"/>
+    </extendedlink>
+    
+    <author xml:id="author">
+      <personname>
+        <firstname>Thomas</firstname>
+        <surname>Schraitle</surname>
+      </personname>
+      <email>docbook-xml@online.ms</email>
+    </author>
+    <othercredit class="proofreader">
+      <personname>
+        <firstname>Antje</firstname>
+        <surname>Faber</surname>
+      </personname>
+      <contrib>Proofreading, suggestions, and ideas</contrib>
+    </othercredit>
+    <edition>1</edition>
+    <keywordset>
+      <keyword>DocBook</keyword>
+      <keyword>DocBook Stylesheets</keyword>
+      <keyword>Customization</keyword>
+      <keyword>XSLT</keyword>
+    </keywordset>
+    
+    <cover xml:id="draftahead">
+      <para>
+        <note>
+          <title>Draft Ahead!</title>
+          <para>This book is a draft and is still a work in progress. You
+            will find funny typos, mistakes in English grammar 
+            (being a native German speaker) annoying inconsistencies,
+            missing topics, and plain errors. Nevertheless, I hope the
+            topics are useful and a source of ideas.</para>
+          
+          <para>Visit this site from time to time and see how the book
+            grows and how more and more of these irritants vanish.
+            To accelerate this process, send me praise, critisism,
+            patches, donations, or even write a topic. Read <xref
+              linkend="dbc.preface.contrib"/> to find out more about
+            supporting this project.</para>
+        </note>
+      </para>      
+    </cover>
+    <xi:include href="revhistory.xml"/>
+  </info>
+    
+  <xi:include href="dbc-preface.xml"/>
+  
+  <xi:include href="dbc-markup.xml"/>
+  <xi:include href="dbc-common.xml"/>
+  <xi:include href="dbc-structure.xml"/> 
+  <xi:include href="dbc-fo.xml"/>  
+  <xi:include href="dbc-html.xml"/>
+  <!-- <xi:include href="dbc-epub.xml"/> -->
+  
+  <!--<xi:include href="dbc-tools.xml"/>-->
+  
+  <xi:include href="cc-by-nc-sa-30-de.xml"/>
+  <xi:include href="cc-by-nc-sa-30-unported.xml"/>
+  
+  <xi:include href="colophon.xml"/>
+
+</book>

@@ -92,15 +92,19 @@ do it in different ways:
 * Extend the tickets (Ideas for New Topics) at http://sf.net/p/doccookbook/tickets/
 * Clone my repository on Sourcforge and send me patches
 
+<<<<<<< HEAD
 This repository uses `hg flow` from https://bitbucket.org/yujiewu/hgflow/wiki/Home
 from `Vincent Driessen Git branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_
 
+=======
+>>>>>>> parent of f9eab60... Migrate from Hg repository (Sourceforge)
 Here is a procedure about how to clone the repository:
 
 1. Download Mercurial from http://mercurial.selenic.com and install it on your system.
 
 2. Clone my Sourceforge repository with the Mercurial command hg:
 ::
+<<<<<<< HEAD
   $ hg clone http://hg.code.sf.net/p/doccookbook/code dbcookbook
 
 3. Install `hg flow` from above URL and enter:
@@ -126,6 +130,25 @@ Here is a procedure about how to clone the repository:
   $ hg flow feature publish FEATURE_NAME
 
 9. Create a pull request.
+=======
+  $ hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook-code
+
+3. If you want to create a new topic, decide in which chapter it could belong (markup, common customizations, structure, fo, html, or any other). For example, if you want an addition to DocBook´s structure chapter, use the existing template and copy it (where 'FOO' is an abstract term; replace it with something meaningful):
+::
+  $ hg copy en/xml/topic.empty.xml en/xml/structure/topic.FOO.xml
+
+4. Open the XML file which contains a chapter element. In our example, it would be en/xml/dbc-structure.xml. Scroll to the <xi:include> elements and insert the following code:
+::
+  <xi:include href="structure/topic.foo.xml"/>
+
+5. Open the XML file en/xml/structure/topic.foo.xml and write your topic.
+
+6. When you are finished, create a diff:
+::
+  $ hg diff > foo.patch
+
+7. Send the diff to me.
+>>>>>>> parent of f9eab60... Migrate from Hg repository (Sourceforge)
 
 
 Find more information about Mercurial at http://mercurial.selenic.com/.

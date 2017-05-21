@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+<section xml:id="dbc.structure.bridgehead-to-section" remap="topic" userlevel="hard"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Transforming <tag>bridgehead</tag> Elements into <tag>section</tag> Elements</title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>bridgehead</keyword>
+      <keyword>section</keyword>
+    </keywordset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a DocBook document which contains several
+      <tag>bridgehead</tag> elements. The <tag>bridgehead</tag> has to
+      be transformed into the correct <tag>section</tag> structure.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>A <tag>bridgehead</tag> element is a <quote>free-floating
+        heading</quote>. In most cases it is a bad idea as it is
+      difficult to handle in XSLT. To create the correct section
+      hierarchy, a stylesheet need to collect all nodes between a
+        <tag>bridgehead</tag> element and the next one. The following
+      stylesheet uses a set difference method:</para>
+    <example xml:id="ex.structure.bridgehead-to-section">
+      <title>Transforms every <tag>bridgehead</tag> Element into
+         a <tag>section</tag> Element</title>
+      <info>
+        <output xmlns="urn:x-toms:docbook-ext">
+          <filename>bridgehead-to-section/db-bridgehead-to-section.xsl</filename>
+        </output>
+      </info>
+      <programlisting linenumbering="numbered" language="xml"><xi:include 
+        href="bridgehead-to-section/db-bridgehead-to-section.xsl" 
+        parse="text"/></programlisting>
+    </example>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The solution is unfortunately not very trivial in XSLT 1.0.
+      The template rule <code>d:section[d:bridgehead]</code> matches
+      only <tag>section</tag>s which contain one or more
+        <tag>bridgehead</tag> elements.
+      <!--This might speed up the stylesheet a little bit.--> The
+      template rule performs the following steps:</para>
+    <orderedlist>
+      <listitem>
+        <para>Collect all nodes inside a <tag>section</tag> and save it
+          in variable <varname>node1</varname>.</para>
+      </listitem>
+      <listitem>
+        <para>Collect all nodes who follows the next
+            <tag>bridgehead</tag> including the next
+            <tag>bridgehead</tag> itself and save it in variable
+            <varname>node2</varname>.</para>
+      </listitem>
+      <listitem>
+        <para>Creates a <tag>section</tag> element and copy all
+          attributes from the <tag>bridgehead</tag> element.</para>
+      </listitem>
+      <listitem>
+        <para>Creates a <tag>title</tag> element and apply the content
+          from the <tag>bridgehead</tag> element. This copies the
+          content from <tag>bridgehead</tag>.</para>
+      </listitem>
+      <listitem>
+        <para>Calculates the set difference between
+            <varname>node1</varname> and <varname>node2</varname>. This
+          weird expression is needed in XSLT 1.0 to create a node set
+          which contains only those nodes up to the first
+            <tag>bridgehead</tag>.</para>
+      </listitem>
+      <listitem>
+        <para>Handle the first <tag>bridgehead</tag> element which is
+          covered by our <tag>bridgehead</tag> template rule.</para>
+      </listitem>
+    </orderedlist>
+    <para>The <tag>bridgehead</tag> template rule is responsible for
+      transforming the current <tag>bridgehead</tag> element into a
+        <tag>section</tag>. It is also responsible for the next
+        <tag>bridgehead</tag>s. The rule performs the following
+      steps:</para>
+    <orderedlist>
+      <listitem>
+        <para>Collect all nodes following of the current
+            <tag>bridgehead</tag> element and save it in variable
+            <varname>node1</varname>.</para>
+      </listitem>
+      <listitem>
+        <para>Collect all nodes following of the next
+            <tag>bridgehead</tag> element including the next
+            <tag>bridgehead</tag> element itself. Save the node set in
+          variable <varname>node2</varname>.</para>
+      </listitem>
+      <listitem>
+        <para>Creates a <tag>section</tag> element and copy all
+          attributes from the <tag>bridgehead</tag> element.</para>
+      </listitem>
+      <listitem>
+        <para>Creates a <tag>title</tag> element and apply the content
+          from the <tag>bridgehead</tag> element. This copies the
+          content from <tag>bridgehead</tag>.</para>
+      </listitem>
+      <listitem>
+        <para>Calculate the set difference between
+            <varname>node1</varname> and <varname>node2</varname> and
+          apply the correct template rule (usually they are just
+          copied).</para>
+      </listitem>
+      <listitem>
+        <para>Close the <tag>section</tag> element and handle the next
+            <tag>bridgehead</tag> element.</para>
+      </listitem>
+    </orderedlist>
+  </section>
+  <!--<section role="seealso">
+    <title>See Also</title>
+    <para></para>
+  </section>-->
+</section>

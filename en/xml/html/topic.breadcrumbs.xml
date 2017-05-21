@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+  
+   This work is licensed under the 
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+   
+   Read the English translation here:
+   
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+   
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.html.breadcrumbs" remap="topic" version="5.1"
+   userlevel="medium"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Implementing <quote>Breadcrumbs</quote></title>
+  <info>
+    <definitions definitionfile="defs.xml"/>
+    <keywordset>
+      <keyword>breadcrumbs</keyword>
+      <keyword>navigation</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>navigation</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+  
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to display a <quote>path</quote> to your current
+      chapter, section etc. to improve fast jumping to parent
+      structures.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use breadcrumbs<footnote>
+      <para>Breadcrumbs are a navigation aid and show the titles from 
+        the top page to the current page. The term origins from the 
+        trail of breadcrumbs left by Hänsel and Gretel in the 
+        popular fairytale written by the Brothers Grimm.</para>
+    </footnote> to improve navigation. Use the following procedure to
+      create breadcrumbs for your documents: </para>
+    
+    <procedure xml:id="pro.html.breadcrumbs">
+      <step xml:id="st.html.breadcrumbs.custlayer">
+        <para>Create a customization layer as shown in <xref
+          linkend="dbc.common.dbcustomize"/>.</para>
+      </step>
+      <step>
+        <para>Create a file <filename>breadcrumbs.xsl</filename> with
+          the following content:</para>
+        
+        <informalexample>
+         <info>
+          <output xmlns="urn:x-toms:docbook-ext">
+            <filename>breadcrumbs/breadcrumbs.xsl</filename>
+          </output>
+        </info>
+        <programlistingco>
+          <areaspec>
+            <area xml:id="ar.breadcrumbs.param" coords="7" units="linecolumn"/>
+            <area xml:id="ar.breadcrumbs.ancestor" coords="12" units="linecolumn"/>
+            <area xml:id="ar.breadcrumbs.href" coords="15" units="linecolumn"/>
+            <area xml:id="ar.breadcrumbs.title" coords="21 67" units="linecolumn"/>
+            <area xml:id="ar.breadcrumbs.sep" coords="24" units="linecolumn"/>
+            <area xml:id="ar.breadcrumbs.currentnode" coords="27" units="linecolumn"/>
+          </areaspec>
+          <programlisting linenumbering="numbered" language="xml"><xi:include
+          href="breadcrumbs/breadcrumbs.xsl" parse="text"/></programlisting>
+          <calloutlist>
+            <callout arearefs="ar.breadcrumbs.param">
+              <para>Parameter to separate each component</para>
+            </callout>
+            <callout arearefs="ar.breadcrumbs.ancestor">
+              <para>Iterates over the ancestor axis</para>
+            </callout>
+            <callout arearefs="ar.breadcrumbs.href">
+              <para>Creates the <tag class="attribute">href</tag>
+                attribute by calling <function>href.target</function>
+                to create appropriate link references even for chunked
+                output</para>
+            </callout>
+            <callout arearefs="ar.breadcrumbs.title">
+              <para>Inserts the processed title</para>
+            </callout>
+            <callout arearefs="ar.breadcrumbs.sep">
+              <para>Inserts the breadcrumbs separator</para>
+            </callout>
+            <callout arearefs="ar.breadcrumbs.currentnode">
+              <para>Inserts the processed title of the current node but
+                not as a link</para>
+            </callout>
+          </calloutlist>
+        </programlistingco>
+        </informalexample>               
+      </step>
+      <step>
+        <para>Include <filename>breadcrumbs.xsl</filename> into your
+          customization layer from <xref
+            linkend="st.html.breadcrumbs.custlayer"/>:</para>
+        <programlisting>&lt;xsl:include href="breadcrumbs.xsl"/></programlisting>
+      </step>
+      <step>
+        <para>Add the following code into your customization layer:</para>
+        <programlisting>&lt;xsl:template name="user.header.content">
+  &lt;xsl:call-template name="generate.breadcrumb"/>
+&lt;/xsl:template></programlisting>
+      </step>
+      <step>
+        <para>Build your document with your customization layer.</para>
+      </step>
+    </procedure>
+    
+    <para>For example, consider the the current topic. It is embedded
+      into this nested structure:</para>
+    <screen>book: The DoCookBook
+  chapter: (X)HTML Customizations
+     sect1: Implementing “Breadcrumbs”</screen>
+    <para>The above <filename>breadcrumbs.xsl</filename> stylesheets
+      creates this HTML code when the current node is this topic:</para>
+    <programlisting>&lt;div class="breadcrumbs">
+  &lt;span>&lt;a href="...X...">The DoCookBook&lt;/a>&lt;/span>
+  >
+  &lt;span>&lt;a href="...Y...">(X)HTML Customizations&lt;/a>&lt;/span>
+  >
+  &lt;span class="breadcrumb-node">Implementing “Breadcrumbs”&lt;/span>  
+&lt;/div></programlisting>
+    <para>Leading to the following appearance:</para>
+    <screen>The DoCookBook > (X)HTML Customizations > Implementing “Breadcrumbs”</screen>
+    <para>Whereas all <tag>span</tag>s contains links to their
+      respective components except the last one.</para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para><remark>TBD</remark></para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist role="category">
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/HTMLHeaders.html#BreadCrumbs"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

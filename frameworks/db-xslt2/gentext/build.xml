@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="DocBook XSLT 2.0 stylesheets - Gentext &amp; Localization" default="all">
+
+  <property name="dbroot.dir" value="${ant.file}/../.."/>
+  <import file="../tools/build-shared.xml"/>
+
+  <fileset id="l10n-files" dir="src">
+    <include name="*.xml"/>
+  </fileset>
+
+  <target name="all">
+    <echo>Validating l10n files...</echo>
+    <jing rngfile="../schemas/locale.rnc" compactsyntax="true" checkid="false">
+      <fileset refid="l10n-files"/>
+    </jing>
+
+    <echo>Adding missing translations from English master localization...</echo>
+    <xslt2 style="../tools/build-l10n.xsl" destdir="build" basedir="src" includes="*.xml">
+      <param name="en.locale.file" expression="en.xml"/>
+      <mapper type="identity"/>
+    </xslt2>
+  </target>
+
+  <target name="plugins" depends="all">
+    <xslt2 style="../tools/build-plugins.xsl" destdir="build/docbook" basedir="build" includes="*.xml">
+      <mapper type="glob" from="*.xml" to="*.xqy"/>
+    </xslt2>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir=".">
+        <include name="build/*.xml"/>
+      </fileset>
+    </delete>
+  </target>
+
+</project>

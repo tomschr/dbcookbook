@@ -1,0 +1,560 @@
+/*
+ * CSS File for the DoCookBook
+ * https://sourceforge.net/projects/doccookbook/
+ * 
+ * Author: Thomas Schraitle
+ */
+ 
+/* 
+ * Sans Serif
+  |Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic
+  |Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic
+  |Exo:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic
+ * Serif:
+  |Crimson+Text:400,400italic,600,600italic
+  |Neuton:200,300,400,700,400italic
+ * Monospace
+  |Anonymous+Pro:400,400italic,700,700italic
+   
+*/
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic|PT+Serif:400,400italic,700,700italic|Ubuntu+Mono:400,400italic,700,700italic);
+
+
+body {
+  margin-left:2em;
+  margin-right:2em;
+  font-style:normal;
+}
+
+article.book {
+  width:800px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/*.c {
+  color:orange;
+  text-decoration: line-through;
+  display:none;
+}*/
+
+/* Fonts */
+body,
+div.toc p a,
+div.toc p,
+div.list-of-tables p,
+div.list-of-examples p,
+div.list-of-figure p {
+  font-family: 'Open Sans', 'DejaVu Sans', sans-serif;
+}
+p {
+  font-family:'PT Serif', 'DejaVu Serif', serif;
+  font-weight:normal;
+  font-size:110%;
+}
+code, .command, pre, .property,
+div.programlisting, div.screen {
+  font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
+}
+
+/* Font Sizes */
+.book-titlepage h1 { font-size:425%; } 
+.book-titlepage h2 { font-size:262.5%; }
+.book-titlepage div.author h3 { font-size:162.5%; }
+body > .chapter h2,
+body > .preface h2,
+.appendix-titlepage h1,
+.chapter-titlepage h1,
+.glossary-titlepage h1,
+.preface-titlepage h1 { font-size:262.5%; }
+body > .section .section-titlepage h3,
+.appendix .section-titlepage h3,
+.chapter .section-titlepage h3,
+.preface .section-titlepage h3 { font-size: 162.5%; }
+.section-titlepage h4 { font-size:131.25%; }
+.section-titlepage h5 { font-size:110%; }
+/*div.admonition h3 { font-size: ; } */
+.legalnotice .sidebar h3,
+.admonition h3 { font-size: 162.5%; }
+.procedure-wrapper div.title,
+.example-wrapper div.title,
+.table-wrapper div.title,
+.itemizedlist div.title { font-size:110%; }
+pre { font-size:105%; /*line-height:1.1;*/ }
+
+/* Titlepages */
+.book-titlepage {
+  margin-top:2em;
+  text-align: center;
+}
+.book-titlepage h1 {
+  font-weight:800;
+  /*text-align: center;*/
+  margin-bottom:12pt;
+  text-shadow:4px 4px 5px rgba(0,0,0,0.15);
+}
+
+.book-titlepage h2:before {
+  content:"\2767";
+  display:block;
+  text-align:center;
+  margin-bottom:.5em;
+  font-size:1.75em;
+}
+
+.book-titlepage div.othercredit {
+  text-align:left;
+  float:none;
+  clear:both;
+  text-align:left;
+}
+
+.book-titlepage div.legalnotice {
+  margin-top:5em;
+  margin-bottom:3em;
+}
+
+.book-titlepage div.legalnotice div.sidebar
+{
+  text-align:left;
+  font-size:smaller;
+  margin-left:2em;
+  margin-right:2em;
+  padding:1em;
+  border:2pt solid black;
+  background-color:#FFFDB7;
+  -moz-border-radius:.5em;
+  -moz-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  -webkit-border-radius:1em;
+  -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+}
+
+div.legalnotice div.sidebar-titlepage h3 {
+  font-weight:600;
+}
+
+div.legalnoticelink {
+  margin-top:10;
+  margin-bottom:30;
+}
+
+div.revhistorylink {
+  margin-top:30;
+  margin-bottom:30;
+}
+
+
+body > .chapter h2,
+.book-titlepage h2,
+.book-titlepage h3 {
+  font-weight:400;
+}
+
+.book-titlepage p.draft {
+  color:#F06015;
+  font-weight:bold;
+  border-left: #F06015 solid 5pt;
+  border-right: #F06015 solid 5pt;
+  /*border:#F06015 dotted 1pt;
+  padding:5pt;*/
+}
+div.revhistory {
+  margin-top:2em;
+  margin-bottom:2em;
+}
+/*div.revhistory table {
+  font-size:smaller;
+}*/
+div.revhistory table .authorinitials {
+  padding-left:2em;
+}
+.revdescription {
+  text-align:left;
+}
+
+.abstract {
+  /*background-color: #DDE2EB;*/
+  margin-top:0pt;
+  margin-bottom:2em;
+  margin-left: 5em;
+  margin-right:5em;
+  padding-top:0pt;
+}
+
+.abstract p {
+  text-align:justify;
+}
+.abstract * {
+  margin-top:0pt;
+  margin-bottom:0pt;
+}
+
+div.legalnotice div.sidebar div.sidebar-content {
+  padding-top:0;
+}
+div.legalnotice div.sidebar div.sidebar-content td img {
+  padding-right:1em;
+}
+
+div.legalnotice {
+  text-align:left;
+}
+
+blockquote h3 {
+  margin-bottom:-.5em;
+}
+
+
+/* Header and Footer */
+div.navfooter > table tr > td {
+  width:33%;
+  vertical-align:text-top;
+}
+
+.userfooter {
+  background-color: #DDD9EE;
+  color:white;
+  margin:0;
+  padding-left:1em;
+  padding-right:1em;
+  padding-top:1em;
+  padding-bottom:1em;
+}
+
+
+/* Titlepages */
+.chapter-titlepage,
+.preface-titlepage
+{
+  text-align:left;
+}
+.appendix-titlepage h2,
+.chapter-titlepage h2,
+.preface-titlepage h2 {
+  text-rendering: optimizeLegibility;
+  color:#369;/* navy */
+  text-align:left;
+  font-weight:600;
+}
+
+div.legalnotice div.informaltable,
+div.legalnotice div.informaltable-wrapper,
+div.legalnotice div.informaltable table,
+div.table-wrapper {
+  border:none;
+}
+
+/* TOC */
+.toc > ul.toc,
+.list-of-tables > ul.toc,
+.list-of-examples > ul.toc,
+.list-of-figures > ul.toc {
+  margin-top:0;
+  padding-left:1em;
+}
+ul.toc
+{
+  list-style-type:none;
+  margin-left:0;
+}
+
+div.toc > .toc > dt {
+  font-size:100%;
+  font-weight:600;
+  margin-top:10pt;
+}
+div.toc > dl.toc > dd > dl.toc > dt {
+  font-size:90%;
+}
+dl.toc {
+  margin-top:2pt;
+}
+div.toc > p,
+div.list-of-tables > p,
+div.list-of-examples > p,
+div.list-of-figures > p {
+  margin-bottom:0px;
+  font-size:110%;
+}
+div.toc > p b,
+div.list-of-tables > p b,
+div.list-of-examples > p b,
+div.list-of-figures > p b  {
+  font-weight:500;
+}
+
+.preface div.toc dt, 
+.chapter div.toc dt,
+.appendix div.toc dt,
+.part div.toc dt {
+     margin-top:inherit;
+}
+
+/* Sections */
+.appendix > .section > .section-titlepage,
+.chapter > .section > .section-titlepage,
+.preface > .section > .section-titlepage {
+  margin-bottom:1em;
+} 
+
+.section-titlepage,
+.section-titlepage h2,
+.section-titlepage h4,
+.section-titlepage h5
+{
+  margin-bottom:2pt;
+  font-weight:400;
+}
+
+.section-titlepage h3 {
+  font-weight:600;
+  margin-bottom:5pt;
+}
+.section-titlepage h4 {
+  color:#3E5066;
+}
+
+.section-next:before {
+  content:'❱';
+}
+.section-prev:before {
+  content:'❰';
+}
+
+.section-next,
+.section-prev {
+  font-size:small;
+  display:block;
+}
+
+/* Only effective, when generate.permalink=1 */
+h3.navig {
+  float:left;
+  width:95%;
+  margin-top:5px;
+}
+.permalink {
+  font-size:small;
+  float:right;
+  width:2em;
+  text-align:center;
+  /*margin-top:2em;*/
+  padding:3pt;
+  margin:0;
+  background-color:#FFFCD1;
+}
+
+
+.section-navig, .section-userlevel, .keywordset {
+  /*margin-left:.6em;*/
+  float:none;
+  clear:both;
+}
+
+
+.section-titlepage:before,
+.section-navig:before,
+.section-titlepage:after,
+.section-navig:after{
+  content:"";
+  display:table;
+}
+.section-titlepage:after, .section-navig:after { clear:both; }
+.section-titlepage, .section-navig { zoom:1; }
+
+.appendix > .section,
+.chapter > .section,
+.preface > .section {
+  border-top:1pt dotted gray;
+  border-left:none;
+  padding-top:0;
+  padding-left:0;
+  margin-top:2em;
+}
+
+.appendix > .section-titlepage h3,
+.chapter > .section-titlepage h3,
+.preface > .section-titlepage h3
+{
+  text-align:left;
+  text-shadow:2px 2px 4px rgba(0,0,0,0.15);
+}
+
+.section-titlepage + p {
+  margin-top:0;
+}
+
+.section-titlepage > div.authorgroup,
+.section-titlepage > div.author {
+  border:none;
+  font-size:90%;
+  font-weight:normal;
+}
+
+.section-titlepage div.othercredit h3,
+.section-titlepage div.authorgroup h3 {
+  display: inline;
+  border:none;
+  font-size:90%;
+  font-weight:normal;
+  
+}
+
+.section-titlepage  .section-userlevel, .keywordset {
+  /*margin-left:1em;*/
+  font-size:smaller;
+}
+
+/* Lists */
+div.variablelist dd p:first-child {
+  margin-top:2pt;
+}
+
+.procedure-wrapper div.title,
+.example-wrapper div.title,
+.table-wrapper div.title,
+.itemizedlist div.title
+{
+  margin-bottom:2pt;
+  font-weight:400;
+}
+
+div.procedure > ol {
+  counter-reset:li;
+  margin-top:.25em;
+  padding-left:5pt;
+  border-left:1pt dotted gray;
+}
+
+div.procedure > ol > li {
+  list-style:none; /* Disable the normal item numbering */
+}
+
+div.procedure > ol > li p:first-child {
+  margin-top:0;
+}
+div.procedure > ol > li:before {
+  content:"Step " counter(li) ":"; /* Use the counter as content */
+  counter-increment:li; /* Increment the counter by 1 */
+}
+div.procedure > li ol,
+div.procedure > li ul {margin-top:6px;}
+div.procedure > ol ol li:last-child {margin-bottom:0;}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+}
+table tbody tr td,
+table thead tr th{
+  /*margin-right: 1em;*/
+  padding: 2.5pt;
+}
+
+figure {
+  margin-left:0;
+  margin-right:0;
+}
+
+/* Inlines */
+.linenumber-separator {
+  /*border-left:2pt gray solid;*/
+  border-left:2pt gray solid;
+  padding-left:5pt;
+}
+/* Blocks */
+div.admonition {
+  margin-left:30px;
+  margin-right:30px;
+}
+
+div.admonition h3 {
+  margin-bottom:-.5em;
+  margin-top:0;
+}
+
+div.remark:before {
+  content:"Remark: ";
+  font-size:smaller;
+}
+div.remark {
+  border-left: solid #afafaf 5px;
+  padding-left:10px;
+  margin-bottom:1ex;
+  color:red;
+  font-size:smaller;
+}
+
+span.personname span.firstname:after {
+  content:" ";
+}
+
+
+/* Admonitions */
+div.admonition {
+  text-align:left;
+  /*padding:2em;*/
+  border:2pt solid black;
+  -moz-border-radius:.5em;
+  -moz-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  -webkit-border-radius:1em;
+  -webkit-box-shadow:3px 3px 10px rgba(0,0,0,0.2);
+  border-radius:.5em;
+}
+
+div.note {
+  background-color:#FABA52;
+  padding:1em;
+}
+
+/* Footnotes */
+div.footnotes hr
+{
+  display:block;
+  border:none;
+  width:80%;
+  border-top: 1px dotted darkgray;
+  background-color: #FFFFFF;
+  height: 1px;
+}
+div.footnote p {
+  font-size:small;
+}
+div.footnote p sup {
+  vertical-align:baseline;
+  font-size:small;
+  margin-right:5pt;
+}
+
+/* Verbatim */
+/*div.programlisting + div.calloutlist {
+  margin-bottom:0;
+}*/
+
+pre.prettyprint, .programlisting pre, .screen
+{
+  background-color:whiteSmoke;
+}
+
+div.programlisting pre
+{
+  margin-top:2pt;
+  /*text-overflow:ellipsis;
+  overflow:hidden;
+  width: 100%;*/
+}
+
+div.example pre {
+  margin-top:0pt;
+}
+
+div.informalexample-download-link {
+  margin-bottom:-10;
+}
+
+/* TODO: */
+/*div.programlisting pre:hover
+{
+  overflow-x:scroll;
+  text-overflow:visible;
+}*/
