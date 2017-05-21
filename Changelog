@@ -1,0 +1,210 @@
+-------------------------------------------------------------------
+Sun May 21 22:08:00 UTC 2017 - tom_schr@web.de
+
+Migrate from SF to GitHub, create first release 0.7
+
+-------------------------------------------------------------------
+Fri Apr 04 19:50:00 UTC 2014 - tom_schr@web.de
+
+Topics:
+- Added "Incorporating External Files in Program Listings" (db/topic.programlistings-external.xml)
+(changeset 1547:86c162117863, 1544:501380fe7980)
+- Enable structure/topic.programlistings.xml
+(changeset 1505:a56a6591ee90)
+- Append Text or Graphics in Cross-References (common/topic.xref-suffix-or-prefix.xml)
+(changeset 1486:aa5a8566d413)
+- New topic: Incorporating Code Listings (db/topic.programlistings.xml)
+(changeset 1439:f84aa8396f81)
+
+
+Infrastructure:
+- Make dbsaxon script work again; extended script with more options
+(changeset 1524:fa593d0dab4b, 1522:a33199e51263, 1520:9ea42318b6dd, 1518:50cb29eda0dc, 1499:9910da0cc253)
+- Cleaned TOSYNC variable in bin/sync2web
+(changeset 1537:9f6803cf0622)
+- Used Twitter Bootstrap and Font Awesome for entry Web page
+(changeset 1534:3de6895fa6cc, 1514:51dc9b8363c5, 1513:1eb1f0076626, 1512:ab7887e601cd, 1511:82318fa24b02)
+- Added prettify-1-Jun-2011.tar.bz2
+(changeset 1397:42fa57fd4df1)
+- Added dbautosplit from openSUSE package dbsplit-tools-0.6
+(changeset 1373:cb98ef3fd464)
+- Added DocBook stylesheets version 1.77.1
+(changeset 1353:913c25e5b4d0, 1351:9d6f564977ff)
+
+
+Bugfix:
+- #32: Added a note about the XLink namespace declaration in root element
+(changeset 1497:b43d535a1fa3
+
+-------------------------------------------------------------------
+Sun Apr 07 18:40:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Fixed typos, strange grammar style, added missing text
+(changeset 1460:dc0cb9ac64db)
+- Added new topic: Extracting and Formatting Person and Author Information
+(changeset 1459:0a4f3c35d536)
+- Added new topic: Writing glossaries
+(changeset 1452:61e75e46f971)
+
+Infrastructure:
+- Added DocBook V5.1b8 RELAX NG compact syntax
+(changeset 1457:33aefbdf2856)
+
+-------------------------------------------------------------------
+Sat Sep 01 14:11:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Added new topic: Converting Lowercase to Uppercase or Vice Versa
+(changeset 1435:15c83deecf21)
+- Added new topic: Mastering Multiple Indices (db/topic.multiple-indices.xml)
+(changeset 1428:f89c41fa02df)
+- Reworked topic and added table with the *.markup mode and their results 
+(changeset 1427:4754b51fae1e)
+
+
+-------------------------------------------------------------------
+Sat Aug 11 20:45:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Fixed typos; thanks to Gábor, Frank, and Barton
+(changeset 1409:9d2bb0da766d, 1407:b97addebdcc4, 1404:5901a251793b)
+- Added new topic about how to implement syntax highlighting with 
+Google Code Prettify (client side)
+(changeset 1390:9a9e63c7e80b)
+
+
+Infrastructure:
+- Improved footer navigation (added user.footer.navigation) and added
+link to project's home page, Ticket#, and code link
+(changeset 1412:f9a9490b94e9)
+- Implemented syntax highlighting for this project
+(changeset 1395:b01b17a68953)
+- Added new parent topic about "Tools". First topic is Saxon6
+(changeset 1370:ec2401953641)
+- Added first round of categories
+(changeset 1366:0d0497e6595a)
+
+-------------------------------------------------------------------
+Sat Jun 09 17:57:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Included topic.extended-xlinks.xml 
+(changeset 1338:2432191bb3da) 
+- Explained lots of issues for <xref/> (db/topic.xref.xml)
+(changeset 1335:6fffd5c73d3e)
+- Renamed topic.create-topics.xml -> topic.create-assembly-file.xml
+(changeset 1328:8f76032eeb39)
+- dbc.structure.remove-blocks-in-para -> dbc.structure.move-blocks-in-para (structure/topic.move-blocks-in-para.xml)
+(changeset 1262:a6aa229cee1f)
+- Added new topic: Extracting Language Information (common/topic.get-lang.xml)
+(changeset 1273:349de5810bf9) 
+
+
+Infrastructure:
+- Automatically created css, png, and js links
+(changeset 1344:ee34c02bcb33)
+- Added separate colophon.xml 
+(changeset 1318:8f439a256826)
+- Downloaded 5.1b7 from http://snapshots.docbook.org/xsl/assembly/schema/
+(changeset 1316:08fcb754fead)
+- Added namespace-aware stylesheets (release 8935)
+(changeset 1297:13bb4262bb4b)
+- Added robots.txt for Web crawler
+(changeset 1292:a9317b10eaec) 
+- Added DocBook stylesheets snapshot release 8935
+(changeset 1268:38d4cb71a373) 
+
+-------------------------------------------------------------------
+Sat May 05 16:21:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Make IDs and linkends consistent. Replaced dbc.db.X -> dbc.markup.X
+(changeset 1296:469e8dbfaadb)
+- Revised topic about permalinks (html/topic.permalinks.xml)
+(changeset 1289:d03883718ab4)
+- Extracting Language Information (common/topic.get-lang.xml)
+(changeset 1273:349de5810bf9)
+
+Infrastructure:
+- Created separate link for legalnotice and revision history
+(changesets 1308:0a892e2ca29b, 1306:eaeef28f250d)
+- Make customizations mostly independent of DocBook namespace
+(changeset 1300:fb2650d593b5)
+- Used DocBook namespace stylesheets now (changeset 1297:13bb4262bb4b)
+- Download link now shows filename (changeset 1287:448185d21afa)
+- Improved/corrected Dublin Core metadata
+- Added robots.txt for Web crawler (changeset 1292:a9317b10eaec)
+
+-------------------------------------------------------------------
+Son Apr 22 19:00:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Added new topic: Moving the Table of Contents (TOC)
+(changeset 1211:6dbe288a1fec)
+
+Infrastructure:
+- Added link to Atom/RSS feed (changeset 1159:e50f84370538)
+- Added list of keywords after topic title
+- Improved chunked HTML code:
+  * Cleaned up HTML code to output HTML5
+  * Added download link for example code
+  * Added permalink "¶" for each section inside chapter
+  * Added "Difficulty" 
+
+-------------------------------------------------------------------
+Sat Feb 25 20:14:00 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Added new idea (authors in TOC) with examples
+  (Changesets 1162:6e41f665f574)
+
+Infrastructure:
+- Added subdirectory for each topic. This makes it easier to create
+  similar filename
+
+-------------------------------------------------------------------
+Sat Feb 25 18:07:00 UTC 2012 - tom_schr@web.de
+
+Infrastructure:
+- Added <link/> element for HTML to mark up RSS and Atom feeds
+  (Changesets 1157:fb82de3b8ace, 1156:a0560ecceb35)
+
+-------------------------------------------------------------------
+Sun Feb  5 21:58:18 UTC 2012 - tom_schr@web.de
+
+Topics:
+- Revised "Retrieving XPath" topic
+
+Infrastructure:
+- Added download link for "important" examples (fixes Ticket#27)
+- XML files: Added output/filename inside info to define filename 
+  for examples
+- Integrate XInclude support for jing (db5validate.sh)
+
+
+-------------------------------------------------------------------
+Sun Jan 29 16:00:00 UTC 2012 - tom_schr@web.de
+
+Release 0.4:
+- See https://sf.net/mailarchive/message.php?msg_id=28755847
+
+
+-------------------------------------------------------------------
+Fri Dec 28 00:00:00 UTC 2011 - tom_schr@web.de
+
+Release 0.3:
+- See http://sf.net/mailarchive/message.php?msg_id=28599375
+
+-------------------------------------------------------------------
+Fri Dec 23 00:00:00 UTC 2011 - tom_schr@web.de
+
+Release 0.2:
+- See http://sf.net/mailarchive/message.php?msg_id=28585391
+
+-------------------------------------------------------------------
+Wed Dec 07 00:00:00 UTC 2011 - tom_schr@web.de
+
+Release 0.1:
+- First public revision announced
+
