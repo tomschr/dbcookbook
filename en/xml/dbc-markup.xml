@@ -22,7 +22,7 @@
   <title>Knowing DocBook’s Structure</title>
   <info>
     <definitions definitionfile="defs.xml"/>
-    <biblioid class="other" otherclass="ticket">19</biblioid>
+    <biblioid class="other" otherclass="ticket">6</biblioid>
     <keywordset>
       <keyword>docbook markup</keyword>
     </keywordset>

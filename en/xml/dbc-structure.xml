@@ -23,7 +23,7 @@
   
   <info>
     <definitions definitionfile="defs.xml"/>
-    <biblioid class="other" otherclass="ticket">21</biblioid>
+    <biblioid class="other" otherclass="ticket">8</biblioid>
     <keywordset>
       <keyword>docbook structure</keyword>
     </keywordset>

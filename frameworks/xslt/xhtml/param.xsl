@@ -5,9 +5,9 @@
   
   <!--<xsl:param name="css.decoration" select="0"/>-->
   <!-- base.url and base.url.path are used for Dublin Core metadata: -->
-  <xsl:param name="base.url">http://doccookbook.sf.net</xsl:param>
-  <xsl:param name="base.project.url">http://sf.net/projects/doccookbook/</xsl:param>
-  <xsl:param name="base.code.url">http://sourceforge.net/p/doccookbook/code</xsl:param>
+  <xsl:param name="base.url">https://github.com/tomschr/dbcookbook</xsl:param>
+  <xsl:param name="base.project.url">https://github.com/tomschr/dbcookbook</xsl:param>
+  <xsl:param name="base.code.url">https://github.com/tomschr/dbcookbook</xsl:param>
   <xsl:param name="base.url.path">/html/en/</xsl:param>
   
   <xsl:param name="base.dir">build/tmp/</xsl:param>
@@ -52,7 +52,7 @@
   <xsl:param name="section.autolabel.max.depth">1</xsl:param>
   
   <xsl:param name="table.borders.with.css" select="0"/>
-  <xsl:param name="ticket.url">https://sf.net/p/doccookbook/tickets/</xsl:param>
+  <xsl:param name="ticket.url">https://github.com/tomschr/dbcookbook/issues/</xsl:param>
   <xsl:param name="toc.section.depth">1</xsl:param>
   <xsl:param name="toc.max.depth">2</xsl:param>
   <xsl:param name="ulink.target" select="0"/>
