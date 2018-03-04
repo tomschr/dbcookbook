@@ -22,7 +22,7 @@
   <title>Common Customizations</title>
   <info>
     <definitions definitionfile="defs.xml"/>
-    <biblioid class="other" otherclass="ticket">20</biblioid>
+    <biblioid class="other" otherclass="ticket">7</biblioid>
     <keywordset>
       <keyword>common customizations</keyword>
     </keywordset>
