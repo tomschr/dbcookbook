@@ -145,8 +145,8 @@
     mode="chapter.titlepage.recto.auto.mode">
     <xsl:variable name="ticketnr" select="normalize-space(.)"/>
     <div class="ticket">
-      <xsl:value-of select="concat('See also Ticket#', $ticketnr, ': ')"/>
-      <a href="{concat($ticket.url, $ticketnr, '/')}" title="Ticket#{$ticketnr}">
+      <xsl:value-of select="concat('See also Issue#', $ticketnr, ': ')"/>
+      <a href="{concat($ticket.url, $ticketnr, '/')}" title="Issue#{$ticketnr}">
         <xsl:value-of select="concat($ticket.url, $ticketnr, '/')"/>
       </a>
     </div>

@@ -190,15 +190,14 @@
       <table width="100%" class="userfooter">
         <tbody>
           <tr>
-            <td><a href="{$base.project.url}">Project @Sourceforge.net®</a></td>
-            <td>
+            <td><a href="{$base.project.url}">Project@GitHub</a></td>
+            <td></td>
+            <td align="right">
               <xsl:if test="$ticketnr">
-                <a href="{concat($ticket.url, $ticketnr, '/')}" 
-                  title="Ticket#{$ticketnr}">Ticket#<xsl:value-of 
-                    select="$ticketnr"/></a>
+                <a href="{concat($ticket.url, $ticketnr, '/')}"
+                  title="Issue#{$ticketnr}">Issue#<xsl:value-of select="$ticketnr"/></a>
               </xsl:if>
             </td>
-            <td align="right"><a href="{$base.code.url}">Code @Sourceforge.net®</a></td>
           </tr>
         </tbody>
       </table>
