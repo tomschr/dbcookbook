@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="15.2">
+<project version="19.1">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="15.2" xml:space="preserve">
-                <map>
+            <serialized version="19.1" xml:space="preserve">
+                <serializableOrderedMap>
                     <entry>
                         <String>document.types</String>
                         <documentTypeDescriptor-array>
                             <documentTypeDescriptor>
+                                <field name="extensionPatch">
+                                    <null/>
+                                </field>
                                 <field name="name">
                                     <String>Novdoc</String>
                                 </field>
@@ -29,6 +32,9 @@
                                         <field name="mergeCSSsFromDocument">
                                             <Boolean>false</Boolean>
                                         </field>
+                                        <field name="multipleAlternateSelectionEnabled">
+                                            <Boolean>false</Boolean>
+                                        </field>
                                         <field name="actionDescriptors">
                                             <action-array/>
                                         </field>
@@ -46,6 +52,9 @@
                                                 <field name="menuEntriesDescriptorList">
                                                     <menuEntry-array/>
                                                 </field>
+                                                <field name="context">
+                                                    <null/>
+                                                </field>
                                             </menu>
                                         </field>
                                         <field name="popupMenuDescriptor">
@@ -61,6 +70,9 @@
                                                 </field>
                                                 <field name="menuEntriesDescriptorList">
                                                     <menuEntry-array/>
+                                                </field>
+                                                <field name="context">
+                                                    <null/>
                                                 </field>
                                             </menu>
                                         </field>
@@ -99,16 +111,28 @@
                                         <field name="tableSupportClassName">
                                             <null/>
                                         </field>
+                                        <field name="tableCellSeparatorSupportClassName">
+                                            <null/>
+                                        </field>
                                         <field name="tableColWidthSupportClassName">
                                             <null/>
                                         </field>
                                         <field name="customReferencesResolver">
                                             <null/>
                                         </field>
+                                        <field name="editPropertiesHandler">
+                                            <null/>
+                                        </field>
                                         <field name="authorExtensionStateListener">
                                             <null/>
                                         </field>
                                         <field name="attributesRecognizer">
+                                            <null/>
+                                        </field>
+                                        <field name="authorActionEventHandler">
+                                            <null/>
+                                        </field>
+                                        <field name="authorImageDecorator">
                                             <null/>
                                         </field>
                                     </authorExtension>
@@ -208,20 +232,19 @@
                                 <field name="customAttributeValueEditor">
                                     <null/>
                                 </field>
+                                <field name="textModeExternalObjectInsertionHandler">
+                                    <null/>
+                                </field>
                             </documentTypeDescriptor>
                             <documentTypeDescriptor>
+                                <field name="extensionPatch">
+                                    <null/>
+                                </field>
                                 <field name="name">
                                     <String>Toms DocBook5 Cookbook</String>
                                 </field>
                                 <field name="schemaDescriptor">
-                                    <docTypeSchema>
-                                        <field name="type">
-                                            <Integer>6</Integer>
-                                        </field>
-                                        <field name="uri">
-                                            <String>file:/home/toms/projects/trunk/books/xslfobook/common/rng/dbcookbook.rng</String>
-                                        </field>
-                                    </docTypeSchema>
+                                    <null/>
                                 </field>
                                 <field name="classpath">
                                     <String-array/>
@@ -260,6 +283,9 @@
                                         <field name="mergeCSSsFromDocument">
                                             <Boolean>false</Boolean>
                                         </field>
+                                        <field name="multipleAlternateSelectionEnabled">
+                                            <Boolean>false</Boolean>
+                                        </field>
                                         <field name="actionDescriptors">
                                             <action-array/>
                                         </field>
@@ -277,6 +303,9 @@
                                                 <field name="menuEntriesDescriptorList">
                                                     <menuEntry-array/>
                                                 </field>
+                                                <field name="context">
+                                                    <null/>
+                                                </field>
                                             </menu>
                                         </field>
                                         <field name="popupMenuDescriptor">
@@ -292,6 +321,9 @@
                                                 </field>
                                                 <field name="menuEntriesDescriptorList">
                                                     <menuEntry-array/>
+                                                </field>
+                                                <field name="context">
+                                                    <null/>
                                                 </field>
                                             </menu>
                                         </field>
@@ -330,16 +362,28 @@
                                         <field name="tableSupportClassName">
                                             <null/>
                                         </field>
+                                        <field name="tableCellSeparatorSupportClassName">
+                                            <null/>
+                                        </field>
                                         <field name="tableColWidthSupportClassName">
                                             <null/>
                                         </field>
                                         <field name="customReferencesResolver">
                                             <null/>
                                         </field>
+                                        <field name="editPropertiesHandler">
+                                            <null/>
+                                        </field>
                                         <field name="authorExtensionStateListener">
                                             <null/>
                                         </field>
                                         <field name="attributesRecognizer">
+                                            <null/>
+                                        </field>
+                                        <field name="authorActionEventHandler">
+                                            <null/>
+                                        </field>
+                                        <field name="authorImageDecorator">
                                             <null/>
                                         </field>
                                     </authorExtension>
@@ -439,381 +483,11 @@
                                 <field name="customAttributeValueEditor">
                                     <null/>
                                 </field>
+                                <field name="textModeExternalObjectInsertionHandler">
+                                    <null/>
+                                </field>
                             </documentTypeDescriptor>
                         </documentTypeDescriptor-array>
-                    </entry>
-                    <entry>
-                        <String>document.types.order</String>
-                        <documentTypeEntry-array>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>2/internal/Toms DocBook5 Cookbook</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/ant/ant.framework/ANT</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/dita/dita.framework/DITA</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/dita/ditamap.framework/DITA Map</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/dita/ditaval.framework/DITAVAL</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/daisy/daisy.framework/Daisy</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/docbook/docbook4.framework/DocBook 4</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/docbook/docbook5.framework/DocBook 5</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/docbook/targetset.framework/Docbook Targetset</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/ead/ead.framework/EAD</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/fo/fo.framework/FO</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/kml/kml.framework/KML</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/mathml/mathml.framework/MathML</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/maven/maven.framework/Maven Project</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/maven/maven.framework/Maven Settings</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/ncx/ncx.framework/NCX</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/nvdl/nvdl.framework/NVDL</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>2/internal/Novdoc</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xml/xmlcatalog.framework/OASIS XML Catalog</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/ocf/ocf.framework/OCF</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/odf/odf.framework/ODF 1.2</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/ooxml/ooxml.framework/OOXML</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/opf/opf2.0.framework/OPF 2.0</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/opf/opf3.0.framework/OPF 3.0</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/relaxng/relaxng.framework/Relax NG</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/svg/svg.framework/SVG</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xslt/saxon.framework/Saxon</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/schematron/schematron.framework/Schematron</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/schematron/schematron15.framework/Schematron 1.5</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/stratml/stratml1.framework/StratML Part 1 (Strategic Plan)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/stratml/stratml2.framework/StratML Part 2 (Perfomance Plans and Reports)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/tei/teip5odd.framework/TEI ODD</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/tei/teip4.framework/TEI P4 (deprecated)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/tei/teip5.framework/TEI P5</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/wsdl/wsdl.framework/WSDL</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/widgets/widgets.framework/Widgets</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xhtml/xhtml.framework/XHTML</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xmlschema/xmlschema.framework/XML Schema</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xmlspec/xmlspec.framework/XMLSpec</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xproc/xproc.framework/XProc</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xslt/xslt.framework/XSLT</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/xspec/xspec.framework/XSpec</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/samples/application_form.framework/Application Form (Sample)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/samples/form-controls.framework/Form Controls (Sample)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/samples/personal.framework/Personal (Sample)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                            <documentTypeEntry>
-                                <field name="documentTypeID">
-                                    <String>6/samples/travel-guide.framework/Travel Guide (Sample)</String>
-                                </field>
-                                <field name="enable">
-                                    <Boolean>true</Boolean>
-                                </field>
-                            </documentTypeEntry>
-                        </documentTypeEntry-array>
                     </entry>
                     <entry>
                         <String>editor.font</String>
@@ -834,15 +508,21 @@
                                 <String-array>
                                     <String>1.6</String>
                                     <String>1.7</String>
+                                    <String>1.8</String>
                                 </String-array>
                             </field>
                             <field name="aaValues">
                                 <String-array>
                                     <String>ON</String>
                                     <String>ON</String>
+                                    <String>DEFAULT</String>
                                 </String-array>
                             </field>
                         </textAntialiasPO>
+                    </entry>
+                    <entry>
+                        <String>enable.project.master.files.support</String>
+                        <Boolean>true</Boolean>
                     </entry>
                     <entry>
                         <String>font.for.author.v12</String>
@@ -1080,6 +760,9 @@
                                 <field name="outputFile">
                                     <File>${pd}/build/xml/DocBook-Cookbook.xml</File>
                                 </field>
+                                <field name="outputResource">
+                                    <String>${pd}/build/xml/DocBook-Cookbook.xml</String>
+                                </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
                                 </field>
@@ -1162,6 +845,9 @@
                                 </field>
                                 <field name="outputFile">
                                     <File>${pd}/html/${cfn}.xhtml</File>
+                                </field>
+                                <field name="outputResource">
+                                    <String>${pd}/html/${cfn}.xhtml</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
@@ -1334,12 +1020,18 @@
                             </scenario>
                             <scenario>
                                 <field name="advancedOptionsMap">
-                                    <map>
+                                    <serializableOrderedMap>
                                         <entry>
                                             <String>Saxon-PE</String>
                                             <xsltSaxonBAdvancedOptions>
                                                 <field name="allowCallsOnExtensionFunctions">
                                                     <Boolean>true</Boolean>
+                                                </field>
+                                                <field name="registerSaxonCEExtensions">
+                                                    <Boolean>true</Boolean>
+                                                </field>
+                                                <field name="enableAssertions">
+                                                    <Boolean>false</Boolean>
                                                 </field>
                                                 <field name="showVersionWarnings">
                                                     <Boolean>true</Boolean>
@@ -1385,7 +1077,7 @@
                                                 </field>
                                             </xsltSaxonBAdvancedOptions>
                                         </entry>
-                                    </map>
+                                    </serializableOrderedMap>
                                 </field>
                                 <field name="name">
                                     <String>Docbook5 to HTML (XSLT2)</String>
@@ -1428,6 +1120,9 @@
                                 </field>
                                 <field name="outputFile">
                                     <File>${pd}/build/html/DocBook-Cookbook2.html</File>
+                                </field>
+                                <field name="outputResource">
+                                    <String>${pd}/build/html/DocBook-Cookbook2.html</String>
                                 </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
@@ -1685,6 +1380,9 @@
                                 <field name="outputFile">
                                     <null/>
                                 </field>
+                                <field name="outputResource">
+                                    <null/>
+                                </field>
                                 <field name="openOtherLocationInBrowser">
                                     <Boolean>false</Boolean>
                                 </field>
@@ -1798,9 +1496,6 @@
                                 <Boolean>true</Boolean>
                             </field>
                             <field name="allowCompound">
-                                <Boolean>true</Boolean>
-                            </field>
-                            <field name="allowPrefixes">
                                 <Boolean>true</Boolean>
                             </field>
                             <field name="allowFileExtensions">
@@ -1924,11 +1619,20 @@
                         <String>validation.scenarios.load.from.project</String>
                         <Boolean>true</Boolean>
                     </entry>
-                </map>
+                </serializableOrderedMap>
             </serialized>
         </options>
     </meta>
     <projectTree name="DocBook-Cookbook.xpr">
+        <folder masterFiles="true" name="Master Files">
+            <file name="en/xml/dbc-common.xml"/>
+            <file name="en/xml/dbc-fo.xml"/>
+            <file name="en/xml/dbc-html.xml"/>
+            <file name="en/xml/dbc-markup.xml"/>
+            <file name="en/xml/dbc-preface.xml"/>
+            <file name="en/xml/dbc-structure.xml"/>
+            <file name="en/xml/DocBook-Cookbook.xml"/>
+        </folder>
         <folder name="en">
             <folder name="fo">
                 <file name="en/xml/fo/topic.empty-header-and-footer.xml"/>
