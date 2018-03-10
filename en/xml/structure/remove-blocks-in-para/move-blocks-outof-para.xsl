@@ -33,7 +33,7 @@
       select="following-sibling::*[&dbselfblocks;][1]"/>
   </xsl:template>
 
-  <xsl:template match="d:para/*|d:para/text()" mode="copy">
+  <xsl:template match="d:para/node()" mode="copy">
     <xsl:copy-of select="."/>
     <xsl:if test="not(following-sibling::node()[1][&dbselfblocks;])">
       <xsl:apply-templates select="following-sibling::node()[1]"
