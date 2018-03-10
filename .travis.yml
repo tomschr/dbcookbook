@@ -21,7 +21,7 @@ install:
     - sudo apt-get install python3 python3-lxml
 
 script:
-    - ./bin/buildbook.py -v
+    - ./bin/buildbook.py -v --archive
 
 before_deploy:
     - git config --local user.name "Travis CI"
