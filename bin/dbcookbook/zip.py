@@ -37,14 +37,14 @@ def createzip(parser, args=None):
         logger.warning(error)
 
     logger.info("Creating ZIP archive %r...", zipfilename)
+    logger.info("Creating Tar archive %r...", tarfilename)
     logger.info("root=%r", root)
     logger.info("htmldir=%r", htmldir)
 
-    tarfilename = Path(tarfilename)
     MODES = {'.gz': 'w:gz',
              '.bz2': 'w:bz2',
              '.xz': 'w:xz'}
-    writemode = MODES.get(tarfilename.suffix, 'w')
+    writemode = MODES.get(os.path.splitext(tarfilename)[-1], 'w')
     logger.info("Using mode=%s for tar archive", writemode)
 
     with zipfile.ZipFile(zipfilename, mode="w", compression=compression) as zf, \
