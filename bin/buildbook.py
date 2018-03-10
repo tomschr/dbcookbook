@@ -11,6 +11,7 @@ from dbcookbook.log import logger, trace, createlogger
 from dbcookbook.env import initenv
 from dbcookbook.formats import html
 from dbcookbook.categories import resolvecategories
+from dbcookbook.zip import createzip
 
 _abspath=os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+"/"
 
@@ -35,6 +36,7 @@ def main():
     initenv(*parserobj)
     resolvecategories(*parserobj)
     html(*parserobj)
+    createzip(*parserobj)
     
     return parserobj
 
@@ -64,6 +66,7 @@ if __name__=="__main__":
     if obj[1].test:
         internaltest()
     
+    logger.info("Success!")
     logger.debug("{line} END {line}".format(**locals()))
 
 # EOF

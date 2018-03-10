@@ -22,7 +22,7 @@
   <title>Print Customizations</title>
   <info>
     <definitions definitionfile="defs.xml"/>
-    <biblioid class="other" otherclass="ticket">22</biblioid>
+    <biblioid class="other" otherclass="ticket">9</biblioid>
     <keywordset>
       <keyword>fo customizations</keyword>
       <keyword>print</keyword>
