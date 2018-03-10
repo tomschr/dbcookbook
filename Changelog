@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Mar 10 23:25:00 UTC 2018 - tom_schr@web.de
+
+Version 0.7.3 Work on infrastructure:
+
+* Create issue template (#20)
+* First draft of .travis.yml (#18 and #22)
+* Create archives (#16)
+* Move to GitHub (#15)
+* Add horizontal scrollbar for HTML program listings (#4)
+* Fix XPath in structure/remove-blocks-in-para/move-blocks-outof-para.xsl (#1)
+
+-------------------------------------------------------------------
 Sun May 21 22:08:00 UTC 2017 - tom_schr@web.de
 
 Migrate from SF to GitHub, create first release 0.7.2
