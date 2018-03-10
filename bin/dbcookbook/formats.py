@@ -89,6 +89,7 @@ def singlehtml(parser, args):
     tempdir=config.get('Common', 'tempdir')
     xmlfile = os.path.join(tempdir, basefile)
     xhtmlsingle = config.get('XSLT1', 'xhtmlsingle')
+    htmlfile = config.get('Common', 'htmlsingle')
     
     if not os.path.exists(xmlfile):
         raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
@@ -107,7 +108,7 @@ def singlehtml(parser, args):
              
     if args.rootid:
          params.update(rootid=args.rootid)
-    
+
     resulttree = transform(xmldoc, **params)
     
     logger.debug("-- Return from XSLT processor (Start) --")
@@ -115,6 +116,9 @@ def singlehtml(parser, args):
         logger.debug("{entry.message}".format(**locals()))
     logger.debug("-- Return from XSLT processor (End) --")
     
+    resulttree.write(htmlfile)
+    logger.info(">> Find the Single HTML in %r", htmlfile)
+
        
 @trace(logger)
 def chunkedhtml(parser, args):
@@ -124,6 +128,7 @@ def chunkedhtml(parser, args):
     tempdir=config.get('Common', 'tempdir')
     xmlfile = os.path.join(tempdir, basefile)
     xhtmlchunk = config.get('XSLT1', 'xhtmlchunk')
+    htmldir = config.get('Common', 'htmldir')
     
     if not os.path.exists(xmlfile):
         raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
@@ -150,6 +155,7 @@ def chunkedhtml(parser, args):
         logger.info("{entry.message}".format(**locals()))
     logger.debug("-- Return from XSLT processor (End) --")
     
+    logger.info(">> Find the HTML in %r", htmldir)
     
 
 def html(parser, args):
