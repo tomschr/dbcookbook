@@ -25,7 +25,7 @@ install:
     - sudo apt-get install xsltproc
     - sudo apt-get install libsaxon-java libxml-commons-resolver1.1-java libsaxon-java libxerces2-java
     - sudo apt-get install trang jing
-    - sudo apt-get install python3
+    - sudo apt-get install python3 python3-lxml
 
 script:
     - ./bin/buildbook.py -v
