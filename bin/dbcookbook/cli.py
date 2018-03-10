@@ -60,6 +60,11 @@ def parsecommandline():
         type=int,
         default=1,
         )
+    parser.add_argument('-z', '--zip',
+        help="Create a ZIP file of the HTML build (default: %(default)s)",
+        action='store_true',
+        default=False,
+        )
     parser.add_argument('mainfile',
         help="Use main XML file  (default: %(default)s)",
         default=MAINFILE,
