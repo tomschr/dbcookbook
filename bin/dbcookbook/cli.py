@@ -60,8 +60,8 @@ def parsecommandline():
         type=int,
         default=1,
         )
-    parser.add_argument('-z', '--zip',
-        help="Create a ZIP file of the HTML build (default: %(default)s)",
+    parser.add_argument('-A', '--archive',
+        help="Create compressed files of the HTML build (default: %(default)s)",
         action='store_true',
         default=False,
         )

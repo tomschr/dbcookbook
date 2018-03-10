@@ -20,8 +20,8 @@ from .log import trace, logger
 
 
 def createzip(parser, args=None):
-    if args is not None and not args.zip:
-        logger.info("Skipping ZIP archive creation")
+    if args is not None and not args.archive:
+        logger.info("Skipping compressed archive creation")
         return
 
     # TODO: maybe there is a better method:
