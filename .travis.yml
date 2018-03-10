@@ -5,8 +5,9 @@ python:
 branches:
   only:
     - master
-    - "feature/travis*"
+    - "feature/travis.*"
     - travis
+    - develop
 
 env:
   global:
@@ -42,7 +43,7 @@ deploy:
     - DBCookBook-$VERSION-html.zip
   skip_cleanup: true
   on:
-    # branch: master
+    branch: master
     tags: true
     repo: tomschr/dbcookbook
 
