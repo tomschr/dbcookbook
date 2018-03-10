@@ -1,0 +1,46 @@
+language: python
+python:
+    - '3.6'
+
+env:
+  global:
+    - VERSION=$(git describe)
+
+before_install:
+    - echo "TRAVIS_TAG=$TRAVIS_TAG"
+    - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH"
+    - echo "TRAVIS_COMMIT=$TRAVIS_COMMIT"
+    - echo "TRAVIS_COMMIT_MESSAGE=$TRAVIS_COMMIT_MESSAGE"
+    - echo "TRAVIS_PYTHON_VERSION=$TRAVIS_PYTHON_VERSION"
+
+install:
+    - sudo apt-get update -q
+    - sudo apt-get install xsltproc
+    - sudo apt-get install libsaxon-java libxml-commons-resolver1.1-java libsaxon-java libxerces2-java
+    - sudo apt-get install trang jing
+    - sudo apt-get install python3 python3-lxml
+
+script:
+    - ./bin/buildbook.py -v
+
+before_deploy:
+    - git config --local user.name "Travis CI"
+    - git config --local user.email "builds@travis-ci.com"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: e3VKJ/VJiwrE+n/g1gITroGq/1II+vgp2A89xjtKmzwfIALUm098iTBXAGzEhzWeg+aP4R0vBNk/Ud7H2Ehxg7iJfYx7Vo16EJGpeo8maXakaTtXBGEPXpxW1UGQ35DZ0uNsJLEEMRE8jSjCe9sQDRIkUEfK58uAg1+I0T/C1Z26xlfB9luROiyOj1dNvF6V90vBybn5SmHVgAomRSPbFtVYXyr60aEb6S/eOOJD84kRvIPrrdY48DiiX+1LX7BTkdcP+wHCi6XHNN4pWT48h1BmP2SCPJvMqDIfak3d7abyk+oUdPG/dopicVWftjH+6yedHaPkdQyxLCRUxpzyUKtHxHSTpEEJ9Foa89JSTdZocAUBEFhFshESvVMBxGuLDdng+2lWgd1QnxzmzOQTmUYVhi5NKttfrrXmzqE+YnTmgQd5wJQWJLbkvZENSFmrE+fxZkeEHaiC3tSvR0Q3sIjZY87gAE1HWsB1r9Bu97k96rnoTWaHCGxRJ4smRPS0PY7gTAfHFntmyCYtKi7H0NAAZRIxkbP156WTFGQgkK8zQqzLAPCrJ4XzQokoiqDMK3jZOMcaOg5RIXsu+8/McjQ33511vshl4MdYZDbnkWhaSuEQG6+Prnx0/d9ziJSHRETQLwxjba/u5XD7ryVc7gVXau0r4l7Yh3ON3YHqF/w=
+  file:
+    - DBCookBook-$VERSION-html.tar.bz2
+    - DBCookBook-$VERSION-html.zip
+  skip_cleanup: true
+  on:
+    branch: master
+    tags: true
+    repo: tomschr/dbcookbook
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
