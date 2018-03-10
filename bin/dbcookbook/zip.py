@@ -28,6 +28,7 @@ def createzip(parser, args=None):
     version = subprocess.check_output(shlex.split("git describe"))
     version = version.decode("utf-8").strip()
 
+    logger.info("** Creating Archives **")
     try:
         zipfilename = config.get('Archive', 'zipfile').replace("@VERSION@", version)
         tarfilename = config.get('Archive', 'tarfile').replace("@VERSION@", version)
@@ -54,16 +55,16 @@ def createzip(parser, args=None):
         for p in PATHS:
             for pp in path.glob(p):
                 dest = root / pp.relative_to(htmldir)
-                zf.write(pp, arcname=dest)
-                tf.add(pp, arcname=dest, recursive=False)
+                zf.write(str(pp), arcname=str(dest))
+                tf.add(str(pp), arcname=str(dest), recursive=False)
                 logger.info("Adding %r...", str(dest))
 
         PATHS=('examples/**/*', 'png/**/*', )
         for p in PATHS:
             for pp in path.rglob(p):
                 dest = root / pp.relative_to(htmldir)
-                zf.write(pp, arcname=dest)
-                tf.add(pp, arcname=dest, recursive=False)
+                zf.write(str(pp), arcname=str(dest))
+                tf.add(str(pp), arcname=str(dest), recursive=False)
                 logger.info("Adding %r...", str(dest))
 
     logger.info("Successfully created archives")
