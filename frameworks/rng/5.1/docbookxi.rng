@@ -1,11 +1,11 @@
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
+         xmlns:rng="http://relaxng.org/ns/structure/1.0"
          xmlns:s="http://purl.oclc.org/dsdl/schematron"
          xmlns:db="http://docbook.org/ns/docbook"
-         xmlns:rng="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
-         xmlns:html="http://www.w3.org/1999/xhtml"
          xmlns:ctrl="http://nwalsh.com/xmlns/schema-control/"
+         xmlns:html="http://www.w3.org/1999/xhtml"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
          xmlns:xi="http://www.w3.org/2001/XInclude"
          xmlns:mml="http://www.w3.org/1998/Math/MathML"
          xmlns:svg="http://www.w3.org/2000/svg"
@@ -13,9 +13,9 @@
          ns="http://docbook.org/ns/docbook">
 
 <!--
-This file is part of DocBook XInclude V5.1b8
+This file is part of DocBook XInclude V5.1
 
-Copyright 1992-2011 HaL Computer Systems, Inc.,
+Copyright 1992-2015 HaL Computer Systems, Inc.,
 O'Reilly & Associates, Inc., ArborText, Inc., Fujitsu Software
 Corporation, Norman Walsh, Sun Microsystems, Inc., and the
 Organization for the Advancement of Structured Information
@@ -35,13 +35,23 @@ variant of DocBook. See the reference documentation
 for more information.
 
 Please direct all questions, bug reports, or suggestions for changes
-to the docbook@lists.oasis-open.org mailing list. For more
+to the docbook-comment@lists.oasis-open.org mailing list. For more
 information, see http://www.oasis-open.org/docbook/.
 
 ======================================================================
 -->
 
-<start>
+   <s:ns prefix="rng" uri="http://relaxng.org/ns/structure/1.0"/>
+   <s:ns prefix="s" uri="http://purl.oclc.org/dsdl/schematron"/>
+   <s:ns prefix="db" uri="http://docbook.org/ns/docbook"/>
+   <s:ns prefix="a" uri="http://relaxng.org/ns/compatibility/annotations/1.0"/>
+   <s:ns prefix="ctrl" uri="http://nwalsh.com/xmlns/schema-control/"/>
+   <s:ns prefix="html" uri="http://www.w3.org/1999/xhtml"/>
+   <s:ns prefix="xlink" uri="http://www.w3.org/1999/xlink"/>
+   <s:ns prefix="xi" uri="http://www.w3.org/2001/XInclude"/>
+   <s:ns prefix="mml" uri="http://www.w3.org/1998/Math/MathML"/>
+   <s:ns prefix="svg" uri="http://www.w3.org/2000/svg"/>
+   <start>
       <choice>
          <choice>
             <ref name="db.set"/>
@@ -511,6 +521,57 @@ information, see http://www.oasis-open.org/docbook/.
       </attribute>
    </define>
 
+   <define name="db.rdfalite.vocab">
+      <attribute name="vocab">
+         <a:documentation>The RDFa Lite vocab</a:documentation>
+         <data type="anyURI"/>
+      </attribute>
+   </define>
+
+   <define name="db.rdfalite.typeof">
+      <attribute name="typeof">
+         <a:documentation>The RDFa Lite typeof</a:documentation>
+      </attribute>
+   </define>
+
+   <define name="db.rdfalite.property">
+      <attribute name="property">
+         <a:documentation>The RDFa Lite property</a:documentation>
+      </attribute>
+   </define>
+
+   <define name="db.rdfalite.resource">
+      <attribute name="resource">
+         <a:documentation>The RDFa Lite resource</a:documentation>
+      </attribute>
+   </define>
+
+   <define name="db.rdfalite.prefix">
+      <attribute name="prefix">
+         <a:documentation>The RDFa Lite prefix</a:documentation>
+      </attribute>
+   </define>
+
+   <define name="db.rdfalite.attributes">
+      <interleave>
+         <optional>
+            <ref name="db.rdfalite.vocab"/>
+         </optional>
+         <optional>
+            <ref name="db.rdfalite.typeof"/>
+         </optional>
+         <optional>
+            <ref name="db.rdfalite.property"/>
+         </optional>
+         <optional>
+            <ref name="db.rdfalite.resource"/>
+         </optional>
+         <optional>
+            <ref name="db.rdfalite.prefix"/>
+         </optional>
+      </interleave>
+   </define>
+
    <define name="db.common.base.attributes">
       <interleave>
          <optional>
@@ -535,6 +596,7 @@ information, see http://www.oasis-open.org/docbook/.
             <ref name="db.dir.attribute"/>
          </optional>
          <ref name="db.effectivity.attributes"/>
+         <ref name="db.rdfalite.attributes"/>
       </interleave>
    </define>
 
@@ -887,7 +949,8 @@ information, see http://www.oasis-open.org/docbook/.
             <ref name="db.link.inlines"/>
             <ref name="db.alt"/>
             <ref name="db.trademark"/>
-            <!-- below, effectively the publishing inlines (as of 5.0) --><ref name="db.abbrev"/>
+            <!-- below, effectively the publishing inlines (as of 5.0) -->
+            <ref name="db.abbrev"/>
             <ref name="db.acronym"/>
             <ref name="db.date"/>
             <ref name="db._emphasis"/>
@@ -1767,7 +1830,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.procedure">
          <element name="procedure">
             <a:documentation>A list of operations to be performed in a well-defined sequence</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:procedure">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -1780,6 +1844,9 @@ information, see http://www.oasis-open.org/docbook/.
             <oneOrMore>
                <ref name="db.step"/>
             </oneOrMore>
+            <optional>
+               <ref name="db.result"/>
+            </optional>
          </element>
       </define>
    </div>
@@ -1809,10 +1876,11 @@ information, see http://www.oasis-open.org/docbook/.
       <!--
       This content model is blocks*, step|stepalternatives, blocks* but
       expressed this way it avoids UPA issues in XSD and DTD versions
-    --><define name="db.step">
+    -->      <define name="db.step">
          <element name="step">
             <a:documentation>A unit of action in a procedure</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:step">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -1833,6 +1901,9 @@ information, see http://www.oasis-open.org/docbook/.
                         <ref name="db.all.blocks"/>
                      </zeroOrMore>
                   </optional>
+                  <optional>
+                     <ref name="db.result"/>
+                  </optional>
                </group>
                <group>
                   <choice>
@@ -1842,6 +1913,9 @@ information, see http://www.oasis-open.org/docbook/.
                   <zeroOrMore>
                      <ref name="db.all.blocks"/>
                   </zeroOrMore>
+                  <optional>
+                     <ref name="db.result"/>
+                  </optional>
                </group>
             </choice>
          </element>
@@ -1873,7 +1947,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.stepalternatives">
          <element name="stepalternatives">
             <a:documentation>Alternative steps in a procedure</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:stepalternatives">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -1917,6 +1992,32 @@ information, see http://www.oasis-open.org/docbook/.
    </div>
 
    <div>
+      <define name="db.result.role.attribute">
+         <attribute name="role"/>
+      </define>
+
+      <define name="db.result.attlist">
+         <interleave>
+            <optional>
+               <ref name="db.result.role.attribute"/>
+            </optional>
+            <ref name="db.common.attributes"/>
+            <ref name="db.common.linking.attributes"/>
+         </interleave>
+      </define>
+
+      <define name="db.result">
+         <element name="result">
+            <a:documentation>A wrapper for identifying the results of a procedure or step</a:documentation>
+            <ref name="db.result.attlist"/>
+            <oneOrMore>
+               <ref name="db.all.blocks"/>
+            </oneOrMore>
+         </element>
+      </define>
+   </div>
+
+   <div>
       <define name="db.sidebar.floatstyle.attribute">
          <ref name="db.floatstyle.attribute"/>
       </define>
@@ -1945,12 +2046,14 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.sidebar">
          <element name="sidebar">
             <a:documentation>A portion of a document that is isolated from the main narrative flow</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:sidebar">
                   <s:assert test="not(.//db:sidebar)">sidebar must not occur among the children or descendants of sidebar</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:sidebar">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -1986,7 +2089,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.abstract">
          <element name="abstract">
             <a:documentation>A summary</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:abstract">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2022,7 +2126,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.personblurb">
          <element name="personblurb">
             <a:documentation>A short description or note about a person</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:personblurb">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2058,7 +2163,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.blockquote">
          <element name="blockquote">
             <a:documentation>A quotation set off from the main text</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:blockquote">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2233,7 +2339,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.epigraph">
          <element name="epigraph">
             <a:documentation>A short inscription at the beginning of a document or component</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:epigraph">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2281,67 +2388,80 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.footnote">
          <element name="footnote">
             <a:documentation>A footnote</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:footnote)">footnote must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:sidebar)">sidebar must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:task)">task must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:epigraph)">epigraph must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:footnote">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of footnote</s:assert>
                </s:rule>
@@ -2376,7 +2496,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.formalpara">
          <element name="formalpara">
             <a:documentation>A paragraph with a title</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:formalpara">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2413,7 +2534,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.para">
          <element name="para">
             <a:documentation>A paragraph</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:para">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2452,7 +2574,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.simpara">
          <element name="simpara">
             <a:documentation>A paragraph that contains only text and inline markup, no block elements</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:simpara">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2501,7 +2624,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.itemizedlist">
          <element name="itemizedlist">
             <a:documentation>A list in which each entry is marked with a bullet or other dingbat</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:itemizedlist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2616,7 +2740,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.orderedlist">
          <element name="orderedlist">
             <a:documentation>A list in which each entry is marked with a sequentially incremented label</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:orderedlist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2692,7 +2817,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.segmentedlist">
          <element name="segmentedlist">
             <a:documentation>A segmented list, a list of sets of elements</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:segmentedlist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2753,7 +2879,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.seglistitem">
          <element name="seglistitem">
             <a:documentation>A list item in a segmented list</a:documentation>
-            <s:pattern name="Cardinality of segments and titles">
+            <s:pattern>
+               <s:title>Cardinality of segments and titles</s:title>
                <s:rule context="db:seglistitem">
                   <s:assert test="count(db:seg) = count(../db:segtitle)">The number of seg elements must be the same as the number of segtitle elements in the parent segmentedlist</s:assert>
                </s:rule>
@@ -2841,7 +2968,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.simplelist">
          <element name="simplelist">
             <a:documentation>An undecorated list of single words or short phrases</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:simplelist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -2914,7 +3042,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.variablelist">
          <element name="variablelist">
             <a:documentation>A list in which each entry is composed of a set of one or more terms and an associated description</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:variablelist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3034,27 +3163,32 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.example">
          <element name="example">
             <a:documentation>A formal example, with a title</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:example">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of example</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:example">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of example</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:example">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of example</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:example">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of example</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:example">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3114,7 +3248,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.informalexample">
          <element name="informalexample">
             <a:documentation>A displayed example without a title</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:informalexample">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3189,7 +3324,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.literallayout">
          <element name="literallayout">
             <a:documentation>A block of text in which line breaks and white space are to be reproduced faithfully</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:literallayout">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3226,7 +3362,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.screen">
          <element name="screen">
             <a:documentation>Text that a user sees or might see on a computer screen</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:screen">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3259,7 +3396,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.screenshot">
          <element name="screenshot">
             <a:documentation>A representation of what the user sees or might see on a computer screen</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:screenshot">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3314,27 +3452,32 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.figure">
          <element name="figure">
             <a:documentation>A formal figure, generally an illustration, with a title</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:figure">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of figure</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:figure">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of figure</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:figure">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of figure</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:figure">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of figure</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:figure">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3394,7 +3537,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.informalfigure">
          <element name="informalfigure">
             <a:documentation>A untitled figure</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:informalfigure">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3445,7 +3589,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.mediaobject">
          <element name="mediaobject">
             <a:documentation>A displayed media object (video, audio, image, etc.)</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:mediaobject">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3487,7 +3632,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.inlinemediaobject">
          <element name="inlinemediaobject">
             <a:documentation>An inline media object (video, audio, image, and so on)</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:inlinemediaobject">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3526,17 +3672,17 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.videoobject">
          <element name="videoobject">
             <a:documentation>A wrapper for video data and its associated meta-information</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:videoobject">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
             </s:pattern>
             <ref name="db.videoobject.attlist"/>
             <ref name="db.videoobject.info"/>
-            <ref name="db.videodata"/>
-            <zeroOrMore>
-               <ref name="db.multimediaparam"/>
-            </zeroOrMore>
+            <oneOrMore>
+               <ref name="db.videodata"/>
+            </oneOrMore>
          </element>
       </define>
    </div>
@@ -3563,26 +3709,30 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.audioobject">
          <element name="audioobject">
             <a:documentation>A wrapper for audio data and its associated meta-information</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:audioobject">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
             </s:pattern>
             <ref name="db.audioobject.attlist"/>
             <ref name="db.audioobject.info"/>
-            <ref name="db.audiodata"/>
-            <zeroOrMore>
-               <ref name="db.multimediaparam"/>
-            </zeroOrMore>
+            <oneOrMore>
+               <ref name="db.audiodata"/>
+            </oneOrMore>
          </element>
       </define>
    </div>
 
    <define name="db.imageobject.content">
       <choice>
-         <ref name="db.imagedata"/>
+         <oneOrMore>
+            <ref name="db.imagedata"/>
+         </oneOrMore>
          <ref name="db.imagedata.mathml"/>
-         <ref name="db.imagedata.svg"/>
+         <oneOrMore>
+            <ref name="db.imagedata.svg"/>
+         </oneOrMore>
          <ref name="db.xi.include"/>
       </choice>
    </define>
@@ -3609,7 +3759,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.imageobject">
          <element name="imageobject">
             <a:documentation>A wrapper for image data and its associated meta-information</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:imageobject">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3643,7 +3794,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.textobject">
          <element name="textobject">
             <a:documentation>A wrapper for a text description of an object and its associated meta-information</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:textobject">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -3774,13 +3926,17 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.videodata">
          <element name="videodata">
             <a:documentation>Pointer to external video data</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:videodata">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
             </s:pattern>
             <ref name="db.videodata.attlist"/>
             <ref name="db.videodata.info"/>
+            <zeroOrMore>
+               <ref name="db.multimediaparam"/>
+            </zeroOrMore>
          </element>
       </define>
    </div>
@@ -3898,13 +4054,17 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.audiodata">
          <element name="audiodata">
             <a:documentation>Pointer to external audio data</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:audiodata">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
             </s:pattern>
             <ref name="db.audiodata.attlist"/>
             <ref name="db.audiodata.info"/>
+            <zeroOrMore>
+               <ref name="db.multimediaparam"/>
+            </zeroOrMore>
          </element>
       </define>
    </div>
@@ -4008,7 +4168,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.imagedata">
          <element name="imagedata">
             <a:documentation>Pointer to external image data</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:imagedata">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -4050,7 +4211,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.textdata">
          <element name="textdata">
             <a:documentation>Pointer to external text data</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:textdata">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -4129,62 +4291,74 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.caption">
          <element name="caption">
             <a:documentation>A caption</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:sidebar)">sidebar must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:task)">task must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:caption">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -4217,7 +4391,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.address">
          <element name="address">
             <a:documentation>A real-world address, generally a postal address</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:address">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -5602,7 +5777,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.legalnotice">
          <element name="legalnotice">
             <a:documentation>A statement of legal obligations or requirements</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:legalnotice">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -6047,7 +6223,8 @@ information, see http://www.oasis-open.org/docbook/.
       <define name="db.revhistory">
          <element name="revhistory">
             <a:documentation>A history of the revisions to a document</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:revhistory">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -6886,8 +7063,7 @@ information, see http://www.oasis-open.org/docbook/.
 
       <define name="db.subscript">
          <element name="subscript">
-            <a:documentation>A subscript (as in H2
-O, the molecular formula for water)</a:documentation>
+            <a:documentation>A subscript (as in H₂O, the molecular formula for water)</a:documentation>
             <ref name="db.subscript.attlist"/>
             <ref name="db._text"/>
          </element>
@@ -6911,8 +7087,7 @@ O, the molecular formula for water)</a:documentation>
 
       <define name="db.superscript">
          <element name="superscript">
-            <a:documentation>A superscript (as in x2
-, the mathematical notation for x multiplied by itself)</a:documentation>
+            <a:documentation>A superscript (as in x², the mathematical notation for x multiplied by itself)</a:documentation>
             <ref name="db.superscript.attlist"/>
             <ref name="db._text"/>
          </element>
@@ -7015,7 +7190,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.footnoteref">
          <element name="footnoteref">
             <a:documentation>A cross reference to a footnote (a footnote mark)</a:documentation>
-            <s:pattern name="Footnote reference type constraint">
+            <s:pattern>
+               <s:title>Footnote reference type constraint</s:title>
                <s:rule context="db:footnoteref">
                   <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'footnote' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on footnoteref must point to a footnote.</s:assert>
                </s:rule>
@@ -7426,15 +7602,9 @@ O, the molecular formula for water)</a:documentation>
    <define name="db.set.components">
       <choice>
          <choice>
-            <oneOrMore>
-               <choice>
-                  <ref name="db.set"/>
-                  <ref name="db.book"/>
-               </choice>
-            </oneOrMore>
-            <oneOrMore>
-               <ref name="db.article"/>
-            </oneOrMore>
+            <ref name="db.set"/>
+            <ref name="db.book"/>
+            <ref name="db.article"/>
          </choice>
          <ref name="db.xi.include"/>
       </choice>
@@ -7472,7 +7642,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.set">
          <element name="set">
             <a:documentation>A collection of books</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:set">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7482,7 +7653,9 @@ O, the molecular formula for water)</a:documentation>
             <optional>
                <ref name="db.toc.components"/>
             </optional>
-            <ref name="db.set.components"/>
+            <oneOrMore>
+               <ref name="db.set.components"/>
+            </oneOrMore>
             <optional>
                <ref name="db.setindex.components"/>
             </optional>
@@ -7537,7 +7710,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.book">
          <element name="book">
             <a:documentation>A book</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:book">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7581,7 +7755,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.dedication">
          <element name="dedication">
             <a:documentation>The dedication of a book or other component</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:dedication">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7627,7 +7802,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.acknowledgements">
          <element name="acknowledgements">
             <a:documentation>Acknowledgements of a book or other component</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:acknowledgements">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7673,7 +7849,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.colophon">
          <element name="colophon">
             <a:documentation>Text at the back of a book describing facts about its production</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:colophon">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7743,7 +7920,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.appendix">
          <element name="appendix">
             <a:documentation>An appendix in a book or article</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:appendix">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7798,7 +7976,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.chapter">
          <element name="chapter">
             <a:documentation>A chapter, as of a book</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:chapter">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7869,7 +8048,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.part">
          <element name="part">
             <a:documentation>A division in a book</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:part">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7918,7 +8098,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.preface">
          <element name="preface">
             <a:documentation>Introductory matter preceding the first chapter of a book</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:preface">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -7964,7 +8145,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.partintro">
          <element name="partintro">
             <a:documentation>An introduction to the contents of a part</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:partintro">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8010,7 +8192,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.section">
          <element name="section">
             <a:documentation>A recursive section</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:section">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8062,7 +8245,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.simplesect">
          <element name="simplesect">
             <a:documentation>A section of a document with no subdivisions</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:simplesect">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8149,7 +8333,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.article">
          <element name="article">
             <a:documentation>An article</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:article">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8213,12 +8398,14 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.annotation">
          <element name="annotation">
             <a:documentation>An annotation</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:annotation">
                   <s:assert test="not(.//db:annotation)">annotation must not occur among the children or descendants of annotation</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:annotation">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8235,7 +8422,8 @@ O, the molecular formula for water)</a:documentation>
    <define name="db.xlink.extended.type.attribute">
       <attribute name="xlink:type">
          <a:documentation>Identifies the XLink extended link type</a:documentation>
-         <s:pattern name="XLink extended placement">
+         <s:pattern>
+            <s:title>XLink extended placement</s:title>
             <s:rule context="*[@xlink:type='extended']">
                <s:assert test="not(parent::*[@xlink:type='extended'])">An XLink extended type element may not occur as the direct child of an XLink extended type element.</s:assert>
             </s:rule>
@@ -8248,7 +8436,8 @@ O, the molecular formula for water)</a:documentation>
    <define name="db.xlink.locator.type.attribute">
       <attribute name="xlink:type">
          <a:documentation>Identifies the XLink locator link type</a:documentation>
-         <s:pattern name="XLink locator placement">
+         <s:pattern>
+            <s:title>XLink locator placement</s:title>
             <s:rule context="*[@xlink:type='locator']">
                <s:assert test="parent::*[@xlink:type='extended']">An XLink locator type element must occur as the direct child of an XLink extended type element.</s:assert>
             </s:rule>
@@ -8261,7 +8450,8 @@ O, the molecular formula for water)</a:documentation>
    <define name="db.xlink.arc.type.attribute">
       <attribute name="xlink:type">
          <a:documentation>Identifies the XLink arc link type</a:documentation>
-         <s:pattern name="XLink arc placement">
+         <s:pattern>
+            <s:title>XLink arc placement</s:title>
             <s:rule context="*[@xlink:type='arc']">
                <s:assert test="parent::*[@xlink:type='extended']">An XLink arc type element must occur as the direct child of an XLink extended type element.</s:assert>
             </s:rule>
@@ -8274,7 +8464,8 @@ O, the molecular formula for water)</a:documentation>
    <define name="db.xlink.resource.type.attribute">
       <attribute name="xlink:type">
          <a:documentation>Identifies the XLink resource link type</a:documentation>
-         <s:pattern name="XLink resource placement">
+         <s:pattern>
+            <s:title>XLink resource placement</s:title>
             <s:rule context="*[@xlink:type='resource']">
                <s:assert test="parent::*[@xlink:type='extended']">An XLink resource type element must occur as the direct child of an XLink extended type element.</s:assert>
             </s:rule>
@@ -8287,7 +8478,8 @@ O, the molecular formula for water)</a:documentation>
    <define name="db.xlink.title.type.attribute">
       <attribute name="xlink:type">
          <a:documentation>Identifies the XLink title link type</a:documentation>
-         <s:pattern name="XLink title placement">
+         <s:pattern>
+            <s:title>XLink title placement</s:title>
             <s:rule context="*[@xlink:type='title']">
                <s:assert test="parent::*[@xlink:type='extended'] or parent::*[@xlink:type='locator'] or parent::*[@xlink:type='arc']">An XLink title type element must occur as the direct child of an XLink extended, locator, or arc type element.</s:assert>
             </s:rule>
@@ -8575,14 +8767,17 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.sect1">
          <element name="sect1">
             <a:documentation>A top-level section of document</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:sect1">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
             </s:pattern>
             <ref name="db.sect1.attlist"/>
             <ref name="db.sect1.info"/>
-            <ref name="db.navigation.components"/>
+            <zeroOrMore>
+               <ref name="db.navigation.components"/>
+            </zeroOrMore>
             <optional>
                <choice>
                   <group>
@@ -8659,7 +8854,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.sect2">
          <element name="sect2">
             <a:documentation>A subsection within a sect1</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:sect2">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8745,7 +8941,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.sect3">
          <element name="sect3">
             <a:documentation>A subsection within a sect2</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:sect3">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8831,7 +9028,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.sect4">
          <element name="sect4">
             <a:documentation>A subsection within a sect3</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:sect4">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -8907,7 +9105,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.sect5">
          <element name="sect5">
             <a:documentation>A subsection within a sect4</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:sect5">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9022,7 +9221,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.reference">
          <element name="reference">
             <a:documentation>A collection of reference entries</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:reference">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9071,7 +9271,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.refentry">
          <element name="refentry">
             <a:documentation>A reference page (originally a UNIX man-style reference page)</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:refentry">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9368,7 +9569,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.refsynopsisdiv">
          <element name="refsynopsisdiv">
             <a:documentation>A syntactic synopsis of the subject of the reference page</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:refsynopsisdiv">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9422,7 +9624,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.refsection">
          <element name="refsection">
             <a:documentation>A recursive section in a refentry</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:refsection">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9484,7 +9687,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.refsect1">
          <element name="refsect1">
             <a:documentation>A major subsection of a reference entry</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:refsect1">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9544,7 +9748,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.refsect2">
          <element name="refsect2">
             <a:documentation>A subsection of a refsect1</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:refsect2">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9598,7 +9803,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.refsect3">
          <element name="refsect3">
             <a:documentation>A subsection of a refsect2</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:refsect3">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9651,7 +9857,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.glosslist">
          <element name="glosslist">
             <a:documentation>A wrapper for a list of glossary entries</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:glosslist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -9785,7 +9992,8 @@ O, the molecular formula for water)</a:documentation>
          <element name="glosssee">
             <a:documentation>A cross-reference from one glossentry
  to another</a:documentation>
-            <s:pattern name="Glosssary 'see' type constraint">
+            <s:pattern>
+               <s:title>Glosssary 'see' type constraint</s:title>
                <s:rule context="db:glosssee[@otherterm]">
                   <s:assert test="local-name(//*[@xml:id=current()/@otherterm]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@otherterm]) = 'http://docbook.org/ns/docbook'">@otherterm on glosssee must point to a glossentry.</s:assert>
                </s:rule>
@@ -9826,7 +10034,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.glossseealso">
          <element name="glossseealso">
             <a:documentation>A cross-reference from one glossentry to another</a:documentation>
-            <s:pattern name="Glossary 'seealso' type constraint">
+            <s:pattern>
+               <s:title>Glossary 'seealso' type constraint</s:title>
                <s:rule context="db:glossseealso[@otherterm]">
                   <s:assert test="local-name(//*[@xml:id=current()/@otherterm]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@otherterm]) = 'http://docbook.org/ns/docbook'">@otherterm on glossseealso must point to a glossentry.</s:assert>
                </s:rule>
@@ -9858,7 +10067,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.firstterm">
          <element name="firstterm">
             <a:documentation>The first occurrence of a term</a:documentation>
-            <s:pattern name="Glossary 'firstterm' type constraint">
+            <s:pattern>
+               <s:title>Glossary 'firstterm' type constraint</s:title>
                <s:rule context="db:firstterm[@linkend]">
                   <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on firstterm must point to a glossentry.</s:assert>
                </s:rule>
@@ -9890,7 +10100,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db._firstterm">
          <element name="firstterm">
             <a:documentation>The first occurrence of a term, with limited content</a:documentation>
-            <s:pattern name="Glossary 'firstterm' type constraint">
+            <s:pattern>
+               <s:title>Glossary 'firstterm' type constraint</s:title>
                <s:rule context="db:firstterm[@linkend]">
                   <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on firstterm must point to a glossentry.</s:assert>
                </s:rule>
@@ -9920,7 +10131,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.glossterm">
          <element name="glossterm">
             <a:documentation>A glossary term</a:documentation>
-            <s:pattern name="Glossary 'glossterm' type constraint">
+            <s:pattern>
+               <s:title>Glossary 'glossterm' type constraint</s:title>
                <s:rule context="db:glossterm[@linkend]">
                   <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on glossterm must point to a glossentry.</s:assert>
                </s:rule>
@@ -9952,7 +10164,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db._glossterm">
          <element name="glossterm">
             <a:documentation>A glossary term</a:documentation>
-            <s:pattern name="Glossary 'glossterm' type constraint">
+            <s:pattern>
+               <s:title>Glossary 'glossterm' type constraint</s:title>
                <s:rule context="db:glossterm[@linkend]">
                   <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'glossentry' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on glossterm must point to a glossentry.</s:assert>
                </s:rule>
@@ -9995,7 +10208,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.glossary">
          <element name="glossary">
             <a:documentation>A glossary</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:glossary">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -10052,7 +10266,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.glossdiv">
          <element name="glossdiv">
             <a:documentation>A division in a glossary</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:glossdiv">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -10091,7 +10306,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.termdef">
          <element name="termdef">
             <a:documentation>An inline definition of a term</a:documentation>
-            <s:pattern name="Glossary term definition constraint">
+            <s:pattern>
+               <s:title>Glossary term definition constraint</s:title>
                <s:rule context="db:termdef">
                   <s:assert test="count(db:firstterm) = 1">A termdef must contain exactly one firstterm</s:assert>
                </s:rule>
@@ -10326,7 +10542,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.bibliography">
          <element name="bibliography">
             <a:documentation>A bibliography</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:bibliography">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -10383,7 +10600,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.bibliodiv">
          <element name="bibliodiv">
             <a:documentation>A section of a bibliography</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:bibliodiv">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -10425,7 +10643,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.bibliolist">
          <element name="bibliolist">
             <a:documentation>A wrapper for a list of bibliography entries</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:bibliolist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -10773,6 +10992,13 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.indexterm.endofrange">
          <element name="indexterm">
             <a:documentation>Identifies the end of a range associated with an indexed term</a:documentation>
+            <s:pattern>
+               <s:title>Indexterm 'startref' type constraint</s:title>
+               <s:rule context="db:indexterm[@startref]">
+                  <s:assert test="local-name(//*[@xml:id=current()/@startref]) = 'indexterm' and namespace-uri(//*[@xml:id=current()/@startref]) = 'http://docbook.org/ns/docbook'">@startref on indexterm must point to an indexterm.</s:assert>
+                  <s:assert test="//*[@xml:id=current()/@startref]/@class='startofrange'">@startref on indexterm must point to a startofrange indexterm.</s:assert>
+               </s:rule>
+            </s:pattern>
             <ref name="db.indexterm.endofrange.attlist"/>
             <empty/>
          </element>
@@ -10881,10 +11107,25 @@ O, the molecular formula for water)</a:documentation>
          <attribute name="role"/>
       </define>
 
+      <define name="db.see.class.attribute">
+         <attribute name="class">
+            <a:documentation>Identifies the class of 'see'</a:documentation>
+            <choice>
+               <value>normal</value>
+               <a:documentation>Normal</a:documentation>
+               <value>under</value>
+               <a:documentation>See 'under'</a:documentation>
+            </choice>
+         </attribute>
+      </define>
+
       <define name="db.see.attlist">
          <interleave>
             <optional>
                <ref name="db.see.role.attribute"/>
+            </optional>
+            <optional>
+               <ref name="db.see.class.attribute"/>
             </optional>
             <ref name="db.common.attributes"/>
             <ref name="db.common.linking.attributes"/>
@@ -10907,10 +11148,25 @@ O, the molecular formula for water)</a:documentation>
          <attribute name="role"/>
       </define>
 
+      <define name="db.seealso.class.attribute">
+         <attribute name="class">
+            <a:documentation>Identifies the class of 'seealso'</a:documentation>
+            <choice>
+               <value>normal</value>
+               <a:documentation>Normal</a:documentation>
+               <value>under</value>
+               <a:documentation>See 'under'</a:documentation>
+            </choice>
+         </attribute>
+      </define>
+
       <define name="db.seealso.attlist">
          <interleave>
             <optional>
                <ref name="db.seealso.role.attribute"/>
+            </optional>
+            <optional>
+               <ref name="db.seealso.class.attribute"/>
             </optional>
             <ref name="db.common.attributes"/>
             <ref name="db.common.linking.attributes"/>
@@ -10964,10 +11220,11 @@ O, the molecular formula for water)</a:documentation>
       Yes, db.indexdiv* and db.indexentry*; that way an <index/> is valid.
       Authors can use an empty index to indicate where a generated index should
       appear.
-    --><define name="db.index">
+    -->      <define name="db.index">
          <element name="index">
             <a:documentation>An index to a book or part of a book</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:index">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11025,7 +11282,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.setindex">
          <element name="setindex">
             <a:documentation>An index to a set of books</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:setindex">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11079,7 +11337,8 @@ O, the molecular formula for water)</a:documentation>
       <define name="db.indexdiv">
          <element name="indexdiv">
             <a:documentation>A division in an index</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:indexdiv">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11309,7 +11568,8 @@ entry in an index, rather than in the text</a:documentation>
       <define name="db.toc">
          <element name="toc">
             <a:documentation>A table of contents</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:toc">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11360,7 +11620,8 @@ entry in an index, rather than in the text</a:documentation>
       <define name="db.tocdiv">
          <element name="tocdiv">
             <a:documentation>A division in a table of contents</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:tocdiv">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11437,7 +11698,8 @@ entry in an index, rather than in the text</a:documentation>
       <define name="db.task">
          <element name="task">
             <a:documentation>A task to be completed</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:task">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11485,7 +11747,8 @@ entry in an index, rather than in the text</a:documentation>
       <define name="db.tasksummary">
          <element name="tasksummary">
             <a:documentation>A summary of a task</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:tasksummary">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11521,7 +11784,8 @@ entry in an index, rather than in the text</a:documentation>
       <define name="db.taskprerequisites">
          <element name="taskprerequisites">
             <a:documentation>The prerequisites for a task</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:taskprerequisites">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11557,7 +11821,8 @@ entry in an index, rather than in the text</a:documentation>
       <define name="db.taskrelated">
          <element name="taskrelated">
             <a:documentation>Information related to a task</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:taskrelated">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11644,7 +11909,8 @@ entry in an index, rather than in the text</a:documentation>
          <element name="calloutlist">
             <a:documentation>A list of callout
 s</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:calloutlist">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11717,7 +11983,8 @@ s</a:documentation>
       <define name="db.programlistingco">
          <element name="programlistingco">
             <a:documentation>A program listing with associated areas used in callouts</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:programlistingco">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11820,7 +12087,8 @@ s which refer to this area. (This provides bidirectional linking which may be us
       </define>
    </div>
 
-   <div><!-- The only difference is that xml:id is optional --><define name="db.area.inareaset.attlist">
+   <div><!-- The only difference is that xml:id is optional -->
+      <define name="db.area.inareaset.attlist">
          <interleave>
             <optional>
                <ref name="db.area.role.attribute"/>
@@ -11916,7 +12184,8 @@ s which refer to this area. (This provides bidirectional linking which may be us
       <define name="db.screenco">
          <element name="screenco">
             <a:documentation>A screen with associated areas used in callouts</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:screenco">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -11954,7 +12223,8 @@ s which refer to this area. (This provides bidirectional linking which may be us
       <define name="db.imageobjectco">
          <element name="imageobjectco">
             <a:documentation>A wrapper for an image object with callouts</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:imageobjectco">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -12062,7 +12332,8 @@ s which refer to this area. (This provides bidirectional linking which may be us
       <define name="db.productionset">
          <element name="productionset">
             <a:documentation>A set of EBNF productions</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:productionset">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -12268,7 +12539,8 @@ where the nonterminal
       <define name="db.constraintdef">
          <element name="constraintdef">
             <a:documentation>The definition of a constraint in an EBNF production</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:constraintdef">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -12868,12 +13140,14 @@ where the nonterminal
       <define name="db.entry">
          <element name="entry">
             <a:documentation>A cell in a table</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:entry">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of entry</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:entry">
                   <s:assert test="not(.//db:informaltable)">informaltable must not occur among the children or descendants of entry</s:assert>
                </s:rule>
@@ -13129,22 +13403,26 @@ where the nonterminal
       <define name="db.cals.table">
          <element name="table">
             <a:documentation>A formal table in a document</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:table">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of table</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:table">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of table</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:table">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of table</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:table">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -13223,7 +13501,8 @@ where the nonterminal
       <define name="db.cals.informaltable">
          <element name="informaltable">
             <a:documentation>A table without a title</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:informaltable">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -13660,22 +13939,26 @@ where the nonterminal
       <define name="db.html.table">
          <element name="table">
             <a:documentation>A formal (captioned) HTML table in a document</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:table">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of table</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:table">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of table</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:table">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of table</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:table">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -13723,7 +14006,8 @@ where the nonterminal
       <define name="db.html.informaltable">
          <element name="informaltable">
             <a:documentation>An HTML table without a title</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:informaltable">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -13742,62 +14026,74 @@ where the nonterminal
       <define name="db.html.caption">
          <element name="caption">
             <a:documentation>An HTML table caption</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:sidebar)">sidebar must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:task)">task must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caption">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of caption</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:caption">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14041,7 +14337,8 @@ where the nonterminal
       <define name="db.msgset">
          <element name="msgset">
             <a:documentation>A detailed set of messages, usually error messages</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:msgset">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14168,7 +14465,8 @@ where the nonterminal
       <define name="db.msg">
          <element name="msg">
             <a:documentation>A message in a message set</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:msg">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14208,7 +14506,8 @@ where the nonterminal
       <define name="db.msgmain">
          <element name="msgmain">
             <a:documentation>The primary component of a message in a message set </a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:msgmain">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14242,7 +14541,8 @@ where the nonterminal
       <define name="db.msgsub">
          <element name="msgsub">
             <a:documentation>A subcomponent of a message in a message set</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:msgsub">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14276,7 +14576,8 @@ where the nonterminal
       <define name="db.msgrel">
          <element name="msgrel">
             <a:documentation>A related component of a message in a message set</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:msgrel">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14438,7 +14739,8 @@ where the nonterminal
       <define name="db.msgexplan">
          <element name="msgexplan">
             <a:documentation>Explanatory material relating to a message in a message set</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:msgexplan">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14495,7 +14797,8 @@ where the nonterminal
       <define name="db.qandaset">
          <element name="qandaset">
             <a:documentation>A question-and-answer set</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:qandaset">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14539,7 +14842,8 @@ where the nonterminal
       <define name="db.qandadiv">
          <element name="qandadiv">
             <a:documentation>A titled division in a qandaset</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:qandadiv">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14583,7 +14887,8 @@ where the nonterminal
       <define name="db.qandaentry">
          <element name="qandaentry">
             <a:documentation>A question/answer set within a qandaset</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:qandaentry">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14757,27 +15062,32 @@ where the nonterminal
       <define name="db.equation">
          <element name="equation">
             <a:documentation>A displayed mathematical equation</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:equation">
                   <s:assert test="not(.//db:example)">example must not occur among the children or descendants of equation</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:equation">
                   <s:assert test="not(.//db:figure)">figure must not occur among the children or descendants of equation</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:equation">
                   <s:assert test="not(.//db:table)">table must not occur among the children or descendants of equation</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:equation">
                   <s:assert test="not(.//db:equation)">equation must not occur among the children or descendants of equation</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:equation">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14823,7 +15133,8 @@ where the nonterminal
       <define name="db.informalequation">
          <element name="informalequation">
             <a:documentation>A displayed mathematical equation without a title</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:informalequation">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -14957,7 +15268,8 @@ where the nonterminal
       <define name="db.imagedata.mathml">
          <element name="imagedata">
             <a:documentation>A MathML expression in a media object</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:imagedata">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -15046,7 +15358,8 @@ where the nonterminal
       <define name="db.imagedata.svg">
          <element name="imagedata">
             <a:documentation>An SVG drawing in a media object</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:imagedata">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -16410,7 +16723,8 @@ where the nonterminal
       <define name="db.cmdsynopsis">
          <element name="cmdsynopsis">
             <a:documentation>A syntax summary for a software command</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:cmdsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -16637,7 +16951,8 @@ where the nonterminal
       <define name="db.synopfragmentref">
          <element name="synopfragmentref">
             <a:documentation>A reference to a fragment of a command synopsis</a:documentation>
-            <s:pattern name="Synopsis fragment type constraint">
+            <s:pattern>
+               <s:title>Synopsis fragment type constraint</s:title>
                <s:rule context="db:synopfragmentref">
                   <s:assert test="local-name(//*[@xml:id=current()/@linkend]) = 'synopfragment' and namespace-uri(//*[@xml:id=current()/@linkend]) = 'http://docbook.org/ns/docbook'">@linkend on synopfragmentref must point to a synopfragment.</s:assert>
                </s:rule>
@@ -16713,7 +17028,8 @@ where the nonterminal
       <define name="db.synopsis">
          <element name="synopsis">
             <a:documentation>A general-purpose element for representing the syntax of commands or functions</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:synopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -16749,7 +17065,8 @@ where the nonterminal
       <define name="db.funcsynopsis">
          <element name="funcsynopsis">
             <a:documentation>The syntax summary for a function definition</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:funcsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -16785,7 +17102,8 @@ where the nonterminal
       <define name="db.funcsynopsisinfo">
          <element name="funcsynopsisinfo">
             <a:documentation>Information supplementing the funcdefs of a funcsynopsis</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:funcsynopsisinfo">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17094,7 +17412,8 @@ where the nonterminal
       <define name="db.classsynopsis">
          <element name="classsynopsis">
             <a:documentation>The syntax summary for a class definition</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:classsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17135,7 +17454,8 @@ where the nonterminal
       <define name="db.classsynopsisinfo">
          <element name="classsynopsisinfo">
             <a:documentation>Information supplementing the contents of a classsynopsis</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:classsynopsisinfo">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17251,7 +17571,8 @@ where the nonterminal
         problem in the future.
            | ## Extra whitespace and line breaks are not preserved.
              "default"
-      --></attribute>
+      -->
+      </attribute>
    </define>
 
    <div>
@@ -17350,7 +17671,8 @@ where the nonterminal
       <define name="db.fieldsynopsis">
          <element name="fieldsynopsis">
             <a:documentation>The name of a field in a class definition</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:fieldsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17425,7 +17747,8 @@ where the nonterminal
       <define name="db.constructorsynopsis">
          <element name="constructorsynopsis">
             <a:documentation>A syntax summary for a constructor</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:constructorsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17476,7 +17799,8 @@ where the nonterminal
       <define name="db.destructorsynopsis">
          <element name="destructorsynopsis">
             <a:documentation>A syntax summary for a destructor</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:destructorsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17527,7 +17851,8 @@ where the nonterminal
       <define name="db.methodsynopsis">
          <element name="methodsynopsis">
             <a:documentation>A syntax summary for a method</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:methodsynopsis">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17802,7 +18127,8 @@ where the nonterminal
       <define name="db.programlisting">
          <element name="programlisting">
             <a:documentation>A literal listing of all or part of a program</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:programlisting">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17848,32 +18174,38 @@ where the nonterminal
       <define name="db.caution">
          <element name="caution">
             <a:documentation>A note of caution</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caution">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of caution</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caution">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of caution</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caution">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of caution</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caution">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of caution</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:caution">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of caution</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:caution">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17902,32 +18234,38 @@ where the nonterminal
       <define name="db.important">
          <element name="important">
             <a:documentation>An admonition set off from the text</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:important">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of important</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:important">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of important</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:important">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of important</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:important">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of important</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:important">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of important</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:important">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -17956,32 +18294,38 @@ where the nonterminal
       <define name="db.note">
          <element name="note">
             <a:documentation>A message set off from the text</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:note">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of note</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:note">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of note</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:note">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of note</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:note">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of note</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:note">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of note</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:note">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -18010,32 +18354,38 @@ where the nonterminal
       <define name="db.tip">
          <element name="tip">
             <a:documentation>A suggestion to the user, set off from the text</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:tip">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of tip</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:tip">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of tip</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:tip">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of tip</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:tip">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of tip</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:tip">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of tip</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:tip">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -18064,32 +18414,38 @@ where the nonterminal
       <define name="db.warning">
          <element name="warning">
             <a:documentation>An admonition set off from the text</a:documentation>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:warning">
                   <s:assert test="not(.//db:caution)">caution must not occur among the children or descendants of warning</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:warning">
                   <s:assert test="not(.//db:important)">important must not occur among the children or descendants of warning</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:warning">
                   <s:assert test="not(.//db:note)">note must not occur among the children or descendants of warning</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:warning">
                   <s:assert test="not(.//db:tip)">tip must not occur among the children or descendants of warning</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Element exclusion">
+            <s:pattern>
+               <s:title>Element exclusion</s:title>
                <s:rule context="db:warning">
                   <s:assert test="not(.//db:warning)">warning must not occur among the children or descendants of warning</s:assert>
                </s:rule>
             </s:pattern>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:warning">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -18437,7 +18793,8 @@ where the nonterminal
       <define name="db.topic">
          <element name="topic">
             <a:documentation>A modular unit of documentation not part of any particular narrative flow</a:documentation>
-            <s:pattern name="Root must have version">
+            <s:pattern>
+               <title>Root must have version</title>
                <s:rule context="/db:topic">
                   <s:assert test="@version">If this element is the root element, it must have a version attribute.</s:assert>
                </s:rule>
@@ -18510,7 +18867,8 @@ where the nonterminal
       </define>
    </div>
 
-   <div><!-- The fallback element has no attributes --><define name="db.xi.fallback">
+   <div><!-- The fallback element has no attributes -->
+      <define name="db.xi.fallback">
          <element name="xi:fallback" ns="">
             <a:documentation>An XInclude fallback</a:documentation>
             <choice>
