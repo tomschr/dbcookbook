@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
+
    This work is licensed under the 
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <preface xml:id="dbc.preface"
    xmlns="http://docbook.org/ns/docbook"
@@ -24,7 +24,7 @@
       <keyword>preface</keyword>
     </keywordset>
   </info>
-  
+
   <blockquote>
     <title>Mission</title>
     <para><citetitle xlink:href="https://doccookbook.sf.net"
@@ -36,7 +36,7 @@
       and released under Creative Commons license.
     </para>
   </blockquote>
-  
+
   <para>According to its <phrase
       xlink:href="http://www.docbook.org/whatis">homepage</phrase>,
       <quote>DocBook is a schema (available in several languages
@@ -83,14 +83,14 @@
     overlap with other sources. When other authors inspired me, I have
     included their names. If you think your name is missing, please let
     me know. </para>
-  <para>As I have learned (and still do) a lot from the masters of DocBook, 
+  <para>As I have learned (and still do) a lot from the masters of DocBook,
     it is time to give something back. What you are reading is the first
-    draft of the fruits of these efforts.  
+    draft of the fruits of these efforts.
     Currently, this book is available under a
     Creative Commons license (see <xref linkend="legalnotice"/> if you
     want to know more). I hope you enjoy reading this book as much as I
     enjoy writing it. </para>
-  
+
   <section xml:id="dbc.preface.audience">
     <title>Audience</title>
     <para>This book covers topics which range from very easy to pretty
@@ -108,13 +108,13 @@
       who want further information, links are included in the <citetitle>See
         Also</citetitle> section at the end of each topic. </para>
   </section>
-  
+
   <section xml:id="dbc.preface.db4-vs-5">
     <title>DocBook 4 or 5?</title>
     <para>Although a lot of these topics can be used for both versions
       with minimal changes, this book focuses on DocBook&#xa0;5. Why?
       There are several reasons: </para>
-    
+
     <itemizedlist>
       <listitem>
         <para>DocBook&#xa0;4 is in maintenance mode and DocBook&#xa0;5
@@ -133,26 +133,26 @@
         <para>It simplifies writing <emphasis>a lot</emphasis> if you
           can concentrate on only one version and not on two. It is also
           easier to read for you.</para>
-      </listitem>      
+      </listitem>
     </itemizedlist>
-    
+
     <para>The differences are documented in the <citetitle>DocBook5: The
         Definitive Guide</citetitle> book, section <citetitle
         xlink:href="http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new"
         >What’s New in DocBook V5.0?</citetitle>.</para>
-    
+
     <para>Apart from the DocBook examples, the transformation examples
       are currently based on the DocBook XSL 1.0 stylesheets.
       They are stable, well-documented and can be used with any XSLT 1.0
-      processor. 
+      processor.
     </para>
     <para>On the other side, there is always the tension between
       implementing new concepts and retaining backward compatibility.
       For this reason, the XSLT 1.0 stylesheets are rewritten for XSLT
       2.0. This task is not finished yet. As soon as they are
-      production-stable, they will be covered in this book too.</para>    
+      production-stable, they will be covered in this book too.</para>
   </section>
-  
+
   <section xml:id="dbc.preface.further-reading">
     <title>Further Readings</title>
     <para>By no means is this book complete. As this book is based on
@@ -190,7 +190,7 @@
       </listitem>
     </itemizedlist>
   </section>
-  
+
 <!--  <section xml:id="dbc.preface.code">
     <title>About the Code Examples</title>
     <para>As XML code tend to be verbose, all code examples in this book
@@ -199,7 +199,7 @@
       Code that is not important is reduced to three dots
         (<literal>...</literal>). Unfortunately, this could lead to
       examples which are not well-formed or even invalid.</para>
-    
+
     <para>Another important point about the examples are namespaces. The
       namespace declarations are usually not shown if they aren't
       necessary or <quote>well-known</quote>. In most cases it is
@@ -219,7 +219,7 @@
     <para>Once declared, the namespace prefix is bound to its namespace
       URL and can be used wherever it is needed:</para>
     <screen>&lt;link <emphasis role="bold">xlink</emphasis>:href="...">...&lt;/link></screen>
-    
+
     <table xml:id="tab.prefix-and-ns">
       <title>Common Prefixes and Their Namespaces</title>
       <tgroup cols="2">
@@ -279,7 +279,7 @@
       </tgroup>
     </table>
   </section>-->
-  
+
   <section xml:id="dbc.preface.feedback">
     <title>Feedback</title>
     <para>The project is hosted on <trademark xlink:show="new"
@@ -289,23 +289,23 @@
         xlink:href="https://sourceforge.net/projects/doccookbook/">DocCookBook</link>.
       Or write me directly to <email>docbook-xml@online.ms</email>.
       Feel free to send me praise, constructive criticism, suggestions,
-      ideas, improvements, or anything else. 
+      ideas, improvements, or anything else.
     </para>
   </section>
-  
+
   <section xml:id="dbc.preface.contrib">
     <title>Contribute to the Book</title>
-    <para>The source code of this book is published and maintained as a 
-      <application xlink:href="http://mercurial.selenic.com">Mercurial</application> repository. 
+    <para>The source code of this book is published and maintained as a
+      <application xlink:href="http://mercurial.selenic.com">Mercurial</application> repository.
       Feel free to clone it, make improvements and
-      mail me your changes to <email>tom_schr@web.de</email><!-- 
-        or use the link <link 
+      mail me your changes to <email>tom_schr@web.de</email><!--
+        or use the link <link
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
-      />-->. 
+      />-->.
     </para>
     <para>
-      Getting a copy takes just a few seconds. 
-      If you have Mercurial already installed on your system, run the 
+      Getting a copy takes just a few seconds.
+      If you have Mercurial already installed on your system, run the
       following command:</para>
     <screen>hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook</screen>
     <para>Mercurial is a free, distributed version control system and
@@ -317,7 +317,7 @@
     <link xlink:href="http://sf.net/p/doccookbook/tickets/"/>.
     </para>
   </section>
-  
+
   <section xml:id="dbc.preface.piwik">
     <title>A Few Words About Piwik</title>
     <para>If you are reading this text online, you may have noticed that
@@ -344,7 +344,7 @@
       It will <emphasis>never</emphasis> be sold nor will it be used to spam
       you.</para>
   </section>
-  
+
   <!--<section xml:id="dbc.preface.faq">
     <title>FAQ</title>
     <qandaset>
@@ -373,7 +373,7 @@
       </qandaentry>
     </qandaset>
   </section>-->
-  
+
   <section xml:id="dbc.preface.license">
     <title>Licensed under Creative Commons</title>
     <para>The book is currently released under a Creative Commons
@@ -390,8 +390,8 @@
         >CC BY-SA 3.0 DE<alt
           >Creative Commons Attribution-ShareAlike 3.0</alt
         ></acronym>.</para>
-  </section>  
-  
+  </section>
+
   <section xml:id="dbc.preface.ack">
     <title>Acknowledgments</title>
     <para>Such a large project is usually not a one man show. Many
