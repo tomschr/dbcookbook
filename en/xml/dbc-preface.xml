@@ -13,7 +13,11 @@
    http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 -->
-<preface xml:id="dbc.preface"
+<!DOCTYPE preface [
+   <!ENTITY % defs SYSTEM "definitions.ent">
+   %defs;
+]>
+<preface xml:id="dbc.preface" version="5.1"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -28,10 +32,10 @@
   <blockquote>
     <title>Mission</title>
     <para><citetitle xlink:href="https://doccookbook.sf.net"
-      >The DoCookBook Project</citetitle> aims to create an open source
+      >&projectname;</citetitle> aims to create an open source
       book about <phrase xlink:href="http://www.docbook.org/"
         >DocBook</phrase> and the <phrase
-        xlink:href="http://docbook.sf.net/release/xsl/current/doc/"
+        xlink:href="&uri.dbxsl;/doc/"
         >DocBook XSL stylesheets</phrase> written as cookbook
       and released under Creative Commons license.
     </para>
@@ -283,11 +287,11 @@
   <section xml:id="dbc.preface.feedback">
     <title>Feedback</title>
     <para>The project is hosted on <trademark xlink:show="new"
-      xlink:href="https://sourceforge.net"
-      class="registered">SourceForge.net</trademark> under the
+      xlink:href="https://github.com"
+      class="registered">GitHub</trademark> under the
       name <link xlink:show="new"
-        xlink:href="https://sourceforge.net/projects/doccookbook/">DocCookBook</link>.
-      Or write me directly to <email>docbook-xml@online.ms</email>.
+        xlink:href="&gh.uri;">&gh.project;</link>.
+      Or write me directly to <email>&prj.mail;</email>.
       Feel free to send me praise, constructive criticism, suggestions,
       ideas, improvements, or anything else.
     </para>
@@ -296,25 +300,25 @@
   <section xml:id="dbc.preface.contrib">
     <title>Contribute to the Book</title>
     <para>The source code of this book is published and maintained as a
-      <application xlink:href="http://mercurial.selenic.com">Mercurial</application> repository.
+      <application xlink:href="https://git-scm.com">Git</application> repository.
       Feel free to clone it, make improvements and
-      mail me your changes to <email>tom_schr@web.de</email><!--
+      mail me your changes to <email>&prj.mail;</email><!--
         or use the link <link
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
       />-->.
     </para>
     <para>
       Getting a copy takes just a few seconds.
-      If you have Mercurial already installed on your system, run the
+      If you have Git already installed on your system, run the
       following command:</para>
-    <screen>hg clone http://hg.code.sf.net/p/doccookbook/code doccookbook</screen>
-    <para>Mercurial is a free, distributed version control system and
+    <screen>git clone &gh.git.repo.url;</screen>
+    <para>Git is a free, distributed version control system and
       available for Mac, Linux, and Windows. Download it from <link 
-        xlink:href="http://mercurial.selenic.com"/>.</para>
+        xlink:href="https://git-scm.com/downloads"/>.</para>
     <para>If you do not want to change the source code, but want to
     contribute, open a ticket. Describe your bugs, grammar errors, typos,
     or other inconveniences you have found and add them to the list at
-    <link xlink:href="http://sf.net/p/doccookbook/tickets/"/>.
+    <link xlink:href="&gh.uri;/issues/new"/>.
     </para>
   </section>
 
