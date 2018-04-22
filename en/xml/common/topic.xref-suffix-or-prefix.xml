@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -33,7 +33,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You have a cross-reference (usually tagged with
@@ -50,18 +50,18 @@
     <para>For example, the <link linkend="ex.common.all.xref-to-suffix.txt"
         >following example</link> appends the text <quote>[x]</quote> to
       each <tag>xref</tag>, regardless where it points to:</para>
-    
+
     <example xml:id="ex.common.all.xref-to-suffix.txt">
       <title>Appending Simple Text to Each Element</title>
       <screen><![CDATA[<xsl:template match="*" mode="xref-to-suffix">
    <xsl:text>[X]</xsl:text>
 </xsl:template>]]></screen>
     </example>
-    
+
     <para>If you need the text only for specific elements (for example,
       only for chapters) use the <tag class="attribute">match</tag>
       attribute:</para>
-    
+
     <example xml:id="ex.common.chapter.xref-to-suffix.txt">
       <title>Appending Simple Text for Each Cross-Reference Pointing to
         a Chapter</title>
@@ -69,7 +69,7 @@
    <xsl:text>[X]</xsl:text>
 </xsl:template>]]></screen>
     </example>
-    
+
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -77,14 +77,14 @@
       you can use one of the templates described above. However, if you
       need to display a graphic, you need to insert FO or HTML specific
       code. For HTML, this could look like this: </para>
-    
+
     <example xml:id="ex.common.chapter.html.xref-to-chapter.img">
       <title>Adding Graphic for HTML</title>
       <screen><![CDATA[<xsl:template match="d:chapter" mode="xref-to-suffix">
    <img src="chapter.png" alt="Chapter"/>
 </xsl:template>]]></screen>
     </example>
-    
+
     <para>If you need to add a graphic for FO, use the following
       template:</para>
     <example xml:id="ex.common.chapter.fo.xref-to-chapter.img">
@@ -95,16 +95,16 @@
        <xsl:with-param name="filename" select="'chapter.png'"/>
      </xsl:call-template>
    </xsl:variable>
-   
+
    <fo:external-graphic src="{$srcfile}" height="1em"/>
 </xsl:template>]]></screen>
     </example>
-    
+
     <para>The same principle applies if you want to add something
       <emphasis>before</emphasis> your cross-reference. In this case,
       replace the <literal>xref-to-suffix</literal> mode with
       <literal>xref-to-prefix</literal>.</para>
-    
+
     <!--<para>Since version 1.78.2, the DocBook stylesheets support the
       <parameter>referrer</parameter> parameter; this can be used to get
       the original <tag>xref</tag> element. </para>-->

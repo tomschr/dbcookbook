@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -33,7 +33,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>Your header contains a consecutive number and a title. As you
@@ -46,7 +46,7 @@
       <quote>responsible</quote> for generating the labels and titles:
       the modes <varname>label.markup</varname> and
       <varname>title.markup</varname>.</para>
-    
+
     <para>To <quote>split</quote> the header, you need to introduce an
       inline element for styling. For HTML this is <tag>span</tag> with
         <tag class="attribute">class</tag> attribute, for XSL-FO it is
@@ -61,18 +61,18 @@
         class="emptytag">xsl:apply-imports</tag> in a variable and and
       output it only, if the variable is not empty. The following
       template shows this approach for a chapter label:</para>
-    
+
     <programlisting language="xml"
 ><![CDATA[<xsl:template match="d:chapter" mode="label.markup">
   <xsl:variable name="number">
     <xsl:apply-imports/>
   </xsl:variable>
-   
+
   <xsl:if test="string($number) != ''">
     <span class="number"><xsl:value-of select="$number"/></span>
   </xsl:if>
 </xsl:template>]]></programlisting>
-    
+
     <para>For a chapter title the template is even simpler:</para>
     <programlisting language="xml"
 ><![CDATA[<xsl:template match="d:chapter" mode="title.markup">
@@ -80,7 +80,7 @@
     <xsl:apply-imports/>
   </span>
 </xsl:template>]]></programlisting>
-    
+
     <para>Add the same changes for all elements that you need a
       different styling. After you have included this changes in your
       customization layer, a chapter title in HTML is shown as follows:</para>
@@ -88,7 +88,7 @@
 >&lt;h2 class="title">&lt;a id="id275730">&lt;/a>Chapter
   &lt;span class="number">1&lt;/span>. &lt;span class="title">...&lt;/span>
 &lt;/h2></programlisting>
-    
+
     <para>To style the number in bold and the title in a normal weight,
       use the following CSS rule:</para>
     <programlisting language="css">h2.title > .number {
@@ -97,15 +97,15 @@
 h2.title > .title {
   font-weight: normal;
 }</programlisting>
-    
+
     <para>Of course, you can apply all CSS rules you want.</para>
-    
+
     <!-- ************** -->
     <!--
       <para>The DocBook stylesheets distinguish between a division,
       component, section, and formal titles. Each is styled by a
       different template (see <xref linkend="tab.common.splitheader"/>).</para>
-     
+
     <table xml:id="tab.common.splitheader">
       <title>Division, Component, Section, and Formal Titles and Their
         Templates</title>
@@ -129,9 +129,9 @@ h2.title > .title {
             <tag>article</tag>,
             <tag>bibliography</tag>,
             <tag>colophon</tag>,
-            <tag>dedication</tag>, 
-            <tag>glossary</tag>,   
-            <tag>index</tag>, 
+            <tag>dedication</tag>,
+            <tag>glossary</tag>,
+            <tag>index</tag>,
             and <tag>preface</tag></entry>
             <entry><function>component.title</function></entry>
             <entry><filename>component.xsl</filename></entry>
@@ -175,7 +175,7 @@ h2.title > .title {
         <para>Only </para>
       </listitem>
     </itemizedlist>
-    
+
     <section xml:id="sec.common.splitheader.modes.xref">
       <title>Protecting Cross References</title>
       <para> To prevent the splitting in cross references, customize the
@@ -185,10 +185,10 @@ h2.title > .title {
   <xsl:param name="purpose"/>
   <xsl:param name="xrefstyle"/>
   <xsl:param name="label"/>
-    
+
   <xsl:value-of select="$label"/>
 </xsl:template>
-      
+
 <xsl:template match="d:chapter" mode="insert.title.markup">
   <xsl:param name="purpose"/>
   <xsl:param name="xrefstyle"/>
@@ -215,8 +215,8 @@ h2.title > .title {
         the <function>toc.line</function> template as follows:</para>
       <programlistingco>
         <areaspec units="linecolumn">
-          <area xml:id="co.splitheader.modes.toc.title" coords="5 32" 
-           linkends="ca.splitheader.modes.toc.title"/>          
+          <area xml:id="co.splitheader.modes.toc.title" coords="5 32"
+           linkends="ca.splitheader.modes.toc.title"/>
           <areaset xml:id="co.splitheader.modes.toc.value-of.label"
             linkends="ca.splitheader.modes.toc.value-of.label">
             <area coords="14 40"/>
@@ -224,12 +224,12 @@ h2.title > .title {
           </areaset>
           <area xml:id="co.splitheader.modes.toc.value-of.title" coords="38"
            linkends="ca.splitheader.modes.toc.value-of.title"/>
-        </areaspec>        
+        </areaspec>
       <programlisting language="xml"><![CDATA[<xsl:template name="toc.line">
   <xsl:param name="toc-context" select="."/>
   <xsl:param name="depth" select="1"/>
   <xsl:param name="depth.from.context" select="8"/>
-  <xsl:variable name="title"> 
+  <xsl:variable name="title">
     <xsl:apply-templates select="." mode="titleabbrev.markup"/>
   </xsl:variable>
 
@@ -282,7 +282,7 @@ h2.title > .title {
           </callout>
         </calloutlist>
       </programlistingco>
-      
+
     </section>
   </section>
   <section role="seealso">

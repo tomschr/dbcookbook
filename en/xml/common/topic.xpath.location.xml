@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.common.xpath.location" remap="topic" 
+<section xml:id="dbc.common.xpath.location" remap="topic"
    userlevel="easy"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -33,7 +33,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need the path to your current node—the XPath—to output it
@@ -44,7 +44,7 @@
     <para>The DocBook XSL stylesheet offers the
         <function>xpath.location</function> template for this purpose.
       To output the current XPath, use the following procedure:</para>
-    
+
     <procedure>
       <step>
         <para>Import the <function>xpath.location</function> template
@@ -60,7 +60,7 @@
 &lt;/xsl:message></programlisting>
       </step>
     </procedure>
-    
+
     <para>If you need the XPath for a different node, extend the
       previous code:</para>
     <programlisting language="xml">&lt;xsl:message>
@@ -95,7 +95,7 @@
           <area xml:id="co.xpathns.predicate" coords="32 80" units="linecolumn"/>
         </areaspec>
         <programlisting linenumbering="numbered" language="xml"
-          ><xi:include href="xpath.location/xpathns.location.xsl" 
+          ><xi:include href="xpath.location/xpathns.location.xsl"
             parse="text"/></programlisting>
       </programlistingco>
       <calloutlist>
@@ -123,7 +123,7 @@
         </callout>
       </calloutlist>
     </example>
- 
+
     <para>The template can output the XPath in two different notations:</para>
     <variablelist>
       <varlistentry>

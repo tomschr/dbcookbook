@@ -1,12 +1,12 @@
 <!--
- This file is dynamically generated at build time from a glossary file. 
- To change this file, make changes to the appropriate glossary.xml file. 
- In order to generate the acronyms file, any glossary entries with an 
- acronym tag must have an xml:id. 
+ This file is dynamically generated at build time from a glossary file.
+ To change this file, make changes to the appropriate glossary.xml file.
+ In order to generate the acronyms file, any glossary entries with an
+ acronym tag must have an xml:id.
 -->
 <appendix xmlns="http://docbook.org/ns/docbook" version="5.0" xml:id="acronyms">
   <title>Acronyms</title>
-  <para> This appendix displays acronyms sorted alphabetically and 
+  <para> This appendix displays acronyms sorted alphabetically and
         linked to their definition in the glossary. </para>
   <itemizedlist remap="glossary">
     <listitem>

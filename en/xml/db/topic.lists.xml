@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -35,7 +35,7 @@
       <keyword>numeration</keyword>
     </keywordset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to know what list types are available in DocBook.</para>
@@ -43,7 +43,7 @@
   <section role="solution">
     <title>Solution</title>
     <para>DocBook provides three basic lists which are used most often:</para>
-    
+
     <itemizedlist>
       <listitem>
         <para><tag>itemizedlist</tag>, for unordered lists (like
@@ -58,10 +58,10 @@
           definition (like <tag>dl</tag> in HTML)</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>Additionally, for specific purposes, DocBook provides special
       lists (not explained in this topic):</para>
-    
+
     <itemizedlist>
       <listitem>
         <para><tag>bibliolist</tag> is a wrapper for bibliographic
@@ -90,18 +90,18 @@
           words or small phrases.</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>The previous lists are used to maintain semantic
-      distinction.</para>    
+      distinction.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>The list types <tag>orderedlist</tag> and <tag>itemizedlist</tag>
     are structural identical (except for its initial element) as you will
-    see in the following subsections.</para>    
+    see in the following subsections.</para>
     <para>The <tag>variablelist</tag> is slightly different and contains
       the <tag>term</tag> element for its term.</para>
-   
+
     <section xml:id="markup.lists.itemizedlist">
       <title>Features of <tag>itemizedlist</tag></title>
       <para>An <tag>itemizedlist</tag> is a unordered list and can be
@@ -274,7 +274,7 @@
   </section>
   <section role="seealso">
     <title>See Also</title>
-    
+
     <itemizedlist>
       <title>External Links</title>
       <listitem>

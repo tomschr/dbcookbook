@@ -2,17 +2,17 @@
 <?oxygen RNGSchema="5.1/dbref.rnc" type="compact"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <sect1 version="5.1" xml:lang="en"
@@ -22,26 +22,26 @@
   <subtitle>Get acquainted with typography</subtitle>
   <info>
   </info>
-  
+
   <sect2 role="problem">
     <title>Problem</title>
-    <para>You need some basic details about typography which helps 
+    <para>You need some basic details about typography which helps
       in customizing the DocBook stylesheets.</para>
   </sect2>
-  
+
   <sect2 role="solution">
     <title>Solution</title>
     <para></para>
   </sect2>
-  
+
   <sect2 role="discussion">
     <title>Discussion</title>
     <para></para>
   </sect2>
-  
+
   <sect2 role="seealso">
     <title>See Also</title>
     <para></para>
-    
+
   </sect2>
 </sect1>

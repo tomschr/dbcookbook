@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
-<section xml:id="dbc.structure.splitdb" version="5.1" 
+<section xml:id="dbc.structure.splitdb" version="5.1"
   remap="topic" userlevel="medium"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -32,7 +32,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You have a big DocBook document, like a book, and you want to
@@ -52,17 +52,17 @@
       </listitem>
       <listitem>
         <para>Use the assembly stylesheet
-          <filename>topic-maker-chunk.xsl</filename> (see <xref 
+          <filename>topic-maker-chunk.xsl</filename> (see <xref
             linkend="dbc.structure.splitting-into-topics"/> for
           more information).</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>The following subsections describe each method.</para>
-    
+
     <section xml:id="sec.structure.splitdb.xsl">
       <title>Splitting with XSLT</title>
-      <para>The stylesheet in <xref linkend="ex.dbsplit.xsl"/> uses 
+      <para>The stylesheet in <xref linkend="ex.dbsplit.xsl"/> uses
         the extension element  to create separate documents from the main
         output. It uses code from
         <filename>html/chunk-code.xsl</filename>.</para>
@@ -116,7 +116,7 @@
         <varlistentry>
           <term><parameter>dbsplit.root.filename</parameter></term>
           <listitem>
-            <para>Identifies the name of the root filename when splitted 
+            <para>Identifies the name of the root filename when splitted
             </para>
           </listitem>
         </varlistentry>
@@ -143,7 +143,7 @@
         distribution. As such, you can <link
           xlink:href="http://software.opensuse.org/package/dbsplit-tools?search_term=dbsplit-tools">search
           for the command <command>dbautosplit</command></link> or
-        download it from <link xlink:href="http://rpmfind.net/linux/rpm2html/search.php?query=dbautosplit"/>.        
+        download it from <link xlink:href="http://rpmfind.net/linux/rpm2html/search.php?query=dbautosplit"/>.
         Additionaly it needs the <package>XML-DOM</package> and
           <package>XML-RegExp</package> packages. Download and install
         these package from <link xlink:href="http://www.cpan.org"
@@ -185,7 +185,7 @@ Creating file : out/html.xml
 Creating file : out/index.xml</screen>
       <para></para>
     </section>
-    
+
   </section>
   <section role="discussion">
     <title>Discussion</title>

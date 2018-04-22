@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to highlight your source codes in
@@ -104,7 +104,7 @@
       </step>
       <step>
         <para>If you want to enable syntax highlighting, make sure you add
-          a <tag class="attribute">language</tag> attribute in your 
+          a <tag class="attribute">language</tag> attribute in your
           <tag>programlisting</tag> tag.</para>
         <para>If you want to enable line numbering, add the attribute
           <tag class="attribute">linenumbering</tag> with the value
@@ -127,7 +127,7 @@
       solution is not for you. Use the highlighting mechanism which uses
       a XSLT extension. <remark>Add link to highlighting extension topic
         with JAR</remark></para>
-    
+
     <section>
       <title>Using the Language Attribute</title>
       <para>As you could see above, the code in <xref

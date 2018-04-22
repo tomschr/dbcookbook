@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -81,27 +81,27 @@
           <filename>simplenavig/db-simple-navigation.xsl</filename>
         </output>
       </info>
-          <programlisting linenumbering="numbered" language="xml"><xi:include href="simplenavig/db-simple-navigation.xsl" parse="text"/></programlisting>      
-        </example>        
+          <programlisting linenumbering="numbered" language="xml"><xi:include href="simplenavig/db-simple-navigation.xsl" parse="text"/></programlisting>
+        </example>
       </step>
       <step>
         <para>Use the file <filename>db-simple-navigation.xsl</filename>
         to transform your documents.</para>
       </step>
     </procedure>
-    
+
     <para>If you want to switch on or off the above behaviour, use the
       parameter <parameter>generate.simple.navigation</parameter><footnote>
         <para>It is not an error to have a parameter with the same name
           as a named template.</para>
-      </footnote> and set it to <literal>0</literal>.</para>    
+      </footnote> and set it to <literal>0</literal>.</para>
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>The named template
         <function>generate.simple.navigation</function> works as
         follows:</para>
-    
+
     <orderedlist>
       <listitem>
         <para>Three variables are definied for the previous, next, and
@@ -166,7 +166,7 @@
             <function>xsl:value-of</function>.</para>
       </listitem>
     </orderedlist>
-    
+
     <para>The <function>generate.simple.navigation</function> template
       matches only chapters along the sibling axis. As such it can not
       find a glossary or appendix after a chapter. If you want to create

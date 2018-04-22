@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -34,7 +34,7 @@
         the DocBook workflow.</para>
     </abstract>
   </info>
-  
+
   <section xml:id="dbc.tools.intro">
     <title>Introduction</title>
     <para>Tools for DocBook falls in one of the following category:</para>
@@ -68,7 +68,7 @@
       </varlistentry>
     </variablelist>
   </section>
-    
+
   <!--
     * Using Saxon6
     * USing Saxon9
@@ -76,5 +76,5 @@
     *
   -->
   <xi:include href="tools/topic.saxon6.xml"/>
-  
+
 </appendix>

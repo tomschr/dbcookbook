@@ -3,6 +3,6 @@
   <title>Profiling Test</title>
   <para>Environment variable <envar>XML_CATALOG_FILES</envar></para>
   <para>Environment variable <envar condition="noindex">FOO</envar></para>
-  <para>Environment variable <envar os="windows">Path</envar><envar 
+  <para>Environment variable <envar os="windows">Path</envar><envar
     os="linux">PATH</envar></para>
 </article>

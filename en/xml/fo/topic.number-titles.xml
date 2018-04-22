@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -43,7 +43,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want a number in front of your structural elements like
@@ -118,10 +118,10 @@
         </tbody>
       </tgroup>
     </table>
-    
+
     <para>The autolabel parameters can contain the following
       values:</para>
-    
+
     <variablelist>
       <varlistentry>
         <term>Value <literal>0</literal></term>
@@ -202,7 +202,7 @@
         </listitem>
       </varlistentry>
     </variablelist>
-    
+
     <para>Mostly you will probably want sections to be numbered
       including its parent numbering. If you do not touch
         <parameter>chapter.autolabel</parameter>, use the parameter
@@ -211,10 +211,10 @@
     <programlisting language="xml"
       >&lt;xsl:param name="section.autolabel" select="1"/>
 &lt;xsl:param name="section.label.includes.component.label" select="1"/></programlisting>
-    
-    <para>With the following parameters you can further customize your 
+
+    <para>With the following parameters you can further customize your
       numbering:</para>
-    
+
     <variablelist>
       <varlistentry>
         <term><parameter>component.label.includes.part.label</parameter></term>
@@ -245,9 +245,9 @@
         </listitem>
       </varlistentry>
     </variablelist>
-   
+
     <para>Let us assume the following structure in a book:</para>
-    
+
     <screen>Part: The Python Language
   Chapter: A Tutorial Introduction
      Section: Running Python
@@ -264,7 +264,7 @@ Part: The Python Library
   Chapter: Python Runtime Services
      Section: atext
      Section: copy</screen>
-    
+
     <table>
       <title>Parameter Combinations</title>
       <tgroup cols="2">
@@ -377,13 +377,13 @@ II. The Python Library
         </tbody>
       </tgroup>
     </table>
-   
+
     <para>However, when dealing with other numbering systems, the above
       parameters are not enough. To support, for example, Japanese numbering,
       you need to customize the named template
       <function>autolabel.format</function> from
       <filename>common/labels.xsl</filename>.</para>
-    
+
     <example xml:id="ex.fo.extending-autolabel.format">
       <title>Extending <function>autolabel.format</function></title>
       <programlisting language="xml">&lt;xsl:template name="autolabel.format">
@@ -430,12 +430,12 @@ II. The Python Library
   &lt;/xsl:choose>
 &lt;/xsl:template></programlisting>
     </example>
-    
+
     <para>Unfortunately, the <command>xsltproc</command> processor does
       not support this currently (as in version 1.1.24). Only Saxon does
       it correct.</para>
   </section>
-  
+
   <section role="seealso">
     <title>See Also</title>
     <itemizedlist>

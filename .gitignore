@@ -2,6 +2,7 @@ syntax: glob
 # Temporary files used by the oXygen editor
 *.~
 *~
+*.bak
 
 # Temporary directories and files by Python
 __pycache__

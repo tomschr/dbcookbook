@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -35,7 +35,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to design a title page of your book or article.</para>
@@ -67,7 +67,7 @@
       page(s). Depending on if it is a left or a right page, different
       elements needs to be shown. For this example, we use the following
       requisites:</para>
-    
+
     <itemizedlist xml:id="li.fo.design-titlepages.rectopage.defs">
       <title>Recto (Right) Page</title>
       <para>This is the <quote>main page</quote> and the content appears
@@ -114,7 +114,7 @@
           >isbn</tag></para>
       </listitem>
     </itemizedlist>
-    
+
     <section xml:id="dbc.fo.design-titlepages.titlepage.indirectly">
       <title>Using Title Page Templates</title>
       <para>To create a title page using a title page template proceed
@@ -253,7 +253,7 @@
             <programlisting language="xml"><xi:include parse="text"
             href="design-titlepages/mybooktitlepage.xsl"/></programlisting>
           </informalexample>
-          
+
         </step>
         <step>
           <para>Build your book as usual with your customization layer.</para>
@@ -261,10 +261,10 @@
       </procedure>
     </section>
     <section xml:id="dbc.fo.design-titlepages.titlepage.directly">
-      <title>Customizing Title Pages Directly</title>  
+      <title>Customizing Title Pages Directly</title>
       <para>To create a title page directly using named templates
         proceed as follows:</para>
-      
+
       <procedure xml:id="pro.fo.design-titlepages.titlepage.directly">
         <step>
           <para>Open the file
@@ -278,7 +278,7 @@
           </para>
           <screen><replaceable>ELEMENT</replaceable>.titlepage.<replaceable>SIDE</replaceable></screen>
           <para>As we want to change the title page of a book for the
-            left (verso) and right (recto) pages, the correct 
+            left (verso) and right (recto) pages, the correct
             template names are <function>book.titlepage.recto</function>
             and <function>book.titlepage.verso</function>.</para>
         </step>
@@ -295,7 +295,7 @@
         <step>
           <para>Customize the template
               <function>book.titlepage.recto</function> according to the
-            definitions in 
+            definitions in
               <xref linkend="li.fo.design-titlepages.rectopage.defs"/>:</para>
           <substeps>
             <step>
@@ -333,7 +333,7 @@
       &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:title"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
-              
+
   &lt;xsl:choose>
     &lt;xsl:when test="d:bookinfo/d:subtitle">
       &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:bookinfo/d:subtitle"/>
@@ -345,7 +345,7 @@
       &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:subtitle"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
-  
+
   &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:author"/>
   &lt;xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="d:info/d:edition"/>
 &lt;/xsl:template></programlisting>
@@ -361,7 +361,7 @@
             <step>
               <para>Leave the two <tag>xsl:choose</tag> conditions intact to
                 select the book's title and subtitle.</para>
-            </step>            
+            </step>
             <step>
               <para>Insert after the last <tag class="endtag">xsl:choose</tag>
                 the following line to select the book's author
@@ -380,14 +380,14 @@
                 from <code>d:info/d:legalnotice</code>:</para>
               <programlisting
  >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:legalnotice"/></programlisting>
-            </step>            
+            </step>
             <step>
               <para>Insert the following line to select the book's ISBN
                 number from <code>d:info/d:biblioid</code>:</para>
                <programlisting
  >&lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode"
     select="d:info/d:biblioid[@class='isbn']"/></programlisting>
-            </step>            
+            </step>
             <step>
               <para>Remove the other <tag>xsl:apply-templates</tag>
                 elements as we only want display the title, subtitle,
@@ -406,7 +406,7 @@
       &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:title"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
-              
+
   &lt;xsl:choose>
     &lt;xsl:when test="d:bookinfo/d:subtitle">
       &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:bookinfo/d:subtitle"/>
@@ -418,11 +418,11 @@
       &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:subtitle"/>
     &lt;/xsl:when>
   &lt;/xsl:choose>
-  
+
   &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:author"/>
   &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:editor"/>
   &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:legalnotice"/>
-  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:biblioid[@class='isbn']"/> 
+  &lt;xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="d:info/d:biblioid[@class='isbn']"/>
 &lt;/xsl:template></programlisting>
             </step>
           </substeps>
@@ -460,7 +460,7 @@
           final state.</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>All these requirements can be done, either with the direct or
       indirect method. Apart from your own preferences, use the direct
       method if you have more complicated conditions which can not be
@@ -513,7 +513,7 @@
       >&lt;xsl:template match="d:edition" mode="book.titlepage.recto.auto.mode">
    &lt;!-- Add your code for a recto page -->
 &lt;/xsl:template>
-    
+
 &lt;xsl:template match="d:edition" mode="book.titlepage.verso.auto.mode">
    &lt;!-- Add your code for a verso page -->
 &lt;/xsl:template></programlisting>

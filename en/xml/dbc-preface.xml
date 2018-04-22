@@ -2,7 +2,7 @@
 <!--
     License CC BY-NC-SA 3.0
 
-   This work is licensed under the 
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
     gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
@@ -170,7 +170,7 @@
         <surname>Stayton</surname>
       </personname> as mentioned before.</para>
   </section>
-  
+
   <section xml:id="dbc.preface.typo">
     <title>Typographical Conventions</title>
     <para>The following typographical conventions are used in this book:</para>
@@ -217,7 +217,7 @@
       declare the XLink namespace in the root element by using the
       prefix (here: <tag class="prefix">xlink</tag>) with the XLink
       namespace:</para>
-    <screen>&lt;book <emphasis 
+    <screen>&lt;book <emphasis
       role="bold">xmlns:xlink="http://www.w3.org/1999/xlink"</emphasis
       > ...></screen>
     <para>Once declared, the namespace prefix is bound to its namespace
@@ -313,7 +313,7 @@
       following command:</para>
     <screen>git clone &gh.git.repo.url;</screen>
     <para>Git is a free, distributed version control system and
-      available for Mac, Linux, and Windows. Download it from <link 
+      available for Mac, Linux, and Windows. Download it from <link
         xlink:href="https://git-scm.com/downloads"/>.</para>
     <para>If you do not want to change the source code, but want to
     contribute, open a ticket. Describe your bugs, grammar errors, typos,
@@ -361,7 +361,7 @@
           not written yet or I was not aware of this issue. Probably it
           is just a lack of time. If you think, you have covered or know
           some topic, I would really appreciate it if you contribute
-          your ideas. Just fill out a ticket on <link 
+          your ideas. Just fill out a ticket on <link
             xlink:href="https://sourceforge.net/p/doccookbook/tickets/"/>
             or write me an email to <email>&mymail;</email>.
           </para>

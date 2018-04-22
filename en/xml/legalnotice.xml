@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <legalnotice version="5.1" xml:lang="en" xml:id="legalnotice"
@@ -26,7 +26,7 @@
       <keyword>CC BY-NC-SA 3.0 DE</keyword>
     </keywordset>
   </info>
-  
+
   <sidebar>
     <title>This Work is Licensed under Creative Commons</title>
     <informaltable border="0" frame="void" rules="none" class="ccbox">
@@ -44,7 +44,7 @@
             </inlinemediaobject></td>
           <td><para>This work is licensed as Creative Commons
               Attribution-NonCommercial-ShareAlike 3.0 Germany License (CC
-              BY-NC-SA 3.0 DE). For more information, refer to <xref 
+              BY-NC-SA 3.0 DE). For more information, refer to <xref
                 linkend="dbc.preface.license"/> <!--or go to <link
                 xlink:show="new"
                 xlink:href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
@@ -57,5 +57,5 @@
       </tbody>
     </informaltable>
   </sidebar>
-  
+
 </legalnotice>

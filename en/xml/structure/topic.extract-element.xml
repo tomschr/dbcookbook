@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You have a big DocBook document and you need to extract one
@@ -81,7 +81,7 @@
           <filename>extract/rootid-resolve-xrefs.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml" linenumbering="numbered"><xi:include 
+      <programlisting language="xml" linenumbering="numbered"><xi:include
       href="extract/rootid-resolve-xrefs.xsl" parse="text"/></programlisting>
     </example>
     <para>The stylesheet in <xref
@@ -165,9 +165,9 @@
           title.</para>
       </listitem>
     </orderedlist>
-    
+
     <remark>TODO: Add graphic to illustrate the method</remark>
-    
+
 <!--    <programlisting language="xml" linenumbering="numbered"
 >&lt;&#x21;&#x2d;&#x2d; From lib/lib.xsl &#x2d;&#x2d;>
 &lt;xsl:template name="xpointer.idref">

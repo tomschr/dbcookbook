@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to add index entries (using the
@@ -45,7 +45,7 @@
     <para>To see how the automatic addition works, the following
       procedure demonstrate this for the element
       <tag>envar</tag>.</para>
-    
+
     <procedure xml:id="pro.structure.adding-indexterms">
       <title>Adding <tag>indexterm</tag> Elements to <tag>envar</tag></title>
       <step>
@@ -77,7 +77,7 @@
               <filename>adding-indexterms/profile-tags.xsl</filename>
             </output>
           </info>
-          <programlisting language="xml" linenumbering="numbered"><xi:include 
+          <programlisting language="xml" linenumbering="numbered"><xi:include
             href="adding-indexterms/profile-tags.xsl" parse="text"/></programlisting>
         </example>
       </step>
@@ -104,7 +104,7 @@
         <screen><command>xsltproc</command> add-indexterms.xsl profile-envar.xml</screen>
       </step>
     </procedure>
-    
+
     <para>After applying the stylesheet
         <filename>add-indexterms.xsl</filename> you will get the
       following output:</para>
@@ -167,7 +167,7 @@
         </formalpara>
       </listitem>
     </itemizedlist>
-    
+
     <para>All of the above problems can be solved with the stylesheet
       from <xref linkend="ex.structure.profile-tag.xsl"/>. It exploits the DocBook
       XSL stylesheet´s profiling mechanism. Normally, profiling is a
@@ -180,7 +180,7 @@
       <tag class="attribute">condition</tag><footnote>
         <para>Theoretically you could use any of the several common
           attributes available on every DocBook element. The <tag
-            class="attribute">condition</tag> was the one attribute 
+            class="attribute">condition</tag> was the one attribute
           that has fitted the best in the authors mind.</para>
       </footnote> attribute, demonstrated on our <tag>envar</tag>
       example:</para>
@@ -208,7 +208,7 @@
         <term><tag class="starttag">envar condition="pref"</tag>…<tag class="endtag">envar</tag></term>
         <listitem>
           <para>Adds an <emphasis>preferred</emphasis> index entry. The
-            keyword <quote>pref</quote> can be customized through the 
+            keyword <quote>pref</quote> can be customized through the
             <parameter>preferred</parameter> parameter. If the keyword
             is added in the <tag class="attribute">condition</tag>
             attribute, the following code is created:</para>
@@ -217,10 +217,10 @@
         </listitem>
       </varlistentry>
     </variablelist>
-        
+
     <para>This method can not solve all index problems. You should know
       some of its limits:</para>
-    
+
     <itemizedlist>
       <listitem>
         <formalpara>
@@ -263,21 +263,21 @@
           <title>Hard-coded Primary Entry</title>
           <para>It can be critized to add hard-coded text into the
             stylesheet <filename>profile-tag.xsl</filename> (here:
-            <quote>environment variables</quote>). If you maintain 
+            <quote>environment variables</quote>). If you maintain
             different languages, you should replace it with a more
             general solution and move the language specific text into
             language files as described in <xref linkend="dbc.common.l10n"/>.</para>
         </formalpara>
       </listitem>
     </itemizedlist>
-     
+
     <para>Although this method does not replace hand-written index
       entries, it can ease the pain. Especially for those entries which
       can be be inserted automatically it improves consistency. The
       method described above can also be implemented for other inline
-      elements, like persons, functions, etc.</para>    
+      elements, like persons, functions, etc.</para>
   </section>
-  
+
   <section role="seealso">
     <title>See Also</title>
     <itemizedlist>

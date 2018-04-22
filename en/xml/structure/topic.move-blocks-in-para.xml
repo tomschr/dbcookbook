@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -39,10 +39,10 @@
         </personname>
         <uri>http://www.dpawson.co.uk/xsl/sect2/N4486.html#d5509e529</uri>
       </othercredit>
-    </authorgroup>    
+    </authorgroup>
     <definitions definitionfile="defs.xml"/>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>DocBook allows to insert block elements like
@@ -64,7 +64,7 @@
       </info>
       <programlisting language="xml"
         linenumbering="numbered"><xi:include
-          href="remove-blocks-in-para/move-blocks-outof-para.xsl" 
+          href="remove-blocks-in-para/move-blocks-outof-para.xsl"
           parse="text"/></programlisting>
     </example>
   </section>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <?xml-model href="../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 <section xml:id="dbc.markup.xincludes" remap="topic" userlevel="easy"
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need a method to split your document into several
@@ -48,7 +48,7 @@
         <tag>xi:fallback</tag>. They are not DocBook elements (as they
       are definied by the <acronym>W3C</acronym> and not <acronym>OASIS<alt
           >Organization for the Advancement of Structured Information Standards</alt
-          ></acronym>), however 
+          ></acronym>), however
       they have been integrated in version 5.x<footnote>
         <para>To use XInclude with DocBook 5.x, use the
             <filename>docbookxi.rnc</filename> RELAX NG schema. </para>
@@ -241,7 +241,7 @@
           <tag>xi:fallback</tag> element. This element can be used to
         add code when a referenced resource could not be retrieved:</para>
       <example xml:id="ex.db.modularize.xifallback">
-        <title>Fallback Possibility with <tag>xi:fallback</tag></title>        
+        <title>Fallback Possibility with <tag>xi:fallback</tag></title>
         <programlisting language="xml">&lt;xi:include href="revhistory.xml">
   &lt;xi:fallback>
     &lt;para>The revision history could not be retrieved.&lt;/para>
@@ -261,7 +261,7 @@
         always sure that the revision history can be generated from an
         possible offline version control system.</para>
     </section>
-    
+
     <section xml:id="sec.db.modularize.include-text">
       <title>Including Text</title>
       <para>The previous examples dealt with included resources in XML
@@ -286,7 +286,7 @@
         indendation or linebreaks.</para>
       <para>More explanations can be found in <xref linkend="dbc.markup.programlistings-external"/>.</para>
     </section>
-    
+
     <!-- TODO: Move it to another topic? -->
     <!--
     <section xml:id="sec.db.modularize.xpointer">

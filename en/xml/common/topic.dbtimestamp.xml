@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -35,7 +35,7 @@
       </subject>
     </subjectset>
   </info>
-    
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to insert the current date, time, or both in your
@@ -57,7 +57,7 @@
     <para>The above PI includes the date in its
         <emphasis>localized</emphasis> form, or in other words: the
       output depends on the current language. If you do not have set any
-      language, the default is English (<code>en_US</code>) which is 
+      language, the default is English (<code>en_US</code>) which is
       <code>month/day/year</code>. If you want to
       change the default format, use one of the two options: </para>
     <itemizedlist>
@@ -68,7 +68,7 @@
         <para>Add pseudo-attributes</para>
       </listitem>
     </itemizedlist>
-    
+
     <section xml:id="dbc.common.dbtimestamp.default-format">
       <title>Changing the Default Format</title>
       <para>Each language contains in its language files<remark>add
@@ -106,11 +106,11 @@
     <title>See Also</title>
     <itemizedlist>
       <listitem>
-        <para><link xlink:show="new" 
+        <para><link xlink:show="new"
       xlink:href="http://www.sagehill.net/docbookxsl/Datetime.html"/></para>
       </listitem>
       <listitem>
-        <para><link xlink:show="new" 
+        <para><link xlink:show="new"
           xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbtimestamp.html"/>,
         the reference page for the PI</para>
       </listitem>
