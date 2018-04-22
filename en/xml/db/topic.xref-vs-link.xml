@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -33,7 +33,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to set a <quote>link</quote> but you do not know
@@ -55,7 +55,7 @@
           <para>used primarily with <tag>link</tag></para>
         </formalpara>
       </listitem>
-    </itemizedlist>    
+    </itemizedlist>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -76,7 +76,7 @@
     &lt;title>Preparing Tea&lt;/title>
     &lt;para>Read an introduction in <emphasis role="bold"
       >&lt;xref linkend="about-tea"/></emphasis>.&lt;/para>
-  &lt;/section>      
+  &lt;/section>
 &lt;/chapter></programlisting>
     </example>
     <para>The DocBook XSL stylesheets take care of resolving the
@@ -112,7 +112,7 @@
             >xrefstyle</tag> attribute</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>In contrast, an <tag>link</tag> is used in most cases for
       <emphasis>external</emphasis> links.</para>
     <example xml:id="ex.xref-vs-link.link">
@@ -139,11 +139,11 @@
         <para>Additional inline elements allowed</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>The differences between <tag>xref</tag> and <tag>link</tag>
-      are collected in <xref linkend="tab.xref-vs-link"/>.      
+      are collected in <xref linkend="tab.xref-vs-link"/>.
     </para>
-    
+
     <table xml:id="tab.xref-vs-link">
       <title>Differences Between <tag>xref</tag> and <tag>link</tag></title>
       <tgroup cols="3">

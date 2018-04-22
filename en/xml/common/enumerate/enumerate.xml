@@ -23,14 +23,14 @@
         </textobject>
       </mediaobject>
     </figure>
-    
+
     <para>And here are the xrefs:</para>
     <para><xref linkend="simple"/></para>
     <para><xref linkend="lore-ipsum"/></para>
     <para><xref linkend="lore-ipsum-ext"/></para>
   </chapter>
-  
-  
+
+
   <chapter>
     <title>The Second Chapter</title>
     <para>Here is a sentence.</para>

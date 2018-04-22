@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!-- <?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -37,13 +37,13 @@
           PUBlication</alt></acronym>). It comes in several derivates.</para>
     </abstract>
   </info>
-  
+
   <section xml:id="dbc.html.intro">
     <title>Introduction</title>
     <para>Currently, there are several HTML derivates available as
       target formats. As such, <quote>the</quote> HTML does not exist,
       only a variety of HTML dialects:</para>
-    
+
     <table xml:id="tab.html.intro.overview">
       <title>Overview of Different HTML Stylesheets</title>
       <tgroup cols="2">
@@ -78,7 +78,7 @@
           </row>
           <row>
             <entry><filename>htmlhelp/htmlhelp.xsl</filename></entry>
-            <entry>Contains stylesheets for <acronym 
+            <entry>Contains stylesheets for <acronym
               xlink:href="http://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help">HTMLHelp</acronym>, the standard help
             system from Windows&#xa0;3.0 through Windows XP. The main
             stylesheet <filename>htmlhelp.xsl</filename> uses code from
@@ -133,7 +133,7 @@
                 <member><filename>xhtml5/docbook.xsl</filename></member>
               </simplelist>
             </entry>
-            <entry>Contains stylesheets for <acronym 
+            <entry>Contains stylesheets for <acronym
               xlink:href="http://dev.w3.org/html5/spec/Overview.html">HTML&#xa0;5</acronym>.
             These stylesheets customizes the XHTML stylesheets. As such
             it inherits all the features and parameters.
@@ -144,10 +144,10 @@
       </tgroup>
     </table>
   </section>
-  
-  <!-- 
+
+  <!--
   (X)HTML Customizations
-    * Control chunking 
+    * Control chunking
     * Attaching CSS (to your HTML) (explain different methods)
     * Alt Text for Images
     * Syntax Highlighting

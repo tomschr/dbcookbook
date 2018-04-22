@@ -59,7 +59,7 @@
         <sect2 xml:id="sec.common.intro.y">
           <title>The Y Section</title>
           <para>This is a para.</para>
-          
+
           <sect3 xml:id="sec.common.intro.y.seealso">
             <title>See also</title>
             <para>Blubber bla bla bla</para>

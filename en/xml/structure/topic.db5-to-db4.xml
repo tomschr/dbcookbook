@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -28,7 +28,7 @@
       <keyword>DocBook 4</keyword>
     </keywordset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You have a DocBook document in version 5.x, but you need 4.x.</para>
@@ -50,7 +50,7 @@
           <filename>db5-to-db4/db5to4-core.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml" linenumbering="numbered"><xi:include 
+      <programlisting language="xml" linenumbering="numbered"><xi:include
         href="db5-to-db4/db5to4-core.xsl" parse="text"/></programlisting>
     </example>
     <para>Use your favorite XSLT processor to transform your documents.</para>
@@ -62,7 +62,7 @@
       <emphasis>identity transformation</emphasis>. That means, whatever
       is <emphasis>not</emphasis> specified gets copied. In most cases
       that is what you want—a DocBook&#xa0;5 <tag>section</tag> element
-      will be transformed into an equally named DocBook&#xa0;4 
+      will be transformed into an equally named DocBook&#xa0;4
       <tag>section</tag> element without the namespace.
     </para>
     <para>Where it gets difficult are the new elements which are
@@ -75,7 +75,7 @@
       above stylesheet does it wrong and copies any <tag>info</tag>
       element straight into the output stream. However, DocBook&#xa0;4
       has different element names for meta information in
-      DocBook&#xa0;5. If you have <tag>info</tag> elements in your 
+      DocBook&#xa0;5. If you have <tag>info</tag> elements in your
       document they have to be renamed, depending on the parent element:</para>
     <itemizedlist>
       <listitem>
@@ -99,7 +99,7 @@
         </formalpara>
       </listitem>
     </itemizedlist>
-    
+
     <para>Apart from the renaming, the order of the renamed <tag>info</tag>
       element is crucial. Consider the following DocBook&#xa0;5
       structure:</para>
@@ -122,7 +122,7 @@
           <filename>db5-to-db4/db5to4-info.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml" linenumbering="numbered"><xi:include 
+      <programlisting language="xml" linenumbering="numbered"><xi:include
           href="db5-to-db4/db5to4-info.xsl" parse="text"/></programlisting>
     </example>
     <para>To combine both, use the following stylesheet:</para>
@@ -133,7 +133,7 @@
           <filename>db5-to-db4/db5to4-withinfo.xsl</filename>
         </output>
       </info>
-      <programlisting language="xml" linenumbering="numbered"><xi:include 
+      <programlisting language="xml" linenumbering="numbered"><xi:include
           href="db5-to-db4/db5to4-withinfo.xsl" parse="text"/></programlisting>
     </example>
     <para>The above stylesheets were separated between a core
@@ -142,9 +142,9 @@
       (<filename>db5to4-info.xsl</filename>). In most cases you will use
       the stylesheet <filename>db5to4-withinfo.xsl</filename>, but if
       you want to implement a different <tag>info</tag> handling you
-      can. In <xref linkend="ex.db5to4-withinfo.xsl"/> just replace the 
+      can. In <xref linkend="ex.db5to4-withinfo.xsl"/> just replace the
       line with importing <filename>db5to4-info.xsl</filename> with your
-      own implementation.      
+      own implementation.
     </para>
   </section>
   <!--<section role="seealso">

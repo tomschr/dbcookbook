@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -30,7 +30,7 @@
       <keyword>person.name</keyword>
     </keywordset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need to format an author, a group of authors, or any other
@@ -40,7 +40,7 @@
     <title>Solution</title>
     <para>The DocBook stylesheets provide the template
       <function>person.name</function> for a single name or
-      <function>person.name.list</function> for a group of names. For example, 
+      <function>person.name.list</function> for a group of names. For example,
       consider the following <tag>info</tag> element:</para>
     <programlisting language="xml">&lt;info>
   &lt;author>
@@ -62,14 +62,14 @@
     <para>For a group of names it is similar, just replace
         <function>person.name</function> with
         <function>person.name.list</function>. </para>
-    
+
   </section>
   <section role="discussion">
     <title>Discussion</title>
     <para>At a first glance, names seems pretty easy to format.
-      However, it is a little bit more complicated. For example, the title 
+      However, it is a little bit more complicated. For example, the title
       of a person, its lineage, or middle names can makes
-      it sometimes harder to extract all the information. The following 
+      it sometimes harder to extract all the information. The following
       author contains a title and a lineage:</para>
     <programlisting language="xml">&lt;author>
   &lt;personname>
@@ -107,10 +107,10 @@
         </tbody>
       </tgroup>
     </table>
-    
+
     <para>Keep in mind, the current implementation only takes into
       account the first occurance of <tag>honorific</tag> or
       <tag>lineage</tag>.</para>
-    
+
   </section>
 </section>

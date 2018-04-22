@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -33,7 +33,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>Your need for every appendix, chapter, section, etc. a small
@@ -56,7 +56,7 @@
         </output>
       </info>
       <programlistingco>
-        <areaspec>  
+        <areaspec>
           <area xml:id="ar.html.permalinks.generate.permalink" coords="6" units="linecolumn"/>
           <area xml:id="ar.html.permalinks.permalink.text" coords="7" units="linecolumn"/>
           <area xml:id="ar.html.permalinks.span" coords="13" units="linecolumn"/>
@@ -78,7 +78,7 @@
           which is inserted as the permalink text.</para>
         </callout>
         <callout arearefs="ar.html.permalinks.span">
-          <para>Creates a <tag>span</tag> element as a wrapper element 
+          <para>Creates a <tag>span</tag> element as a wrapper element
             which contains all information about the permalink.</para>
         </callout>
         <callout arearefs="ar.html.permalinks.a">
@@ -122,7 +122,7 @@
             <para>For appendices, chapters, prefaces, etc. use the
               <function>component.title</function> template (originates from
               <filename>{xhtml,xhtml-1_1,html}/component.xsl</filename>):
-            </para>            
+            </para>
             <informalexample>
               <info>
                 <output xmlns="urn:x-toms:docbook-ext">

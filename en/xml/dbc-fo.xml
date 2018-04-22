@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -31,7 +31,7 @@
     <abstract>
       <para>The DocBook XSL stylesheets has got more than 200 parameters
       which can customize some aspects of the layout very easily (like
-      the page dimensions). This chapter shows customizations which go 
+      the page dimensions). This chapter shows customizations which go
       beyond simple parameter change.</para>
     </abstract>
   </info>
@@ -49,7 +49,7 @@
       PTC's Arbortext, Antenna House's AXF, Apache's FOP, and RenderX's
       XEP.</para>
   </section>
-  <!-- 
+  <!--
   Print Customizations
     - Designing Pages for Novels
     - Designing Pages for Lexicons, Referene Book and Catalogs
@@ -84,12 +84,12 @@
     - Adding Fonts to FO Formatter
     - Creating Page Definitions with Inkscape
     - Styling Labels Differently than Titles (Separating Labels and
-      Titles) 
+      Titles)
     - Using Text Figures http://en.wikipedia.org/wiki/Text_figures
     - Using MathML in Formulas
     - Influencing the TOC Bookmark Levels in PDF
   -->
-  
+
   <xi:include href="fo/topic.design-titlepages.xml"/>
   <xi:include href="fo/topic.style-titlepages.xml"/>
   <xi:include href="fo/topic.line-height.xml"/>
@@ -99,5 +99,5 @@
   <!--<xi:include href="fo/topic.sep-label-and-titles.xml"/>-->
   <!--<xi:include href="fo/topic.pagedefs-with-inkscape.xml"/>-->
   <!--<xi:include href="fo/topic.empty-header-and-footer.xml"/>-->
-  
+
 </chapter>

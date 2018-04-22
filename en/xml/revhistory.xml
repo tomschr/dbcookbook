@@ -5,7 +5,7 @@
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Revision History</title>
-  
+
   <revision xml:id="r0.7">
     <revnumber>0.7</revnumber>
     <date>2014-04-18</date>
@@ -20,7 +20,7 @@
       <para>Seventh public release, see <link xlink:href="https://sf.net/mailarchive/message.php"></link></para>
     </revdescription>
   </revision>
-  
+
   <revision xml:id="r0.6">
     <revnumber>0.6</revnumber>
     <date>2012-06-10</date>
@@ -35,7 +35,7 @@
       <para>Sixth public release, see <link xlink:href="https://sf.net/mailarchive/message.php?msg_id=29388815"/></para>
     </revdescription>
   </revision>
-  
+
   <revision xml:id="r0.5">
     <revnumber>0.5</revnumber>
     <date>2012-04-22</date>
@@ -51,7 +51,7 @@
         xlink:href="https://sf.net/mailarchive/message.php?msg_id=29164534"/></para>
     </revdescription>
   </revision>
-  
+
   <revision xml:id="r0.4">
     <revnumber>0.4</revnumber>
     <date>2012-01-29</date>
@@ -67,7 +67,7 @@
         xlink:href="https://sf.net/mailarchive/message.php?msg_id=28755847"/></para>
     </revdescription>
   </revision>
-  
+
   <revision xml:id="r0.3">
     <revnumber>0.3</revnumber>
     <date>2011-12-28</date>
@@ -83,7 +83,7 @@
         xlink:href="http://sf.net/mailarchive/message.php?msg_id=28599375"/></para>
     </revdescription>
   </revision>
-  
+
   <revision xml:id="r0.2">
     <revnumber>0.2</revnumber>
     <date>2011-12-23</date>
@@ -98,7 +98,7 @@
       <para>Second public release, see <link xlink:href="https://sf.net/mailarchive/message.php?msg_id=28585391"/></para>
     </revdescription>
   </revision>
-  
+
   <revision xml:id="r0.1">
     <revnumber>0.1</revnumber>
     <date>2011-12-07</date>
@@ -108,7 +108,7 @@
         <surname>Schraitle</surname>
       </personname>
     </author>
-    <authorinitials>toms</authorinitials>    
+    <authorinitials>toms</authorinitials>
     <revdescription>
       <para>First public revision announced</para>
     </revdescription>

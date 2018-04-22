@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <?xml-model href="5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
@@ -39,7 +39,7 @@
         improve consistency throughout your documentation. </para>
     </abstract>
   </info>
-  
+
   <section xml:id="dbc.markup.intro">
     <title>Introduction</title>
     <para>To successfully use DocBook you basically
@@ -47,7 +47,7 @@
       structure. Usually, the DocBook elements are mostly
       self-explanatory: if you want to write a book, use
       <tag>book</tag>, for a chapter use <tag>chapter</tag> and so on.
-      All you need is covered in the <citetitle 
+      All you need is covered in the <citetitle
         xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html">Definitive
         Guide</citetitle> with examples and the reference of all
       elements.</para>
@@ -56,8 +56,8 @@
       How do I modularize my documentation? What is the recommendation
       to use multiple indices?</para>
   </section>
-  
-  <!-- 
+
+  <!--
    * Knowing the Differences Between DocBook's Version 4 and Version 5
    * Modularize your Document with XIncludes
    * Modularize your Document with Assemblies
@@ -85,7 +85,7 @@
     </citerefentry>
    * Inserting Inline Quotes
   -->
-  <xi:include href="db/topic.toplevel.xml"/> 
+  <xi:include href="db/topic.toplevel.xml"/>
   <xi:include href="db/topic.modularize.xml"/>
   <!--<xi:include href="db/topic.glossary.xml"/>-->
   <xi:include href="db/topic.multiple-indices.xml"/>

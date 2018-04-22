@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -46,7 +46,7 @@
       <arc  xlink:from="source" xlink:to="target"/>
     </extendedlink>-->
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You have heard about additional features of XLinks
@@ -76,7 +76,7 @@
         </formalpara>
       </listitem>
     </itemizedlist>
-    <!--<para>simplelist with type="horiz" xlink:type="extended": 
+    <!--<para>simplelist with type="horiz" xlink:type="extended":
         [[<simplelist type="inline" xlink:type="extended">
           <member xlink:type="title">Hallo Titel</member>
           <member xlink:type="locator"
@@ -93,7 +93,7 @@
             >Creating an Assembly File Manually</member>
           <!-\-  -\->
           <member xlink:type="resource" xlink:label="source">Topic Themes</member>
-          <member xlink:type="arc" 
+          <member xlink:type="arc"
             xlink:from="source" xlink:to="target"/>
         </simplelist>]]
       </para>-->
@@ -115,19 +115,19 @@
           xlink:label="target">klm</link>-->
         <phrase xlink:type="resource" xlink:label="source"
           >Further Themes about topics</phrase>
-        <link xlink:type="arc" 
+        <link xlink:type="arc"
           xlink:from="source" xlink:to="target">arc link</link>
       </phrase>
     </para>
     <!--<para>
         <citetitle xlink:type="extended">
-          <phrase xlink:type="resource" 
+          <phrase xlink:type="resource"
                   xlink:label="source">DocBook</phrase>
           <link xlink:type="locator" xlink:href="http://docbook.org/"
             xlink:label="target" xlink:title="DocBook.org"/>
           <link xlink:type="locator"
             xlink:href="http://en.wikipedia.org/wiki/DocBook"
-            xlink:label="target" xlink:title="DocBook on Wikipedia"/>          
+            xlink:label="target" xlink:title="DocBook on Wikipedia"/>
           <link xlink:type="arc" xlink:from="source" xlink:to="target"/>
         </citetitle>
       </para>-->
