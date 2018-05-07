@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="../../frameworks/rng/5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+
 <revhistory version="5.1" xml:id="revisionhistory"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -9,12 +10,7 @@
   <revision xml:id="r0.7">
     <revnumber>0.7</revnumber>
     <date>2014-04-18</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Seventh public release, see <link xlink:href="https://sf.net/mailarchive/message.php"></link></para>
@@ -24,12 +20,7 @@
   <revision xml:id="r0.6">
     <revnumber>0.6</revnumber>
     <date>2012-06-10</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Sixth public release, see <link xlink:href="https://sf.net/mailarchive/message.php?msg_id=29388815"/></para>
@@ -39,12 +30,7 @@
   <revision xml:id="r0.5">
     <revnumber>0.5</revnumber>
     <date>2012-04-22</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Fifth public release, see <link
@@ -55,12 +41,7 @@
   <revision xml:id="r0.4">
     <revnumber>0.4</revnumber>
     <date>2012-01-29</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Fourth public release, see <link
@@ -71,12 +52,7 @@
   <revision xml:id="r0.3">
     <revnumber>0.3</revnumber>
     <date>2011-12-28</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Third public release, see <link
@@ -87,12 +63,7 @@
   <revision xml:id="r0.2">
     <revnumber>0.2</revnumber>
     <date>2011-12-23</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Second public release, see <link xlink:href="https://sf.net/mailarchive/message.php?msg_id=28585391"/></para>
@@ -102,12 +73,7 @@
   <revision xml:id="r0.1">
     <revnumber>0.1</revnumber>
     <date>2011-12-07</date>
-    <author>
-      <personname>
-        <firstname>Thomas</firstname>
-        <surname>Schraitle</surname>
-      </personname>
-    </author>
+    <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>First public revision announced</para>
