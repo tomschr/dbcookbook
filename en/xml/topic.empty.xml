@@ -15,13 +15,12 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.X" remap="topic"
+<section xml:id="dbc.X" remap="topic" version="5.1"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>The Topic Title</title>
   <info>
-    <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword></keyword>
       <keyword></keyword>
