@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:db="http://docbook.org/ns/docbook" xmlns:f="http://docbook.org/xslt/ns/extension" version="2.0">
+<?xml version="1.0" encoding="utf-8"?><xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:db="http://docbook.org/ns/docbook" xmlns:f="http://docbook.org/xslt/ns/extension" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="2.0" exclude-result-prefixes="db f xs">
 
-<xsl:param name="admonition.graphics" select="false()"/>
+<xsl:param name="admonition.graphics" as="xs:boolean" select="false()"/>
 
-<xsl:param name="admonition.graphics.extension">.svg</xsl:param>
+<xsl:param name="admonition.graphics.extension" as="xs:string" select="'.svg'"/>
 
-<xsl:param name="admonition.graphics.path">FIXME:/images/</xsl:param>
+<xsl:param name="admonition.graphics.path" as="xs:string" select="'FIXME:/images/'"/>
 
 <xsl:attribute-set name="admonition.properties">
   <xsl:attribute name="space-before.optimum">1em</xsl:attribute>
@@ -15,21 +15,21 @@
   <xsl:attribute name="space-after.maximum">1.2em</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="admonition.textlabel" select="true()"/>
+<xsl:param name="admonition.textlabel" as="xs:boolean" select="true()"/>
 
 <xsl:attribute-set name="admonition.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="alignment" select="'justify'"/>
+<xsl:param name="alignment" as="xs:string" select="'justify'"/>
 
-<xsl:param name="annotate.toc" select="1"/>
+<xsl:param name="annotate.toc" as="xs:boolean" select="true()"/>
 
-<xsl:param name="annotation.graphic.close" select="concat($resource.root,'img/annot-close.png')"/>
+<xsl:param name="annotation.graphic.close" as="xs:string" select="concat($resource.root,'img/annot-close.png')"/>
 
-<xsl:param name="annotation.graphic.open" select="concat($resource.root, 'img/annot-open.png')"/>
+<xsl:param name="annotation.graphic.open" as="xs:string" select="concat($resource.root, 'img/annot-open.png')"/>
 
 <xsl:attribute-set name="annotation.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="author.othername.in.middle" select="1"/>
+<xsl:param name="author.othername.in.middle" as="xs:boolean" select="true()"/>
 
 <xsl:param name="autolabel.elements">
   <db:appendix format="A"/>
@@ -46,79 +46,76 @@
   <db:refsection/>
 </xsl:param>
 
-<xsl:param name="autotoc.label.separator" select="'. '"/>
+<xsl:param name="autotoc.label.separator" as="xs:string" select="'. '"/>
 
-<xsl:param name="biblioentry.item.separator">. </xsl:param>
+<xsl:param name="biblioentry.item.separator" as="xs:string" select="'. '"/>
 
 <xsl:attribute-set name="biblioentry.properties" use-attribute-sets="normal.para.spacing">
-  <xsl:attribute name="start-indent">0.5in</xsl:attribute>
-  <xsl:attribute name="text-indent">-0.5in</xsl:attribute>
-</xsl:attribute-set>
+    <xsl:attribute name="start-indent">0.5in</xsl:attribute>
+    <xsl:attribute name="text-indent">-0.5in</xsl:attribute>
+  </xsl:attribute-set>
 
-<xsl:param name="bibliography.collection" select="'http://docbook.sourceforge.net/release/bibliography/bibliography.xml'"/>
+<xsl:param name="bibliography.collection" as="xs:string" select="concat('http://cdn.docbook.org/resources/',                           $RESOURCES.VERSION,                           '/xml/bibliography.xml')"/>
 
-<xsl:param name="bibliography.numbered" select="0"/>
+<xsl:param name="bibliography.numbered" as="xs:boolean" select="false()"/>
 
-<xsl:param name="bibliography.style">normal</xsl:param>
+<xsl:param name="bibliography.style" as="xs:string" select="'normal'"/>
 
-<xsl:param name="body.end.indent" select="'0pt'"/>
+<xsl:param name="body.end.indent" as="xs:string" select="'0pt'"/>
 
-<xsl:param name="body.font.family" select="'serif'"/>
+<xsl:param name="body.font.family" as="xs:string" select="'serif'"/>
 
-<xsl:param name="body.font.master" select="10"/>
+<xsl:param name="body.font.master" as="xs:double" select="10.0"/>
 
-<xsl:param name="body.font.size">
-  <xsl:value-of select="$body.font.master"/>
-  <xsl:text>pt</xsl:text>
-</xsl:param>
+<xsl:param name="body.font.size" as="xs:string" select="concat(string($body.font.master), 'pt')"/>
 
-<xsl:param name="body.margin.bottom" select="'0.5in'"/>
+<xsl:param name="body.margin.bottom" as="xs:string" select="'0.5in'"/>
 
-<xsl:param name="body.margin.top" select="'0.5in'"/>
+<xsl:param name="body.margin.top" as="xs:string" select="'0.5in'"/>
 
-<xsl:param name="body.start.indent" select="'0pt'"/>
+<xsl:param name="body.start.indent" as="xs:string" select="'0pt'"/>
 
-<xsl:param name="bridgehead.in.toc" select="0"/>
+<xsl:param name="bridgehead.in.toc" as="xs:boolean" select="false()"/>
 
-<xsl:param name="callout.graphics" select="1"/>
+<xsl:param name="callout.graphics" as="xs:boolean" select="true()"/>
 
-<xsl:param name="callout.graphics.extension" select="'.png'"/>
+<xsl:param name="callout.graphics.extension" as="xs:string" select="'.png'"/>
 
-<xsl:param name="callout.graphics.number.limit" select="15"/>
+<xsl:param name="callout.graphics.number.limit" as="xs:integer" select="15"/>
 
-<xsl:param name="callout.graphics.path" select="concat($resource.root, 'img/')"/>
+<xsl:param name="callout.graphics.path" as="xs:string" select="concat($resource.root, 'img/')"/>
 
-<xsl:param name="callout.unicode" select="0"/>
+<xsl:param name="callout.unicode" as="xs:boolean" select="false()"/>
 
-<xsl:param name="callout.unicode.number.limit" select="'10'"/>
+<xsl:param name="callout.unicode.number.limit" as="xs:integer" select="10"/>
 
-<xsl:param name="callout.unicode.start.character" select="10102"/>
+<xsl:param name="callout.unicode.start.character" as="xs:integer" select="10102"/>
 
-<xsl:attribute-set name="caption.properties"> </xsl:attribute-set>
+<xsl:attribute-set name="caption.properties"/>
 
-<xsl:param name="column.count.back" select="1"/>
+<xsl:param name="column.count.back" as="xs:integer" select="1"/>
 
-<xsl:param name="column.count.body" select="1"/>
+<xsl:param name="column.count.body" as="xs:integer" select="1"/>
 
-<xsl:param name="column.count.front" select="1"/>
+<xsl:param name="column.count.front" as="xs:integer" select="1"/>
 
-<xsl:param name="column.count.index" select="2"/>
+<xsl:param name="column.count.index" as="xs:integer" select="2"/>
 
-<xsl:param name="column.count.lot" select="1"/>
+<xsl:param name="column.count.lot" as="xs:integer" select="1"/>
 
-<xsl:param name="column.count.titlepage" select="1"/>
+<xsl:param name="column.count.titlepage" as="xs:integer" select="1"/>
 
-<xsl:param name="column.gap.back" select="'12pt'"/>
+<xsl:param name="column.gap.back" as="xs:string" select="'12pt'"/>
 
-<xsl:param name="column.gap.body" select="'12pt'"/>
+<xsl:param name="column.gap.body" as="xs:string" select="'12pt'"/>
 
-<xsl:param name="column.gap.front" select="'12pt'"/>
+<xsl:param name="column.gap.front" as="xs:string" select="'12pt'"/>
 
-<xsl:param name="column.gap.index" select="'12pt'"/>
+<xsl:param name="column.gap.index" as="xs:string" select="'12pt'"/>
 
-<xsl:param name="column.gap.lot" select="'12pt'"/>
+<xsl:param name="column.gap.lot" as="xs:string" select="'12pt'"/>
 
-<xsl:param name="column.gap.titlepage" select="'12pt'"/>
+<xsl:param name="column.gap.titlepage" as="xs:string" select="'12pt'"/>
 
 <xsl:attribute-set name="compact.list.item.spacing">
   <xsl:attribute name="space-before.optimum">0em</xsl:attribute>
@@ -126,7 +123,7 @@
   <xsl:attribute name="space-before.maximum">0.2em</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="component.label.includes.part.label" select="0"/>
+<xsl:param name="component.label.includes.part.label" as="xs:boolean" select="false()"/>
 
 <xsl:attribute-set name="component.subtitle.properties" use-attribute-sets="subtitle.properties">
   <xsl:attribute name="font-size" select="concat($body.font.master * 1.78, 'pt')"/>
@@ -149,15 +146,17 @@
   <xsl:attribute name="font-size" select="concat($body.font.master * 2.07, 'pt')"/>
 </xsl:attribute-set>
 
-<xsl:param name="date-format" select="'[D01] [MNn,*-3] [Y0001]'"/>
+<xsl:param name="date-format" as="xs:string" select="'[D01] [MNn,*-3] [Y0001]'"/>
 
-<xsl:param name="dateTime-format" select="'[D01] [MNn,*-3] [Y0001]'"/>
+<xsl:param name="dateTime-format" as="xs:string" select="'[D01] [MNn,*-3] [Y0001]'"/>
 
-<xsl:param name="default.image.width" select="''"/>
+<xsl:param name="default.image.width" as="xs:string" select="''"/>
 
-<xsl:param name="default.table.width"/>
+<xsl:param name="default.table.column.widths" as="xs:boolean" select="true()"/>
 
-<xsl:param name="dingbat.font.family">serif</xsl:param>
+<xsl:param name="default.table.width" as="xs:string" select="''"/>
+
+<xsl:param name="dingbat.font.family" as="xs:string" select="'serif'"/>
 
 <xsl:attribute-set name="div.subtitle.properties" use-attribute-sets="subtitle.properties"/>
 
@@ -172,17 +171,17 @@
   <xsl:attribute name="font-size" select="concat($body.font.master * 2.48, 'pt')"/>
 </xsl:attribute-set>
 
-<xsl:param name="docbook-namespace" select="'http://docbook.org/ns/docbook'"/>
+<xsl:param name="docbook-namespace" as="xs:string" select="'http://docbook.org/ns/docbook'"/>
 
-<xsl:param name="docbook.css" select="concat($resource.root, 'css/default.css')"/>
+<xsl:param name="docbook.css" as="xs:string" select="concat($resource.root, 'css/default.css')"/>
 
-<xsl:param name="docbook.css.inline" select="0"/>
+<xsl:param name="docbook.css.inline" as="xs:boolean" select="false()"/>
 
-<xsl:param name="double.sided" select="0"/>
+<xsl:param name="double.sided" as="xs:boolean" select="false()"/>
 
-<xsl:param name="draft.mode" select="'maybe'"/>
+<xsl:param name="draft.mode" as="xs:string" select="'maybe'"/>
 
-<xsl:param name="draft.watermark.image" select="concat($resource.root, 'img/draft.svg')"/>
+<xsl:param name="draft.watermark.image" as="xs:string" select="concat($resource.root, 'img/draft.svg')"/>
 
 <xsl:attribute-set name="endnotes.properties"> </xsl:attribute-set>
 
@@ -190,11 +189,11 @@
 
 <xsl:attribute-set name="figure.properties"/>
 
-<xsl:param name="firstterm.only.link" select="0"/>
+<xsl:param name="firstterm.only.link" as="xs:boolean" select="false()"/>
 
-<xsl:param name="fo.processor" select="'xep'"/>
+<xsl:param name="fo.processor" as="xs:string" select="'xep'"/>
 
-<xsl:param name="footer.column.widths" select="'1 1 1'"/>
+<xsl:param name="footer.column.widths" as="xs:string" select="'1 1 1'"/>
 
 <xsl:attribute-set name="footer.content.properties">
   <xsl:attribute name="font-family">
@@ -205,15 +204,15 @@
   </xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="footer.rule" select="1"/>
+<xsl:param name="footer.rule" as="xs:boolean" select="true()"/>
 
-<xsl:param name="footers.on.blank.pages" select="1"/>
+<xsl:param name="footers.on.blank.pages" as="xs:boolean" select="true()"/>
 
 <xsl:attribute-set name="footnote.block.properties"/>
 
 <xsl:param name="footnote.font.size">
- <xsl:value-of select="$body.font.master * 0.8"/><xsl:text>pt</xsl:text>
-</xsl:param>
+    <xsl:value-of select="$body.font.master * 0.8"/><xsl:text>pt</xsl:text>
+  </xsl:param>
 
 <xsl:attribute-set name="footnote.mark.properties">
 	   <xsl:attribute name="font-size">80%</xsl:attribute>
@@ -223,11 +222,11 @@
 	   <xsl:attribute name="font-size">80%</xsl:attribute>
 	</xsl:attribute-set>
 
-<xsl:param name="footnote.mark.width">1em</xsl:param>
+<xsl:param name="footnote.mark.width" as="xs:string" select="'1em'"/>
 
-<xsl:param name="footnote.number.format" select="1"/>
+<xsl:param name="footnote.number.format" as="xs:string" select="'1'"/>
 
-<xsl:param name="footnote.number.symbols" select="''"/>
+<xsl:param name="footnote.number.symbols" as="xs:string" select="''"/>
 
 <xsl:attribute-set name="footnote.properties"> </xsl:attribute-set>
 
@@ -237,7 +236,7 @@
   <xsl:attribute name="leader-length">1in</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="footnotes.as.endnotes" select="false()"/>
+<xsl:param name="footnotes.as.endnotes" as="xs:boolean" select="false()"/>
 
 <xsl:attribute-set name="formal.object.properties">
   <xsl:attribute name="space-before.minimum">0.5em</xsl:attribute>
@@ -249,7 +248,7 @@
   <xsl:attribute name="keep-together.within-column">always</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="formal.procedures" select="1"/>
+<xsl:param name="formal.procedures" as="xs:boolean" select="true()"/>
 
 <xsl:param name="formal.title.placement" as="element()*">
   <db:figure placement="after"/>
@@ -262,11 +261,11 @@
 
 <xsl:attribute-set name="formal.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="gYear-format" select="'[Y0001]'"/>
+<xsl:param name="gYear-format" as="xs:string" select="'[Y0001]'"/>
 
-<xsl:param name="gYearMonth-format" select="'[MNn,*-3] [Y0001]'"/>
+<xsl:param name="gYearMonth-format" as="xs:string" select="'[MNn,*-3] [Y0001]'"/>
 
-<xsl:param name="generate.index" select="1"/>
+<xsl:param name="generate.index" as="xs:boolean" select="true()"/>
 
 <xsl:param name="generate.toc" as="element()*">
 <tocparam xmlns="http://docbook.org/ns/docbook" path="appendix" toc="1" title="1"/>
@@ -288,19 +287,19 @@
 <tocparam xmlns="http://docbook.org/ns/docbook" path="set" toc="1" title="1"/>
 </xsl:param>
 
-<xsl:param name="glossary.collection" select="''"/>
+<xsl:param name="glossary.collection" as="xs:string" select="concat('http://cdn.docbook.org/resources/',                           $RESOURCES.VERSION,                           '/xml/glossary.xml')"/>
 
-<xsl:param name="glossentry.show.acronym" select="'no'"/>
+<xsl:param name="glossentry.show.acronym" as="xs:string" select="'no'"/>
 
-<xsl:param name="glossterm.auto.link" select="0"/>
+<xsl:param name="glossterm.auto.link" as="xs:boolean" select="false()"/>
 
-<xsl:param name="graphic.extensions" select="('svg','png','jpg','jpeg','gif','bmp',       'avi', 'mpg', 'mpeg', 'qt')"/>
+<xsl:param name="graphic.extensions" as="xs:string*" select="('svg','png','jpg','jpeg','gif','bmp',       'avi', 'mpg', 'mpeg', 'qt')"/>
 
-<xsl:param name="graphic.formats" select="('svg','png','jpg','jpeg','gif','gif87a','gif89a','bmp',                     'linespecific')"/>
+<xsl:param name="graphic.formats" as="xs:string*" select="('svg','png','jpg','jpeg','gif','gif87a','gif89a','bmp',                     'linespecific')"/>
 
 <xsl:attribute-set name="graphical.admonition.properties" use-attribute-sets="admonition.properties"/>
 
-<xsl:param name="header.column.widths" select="'1 1 1'"/>
+<xsl:param name="header.column.widths" as="xs:string" select="'1 1 1'"/>
 
 <xsl:attribute-set name="header.content.properties">
   <xsl:attribute name="font-family">
@@ -311,21 +310,21 @@
   </xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="header.rule" select="1"/>
+<xsl:param name="header.rule" as="xs:boolean" select="true()"/>
 
-<xsl:param name="headers.on.blank.pages" select="1"/>
+<xsl:param name="headers.on.blank.pages" as="xs:boolean" select="true()"/>
 
-<xsl:param name="hyphenate" select="'true'"/>
+<xsl:param name="hyphenate" as="xs:boolean" select="true()"/>
 
-<xsl:param name="ignore.image.scaling" select="0"/>
+<xsl:param name="ignore.image.scaling" as="xs:boolean" select="false()"/>
 
 <xsl:attribute-set name="imageobjectco.properties"> </xsl:attribute-set>
 
-<xsl:param name="index.on.role" select="0"/>
+<xsl:param name="index.on.role" as="xs:boolean" select="false()"/>
 
-<xsl:param name="index.on.type" select="0"/>
+<xsl:param name="index.on.type" as="xs:boolean" select="false()"/>
 
-<xsl:param name="index.prefer.titleabbrev" select="0"/>
+<xsl:param name="index.prefer.titleabbrev" as="xs:boolean" select="false()"/>
 
 <xsl:attribute-set name="informal.object.properties">
   <xsl:attribute name="space-before.minimum">0.5em</xsl:attribute>
@@ -338,33 +337,33 @@
 
 <xsl:attribute-set name="informaltable.properties"/>
 
-<xsl:param name="inline.style.attribute" select="1"/>
+<xsl:param name="inline.style.attribute" as="xs:boolean" select="true()"/>
 
-<xsl:param name="insert.link.page.number">no</xsl:param>
+<xsl:param name="insert.link.page.number" as="xs:string" select="'no'"/>
 
-<xsl:param name="insert.xref.page.number">no</xsl:param>
+<xsl:param name="insert.xref.page.number" as="xs:string" select="'no'"/>
 
 <xsl:attribute-set name="itemizedlist.label.properties">
 </xsl:attribute-set>
 
-<xsl:param name="itemizedlist.label.width">1.0em</xsl:param>
+<xsl:param name="itemizedlist.label.width" as="xs:string" select="'1.0em'"/>
 
-<xsl:param name="itemizedlist.numeration.symbols" select="('disc', 'round')"/>
+<xsl:param name="itemizedlist.numeration.symbols" as="xs:string*" select="('disc', 'round')"/>
 
 <xsl:attribute-set name="itemizedlist.properties" use-attribute-sets="list.block.properties">
 </xsl:attribute-set>
 
-<xsl:param name="l10n.gentext.default.language" select="'en'"/>
+<xsl:param name="l10n.gentext.default.language" as="xs:string" select="'en'"/>
 
-<xsl:param name="l10n.gentext.language" select="''"/>
+<xsl:param name="l10n.gentext.language" as="xs:string" select="''"/>
 
-<xsl:param name="l10n.gentext.use.xref.language" select="0"/>
+<xsl:param name="l10n.gentext.use.xref.language" as="xs:boolean" select="false()"/>
 
-<xsl:param name="l10n.locale.dir">locales/</xsl:param>
+<xsl:param name="l10n.locale.dir" as="xs:string" select="'locales/'"/>
 
-<xsl:param name="label.from.part" select="0"/>
+<xsl:param name="label.from.part" as="xs:boolean" select="false()"/>
 
-<xsl:param name="line.height" select="'normal'"/>
+<xsl:param name="line.height" as="xs:string" select="'normal'"/>
 
 <xsl:param name="linenumbering" as="element()*">
 <ln xmlns="http://docbook.org/ns/docbook" path="literallayout" everyNth="2" width="3" separator=" " padchar=" " minlines="3"/>
@@ -400,11 +399,11 @@
 
 <xsl:param name="local.l10n.xml" select="document('')"/>
 
-<xsl:param name="make.single.year.ranges" select="0"/>
+<xsl:param name="make.single.year.ranges" as="xs:boolean" select="false()"/>
 
-<xsl:param name="make.year.ranges" select="0"/>
+<xsl:param name="make.year.ranges" as="xs:boolean" select="false()"/>
 
-<xsl:param name="manual.toc" select="''"/>
+<xsl:param name="manual.toc" as="xs:string" select="''"/>
 
 <xsl:attribute-set name="mediaobject.properties"> </xsl:attribute-set>
 
@@ -419,9 +418,9 @@
   <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="olink.doctitle" select="0"/>
+<xsl:param name="olink.doctitle" as="xs:boolean" select="false()"/>
 
-<xsl:param name="olink.insert.page.number" select="0"/>
+<xsl:param name="olink.insert.page.number" as="xs:boolean" select="false()"/>
 
 <xsl:attribute-set name="olink.properties">
 </xsl:attribute-set>
@@ -429,9 +428,9 @@
 <xsl:attribute-set name="orderedlist.label.properties">
 </xsl:attribute-set>
 
-<xsl:param name="orderedlist.numeration.styles" select="('arabic',       'loweralpha', 'lowerroman',                     'upperalpha', 'upperroman')"/>
+<xsl:param name="orderedlist.numeration.styles" as="xs:string*" select="('arabic',       'loweralpha', 'lowerroman',                     'upperalpha', 'upperroman')"/>
 
-<xsl:param name="page.height">
+<xsl:param name="page.height" as="xs:string">
   <xsl:choose>
     <xsl:when test="$page.orientation = 'portrait'">
       <xsl:value-of select="$page.height.portrait"/>
@@ -486,27 +485,27 @@
   </xsl:choose>
 </xsl:param>
 
-<xsl:param name="page.margin.bottom" select="'0.5in'"/>
+<xsl:param name="page.margin.bottom" as="xs:string" select="'0.5in'"/>
 
-<xsl:param name="page.margin.inner">
+<xsl:param name="page.margin.inner" as="xs:string">
   <xsl:choose>
-    <xsl:when test="$double.sided != 0">1.25in</xsl:when>
+    <xsl:when test="$double.sided">1.25in</xsl:when>
     <xsl:otherwise>1in</xsl:otherwise>
   </xsl:choose>
 </xsl:param>
 
-<xsl:param name="page.margin.outer">
+<xsl:param name="page.margin.outer" as="xs:string">
   <xsl:choose>
-    <xsl:when test="$double.sided != 0">0.75in</xsl:when>
+    <xsl:when test="$double.sided">0.75in</xsl:when>
     <xsl:otherwise>1in</xsl:otherwise>
   </xsl:choose>
 </xsl:param>
 
-<xsl:param name="page.margin.top" select="'0.5in'"/>
+<xsl:param name="page.margin.top" as="xs:string" select="'0.5in'"/>
 
-<xsl:param name="page.orientation" select="'portrait'"/>
+<xsl:param name="page.orientation" as="xs:string" select="'portrait'"/>
 
-<xsl:param name="page.width">
+<xsl:param name="page.width" as="xs:string">
   <xsl:choose>
     <xsl:when test="$page.orientation = 'portrait'">
       <xsl:value-of select="$page.width.portrait"/>
@@ -517,7 +516,7 @@
   </xsl:choose>
 </xsl:param>
 
-<xsl:param name="page.width.portrait">
+<xsl:param name="page.width.portrait" as="xs:string">
   <xsl:choose>
     <xsl:when test="$paper.type = 'USletter'">8.5in</xsl:when>
     <xsl:when test="$paper.type = '4A0'">1682mm</xsl:when>
@@ -559,67 +558,73 @@
   </xsl:choose>
 </xsl:param>
 
-<xsl:param name="paper.type" select="'USletter'"/>
+<xsl:param name="paper.type" as="xs:string" select="'USletter'"/>
 
 <xsl:attribute-set name="partintro.title.properties" use-attribute-sets="title.properties">
   <xsl:attribute name="font-size" select="concat($body.font.master * 2.48, 'pt')"/>
 </xsl:attribute-set>
 
-<xsl:param name="persistent.generated.ids" select="1"/>
+<xsl:param name="persistent.generated.ids" as="xs:boolean" select="true()"/>
 
-<xsl:param name="pixels.per.inch" select="90"/>
+<xsl:param name="pixels.per.inch" as="xs:integer" select="90"/>
 
-<xsl:param name="preprocess" select="''"/>
+<xsl:param name="preprocess" as="xs:string" select="''"/>
 
-<xsl:param name="procedure.label.width">2em</xsl:param>
+<xsl:param name="procedure.label.width" as="xs:string" select="'2em'"/>
 
-<xsl:param name="procedure.step.numeration.styles" select="('arabic',       'loweralpha', 'lowerroman',                     'upperalpha', 'upperroman')"/>
+<xsl:param name="procedure.step.numeration.styles" as="xs:string*" select="('arabic',       'loweralpha', 'lowerroman',                     'upperalpha', 'upperroman')"/>
 
 <xsl:attribute-set name="procedure.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="profile.arch" select="''"/>
+<xsl:param name="profile.arch" as="xs:string" select="''"/>
 
-<xsl:param name="profile.attribute" select="''"/>
+<xsl:param name="profile.attribute" as="xs:string" select="''"/>
 
-<xsl:param name="profile.condition" select="''"/>
+<xsl:param name="profile.audience" as="xs:string" select="''"/>
 
-<xsl:param name="profile.conformance" select="''"/>
+<xsl:param name="profile.condition" as="xs:string" select="''"/>
 
-<xsl:param name="profile.lang" select="''"/>
+<xsl:param name="profile.conformance" as="xs:string" select="''"/>
 
-<xsl:param name="profile.os" select="''"/>
+<xsl:param name="profile.lang" as="xs:string" select="''"/>
 
-<xsl:param name="profile.revision" select="''"/>
+<xsl:param name="profile.os" as="xs:string" select="''"/>
 
-<xsl:param name="profile.revisionflag" select="''"/>
+<xsl:param name="profile.outputformat" as="xs:string" select="''"/>
 
-<xsl:param name="profile.role" select="''"/>
+<xsl:param name="profile.revision" as="xs:string" select="''"/>
 
-<xsl:param name="profile.security" select="''"/>
+<xsl:param name="profile.revisionflag" as="xs:string" select="''"/>
 
-<xsl:param name="profile.separator" select="';'"/>
+<xsl:param name="profile.role" as="xs:string" select="''"/>
 
-<xsl:param name="profile.userlevel" select="''"/>
+<xsl:param name="profile.security" as="xs:string" select="''"/>
 
-<xsl:param name="profile.value" select="''"/>
+<xsl:param name="profile.separator" as="xs:string" select="';'"/>
 
-<xsl:param name="profile.vendor" select="''"/>
+<xsl:param name="profile.userlevel" as="xs:string" select="''"/>
 
-<xsl:param name="punct.honorific" select="'.'"/>
+<xsl:param name="profile.value" as="xs:string" select="''"/>
 
-<xsl:param name="qanda.defaultlabel">number</xsl:param>
+<xsl:param name="profile.vendor" as="xs:string" select="''"/>
 
-<xsl:param name="qanda.inherit.numeration" select="1"/>
+<xsl:param name="profile.wordsize" as="xs:string" select="''"/>
+
+<xsl:param name="punct.honorific" as="xs:string" select="'.'"/>
+
+<xsl:param name="qanda.defaultlabel" as="xs:string" select="'number'"/>
+
+<xsl:param name="qanda.inherit.numeration" as="xs:boolean" select="true()"/>
 
 <xsl:attribute-set name="qandaset.title.properties" use-attribute-sets="title.properties">
   <xsl:attribute name="font-size" select="concat($body.font.master * 2.07, 'pt')"/>
 </xsl:attribute-set>
 
-<xsl:param name="refentry.generate.name" select="1"/>
+<xsl:param name="refentry.generate.name" as="xs:boolean" select="true()"/>
 
-<xsl:param name="refentry.generate.title" select="0"/>
+<xsl:param name="refentry.generate.title" as="xs:boolean" select="false()"/>
 
-<xsl:param name="refentry.separator" select="1"/>
+<xsl:param name="refentry.separator" as="xs:boolean" select="true()"/>
 
 <xsl:attribute-set name="refsection.level1.subtitle.properties" use-attribute-sets="refsection.subtitle.properties"> </xsl:attribute-set>
 
@@ -637,11 +642,27 @@
 
 <xsl:attribute-set name="refsection.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="region.after.extent" select="'0.4in'"/>
+<xsl:param name="region.after.extent" as="xs:string" select="'0.4in'"/>
 
-<xsl:param name="region.before.extent" select="'0.4in'"/>
+<xsl:param name="region.before.extent" as="xs:string" select="'0.4in'"/>
 
-<xsl:param name="resource.root" select="concat('http://docbook.github.com/release/',$VERSION,'/base/')"/>
+<xsl:param name="region.inner.extent">0in</xsl:param>
+
+<xsl:attribute-set name="region.inner.properties">
+  <xsl:attribute name="border-width">0</xsl:attribute>
+  <xsl:attribute name="padding">0</xsl:attribute>
+  <xsl:attribute name="reference-orientation">90</xsl:attribute>
+</xsl:attribute-set>
+
+<xsl:param name="region.outer.extent">0in</xsl:param>
+
+<xsl:attribute-set name="region.outer.properties">
+  <xsl:attribute name="border-width">0</xsl:attribute>
+  <xsl:attribute name="padding">0</xsl:attribute>
+  <xsl:attribute name="reference-orientation">90</xsl:attribute>
+</xsl:attribute-set>
+
+<xsl:param name="resource.root" as="xs:string" select="concat('https://cdn.docbook.org/resources/',$RESOURCES.VERSION,'/')"/>
 
 <xsl:param name="root.elements">
   <db:appendix/>
@@ -680,11 +701,11 @@
   <xsl:attribute name="line-height-shift-adjustment">disregard-shifts</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="rootid"/>
+<xsl:param name="rootid" as="xs:string?" select="()"/>
 
-<xsl:param name="section.autolabel.max.depth" select="8"/>
+<xsl:param name="section.autolabel.max.depth" as="xs:integer" select="8"/>
 
-<xsl:param name="section.label.includes.component.label" select="0"/>
+<xsl:param name="section.label.includes.component.label" as="xs:boolean" select="false()"/>
 
 <xsl:attribute-set name="section.level1.subtitle.properties" use-attribute-sets="section.subtitle.properties"> </xsl:attribute-set>
 
@@ -723,9 +744,11 @@
 
 <xsl:attribute-set name="section.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="segmentedlist.as.table" select="0"/>
+<xsl:param name="segmentedlist.as.table" as="xs:boolean" select="false()"/>
 
-<xsl:param name="show.comments">1</xsl:param>
+<xsl:param name="show.comments" as="xs:boolean" select="true()"/>
+
+<xsl:param name="side.region.precedence">false</xsl:param>
 
 <xsl:attribute-set name="sidebar.title.properties" use-attribute-sets="title.properties"/>
 
@@ -745,23 +768,23 @@
   <xsl:attribute name="font-size">75%</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="symbol.font.family" select="'Symbol,ZapfDingbats'"/>
+<xsl:param name="symbol.font.family" as="xs:string" select="'Symbol,ZapfDingbats'"/>
 
-<xsl:param name="table.footnote.number.format" select="'a'"/>
+<xsl:param name="table.footnote.number.format" as="xs:string" select="'a'"/>
 
-<xsl:param name="table.footnote.number.symbols" select="''"/>
+<xsl:param name="table.footnote.number.symbols" as="xs:string" select="''"/>
 
 <xsl:attribute-set name="table.properties"/>
 
-<xsl:param name="table.width.default" select="''"/>
+<xsl:param name="table.width.default" as="xs:string" select="''"/>
 
 <xsl:attribute-set name="taskpart.title.properties" use-attribute-sets="title.properties"/>
 
-<xsl:param name="textdata.default.encoding" select="''"/>
+<xsl:param name="textdata.default.encoding" as="xs:string" select="''"/>
 
-<xsl:param name="title.font.family" select="'sans-serif'"/>
+<xsl:param name="title.font.family" as="xs:string" select="'sans-serif'"/>
 
-<xsl:param name="title.margin.left" select="'0pt'"/>
+<xsl:param name="title.margin.left" as="xs:string" select="'0pt'"/>
 
 <xsl:attribute-set name="title.properties">
   <xsl:attribute name="font-family" select="$title.font.family"/>
@@ -769,47 +792,47 @@
   <xsl:attribute name="keep-with-next.within-column">always</xsl:attribute>
 </xsl:attribute-set>
 
-<xsl:param name="titlepage.templates" select="'titlepages.xml'"/>
+<xsl:param name="titlepage.templates" as="xs:string" select="'titlepages.xml'"/>
 
-<xsl:param name="toc.list.type">dl</xsl:param>
+<xsl:param name="toc.list.type" as="xs:string" select="'dl'"/>
 
-<xsl:param name="toc.max.depth" select="8"/>
+<xsl:param name="toc.max.depth" as="xs:integer" select="8"/>
 
-<xsl:param name="toc.section.depth">2</xsl:param>
+<xsl:param name="toc.section.depth" as="xs:integer" select="2"/>
 
-<xsl:param name="ulink.footnotes" select="0"/>
+<xsl:param name="ulink.footnotes" as="xs:boolean" select="false()"/>
 
-<xsl:param name="ulink.hyphenate" select="''"/>
+<xsl:param name="ulink.hyphenate" as="xs:string" select="''"/>
 
-<xsl:param name="ulink.hyphenate.chars" select="'/'"/>
+<xsl:param name="ulink.hyphenate.chars" as="xs:string" select="'/'"/>
 
-<xsl:param name="ulink.show" select="1"/>
+<xsl:param name="ulink.show" as="xs:boolean" select="true()"/>
 
-<xsl:param name="use.role.as.xrefstyle" select="1"/>
+<xsl:param name="use.role.as.xrefstyle" as="xs:boolean" select="true()"/>
 
-<xsl:param name="variablelist.as.blocks" select="0"/>
+<xsl:param name="variablelist.as.blocks" as="xs:boolean" select="false()"/>
 
-<xsl:param name="variablelist.max.termlength">24</xsl:param>
+<xsl:param name="variablelist.max.termlength" as="xs:integer" select="24"/>
 
-<xsl:param name="variablelist.term.break.after">0</xsl:param>
+<xsl:param name="variablelist.term.break.after" as="xs:boolean" select="false()"/>
 
-<xsl:param name="variablelist.term.separator">, </xsl:param>
+<xsl:param name="variablelist.term.separator" as="xs:string" select="', '"/>
 
-<xsl:param name="verbatim.trim.blank.lines" select="1"/>
+<xsl:param name="verbatim.trim.blank.lines" as="xs:boolean" select="true()"/>
 
-<xsl:param name="verbosity" select="0"/>
+<xsl:param name="verbosity" as="xs:integer" select="0"/>
 
-<xsl:param name="writing.mode" select="f:gentext(/*[1], 'writing-mode')"/>
+<xsl:param name="writing.mode" as="xs:string" select="f:gentext(/*[1], 'writing-mode')"/>
 
-<xsl:param name="xref.label-page.separator"><xsl:text> </xsl:text></xsl:param>
+<xsl:param name="xref.label-page.separator" as="xs:string" select="' '"/>
 
-<xsl:param name="xref.label-title.separator">: </xsl:param>
+<xsl:param name="xref.label-title.separator" as="xs:string" select="': '"/>
 
 <xsl:attribute-set name="xref.properties">
 </xsl:attribute-set>
 
-<xsl:param name="xref.title-page.separator"><xsl:text> </xsl:text></xsl:param>
+<xsl:param name="xref.title-page.separator" as="xs:string" select="' '"/>
 
-<xsl:param name="xref.with.number.and.title" select="1"/>
+<xsl:param name="xref.with.number.and.title" as="xs:boolean" select="true()"/>
 
 </xsl:stylesheet>

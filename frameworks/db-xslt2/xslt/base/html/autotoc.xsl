@@ -71,13 +71,14 @@
 
   <xsl:variable name="toc.title">
     <xsl:if test="$toc.title">
-      <p>
-        <b>
+      <xsl:call-template name="t:format-toc-title">
+        <xsl:with-param name="toc-context" as="element()" select="$toc-context"/>
+        <xsl:with-param name="toc-title" as="node()*">
           <xsl:call-template name="gentext">
             <xsl:with-param name="key">TableofContents</xsl:with-param>
           </xsl:call-template>
-        </b>
-      </p>
+        </xsl:with-param>
+      </xsl:call-template>
     </xsl:if>
   </xsl:variable>
 
@@ -110,6 +111,16 @@
       </xsl:if>
     </xsl:otherwise>
   </xsl:choose>
+</xsl:template>
+
+<xsl:template name="t:format-toc-title">
+  <xsl:param name="toc-context" as="element()"/>
+  <xsl:param name="toc-title" as="node()*"/>
+  <p>
+    <b>
+      <xsl:sequence select="$toc-title"/>
+    </b>
+  </p>
 </xsl:template>
 
 <!-- ============================================================ -->
@@ -145,43 +156,51 @@
   <xsl:param name="toc.params" as="element()?" select="()"/>
   <xsl:param name="toc"/>
 
-  <xsl:if test="$toc.params/@toc != 0">
-    <xsl:copy-of select="$toc"/>
-  </xsl:if>
+  <xsl:variable name="lots" as="node()*">
+    <xsl:if test="$toc.params/@toc != 0">
+      <xsl:copy-of select="$toc"/>
+    </xsl:if>
 
-  <xsl:if test="$toc.params/@figure != 0">
-    <xsl:call-template name="tp:list-of-titles">
-      <xsl:with-param name="titles" select="'figure'"/>
-      <xsl:with-param name="nodes" select=".//db:figure"/>
-    </xsl:call-template>
-  </xsl:if>
+    <xsl:if test="$toc.params/@figure != 0">
+      <xsl:call-template name="tp:list-of-titles">
+        <xsl:with-param name="titles" select="'figure'"/>
+        <xsl:with-param name="nodes" select=".//db:figure"/>
+      </xsl:call-template>
+    </xsl:if>
 
-  <xsl:if test="$toc.params/@table != 0">
-    <xsl:call-template name="tp:list-of-titles">
-      <xsl:with-param name="titles" select="'table'"/>
-      <xsl:with-param name="nodes" select=".//db:table"/>
-    </xsl:call-template>
-  </xsl:if>
+    <xsl:if test="$toc.params/@table != 0">
+      <xsl:call-template name="tp:list-of-titles">
+        <xsl:with-param name="titles" select="'table'"/>
+        <xsl:with-param name="nodes" select=".//db:table"/>
+      </xsl:call-template>
+    </xsl:if>
 
-  <xsl:if test="$toc.params/@example != 0">
-    <xsl:call-template name="tp:list-of-titles">
-      <xsl:with-param name="titles" select="'example'"/>
-      <xsl:with-param name="nodes" select=".//db:example"/>
-    </xsl:call-template>
-  </xsl:if>
+    <xsl:if test="$toc.params/@example != 0">
+      <xsl:call-template name="tp:list-of-titles">
+        <xsl:with-param name="titles" select="'example'"/>
+        <xsl:with-param name="nodes" select=".//db:example"/>
+      </xsl:call-template>
+    </xsl:if>
 
-  <xsl:if test="$toc.params/@equation != 0">
-    <xsl:call-template name="tp:list-of-titles">
-      <xsl:with-param name="titles" select="'equation'"/>
-      <xsl:with-param name="nodes" select=".//db:equation[db:title]"/>
-    </xsl:call-template>
-  </xsl:if>
+    <xsl:if test="$toc.params/@equation != 0">
+      <xsl:call-template name="tp:list-of-titles">
+        <xsl:with-param name="titles" select="'equation'"/>
+        <xsl:with-param name="nodes" select=".//db:equation[db:title]"/>
+      </xsl:call-template>
+    </xsl:if>
 
-  <xsl:if test="$toc.params/@procedure != 0">
-    <xsl:call-template name="tp:list-of-titles">
-      <xsl:with-param name="titles" select="'procedure'"/>
-      <xsl:with-param name="nodes" select=".//db:procedure[db:title]"/>
-    </xsl:call-template>
+    <xsl:if test="$toc.params/@procedure != 0">
+      <xsl:call-template name="tp:list-of-titles">
+        <xsl:with-param name="titles" select="'procedure'"/>
+        <xsl:with-param name="nodes" select=".//db:procedure[db:title]"/>
+      </xsl:call-template>
+    </xsl:if>
+  </xsl:variable>
+
+  <xsl:if test="exists($lots//element())">
+    <div class="lists-of-titles">
+      <xsl:sequence select="$lots"/>
+    </div>
   </xsl:if>
 </xsl:template>
 
@@ -222,7 +241,7 @@ division (book, part, etc.).</para>
 			    |db:article
 			    |db:bibliography|db:glossary|db:index
 			    |db:refentry
-			    |db:bridgehead[$bridgehead.in.toc != 0]"/>
+			    |db:bridgehead[$bridgehead.in.toc]"/>
 
   </xsl:call-template>
 </xsl:template>
@@ -265,9 +284,9 @@ component (chapter, article, etc.).</para>
 			    |db:article|db:bibliography|db:glossary
 			    |db:appendix|db:index
 			    |db:bridgehead[not(@renderas)
-			                   and $bridgehead.in.toc != 0]
+			                   and $bridgehead.in.toc]
 			    |.//db:bridgehead[@renderas='sect1'
-			                      and $bridgehead.in.toc != 0]"/>
+			                      and $bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -329,7 +348,7 @@ section.</para>
                     select="db:section
 			    |db:sect1|db:sect2|db:sect3|db:sect4|db:sect5
 			    |db:refentry
-			    |db:bridgehead[$bridgehead.in.toc != 0]"/>
+			    |db:bridgehead[$bridgehead.in.toc]"/>
 
   </xsl:call-template>
 </xsl:template>
@@ -539,7 +558,7 @@ Lists of Titles for a qandaset.</para>
                                          |db:article
                                          |db:bibliography|db:glossary|db:index
                                          |db:refentry
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -547,7 +566,7 @@ Lists of Titles for a qandaset.</para>
   <xsl:param name="toc-context" select="."/>
 
   <!-- If the setindex tag is not empty, it should be it in the TOC -->
-  <xsl:if test="* or $generate.index != 0">
+  <xsl:if test="* or $generate.index">
     <xsl:call-template name="tp:subtoc">
       <xsl:with-param name="toc-context" select="$toc-context"/>
     </xsl:call-template>
@@ -562,7 +581,7 @@ Lists of Titles for a qandaset.</para>
     <xsl:with-param name="nodes" select="db:appendix|db:chapter|db:article
                                          |db:index|db:glossary|db:bibliography
                                          |db:preface|db:reference|db:refentry
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -573,7 +592,7 @@ Lists of Titles for a qandaset.</para>
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="nodes" select="db:section|db:sect1|db:simplesect|db:refentry
                                          |db:glossary|db:bibliography|db:index
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -582,7 +601,7 @@ Lists of Titles for a qandaset.</para>
   <xsl:call-template name="tp:subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="nodes" select="db:sect2
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -592,7 +611,7 @@ Lists of Titles for a qandaset.</para>
   <xsl:call-template name="tp:subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="nodes" select="db:sect3
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -602,7 +621,7 @@ Lists of Titles for a qandaset.</para>
   <xsl:call-template name="tp:subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="nodes" select="db:sect4
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -612,7 +631,7 @@ Lists of Titles for a qandaset.</para>
   <xsl:call-template name="tp:subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="nodes" select="db:sect5
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
@@ -630,14 +649,14 @@ Lists of Titles for a qandaset.</para>
   <xsl:call-template name="tp:subtoc">
     <xsl:with-param name="toc-context" select="$toc-context"/>
     <xsl:with-param name="nodes" select="db:section
-                                         |db:bridgehead[$bridgehead.in.toc != 0]"/>
+                                         |db:bridgehead[$bridgehead.in.toc]"/>
   </xsl:call-template>
 </xsl:template>
 
 <xsl:template match="db:bridgehead" mode="mp:toc">
   <xsl:param name="toc-context" select="."/>
 
-  <xsl:if test="$bridgehead.in.toc != 0">
+  <xsl:if test="$bridgehead.in.toc">
     <xsl:call-template name="tp:subtoc">
       <xsl:with-param name="toc-context" select="$toc-context"/>
     </xsl:call-template>
@@ -656,7 +675,7 @@ Lists of Titles for a qandaset.</para>
   <xsl:param name="toc-context" select="."/>
 
   <!-- If the index tag is not empty, it should be it in the TOC -->
-  <xsl:if test="* or $generate.index != 0">
+  <xsl:if test="* or $generate.index">
     <xsl:call-template name="tp:subtoc">
       <xsl:with-param name="toc-context" select="$toc-context"/>
     </xsl:call-template>
@@ -689,7 +708,7 @@ Lists of Titles for a qandaset.</para>
       </a>
     </span>
     <span class='refpurpose'>
-      <xsl:if test="$annotate.toc != 0">
+      <xsl:if test="$annotate.toc">
         <xsl:text> - </xsl:text>
         <xsl:value-of select="db:refnamediv/db:refpurpose"/>
       </xsl:if>
