@@ -29,4 +29,3 @@ if [[ $1 = "-h" || $1 = "--help" ]]; then
 fi
 
 rsync -aiv --exclude '*~' --exclude '*.orig' ${TOSYNC} ${USER},${PROJECT}@${SFSITE}:${WEBPATH}
-
