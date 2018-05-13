@@ -22,7 +22,7 @@
   <title>The DoCookBook</title>
   <subtitle>Recipes for DocBook Developers</subtitle>
   <info>
-    <pubdate role="currentdatetime">2018-03-10</pubdate>
+    <pubdate role="currentdatetime"><?dbtimestamp ?></pubdate>
     <releaseinfo>0.7.3</releaseinfo>
     <definitions definitionfile="defs.xml"/>
     <rdf:RDF
