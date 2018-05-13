@@ -22,6 +22,7 @@ def func_html(parserobj, args):
 def func_pdf(parserobj, args):
     logger.debug("-- Create PDF with %s --", args)
     initenv(parserobj, args)
+    resolvecategories(parserobj, args)
     return fo(parserobj, args)
 
 

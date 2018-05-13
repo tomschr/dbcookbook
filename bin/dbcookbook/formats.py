@@ -217,7 +217,7 @@ def fo(parser, args):
         ns_clean=True
         )
     xmldoc = etree.parse(xmlfile, xmlparser)
-    xmldoc.xinclude()
+    # xmldoc.xinclude()
     transform = etree.XSLT(etree.parse(foxslt))
 
     logger.info("*** Transforming {xmlfile} with {foxslt}".format(**locals()))
