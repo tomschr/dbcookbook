@@ -7,12 +7,13 @@
                 xmlns:ghost="http://docbook.org/ns/docbook/ephemeral"
                 xmlns:h="http://www.w3.org/1999/xhtml"
                 xmlns:m="http://docbook.org/xslt/ns/mode"
+                xmlns:mp="http://docbook.org/xslt/ns/mode/private"
                 xmlns:t="http://docbook.org/xslt/ns/template"
                 xmlns:u="http://nwalsh.com/xsl/unittests#"
                 xmlns:xlink='http://www.w3.org/1999/xlink'
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:ext="http://docbook.org/extensions/xslt20"
-                exclude-result-prefixes="db doc f ghost h m t u xlink xs ext"
+                exclude-result-prefixes="db doc f ghost h m mp t u xlink xs ext"
                 version="2.0">
 
 <xsl:param name="output.dir" select="''"/>
@@ -206,7 +207,7 @@ vertical alignment.</para>
 
   <xsl:variable name="width-units">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0"></xsl:when>
+      <xsl:when test="$ignore.image.scaling"></xsl:when>
       <xsl:when test="@width">
         <xsl:value-of select="f:length-units(@width)"/>
       </xsl:when>
@@ -218,7 +219,7 @@ vertical alignment.</para>
 
   <xsl:variable name="width">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0"></xsl:when>
+      <xsl:when test="$ignore.image.scaling"></xsl:when>
       <xsl:when test="@width">
         <xsl:choose>
           <xsl:when test="$width-units = '%'">
@@ -237,7 +238,7 @@ vertical alignment.</para>
 
   <xsl:variable name="scalefit">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0">0</xsl:when>
+      <xsl:when test="$ignore.image.scaling">0</xsl:when>
       <xsl:when test="@contentwidth or @contentdepth">0</xsl:when>
       <xsl:when test="@scale">0</xsl:when>
       <xsl:when test="@scalefit"><xsl:value-of select="@scalefit"/></xsl:when>
@@ -248,7 +249,7 @@ vertical alignment.</para>
 
   <xsl:variable name="scale">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0">1.0</xsl:when>
+      <xsl:when test="$ignore.image.scaling">1.0</xsl:when>
       <xsl:when test="@scale">
         <xsl:value-of select="@scale div 100.0"/>
       </xsl:when>
@@ -273,7 +274,7 @@ vertical alignment.</para>
   <xsl:variable name="filename" select="f:mediaobject-filename(..)"/>
 
   <xsl:variable name="imageproperties" as="xs:integer*">
-    <xsl:if test="$filename != ''">
+    <xsl:if test="$tag eq 'img' and $filename != ''">
       <xsl:call-template name="t:image-properties">
         <xsl:with-param name="image" select="$filename"/>
       </xsl:call-template>
@@ -292,7 +293,7 @@ vertical alignment.</para>
 
   <xsl:variable name="contentwidth">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0"></xsl:when>
+      <xsl:when test="$ignore.image.scaling"></xsl:when>
       <xsl:when test="@contentwidth">
         <xsl:variable name="units">
           <xsl:value-of select="f:length-units(@contentwidth)"/>
@@ -329,7 +330,7 @@ vertical alignment.</para>
 
   <xsl:variable name="html.width">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0"></xsl:when>
+      <xsl:when test="$ignore.image.scaling"></xsl:when>
       <xsl:when test="$width-units = '%'">
         <xsl:value-of select="$width"/>
       </xsl:when>
@@ -344,7 +345,7 @@ vertical alignment.</para>
 
   <xsl:variable name="contentdepth">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0"></xsl:when>
+      <xsl:when test="$ignore.image.scaling"></xsl:when>
       <xsl:when test="@contentdepth">
         <xsl:variable name="units" select="f:length-units(@contentdepth)"/>
 
@@ -402,7 +403,7 @@ vertical alignment.</para>
 
   <xsl:variable name="html.depth">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0"></xsl:when>
+      <xsl:when test="$ignore.image.scaling"></xsl:when>
       <xsl:when test="$depth-units = '%'">
         <xsl:value-of select="$depth"/>
       </xsl:when>
@@ -416,11 +417,15 @@ vertical alignment.</para>
     </xsl:choose>
   </xsl:variable>
 
-  <xsl:variable name="viewport">
+  <xsl:variable name="viewport" as="xs:boolean">
     <xsl:choose>
-      <xsl:when test="$ignore.image.scaling != 0">0</xsl:when>
+      <xsl:when test="$ignore.image.scaling">
+        <xsl:sequence select="false()"/>
+      </xsl:when>
       <xsl:when test="ancestor::db:inlinemediaobject
-                      or ancestor::db:inlineequation">0</xsl:when>
+                      or ancestor::db:inlineequation">
+        <xsl:sequence select="false()"/>
+      </xsl:when>
       <xsl:otherwise>
         <xsl:value-of select="$make.graphic.viewport"/>
       </xsl:otherwise>
@@ -491,7 +496,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
           <xsl:if test="@align and @align != 'center'">
             <xsl:attribute name="align" select="@align"/>
           </xsl:if>
-          <xsl:if test="$use.embed.for.svg != 0">
+          <xsl:if test="$use.embed.for.svg">
             <embed src="{$href}" type="image/svg+xml">
               <xsl:call-template name="t:process-image-attributes">
                 <xsl:with-param name="alt" select="$alt"/>
@@ -511,7 +516,28 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
         </object>
       </xsl:when>
       <xsl:otherwise>
+        <xsl:if test="$tag = 'img' and ancestor::db:imageobjectco">
+          <xsl:choose>
+            <xsl:when test="$scaled">
+              <xsl:comment> Imagemap skipped: not supported on scaled images </xsl:comment>
+            </xsl:when>
+            <xsl:when test="empty($imageproperties)">
+              <xsl:comment> Imagemap skipped: intrinsics extension not available </xsl:comment>
+            </xsl:when>
+            <xsl:otherwise>
+              <!-- nop -->
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:if>
         <xsl:element name="{$tag}">
+          <xsl:if test="@role or ../@role">
+            <xsl:variable name="values"
+                          select="tokenize(concat(@role, ' ', ../@role), '\s+')"/>
+            <xsl:attribute name="class">
+              <xsl:value-of select="normalize-space(string-join($values, ' '))"/>
+            </xsl:attribute>
+          </xsl:if>
+
           <xsl:copy-of select="$tag-attributes"/>
           <xsl:if test="$tag = 'img' and ancestor::db:imageobjectco">
             <xsl:choose>
@@ -531,7 +557,8 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:attribute name="border" select="0"/>
-                <xsl:attribute name="usemap" select="concat('#',f:imagemap-name(ancestor::db:imageobjectco))"/>
+                <xsl:attribute name="usemap"
+                     select="concat('#',f:imagemap-name(ancestor::db:imageobjectco))"/>
               </xsl:otherwise>
             </xsl:choose>
           </xsl:if>
@@ -581,13 +608,23 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
              'background-color')"/>
 
   <xsl:variable name="use.viewport"
-                select="$viewport != 0
+                select="$viewport
                         and ($html.width != ''
                              or ($html.depth != '' and $depth-units != '%')
                              or $bgcolor != ''
                              or @valign)"/>
 
   <xsl:choose>
+    <xsl:when test="$tag = 'video'">
+      <video controls="controls">
+        <xsl:if test="$html.width != ''">
+          <xsl:attribute name="width">
+            <xsl:value-of select="$html.width"/>
+          </xsl:attribute>
+        </xsl:if>
+        <source src="{$href}"/>
+      </video>
+    </xsl:when>
     <xsl:when test="$use.viewport">
       <table border="0" summary="Manufactured viewport for HTML image"
              cellspacing="0" cellpadding="0">
@@ -596,6 +633,14 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
             <xsl:value-of select="$html.width"/>
           </xsl:attribute>
         </xsl:if>
+        <!-- align the table so that the viewport is aligned -->
+<!-- or not
+        <xsl:if test="@align">
+          <xsl:attribute name="align">
+            <xsl:value-of select="@align"/>
+          </xsl:attribute>
+        </xsl:if>
+-->
         <tr>
           <xsl:if test="$html.depth != '' and $depth-units != '%'">
             <!-- don't do this for percentages because browsers get confused -->
@@ -727,7 +772,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
   <xsl:param name="scalefit"/>
   <xsl:param name="scaled.contentdepth"/>
   <xsl:param name="scaled.contentwidth"/>
-  <xsl:param name="viewport"/>
+  <xsl:param name="viewport" as="xs:boolean"/>
 
   <xsl:choose>
     <xsl:when test="@contentwidth or @contentdepth">
@@ -752,11 +797,11 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
       </xsl:attribute>
     </xsl:when>
 
-    <xsl:when test="$scalefit != 0">
+    <xsl:when test="$scalefit">
       <xsl:choose>
         <xsl:when test="contains($html.width, '%')">
           <xsl:choose>
-            <xsl:when test="$viewport != 0">
+            <xsl:when test="$viewport">
               <!-- The *viewport* will be scaled, so use 100% here! -->
               <xsl:attribute name="width">
                 <xsl:value-of select="'100%'"/>
@@ -820,7 +865,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
     </xsl:attribute>
   </xsl:if>
 
-  <xsl:if test="@align and $viewport = 0">
+  <xsl:if test="@align and $viewport">
     <xsl:attribute name="align">
       <xsl:choose>
         <xsl:when test="@align = 'center'">middle</xsl:when>
@@ -855,7 +900,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
     <xsl:otherwise>
       <div>
         <xsl:sequence select="f:html-attributes(., f:node-id(.), local-name(.), (@role,$center), @h:*)"/>
-        <xsl:if test="$html.longdesc != 0 and $html.longdesc.link != 0">
+        <xsl:if test="$html.longdesc and $html.longdesc.link">
           <xsl:call-template name="t:longdesc-link">
             <xsl:with-param name="textobject"
                             select="db:textobject[not(db:phrase)][1]"/>
@@ -898,7 +943,10 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
       <xsl:apply-templates/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:apply-templates select="db:imagedata"/>
+      <!-- FIXME: Support multiple imagedata objects; see
+           https://github.com/docbook/docbook/issues/49 and
+           https://github.com/docbook/docbook/issues/52 -->
+      <xsl:apply-templates select="db:imagedata[1]"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -951,7 +999,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 
 <xsl:template match="db:videodata">
   <xsl:call-template name="t:process-image">
-    <xsl:with-param name="tag" select="'embed'"/>
+    <xsl:with-param name="tag" select="'video'"/>
     <xsl:with-param name="alt">
       <xsl:apply-templates select="(../../db:textobject/db:phrase)[1]"/>
     </xsl:with-param>
@@ -1033,18 +1081,8 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
       <xsl:value-of select="."/>
     </xsl:when>
     <xsl:otherwise>
-      <xsl:variable name="absuri" select="resolve-uri(.,base-uri(.))"/>
-      <xsl:choose>
-        <xsl:when test="starts-with($absuri, 'file://')">
-          <xsl:value-of select="substring-after($absuri, 'file:/')"/>
-        </xsl:when>
-        <xsl:when test="starts-with($absuri, 'file:/')">
-          <xsl:value-of select="substring-after($absuri, 'file:')"/>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:value-of select="$absuri"/>
-        </xsl:otherwise>
-      </xsl:choose>
+      <xsl:value-of
+          select="f:strip-file-uri-scheme(f:resolve-path(.,base-uri(.)))"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:template>
@@ -1054,7 +1092,7 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 <xsl:function name="f:longdesc-uri" as="xs:string?">
   <xsl:param name="node" as="element()?"/>
 
-  <xsl:if test="exists($node) and $html.longdesc != 0
+  <xsl:if test="exists($node) and $html.longdesc
                 and $node/db:textobject[not(db:phrase)]">
     <xsl:variable name="image-id" select="f:node-id($node)"/>
     <xsl:variable name="dbhtml.dir" select="f:dbhtml-dir($node)"/>
@@ -1075,18 +1113,11 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 <xsl:template name="t:longdesc-link">
   <xsl:param name="textobject" as="element()?"/>
 
-  <xsl:if test="exists($textobject) and $html.longdesc != 0">
-    <xsl:variable name="this.uri"
-                  select="concat($base.dir, f:href-target-uri($textobject))"/>
-
-    <xsl:variable name="href.to"
-                  select="f:trim-common-uri-paths(f:longdesc-uri($textobject),
-                                                  $this.uri)"/>
-
+  <xsl:if test="exists($textobject)">
     <div class="longdesc-link">
       <xsl:text>[</xsl:text>
-      <a href="{$href.to}" target="longdesc"
-         title="Link to long description">D</a>
+      <a class="dialog-link" href="#longdesc-{generate-id($textobject)}"
+         title="long description link">D</a>
       <xsl:text>]</xsl:text>
     </div>
   </xsl:if>
@@ -1099,20 +1130,22 @@ valign: <xsl:value-of select="@valign"/></xsl:message>
 
   <xsl:variable name="filename" select="f:longdesc-uri($firsttext)"/>
 
-  <xsl:if test="$html.longdesc != 0
+  <xsl:if test="$html.longdesc
                 and $mediaobject/db:textobject[not(db:phrase)]
                 and $filename != ''">
 
     <xsl:result-document href="{$filename}" method="xhtml">
-      <xsl:call-template name="t:user-preroot"/>
+      <xsl:apply-templates select="." mode="m:pre-root"/>
       <html>
-        <xsl:call-template name="t:head">
-          <xsl:with-param name="node" select="."/>
-        </xsl:call-template>
+        <head>
+          <xsl:apply-templates select="." mode="mp:html-head"/>
+        </head>
         <body>
-          <xsl:for-each select="$mediaobject/db:textobject[not(db:phrase)]">
-            <xsl:apply-templates select="*"/>
-          </xsl:for-each>
+          <xsl:apply-templates
+              select="$mediaobject/db:textobject[not(db:phrase)]"/>
+
+          <xsl:apply-templates select="." mode="mp:javascript-body"/>
+          <xsl:apply-templates select="." mode="m:javascript-body"/>
         </body>
       </html>
     </xsl:result-document>

@@ -13,20 +13,18 @@
 		exclude-result-prefixes="h f m fn db doc xs t ghost"
                 version="2.0">
 
-<xsl:template match="db:note|db:important|db:warning|db:caution|db:tip">
+<xsl:template match="db:note|db:important|db:warning|db:caution|db:tip|db:danger">
   <xsl:choose>
     <xsl:when test="$admonition.graphics">
       <xsl:apply-templates select="." mode="m:graphical-admonition"/>
     </xsl:when>
     <xsl:otherwise>
       <div>
-        <xsl:apply-templates select="." mode="m:html-attributes">
-          <xsl:with-param name="class" select="'admonition'"/>
-        </xsl:apply-templates>
-
+        <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.), 'admonition')"/>
         <xsl:call-template name="t:titlepage"/>
-
-	<xsl:apply-templates/>
+        <div class="admonition-body">
+	  <xsl:apply-templates/>
+        </div>
       </div>
     </xsl:otherwise>
   </xsl:choose>
@@ -88,7 +86,7 @@ the graphical form.</para>
 	  </td>
 	  <td>
 	    <xsl:if test="db:info/db:title[not(@ghost:title)
-			                   or $admonition.default.titles != 0]">
+			                   or $admonition.default.titles]">
 	      <div class="admon-title-text">
 		<xsl:call-template name="t:titlepage"/>
 	      </div>

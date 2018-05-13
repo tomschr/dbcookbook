@@ -20,15 +20,11 @@ from .log import trace, logger
 
 
 def createzip(parser, args=None):
-    if args is not None and not args.archive:
-        logger.info("Skipping compressed archive creation")
-        return
-
     # TODO: maybe there is a better method:
     version = subprocess.check_output(shlex.split("git describe"))
     version = version.decode("utf-8").strip()
 
-    logger.info("** Creating Archives **")
+    logger.info("** Creating Archives for HTML **")
     try:
         zipfilename = config.get('Archive', 'zipfile').replace("@VERSION@", version)
         tarfilename = config.get('Archive', 'tarfile').replace("@VERSION@", version)

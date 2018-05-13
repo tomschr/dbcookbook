@@ -16,7 +16,6 @@
                 exclude-result-prefixes="db doc f fp ghost h m mp t tp u xs"
                 version="2.0">
 
-
 <xsl:template name="t:verbatim-patch-html">
   <xsl:param name="content" as="node()*"/>
   <xsl:param name="areas" as="node()*"/>
@@ -26,6 +25,7 @@
   <xsl:variable name="padchar"   select="f:lineNumbering(.,'padchar')"/>
   <xsl:variable name="separator" select="f:lineNumbering(.,'separator')"/>
   <xsl:variable name="minlines"  select="f:lineNumbering(.,'minlines')" as="xs:integer?"/>
+  <xsl:variable name="asTable"   select="f:lineNumbering(.,'asTable')" as="xs:boolean"/>
 
   <xsl:variable name="pl-empty-tags" as="node()*">
     <xsl:apply-templates select="$content" mode="m:patch-empty-elements"/>
@@ -96,26 +96,33 @@
 
   <xsl:variable name="pl-removed-lines" as="node()*">
     <xsl:choose>
-      <xsl:when test="$everyNth &gt; 0
-	              and count($pl-lines) &gt;= $minlines">
-	<xsl:apply-templates select="$pl-callouts"
-			     mode="mp:pl-restore-lines">
-	  <xsl:with-param name="everyNth" select="$everyNth"/>
-	  <xsl:with-param name="width" select="$width"/>
-	  <xsl:with-param name="separator" select="$separator"/>
-	  <xsl:with-param name="padchar" select="$padchar"/>
-          <xsl:with-param name="element" select="."/>
-	</xsl:apply-templates>
+      <xsl:when test="$asTable">
+        <xsl:apply-templates select="$pl-callouts" mode="mp:pl-restore-table-lines"/>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:apply-templates select="$pl-callouts"
-			     mode="mp:pl-restore-lines">
-	  <xsl:with-param name="everyNth" select="0"/>
-	  <xsl:with-param name="width" select="$width"/>
-	  <xsl:with-param name="separator" select="$separator"/>
-	  <xsl:with-param name="padchar" select="$padchar"/>
-          <xsl:with-param name="element" select="."/>
-	</xsl:apply-templates>
+        <xsl:choose>
+          <xsl:when test="$everyNth &gt; 0
+	                  and count($pl-lines) &gt;= $minlines">
+            <xsl:apply-templates select="$pl-callouts"
+                                 mode="mp:pl-restore-lines">
+              <xsl:with-param name="everyNth" select="$everyNth"/>
+              <xsl:with-param name="width" select="$width"/>
+              <xsl:with-param name="separator" select="$separator"/>
+              <xsl:with-param name="padchar" select="$padchar"/>
+              <xsl:with-param name="element" select="."/>
+            </xsl:apply-templates>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates select="$pl-callouts"
+                                 mode="mp:pl-restore-lines">
+              <xsl:with-param name="everyNth" select="0"/>
+              <xsl:with-param name="width" select="$width"/>
+              <xsl:with-param name="separator" select="$separator"/>
+              <xsl:with-param name="padchar" select="$padchar"/>
+              <xsl:with-param name="element" select="."/>
+            </xsl:apply-templates>
+          </xsl:otherwise>
+        </xsl:choose>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:variable>
@@ -377,6 +384,29 @@
   </xsl:if>
 </xsl:template>
 
+<xsl:template match="ghost:line" mode="mp:pl-restore-table-lines">
+  <xsl:variable name="linenumber" select="position()"/>
+
+  <div class="verbatimline {if ($linenumber mod 2 = 0) then 'verbatimeven' else 'verbatimodd'}">
+    <div class="vlcontent">
+      <xsl:choose>
+        <xsl:when test="ghost:end">
+          <xsl:call-template name="t:restore-content">
+            <xsl:with-param name="nodes" select="node()"/>
+          </xsl:call-template>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:copy-of select="node()"/>
+        </xsl:otherwise>
+      </xsl:choose>
+
+      <xsl:if test="position() &lt; last()">
+        <xsl:text>&#10;</xsl:text>
+      </xsl:if>
+    </div>
+  </div>
+</xsl:template>
+
 <!-- ============================================================ -->
 
 <doc:template name="t:restore-content" xmlns="http://docbook.org/ns/docbook">
@@ -557,7 +587,11 @@ an element that has content.</para>
 </xsl:template>
 
 <xsl:template match="db:area" mode="mp:insert-callout">
-  <ghost:co number="{@ghost:number}" xml:id="{@xml:id}"/>
+  <ghost:co number="{@ghost:number}">
+    <xsl:attribute name="xml:id">
+      <xsl:value-of select="generate-id()"/>    
+    </xsl:attribute>
+  </ghost:co>
 </xsl:template>
 
 <!-- ============================================================ -->
@@ -798,10 +832,11 @@ that it had been nested within.</para>
     </xsl:when>
 
     <!-- In later versions of 4.2 (starting I don't know when, but at least in 4.2-6)
-         the bug is different. Dang it, it's not fixed in 5.0 either. -->
+         there's a different bug. Not fixed in 5.0-1 either. Or 6.x -->
     <xsl:when test="system-property('xsl:vendor') = 'MarkLogic Corporation'
                     and (starts-with(system-property('xsl:product-version'), '4.2')
-                         or starts-with(system-property('xsl:product-version'), '5'))">
+                         or starts-with(system-property('xsl:product-version'), '5')
+                         or starts-with(system-property('xsl:product-version'), '6'))">
       <xsl:variable name="parts" as="item()*">
         <xsl:analyze-string select="." regex="\n">
           <xsl:matching-substring>
@@ -825,6 +860,7 @@ that it had been nested within.</para>
         </xsl:choose>
       </xsl:for-each>
     </xsl:when>
+
     <xsl:otherwise>
       <xsl:analyze-string select="." regex="\n">
         <xsl:matching-substring>

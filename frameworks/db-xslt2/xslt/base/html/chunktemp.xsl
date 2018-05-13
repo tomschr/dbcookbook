@@ -7,9 +7,10 @@
                 xmlns:fn="http://www.w3.org/2005/xpath-functions"
                 xmlns:h="http://www.w3.org/1999/xhtml"
                 xmlns:m="http://docbook.org/xslt/ns/mode"
+                xmlns:mp="http://docbook.org/xslt/ns/mode/private"
                 xmlns:t="http://docbook.org/xslt/ns/template"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
-                exclude-result-prefixes="ch db f fn h m t xs"
+                exclude-result-prefixes="ch db f fn h m mp t xs"
                 version="2.0">
 
   <xsl:import href="chunkfunc.xsl"/>
@@ -27,33 +28,65 @@
   </xsl:template>
 
   <xsl:template match="/*" mode="m:identify-chunks" priority="100">
-    <chunk xml:id="{generate-id()}">
+    <chunk>
+      <xsl:attribute name="xml:id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
       <xsl:apply-templates select="*" mode="m:identify-chunks"/>
     </chunk>
   </xsl:template>
 
   <xsl:template match="db:book|db:part|db:reference|db:refentry" mode="m:identify-chunks">
-    <chunk xml:id="{generate-id()}">
+    <chunk>
+      <xsl:attribute name="xml:id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
       <xsl:apply-templates select="*" mode="m:identify-chunks"/>
     </chunk>
   </xsl:template>
 
   <xsl:template match="db:preface|db:chapter|db:appendix|db:colophon" mode="m:identify-chunks">
-    <chunk xml:id="{generate-id()}">
+    <chunk>
+      <xsl:attribute name="xml:id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
       <xsl:apply-templates select="*" mode="m:identify-chunks"/>
     </chunk>
   </xsl:template>
 
   <xsl:template match="db:book/db:bibliography|db:book/db:glossary" mode="m:identify-chunks">
-    <chunk xml:id="{generate-id()}">
+    <chunk>
+      <xsl:attribute name="xml:id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
       <xsl:apply-templates select="*" mode="m:identify-chunks"/>
     </chunk>
   </xsl:template>
 
   <xsl:template match="db:book/db:index|db:setindex" mode="m:identify-chunks">
-    <chunk xml:id="{generate-id()}">
+    <chunk>
+      <xsl:attribute name="xml:id">
+        <xsl:value-of select="generate-id()"/>
+      </xsl:attribute>
       <xsl:apply-templates select="*" mode="m:identify-chunks"/>
     </chunk>
+  </xsl:template>
+
+  <xsl:template match="db:section" mode="m:identify-chunks">
+    <xsl:choose>
+      <xsl:when test="$chunk.section.depth &gt;= count(ancestor::db:section)+1 and
+                      not(ancestor::*/processing-instruction('dbhtml')[normalize-space(.) = 'stop-chunking'])">
+        <chunk>
+          <xsl:attribute name="xml:id">
+            <xsl:value-of select="generate-id()"/>
+          </xsl:attribute>
+          <xsl:apply-templates select="*" mode="m:identify-chunks"/>
+        </chunk>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates select="*" mode="m:identify-chunks"/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="*" mode="m:identify-chunks">
@@ -75,7 +108,7 @@
 
   <xsl:template match="/">
     <xsl:choose>
-      <xsl:when test="$rootid = ''">
+      <xsl:when test="empty($rootid) or ($rootid = '')">
         <xsl:apply-templates select="$chunks" mode="m:chunk"/>
       </xsl:when>
       <xsl:when test="$chunks[@xml:id = $rootid]">
@@ -106,10 +139,11 @@
     -->
 
     <xsl:result-document href="{$base.dir}{$chunkfn}" method="xhtml" indent="no">
+      <xsl:apply-templates select="." mode="m:pre-root"/>
       <html>
-        <xsl:call-template name="t:head">
-          <xsl:with-param name="node" select="."/>
-        </xsl:call-template>
+        <head>
+          <xsl:apply-templates select="." mode="mp:html-head"/>
+        </head>
         <body>
           <div class="page">
             <xsl:call-template name="t:body-attributes"/>
@@ -119,12 +153,12 @@
 
             <div class="content">
               <xsl:if test="$pinav = 'true'">
-                <xsl:call-template name="t:user-header-content">
+                <xsl:apply-templates select="." mode="m:user-header-content">
                   <xsl:with-param name="node" select="."/>
                   <xsl:with-param name="next" select="key('genid', $nchunk/@xml:id)"/>
                   <xsl:with-param name="prev" select="key('genid', $pchunk/@xml:id)"/>
                   <xsl:with-param name="up" select="key('genid', $uchunk/@xml:id)"/>
-                </xsl:call-template>
+                </xsl:apply-templates>
               </xsl:if>
 
               <div class="body">
@@ -135,12 +169,12 @@
             </div>
 
             <xsl:if test="$pinav = 'true'">
-              <xsl:call-template name="t:user-footer-content">
+              <xsl:apply-templates select="." mode="m:user-footer-content">
                 <xsl:with-param name="node" select="."/>
                 <xsl:with-param name="next" select="key('genid', $nchunk/@xml:id)"/>
                 <xsl:with-param name="prev" select="key('genid', $pchunk/@xml:id)"/>
                 <xsl:with-param name="up" select="key('genid', $uchunk/@xml:id)"/>
-              </xsl:call-template>
+              </xsl:apply-templates>
             </xsl:if>
           </div>
         </body>
