@@ -16,12 +16,13 @@ before_install:
 install:
     - sudo apt-get update -q
     - sudo apt-get install xsltproc
-    - sudo apt-get install libsaxon-java libxml-commons-resolver1.1-java libsaxon-java libxerces2-java
+    - sudo apt-get install libsaxon-java libxml-commons-resolver1.1-java libsaxon-java libxerces2-java fop
     - sudo apt-get install trang jing
     - sudo apt-get install python3 python3-lxml
 
 script:
-    - ./bin/buildbook.py -v --archive
+    - ./bin/buildbook.py -v html --archive
+    - ./bin/buildbook.py -v pdf && mv -vi build/fo/*.pdf .
 
 before_deploy:
     - git config --local user.name "Travis CI"
@@ -34,6 +35,7 @@ deploy:
   file:
     - DBCookBook-$VERSION-html.tar.bz2
     - DBCookBook-$VERSION-html.zip
+    - DBCookBook-$VERSION.pdf
   skip_cleanup: true
   on:
     branch: master

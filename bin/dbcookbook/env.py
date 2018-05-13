@@ -14,6 +14,7 @@ def initenv(parser, args=None):
     builddir=os.path.normpath(config.get('Common', 'builddir'))
     tempdir=os.path.normpath(config.get('Common', 'tempdir'))
     htmlbuilddir=os.path.normpath(config.get('Common', 'htmldir'))
+    fobuilddir=os.path.normpath(config.get('Common', 'fodir'))
     cssdir=os.path.normpath(config.get('XSLT2', 'cssdir'))
     jsdir=os.path.normpath(config.get('XSLT2', 'jsdir'))
     pngdir=os.path.normpath(config.get('Common', 'pngdir'))
@@ -23,7 +24,7 @@ def initenv(parser, args=None):
         logger.debug(" Removing {builddir}".format(**locals()))
         rmtree(builddir)
     
-    for entry in (builddir, htmlbuilddir, tempdir):
+    for entry in (builddir, htmlbuilddir, fobuilddir, tempdir):
         os.makedirs(entry, exist_ok=True)
         logger.debug(" Created {entry}...".format(**locals()))
 
@@ -50,11 +51,11 @@ def initenv(parser, args=None):
         copytree(highlighterdir, dest)
         logger.debug(" Copied tree: {highlighterdir} -> {dest}".format(**locals()))
     except FileExistsError:
-            pass
+        pass
 
     copyexamples()
-       
     os.chdir(pwd)
+
 
 def copyexamples():
     from shutil import copytree, Error, ignore_patterns, copy2
@@ -83,7 +84,8 @@ def copyexamples():
                            copy_function=mycopy,
                            ignore=ignore_patterns("*~", "*.bak", "*.orig", "defs.xml", "png") )
         except FileExistsError as e:
-            logger.info("File already exists {e}".format(**locals()))
+            # logger.info("File already exists {e}".format(**locals()))
+            pass
         except Error as e:
             logger.debug(" Shutils Error: {e}".format(**locals()))
 
