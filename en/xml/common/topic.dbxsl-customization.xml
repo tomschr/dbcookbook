@@ -74,7 +74,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook">
 
-  &lt;xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/<replaceable
+  &lt;xsl:import href="https://cdn.docbook.org/release/xsl/current/<replaceable
     >FORMAT</replaceable>/docbook.xsl"/>
 
   &lt;!-- Your customizations go here -->

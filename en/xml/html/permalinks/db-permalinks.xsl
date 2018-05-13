@@ -6,7 +6,7 @@
   exclude-result-prefixes="d">
   
   <xsl:import
-    href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/docbook.xsl"/>
+    href="https://cdn.docbook.org/release/xsl/current/xhtml/docbook.xsl"/>
   <xsl:include href="permalinks.xsl"/>
   
   <xsl:include href="component.title.xsl"/>
