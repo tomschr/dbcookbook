@@ -15,7 +15,7 @@
 >
 
 <!-- Use XEP extensions -->
-<xsl:param name="xep.extensions">1</xsl:param>
+<!--<xsl:param name="xep.extensions">0</xsl:param>-->
 
 <!-- Should cropmarks be created? -->
 <xsl:param name="crop.marks">0</xsl:param>
@@ -23,8 +23,10 @@
 <!-- Should we use the Java extensions? -->
 <xsl:param name="use.extensions">0</xsl:param>
 
+<xsl:param name="paper.type">A4</xsl:param>
+
 <!-- Path to all images -->
-<xsl:param name="img.src.path">./images/</xsl:param>
+<xsl:param name="img.src.path">../../images/</xsl:param>
 
 <!-- As long as we still authoring, we use draft mode -->
 <xsl:param name="draft.mode"            select="'no'"/>
@@ -58,7 +60,7 @@
 <!-- Activate numbering of sections -->
 <xsl:param name="section.label.includes.component.label" select="1"/>
 <xsl:param name="section.autolabel" select="1"/>
-<xsl:param name="section.autolabel.max.depth" select="2"/>
+<xsl:param name="section.autolabel.max.depth" select="1"/>
 
 <xsl:param name="refentry.generate.title" select="1"/>
 <xsl:param name="refentry.generate.name" select="0"/>
