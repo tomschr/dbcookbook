@@ -55,7 +55,7 @@ p {
 code, .command, pre, .property,
 div.programlisting, div.screen {
   font-family:'Ubuntu Mono','DejaVu Sans Mono', monospace;
-  overflow-x: scroll;
+  overflow: auto;
 }
 
 /* Font Sizes */
