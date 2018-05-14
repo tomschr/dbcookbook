@@ -2,11 +2,13 @@ syntax: glob
 # Temporary files used by the oXygen editor
 *.~
 *~
+*.bak
 
 # Temporary directories and files by Python
 __pycache__
 *.pyc
 *.pyo
+.tmp/
 
 
 # Temporary files used by the vim editor.

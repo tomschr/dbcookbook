@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -32,7 +32,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need in your document two separate indices, a general one
@@ -49,15 +49,15 @@
       However, Guido is marked up as a <quote>person's index</quote>:</para>
     <programlisting language="xml">&lt;para> The Python&lt;indexterm>
    &lt;primary>Python&lt;/primary>&lt;/indexterm> programming
-   language was designed by 
+   language was designed by
    Guido van Rossum.&lt;indexterm type="persons">
-   &lt;primary>van Rossum, Guido&lt;/primary>&lt;/indexterm> 
+   &lt;primary>van Rossum, Guido&lt;/primary>&lt;/indexterm>
 &lt;/para></programlisting>
     <para>Use two <tag>index</tag> element at the end of your document
       to distinguish between the two:</para>
     <programlisting language="xml">&lt;index/> <co
       xml:id="co.idx.type.normal"/>
-    
+
 &lt;index type="persons"> <co xml:id="co.idx.type.persons"/>
   &lt;title>Persons&lt;/title>
 &lt;/index></programlisting>
@@ -73,7 +73,7 @@
           above example).</para>
       </callout>
     </calloutlist>
-    
+
   </section>
   <section role="discussion">
     <title>Discussion</title>

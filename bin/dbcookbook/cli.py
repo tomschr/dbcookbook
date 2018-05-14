@@ -1,5 +1,30 @@
 # -*- coding: UTF-8 -*-
 
+from dbcookbook.categories import resolvecategories
+from dbcookbook.env import initenv
+from dbcookbook.formats import html, fo
+from dbcookbook.log import logger
+from dbcookbook.zip import createzip
+
+
+def func_html(parserobj, args):
+    logger.debug("-- Create HTML with %s --" % args)
+    initenv(parserobj, args)
+    resolvecategories(parserobj, args)
+    result = html(parserobj, args)
+    if args.archive:
+        result = createzip(parserobj, args)
+    else:
+        logger.info("Skipping compressed archive creation")
+    return result
+
+
+def func_pdf(parserobj, args):
+    logger.debug("-- Create PDF with %s --", args)
+    initenv(parserobj, args)
+    resolvecategories(parserobj, args)
+    return fo(parserobj, args)
+
 
 def parsecommandline():
     """Parses commandline and returns parser and parsed arguments
@@ -9,9 +34,15 @@ def parsecommandline():
     import argparse
     from .config import __version__, __author__, LOGFILE, MAINFILE
 
+    mainfile = dict(help="Use main XML file  (default: %(default)r)",
+                     default=MAINFILE,
+                     nargs='?',
+                     )
     parser = argparse.ArgumentParser(
         description='Transforms an DocBook XML file into a target format',
     )
+    # Subparsers
+    sp = parser.add_subparsers(dest='subcmd', help='sub-command help')
 
     parser.add_argument('--version',
         action='version',
@@ -60,27 +91,51 @@ def parsecommandline():
         type=int,
         default=1,
         )
-    parser.add_argument('-A', '--archive',
-        help="Create compressed files of the HTML build (default: %(default)s)",
-        action='store_true',
-        default=False,
-        )
-    parser.add_argument('mainfile',
-        help="Use main XML file  (default: %(default)s)",
-        default=MAINFILE,
-        nargs='?',
-        )
+
     # Should go away as soon as the script is stable
     parser.add_argument('--test',
         help="Just for testing",
         action='store_true',
         default=False,
         )
-    
+
+    # HTML Subparser
+    htmlsub = sp.add_parser('html',
+                            help='Generate HTML')
+    # sp.set_defaults(subcommand=None)
+    htmlsub.set_defaults(func=func_html)
+    htmlsub.add_argument('-A', '--archive',
+                         help=("Create compressed files of the HTML build "
+                               "(default: %(default)s)"),
+                         action='store_true',
+                         default=False,
+                         )
+    htmlsub.add_argument('mainfile', **mainfile)
+
+    # FO Subparser
+    fosub = sp.add_parser('pdf',
+                          help='Generate PDF from FO')
+    fosub.set_defaults(func=func_pdf)
+    fosub.add_argument('-f', '--formatter',
+                       choices=('fop', 'xep'),  # axf
+                       default='fop',
+                       help='Format the FO with formatter (default %(default)r)',
+                       )
+    fosub.add_argument('-o', '--output',
+                       # required=False,
+                       help="Save result PDF in OUTPUT"
+                       )
+    fosub.add_argument('--opts',
+                       help=("Pass special options to formatter; "
+                             "keep in mind to quote it correctly")
+                       )
+    fosub.add_argument('mainfile', **mainfile)
+
+
     args=parser.parse_args()
-    
+
     if args.jobs < 0:
         parser.error("argument -j/--job: negative int value: {}. "
                      "Job values have to be positive.".format(args.jobs))
-        
+
     return parser, args

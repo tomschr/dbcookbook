@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need the language of the current element or of your DocBook document.</para>
@@ -42,7 +42,7 @@
   <section role="solution">
     <title>Solution</title>
     <para>Use the <function>l10n.language</function> template from
-      <filename>common/l10n.xsl</filename>. It extracts the language attribute 
+      <filename>common/l10n.xsl</filename>. It extracts the language attribute
       from the current context node or its ancestors:</para>
     <programlisting language="xml">&lt;xsl:variable name="language">
    &lt;xsl:call-template name="l10n.language"/>
@@ -114,7 +114,7 @@
       In the case no language is given, the template returns a
       default language from the
       <parameter>l10n.gentext.default.language</parameter> parameter (usually
-      English).</para>    
+      English).</para>
     <para>Sometimes, returning only the language is not enough. The
       following table gives you some additional functions from <filename>common/l10n.xsl</filename>
       which can be useful for your code (Question marks(?) denote an

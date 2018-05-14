@@ -5,9 +5,9 @@
 <!-- * do not submit an edited version of this file. Instead, submit an -->
 <!-- * edited version of the source file at the following location: -->
 <!-- * -->
-<!-- *  https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/gentext/locale/sr.xml -->
+<!-- *  https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/gentext/locale/ -->
 <!-- * -->
-<!-- * E-mail the edited sr.xml source file to: -->
+<!-- * E-mail the edited  source file to: -->
 <!-- * -->
 <!-- *  docbook-developers@lists.sourceforge.net -->
 
@@ -469,6 +469,7 @@
 </l:context>
 <l:context name="xref-number-and-title"><l:template name="appendix" text="Додатак %n, %t"/>
 <l:template name="chapter" text="Поглавље %n, %t"/>
+<l:template name="preface" text="%t" lang="en"/>
 <l:template name="equation" text="Једначина %n, „%t“"/>
 <l:template name="example" text="Пример %n, „%t“"/>
 <l:template name="figure" text="Слика %n, „%t“"/>
@@ -476,6 +477,7 @@
 <l:template name="procedure" text="Поступак %n, „%t“"/>
 <l:template name="productionset" text="Продукција %n, „%t“"/>
 <l:template name="qandadiv" text="П и О %n, „%t“"/>
+<l:template name="question" text="П: %n" lang="en"/>
 <l:template name="refsect1" text="одељак под именом „%t“"/>
 <l:template name="refsect2" text="одељак под именом „%t“"/>
 <l:template name="refsect3" text="одељак под именом „%t“"/>
@@ -488,6 +490,7 @@
 <l:template name="section" text="Одељак %n, „%t“"/>
 <l:template name="simplesect" text="одељак под именом „%t“"/>
 <l:template name="table" text="Табела %n, „%t“"/>
+<l:template name="bridgehead" text="Одељак %n, „%t“"/>
 </l:context>
 <l:context name="authorgroup"><l:template name="sep" text=", "/>
 <l:template name="sep2" text=" и "/>
@@ -549,6 +552,28 @@
 <l:template name="Sun" text="нед"/>
 </l:context>
 <l:context name="htmlhelp"><l:template name="langcode" text="0x0C1A Serbian (Cyrillic)"/>
+</l:context>
+<l:context name="keycap"><l:template name="alt" text="Alt" lang="en"/>
+<l:template name="backspace" text="⤆" lang="en"/>
+<l:template name="command" text="⌘" lang="en"/>
+<l:template name="control" text="Ctrl" lang="en"/>
+<l:template name="delete" text="Delete" lang="en"/>
+<l:template name="down" text="↓" lang="en"/>
+<l:template name="end" text="End" lang="en"/>
+<l:template name="enter" text="Enter" lang="en"/>
+<l:template name="escape" text="Esc" lang="en"/>
+<l:template name="home" text="Home" lang="en"/>
+<l:template name="insert" text="Insert" lang="en"/>
+<l:template name="left" text="←" lang="en"/>
+<l:template name="meta" text="Meta" lang="en"/>
+<l:template name="option" text="Option" lang="en"/>
+<l:template name="pagedown" text="Page Down" lang="en"/>
+<l:template name="pageup" text="Page Up" lang="en"/>
+<l:template name="right" text="→" lang="en"/>
+<l:template name="shift" text="Shift" lang="en"/>
+<l:template name="space" text="Spacebar" lang="en"/>
+<l:template name="tab" text="Tab" lang="en"/>
+<l:template name="up" text="↑" lang="en"/>
 </l:context>
 <l:context name="index"><l:template name="term-separator" text=", " lang="en"/>
 <l:template name="number-separator" text=", " lang="en"/>

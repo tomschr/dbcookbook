@@ -9,6 +9,7 @@ import logging
 # Need to be global to make use of it in trace decorator
 logger = logging.getLogger(os.path.basename(__package__))
 
+
 class trace(object):
     '''Logging decorator that allows you to log with a specific logger.
     
@@ -20,8 +21,8 @@ class trace(object):
     '''    
     
     # Customize these messages
-    ENTRY_MESSAGE = '[ Entering {}{sig} called with args={args}, kwargs={kwargs} ]'
-    EXIT_MESSAGE =  '[ Exiting  {}() ]'
+    ENTRY_MESSAGE = '[ Entering {}{sig} called with args={args},  kwargs={kwargs}]'
+    EXIT_MESSAGE =  '[ Exiting  {}(), returned {result} ]'
 
     def __init__(self, logger=logger):
         self.logger = logger
@@ -35,7 +36,7 @@ class trace(object):
         if not self.logger:
             logging.basicConfig()
             self.logger = logging.getLogger(func.__module__)
-            
+
         if not enable:
             return func
 
@@ -43,17 +44,45 @@ class trace(object):
         def logwrap(*args, **kwargs):
             sig=inspect.signature(func)
             
+            #argresult = []
+            #for name, param in sig.parameters.items():
+            #    # print(name, param.kind, param.default)
+            #    if param.kind == inspect.Parameter.POSITIONAL_ONLY:
+            #        argument = '{}'.format(name)
+            #    elif param.kind == inspect.Parameter.POSITIONAL_OR_KEYWORD:
+            #        if param.default != inspect.Parameter.empty:
+            #            argument = '{}={!r}'.format(name, param.default)
+            #        else:
+            #            argument = '{}'.format(name)
+            #    elif param.kind == inspect.Parameter.VAR_POSITIONAL:
+            #        argument = '*{}'.format(name)
+            #
+            #    elif param.kind == inspect.Parameter.KEYWORD_ONLY:
+            #        if param.default != inspect.Parameter.empty:
+            #            argument = '{}={!r} (keyword-only)'.format(name, param.default)
+            #        else:
+            #            argument = '{} (keyword-only)'.format(name)
+            #
+            #    elif param.kind == inspect.Parameter.VAR_KEYWORD:
+            #        argument = '**{}'.format(name)
+            #
+            #    argresult.append(argument)
+
+
             self.logger.debug(self.ENTRY_MESSAGE.format(func.__name__, 
                 sig=str(sig), 
                 args=str(args), 
-                kwargs=kwargs))
+                kwargs=kwargs)
+                # "  \n".join(argresult)
+                )
             # self.logger.debug("  Full spec:{}".format(inspect.getfullargspec(func)))
-            
+
             f_result = func(*args, **kwargs)
-            
-            self.logger.debug(self.EXIT_MESSAGE.format(func.__name__))
+
+            self.logger.debug(self.EXIT_MESSAGE.format(func.__name__, result=f_result))
             return f_result
         return logwrap
+
 
 def createlogger(level):
     from .config import LOGFILE

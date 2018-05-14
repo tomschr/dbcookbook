@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="19.1">
+<project version="20.0">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="19.1" xml:space="preserve">
+            <serialized version="20.0" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
                         <String>document.types</String>
@@ -244,10 +244,22 @@
                                     <String>Toms DocBook5 Cookbook</String>
                                 </field>
                                 <field name="schemaDescriptor">
-                                    <null/>
+                                    <docTypeSchema>
+                                        <field name="type">
+                                            <Integer>6</Integer>
+                                        </field>
+                                        <field name="uri">
+                                            <String>${pdu}/frameworks/rng/5.1/dbref.rng</String>
+                                        </field>
+                                    </docTypeSchema>
                                 </field>
                                 <field name="classpath">
-                                    <String-array/>
+                                    <String-array>
+                                        <String>${frameworks}/docbook/docbook.jar</String>
+                                        <String>${frameworks}/docbook/resources/</String>
+                                        <String>${frameworks}/docbook/i18n/</String>
+                                        <String>${frameworks}/docbook/styleguide/</String>
+                                    </String-array>
                                 </field>
                                 <field name="parentClassLoaderID">
                                     <null/>
@@ -360,13 +372,13 @@
                                             </contextProvider>
                                         </field>
                                         <field name="tableSupportClassName">
-                                            <null/>
+                                            <String>ro.sync.ecss.extensions.docbook.table.DocbookTableCellSepInfoProvider</String>
                                         </field>
                                         <field name="tableCellSeparatorSupportClassName">
-                                            <null/>
+                                            <String>ro.sync.ecss.extensions.docbook.table.DocbookTableCellSepInfoProvider</String>
                                         </field>
                                         <field name="tableColWidthSupportClassName">
-                                            <null/>
+                                            <String>ro.sync.ecss.extensions.docbook.table.DocbookTableCellSepInfoProvider</String>
                                         </field>
                                         <field name="customReferencesResolver">
                                             <null/>
@@ -375,16 +387,16 @@
                                             <null/>
                                         </field>
                                         <field name="authorExtensionStateListener">
-                                            <null/>
+                                            <String>ro.sync.ecss.extensions.docbook.id.Docbook5UniqueAttributesRecognizer</String>
                                         </field>
                                         <field name="attributesRecognizer">
-                                            <null/>
+                                            <String>ro.sync.ecss.extensions.docbook.id.Docbook5UniqueAttributesRecognizer</String>
                                         </field>
                                         <field name="authorActionEventHandler">
                                             <null/>
                                         </field>
                                         <field name="authorImageDecorator">
-                                            <null/>
+                                            <String>ro.sync.ecss.extensions.docbook.DocbookAuthorImageDecorator</String>
                                         </field>
                                     </authorExtension>
                                 </field>
@@ -393,7 +405,7 @@
                                 </field>
                                 <field name="xmlCatalogs">
                                     <String-array>
-                                        <String>${pdu}/../common/rng/catalog.xml</String>
+                                        <String>${pdu}/frameworks/catalog.xml</String>
                                     </String-array>
                                 </field>
                                 <field name="description">
@@ -442,7 +454,7 @@
                                     <null/>
                                 </field>
                                 <field name="extensionsBundleClassName">
-                                    <null/>
+                                    <String>ro.sync.ecss.extensions.docbook.DocBook5ExtensionsBundle</String>
                                 </field>
                                 <field name="useImposedInitialPage">
                                     <Boolean>false</Boolean>
@@ -451,7 +463,7 @@
                                     <String>Text</String>
                                 </field>
                                 <field name="elementLocatorExtension">
-                                    <null/>
+                                    <String>ro.sync.ecss.extensions.commons.DefaultElementLocatorProvider</String>
                                 </field>
                                 <field name="schemaManagerFilterExtension">
                                     <null/>
@@ -472,13 +484,13 @@
                                     <null/>
                                 </field>
                                 <field name="priority">
-                                    <Integer>3</Integer>
+                                    <Integer>4</Integer>
                                 </field>
                                 <field name="xmlNodeCustomizerExtension">
-                                    <null/>
+                                    <String>ro.sync.ecss.extensions.docbook.DocbookNodeRendererCustomizer</String>
                                 </field>
                                 <field name="externalObjectInsertionHandler">
-                                    <null/>
+                                    <String>ro.sync.ecss.extensions.docbook.Docbook5ExternalObjectInsertionHandler</String>
                                 </field>
                                 <field name="customAttributeValueEditor">
                                     <null/>
@@ -549,6 +561,10 @@
                         <Boolean>true</Boolean>
                     </entry>
                     <entry>
+                        <String>key.open.find.resource</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
                         <String>key.spellcheck.option.pane</String>
                         <Boolean>true</Boolean>
                     </entry>
@@ -557,38 +573,38 @@
                         <Boolean>true</Boolean>
                     </entry>
                     <entry>
+                        <String>key.xpath.option.pane</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>open.find.resource.indexing.options</String>
+                        <openFindResourceIndexingOptions>
+                            <field name="searchInContent">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="ignoredContentFilesPatterns">
+                                <String>*.tmp, *.temp, *.bak, *.html, *.htm, *.fo, *~, */.*, */temp/*, */out/*, .git/*</String>
+                            </field>
+                            <field name="indexRemoteResourcesContent">
+                                <Boolean>false</Boolean>
+                            </field>
+                            <field name="xmlAware">
+                                <Boolean>true</Boolean>
+                            </field>
+                            <field name="xmlAwareContentSizeLimit">
+                                <Integer>1024</Integer>
+                            </field>
+                            <field name="stopWords">
+                                <String>a, an, and, are, as, at, be, but, by, for, if, in, into, is, it, no, not, of, on, or, such, that, the, their, then, there, these, they, this, to, was, will, with, without</String>
+                            </field>
+                            <field name="lang">
+                                <String>en</String>
+                            </field>
+                        </openFindResourceIndexingOptions>
+                    </entry>
+                    <entry>
                         <String>scenario.associations</String>
                         <scenarioAssociation-array>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>en/xml/DocBook-Cookbook.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>Docbook5 to HTML (XSLT2)</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>frameworks/xslt/transclusion/transclude.xsl</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>DocBook Transclude XSLT</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
                                     <String>Cookbook2Titles.xpl</String>
@@ -714,92 +730,6 @@
                     <entry>
                         <String>scenarios</String>
                         <scenario-array>
-                            <scenario>
-                                <field name="advancedOptionsMap">
-                                    <null/>
-                                </field>
-                                <field name="name">
-                                    <String>DocBook Transclude XSLT</String>
-                                </field>
-                                <field name="baseURL">
-                                    <String></String>
-                                </field>
-                                <field name="footerURL">
-                                    <String></String>
-                                </field>
-                                <field name="fOPMethod">
-                                    <String>pdf</String>
-                                </field>
-                                <field name="fOProcessorName">
-                                    <String>Apache FOP</String>
-                                </field>
-                                <field name="headerURL">
-                                    <String></String>
-                                </field>
-                                <field name="inputXSLURL">
-                                    <String>${pdu}/frameworks/xslt/transclusion/transclude.xsl</String>
-                                </field>
-                                <field name="inputXMLURL">
-                                    <String>${pdu}/en/xml/DocBook-Cookbook.xml</String>
-                                </field>
-                                <field name="defaultScenario">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="isFOPPerforming">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="type">
-                                    <String>XSL</String>
-                                </field>
-                                <field name="saveAs">
-                                    <Boolean>true</Boolean>
-                                </field>
-                                <field name="openInBrowser">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="outputFile">
-                                    <File>${pd}/build/xml/DocBook-Cookbook.xml</File>
-                                </field>
-                                <field name="outputResource">
-                                    <String>${pd}/build/xml/DocBook-Cookbook.xml</String>
-                                </field>
-                                <field name="openOtherLocationInBrowser">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="locationToOpenInBrowserURL">
-                                    <null/>
-                                </field>
-                                <field name="openInEditor">
-                                    <Boolean>true</Boolean>
-                                </field>
-                                <field name="showInHTMLPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInXMLPane">
-                                    <Boolean>true</Boolean>
-                                </field>
-                                <field name="showInSVGPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="showInResultSetPane">
-                                    <Boolean>false</Boolean>
-                                </field>
-                                <field name="useXSLTInput">
-                                    <Boolean>true</Boolean>
-                                </field>
-                                <field name="xsltParams">
-                                    <list/>
-                                </field>
-                                <field name="cascadingStylesheets">
-                                    <String-array/>
-                                </field>
-                                <field name="xslTransformer">
-                                    <String>Saxon-HE</String>
-                                </field>
-                                <field name="extensionURLs">
-                                    <String-array/>
-                                </field>
-                            </scenario>
                             <scenario>
                                 <field name="advancedOptionsMap">
                                     <null/>
@@ -1063,8 +993,8 @@
                                                 <field name="stripWS">
                                                     <String>saxon.strip.ws.ignorable</String>
                                                 </field>
-                                                <field name="optimizationLevel">
-                                                    <String>0</String>
+                                                <field name="optimizationEnabled">
+                                                    <Boolean>true</Boolean>
                                                 </field>
                                                 <field name="useConfigFile">
                                                     <Boolean>false</Boolean>
@@ -1516,6 +1446,7 @@
                                     <String>menuchoice</String>
                                     <String>screen</String>
                                     <String>programlisting</String>
+                                    <String>code</String>
                                 </String-array>
                             </field>
                             <field name="preferredChecker">
@@ -1618,6 +1549,35 @@
                     <entry>
                         <String>validation.scenarios.load.from.project</String>
                         <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>xpath.multiple.results</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
+                        <String>xpath.proxy.ns.mappings</String>
+                        <String-array>
+                            <String>xs</String>
+                            <String>http://www.w3.org/2001/XMLSchema</String>
+                            <String>fn</String>
+                            <String>http://www.w3.org/2005/xpath-functions</String>
+                            <String>err</String>
+                            <String>http://www.w3.org/2005/xqt-errors</String>
+                            <String>math</String>
+                            <String>http://www.w3.org/2005/xpath-functions/math</String>
+                            <String>d</String>
+                            <String>http://docbook.org/ns/docbook</String>
+                            <String>sch</String>
+                            <String>http://purl.oclc.org/dsdl/schematron</String>
+                            <String>html</String>
+                            <String>http://www.w3.org/1999/xhtml</String>
+                            <String>xlink</String>
+                            <String>http://www.w3.org/1999/xlink</String>
+                            <String>mml</String>
+                            <String>http://www.w3.org/1998/Math/MathML</String>
+                            <String>svg</String>
+                            <String>http://www.w3.org/2000/svg</String>
+                        </String-array>
                     </entry>
                 </serializableOrderedMap>
             </serialized>

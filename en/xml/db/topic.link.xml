@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 
@@ -36,7 +36,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need some ideas how to markup links.</para>
@@ -65,7 +65,7 @@
     </itemizedlist>
     <para>Don't forget to add the XLink namespace declaration into the
       root element of your document, for example:</para>
-    <screen>&lt;book <emphasis 
+    <screen>&lt;book <emphasis
       role="bold">xmlns:xlink="http://www.w3.org/1999/xlink"</emphasis
       > ...></screen>
   </section>
@@ -77,7 +77,7 @@
       content, you have to choose between the attributes <tag
         class="attribute">xlink:href</tag> or <tag class="attribute"
         >linkend</tag>. </para>
-    
+
     <section xml:id="sec.db.link.attributes">
       <title>Knowing the Properties of the <tag class="attribute">xlink:href</tag> and
           <tag class="attribute">linkend</tag> Attributes</title>
@@ -123,7 +123,7 @@
           </tbody>
         </tgroup>
       </table>
-    
+
       <para>Note, validation is only performed when using <tag
           class="attribute">linkend</tag>, not with <tag
           class="attribute">xlink:href</tag>! The reason for this is the
@@ -131,7 +131,7 @@
           <property>xsd:ID</property> and <property>xsd:IDREF</property>
         connection.</para>
     </section>
-    
+
     <section xml:id="sec.db.link.matrix">
       <title>Choosing the Needed Combination</title>
       <para>With text content, you have several combinations which is
@@ -171,9 +171,9 @@
           </tbody>
         </tgroup>
       </table>
-      
+
       <para>The following list shows some examples:</para>
-      
+
       <variablelist>
         <varlistentry xml:id="vl.db.link.content-xlinkhref">
           <term>Links With Content Using <tag class="attribute">xlink:href</tag></term>
@@ -181,7 +181,7 @@
             <para>Use this code to create an external link with a text
               different than the URL:</para>
             <programlisting language="xml"
-      >&lt;link xlink:href="https://doccookbook.sf.net">My Project&lt;/link></programlisting>     
+      >&lt;link xlink:href="https://doccookbook.sf.net">My Project&lt;/link></programlisting>
           </listitem>
         </varlistentry>
         <varlistentry xml:id="vl.db.link.content-linkend">
@@ -230,7 +230,7 @@
           </listitem>
         </varlistentry>
       </variablelist>
-      
+
       <para>In most cases, it is enough to just use an empty link
         element. As such, avoid the following notation when the URL in
           <tag class="attribute">xlink:href</tag> is the same than the
@@ -239,9 +239,9 @@
       <para>This is mostly unnecessary as it is overly verbose,
         difficult to read, and does not add any value. Correct such
         links and remove the text: </para>
-      <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>     
+      <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>
     </section>
-    
+
     <section xml:id="sec.db.link.xlinks">
       <title>Shortening Links</title>
       <para>DocBook 5 also adds new concepts. One of this new concept is
@@ -262,7 +262,7 @@
       <programlisting language="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/></programlisting>
       <para>The attribute value <tag class="attvalue">show</tag> opens a
         <quote>new window, frame, pane, or other relevant presentation
-          context</quote> (see <link 
+          context</quote> (see <link
             xlink:href="http://www.docbook.org/tdg51/en/html/ref-elements.html#common.linking.attributes">Common Linking Attributes</link>).
         Of course, this is only useful for online formats. </para>
     </section>

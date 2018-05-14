@@ -14,7 +14,7 @@
   <article>
     <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
 
-    <xsl:if test="$refentry.separator != 0 and preceding-sibling::db:refentry">
+    <xsl:if test="$refentry.separator and preceding-sibling::db:refentry">
       <div class="refentry-separator">
 	<hr/>
       </div>
@@ -22,7 +22,9 @@
 
     <xsl:call-template name="t:titlepage"/>
 
-    <xsl:apply-templates/>
+    <div class="content">
+      <xsl:apply-templates/>
+    </div>
 
     <xsl:call-template name="t:process-footnotes"/>
   </article>
@@ -33,7 +35,7 @@
     <xsl:sequence select="f:html-attributes(.)"/>
 
     <xsl:choose>
-      <xsl:when test="$refentry.generate.name != 0">
+      <xsl:when test="$refentry.generate.name">
 	<h2>
           <xsl:call-template name="gentext">
             <xsl:with-param name="key" select="'RefName'"/>
@@ -41,7 +43,7 @@
         </h2>
       </xsl:when>
 
-      <xsl:when test="$refentry.generate.title != 0">
+      <xsl:when test="$refentry.generate.title">
 	<h2>
 	  <xsl:choose>
 	    <xsl:when test="../db:refmeta/db:refentrytitle">
@@ -122,7 +124,9 @@
 
     <xsl:call-template name="t:titlepage"/>
 
-    <xsl:apply-templates/>
+    <div class="content">
+      <xsl:apply-templates/>
+    </div>
   </div>
 </xsl:template>
 

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -38,7 +38,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need a general solution to add localized text without
@@ -66,7 +66,7 @@
           your customization layer and point it to your language
           file (in this case, it is named
           <filename>myl10n.xml</filename>, but you can use any name you
-          like):</para>        
+          like):</para>
         <screen>&lt;xsl:param name="local.l10n.xml" select="document('myl10n.xml')"/></screen>
       </step>
       <step>
@@ -79,7 +79,7 @@
             </output>
           </info>
         <programlisting linenumbering="numbered" language="xml"
-          >&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0"> 
+          >&lt;l:i18n xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0">
   &lt;l:l10n language="en" english-language-name="English">
     &lt;l:gentext key="Authors" text="Authors"/>
     &lt;l:gentext key="lastbuilt" text="Last built: "/>
@@ -94,7 +94,7 @@
           (marked in the <tag class="attribute">language</tag>
           attribute).
           Furthermore, it contains two text entries for each language
-            (<quote>Authors</quote> and <quote>lastbuilt</quote>).</para>    
+            (<quote>Authors</quote> and <quote>lastbuilt</quote>).</para>
       </step>
       <step>
         <para>Call <function>gentext</function> in your template to retrieve

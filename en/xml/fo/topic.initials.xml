@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
@@ -28,7 +28,7 @@
       <keyword>floats</keyword>
     </keywordset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need a <quote>drop cap</quote>, or <link
@@ -54,7 +54,7 @@
     </itemizedlist>
     <para>Additionally you can design your initials as graphics, but we
     will come to this later.</para>
-    
+
     <section xml:id="sec.fo.initials.baseline">
       <title>Place Initials on the Same Baseline</title>
       <para>This is the easiest method to implement. The stylesheet
@@ -75,18 +75,18 @@
       <para>To use it, include it into your customization layer. It is
         usually called in text nodes like the first paragraph from a
         section which parent is an article:</para>
-      
+
       <informalexample>
         <info>
           <output xmlns="urn:x-toms:docbook-ext">
             <filename>initials/db-initials.xsl</filename>
           </output>
         </info>
-        <programlisting language="xml"><xi:include 
+        <programlisting language="xml"><xi:include
         href="initials/db-initials.xsl" parse="text"
         /></programlisting>
       </informalexample>
-      
+
       <para>It is easy to extend it to chapters, you just have to copy
         the template and correct the content in the <tag
           class="attribute">match</tag> attribute to:</para>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need to retrieve a title (or subtitle), but your current
@@ -58,7 +58,7 @@
       <varlistentry>
         <term><tag xlink:href="http://www.docbook.org/tdg51/en/html/title.html">title</tag></term>
         <listitem>
-          <para>The main title. According to the <acronym>TDG</acronym> 
+          <para>The main title. According to the <acronym>TDG</acronym>
             <quote>it identifies the titles of documents and parts of
               documents, and is the required caption on formal
               objects.</quote>
@@ -84,10 +84,10 @@
         </listitem>
       </varlistentry>
     </variablelist>
-    
+
     <para>All of the above title elements contains a special mode to get
       the content of this node:</para>
-    
+
     <table xml:id="tab.common.titles.modes">
       <title>Modes for Title Elements</title>
       <tgroup cols="2">
@@ -113,7 +113,7 @@
         </tbody>
       </tgroup>
     </table>
-    
+
     <para>To further elaborate why you should use one of the previous
       modes, let's assume you have this chapter title:</para>
     <programlisting language="xml">&lt;chapter>
@@ -144,15 +144,15 @@
         <tag>xsl:apply-templates</tag> as shown in the solution section,
       ensures correct processing of child elements inside
       <tag>title</tag>.</para>
-    
+
     <para>The same is true for <tag>subtitle</tag> and
       <tag>titleabbrev</tag>. Using the <code>subtitle.markup</code> or
       <code>titleabbrev.markup</code> mode ensure you get always the
       correct content. </para>
     <para>To see what combination results in what string, find an
-      overview in <xref linkend="tab.common.titles.results"/>.</para>  
-    
-    
+      overview in <xref linkend="tab.common.titles.results"/>.</para>
+
+
     <table xml:id="tab.common.titles.results">
       <title>Different Combinations and Their Results on
         <code>*.markup</code> Modes</title>
@@ -237,7 +237,7 @@
         </tbody>
       </tgroup>
     </table>
-    
+
   </section>
   <section role="seealso">
     <title>See Also</title>

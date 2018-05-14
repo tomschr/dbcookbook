@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -35,7 +35,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You have a document which is written by different authors
@@ -46,7 +46,7 @@
     <title>Solution</title>
     <para>You need to customize the <function>toc.line</function>
       template. Proceed as follows:</para>
-    
+
     <procedure xml:id="pro.html.authors-in-toc">
       <step>
         <para>Make sure your chapters, appendices, sections, etc.
@@ -81,7 +81,7 @@
             <output xmlns="urn:x-toms:docbook-ext">
               <filename>author-in-toc/autotoc.xsl</filename>
             </output>
-          </info>          
+          </info>
           <programlistingco>
             <areaspec>
               <area xml:id="ar.html.authors-in-toc.author" coords="10 74" units="linecolumn"/>
@@ -89,7 +89,7 @@
               <area xml:id="ar.html.authors-in-toc.call" coords="14" units="linecolumn"/>
               <area xml:id="ar.html.authors-in-toc.span" coords="20" units="linecolumn"/>
             </areaspec>
-            <programlisting language="xml" linenumbering="numbered"><xi:include 
+            <programlisting language="xml" linenumbering="numbered"><xi:include
               href="authors-in-toc/autotoc.xsl" parse="text"/></programlisting>
           </programlistingco>
           <calloutlist>
@@ -110,7 +110,7 @@
                 entry for the table of contents</para>
             </callout>
           </calloutlist>
-        </informalexample>        
+        </informalexample>
       </step>
       <step>
         <para>Rebuild your document with your customization layer.</para>
@@ -122,7 +122,7 @@
     <para>Or in HTML notation:</para>
     <programlisting language="xml">&lt;span class="author">Tux Penguin: &lt;/span>
 &lt;span class="section">
-  &lt;a href="...">How to Become a Linux Mascott&lt;/a> 
+  &lt;a href="...">How to Become a Linux Mascott&lt;/a>
 &lt;/span></programlisting>
     <para>Depending on the parameter
       <parameter>section.autolabel</parameter> the title can be prefixed
@@ -134,7 +134,7 @@
     does not matter if the <tag>author</tag> elements appear as a direct
     child of <tag>info</tag> or <tag>authorgroup</tag>. The following
       code produces the same string:</para>
-    
+
     <informaltable>
       <tgroup cols="2">
         <tbody valign="top">
@@ -175,13 +175,13 @@
         </tbody>
       </tgroup>
     </informaltable>
-    
+
     <para>Even if you mix <tag>author</tag> and <tag>authorgroup</tag>
       you will get the correct string output.</para>
     <para>You can also use elements other than <tag>author</tag>. To
       detect <tag>editor</tag>, extend the variable
       <varname>author</varname> as follows:</para>
-    
+
     <programlisting language="xml"
       >&lt;xsl:variable name="author"
       select="*/author|*/editor|*/authorgroup/author|*/authorgroup/editor"/></programlisting>

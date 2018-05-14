@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <?xml-model href="../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 
@@ -34,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to create a cross reference from one part of your
@@ -58,20 +58,20 @@
           of your target.</para>
       </listitem>
     </orderedlist>
-    
+
     <para>For example, you want to reference to the introduction chapter in your book.
       The chapter looks like this:</para>
     <programlisting language="xml">&lt;chapter xml:id="intro">
   &lt;title>Introduction&lt;/title>
-  ...      
+  ...
 &lt;/chapter></programlisting>
-    
+
     <para>As you can see, the chapter contains a title but most
       importantly, it also has a <tag class="attribute">xml:id</tag>
       attribute. This is our <quote>anchor</quote> or ID.</para>
     <para>If you want to create a cross reference to your introduction
       chapter, use the <tag>xref</tag> element as follows:</para>
-    
+
     <screen>&lt;para>Get basic information in &lt;xref linkend="intro"/>.&lt;/para></screen>
     <para>The previous <tag>xref</tag> is rendered as follows:</para>
     <screen>Get basic information in Chapter 1. “Introduction”.</screen>
@@ -81,16 +81,16 @@
     <para>Cross referencing is important in your documents as it makes
       your text accessible for your reader. The previous section showed
       the simplest form of a cross reference. However, there is more to
-      find out about <tag>xref</tag>. The following subsections gives 
+      find out about <tag>xref</tag>. The following subsections gives
       you some useful tips and tricks:</para>
-    
+
     <itemizedlist>
       <listitem>
         <para><xref linkend="sec.markup.xref.titlesonly"
           xrefstyle="select:title"/></para>
       </listitem>
       <listitem>
-        <para><xref linkend="sec.markup.xref.xrefstyle" 
+        <para><xref linkend="sec.markup.xref.xrefstyle"
           xrefstyle="select:title"/></para>
       </listitem>
       <listitem>
@@ -102,17 +102,17 @@
           xrefstyle="select:title"/></para>
       </listitem>
     </itemizedlist>
-    
+
     <section xml:id="sec.markup.xref.titlesonly">
       <title>Reference to Elements with Titles Only</title>
       <para>Basically, DocBook allows you to insert a <tag class="attribute"
         >xml:id</tag> attribute on <emphasis>every</emphasis> element if
-        you wish. However, that does not mean, you should insert one. 
+        you wish. However, that does not mean, you should insert one.
         As you could see from the previous section, when the <tag>xref</tag> is resolved,
         the DocBook stylesheets uses the <tag>title</tag> element to
-        create the reference to its target. 
+        create the reference to its target.
         If you refer to a element where no title is allowed
-        (for example, a <tag>para</tag>), the cross reference cannot 
+        (for example, a <tag>para</tag>), the cross reference cannot
         resolved correctly. Depending on the version of the DocBook
         stylesheets, you get either an error or the <tag>xref</tag> uses
         the title of its nearest ancestor (for example, the parent's section
@@ -155,7 +155,7 @@
           </listitem>
         </varlistentry>
       </variablelist>
-    
+
       <section xml:id="sec.markup.xref.xrefstyle.template">
         <title>Using <literal>template</literal></title>
         <para>The <literal>template</literal> method contains an
@@ -172,11 +172,11 @@
           xrefstyle="template:%t"
 /> helps you with the xref element.</screen>
         <para>As you could see, any other string not starting with
-          <literal>%</literal> is untouched and literally copied. 
+          <literal>%</literal> is untouched and literally copied.
           <xref linkend="tab.markup.xref.xrefstyle.template.placeholders"
            /> gives you an overview about all
           available placeholders.</para>
-        
+
         <table xml:id="tab.markup.xref.xrefstyle.template.placeholders">
           <title>Available Placeholders for <literal>template</literal></title>
           <tgroup cols="2">
@@ -316,7 +316,7 @@
 &lt;/l:context></screen>
       </section>
     </section>
-    
+
     <section xml:id="sec.markup.xref.xreflabel">
       <title>Using <tag class="attribute">xreflabel</tag> Only in Rare Cases</title>
       <para>In rare cases, you have to reference to an element which
@@ -366,7 +366,7 @@
     </section>
   </section>
   <section role="seealso">
-    <title>See Also</title>    
+    <title>See Also</title>
     <itemizedlist role="category">
       <listitem>
         <para><link xlink:href="http://www.docbook.org/tdg5/en/html/xref.html"/></para>

@@ -2,9 +2,11 @@
 
 import sys
 import os, os.path
+import shlex
 
-from .log import trace, logger
 from .config import config
+from .log import trace, logger
+from .utils import execute
 
 from lxml import etree
 
@@ -38,6 +40,7 @@ def get_html_paths(folder, rootid=None):
 #@trace(logger)
 def cleanup_parallel(parser, args):
     pass
+
 
 @trace(logger)
 def cleanup(parser, args):
@@ -89,6 +92,7 @@ def singlehtml(parser, args):
     tempdir=config.get('Common', 'tempdir')
     xmlfile = os.path.join(tempdir, basefile)
     xhtmlsingle = config.get('XSLT1', 'xhtmlsingle')
+    htmlfile = config.get('Common', 'htmlsingle')
     
     if not os.path.exists(xmlfile):
         raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
@@ -107,14 +111,17 @@ def singlehtml(parser, args):
              
     if args.rootid:
          params.update(rootid=args.rootid)
-    
+
     resulttree = transform(xmldoc, **params)
     
     logger.debug("-- Return from XSLT processor (Start) --")
     for entry in transform.error_log:
         logger.debug("{entry.message}".format(**locals()))
     logger.debug("-- Return from XSLT processor (End) --")
-    
+
+    resulttree.write(htmlfile)
+    logger.info(">> Find the Single HTML in %r", htmlfile)
+
        
 @trace(logger)
 def chunkedhtml(parser, args):
@@ -124,22 +131,23 @@ def chunkedhtml(parser, args):
     tempdir=config.get('Common', 'tempdir')
     xmlfile = os.path.join(tempdir, basefile)
     xhtmlchunk = config.get('XSLT1', 'xhtmlchunk')
-    
+    htmldir = config.get('Common', 'htmldir')
+
     if not os.path.exists(xmlfile):
         raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
-    
+
     xmlparser = etree.XMLParser(
         # dtd_validation=False,  # use default (False)
         ns_clean=True)
     xmldoc = etree.parse(xmlfile, xmlparser)
     transform = etree.XSLT(etree.parse(xhtmlchunk))
-    
+
     logger.info("*** Transforming {xmlfile} with {xhtmlchunk}".format(**locals()))
     params = {
              'base.dir':       etree.XSLT.strparam(tempdir),
              'use.extensions': etree.XSLT.strparam('0'),
              }
-    
+
     if args.rootid:
          params.update(rootid=args.rootid)
         
@@ -149,7 +157,8 @@ def chunkedhtml(parser, args):
     for entry in transform.error_log:
         logger.info("{entry.message}".format(**locals()))
     logger.debug("-- Return from XSLT processor (End) --")
-    
+
+    logger.info(">> Find the HTML in %r", htmldir)
     
 
 def html(parser, args):
@@ -157,5 +166,85 @@ def html(parser, args):
     chunkedhtml(parser, args)
     singlehtml(parser, args)
     cleanup(parser, args)
+    return 0
+
+
+@trace(logger)
+def fo2pdf(parser, args):
+    """Generate PDF from FO"""
+    import subprocess, shlex
+    fobuilddir = os.path.normpath(config.get('Common', 'fodir'))
+    fofile = os.path.join(fobuilddir, os.path.normpath(config.get('Common', 'fosingle')))
+
+    # TODO: maybe there is a better method:
+    version = subprocess.check_output(shlex.split("git describe"))
+    version = version.decode("utf-8").strip()
+
+    pdffile = args.output
+    if pdffile is None:
+        # pdffile = os.path.normpath(config.get('Common', 'pdf'))
+        pdffile = os.path.join(fobuilddir,
+                               config.get('Archive', 'pdffile').replace("@VERSION@", version))
+
+    fmtcmd = {'fop': 'fop {opts} {fo} {pdf}',
+              'xep': 'xep {opts} {fo} {pdf}',
+              'axf': 'axf {opts} {fo} {pdf}',
+              }
+    cmd = fmtcmd[args.formatter].format(opts='' if args.opts is None else args.opts,
+                                        fo=fofile,
+                                        pdf=pdffile)
+    logger.debug("Running %s with %s", args.formatter, cmd)
+    execute(cmd)
+
+    logger.debug(">>> Find PDF at %s", pdffile)
+    return 0
+
+
+def fo(parser, args):
+    """Generate a FO file"""
+    tempdir = os.path.normpath(config.get('Common', 'tempdir'))
+    fobuilddir = os.path.normpath(config.get('Common', 'fodir'))
+    fofile = os.path.join(fobuilddir, os.path.normpath(config.get('Common', 'fosingle')))
+    foxslt = config.get('XSLT1', 'fosingle')
+    basefile = os.path.basename(args.mainfile)
+    xmlfile = os.path.join(tempdir, basefile)
+
+    if not os.path.exists(xmlfile):
+        raise FileNotFoundError("File {xmlfile} not found".format(**locals()))
+
+    xmlparser = etree.XMLParser(
+        # dtd_validation=False,  # use default (False)
+        ns_clean=True
+        )
+    xmldoc = etree.parse(xmlfile, xmlparser)
+    # xmldoc.xinclude()
+    transform = etree.XSLT(etree.parse(foxslt))
+
+    logger.info("*** Transforming {xmlfile} with {foxslt}".format(**locals()))
+    params = {
+             # 'base.dir':       etree.XSLT.strparam(fobuilddir),
+             'use.extensions': etree.XSLT.strparam('0'),
+             }
+
+    if args.rootid:
+        params.update(rootid=args.rootid)
+
+    # Choose formatter extensions:
+    formatterextensions = { f: {'{}.extension'.format('fop1' if f == 'fop' else f):
+                                etree.XSLT.strparam('1')}
+                           for f in ('fop', 'xep', 'axf')
+                          }
+    params.update(formatterextensions[args.formatter])
+    resulttree = transform(xmldoc, **params)
+    
+    logger.debug("-- Return from XSLT processor (Start) --")
+    for entry in transform.error_log:
+        logger.debug("{entry.message}".format(**locals()))
+    logger.debug("-- Return from XSLT processor (End) --")
+
+    resulttree.write(fofile)
+    logger.info("FO stored at %r", fofile)
+    return fo2pdf(parser, args)
+
 
 # EOF

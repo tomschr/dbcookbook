@@ -6,7 +6,7 @@
 		xmlns:t="http://docbook.org/xslt/ns/template"
                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
                 xmlns:xdmp="http://marklogic.com/xdmp"
-                xmlns:mldb="http://docbook.github.com/ns/marklogic"
+                xmlns:mldb="http://docbook.org/vendor/marklogic/locales"
                 exclude-result-prefixes="doc f l t xs xdmp mldb"
                 extension-element-prefixes="xdmp"
                 version='2.0'>
@@ -25,7 +25,7 @@
 <!-- Pending resolution of bug 15636, this href has to be absolute. If you install
      the stylesheets in /Modules/DocBook, it'll work fine. If you install them
      elsewhere, update this path. -->
-<xdmp:import-module namespace="http://docbook.github.com/ns/marklogic"
+<xdmp:import-module namespace="http://docbook.org/vendor/marklogic/locales"
                     href="/DocBook/base/common/marklogic.xqy"/>
 
 <xsl:key name="l10n-gentext" match="l:l10n/l:gentext" use="concat(../@language, '#', @key)"/>
@@ -104,7 +104,7 @@ target.</para>
         <xsl:value-of select="$l10n.gentext.language"/>
       </xsl:when>
 
-      <xsl:when test="$xref-context or $l10n.gentext.use.xref.language != 0">
+      <xsl:when test="$xref-context or $l10n.gentext.use.xref.language">
         <!-- can't do this one step: attributes are unordered! -->
         <xsl:variable name="lang-scope"
                       select="$target/ancestor-or-self::*
@@ -307,7 +307,7 @@ context node.</para>
 
   <xsl:variable name="l10n.gentext"
 		select="($localization/key('l10n-gentext', concat($lang, '#', $key)),
-		         f:get-locale($lang)/key('l10n-gentext', concat($lang, '#', $key)))[1]"/>
+		         f:load-locale($lang)/key('l10n-gentext', concat($lang, '#', $key)))[1]"/>
 
   <xsl:choose>
     <xsl:when test="$l10n.gentext">
@@ -330,7 +330,7 @@ context node.</para>
         </xsl:choose>
       </xsl:message>
       <xsl:value-of select="($localization/key('l10n-gentext', concat('en#', $key)),
-                             f:get-locale('en')/key('l10n-gentext', concat('en#', $key)))[1]/@text"/>
+                             f:load-locale('en')/key('l10n-gentext', concat('en#', $key)))[1]/@text"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>
@@ -440,7 +440,7 @@ parameters.</para>
 		select="$localization//l:l10n[@language=$lang]"/>
 
   <xsl:variable name="localization.nodes"
-    select="f:get-locale($lang)"/>
+    select="f:load-locale($lang)"/>
 
   <xsl:if test="not($localization.nodes | $user.localization.nodes)">
     <xsl:message>
@@ -577,7 +577,7 @@ the specified parameters.</para>
 		select="$localization//l:l10n[@language=$lang]"/>
 
   <xsl:variable name="localization.nodes"
-		select="f:get-locale($lang)"/>
+		select="f:load-locale($lang)"/>
 
   <xsl:variable name="user.context.nodes"
 		select="$user.localization.nodes/key('l10n-context', concat($lang, '#', $context))"/>
@@ -815,7 +815,7 @@ the English locale value will be used as the default.</para>
 
   <xsl:variable name="l10n.dingbat"
                 select="($localization/key('l10n-dingbat', concat($lang, '#', $dingbat)),
-                         f:get-locale($lang)/key('l10n-dingbat', concat($lang, '#', $dingbat)))[1]"/>
+                         f:load-locale($lang)/key('l10n-dingbat', concat($lang, '#', $dingbat)))[1]"/>
 
   <xsl:choose>
     <xsl:when test="$l10n.dingbat">
@@ -830,7 +830,7 @@ the English locale value will be used as the default.</para>
         <xsl:text> exists; using "en".</xsl:text>
       </xsl:message>
       <xsl:value-of select="($localization/key('l10n-dingbat', concat('en#', $dingbat)),
-                             f:get-locale('en')/key('l10n-dingbat', concat('en#', $dingbat)))[1]"/>
+                             f:load-locale('en')/key('l10n-dingbat', concat('en#', $dingbat)))[1]"/>
     </xsl:otherwise>
   </xsl:choose>
 </xsl:function>
@@ -863,17 +863,20 @@ the English locale value will be used as the default.</para>
   <xsl:param name="lang" as="xs:string"/>
 
   <xsl:choose>
-    <xsl:when test="function-available('mldb:check-locale')">
-      <xsl:sequence use-when="function-available('mldb:check-locale')"
-                    select="mldb:check-locale($lang)"/>
+    <xsl:when use-when="system-property('xsl:vendor')='MarkLogic Corporation'"
+              test="function-available('mldb:check-locale')">
+      <xsl:sequence select="mldb:check-locale($lang)"/>
+    </xsl:when>
+    <xsl:when test="false()">
+      <!-- this never happens, but it avoids XTSE0010 when the preceding
+           xsl:when clause is removed by the use-when condition. -->
     </xsl:when>
     <xsl:otherwise>
-      <xsl:variable name="dir" select="resolve-uri($l10n.locale.dir)"/>
-      <xsl:sequence select="doc-available(resolve-uri(concat($lang,'.xml'), $dir))"/>
+      <xsl:sequence
+          select="doc-available(f:resolve-path(concat($lang,'.xml'),
+                                               $l10n.locale.dir))"/>
     </xsl:otherwise>
   </xsl:choose>
-
-
 </xsl:function>
 
 <!-- ============================================================ -->
@@ -903,14 +906,7 @@ the English locale value will be used as the default.</para>
 <xsl:function name="f:get-locale" as="element(l:l10n)">
   <xsl:param name="lang" as="xs:string"/>
 
-  <xsl:choose>
-    <xsl:when test="$localization/l:l10n[@language=$lang]">
-      <xsl:sequence select="$localization/l:l10n[@language=$lang]"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:sequence select="f:load-locale($lang)"/>
-    </xsl:otherwise>
-  </xsl:choose>
+  <xsl:sequence select="f:load-locale($lang)"/>
 </xsl:function>
 
 <!-- ============================================================ -->
@@ -941,14 +937,18 @@ the English locale value will be used as the default.</para>
   <xsl:param name="lang" as="xs:string"/>
 
   <xsl:choose>
-    <xsl:when test="function-available('mldb:load-locale')">
-      <xsl:sequence use-when="function-available('mldb:load-locale')"
-                    select="mldb:load-locale($lang)"/>
+    <xsl:when use-when="system-property('xsl:vendor')='MarkLogic Corporation'"
+              test="function-available('mldb:load-locale')">
+      <xsl:sequence select="mldb:load-locale($lang)"/>
+    </xsl:when>
+    <xsl:when test="false()">
+      <!-- this never happens, but it avoids XTSE0010 when the preceding
+           xsl:when clause is removed by the use-when condition. -->
     </xsl:when>
     <xsl:otherwise>
-      <xsl:variable name="dir" select="resolve-uri($l10n.locale.dir)"/>
       <xsl:variable name="locale-file"
-                    select="resolve-uri(concat($lang,'.xml'), $dir)"/>
+                    select="f:resolve-path(concat($lang,'.xml'),
+                                           $l10n.locale.dir)"/>
       <xsl:sequence select="doc($locale-file)/l:l10n"/>
     </xsl:otherwise>
   </xsl:choose>

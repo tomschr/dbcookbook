@@ -453,68 +453,72 @@ the default is “element”.</para>
     </xsl:choose>
   </xsl:param>
 
-  <code>
-    <xsl:sequence select="f:html-attributes(., @xml:id, concat(local-name(.),'-',$class))"/>
-    <xsl:choose>
-      <xsl:when test="$class='attribute'">
-        <xsl:apply-templates/>
-      </xsl:when>
-      <xsl:when test="$class='attvalue'">
-        <xsl:apply-templates/>
-      </xsl:when>
-      <xsl:when test="$class='element'">
-        <xsl:apply-templates/>
-      </xsl:when>
-      <xsl:when test="$class='endtag'">
-        <xsl:text>&lt;/</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>&gt;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='genentity'">
-        <xsl:text>&amp;</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='numcharref'">
-        <xsl:text>&amp;#</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='paramentity'">
-        <xsl:text>%</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='pi'">
-        <xsl:text>&lt;?</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>&gt;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='xmlpi'">
-        <xsl:text>&lt;?</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>?&gt;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='starttag'">
-        <xsl:text>&lt;</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>&gt;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='emptytag'">
-        <xsl:text>&lt;</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>/&gt;</xsl:text>
-      </xsl:when>
-      <xsl:when test="$class='sgmlcomment'">
-        <xsl:text>&lt;!--</xsl:text>
-        <xsl:apply-templates/>
-        <xsl:text>--&gt;</xsl:text>
-      </xsl:when>
-      <xsl:otherwise>
-        <xsl:apply-templates/>
-      </xsl:otherwise>
-    </xsl:choose>
-  </code>
+  <xsl:call-template name="t:xlink">
+    <xsl:with-param name="content" as="element()">
+      <code>
+        <xsl:sequence select="f:html-attributes(., @xml:id, concat(local-name(.),'-',$class))"/>
+        <xsl:choose>
+          <xsl:when test="$class='attribute'">
+            <xsl:apply-templates/>
+          </xsl:when>
+          <xsl:when test="$class='attvalue'">
+            <xsl:apply-templates/>
+          </xsl:when>
+          <xsl:when test="$class='element'">
+            <xsl:apply-templates/>
+          </xsl:when>
+          <xsl:when test="$class='endtag'">
+            <xsl:text>&lt;/</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>&gt;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='genentity'">
+            <xsl:text>&amp;</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='numcharref'">
+            <xsl:text>&amp;#</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='paramentity'">
+            <xsl:text>%</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='pi'">
+            <xsl:text>&lt;?</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>&gt;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='xmlpi'">
+            <xsl:text>&lt;?</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>?&gt;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='starttag'">
+            <xsl:text>&lt;</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>&gt;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='emptytag'">
+            <xsl:text>&lt;</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>/&gt;</xsl:text>
+          </xsl:when>
+          <xsl:when test="$class='sgmlcomment'">
+            <xsl:text>&lt;!--</xsl:text>
+            <xsl:apply-templates/>
+            <xsl:text>--&gt;</xsl:text>
+          </xsl:when>
+          <xsl:otherwise>
+            <xsl:apply-templates/>
+          </xsl:otherwise>
+        </xsl:choose>
+      </code>
+    </xsl:with-param>
+  </xsl:call-template>
 </xsl:template>
 
 <u:unittests match="db:emphasis">
@@ -582,9 +586,7 @@ the default is “element”.</para>
 
 <xsl:template match="db:phrase">
   <span>
-    <xsl:apply-templates select="." mode="m:html-attributes">
-      <xsl:with-param name="suppress-local-name-class" select="true()"/>
-    </xsl:apply-templates>
+    <xsl:sequence select="f:html-attributes(.)"/>
     <xsl:call-template name="t:xlink"/>
   </span>
 </xsl:template>
@@ -665,7 +667,7 @@ and <tag>firstterm</tag> elements.</para>
     <xsl:sequence select="f:html-attributes(., @xml:id, local-name(.), $extra-class)"/>
 
     <xsl:choose>
-      <xsl:when test="($firstterm.only.link = 0 or $firstterm = 1) and @linkend">
+      <xsl:when test="(not($firstterm.only.link) or $firstterm = 1) and @linkend">
 	<xsl:variable name="target" select="key('id',@linkend)[1]"/>
 
 	<a href="{f:href(/,$target)}">
@@ -674,8 +676,8 @@ and <tag>firstterm</tag> elements.</para>
       </xsl:when>
 
       <xsl:when test="not(@linkend)
-		      and ($firstterm.only.link = 0 or $firstterm = 1)
-		      and $glossterm.auto.link != 0">
+		      and (not($firstterm.only.link) or $firstterm = 1)
+		      and $glossterm.auto.link">
 	<xsl:variable name="term">
 	  <xsl:choose>
 	    <xsl:when test="@baseform">
@@ -689,8 +691,8 @@ and <tag>firstterm</tag> elements.</para>
 
 	<xsl:variable name="targets"
 		      select="//db:glossentry
-			        [normalize-space(db:glossterm) = $term
-			         or normalize-space(db:glossterm/@baseform)
+			        [db:glossterm/normalize-space(.) = $term
+			         or db:glossterm/normalize-space(@baseform)
 				    = $term]"/>
 
 	<xsl:variable name="target" select="$targets[1]"/>

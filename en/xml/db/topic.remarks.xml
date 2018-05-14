@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -32,7 +32,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to insert comments or remarks in your document to
@@ -49,7 +49,7 @@
       <programlisting language="xml">&lt;para>
 This is a small text.&lt;remark>Add more content&lt;/remark>
 &lt;/para></programlisting>
-    </example>    
+    </example>
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -65,7 +65,7 @@ This is a small text.&lt;remark>Add more content&lt;/remark>
     </itemizedlist>
     <para>XML comments can be placed almost everywhere in your XML
       document. It is a very common method to give yourself or others
-      some hints. This can be done with XML comments 
+      some hints. This can be done with XML comments
       like in this example:</para>
     <programlisting language="xml" linenumbering="unnumbered">&lt;para>
 This is a text &lt;!-- Ohh, we should add more -->
@@ -88,7 +88,7 @@ This is a text &lt;!-- Ohh, we should add more -->
       a value of zero suppress them.</para>
     <para>When should you use XML comments and when remarks? The
       following table gives you a quick overview.</para>
-    
+
     <table xml:id="tab.db.xmlcomments-vs-remarks">
       <title>Comparison of XML Comments versus Remarks</title>
       <tgroup cols="3">
@@ -119,8 +119,8 @@ This is a text &lt;!-- Ohh, we should add more -->
             </entry>
             <entry>
               <para>Restricted by the DocBook schema<footnote>
-                <para>See <link 
-                  xlink:href="http://www.docbook.org/tdg51/en/html/tag.html"/> 
+                <para>See <link
+                  xlink:href="http://www.docbook.org/tdg51/en/html/tag.html"/>
                   for more details.</para>
               </footnote></para>
             </entry>

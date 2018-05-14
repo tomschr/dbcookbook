@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <style>/* Font definitions */
-body, 
+body,
 div.abstract
 {
   font-family:'Maven Pro';
@@ -22,7 +22,7 @@ div.programlisting, div.screen,
 .option,
 .filename,
 .function,
-code, 
+code,
 a.link
 {
   font-family:'Cousine',monospace;
@@ -32,7 +32,7 @@ a.link
 body
 {
   margin-left:2em;
-  margin-right:2em;  
+  margin-right:2em;
 }
 
 div.book div.titlepage
@@ -87,7 +87,7 @@ div.abstract
   margin-left:4em;
   margin-right:4em;
 }
-div.abstract-title, 
+div.abstract-title,
 div.toc-title
 {
   font-weight:bold;
@@ -328,7 +328,7 @@ div.navfooter,
 div.navheader table tr td,
 div.breadcrumbs
 {
-  font-size:small; 
+  font-size:small;
 }
 
 div.navfooter

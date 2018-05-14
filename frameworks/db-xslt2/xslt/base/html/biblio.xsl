@@ -13,7 +13,7 @@
 
 <xsl:template match="db:bibliography">
   <article>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
 
     <xsl:call-template name="t:titlepage"/>
 
@@ -23,7 +23,7 @@
 
 <xsl:template match="db:bibliodiv">
   <div>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
 
     <xsl:call-template name="t:titlepage"/>
 
@@ -33,42 +33,12 @@
 
 <xsl:template match="db:bibliolist">
   <div>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
+    <xsl:sequence select="f:html-attributes(., f:node-id(.))"/>
 
     <xsl:call-template name="t:titlepage"/>
 
     <xsl:apply-templates/>
   </div>
-</xsl:template>
-
-<xsl:template match="db:biblioentry[not(node())]|db:bibliomixed[not(node())]"
-              priority="100">
-  <xsl:variable name="id" select="@xml:id"/>
-
-  <xsl:choose>
-    <xsl:when test="not($id)">
-      <xsl:message>
-        <xsl:text>Error: </xsl:text>
-        <xsl:text>empty </xsl:text>
-        <xsl:value-of select="local-name(.)"/>
-        <xsl:text> with no id.</xsl:text>
-      </xsl:message>
-    </xsl:when>
-    <xsl:when test="$external.bibliography/key('id', $id)">
-      <xsl:apply-templates select="$external.bibliography/key('id', $id)"/>
-    </xsl:when>
-    <xsl:otherwise>
-      <xsl:message>
-        <xsl:text>Error: </xsl:text>
-        <xsl:text>$bibliography.collection doesn't contain </xsl:text>
-        <xsl:value-of select="$id"/>
-      </xsl:message>
-      <xsl:copy>
-        <xsl:copy-of select="@*"/>
-        <xsl:text>???</xsl:text>
-      </xsl:copy>
-    </xsl:otherwise>
-  </xsl:choose>
 </xsl:template>
 
 <xsl:template match="db:biblioentry|db:bibliomixed">
@@ -78,12 +48,15 @@
   <!-- during *normalization*, not here... -->
 
   <div>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
+    <xsl:sequence select="f:html-attributes(.)"/>
 
-    <p>
+    <p class="{local-name(.)}">
+      <span class="label">
       <xsl:text>[</xsl:text>
       <xsl:copy-of select="$label"/>
       <xsl:text>] </xsl:text>
+      </span>
+      <span class="entry">
       <xsl:choose>
 	<xsl:when test="self::db:biblioentry">
 	  <xsl:apply-templates mode="m:biblioentry"/>
@@ -92,6 +65,7 @@
 	  <xsl:apply-templates mode="m:bibliomixed"/>
 	</xsl:otherwise>
       </xsl:choose>
+      </span>
     </p>
   </div>
 </xsl:template>
@@ -217,7 +191,7 @@ for the content of a bibliography entry.</para>
 		     |db:volumenum"
 	      mode="m:bibliomixed">
   <span>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
+    <xsl:sequence select="f:html-attributes(.)"/>
     <xsl:apply-templates mode="m:bibliomixed"/>
   </span>
 </xsl:template>
@@ -246,7 +220,7 @@ for the content of a bibliography entry.</para>
 
 <xsl:template match="db:biblioset" mode="m:biblioentry">
   <span>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
+    <xsl:sequence select="f:html-attributes(.)"/>
     <xsl:apply-templates mode="m:biblioentry"/>
   </span>
 </xsl:template>
@@ -310,25 +284,13 @@ for the content of a bibliography entry.</para>
 </xsl:template>
 
 <xsl:template match="db:address" mode="m:biblioentry">
-  <xsl:variable name="addr" as="element(h:div)">
+  <xsl:variable name="addr" as="element(h:pre)">
     <xsl:apply-templates select="."/>
   </xsl:variable>
 
   <span>
-    <xsl:apply-templates select="." mode="m:html-attributes"/>
-    <!-- Now $addr is a div containing lines with BRs -->
-    <xsl:for-each select="$addr/node()">
-      <xsl:variable name="node" select="."/>
-      <xsl:choose>
-        <xsl:when test="$node/self::h:br">
-          <xsl:if test="position() &lt; last()"> / </xsl:if>
-        </xsl:when>
-        <xsl:otherwise>
-          <xsl:sequence select="$node"/>
-        </xsl:otherwise>
-      </xsl:choose>
-    </xsl:for-each>
-
+    <xsl:sequence select="f:html-attributes(.)"/>
+    <xsl:value-of select="replace(string($addr), '&#10;', ' / ')"/>
     <xsl:if test="not(ends-with(string($addr), '.'))">.</xsl:if>
   </span>
   <xsl:text> </xsl:text>

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <?xml-model href="../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 <section xml:id="dbc.markup.xincludes" remap="topic" userlevel="easy"
@@ -23,9 +23,7 @@
     <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>XInclude</keyword>
-      <keyword>module</keyword>
-      <keyword>assemblies</keyword>
-      <keyword>XPointer</keyword>
+      <keyword>modularization</keyword>
     </keywordset>
     <subjectset>
       <subject>
@@ -36,7 +34,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need a method to split your document into several
@@ -50,7 +48,7 @@
         <tag>xi:fallback</tag>. They are not DocBook elements (as they
       are definied by the <acronym>W3C</acronym> and not <acronym>OASIS<alt
           >Organization for the Advancement of Structured Information Standards</alt
-          ></acronym>), however 
+          ></acronym>), however
       they have been integrated in version 5.x<footnote>
         <para>To use XInclude with DocBook 5.x, use the
             <filename>docbookxi.rnc</filename> RELAX NG schema. </para>
@@ -62,10 +60,13 @@
         <para>A XML parser who supports XIncludes.</para>
       </listitem>
       <listitem>
-        <para>The element <tag>xi:include</tag>. In general, it can be
-          placed everywhere where you can place DocBook elements. It is
-          a placeholder for the real content and works as a
-          <quote>pointer</quote>. </para>
+        <para>The XInclude namespace <uri>http://www.w3.org/2001/XInclude</uri>, usually bound to
+          the <tag class="prefix">xi</tag> prefix.</para>
+      </listitem>
+      <listitem>
+        <para>The element <tag>xi:include</tag>. In general, it can be placed everywhere where you
+          can place DocBook elements. It is a placeholder for the real content and works as a
+            reference. </para>
       </listitem>
       <listitem>
         <para>The attribute <tag class="attribute">href</tag> inside the
@@ -96,32 +97,26 @@
         <filename>conceptual-overview.xml</filename>). Both are
       referenced by the XInclude´s <tag class="attribute">href</tag>
       attribute. </para>
-    <para>Before you transform your document, you need to resolve your
-      XIncludes, either by your XML parser or <quote>manually</quote> by
-      a XSLT transformation. The following procedure shows a typical
-      workflow:</para>
+    <para>Before you transform your document, you need to resolve your XIncludes first, either by
+      your XML parser or <quote>manually</quote> by a XSLT transformation. The following procedure
+      shows a typical workflow:</para>
     <procedure>
       <title>Typical Workflow with XIncludes</title>
       <step>
-        <para>Write your document structure, usually it will be a book
-          or an article. Do not forget to include the XInclude namespace
-            <uri>http://www.w3.org/2001/XInclude</uri> into the root
-          element. It is common to use the prefix <tag class="prefix"
-            >xi</tag>.</para>
+        <para>Write your document structure, usually it will be a book or an article. Do not forget
+          to include the XInclude namespace <uri>http://www.w3.org/2001/XInclude</uri> into the root
+          element, commonly bound to the prefix <tag class="prefix">xi</tag>.</para>
       </step>
       <step>
-        <para>Add <tag>xi:include</tag> elements for those content you
-          want to maintain in a separate file. Typically, this can be an
-          appendix, chapter, preface, glossary, or any other top level
-          elements.</para>
+        <para>Add <tag>xi:include</tag> elements for those content you want to maintain in a
+          separate file. Typically, this can be an appendix, chapter, preface, glossary, or any
+          other DocBook element.</para>
       </step>
       <step>
-        <para>Resolve your XIncludes. Use a XML parser who supports
-          XIncludes, for example, <command>xmllint</command> from the
-            <link xlink:href="http://xmlsoft.org">libxml2
-          library</link>. This XML parser brings the
-            <option>--xinclude</option> option to resolve all your
-          XInclude elements in one step:</para>
+        <para>Resolve your XIncludes. Use a XML parser who supports XIncludes, for example,
+            <command>xmllint</command> from the <link xlink:href="http://xmlsoft.org">libxml2
+            library</link>. This XML parser brings the <option>--xinclude</option> option to resolve
+          all your XInclude elements in one step:</para>
         <screen><command>xmllint</command> --xinclude --output big.xml book.xml</screen>
         <para>The above command resolves all XIncludes and saves the
           result in the file <filename>big.xml</filename>. Note, this
@@ -162,23 +157,82 @@
       and B includes A).</para>
     <para>As XIncludes are very common nowadays, resolving
         <tag>xi:include</tag> and transforming into the output format
-      can be done in one step. This is the case for
-        <command>xsltproc</command> from the libxslt library. Use the
-        <option>--xinclude</option> option as shown:</para>
-    <screen><command>xsltproc</command> --xinclude<!--
+      can be done in one step. This is the case for most tools:
+    </para>
+
+    <variablelist>
+      <varlistentry>
+        <term><command>xmllint</command> from the libxslt library</term>
+        <listitem>
+          <para>Use the <option>--xinclude</option> option as shown:</para>
+          <screen><command>xsltproc</command> --xinclude<!--
     --> <replaceable>STYLESHEET</replaceable><!--
     --> <replaceable>XMLFILE</replaceable></screen>
-    <remark>Add reference to Saxon 6</remark>
-    <para>If you prefer Saxon, version 9 contains the
-      <option>-xi</option> option to resolve XIncludes:</para>
-    <screen><command>saxon9</command> -xi<!-- 
-    --> -xsl:<replaceable>STYLESHEET</replaceable><!-- 
-    --> -s:<replaceable>XMLFILE</replaceable></screen>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Saxon 6</term>
+        <listitem>
+          <para>Unfortunately, Saxon 6 needs some more configuration. Most
+            Linux distribution have already a <command>saxon6</command> command.
+            However, it can be difficult to customize it correctly, so
+            this is the line you need:
+          </para>
+          <screen><command>java</command> -Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration \
+   <replaceable>JARPATH</replaceable>/saxon6.jar:<replaceable>JARPATH</replaceable>/xml-commons-apis.jar:<replaceable>JARPATH</replaceable>/jaxp_parser_impl.jar:<replaceable>JARPATH</replaceable>/xml-commons-resolver.jar \
+   com.icl.saxon.StyleSheet \
+   -x org.apache.xml.resolver.tools.ResolvingXMLReader \
+   -y org.apache.xml.resolver.tools.ResolvingXMLReader \
+   -r org.apache.xml.resolver.tools.CatalogResolver\
+   <replaceable>ARGS</replaceable></screen>
+          <para>The line contains different properties:</para>
+          <itemizedlist>
+            <listitem>
+              <para>The <property>org.apache.xerces.xni.parser.XMLParserConfiguration</property>
+              property sets the XInclude processor which is done by Xerces
+              in this case.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The <replaceable>JARPATH</replaceable> is the path to your
+                JAR files. In most FHS conformant Linux distributions,
+                nowadays this is usually <filename>/usr/share/java</filename>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>Additionally, with the <filename>xml-commons-resolver.jar</filename>
+              file, Saxon&#xa0;6 is able to resolve catalogs. To tell Saxon
+              you need to set the <option>-r</option>, <option>-x</option>,
+                and <option>-y</option> options the a URI resolver class, and
+                the specified Sax parser for source file and stylesheet.
+              </para>
+            </listitem>
+            <listitem>
+              <para>The <replaceable>ARGS</replaceable> are the specific
+              arguments for Saxon and contains source document and stylesheet.
+              To list all available options, use <option>-h</option>.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>Saxon 9</term>
+        <listitem>
+          <para>Version 9 contains the <option>-xi</option> option to resolve
+            XIncludes (assuming you have a script <command>saxon9</command>
+            which does all the heavy Java lifting):</para>
+          <screen><command>saxon9</command> -xi -xsl:<replaceable
+            >STYLESHEET</replaceable> -s:<replaceable
+              >XMLFILE</replaceable></screen>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
     <para>The last section showed a general method to work with
       XIncludes. In most cases this is enough. However, XIncludes offers
       more benefits which are discovered in the following
       subsections.</para>
-    
     <section xml:id="sec.db.modularize.xifallback">
       <title>Fallbacks</title>
       <para>If the referenced file in the <tag>xi:include</tag> element
@@ -187,7 +241,7 @@
           <tag>xi:fallback</tag> element. This element can be used to
         add code when a referenced resource could not be retrieved:</para>
       <example xml:id="ex.db.modularize.xifallback">
-        <title>Fallback Possibility with <tag>xi:fallback</tag></title>        
+        <title>Fallback Possibility with <tag>xi:fallback</tag></title>
         <programlisting language="xml">&lt;xi:include href="revhistory.xml">
   &lt;xi:fallback>
     &lt;para>The revision history could not be retrieved.&lt;/para>
@@ -207,7 +261,7 @@
         always sure that the revision history can be generated from an
         possible offline version control system.</para>
     </section>
-    
+
     <section xml:id="sec.db.modularize.include-text">
       <title>Including Text</title>
       <para>The previous examples dealt with included resources in XML
@@ -232,7 +286,7 @@
         indendation or linebreaks.</para>
       <para>More explanations can be found in <xref linkend="dbc.markup.programlistings-external"/>.</para>
     </section>
-    
+
     <!-- TODO: Move it to another topic? -->
     <!--
     <section xml:id="sec.db.modularize.xpointer">

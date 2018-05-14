@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -37,7 +37,7 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You need to find professional fonts, preferably released under
@@ -57,7 +57,7 @@
         <listitem>
           <para><acronym>SIL<alt>Summer Institute of
             Linguistics</alt></acronym> is a nonprofit organization for
-            sustainable language development. One part is to <quote>support 
+            sustainable language development. One part is to <quote>support
             the use of non-Roman and complex scripts in language development.</quote>
             <acronym>SIL</acronym> creates the Charis SIL, Doulos SIL,
             Gentium, Andika, and other typefaces. All fonts are released
@@ -78,7 +78,7 @@
       <varlistentry>
         <term><link xlink:href="http://www.tug.org/tetex/"/></term>
         <listitem>
-          <para>The TeTeX distribution and <acronym>CTAN<alt>Comprehensive 
+          <para>The TeTeX distribution and <acronym>CTAN<alt>Comprehensive
             TeX Archive Network</alt></acronym> contains also some high quality
             fonts, however, more aimed at the print business and not for
           the Web.</para>
@@ -88,7 +88,7 @@
         <term><link xlink:href="http://www.linuxlibertine.org"/></term>
         <listitem>
           <para>The Linux Libertine fonts are designed to be an
-            alternative to the serif Times fonts.  
+            alternative to the serif Times fonts.
             The Linux Libertine and the Linux Biolinum fonts are a
             collection of serif and sans serif fonts with the usual
             Latin, Greek, Cyrillic, and Hebrew glyphs. Additionally, the fonts
@@ -99,12 +99,12 @@
         </listitem>
       </varlistentry>
       <varlistentry>
-        <term><link xlink:href="http://dejavu-fonts.org"/></term>
+        <term><link xlink:href="https://dejavu-fonts.github.io/"/></term>
         <listitem>
           <para>
           The DejaVu font family are derived from the Bitstream Vera fonts.
           Due to license issues, the font has to be renamed. The fonts
-          contain now lots of glyphs and supports Latin, Greek, Cyrillic, 
+          contain now lots of glyphs and supports Latin, Greek, Cyrillic,
           Armenian, Georgian, and other languages.
           </para>
         </listitem>
@@ -113,12 +113,12 @@
         <term><link xlink:href="http://www.stixfonts.org"/></term>
         <listitem>
           <para>The STIX fonts (Scientific and Technical Information Exchange)
-          is a set of comprehensive fonts for scientific and engineering 
+          is a set of comprehensive fonts for scientific and engineering
           manuscripts. They can be used both for print and online publishing. </para>
         </listitem>
       </varlistentry>
     </variablelist>
-    
+
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -149,8 +149,8 @@
           <title>Font Formats</title>
           <para>Modern fonts are usually Unicode fonts published as <acronym>OTF<alt
             >OpenType Font</alt></acronym> or <acronym>TTF<alt>TrueType</alt></acronym>
-            format. Older fonts are mostly PostScript Type 1 fonts which 
-            have a limited amount of glphys (theoretically 256). 
+            format. Older fonts are mostly PostScript Type 1 fonts which
+            have a limited amount of glphys (theoretically 256).
             PostScript fonts cannot be used on the Web.</para>
         </formalpara>
       </listitem>
@@ -177,6 +177,6 @@
           </para>
         </formalpara>
       </listitem>
-    </itemizedlist>   
+    </itemizedlist>
   </section>
 </section>

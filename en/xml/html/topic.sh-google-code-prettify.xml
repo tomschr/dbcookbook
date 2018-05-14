@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
+<!DOCTYPE section
+[
+   <!ENTITY gcp "https://github.com/google/code-prettify">
+]>
 <section xml:id="dbc.html.sh.google-code-prettifiy" remap="topic"
    userlevel="easy" version="5.1"
    xmlns="http://docbook.org/ns/docbook"
@@ -34,12 +38,12 @@
       </subject>
     </subjectset>
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to highlight your source codes in
         <tag>programlisting</tag> elements with <link
-        xlink:href="http://code.google.com/p/google-code-prettify/"
+        xlink:href="&gcp;"
         >Google Code Prettifiy</link>.</para>
   </section>
   <section role="solution">
@@ -51,9 +55,7 @@
     <procedure>
       <step>
         <para>Download the source code bundle from the project's home
-          page at <link
-            xlink:href="http://code.google.com/p/google-code-prettify/"
-          />.</para>
+          page at <link xlink:href="&gcp;"/>.</para>
       </step>
       <step>
         <para>Copy the <filename>src</filename> directory to your HTML
@@ -104,7 +106,7 @@
       </step>
       <step>
         <para>If you want to enable syntax highlighting, make sure you add
-          a <tag class="attribute">language</tag> attribute in your 
+          a <tag class="attribute">language</tag> attribute in your
           <tag>programlisting</tag> tag.</para>
         <para>If you want to enable line numbering, add the attribute
           <tag class="attribute">linenumbering</tag> with the value
@@ -127,17 +129,17 @@
       solution is not for you. Use the highlighting mechanism which uses
       a XSLT extension. <remark>Add link to highlighting extension topic
         with JAR</remark></para>
-    
+
     <section>
       <title>Using the Language Attribute</title>
       <para>As you could see above, the code in <xref
           linkend="st.html.sh.google.class.value"/> uses the
-          <tag>language</tag> attribute, but doesn't pass it to the HTML
+          <tag class="attribute">language</tag> attribute, but doesn't pass it to the HTML
         code. This is not needed as Google Code Prettify will guess.<footnote>
           <para><quote>You don't need to specify the language since
               prettyprint() will guess.</quote> cited from <link
-              xlink:href="http://google-code-prettify.googlecode.com/svn/trunk/README.html"
-            />, July 10, 2012.</para>
+               xlink:href="&gcp;/blob/master/README.md#how-do-i-specify-the-language-of-my-code"
+            />.</para>
         </footnote> If you do not want to rely on this algorithm, change
         the above code and insert the language explitly:</para>
       <programlisting language="xsl">&lt;xsl:template match="d:programlisting[@language]" mode="class.value">
@@ -164,7 +166,7 @@
         <filename>highlighter/prettify.css</filename>, use one of the
         CSS files from the <filename class="directory">styles</filename>
       directory. You can view an example in the <link
-        xlink:href="http://google-code-prettify.googlecode.com/svn/trunk/styles/index.html"
+       xlink:href="&gcp;/styles/index.html"
         >Gallery</link>.
       </para>
       <para>Copy your favorite style into the <filename class="directory"

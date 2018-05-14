@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     License CC BY-NC-SA 3.0
-  
-   This work is licensed under the 
+
+   This work is licensed under the
    "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
-    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)" 
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
-   
+
    Read the English translation here:
-   
-   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)" 
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
    http://creativecommons.org/licenses/by-nc-sa/3.0/
-   
+
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
@@ -35,7 +35,7 @@
     </subjectset>
     -->
   </info>
-  
+
   <section role="problem">
     <title>Problem</title>
     <para>You want to know what root elements are possible and what
@@ -44,13 +44,13 @@
   <section role="solution">
     <title>Solution</title>
     <para>A document type definition (DTD) allows
-      <emphasis>every</emphasis> definied element to become a root element. 
+      <emphasis>every</emphasis> definied element to become a root element.
       A DTD cannot create any constraints to limit this set.
-      On the other hand, RELAX&#x00A0;NG -- the official schema language for 
+      On the other hand, RELAX&#x00A0;NG -- the official schema language for
       DocBook 5 and up -- can impose such constraints.</para>
-    
+
     <para>To create a valid DocBook V5 document you need:</para>
-    
+
     <itemizedlist>
       <listitem>
         <para>A valid DocBook V5 element to begin your document.</para>
@@ -63,21 +63,21 @@
         <para>The DocBook 5 namespace, possibly other namespaces too.</para>
       </listitem>
     </itemizedlist>
-    
+
     <para>To assemble all the above hints, a valid DocBook 5 document
       could look like this:</para>
-    
+
     <example>
       <title>A Valid DocBook 5 Book</title>
       <screen>&lt;book version="5.0" xmlns="http://docbook.org/ns/docbook">
   &lt;title>The Example Book&lt;/title>
-  &lt;chapter> 
+  &lt;chapter>
      &lt;title>An Example Chapter&lt;/title>
      &lt;para>This is a paragraph.&lt;/para>
-  &lt;/chapter> 
+  &lt;/chapter>
 &lt;/book></screen>
     </example>
-    
+
   </section>
   <section role="discussion">
     <title>Discussion</title>
@@ -119,11 +119,11 @@
 
     <para>Regarding namespaces, DocBook 5 uses only one namespace (which is
     <tag class="namespace">http://docbook.org/ns/docbook</tag>).
-      However, sometimes it is needed to include other in order to 
+      However, sometimes it is needed to include other in order to
       adhere to the XML specification. </para>
     <para>A namespace declaration consists of an (optional) namespace prefix and a
       namespace URI. The prefix can be selected freely, however, it is
-      recommended to use the prefixes in <xref linkend="tab.prefix-and-ns"/>. 
+      recommended to use the prefixes in <xref linkend="tab.prefix-and-ns"/>.
       Although they are not a <quote>standard</quote> in its strict
       sense, but over time they have been extensively used.</para>
 
@@ -187,12 +187,12 @@
     </table>
 
     <para>Usually it is a good idea to insert all the namespaces used in
-      the document in the root element. For example, <xref 
+      the document in the root element. For example, <xref
         linkend="ex.markup.rootelement.nsdecl"/>, shows three namespace
       declarations: the DocBook namespace, using no prefix; the XInclude
       namespace using the <tag class="prefix">xi</tag> prefix, and the XLink
       namespace using the <tag class="prefix">xlink</tag> prefix.</para>
-    
+
     <example xml:id="ex.markup.rootelement.nsdecl">
       <title>Start Tag with Several Namespace Declarations</title>
       <screen>&lt;book version="5.0"

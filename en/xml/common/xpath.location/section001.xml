@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng" 
+<?xml-model href="http://www.oasis-open.org/docbook/xml/5.0/rng/docbook.rng"
   schematypens="http://relaxng.org/ns/structure/1.0"?>
 <article xmlns="http://docbook.org/ns/docbook"
   xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
@@ -54,19 +54,19 @@
     </authorgroup>
   </info>
   <title>Section Example</title>
-  
+
   <?toms-html background-color="gray"?>
   <para><?toms-html background-color="blue"?>
     This is a para with blue background color.
   </para>
-  
+
   <para>This is a para without any background color.</para>
-  
+
   <?toms-html background-color="orange"?>
   <para>
     This is a para with orange background color.
   </para>
-  
+
   <para>Hallo Welt</para>
-  
+
 </article>
