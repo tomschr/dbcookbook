@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"
-  xmlns:cc="http://creativecommons.org/ns#"  
+<html lang="en" xml:lang="en"
+  xmlns:cc="http://creativecommons.org/ns#"
   xmlns:dct="http://purl.org/dc/terms/">
   <head profile="http://dublincore.org/documents/dc-html/">
     <title>DoCookBook | Recipies for DocBook XSL Developers</title>
@@ -10,8 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--  -->
     <meta http-equiv="content-language" content="en" />
-    <meta name="date" content="2018-05-013T22:10:00+01:00" />
-    <meta name="DC.date" content="2018-05137T22:10:00+01:00"
+    <meta name="date" content="2018-05-014T09:10:00+01:00" />
+    <meta name="DC.date" content="2018-05147T09:10:00+01:00"
       scheme="DCTERMS.W3CDTF" />
     <meta name="description" xml:lang="en"
       content="DoCookBook - Recipies for DocBook XSL Developers" />
@@ -40,20 +40,6 @@
     <meta name="DC.language" content="en" scheme="DCTERMS.RFC3066" />
     <meta name="DC.relation" content="http://dublincore.org/"
       scheme="DCTERMS.URI" />
-    <!--  -->
-    <link rel="alternate" type="application/rss+xml"
-      title="[DoCookBook] Recent Code Changes (RSS)"
-      href="http://sourceforge.net/p/doccookbook/code/feed.rss" />
-    <link rel="alternate" type="application/atom+xml"
-      title="[DoCookBook] Recent Code Changes (Atom)"
-      href="http://sourceforge.net/p/doccookbook/code/feed.atom" />
-    <link rel="alternate" type="application/rss+xml"  
-      title="[DoCookBook] Recent Ticket Changes (RSS)"
-      href="http://sourceforge.net/p/doccookbook/tickets/feed.rss" />
-    <link rel="alternate" type="application/atom+xml"  
-      title="[DoCookBook] Recent Ticket Changes (Atom)"
-      href="http://sourceforge.net/p/doccookbook/tickets/feed.atom" />
-
     <!-- Bootstrap core CSS -->
     <link href="bs/css/bootstrap.min.css" rel="stylesheet" />
     <link href="fa/css/font-awesome.css" rel="stylesheet" />
@@ -69,42 +55,6 @@
 
   <body>
     <div class="wrap">
-<!--      <nav class="navbar nav-justified navbar-default navbar-inverse hidden-print" role="navigation">
-        <div class="container-fluid">
-          <!-\- Brand and toggle get grouped for better mobile display -\->
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#dbc-navigation">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="http://sourceforge.net/projects/doccookbook/"><i
-                    class="fa fa-home"></i> Home</a>
-          </div>
-          <!-\- Collect the nav links, forms, and other content for toggling -\->
-          <div class="collapse navbar-collapse" id="dbc-navigation">
-            <ul class="nav navbar-nav">
-              <li><a href="#mission"><i class="fa fa-eye"></i>
-                  Mission</a></li>
-              <!-\-<li><a href="#project"><i class="fa fa-thumb-tack"></i> SF
-                  Project</a></li>-\->
-              <!-\- <span class="glyphicon glyphicon-screenshot"></span> -\->
-              <li><a href="#download"><i class="fa fa-bitbucket"></i>
-                  Repository</a></li>              
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#contact"><i class="fa fa-envelope"></i>
-                  Contact</a></li>
-            </ul>
-            <!-\- /.navbar-collapse -\->
-          </div>
-        <!-\- /.container-fluid -\->  
-        </div>
-      </nav>
--->
       <div class="jumbotron jumpotron-ad">
         <div class="container">
           <!-- <i class="fa fa-code"></i><i class="fa fa-sign-in"></i> -->
@@ -173,29 +123,8 @@
                 Git :</p>
               <pre><b>git</b> clone git@github.com:tomschr/dbcookbook.git</pre>
               <p>Or visit the <a href="https://github.com/tomschr/dbcookbook">code repository</a> on
-                GitHub.
+                GitHub.</p>
             </div>
-            
-            <!--<div id="license" class="col-md-4 col-sm-6">
-              <h2><i class="fa fa-gavel"></i> License</h2>
-              <p><span>DoCookBook</span> is currently licensed under a 
-                <a rel="license" title="CC BY SA 3.0 EN" target="_blank"
-              href="http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.en"
-              >Creative Commons Attribution-NonCommercial-ShareAlike 3.0
-              Germany License</a>.
-              </p>
-              <p>It will be released in the future under a
-            <a rel="license" title="CC BY SA 3.0 DE" target="_blank"
-              href="http://creativecommons.org/licenses/by-sa/3.0/de/deed.en"
-              >Creative Commons Attribution-ShareAlike 3.0 Germany
-              License</a>. Permissions beyond the scope of this license may
-            be available at <a target="_blank"
-              href="http://doccookbook.sourceforge.net/html/en/dbc.preface.license.html"
-              rel="cc:morePermissions">Legalnotice</a>.
-              </p>
-              <p>&#xa0;</p>
-            </div>-->
-
             <div id="contact" class="col-sm-6">
               <h2><i class="fa fa-envelope"></i> Contact</h2>
               <p>Do you want to write me some praise? Critism? Found an
@@ -209,11 +138,12 @@
                 <li>Open a ticket on <a target="_blank"
                     href="https://github.com/tomschr/dbcookbook/issues"
                   >GitHub</a>.
+                </li>
               </ul>
             </div>
           </div>
         </section>
-      
+
       <section id="benefits" class="feature-list">
           <h2 class="page-header">Benefits</h2>
           <div class="row">
@@ -256,7 +186,7 @@
             </div>
             <div class="col-md-4 col-sm-6">
               <h3><i class="fa fa-globe"></i> Different Formats</h3>
-              <p><a href="http://sf.net/projects/doccookbook/files/">Download</a> 
+             <p><a href="https://github.com/tomschr/dbcookbook/releases">Download</a> 
                 whatever format you prefer, be it XHTML, PDF, or EPUB.</p>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -289,7 +219,6 @@
           <div class="col-sm-6">
             <p><q>Cool!</q></p>
           </div>
-          
         </div>
       </section>
       <section id="thanks-to">
@@ -333,12 +262,6 @@
         <div class="container">
           <div>
             <p>
-              <!--<a href="http://validator.w3.org/check?uri=referer"><img
-              src="http://www.w3.org/Icons/valid-xhtml-rdfa"
-              alt="Valid XHTML + RDFa" height="31" width="88" /></a>-->
-              <!--<a href="http://jigsaw.w3.org/css-validator/check/referer"
-              ><img src="http://jigsaw.w3.org/css-validator/images/vcss"
-              width="88" height="31" alt="CSS is valid!" /></a>-->
               <a target="_blank" href="http://opensuse.org"><img width="110px"
                   height="32px" style="border: 0px solid;"
                   alt="openSUSE.org" title="openSUSE.org"
@@ -353,7 +276,7 @@
             </p>
           </div>
         </div>
-      </footer>      
+      </footer>
     </div>
     
     <!-- Placed at the end of the document so the pages load faster -->

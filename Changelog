@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 14 08:40:00 UTC 2018 - tom_schr@web.de
+
+Version 0.7.4 Small fixes here and there:
+
+* Update issue template (issue #31)
+* Implement subcommands for pdf and html for building the books (commit
+  88ef68a)
+* Use dbtimestamp PI in pubdate (commit 2208bd4)
+* Corrected old link from code.google.com (issue #26)
+* Update to DocBook 5.1 (commit 6d2c8e8b)
+* Update DocBook XSLT2 stylesheet to v2.3.2 (commit c5e95165)
+
+-------------------------------------------------------------------
 Sat Mar 10 23:25:00 UTC 2018 - tom_schr@web.de
 
 Version 0.7.3 Work on infrastructure:
