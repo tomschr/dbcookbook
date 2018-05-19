@@ -3,7 +3,7 @@ syntax: glob
 *.~
 *~
 *.bak
-
+*-swp
 # Temporary directories and files by Python
 __pycache__
 *.pyc
