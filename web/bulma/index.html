@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="en" xml:lang="en"
+    xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>DoCookBook | Recipies for DocBook XSL Developers</title>
+        <meta charset="utf-8" />
+        <meta name="author" content="Thomas Schraitle" />
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="content-language" content="en" />
+        <meta name="date" content="2018-05-20T14:44:00+01:00" />
+        <meta name="robots" content="index,follow" />
+        <link rel="stylesheet" href="bulma-style.css"/>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <script defer="defer" src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+        <style>
+ @import url(http://fonts.googleapis.com/css?family=Exo+2:300,400,700|Ubuntu+Mono:400,700);
+
+.hero-head .title,
+.hero-head .subtitle,
+.hero-head .subsubtitle
+h1, h2, h3, h4, h5
+{
+    font-family: "Exo 2", "Open Sans", 'DejaVu Sans', sans-serif;
+}
+
+.hero-head .title {
+    font-weight: 700;
+    font-size: 350%;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.149);
+}
+.hero-head .subtitle,
+.hero-head .subsubtitle
+{
+    font-weight: 300;
+}
+
+h2, h3,
+h2.title, h3.title, h4.title
+{ 
+  font-weight: 400;
+}
+
+body > section .card-content
+{
+    background-color: #fcf8e3;
+}
+
+hr.aldusleaf {
+    overflow: visible; /* For IE */
+    padding: 0;
+    border: none;
+    margin-left:20%;
+    margin-right:20%;
+    border-top: medium double gray
+    color: gray;
+    text-align: center;
+}
+hr.aldusleaf:after {
+    content: attr(content);
+    color:gray;
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.95em;
+    padding: 0 0.25em;
+    background: white;
+}
+        </style>
+    </head>
+    <body>
+        <section class="hero is-light">
+            <div class="hero-body">
+                <div class="container has-text-centered">
+                    <div class="hero-head">
+                        <h1 class="title">
+                            <i class="fas fa-magic"></i>
+                            <span>DoCookBook</span>
+                        </h1>
+                        <h2 class="subtitle is-size-3">Write better DocBook XML and XSLT code</h2>
+                        <h3 class="subsubtitle is-size-5">Created by Thomas Schraitle</h3>
+                        <h4>Version 0.7.x </h4>
+                        <p><button class="button is-warning">Draft</button></p>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-footer">
+                <nav class="tabs is-spaced">
+                    <div class="container">
+                        <p class="buttons has-addons is-medium">
+                            <a class="button" title="Read offline" target="_blank"
+                                href="https://github.com/tomschr/dbcookbook/releases">
+                                <span class="icon">
+                                    <i class="fas fa-download fa-lg"></i>
+                                </span>
+                                <span>Download</span>
+                            </a>
+                            <a class="button " title="Read Online" target="_blank"
+                                href="html/en/index.html">
+                                <span class="icon">
+                                    <i class="fab fa-html5"></i>
+                                </span>
+                                <span>Read Online</span>
+                            </a>
+                            <a class="button" href="https://github.com/tomschr/dbcookbook"
+                                title="GitHub Repository" target="_blank">
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>GitHub</span>
+                            </a>
+                        </p>
+                    </div>
+                </nav>
+                <div class="content has-text-centered">
+                    <div id="donate">
+                        <div>
+                            <form action="https://www.paypal.com/cgi-bin/webscr"
+                                method="post">
+                                <input type="hidden" name="cmd" value="_s-xclick"
+                                /><input type="hidden" name="hosted_button_id"
+                                    value="8XQXHPHCCWRQW" /><input type="image"
+                                        src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif"
+                                        name="submit"
+                                        alt="PayPal - The safer, easier way to pay online!"
+                                    /><img alt=""
+                                        src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif"
+                                        width="1" height="1" /></form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="card">
+                <div class="card-content">
+                    <h2 class="title">
+                        <i class="fas fa-eye"></i>
+                        <span>Mission</span>
+                    </h2>
+                    <p>The DoCookBook project aims to create an open source book about
+                                        <a href="http://www.docbook.org" class="alert-link"
+                                        target="_blank" title="DocBook.org">DocBook</a> and the <a
+                                        class="alert-link" target="_blank"
+                                        href="http://docbook.sourceforge.net/release/xsl/current/doc/"
+                                        >DocBook XSL stylesheets</a> written in a cookbook style and
+                                    released under a Creative Commons license.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="aldusleaf" content="❦" />
+
+        <section class="section">
+            <div class="columns">
+                <div class="column">
+                    <div class="content">
+                    <h2 class="title">
+                        <i class="fab fa-github"></i>
+                        <span>Repository</span>
+                    </h2>
+                    <p>If you are interested in the source code, clone it with
+                        Git :</p>
+                    <pre><b>git</b> clone git@github.com:tomschr/dbcookbook.git</pre>
+                    <p>Or visit the <a href="https://github.com/tomschr/dbcookbook">code repository</a> on
+                        GitHub.</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="content">
+                    <h2 class="title">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact</span>
+                    </h2>
+                    <p>Do you want to write me some praise? Critism? Found an
+                        error or would like to give me some new ideas? Select
+                        one of the following methods: </p>
+                    <ul>
+                        <li>
+                            <p>Write me a mail to <a href="mailto:tom_schr&#064;users&#x2e;sourceforge&#x2e;net"
+                            >tom_schr&#064;users&#x2e;sourceforge&#x2e;net</a>.</p>
+                        </li>
+                        <li><p>Write a message to the <a target="_blank"
+                            href="https://sourceforge.net/p/doccookbook/discussion/?source=navbar">discussion board</a>.</p></li>
+                        <li><p>Open a ticket on <a target="_blank"
+                            href="https://github.com/tomschr/dbcookbook/issues"
+                            >GitHub</a>.</p>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="title">Benefits</h2>
+            <div class="columns is-multiline is-mobil is-two-thirds-desktop is-one-quarter-fullhd">
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fas fa-thumbs-up"></i>
+                        <span>Made for DocBook 5</span>
+                    </h3>
+                    <p>Designed from scratch to support <a target="_blank"
+                              href="http://docbook.org/tdg51/">DocBook&#xa0;5</a>.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fas fa-bullseye"></i>
+                        <span>Cookbook Style</span>
+                    </h3>
+                    <p>Read a problem and find easy to follow solution with helpful discussions.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fas fa-list-ol"></i>
+                        <span>Built with Procedures</span>
+                    </h3>
+                    <p>Enjoy step-by-step instruction to follow the solution easily.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fab fa-github"></i> XML Source Available</h3>
+                    <p>Clone the source code from the <a href="#git-repo">GitHub repository</a>.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fas fa-wrench"></i> Ready for
+                                Developers</h3>
+                            <p>Helps DocBook developers to quickly understand the problem with
+                                explanation and code.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fas fa-code"></i> Lots of Examples</h3>
+                    <p>Learn from commented examples, easy to follow and ready to download with just
+                        a mouse click.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fas fa-check-square"></i> Easiness Indicator</h3>
+                    <p>Let you guide the easiness of a topic with our three star marker.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3 ><i class="fas fa-globe"></i> Different Formats</h3>
+                    <p><a href="https://github.com/tomschr/dbcookbook/releases">Download</a> 
+                        whatever format you prefer, be it XHTML, PDF, or EPUB.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fab fa-creative-commons"></i> CC License</h3>
+                    <p>Released under the terms of <a target="_blank"
+                            href="http://creativecommons.org">Creative Commons</a>, see also <a
+                            href="#license">License</a>.</p>
+                </div>
+                <div class="column is-half is-one-third-desktop is-one-quarter-fullhd">
+                    <h3><i class="fab fa-linux"></i>
+                        <i class="fab fa-apple"></i>
+                        <i class="fab fa-windows"></i> For all Platforms</h3>
+                    <p>Useful for all users, regardless of your operating system.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+                <h2 class="title">What others say</h2>
+                <p><q>I discovered your project via web search and found it very useful</q></p>
+                <p><q>Cool!</q></p>
+                <p><q>Very interesting project, I'll include it into my Blog roll!</q></p>
+                <p><q>Very nice one!!!</q></p>
+        </section>
+        <section class="section">
+                <h2 class="title">Thanks To</h2>
+                <div class="columns">
+                    <div class="column">
+                        <p>Thanks to Norman Walsh, Robert Stayton, all the developers, and the
+                            friendly people on the DocBook mailinglists.</p>
+                    </div>
+                    <div class="column">
+                        <p>A HUGE thanks goes to all people who helped me with proofreading, praise,
+                            feedback, or discussions.</p>
+                    </div>
+                </div>
+                <div>
+                    <p><q>Thank you!</q> for <a href="http://bulma.io">Bulma</a>
+                        (created by <a target="_blank"
+                            href="https://jgthms.com">Jeremy Thomas</a>),
+                        <a target="_blank" href="http://fontawesome.io"><i
+                            class="fas fa-flag"></i> Font Awesome</a>
+                        (created by <a target="_blank"
+                            href="http://twitter.com/davegandy">Dave Gandy</a>),
+                        <a target="_blank"
+                            href="http://www.google.com/fonts/specimen/Exo+2">the Exo 2 font</a>
+                        (created by <a target="_blank"
+                            href="http://www.ndiscovered.com">Natanael Gama</a>),
+                        Linux,
+                        and all the other great open source projects.</p>
+                </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <div class="content">
+                    <p>
+                        <a href="https://bulma.io">
+                            <img src="https://bulma.io/images/made-with-bulma--dark.png"
+                                alt="Made with Bulma"
+                                width="128" height="24"/>
+                        </a>
+                        <a target="_blank" href="http://opensuse.org"><img width="110px"
+                                height="32px" style="border: 0px solid;" alt="openSUSE.org"
+                                title="openSUSE.org"
+                                src="http://files.opensuse.org/opensuse/en/f/ff/Opensuse_1.png"
+                             /></a>
+                        <a target="_blank" rel="license"
+                            href="http://creativecommons.org/licenses/by-sa/3.0/de/"><img
+                                alt="Creative Commons License" width="88px" height="31px"
+                                style="border-width:0"
+                                src="http://i.creativecommons.org/l/by-sa/3.0/de/88x31.png" /></a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
