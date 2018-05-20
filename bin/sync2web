@@ -21,7 +21,7 @@ USER=${1:-tom_schr}
 PROJECT=doccookbook
 SFSITE=web.sourceforge.net
 WEBPATH="/home/project-web/${PROJECT}/htdocs/"
-TOSYNC="web/bs web/fa web/*.css web/index.html web/*.ico"
+TOSYNC="web/bs web/fa web/*.css web/index.html web/*.ico web/bulma"
 
 if [[ $1 = "-h" || $1 = "--help" ]]; then
   usage
