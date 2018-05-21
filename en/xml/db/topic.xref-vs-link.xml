@@ -15,7 +15,10 @@
 -->
 <!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
 
-<section xml:id="dbc.markup.xref-vs-link" remap="topic" userlevel="easy" xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xlink="http://www.w3.org/1999/xlink">
+<section xml:id="dbc.markup.xref-vs-link" remap="topic" userlevel="easy"
+  xmlns="http://docbook.org/ns/docbook"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Knowing the Difference of Cross References and Links</title>
   <info>
     <definitions definitionfile="defs.xml"/>
@@ -153,8 +156,8 @@
         <thead>
           <row>
             <entry>Topic</entry>
-            <entry><tag xlink:href="http://www.docbook.org/tdg51/en/html/xref.html">xref</tag></entry>
-            <entry><tag xlink:href="http://www.docbook.org/tdg51/en/html/link.html">link</tag></entry>
+            <entry><tag>xref</tag></entry>
+            <entry><tag>link</tag></entry>
           </row>
         </thead>
         <tbody>
@@ -164,6 +167,11 @@
             </footnote> Definition</entry>
             <entry>A cross reference to another part of the document</entry>
             <entry>A hypertext link</entry>
+          </row>
+          <row>
+            <entry>TDG Link</entry>
+            <entry><link xlink:href="http://www.docbook.org/tdg51/en/html/xref.html"/></entry>
+            <entry><link xlink:href="http://www.docbook.org/tdg51/en/html/link.html"/></entry>
           </row>
           <row>
             <entry>Content Model</entry>
