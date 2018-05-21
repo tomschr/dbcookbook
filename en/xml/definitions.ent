@@ -5,6 +5,7 @@
 <!ENTITY gh.uri             "https://github.com/&gh.project;">
 <!ENTITY gh.git.repo.url    "git@github.com:&gh.project;.git">
 <!ENTITY gh.https.repo.url  "https://github.com/&gh.project;.git">
+<!ENTITY gh.www.url         "https://doccookbook.sf.net/html/en/">
 
 <!ENTITY uri.dbxsl    "http://docbook.sf.net/release/xsl/current">
 <!ENTITY uri.db       "http://www.docbook.org">

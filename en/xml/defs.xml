@@ -18,7 +18,7 @@
 <definitions xmlns="http://docbook.org/ns/docbook">
   <def name="author.email">tom_schr@web.de</def>
   <def name="db">DocBook</def>
-  <def name="homeurl">https://doccookbook.sf.net</def>
+  <def name="homeurl">https://github.com/tomschr/dbcookbook</def>
   <def name="author">
     <author>
       <personname>

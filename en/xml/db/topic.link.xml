@@ -13,6 +13,10 @@
    http://creativecommons.org/licenses/by-nc-sa/3.0/
 
 -->
+<!DOCTYPE section [
+   <!ENTITY % defs SYSTEM "../definitions.ent">
+   %defs;
+]>
 <?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
 
 <section xml:id="dbc.markup.link" remap="topic" userlevel="easy" version="5.1"
@@ -52,7 +56,7 @@
           <title>Without Text</title>
           <para>The link element is completely empty:</para>
         </formalpara>
-        <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>
+        <programlisting language="xml">&lt;link xlink:href="&gh.uri;"/></programlisting>
       </listitem>
       <listitem>
         <formalpara>
@@ -60,7 +64,7 @@
           <para>The link element contains some text or even other
           elements:</para>
         </formalpara>
-        <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/link></programlisting>
+        <programlisting language="xml">&lt;link xlink:href="&gh.uri;">The DoCookBook&lt;/link></programlisting>
       </listitem>
     </itemizedlist>
     <para>Don't forget to add the XLink namespace declaration into the
@@ -181,7 +185,7 @@
             <para>Use this code to create an external link with a text
               different than the URL:</para>
             <programlisting language="xml"
-      >&lt;link xlink:href="https://doccookbook.sf.net">My Project&lt;/link></programlisting>
+      >&lt;link xlink:href="&gh.uri;">My Project&lt;/link></programlisting>
           </listitem>
         </varlistentry>
         <varlistentry xml:id="vl.db.link.content-linkend">
@@ -235,11 +239,11 @@
         element. As such, avoid the following notation when the URL in
           <tag class="attribute">xlink:href</tag> is the same than the
         text:</para>
-      <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net">https://doccookbook.sf.net&lt;/link></programlisting>
+      <programlisting language="xml">&lt;link xlink:href="&gh.uri;">&gh.uri;&lt;/link></programlisting>
       <para>This is mostly unnecessary as it is overly verbose,
         difficult to read, and does not add any value. Correct such
         links and remove the text: </para>
-      <programlisting language="xml">&lt;link xlink:href="https://doccookbook.sf.net"/></programlisting>
+      <programlisting language="xml">&lt;link xlink:href="&gh.uri;"/></programlisting>
     </section>
 
     <section xml:id="sec.db.link.xlinks">
@@ -250,16 +254,16 @@
         to use a <tag>link</tag> element anymore. For example, if you
         want to insert a book title with an additional link, in
         DocBook&#xa0;4 it has to be written like this:</para>
-      <programlisting language="xml">&lt;citetitle>&lt;ulink url="https://doccookbook.sf.net">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
+      <programlisting language="xml">&lt;citetitle>&lt;ulink url="&gh.uri;">The DoCookBook&lt;/ulink>&lt;/citetitle></programlisting>
       <para>or this, depending on what you prefer:</para>
-      <programlisting language="xml">&lt;ulink url="https://doccookbook.sf.net">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
+      <programlisting language="xml">&lt;ulink url="&gh.uri;">&lt;citetitle>The DoCookBook&lt;/citetitle>&lt;/ulink></programlisting>
       <para>With DocBook 5 this can be shortend:</para>
-      <programlisting language="xml">&lt;citetitle xlink:href="https://doccookbook.sf.net">The DoCookBook&lt;/citetitle></programlisting>
+      <programlisting language="xml">&lt;citetitle xlink:href="&gh.uri;">The DoCookBook&lt;/citetitle></programlisting>
       <para>Apart from the previous described link concept,
         DocBook&#xa0;5 allows to control the link behavior. For example,
         to open a new window when clicking a link, use the <tag
           class="attribute">xlink:show</tag> attribute: </para>
-      <programlisting language="xml">&lt;link xlink:show="new" xlink:href="https://doccookbook.sf.net"/></programlisting>
+      <programlisting language="xml">&lt;link xlink:show="new" xlink:href="&gh.uri;"/></programlisting>
       <para>The attribute value <tag class="attvalue">show</tag> opens a
         <quote>new window, frame, pane, or other relevant presentation
           context</quote> (see <link
