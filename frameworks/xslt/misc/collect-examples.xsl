@@ -12,7 +12,7 @@
   xmlns:de="urn:x-toms:docbook-ext"
   exclude-result-prefixes="d xlink de">
   
-  <xsl:import href="&dburi;/chunker.xsl"/>
+  <xsl:import href="&dburi;/xhtml/chunker.xsl"/>
   
   <xsl:param name="base.dir"/>
   <xsl:param name="base.example.dir">examples/</xsl:param>
