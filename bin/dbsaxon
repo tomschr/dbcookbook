@@ -41,10 +41,9 @@ function getofficialversion() {
 # Get the "official" public version (marked as a Mercurial tag)
 # The "last(tag(),1)" expression returns the last used tag
 #
-  local version=$(hg log -r "last(tag(),1)" --template "{tags}")
+  local version=$(git describe | tr '\n' ' ')
   
   __logging "getofficialversion: Found public version '${version}'"
-  
   echo $version
 }
 
@@ -77,7 +76,7 @@ function copyprettifier() {
 function updatereleaseinfo() {
     local xmlin=$1
     local version=$(getofficialversion)
-    local changeweb=1
+    local changeweb=0
     
     __logging "updatereleaseinfo: Update releaseinfo for file '${xmlin}'"
     
@@ -86,9 +85,9 @@ function updatereleaseinfo() {
         xmlin=${xmlin}.tmp
     fi
     
-    # Update releaseinfo[@role='draft'] with current version number
+    # Update releaseinfo with current version number
     xml ed --inplace -N d=http://docbook.org/ns/docbook \
-        --update "/d:book/d:info/d:releaseinfo[@role='draft'][1]" \
+        --update "/d:book/d:info/d:releaseinfo[1]" \
         -v "${version}" "${xmlin}"
     __logging "updatereleaseinfo: Inserted version '${version}' in file '${xmlin}'"
     
