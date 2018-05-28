@@ -172,6 +172,10 @@ Third Line
           xlink:href="http://www.w3.org/TR/xsl11/#line-height"/>, the
           definition of line-height in the XSL-FO specification</para>
       </listitem>
+      <listitem>
+        <para><link
+          xlink:href="http://w3-org.9356.n7.nabble.com/Line-height-vs-line-spacing-td213282.html"/>, Tony Graham about Line height vs. line spacing</para>
+      </listitem>
     </itemizedlist>
   </section>
 </section>
