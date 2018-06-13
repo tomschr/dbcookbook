@@ -17,8 +17,7 @@
 <section xml:id="dbc.fo.graphic-titlepage" remap="topic" userlevel="easy"
     xmlns="http://docbook.org/ns/docbook" xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Graphics on Title Pages</title>
-    <subtitle>Place and format an individual graphic on a title page</subtitle>
+    <title>Inserting Graphics on Title Pages</title>
     <info>
         <definitions definitionfile="defs.xml"/>
         <keywordset>
@@ -37,27 +36,25 @@
 
     <section role="problem">
         <title>Problem</title>
-        <para>You need to know how to add a graphic to your titlepage.</para>
+        <para>You need to know how to insert a graphic to your titlepage.</para>
     </section>
     <section role="solution">
         <title>Solution</title>
-        <para>To add a graphic to one of your titlepages, you need to creata a custom layer for
-            titlepages as described in the <xref linkend="dbc.fo.design-titlepages"/>section.</para>
-        <para>To add your graphic, the XSL-FO specification has defined an fo:block-container to
-            encapsulate an 'external-graphics' element. Additionally, there are many many options to
-            modify your graphic on the title pages like scaling or positioning.</para>
-        <programlisting language="xml">
-&lt;fo:block space-before="1em" space-after="1em">
+        <para>To insert a graphic to one of your title pages, you need to create a template for
+            titlepages as described in <xref linkend="dbc.fo.design-titlepages"/>.</para>
+        <para>To add your graphic, the XSL-FO specification has defined an <tag>fo:block-container</tag> to
+            encapsulate an <tag>fo:external-graphics</tag> element. Additionally, there are many, many
+            options to modify your graphic on the title pages like scaling or positioning.
+            The following listing show how to use both elements.</para>
+        <programlisting language="xml">&lt;fo:block space-before="1em" space-after="1em">
     &lt;fo:external-graphic src="./images/your-graphic.svg"/>
-&lt;/fo:block>
-        </programlisting>
-        <para>Depending on the location within the customized title element, where you want to place
-            your graphic, you must place the fo:block-container before or after the title
+&lt;/fo:block></programlisting>
+        <para>Depending on the position within the customized title element, where you want to place
+            your graphic, you must place the <tag>fo:block-container</tag> before or after the title
             block-container.</para>
-        <para>The following example will place the graphic after the document title. The graphic
-            will be scaled by 50% and the aspect ratio will be preserved.</para>
-        <programlisting language="xml">
-&lt;xsl:template match="d:title" mode="book.titlepage.recto.auto.mode">
+        <para>The following example places the graphic after the document title. The graphic
+            is scaled by 50% and the aspect ratio is preserved.</para>
+        <programlisting language="xml">&lt;xsl:template match="d:title" mode="book.titlepage.recto.auto.mode">
     &lt;fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format"
         xsl:use-attribute-sets="book.titlepage.recto.style" text-align="center"
         font-size="32pt" space-before="18.6624pt" font-weight="bold">
@@ -65,14 +62,12 @@
             &lt;xsl:with-param name="node" select="ancestor-or-self::d:book[1]"/>
         &lt;/xsl:call-template>
         &lt;fo:block space-before="1em" space-after="1em">
-            &lt;fo:external-graphic src="./images/your-graphic.svg" content-height="50%"
+            &lt;fo:external-graphic src="{$img.src.path}your-graphic.svg" content-height="50%"
                 scaling="uniform"/>
          &lt;/fo:block>
     &lt;/fo:block>
-&lt;/xsl:template>
-        </programlisting>
+&lt;/xsl:template></programlisting>
     </section>
-
     <section role="discussion">
         <title>Discussion</title>
         <para>It's a good idea to use only supported high resolution bitmap graphics (300x300 dpi)
