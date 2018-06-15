@@ -302,7 +302,8 @@
     <para>The source code of this book is published and maintained as a
       <application xlink:href="https://git-scm.com">Git</application> repository.
       Feel free to clone it, make improvements and
-      mail me your changes to <email>&prj.mail;</email><!--
+      mail me your changes to <email>&prj.mail;</email> or send me pull
+     requests.<!--
         or use the link <link
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
       />-->.
@@ -320,6 +321,22 @@
     or other inconveniences you have found and add them to the list at
     <link xlink:href="&gh.uri;/issues/new"/>.
     </para>
+  </section>
+
+  <section xml:id="dbc.preface.contributors">
+   <title>Contributors</title>
+   <para>Thanks to all who contribute to this book (sorted alphabetically):</para>
+   <itemizedlist>
+    <listitem>
+     <para>Antje Faber</para>
+    </listitem>
+    <listitem>
+     <para>Stefan Hinz</para>
+    </listitem>
+    <listitem>
+     <para>Peter Schmelzer</para>
+    </listitem>
+   </itemizedlist>
   </section>
 
   <!--<section xml:id="dbc.preface.faq">

@@ -1,7 +1,7 @@
 ===================================
 Welcome to "The DoCookBook"
 ===================================
-:Info: See https://github/tomschr/dbcookbook
+:Info: See https://github.com/tomschr/dbcookbook
 :Author: Thomas Schraitle <tom_schr AT web DOT de>
 :Description: Cookbook for DocBook and DocBook XSL stylesheets
 :HTML: http://doccookbook.sourceforge.net

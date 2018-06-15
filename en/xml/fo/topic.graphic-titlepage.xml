@@ -95,6 +95,7 @@
                 <para>The W3C recommendation for fo:external-graphic <link
                         xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic"
                     />.</para>
+
             </listitem>
             <listitem>
                 <para>How to Bring XSL-FO External Graphic to Front<link
