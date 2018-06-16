@@ -52,7 +52,7 @@
             title pages like scaling or positioning. The following listing
             show how to use both elements.</para>
         <programlisting language="xml">&lt;fo:block space-before="1em" space-after="1em">
-    &lt;fo:external-graphic src="./images/your-graphic.svg"/>
+    &lt;fo:external-graphic src="{$img.src.path}/your-graphic.svg"/>
 &lt;/fo:block></programlisting>
         <para>Depending on the position within the customized title
             element, where you want to place your graphic, you must place
@@ -69,7 +69,7 @@
             &lt;xsl:with-param name="node" select="ancestor-or-self::d:book[1]"/>
         &lt;/xsl:call-template>
         &lt;fo:block space-before="1em" space-after="1em">
-            &lt;fo:external-graphic src="{$img.src.path}your-graphic.svg" content-height="50%"
+            &lt;fo:external-graphic src="{$img.src.path}/your-graphic.svg" content-height="50%"
                 scaling="uniform"/>
          &lt;/fo:block>
     &lt;/fo:block>
