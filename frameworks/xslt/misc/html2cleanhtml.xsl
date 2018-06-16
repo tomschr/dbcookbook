@@ -512,6 +512,18 @@
     </xsl:copy>
   </xsl:template>
 
+  <xsl:template match="h:div[@class='blockquote-title' or
+                             @class='itemizedlist-title' or
+                             @class='legalnotice-title' or
+                             @class='orderedlist-title' or
+                             @class='sidebar-title' or
+                             @class='toc-title' or
+                             @class='variablelist-title']">
+    <div class="title">
+      <xsl:apply-templates/>
+    </div>
+  </xsl:template>
+
   <xsl:template match="h:pre[@class='screen'][h:span]">
     <xsl:variable name="firsttext" select="text()[1]"/>
 
