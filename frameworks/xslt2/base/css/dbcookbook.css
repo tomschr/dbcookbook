@@ -415,7 +415,9 @@ div.variablelist dd p:first-child {
 .procedure-wrapper div.title,
 .example-wrapper div.title,
 .table-wrapper div.title,
-.itemizedlist div.title
+.itemizedlist div.title,
+.variablelist div.title,
+.orderedlist div.title
 {
   margin-bottom:2pt;
   font-weight:400;
