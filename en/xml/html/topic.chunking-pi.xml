@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.html.chunkpi" remap="topic" version="5.1"
+   userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Setting your own Files and Directories Names during Chunking</title>
+  <info>
+    <keywordset>
+      <keyword>chunk</keyword>
+      <keyword>chunking</keyword>
+      <keyword>pi</keyword>
+      <keyword>processing instructions</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>chunking</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+
+  <section role="problem">
+    <title>Problem</title>
+    <para>
+      You need a method to use the chunking process, but you want to
+      define your own file and directory names for the HTML output.
+    </para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para> The DocBook XSL stylesheets recognize the specific processing
+      instruction (PI) <tag class="pi">dbhtml</tag> for HTML output to influence
+      the chunking process. The PI knows the following pseudo-attributes:</para>
+    <variablelist>
+      <varlistentry>
+        <term><tag class="pi">dbhtml dir="<replaceable>PATH</replaceable>"</tag></term>
+        <listitem>
+          <para>Specifies a directory name in which to write files. It is
+            possible to add a trailing slash or leave it out, the stylesheets
+            know how to deal with both cases.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><tag class="pi">dbhtml filename="<replaceable>FILENAME</replaceable>"</tag></term>
+        <listitem>
+          <para>Specifies a file name for a chunk. The value must contain
+            only the file name with an optional extension, but not any
+            directories.
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+    <para>You can combine <varname>filename</varname> and <varname>dir</varname>.
+      Insert this processing instruction into your component of your XML file.
+    </para>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>The <tag class="pi">dbhtml</tag> processing instruction should be
+      inserted after the start tag of the component.
+      Consider the following structure with such PIs:
+    </para>
+    <programlisting language="xml">&lt;book version="5.0" xml:id="book"
+    xmlns="http://docbook.org/ns/docbook" xml:lang="en">
+    &lt;?dbhtml dir="book"?>
+  &lt;title>Chunking Test&lt;/title>
+  &lt;preface xml:id="preface">
+    &lt;?dbhtml dir="pre/"?>
+    &lt;!-- ... -->
+  &lt;/preface>
+  &lt;chapter xml:id="intro">
+    &lt;?dbhtml dir="intro" filename="index.html"?>
+    &lt;!-- ... -->
+  &lt;/chapter>
+  &lt;appendix xml:id="app.overview">
+    &lt;?dbhtml dir="app" filename="index.html"?>
+    &lt;!-- ... -->
+  &lt;/appendix>
+&lt;/book></programlisting>
+    <para>When you transform it to HTML with the <filename>chunk.xsl</filename>
+    stylesheet, you will get the following directory structure:</para>
+    <screen>book/
+├── app/
+│   ├── ...
+│   └── index.html
+├── index.html
+├── intro/
+│   ├── ...
+│   └── index.html
+└── pre/
+    ├── ...
+    └── pr01.html</screen>
+    <para>You can combine other chunking parameters as described
+    in <xref linkend="dbc.html.chunk"/>.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/Chunking.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://docbook.sf.net/release/xsl/current/doc/pi/dbhtml_dir.html"/></para>
+      </listitem>
+      <listitem>
+        <para><link xlink:href="http://docbook.sf.net/release/xsl/current/doc/pi/dbhtml_filename.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>
