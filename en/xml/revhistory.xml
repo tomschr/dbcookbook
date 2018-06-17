@@ -7,13 +7,53 @@
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Revision History</title>
 
+  <revision xml:id="v0.8.0">
+    <revnumber>0.8.0</revnumber>
+    <date>2018-06-17</date>
+    <xi:include href="author-toms.xml"/>
+    <authorinitials>toms</authorinitials>
+    <revdescription>
+      <para>See <link xlink:href="https://github.com/tomschr/dbcookbook/releases/tag/v0.8.0"/></para>
+    </revdescription>
+  </revision>
+
+  <revision xml:id="v0.7.4">
+    <revnumber>0.7.4</revnumber>
+    <date>2018-05-14</date>
+    <xi:include href="author-toms.xml"/>
+    <authorinitials>toms</authorinitials>
+    <revdescription>
+      <para>See <link xlink:href="https://github.com/tomschr/dbcookbook/releases/tag/v0.7.4"/></para>
+    </revdescription>
+  </revision>
+
+  <revision xml:id="v0.7.3">
+    <revnumber>0.7.3</revnumber>
+    <date>2018-03-10</date>
+    <xi:include href="author-toms.xml"/>
+    <authorinitials>toms</authorinitials>
+    <revdescription>
+      <para>See <link xlink:href="https://github.com/tomschr/dbcookbook/releases/tag/v0.7.3"/></para>
+    </revdescription>
+  </revision>
+
+  <revision xml:id="v0.7.2">
+    <revnumber>0.7.2</revnumber>
+    <date>2017-05-21</date>
+    <xi:include href="author-toms.xml"/>
+    <authorinitials>toms</authorinitials>
+    <revdescription>
+      <para>Moving from SourceForge to GitHub</para>
+    </revdescription>
+  </revision>
+
   <revision xml:id="r0.7">
     <revnumber>0.7</revnumber>
     <date>2014-04-18</date>
     <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
-      <para>Seventh public release, see <link xlink:href="https://sf.net/mailarchive/message.php"></link></para>
+      <para>Seventh public release, see <link xlink:href="https://sf.net/p/doccookbook/mailman/message/36316832"></link></para>
     </revdescription>
   </revision>
 
@@ -23,7 +63,7 @@
     <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
-      <para>Sixth public release, see <link xlink:href="https://sf.net/mailarchive/message.php?msg_id=29388815"/></para>
+      <para>Sixth public release, see <link xlink:href="https://sf.net/p/doccookbook/mailman/message/29388815"/></para>
     </revdescription>
   </revision>
 
@@ -34,7 +74,7 @@
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Fifth public release, see <link
-        xlink:href="https://sf.net/mailarchive/message.php?msg_id=29164534"/></para>
+        xlink:href="https://sf.net/p/doccookbook/mailman/message/29164534"/></para>
     </revdescription>
   </revision>
 
@@ -45,7 +85,7 @@
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Fourth public release, see <link
-        xlink:href="https://sf.net/mailarchive/message.php?msg_id=28755847"/></para>
+        xlink:href="https://sf.net/p/doccookbook/mailman/message/28755847"/></para>
     </revdescription>
   </revision>
 
@@ -56,7 +96,7 @@
     <authorinitials>toms</authorinitials>
     <revdescription>
       <para>Third public release, see <link
-        xlink:href="http://sf.net/mailarchive/message.php?msg_id=28599375"/></para>
+        xlink:href="http://sf.net/p/doccookbook/mailman/message/28599375"/></para>
     </revdescription>
   </revision>
 
@@ -66,7 +106,7 @@
     <xi:include href="author-toms.xml"/>
     <authorinitials>toms</authorinitials>
     <revdescription>
-      <para>Second public release, see <link xlink:href="https://sf.net/mailarchive/message.php?msg_id=28585391"/></para>
+      <para>Second public release, see <link xlink:href="https://sf.net/p/doccookbook/mailman/message/28585391"/></para>
     </revdescription>
   </revision>
 
