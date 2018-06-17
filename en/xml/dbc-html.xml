@@ -154,4 +154,5 @@
   <xi:include href="html/topic.chunking.xml"/>
   <!-- <xi:include href="html/topic.google-webfonts.xml"/> -->
   <!--<xi:include href="html/topic.consistent-ids.xml"/>-->
+  <xi:include href="html/topic.chunking-pi.xml"/>
 </chapter>
