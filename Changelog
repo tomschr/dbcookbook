@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jun 17 18:01:00 UTC 2018 - tom_schr@web.de
+
+Version 0.8.0:
+
+HTML:
+  * New section about controlling the chunking process (issue #38)
+  * New section: about `<?dbhtml?>` PI (issue #40)
+
+FO/PDF:
+  * New section: Inserting Graphics on Title Pages (#36, #37)
+
+Bug fixes:
+  * Correct canonical DocBook XSL URI (issue #27)
+  * Fix old link from code.google.com (issue #26)
+  * Add missing files in oXygen .xpr file (commit 948c127)
+  * Correct version number in dbsaxon script (replace `hg log` with
+    `git describe` (commit ee60c00)
+  * Preserve some titles in `html2cleanup.xsl` (commit 2cbb20d)
+
+Other changes:
+  * Correct index.html, use GitHub logo instead of Bitbucket (commit e7ff831)
+  * Remove section about Piwik (commit d59b667)
+  * Update list of contributors (commit 1d2c90e)
+
+Thanks to Peter Schmelzer for helping with some issues!
+
+-------------------------------------------------------------------
 Mon May 14 08:40:00 UTC 2018 - tom_schr@web.de
 
 Version 0.7.4 Small fixes here and there:

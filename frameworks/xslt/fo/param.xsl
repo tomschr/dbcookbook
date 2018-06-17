@@ -14,6 +14,11 @@
     xmlns:rx="http://www.renderx.com/XSL/Extensions"
 >
 
+<!-- Attribute Sets -->
+<xsl:attribute-set name="section.level1.properties" use-attribute-sets="section.properties">
+  <xsl:attribute name="page-break-before">always</xsl:attribute>
+</xsl:attribute-set>
+
 <!-- Use XEP extensions -->
 <!--<xsl:param name="xep.extensions">0</xsl:param>-->
 

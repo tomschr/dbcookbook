@@ -36,7 +36,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>Your need for every appendix, chapter, section, etc. a small
+    <para>You need for every appendix, chapter, section, etc. a small
       hint (often depicted as <quote>¶</quote>) which points to the
       division itself. This <quote>permalink</quote> simplies the
       retrieval and indentification of such a division.</para>
@@ -210,7 +210,7 @@
       class="permalink">&lt;a href="..." title="Permalink"
       alt="Permalink">¶&lt;/a>&lt;/span>
 &lt;/h1></programlisting>
-    <para>With CSS rules, you can add style your permalink whatever you
+    <para>With CSS rules, you can style your permalink whatever you
       like.</para>
   </section>
   <!--<section role="seealso">

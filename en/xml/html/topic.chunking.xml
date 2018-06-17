@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.html.chunk" remap="topic" version="5.1"
+   userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Controlling the Chunking Process</title>
+  <info>
+    <keywordset>
+      <keyword>chunk</keyword>
+      <keyword>chunking</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>chunking</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+
+  <section role="problem">
+    <title>Problem</title>
+    <para>You want to split your result HTML into different files, all correctly
+      linked.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>The DocBook XSL stylesheets uses the term
+        <emphasis>chunking</emphasis> for splitting up your result into
+      different HTML files. A <emphasis>chunk</emphasis> is therefor a single
+      HTML file.
+      Use the <filename>chunk.xsl</filename> stylesheet, it is available
+      for all HTML variants. Usually this is enough to chunk your result.
+    </para>
+    <para>
+      To influence the chunking process, use the following parameters:
+    </para>
+    <variablelist>
+      <varlistentry>
+        <term><parameter>base.dir</parameter></term>
+        <listitem>
+          <para>Sets the output directory for all chunks. If not set, the output
+            directory is system dependent. Usually it is the current directory
+            from where you have executed your XSLT processor. </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>chunk.section.depth</parameter></term>
+        <listitem>
+          <para>Sets the depth to which sections should be chunked. Default
+          is 1.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>chunk.first.sections</parameter></term>
+        <listitem>
+          <para>Controls, if a first top-level <tag>sect1</tag> or
+          <tag>section</tag> element is chunked. If non-zero, a separate
+            file (<quote>chunk</quote>) is created, otherwise the section
+            is included in the component. Default is 0 (= zero, no separate
+            chunk is created).
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><parameter>use.id.as.filename</parameter></term>
+        <listitem>
+          <para>Controls the filename of the chunked element. If non-zero,
+          the filename is derived from the ID of the element. If zero,
+          the filename is generated and numbered according to its position.
+          Default is 0 (= zero, do not use IDs for file names).
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>To better understand what the stylesheet creates, lets assume the
+      following book structure:
+    </para>
+    <example xml:id="ex.html.chunk.bookstruct">
+      <title>Book Structure With Components and Sections</title>
+      <screen>book
+  preface
+  chapter
+    sect1
+    sect1
+  appendix
+    sect1
+    sect1</screen>
+    </example>
+    <para>The following subsections show how to influence the output.</para>
+
+    <section xml:id="sec.html.chunk.default">
+      <title>Knowing the Default Behaviour</title>
+      <para>Using the <filename>chunk.xsl</filename> stylesheet with
+        <command>xsltproc</command>, <command>saxon</command>, or any other
+        XSLT processor leads to the following file names:
+      </para>
+      <example xml:id="ex.html.chunk.bookstruct.result">
+        <title>Result of Chunking Without Parameters (Default)</title>
+        <screen># No parameters set, default behaviour
+book         --> index.html
+  preface    --> pr01.html
+  chapter    --> ch01.html
+    sect1
+    sect1    --> ch01s02.html
+  appendix   --> apa.html
+    sect1
+    sect1    --> apas02.html</screen>
+      </example>
+      <para>As you can see, the file name consists of several components:
+      </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>An abbreviation of the chunked element</title>
+            <para>Each chunked element is assigned an abbreviation, one or
+              two characters long. The available abbreviations are shown
+              in <xref linkend="tab.html.chunk.abbrevs" xrefstyle="select:label"/>.
+            </para>
+          </formalpara>
+
+          <table xml:id="tab.html.chunk.abbrevs">
+            <title>Abbreviations for Chunked Elements</title>
+            <tgroup cols="2">
+              <thead>
+                <row>
+                  <entry>Abbreviation</entry>
+                  <entry>Element</entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry><literal>ap</literal></entry>
+                  <entry><tag>appendix</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>ar</literal></entry>
+                  <entry><tag>article</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>bi</literal></entry>
+                  <entry><tag>bibliography</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>bk</literal></entry>
+                  <entry><tag>book</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>ch</literal></entry>
+                  <entry><tag>chapter</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>co</literal></entry>
+                  <entry><tag>colophon</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>go</literal></entry>
+                  <entry><tag>glossary</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>ix</literal></entry>
+                  <entry><tag>index</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>pr</literal></entry>
+                  <entry><tag>preface</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>pt</literal></entry>
+                  <entry><tag>part</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>re</literal></entry>
+                  <entry><tag>refentry</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>rn</literal></entry>
+                  <entry><tag>reference</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>s</literal></entry>
+                  <entry><tag>section</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>se</literal></entry>
+                  <entry><tag>set</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>si</literal></entry>
+                  <entry><tag>setindex</tag></entry>
+                </row>
+                <row>
+                  <entry><literal>to</literal></entry>
+                  <entry><tag>topic</tag></entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </table>
+
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>A consecutive number</title>
+            <para>Each chunked component gets a number. For example,
+            the first chapter has <literal>ch01</literal>, the second
+            chapter <literal>ch02</literal>, and so on.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Additional sub components</title>
+            <para>If components has subcomponents like sections, the
+            subcomponent's abbreviation is included in the file name.
+            As such, the second section in the first chapter gets the file
+            name <filename>ch01s02.html</filename>.
+            </para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section xml:id="sec.html.chunk.base.dir">
+      <title>Writing to a Directory</title>
+      <para>
+        If you want to have your files in a specific directory, set the
+        parameter <parameter>base.dir</parameter> to your preferred value,
+        for example:
+      </para>
+      <screen># base.dir=html/
+book         --> html/index.html
+  preface    --> html/pr01.html
+  chapter    --> html/ch01.html
+    sect1
+    sect1    --> html/ch01s02.html
+  appendix   --> html/apa.html
+    sect1
+    sect1    --> html/apas02.html</screen>
+    </section>
+
+    <section xml:id="sec.html.chunk.first-sect">
+      <title>Chunking the First Section</title>
+      <para>
+        <xref linkend="ex.html.chunk.bookstruct.result" xrefstyle="select:label"
+        /> showed, that the first section is <emphasis>not</emphasis> chunked.
+        This is the default behavior. However, if you want the first section
+        also to be written in a separate file, set the
+          <parameter>chunk.first.sections</parameter> parameter to
+          <literal>1</literal> to get the following result: </para>
+    <screen>book         --> index.html
+  preface    --> pr01.html
+  chapter    --> ch01.html
+    sect1    --> ch01s01.html
+    sect1    --> ch01s02.html
+  appendix   --> apa.html
+    sect1    --> apas01.html
+    sect1    --> apas02.html</screen>
+    </section>
+
+    <section xml:id="sec.html.chunk.depth">
+      <title>Influencing the Chunking Depth</title>
+      <para> If we have very deeply nested structures with sections and
+        subsections, we may want to chunk these as well. As an example, lets
+        assume the following chapter with these subsections:</para>
+      <screen>chapter
+  sect1
+    sect2
+      sect3
+        sect4
+    sect2
+  sect1</screen>
+      <para> By default, only <tag>sect1</tag> elements are written to a file.
+        Anything below a <tag>sect1</tag> like <tag>sect2</tag>,
+          <tag>sect3</tag> etc. is written to the same file that contains the
+          <tag>sect1</tag> element. </para>
+      <para> To control the chunking process for sections, use the parameter
+          <parameter>chunk.section.depth</parameter>. By default, the parameter
+        is set to <literal>1</literal> which is equivalent to chunk only level
+        one sections. Setting <parameter>chunk.section.depth</parameter> to
+          <literal>2</literal> has the following effect: </para>
+      <screen># chunk.section.depth=2, chunk.first.sections=1
+chapter         --> ch01.html
+  sect1         --> ch01s01.html
+    sect2       --> ch01s01s01.html
+      sect3
+        sect4
+    sect2       --> ch01s01s02.html
+  sect1         --> ch01s02.html</screen>
+      <para>
+        As you can see, with the value of <literal>2</literal>, level two
+        sections (<tag>sect2</tag>) are written to a separate file.
+        A value of <literal>3</literal> has the following effect:</para>
+      <screen># chunk.section.depth=3, chunk.first.sections=1
+chapter         --> ch01.html
+  sect1         --> ch01s01.html
+    sect2       --> ch01s01s01.html
+      sect3     --> ch01s01s01s01.html
+        sect4
+    sect2       --> ch01s01s02.html
+  sect1         --> ch01s02.html</screen>
+      <para>In other words, parameter <parameter>chunk.section.depth</parameter>
+      cuts at the respective section level.
+      </para>
+    </section>
+    <section xml:id="sec.html.chunk.use.id.as.filename">
+      <title>Create Stable File Names through IDs</title>
+      <para> The previous sections used <emphasis>predictable</emphasis> file
+        names, but <emphasis>not stable</emphasis> ones. If you add or remove a
+        section or chapter, the numbering of the chapters and sections will
+        change and as such the file names too. If you want to share a link, this
+        naming scheme is not useful as it is not stable. </para>
+      <para>Stable file names are not affected when you restructure your
+      document. If you add or remove a structural element, the file names will
+      still be the same.
+      </para>
+      <para>To create such stable file names, use the parameter
+          <parameter>use.id.as.filename</parameter>. This creates a file name
+        through the <tag class="attribute">xml:id</tag> attribute of your
+        component. However, you should keep in mind some issues when you use
+        this naming scheme: </para>
+      <itemizedlist>
+        <listitem>
+          <formalpara>
+            <title>Validate your document before you transform it</title>
+            <para>
+              Validating your document shows you any problems with IDs. For
+              example, double IDs, missing IDs, and syntactically wrong IDs.
+              This is very useful as the DocBook XSL stylesheets do not check
+              for file names which occur twice. This could lead to a situation
+              where one file name overwrites the other.
+            </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Set IDs to your components</title>
+            <para>You need to set IDs to your components, otherwise it will
+              fallback to the default naming scheme. </para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Use <quote>speaking</quote> IDs</title>
+            <para> Some tools can generate IDs automatically which could lead to
+              something like <literal>y8w739zya</literal>. Such IDs are nonsense
+              and useless as you cannot memorize them and they do not give any hints.
+              Avoid that and replace such IDs with some meaningful and easy to
+              remember name. This will also benefit your file names.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Avoid unusual characters in your ID</title>
+            <para> Although it may be tempting to use umlauts, diacritica, or
+              other Unicode characters, it is recommended to stay in the realm
+              of the ASCII character set.
+              Depending on the file system, the tools you use, or the
+              operating system, Unicode characters could not be fully
+              supported and as such could lead to wrong file names.</para>
+          </formalpara>
+        </listitem>
+        <listitem>
+          <formalpara>
+            <title>Structure your IDs consistently</title>
+            <para>
+              It is easier to find a HTML file if it is named consistently.
+              For example, if you have a chapter about introduction, you could
+              set the ID to <tag class="attvalue">intro</tag>. Any sections
+              inside this chapter would use it as a prefix and append their
+              own. A section with describes an overview could have an ID
+              named <tag class="attvalue">intro.overview</tag>.
+              This helps you when you search a specific HTML file.
+            </para>
+          </formalpara>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Lets amend
+        <xref linkend="ex.html.chunk.bookstruct"/> with IDs:
+      </para>
+      <example>
+        <title>Book Structure with IDs</title>
+        <screen>book xml:id="book"
+  preface xml:id="preface"
+  chapter xml:id="intro"
+    sect1 xml:id="intro.concept"
+    sect1 xml:id="intro.requirements"
+  appendix xml:id="app.overview"
+    sect1 xml:id="app.overview.method-a"
+    sect1 xml:id="app.overview.method-b"</screen>
+      </example>
+      <para>Transforming it through <filename>chunk.xsl</filename> leads to
+      the following result:</para>
+      <screen># use.id.as.filename=1, chunk.first.sections=1
+book         --> index.html
+  preface    --> preface.html
+  chapter    --> intro.html
+    sect1    --> intro.concept.html
+    sect1    --> intro.requirements.html
+  appendix   --> app.overview.html
+    sect1    --> app.overview.method-a.html
+    sect1    --> app.overview.method-b.html</screen>
+      <para>Maybe the file name of the book is a bit surprising. By default, its
+        basename is <filename>index</filename>. If you want to change that too,
+        set the parameter <parameter>root.filename</parameter> to your preferred
+        value (without a file extension). </para>
+      <para>Of course, you can combine it with all the other parameters which
+      are explained in this topic.
+      </para>
+    </section>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><link xlink:href="http://www.sagehill.net/docbookxsl/ChunkingCustomization.html"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

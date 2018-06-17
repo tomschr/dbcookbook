@@ -3,7 +3,7 @@
   xmlns:db="http://docbook.org/ns/docbook"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
-  <xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/docbook.xsl"/>
+  <xsl:import href="https://cdn.docbook.org/release/xsl/current/xhtml/docbook.xsl"/>
   
   <xsl:template name="person.lastname">
   <!-- Formats a personal name. Handles corpauthor as a special case. -->

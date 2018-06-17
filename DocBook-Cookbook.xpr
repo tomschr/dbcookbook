@@ -1594,7 +1594,26 @@
             <file name="en/xml/DocBook-Cookbook.xml"/>
         </folder>
         <folder name="en">
+            <folder name="db">
+                <file name="en/xml/db/topic.acronym.xml"/>
+                <file name="en/xml/db/topic.citerefentry4manpages.xml"/>
+                <file name="en/xml/db/topic.extended-xlinks.xml"/>
+                <file name="en/xml/db/topic.glossary.xml"/>
+                <file name="en/xml/db/topic.link.xml"/>
+                <file name="en/xml/db/topic.lists.xml"/>
+                <file name="en/xml/db/topic.modularize.xml"/>
+                <file name="en/xml/db/topic.multiple-indices.xml"/>
+                <file name="en/xml/db/topic.programlistings-external.xml"/>
+                <file name="en/xml/db/topic.programlistings.xml"/>
+                <file name="en/xml/db/topic.quotes.xml"/>
+                <file name="en/xml/db/topic.remarks.xml"/>
+                <file name="en/xml/db/topic.section.vs.sectx.xml"/>
+                <file name="en/xml/db/topic.toplevel.xml"/>
+                <file name="en/xml/db/topic.xref-vs-link.xml"/>
+                <file name="en/xml/db/topic.xref.xml"/>
+            </folder>
             <folder name="fo">
+                <file name="en/xml/fo/topic.design-titlepages.xml"/>
                 <file name="en/xml/fo/topic.empty-header-and-footer.xml"/>
                 <file name="en/xml/fo/topic.hyphenating-urls.xml"/>
                 <file name="en/xml/fo/topic.initials.xml"/>
@@ -1602,19 +1621,38 @@
                 <file name="en/xml/fo/topic.number-titles.xml"/>
                 <file name="en/xml/fo/topic.pagedefs-with-inkscape.xml"/>
                 <file name="en/xml/fo/topic.sep-label-and-titles.xml"/>
+                <file name="en/xml/fo/topic.style-titlepages.xml"/>
+                <file name="en/xml/fo/typography-basics.xml"/>
             </folder>
             <folder name="html">
+                <file name="en/xml/html/topic.authors-in-toc.xml"/>
+                <file name="en/xml/html/topic.breadcrumbs.xml"/>
+                <file name="en/xml/common/topic.case.xml"/>
                 <file name="en/xml/html/topic.consistent-ids.xml"/>
+                <file name="en/xml/common/topic.dbtimestamp.xml"/>
+                <file name="en/xml/common/topic.dbxsl-customization.xml"/>
+                <file name="en/xml/common/topic.doctitle.xml"/>
+                <file name="en/xml/common/topic.enumerate-figures.xml"/>
+                <file name="en/xml/common/topic.fonts.xml"/>
+                <file name="en/xml/common/topic.get-lang.xml"/>
+                <file name="en/xml/common/topic.get-personname.xml"/>
+                <file name="en/xml/common/topic.l10n.xml"/>
+                <file name="en/xml/html/topic.movetoc.xml"/>
                 <file name="en/xml/html/topic.permalinks.xml"/>
+                <file name="en/xml/common/topic.pi.xml"/>
+                <file name="en/xml/html/topic.sh-google-code-prettify.xml"/>
                 <file name="en/xml/html/topic.simplenavig.xml"/>
-            </folder>
-            <folder name="markup">
-                <file name="en/xml/db/topic.lists.xml"/>
-                <file name="en/xml/db/topic.section.vs.sectx.xml"/>
+                <file name="en/xml/common/topic.splitheader-into-numbers-and-titles.xml"/>
+                <file name="en/xml/common/topic.titles.xml"/>
+                <file name="en/xml/common/topic.xpath.location.xml"/>
+                <file name="en/xml/common/topic.xref-suffix-or-prefix.xml"/>
             </folder>
             <folder name="structure">
+                <file name="en/xml/structure/topic.acronym-list.xml"/>
                 <file name="en/xml/structure/topic.adding-indexterms.xml"/>
+                <file name="en/xml/structure/topic.assemble-topics.xml"/>
                 <file name="en/xml/structure/topic.bridgehead-to-section.xml"/>
+                <file name="en/xml/structure/topic.create-assembly-file.xml"/>
                 <file name="en/xml/structure/topic.db4-to-db5.xml"/>
                 <file name="en/xml/structure/topic.db5-to-db4.xml"/>
                 <file name="en/xml/structure/topic.extract-element.xml"/>

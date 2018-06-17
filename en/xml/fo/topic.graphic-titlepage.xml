@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<section xml:id="dbc.fo.graphic-titlepage" remap="topic" userlevel="easy"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Inserting Graphics on Title Pages</title>
+    <info>
+        <definitions definitionfile="defs.xml"/>
+        <keywordset>
+            <keyword>title page</keyword>
+            <keyword>cover</keyword>
+            <keyword>graphic</keyword>
+            <keyword>block</keyword>
+            <keyword>format</keyword>
+        </keywordset>
+        <subjectset>
+            <subject>
+                <subjectterm>graphic</subjectterm>
+            </subject>
+        </subjectset>
+    </info>
+
+    <section role="problem">
+        <title>Problem</title>
+        <para>You need to know how to insert a graphic to your
+            titlepage.</para>
+    </section>
+    <section role="solution">
+        <title>Solution</title>
+        <para>To insert a graphic to one of your title pages, you need to
+            create a template for titlepages as described in <xref
+                linkend="dbc.fo.design-titlepages"/>.</para>
+        <para>To add your graphic, the XSL-FO specification has defined an
+                <tag>fo:block-container</tag> to encapsulate an
+                <tag>fo:external-graphics</tag> element. Additionally,
+            there are many, many options to modify your graphic on the
+            title pages like scaling or positioning. The following listing
+            show how to use both elements.</para>
+        <programlisting language="xml">&lt;fo:block space-before="1em" space-after="1em">
+    &lt;fo:external-graphic src="{$img.src.path}/your-graphic.svg"/>
+&lt;/fo:block></programlisting>
+        <para>Depending on the position within the customized title
+            element, where you want to place your graphic, you must place
+            the <tag>fo:block-container</tag> before or after the title
+            block-container.</para>
+        <para>The following example places the graphic after the document
+            title. The graphic is scaled by 50% and the aspect ratio is
+            preserved.</para>
+        <programlisting language="xml">&lt;xsl:template match="d:title" mode="book.titlepage.recto.auto.mode">
+    &lt;fo:block xmlns:fo="http://www.w3.org/1999/XSL/Format"
+        xsl:use-attribute-sets="book.titlepage.recto.style" text-align="center"
+        font-size="32pt" space-before="18.6624pt" font-weight="bold">
+        &lt;xsl:call-template name="division.title">
+            &lt;xsl:with-param name="node" select="ancestor-or-self::d:book[1]"/>
+        &lt;/xsl:call-template>
+        &lt;fo:block space-before="1em" space-after="1em">
+            &lt;fo:external-graphic src="{$img.src.path}/your-graphic.svg" content-height="50%"
+                scaling="uniform"/>
+         &lt;/fo:block>
+    &lt;/fo:block>
+&lt;/xsl:template></programlisting>
+    </section>
+    <section role="discussion">
+        <title>Discussion</title>
+        <para>It's a good idea to use only supported high resolution bitmap
+            graphics (300x300 dpi) or supported vector graphics for your
+            title page. Otherwise you may notice that your graphic looks
+            like small blocks.</para>
+        <note>
+            <para>Your graphic is placed between the left and right margins
+                of your title page. Depending on the graphic size, the
+                graphic will be scaled up or down automatically.</para>
+        </note>
+    </section>
+
+    <section role="seealso">
+        <title>See Also</title>
+        <itemizedlist>
+            <listitem>
+                <para>The W3C recommendation for fo:external-graphic <link
+                        xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic"
+                    />.</para>
+
+            </listitem>
+            <listitem>
+                <para>How to Bring XSL-FO External Graphic to Front<link
+                        xlink:href="https://stackoverflow.com/questions/45600101/how-to-bring-xsl-fo-external-graphic-to-front"
+                    /></para>
+            </listitem>
+            <listitem>
+                <para>Supported graphic formats <link
+                        xlink:href="http://www.sagehill.net/docbookxsl/GraphicFormats.html"
+                    />
+                </para>
+            </listitem>
+        </itemizedlist>
+    </section>
+</section>

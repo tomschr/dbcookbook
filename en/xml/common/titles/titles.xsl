@@ -4,7 +4,7 @@
   xmlns:d="http://docbook.org/ns/docbook"
   exclude-result-prefixes="d">
   
-  <xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/docbook.xsl"/>
+  <xsl:import href="https://cdn.docbook.org/release/xsl/current/xhtml/docbook.xsl"/>
   
   <xsl:template match="d:article">
     <xsl:message>

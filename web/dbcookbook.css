@@ -71,6 +71,10 @@ h2, h3 {
   border: 1px solid #428BCA;
 }
 
+#donate {
+ margin-top: 2em;
+}
+
 pre, code {
   font-family: 'Ubuntu Mono', 'DejaVu Sans Mono', monospace;
   font-weight: 400;

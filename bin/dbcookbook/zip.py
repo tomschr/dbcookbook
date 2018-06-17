@@ -28,7 +28,7 @@ def createzip(parser, args=None):
     try:
         zipfilename = config.get('Archive', 'zipfile').replace("@VERSION@", version)
         tarfilename = config.get('Archive', 'tarfile').replace("@VERSION@", version)
-        root = os.path.normpath(config.get('Archive', 'root')).replace("@VERSION@", version)
+        root = os.path.normpath(config.get('Archive', 'rootfile')).replace("@VERSION@", version)
         htmldir = os.path.normpath(config.get('Common', 'htmldir'))
     except InterpolationMissingOptionError as error:
         logger.warning(error)

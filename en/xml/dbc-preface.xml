@@ -302,7 +302,8 @@
     <para>The source code of this book is published and maintained as a
       <application xlink:href="https://git-scm.com">Git</application> repository.
       Feel free to clone it, make improvements and
-      mail me your changes to <email>&prj.mail;</email><!--
+      mail me your changes to <email>&prj.mail;</email> or send me pull
+     requests.<!--
         or use the link <link
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
       />-->.
@@ -322,31 +323,20 @@
     </para>
   </section>
 
-  <section xml:id="dbc.preface.piwik">
-    <title>A Few Words About Piwik</title>
-    <para>If you are reading this text online, you may have noticed that
-      this project uses <application xlink:href="http://piwik.org"
-        >Piwik</application>. According to its home page, Piwik is a
-        <quote>real time web analytics software program</quote>. The
-      results from Piwik give me detailed reports about my Web site
-      visitors: where do they come from, which browser and operating
-      system they use and so on. </para>
-    <para>Why Piwik? First it is open source, but that is not the main
-      reason. The main reason why I use Piwik is it collects data
-      anonymously to create statistical studies. With these results I
-      can not only improve the HTML page but make the whole project
-      better.</para>
-    <para>For example, if my visitors browsing the Web through Firefox,
-      Opera, and Chromium instead of Internet Explorer, I can focus more
-      on the first three browsers. Focusing on one area gives me more
-      time to write cool new topics. Or improve existing text. Or draw
-      nice graphics. Furthermore with the collected data I can see which
-      topics are the most popular and which needs additional devotion. I
-      hope you get the idea.</para>
-    <para>Just to make it clear: The collected data is completely
-      anonymous and <emphasis>only</emphasis> used to improve this project.
-      It will <emphasis>never</emphasis> be sold nor will it be used to spam
-      you.</para>
+  <section xml:id="dbc.preface.contributors">
+   <title>Contributors</title>
+   <para>Thanks to all who contribute to this book (sorted alphabetically):</para>
+   <itemizedlist>
+    <listitem>
+     <para>Antje Faber</para>
+    </listitem>
+    <listitem>
+     <para>Stefan Hinz</para>
+    </listitem>
+    <listitem>
+     <para>Peter Schmelzer</para>
+    </listitem>
+   </itemizedlist>
   </section>
 
   <!--<section xml:id="dbc.preface.faq">

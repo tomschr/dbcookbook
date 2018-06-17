@@ -120,14 +120,14 @@
       </step>
     </procedure>
 
-    <para>For example, consider the the current topic. It is embedded
+    <para>For example, consider the current topic. It is embedded
       into this nested structure:</para>
     <screen>book: The DoCookBook
   chapter: (X)HTML Customizations
      sect1: Implementing “Breadcrumbs”</screen>
     <para>The above <filename>breadcrumbs.xsl</filename> stylesheets
       creates this HTML code when the current node is this topic:</para>
-    <programlisting>&lt;div class="breadcrumbs">
+    <programlisting language="xml">&lt;div class="breadcrumbs">
   &lt;span>&lt;a href="...X...">The DoCookBook&lt;/a>&lt;/span>
   >
   &lt;span>&lt;a href="...Y...">(X)HTML Customizations&lt;/a>&lt;/span>

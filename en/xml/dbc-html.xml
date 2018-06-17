@@ -34,115 +34,103 @@
       <para>HTML is a very important output format for the DocBook XSL
         stylesheets as it is not only displayed on Web sites, but also
         used <quote>inside</quote> ebooks (<acronym>EPUB<alt>Electronic
-          PUBlication</alt></acronym>). It comes in several derivates.</para>
+          PUBlication</alt></acronym>). It comes in several variants.</para>
     </abstract>
   </info>
 
   <section xml:id="dbc.html.intro">
     <title>Introduction</title>
-    <para>Currently, there are several HTML derivates available as
+    <para>Currently, there are several HTML variants available as
       target formats. As such, <quote>the</quote> HTML does not exist,
       only a variety of HTML dialects:</para>
 
-    <table xml:id="tab.html.intro.overview">
-      <title>Overview of Different HTML Stylesheets</title>
-      <tgroup cols="2">
-        <colspec colwidth="1.5*"/>
-        <colspec colwidth="5*"/>
-        <thead>
-          <row>
-            <entry>Main Stylesheets</entry>
-            <entry>Explanation</entry>
-          </row>
-        </thead>
-        <tbody>
-          <row>
-            <entry><simplelist>
-                <member><filename>eclipse/eclipse.xsl</filename></member>
-                <member><filename>eclipse/eclipse3.xsl</filename></member>
-            </simplelist>
-            </entry>
-            <entry>Contains stylesheet to document for the <link
+    <variablelist xml:id="vl.html.intro.overview">
+      <title>Overview of Different HTML XSLT 1.0 Stylesheets</title>
+      <varlistentry xml:id="vl.html.eclipse">
+        <term><filename>eclipse/eclipse.xsl</filename></term>
+        <term><filename>eclipse/eclipse3.xsl</filename></term>
+        <listitem>
+          <para>Contains stylesheet to document for the <link
               xlink:href="http://www.ibm.com/developerworks/opensource/library/os-echelp/"
               >Eclipse help system</link>. The main stylesheets use code
-            from the HTML&#xa0;4.x stylesheets</entry>
-          </row>
-          <row>
-            <entry><simplelist>
-                <member><filename>html/chunk.xsl</filename></member>
-                <member><filename>html/docbook.xsl</filename></member>
-              </simplelist>
-            </entry>
-            <entry>Contains stylesheets the <quote>classical</quote>&#xa0;
-            <acronym xlink:href="http://www.w3.org/TR/html4/">HTML&#xa0;4</acronym>.</entry>
-          </row>
-          <row>
-            <entry><filename>htmlhelp/htmlhelp.xsl</filename></entry>
-            <entry>Contains stylesheets for <acronym
+            from the HTML&#xa0;4.x stylesheets.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.html4">
+        <term><filename>html/chunk.xsl</filename></term>
+        <term><filename>html/docbook.xsl</filename></term>
+        <listitem>
+          <para>
+            Contains stylesheets for the <quote>classical</quote>&#xa0;
+            <acronym xlink:href="http://www.w3.org/TR/html4/">HTML&#xa0;4</acronym>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.htmlhelp">
+        <term><filename>htmlhelp/htmlhelp.xsl</filename></term>
+        <listitem>
+          <para>Contains stylesheets for <acronym
               xlink:href="http://en.wikipedia.org/wiki/Microsoft_Compiled_HTML_Help">HTMLHelp</acronym>, the standard help
             system from Windows&#xa0;3.0 through Windows XP. The main
             stylesheet <filename>htmlhelp.xsl</filename> uses code from
-            the HTML&#xa0;4.x stylesheets</entry>
-          </row>
-          <row>
-            <entry><filename>webhelp/xsl/webhelp.xsl</filename></entry>
-            <entry>Contains the result of the <acronym>GSOC<alt>Google
-                Summer of Code</alt></acronym> 2010 and creates a Web
-              page with a sidebar, search form, and hierarchical
-              navigation. The stylesheet incorporates the XHTML
-              stylesheets.</entry>
-          </row>
-          <row>
-            <entry><simplelist>
-                <member><filename>website/chunk-website.xsl</filename></member>
-                <member><filename>website/website.xsl</filename></member>
-              </simplelist>
-            </entry>
-            <entry>Contains stylesheets to create a <quote>Web
-            site</quote></entry>
-          </row>
-          <row>
-            <entry><simplelist>
-                <member><filename>xhtml/chunk.xsl</filename></member>
-                <member><filename>xhtml/docbook.xsl</filename></member>
-              </simplelist>
-            </entry>
-            <entry>Contains stylesheets for <acronym xlink:href="http://www.w3.org/TR/xhtml1/"
-              >XHTML&#xa0;1.0</acronym>
+            the HTML&#xa0;4.x stylesheets.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.webhelp">
+        <term><filename>webhelp/xsl/webhelp.xsl</filename></term>
+        <listitem>
+          <para>Contains the result of the <acronym>GSOC<alt>Google Summer of
+                Code</alt></acronym> 2010 and creates a Web page with a sidebar,
+            search form, and hierarchical navigation. The stylesheet
+            incorporates the XHTML stylesheets.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.website">
+        <term><filename>website/chunk-website.xsl</filename></term>
+        <term><filename>website/website.xsl</filename></term>
+        <listitem>
+          <para>Contains stylesheets to create a <quote>Web site</quote>.
+          </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.xhtml">
+        <term><filename>xhtml/chunk.xsl</filename></term>
+        <term><filename>xhtml/docbook.xsl</filename></term>
+        <listitem>
+          <para>Contains stylesheets for <acronym
+              xlink:href="http://www.w3.org/TR/xhtml1/">XHTML&#xa0;1.0</acronym>
               (<quote>transitional XHTML</quote>). These stylesheets are
             generated through a XSLT transformation from the HTML core
-            stylesheets</entry>
-          </row>
-          <row>
-            <entry><simplelist>
-                <member><filename>xhtml-1_1/chunk.xsl</filename></member>
-                <member><filename>xhtml-1_1/docbook.xsl</filename></member>
-              </simplelist>
-            </entry>
-            <entry>Contains stylesheets for <acronym xlink:href="http://www.w3.org/TR/xhtml11/"
-              >XHTML&#xa0;1.1</acronym>. Like the one
-            for XHTML, they are generated through a XSLT transformation.
-            In comparison, the XHTML&#xa0;1.1 omits certain attributes which
-            were allowed in XHTML or HTML. The missing part must be
-            implemented by CSS.
-            The XHTML&#xa0;1.1 stylesheets are also used for EPUB creation.</entry>
-          </row>
-          <row>
-            <entry><simplelist>
-                <member><filename>xhtml5/chunk.xsl</filename></member>
-                <member><filename>xhtml5/docbook.xsl</filename></member>
-              </simplelist>
-            </entry>
-            <entry>Contains stylesheets for <acronym
-              xlink:href="http://dev.w3.org/html5/spec/Overview.html">HTML&#xa0;5</acronym>.
-            These stylesheets customizes the XHTML stylesheets. As such
-            it inherits all the features and parameters.
+            stylesheets. </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.xhtml11">
+        <term><filename>xhtml-1_1/chunk.xsl</filename></term>
+        <term><filename>xhtml-1_1/docbook.xsl</filename></term>
+        <listitem>
+          <para>Contains stylesheets for <acronym
+              xlink:href="http://www.w3.org/TR/xhtml11/"
+              >XHTML&#xa0;1.1</acronym>. Like the one for XHTML, they are
+            generated through a XSLT transformation. In comparison, the
+            XHTML&#xa0;1.1 omits certain attributes which were allowed in XHTML
+            or HTML. The missing part must be implemented by CSS. The
+            XHTML&#xa0;1.1 stylesheets are also used for EPUB creation.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry xml:id="vl.html.xhtml5">
+        <term><filename>xhtml5/chunk.xsl</filename></term>
+        <term><filename>xhtml5/docbook.xsl</filename></term>
+        <listitem>
+          <para> Contains stylesheets for <acronym
+              xlink:href="http://dev.w3.org/html5/spec/Overview.html"
+              >HTML&#xa0;5</acronym>. These stylesheets customizes the XHTML
+            stylesheets. As such it inherits all the features and parameters.
             The HTML&#xa0;5 stylesheets are also used for EPUB3 creation.
-            </entry>
-          </row>
-        </tbody>
-      </tgroup>
-    </table>
+          </para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
   </section>
 
   <!--
@@ -163,6 +151,8 @@
   <xi:include href="html/topic.breadcrumbs.xml"/>
   <xi:include href="html/topic.movetoc.xml"/>
   <xi:include href="html/topic.sh-google-code-prettify.xml"/>
+  <xi:include href="html/topic.chunking.xml"/>
   <!-- <xi:include href="html/topic.google-webfonts.xml"/> -->
   <!--<xi:include href="html/topic.consistent-ids.xml"/>-->
+  <xi:include href="html/topic.chunking-pi.xml"/>
 </chapter>

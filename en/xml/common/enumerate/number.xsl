@@ -4,7 +4,7 @@
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
   
   <xsl:import
-    href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/docbook.xsl"/>
+    href="https://cdn.docbook.org/release/xsl/current/xhtml/docbook.xsl"/>
   
   <xsl:template match="d:figure|d:table|d:example" mode="label.markup">
     <xsl:choose>
