@@ -54,10 +54,9 @@
       <varlistentry>
         <term><parameter>base.dir</parameter></term>
         <listitem>
-          <para>Sets the output directory for all chunks. If not set,
-            the output directory is system dependant. Usually it is the
-            current directory from where you have executed your XSLT processor.
-          </para>
+          <para>Sets the output directory for all chunks. If not set, the output
+            directory is system dependent. Usually it is the current directory
+            from where you have executed your XSLT processor. </para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -287,12 +286,10 @@ book         --> html/index.html
         sect4
     sect2
   sect1</screen>
-      <para>
-        By default, only <tag>sect1</tag> elements are written to a file.
-        Anything below a <tag>sect1</tag> like <tag>sect2</tag>, <tag>sect3</tag>
-        etc. are written to the same file that contains the <tag>sect1</tag>
-        element.
-      </para>
+      <para> By default, only <tag>sect1</tag> elements are written to a file.
+        Anything below a <tag>sect1</tag> like <tag>sect2</tag>,
+          <tag>sect3</tag> etc. is written to the same file that contains the
+          <tag>sect1</tag> element. </para>
       <para> To control the chunking process for sections, use the parameter
           <parameter>chunk.section.depth</parameter>. By default, the parameter
         is set to <literal>1</literal> which is equivalent to chunk only level
