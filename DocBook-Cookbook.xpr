@@ -1665,6 +1665,7 @@
                 <file name="en/xml/structure/topic.sectX-to-section.xml"/>
                 <file name="en/xml/structure/topic.splitdb.xml"/>
                 <file name="en/xml/structure/topic.splitting-into-topics.xml"/>
+                <file name="en/xml/structure/topic.use-entities.xml"/>
             </folder>
             <folder path="en/xml/common/"/>
             <file name="en/xml/dbc-common.xml"/>
