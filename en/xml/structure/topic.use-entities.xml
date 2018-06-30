@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
+
+<section xml:id="dbc.structure.use-entities" remap="topic" version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Using Entities as Placeholders</title>
+  <info>
+    <keywordset>
+      <keyword>entities</keyword>
+      <keyword>placeholders</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>entities</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+
+  <section role="problem">
+    <title>Problem</title>
+    <para>You need text or a small XML structure that you want to use throughout
+      your document.</para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use custom entities. An entity is a placeholder for text or XML. You
+      can define them inside a DOCTYPE declaration or in external files. The
+      following procedure shows you how to create and use a entity:</para>
+
+    <procedure>
+      <step>
+        <para>Create a new <filename class="extension"
+          >.ent</filename> file, for example, <filename>entities.ent</filename>.
+        </para>
+      </step>
+      <step>
+        <para>Add your entity definitions to the file.</para>
+        <para>Each definition starts with <literal>&lt;!ENTITY</literal>, the
+          entity name, the content, and a final > character like this:</para>
+        <screen language="xml">&lt;!ENTITY product "FooMatic"></screen>
+        <para>You can add as many entity definitions as you like. Keep in mind
+          the following restrictions:</para>
+        <itemizedlist>
+          <listitem>
+            <para>If your content contains characters like &lt; or &amp;,
+              write them as <tag class="genentity">lt</tag> and <tag
+                class="genentity">amp</tag>.</para>
+          </listitem>
+          <listitem>
+            <para>It is allowed to use other entities like this:</para>
+            <screen language="xml">&lt;!ENTITY version "2.5">
+&lt;!ENTITY product "FooMatic">
+&lt;!ENTITY productver "&amp;product; &amp;version;"></screen>
+            <para>However, it is not allowed to create circular references
+            like this:</para>
+            <screen language="xml">&lt;!ENTITY a "&amp;b;">
+&lt;!ENTITY b "&amp;a;"></screen>
+          </listitem>
+          <listitem>
+            <para>If you use XML structures in your entity, the content
+            of the entity must be well-formed. This is allowed:</para>
+            <screen>&lt;!ENTITY x "&lt;foo>x&lt;/foo>"></screen>
+            <para>However, this is not:</para>
+            <screen>&lt;!ENTITY x-start "&lt;foo>x">
+&lt;!ENTITY x-end "&lt;/foo>"></screen>
+          </listitem>
+        </itemizedlist>
+      </step>
+      <step>
+        <para>In each file where you want to use your entity definitions, add
+        the following header and replace <replaceable>ROOT</replaceable> with
+        the name of the root element:</para>
+        <screen language="xml">&lt;!DOCTYPE <replaceable>ROOT</replaceable> [
+  &lt;!ENTITY % ents SYSTEM "entities.ent">
+  %ents;
+]></screen>
+      </step>
+      <step>
+        <para>To use the definied entities, write <tag class="genentity">product</tag>
+        in a text, for example:</para>
+        <screen language="xml">&lt;para>Use <emphasis role="bold"
+          >&amp;product;</emphasis> to make your children happy.&lt;/para></screen>
+      </step>
+    </procedure>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>Entities improve the consistency of your texts. If your product
+      name, your version, or any other definition changes, it is
+      very easy to change its definition too, without going through all of
+      your texts.
+    </para>
+    <para>Entities can contain text and XML. For example, if you have text where
+      you need to add the same file name repeatedly, it would be a good
+      idea to create a entity:</para>
+    <screen language="xml">&lt;!ENTITY configfile "&lt;filename<!--
+--> xmlns='http://docbook.org/ns/docbook'>foo.conf&lt;/filename>"></screen>
+    <para>The only problem with XML structures in entities is, you need to
+    add the DocBook namespace in each definition. By default, each XML element
+    belongs to no namespace.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.structure.preserve-entities"/></para>
+      </listitem>
+    </itemizedlist>
+  </section>
+</section>

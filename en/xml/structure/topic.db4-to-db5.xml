@@ -24,6 +24,7 @@
     <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>converting</keyword>
+      <keyword>migrating</keyword>
       <keyword>DocBook 4</keyword>
       <keyword>DocBook 5</keyword>
     </keywordset>
@@ -33,6 +34,7 @@
     <title>Problem</title>
     <para>You have a DocBook document in version 4.x, but you need 5.x.</para>
   </section>
+
   <section role="solution">
     <title>Solution</title>
     <para>Generally, the difference between version 4 and version 5 is
@@ -44,77 +46,36 @@
     <para>One major change is that all DocBook 5.x elements are in the
       namespace <uri>http://docbook.org/ns/docbook</uri>. All these
       changes are taken into account by the
-        <filename>db4-upgrade.xsl</filename> stylesheet in the DocBook
-      Subversion repository. The URL is <link
-        xlink:href="https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/docbook/relaxng/tools/db4-upgrade.xsl"
+        <filename>db4-upgrade.xsl</filename>, see the URL <link
+        xlink:href="https://github.com/docbook/docbook/blob/master/relaxng/tools/db4-upgrade.xsl"
       />. You just need to apply this stylesheet to your source DocBook
       document, for example:</para>
-    <screen><command>xsltproc</command> db4-upgrade.xsl doc.xml</screen>
+    <screen><prompt>$ </prompt><command>xsltproc</command> --output doc5.xml db4-upgrade.xsl doc.xml</screen>
+    <para>After the migration, the file <filename>doc5.xml</filename> contains
+    your DocBook5 source.</para>
   </section>
+
   <section role="discussion">
     <title>Discussion</title>
     <para>One disadvantage is that entities are not preserved. This is
-      not a stylesheet issue as the entities are already resolved when
-      the XSLT processor gets its hand on the source tree. The
+      not a stylesheet issue but a XML issue. The entities are already
+      resolved when the XSLT processor gets its hand on the source tree. The
       stylesheet never sees the entities.
     </para>
-    <para>The <citetitle
-      xlink:href="http://docbook.org/docs/howto/#entities">DocBook
-      Transition Guide</citetitle> recommends the following steps (cited
-      from there):</para>
-    <procedure xml:id="pr.structure.db4-to-db5.preserving-entities">
-      <title>Preserving Entities between DocBook Conversion</title>
-      <step>
-        <para>Open your existing document using your favorite editing
-          tool. You must use a tool that is <emphasis>not</emphasis>
-          XML-aware, or one that allows you to edit markup <quote>in
-            the raw</quote>.</para>
-      </step>
-      <step>
-        <para>Replace all occurrences of the entity references that you
-          want to preserve with some unique string. For example, if you
-          want to preserve <tag class="genentity">Product</tag>
-          references, you could replace them all with
-            <literal>[[[Product]]]</literal> (assuming that the string
-            <literal>[[[Product]]]</literal> doesn't occur anywhere else
-          in your document).</para>
-      </step>
-      <step>
-        <para>Copy the document type declaration of your document
-          and save it some place. The document type declaration is
-          everything from “&lt;!DOCTYPE” to the closing “]>”. </para>
-      </step>
-      <step>
-        <para>Perform the conversion with the
-          <filename>db4-upgrade.xsl</filename> stylesheet.</para>
-      </step>
-      <step>
-        <para>Open the new document using your favorite editing tool.
-          Replace all occurrences of the unique string you used to save
-          the entity references with the corresponding entity
-          references.</para>
-      </step>
-      <step>
-        <para>Paste the document type declaration that you saved onto
-          the top of your new document.</para>
-      </step>
-      <step>
-        <para>Remove the external identifier (the PUBLIC and/or SYSTEM
-          keywords) from the document type declaration. A document that
-          begins with:</para>
-        <screen>&lt;!DOCTYPE book [
- &lt;!ENTITY someEntity "some replacement text">
-]></screen>
-        <para>is perfectly well-formed. If you don't remove the
-          references to the DTD, then your parser will likely try to
-          validate against DocBook V4.0 and that's not going to work.
-          Alternatively, you could refer to the DocBook V5.0 DTD.</para>
-      </step>
-    </procedure>
+    <para>In cases you need to leave your entities untouched, refer to
+    <xref linkend="dbc.structure.preserve-entities"/>.</para>
   </section>
+
   <section role="seealso">
     <title>See Also</title>
-    <para>Further information can be found in <link
-      xlink:href="http://docbook.org/docs/howto/#convert4to5"/>.</para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.structure.preserve-entities"/></para>
+      </listitem>
+      <listitem>
+        <para><link
+      xlink:href="http://docbook.org/docs/howto/#convert4to5"/></para>
+      </listitem>
+    </itemizedlist>
   </section>
 </section>
