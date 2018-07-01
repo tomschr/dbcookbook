@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<section xml:id="dbc.fo.graphic-pageheader" remap="topic" userlevel="easy"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+   <title>Inserting Graphics to your Page Headers or Footers</title>
+   <info>
+      <keywordset>
+         <keyword>page header</keyword>
+         <keyword>block</keyword>
+         <keyword>format</keyword>
+         <keyword>page</keyword>
+      </keywordset>
+      <subjectset>
+         <subject>
+            <subjectterm>graphic</subjectterm>
+         </subject>
+      </subjectset>
+   </info>
+   
+   <section role="problem">
+      <title>Problem</title>
+      <para>You need to know how to insert a graphic in your page header or footer.</para>
+   </section>
+
+   <section role="solution">
+      <title>Solution</title>
+      <para>First of all, you need to create a customization layer in your 
+         customization stylesheet containing the following code:</para>
+      <programlisting>&lt;!-- Path and name of your graphic file-->
+&lt;xsl:param name="header.image.filename">{$img.src.path}your-graphic.svg&lt;/xsl:param>
+&lt;!-- Header rule yes (1) / no (0) -->
+&lt;xsl:param name="header.rule" select="0"/>
+
+&lt;xsl:template name="header.content"><co xml:id="co.topic.graphic-pageheader.content"/>
+    &lt;xsl:param name="pageclass" select="''"<co xml:id="co.topic.graphic-pageheader.variables"/>
+    &lt;xsl:param name="sequence" select="''"/>
+    &lt;xsl:param name="position" select="''"/>
+    &lt;xsl:param name="gentext-key" select="''"/>
+    &lt;fo:block><co xml:id="co.topic.graphic-pageheader.block"/>
+        &lt;!-- sequence can be odd, even, first, blank -->
+        &lt;!-- position can be left, center, right -->
+        &lt;xsl:choose>
+            &lt;xsl:when test="$sequence = 'blank'">
+                &lt;!-- nothing --><co xml:id="co.topic.graphic-pageheader.blank"/>
+            &lt;/xsl:when>
+
+            &lt;xsl:when test="$position='left'">
+                &lt;!-- Same for odd, even, empty, and blank sequences -->
+                &lt;!-- nothing -->
+            &lt;/xsl:when>
+
+            &lt;xsl:when test="($sequence='odd' or $sequence='even') and $position='center'">
+                &lt;!-- nothing -->
+            &lt;/xsl:when>
+
+            &lt;xsl:when test="$position='center'"><co xml:id="co.topic.graphic-pageheader.center"/>
+                &lt;!-- nothing for empty and blank sequences -->
+            &lt;/xsl:when>
+
+            &lt;xsl:when test="$position='right'"><co xml:id="co.topic.graphic-pageheader.right"/>
+                &lt;!-- Same for odd, even, empty, and blank sequences -->
+                &lt;fo:external-graphic content-height="25mm"><co xml:id="co.topic.graphic-pageheader.height"/>
+                   &lt;xsl:attribute name="src"><co xml:id="co.topic.graphic-pageheader.attribute"/>
+                        &lt;xsl:call-template name="fo-external-image"><co xml:id="co.topic.graphic-pageheader.template"/>
+                            &lt;xsl:with-param name="filename" select="$header.image.filename"/>
+                            <co xml:id="co.topic.graphic-pageheader.file"/>>
+                        &lt;/xsl:call-template>
+                   &lt;/xsl:attribute>
+                &lt;/fo:external-graphic>
+            &lt;/xsl:when>
+
+            &lt;xsl:when test="$sequence = 'first'">
+                &lt;!-- nothing for first pages -->
+            &lt;/xsl:when>
+
+            &lt;xsl:when test="$sequence = 'blank'">
+                &lt;!-- nothing for blank pages -->
+            &lt;/xsl:when>
+        &lt;/xsl:choose>
+    &lt;/fo:block>
+&lt;/xsl:template></programlisting>
+      <calloutlist>
+         <callout arearefs="co.topic.graphic-pageheader.content">
+            <para>We assume that your graphic should be placed in the header
+               of all pages except title pages.</para>
+         </callout>
+         <callout arearefs="co.topic.graphic-pageheader.variables">
+            <para>The content of the necessary variables needs to be cleared.</para>
+         </callout>
+         <callout arearefs="co.topic.graphic-pageheader.block">
+            <para>A <tag>block</tag>-element creates a rectangle area on a page
+            which can contain <tag>lists</tag>, <tag>tables</tag> or <tag>graphics</tag>
+            .</para>
+         </callout>
+         <callout arearefs="co.topic.graphic-pageheader.blank">
+             <para>Here you can place an banner like '<emphasis>This page is
+                 intentionally left blank'</emphasis> or so.</para>
+         </callout>
+          <callout arearefs="co.topic.graphic-pageheader.center">
+              <para>This is a good place for the chapter title.</para>
+          </callout>
+          <callout arearefs="co.topic.graphic-pageheader.right">
+              <para>This is the place where we want to place our graphic. The
+              graphic should be visible on all pages on the right side.</para>
+          </callout>
+          <callout arearefs="co.topic.graphic-pageheader.height">
+              <para>The graphic picture is too big, so we limit his height to 25mm.
+              When you specify only one parameter like <tag>height</tag>or<tag>width</tag>,
+              your graphic will be scaled with the correct aspect ratio.</para>
+          </callout>
+          <callout arearefs="co.topic.graphic-pageheader.attribute">
+              <para>We will give the graphic which will be used the attribute.
+                  <emphasis>src</emphasis>.</para>
+          </callout>
+          <callout arearefs="co.topic.graphic-pageheader.template">
+              <para>The template which is called to import and place the graphic.</para>
+          </callout>
+          <callout arearefs="co.topic.graphic-pageheader.file">
+              <para>Our file defined at the top of our customization layer.</para>
+          </callout>
+      </calloutlist>
+    </section>
+   <section role="discussion">
+      <title>Discussion</title>
+       <para>If you wish to place your graphic within the footer, replace 
+           <tag>header.content</tag>with<tag>footer.content</tag>.</para>
+   </section>
+   <section role="seealso">
+      <title>See Also</title>
+       <itemizedlist>
+           <listitem>
+               <para>Full parameter description for <tag>fo:external-graphic</tag><link
+                   xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic"/></para>
+           </listitem>
+           <listitem>
+               <para>Parameter description for <tag>xsl:attribute</tag><link
+                   xlink:href="https://www.w3schools.com/xml/ref_xsl_el_attribute.asp"/></para>
+           </listitem>
+           <listitem>
+               <para>Parameter description for <tag>xsl:with-param</tag> <link
+                   xlink:href="https://www.w3schools.com/xml/ref_xsl_el_with-param.asp"/></para>
+           </listitem>
+       </itemizedlist>
+   </section>
+</section>
+
