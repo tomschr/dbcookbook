@@ -129,7 +129,8 @@
           <callout arearefs="co.topic.graphic-pageheader.height">
               <para>The graphic picture is too big, so we limit his height to 25mm.
               When you specify only one parameter like <tag>height</tag>or<tag>width</tag>,
-              your graphic will be scaled with the correct aspect ratio.</para>
+                  your graphic will be scaled with the <link
+                      xlink:href="#li.fo.external-graphics">correct aspect ratio</link>.</para>
           </callout>
           <callout arearefs="co.topic.graphic-pageheader.attribute">
               <para>We will give the graphic which will be used the attribute.
@@ -151,7 +152,7 @@
    <section role="seealso">
       <title>See Also</title>
        <itemizedlist>
-           <listitem>
+           <listitem xml:id="li.fo.external-graphics">
                <para>Full parameter description for <tag>fo:external-graphic</tag><link
                    xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic"/></para>
            </listitem>
