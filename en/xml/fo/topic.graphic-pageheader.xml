@@ -21,7 +21,13 @@
    xmlns:xlink="http://www.w3.org/1999/xlink">
    <title>Inserting Graphics to your Page Headers or Footers</title>
    <info>
-      <keywordset>
+       <author>
+           <personname>
+               <firstname>Peter</firstname>
+               <surname>Schmelzer</surname>
+           </personname>
+       </author>
+       <keywordset>
          <keyword>page header</keyword>
          <keyword>block</keyword>
          <keyword>format</keyword>
