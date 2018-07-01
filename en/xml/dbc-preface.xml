@@ -125,9 +125,8 @@
           is the future.</para>
       </listitem>
       <listitem>
-        <para>I wanted to show exhaustive examples for
-          DocBook&#xa0;5. With this book, I hope, users can learn how to
-          adopt and use it.</para>
+        <para>I wanted to show exhaustive examples for DocBook&#xa0;5. With
+          this book, I hope, users can learn how to adopt and use it.</para>
       </listitem>
       <listitem>
         <para>It is easy to transform DocBook&#xa0;4 into version 5 as
@@ -177,7 +176,7 @@
     <itemizedlist>
       <listitem>
         <para><emphasis>Italic</emphasis> is used for definition of new
-          terms or emphasised text.</para>
+          terms or emphasized text.</para>
       </listitem>
       <listitem>
         <para><literal>Monospace text</literal> is used for code
@@ -185,12 +184,11 @@
       </listitem>
       <listitem>
         <para><command>Monospace bold text</command> for commands or
-          emphasised text in listings.</para>
+          emphasized text in listings.</para>
       </listitem>
       <listitem>
-        <para><emphasis><literal>Monospace italic
-        text</literal></emphasis> is used for placeholders in
-          listings.</para>
+        <para><literal><replaceable>CAPITAL MONOSPACE</replaceable></literal>
+          is used for placeholders in listings.</para>
       </listitem>
     </itemizedlist>
   </section>
