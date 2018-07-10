@@ -15,7 +15,7 @@
 -->
 
 <?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
-<section xml:id="dbc.structure.preserve-entities" remap="topic" version="5.1"
+<section xml:id="dbc.structure.preserve-entities" version="5.1" userlevel="easy"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -47,46 +47,50 @@
       string <literal>[[[product]]]</literal> doesn't occur anywhere else in
       our document).
     </para>
-    <para>This can be done automatically with the following procedure:
+    <para>Before you can proceed, you need to prepare your system as described
+     in <xref linkend="pro.structure.preserve-entities.prepare"/>.
     </para>
 
+    <procedure xml:id="pro.structure.preserve-entities.prepare">
+     <title>Preparing the Workflow</title>
+     <step>
+      <para>Make sure you have Python&#xa0;3 installed on your system. Find
+       installation instructions on the project's home page at <link
+        xlink:href="https://www.python.org/"/>. The script works with Python
+       3.4 and above.</para>
+      <para>
+       On Linux or macOS Python may already be installed. If that is not
+       the case, Python can be installed using the system's package manager.
+      </para>
+     </step>
+     <step>
+      <para>Download the Python script <filename
+       xlink:href="#li.structure.preserve-entities.ents2text"
+       >ents2text.py</filename>.
+      </para>
+     </step>
+     <step>
+      <para>Save the script where it can be found by the system. Linux users
+       can store the script in either <filename class="directory"
+        >~/bin</filename> or <filename class="directory"
+         >/usr/bin</filename>. In this procedure, we use <filename
+          class="directory">~/bin</filename>. Make the script executable
+       with:</para>
+      <screen><prompt>$ </prompt><command>chmod</command> +x ~/bin/ents2text.py</screen>
+     </step>
+     <step>
+      <para>Create a link:</para>
+      <screen><prompt>$ </prompt><command>ln</command> -rs ~/bin/ents2text.py ~/bin/text2ents.py</screen>
+      <para>This is required for converting from entities to text and
+       vice versa. The script uses the script's name to determine the
+       conversion direction.</para>
+     </step>
+    </procedure>
+
+    <para>Once you have done all the preparations, proceed with
+    <xref linkend="pro.structure.preserve-entities.workflow"/>.</para>
     <procedure xml:id="pro.structure.preserve-entities.workflow">
       <title>Workflow for Protecting Custom Entities</title>
-      <step>
-        <para>Make sure you have Python&#xa0;3 installed on your system. Find
-          installation instructions on the project's home page at <link
-            xlink:href="https://www.python.org/"/>. The script works with Python
-          3.4 and above.</para>
-        <para>
-         On Linux or macOS Python may already be installed. If that is not
-         the case, Python can be installed using the system's package manager.
-        </para>
-      </step>
-      <step>
-        <para>Download the Python script <filename
-          xlink:href="#li.structure.preserve-entities.ents2text"
-          >ents2text.py</filename><!--
-          from <link
-            xlink:href="https://github.com/tomschr/dbcookbook/raw/develop/en/xml/structure/entities/ents2text.py"/>
-          -->.
-        </para>
-      </step>
-      <step>
-        <para>Save the script where it can be found by the system. Linux users
-          can store the script in either <filename class="directory"
-            >~/bin</filename> or <filename class="directory"
-          >/usr/bin</filename>. In this procedure, we use <filename
-            class="directory">~/bin</filename>. Make the script executable
-          with:</para>
-        <screen><prompt>$ </prompt><command>chmod</command> +x ~/bin/ents2text.py</screen>
-      </step>
-      <step>
-        <para>Create a link:</para>
-        <screen><prompt>$ </prompt><command>ln</command> -rs ~/bin/ents2text.py ~/bin/text2ents.py</screen>
-        <para>This is required for converting from entities to text and
-          vice versa. The script uses the script's name to determine the
-          conversion direction.</para>
-      </step>
       <step>
         <para>Convert all entities to text with the following command:</para>
         <screen><prompt>$ </prompt><command>ents2text.py</command> XMLFILE1 XMLFILE2...</screen>
