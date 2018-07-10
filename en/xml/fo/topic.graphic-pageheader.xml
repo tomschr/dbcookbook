@@ -92,7 +92,7 @@
                     &lt;fo:external-graphic content-height="25mm"><co xml:id="co.topic.graphic-pageheader.height"/>
                        &lt;xsl:attribute name="src"><co xml:id="co.topic.graphic-pageheader.attribute"/>
                             &lt;xsl:call-template name="fo-external-image"><co xml:id="co.topic.graphic-pageheader.template"/>
-                                &lt;xsl:param name="header.image.filename" select="concat($img.src.path, 'your-graphic.svg')"/><co xml:id="co.topic.graphic-pageheader.file"/>>
+                                &lt;xsl:with-param name="filename" select="concat($img.src.path, $header.image.filename)"/><co xml:id="co.topic.graphic-pageheader.file"/>
                             &lt;/xsl:call-template>
                        &lt;/xsl:attribute>
                     &lt;/fo:external-graphic>
