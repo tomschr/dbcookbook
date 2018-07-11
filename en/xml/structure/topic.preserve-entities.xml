@@ -14,33 +14,219 @@
 
 -->
 
-<!--<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>-->
-<section xml:id="dbc.structure.preserve-entities" remap="topic"
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<section xml:id="dbc.structure.preserve-entities" version="5.1" userlevel="easy"
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Preserving Entities</title>
   <info>
-    <definitions definitionfile="defs.xml"/>
     <keywordset>
       <keyword>preserving entities</keyword>
+      <keyword>entities</keyword>
+      <keyword>placeholders</keyword>
     </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>entities</subjectterm>
+      </subject>
+    </subjectset>
   </info>
 
   <section role="problem">
     <title>Problem</title>
-    <para>The problem explained.</para>
+    <para>You want to process your XML file, but you do not want to expand
+      any of the defined entities.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The solution explained</para>
+    <para>
+      Replace all your entities with a string that is easy to search for. For
+      example, you can replace the entity <tag class="genentity">product</tag>
+      with the string <literal>[[[product]]]</literal> (assuming that the
+      string <literal>[[[product]]]</literal> doesn't occur anywhere else in
+      our document).
+    </para>
+    <para>Before you can proceed, you need to prepare your system as described
+     in <xref linkend="pro.structure.preserve-entities.prepare"/>.
+    </para>
+
+    <procedure xml:id="pro.structure.preserve-entities.prepare">
+     <title>Preparing the Workflow</title>
+     <step>
+      <para>Make sure you have Python&#xa0;3 installed on your system. Find
+       installation instructions on the project's home page at <link
+        xlink:href="https://www.python.org/"/>. The script works with Python
+       3.4 and above.</para>
+      <para>
+       On Linux or macOS Python may already be installed. If that is not
+       the case, Python can be installed using the system's package manager.
+      </para>
+     </step>
+     <step>
+      <para>Download the Python script <filename
+       xlink:href="#li.structure.preserve-entities.ents2text"
+       >ents2text.py</filename>.
+      </para>
+     </step>
+     <step>
+      <para>Save the script where it can be found by the system. Linux users
+       can store the script in either <filename class="directory"
+        >~/bin</filename> or <filename class="directory"
+         >/usr/bin</filename>. In this procedure, we use <filename
+          class="directory">~/bin</filename>. Make the script executable
+       with:</para>
+      <screen><prompt>$ </prompt><command>chmod</command> +x ~/bin/ents2text.py</screen>
+     </step>
+     <step>
+      <para>Create a link:</para>
+      <screen><prompt>$ </prompt><command>ln</command> -rs ~/bin/ents2text.py ~/bin/text2ents.py</screen>
+      <para>This is required for converting from entities to text and
+       vice versa. The script uses the script's name to determine the
+       conversion direction.</para>
+     </step>
+    </procedure>
+
+    <para>Once you have done all the preparations, proceed with
+    <xref linkend="pro.structure.preserve-entities.workflow"/>.</para>
+    <procedure xml:id="pro.structure.preserve-entities.workflow">
+      <title>Workflow for Protecting Custom Entities</title>
+      <step>
+        <para>Convert all entities to text with the following command:</para>
+        <screen><prompt>$ </prompt><command>ents2text.py</command> XMLFILE1 XMLFILE2...</screen>
+        <para>The script converts all entities to their protected notation in
+          place and creates backup files with the extension <filename
+            class="extension">.bak</filename>.</para>
+      </step>
+      <step>
+        <para>Process your XML file with your XML tools.</para>
+      </step>
+      <step>
+        <para>Revert all the protected notation to their original entity
+          notation:</para>
+        <screen><prompt>$ </prompt><command>text2ents.py</command> XMLFILE1 XMLFILE2...</screen>
+      </step>
+    </procedure>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some discussion about problem and solution.</para>
+    <para><emphasis>Not</emphasis> expanding entities looks like
+      an abnormal use case as XML parsers are supposed to expand entities by
+      default.
+      However, expanding entities has one disadvantage: after the XML parser
+      has resolved entities, the content is indistinguishable from other
+      content. In other words, you cannot distinguish content that comes
+      from an entity definition from existing content. You cannot
+      <quote>go back</quote> and revert this process once all entities are
+      expanded.
+    </para>
+    <para>
+      For this reason, preserving entities can be useful when you want to
+      process XML, but keep the definied entities untouched. <xref
+        linkend="pro.structure.preserve-entities.workflow"
+        xrefstyle="select:label"/> showed one solution. However, be aware
+      of certain issues that might cause problems with XML files:
+    </para>
+
+    <itemizedlist>
+      <listitem>
+        <para>The script does not know XML. As such, it reads the XML file
+          line by line and replaces each line through regular expressions.</para>
+      </listitem>
+      <listitem>
+        <para>The script can replace entities in situations where it is
+        not desirable. For example, if you have an entity in an <tag
+          class="attribute">href</tag> of a <tag>xi:include</tag> element,
+          such reference will not work anymore when resolving XIncludes.
+        </para>
+      </listitem>
+      <listitem>
+        <para>The script doesn't handle external entities.
+          External entities refer to external storage objects,
+          for example:
+        </para>
+        <programlisting language="xml">&lt;!DOCTYPE book [
+  <emphasis role="bold">&lt;!ENTITY intro SYSTEM "chap-intro.xml"></emphasis>
+]>
+&lt;book>
+  &lt;title>...&lt;/title>
+  <emphasis role="bold">&amp;intro;</emphasis>
+&lt;/book></programlisting>
+        <para>Such external entities usually refer to whole XML structures
+          like chapters, sections etc.
+          Replacing such structures with ordinary text would lead to syntax
+          errors in your XML files.
+          However, such entities are not used very often and they should be
+          replaced by XInludes (see
+          <xref linkend="dbc.markup.xincludes"/>).
+        </para>
+      </listitem>
+    </itemizedlist>
+
+    <para>If you prefer a solution that can handle XML, use the Python
+      script <filename xlink:href="#li.structure.preserve-entities.ents2pi"
+        >ents2pi.py</filename>.
+      This script can parse XML and replaces each entity with a processing
+      instruction. For example, the entity <tag class="genentity">product</tag>
+      is converted to the PI <tag class="pi">entity product</tag>. That makes
+      it easier to process it with XSLT or any other XML-agnostic tool.
+    </para>
+
+    <table xml:id="tab.structure.preserve-entities.comparison">
+      <title>Comparison Between <filename>ent2text.py</filename> and <filename>ents2pi.py</filename></title>
+      <tgroup cols="3">
+        <thead>
+          <row>
+            <entry morerows="1"></entry>
+            <entry><filename>ent2text.py</filename></entry>
+            <entry><filename>ents2pi.py</filename></entry>
+          </row>
+          <row>
+            <entry>Entity to Text</entry>
+            <entry>Entity to PI</entry>
+          </row>
+        </thead>
+        <tbody>
+          <row>
+            <entry>XML-aware</entry>
+            <entry>No</entry>
+            <entry>Yes</entry>
+          </row>
+          <row>
+            <entry>Easy to process it further</entry>
+            <entry>More difficult</entry>
+            <entry>Easy</entry>
+          </row>
+          <row>
+            <entry>Preserving source code</entry>
+            <entry>Always</entry>
+            <entry>Usually</entry>
+          </row>
+          <row>
+            <entry>Dependencies</entry>
+            <entry>Only Python standard library</entry>
+            <entry><package>lxml</package><footnote>
+              <para>See <link xlink:href="https://pypi.org/project/lxml/"/></para>
+            </footnote></entry>
+          </row>
+        </tbody>
+      </tgroup>
+    </table>
   </section>
   <section role="seealso">
     <title>See Also</title>
-    <para></para>
+    <itemizedlist>
+      <listitem>
+        <para><xref linkend="dbc.structure.use-entities"/></para>
+      </listitem>
+      <listitem xml:id="li.structure.preserve-entities.ents2text">
+        <para><link
+        xlink:href="https://github.com/tomschr/dbcookbook/raw/develop/en/xml/structure/entities/ents2text.py"/></para>
+      </listitem>
+      <listitem xml:id="li.structure.preserve-entities.ents2pi">
+        <para><link
+        xlink:href="https://github.com/tomschr/dbcookbook/raw/develop/en/xml/structure/entities/ents2pi.py"/></para>
+      </listitem>
+    </itemizedlist>
   </section>
 </section>

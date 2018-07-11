@@ -33,6 +33,12 @@
                 <subjectterm>graphic</subjectterm>
             </subject>
         </subjectset>
+        <author>
+            <personname>
+                <firstname>Peter</firstname>
+                <surname>Schmelzer</surname>
+            </personname>
+        </author>
     </info>
 
     <section role="problem">
