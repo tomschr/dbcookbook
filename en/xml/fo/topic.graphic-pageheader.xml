@@ -57,7 +57,8 @@
     xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns="http://docbook.org/ns/docbook"
     xmlns:d="http://docbook.org/ns/docbook" version="1.0">
     &lt;!-- Path and name of your graphic file-->
-    &lt;xsl:param name="header.image.filename">your-graphic.svg&lt;/xsl:param>
+    &lt;xsl:param name="img.src.path">./graphic-pageheader/>
+    &lt;xsl:param name="header.image.filename">Opensource.svg&lt;/xsl:param>
     &lt;!-- Header rule yes (1) / no (0) -->
     &lt;xsl:param name="header.rule" select="0"/>
 
@@ -145,7 +146,7 @@
             </callout>
             <callout arearefs="co.topic.graphic-pageheader.attribute">
                 <para>The filename is passed on the <tag class="attribute">src</tag> attribute.
-                        <emphasis>src</emphasis>.</para>
+                    <emphasis>src</emphasis>.</para>
             </callout>
             <callout arearefs="co.topic.graphic-pageheader.template">
                 <para>The template which is called to import and place the
