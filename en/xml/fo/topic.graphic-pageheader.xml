@@ -44,20 +44,60 @@
 
     <section role="problem">
         <title>Problem</title>
-        <para>You need to know how to insert a graphic in your page header or
-            footer.</para>
+        <para>You need to know how to insert a logo or graphic in your page
+            header.</para>
     </section>
 
     <section role="solution">
         <title>Solution</title>
-        <para>First of all, you need to create a customization layer in your
-            customization stylesheet containing the following code:</para>
-        <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+        <para>This example solution will place logo on top right side of a
+            single-sided document. Other placements are possible and will be
+            shown in the <emphasis>Discussion</emphasis> section. The logo is at
+        max 1 inch high to avoid conflicts with the body text area.</para>
+        <para>A logo on every page in your document will give your work a
+                personal touch or a corporate identity. Furthermore it's a way to
+            protect your hard work against simple duplication through a copier
+            or a simple forwarding of parts of your document.</para>
+        <para>First of all you need to create a customization layer as described
+            in the following steps. If you have a customization layer style
+            sheet, you can skip the first step, otherwise follow the steps to
+            create your customization layer:</para>
+        <procedure>
+            <step>
+                <para>Create a customization layer as shown in <xref
+                        linkend="dbc.common.dbcustomize"/>.</para>
+            </step>
+            <step>
+                <para>Include the stylesheet from <xref
+                        linkend="ex.fo.graphic-pageheader"/> into your
+                    customization layer:</para>
+                <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:d="http://docbook.org/ns/docbook">
+  &lt;!-- ... -->
+  <emphasis role="bold">&lt;xsl:include href="graphic-pageheader.xsl"/></emphasis>
+  &lt;!-- ... -->
+&lt;/xsl:stylesheet></programlisting>
+            </step>
+            <step>
+                <para>Include the style sheet from <xref
+                        linkend="ex.fo.graphic-pageheader"/> into your
+                    customization layer:</para>
+                <example xml:id="ex.fo.graphic-pageheader">
+                    <title>Logo in page header
+                            (<filename>graphic-pageheader.xsl</filename>)</title>
+                    <info>
+                        <output xmlns="urn:x-toms:docbook-ext">
+                            <filename>graphic-pageheader/graphic-pageheader.xsl</filename>
+                        </output>
+                    </info>
+                    <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns="http://docbook.org/ns/docbook"
     xmlns:d="http://docbook.org/ns/docbook" version="1.0">
     &lt;!-- Path and name of your graphic file-->
-    &lt;xsl:param name="img.src.path">./graphic-pageheader/>
+    &lt;xsl:param name="img.src.path">./graphic-pageheader/&lt;/xsl:param>
     &lt;xsl:param name="header.image.filename">Opensource.svg&lt;/xsl:param>
     &lt;!-- Header rule yes (1) / no (0) -->
     &lt;xsl:param name="header.rule" select="0"/>
@@ -90,7 +130,7 @@
 
                 &lt;xsl:when test="$position='right'"><co xml:id="co.topic.graphic-pageheader.right"/>
                     &lt;!-- Same for odd, even, empty, and blank sequences -->
-                    &lt;fo:external-graphic content-height="25mm"><co xml:id="co.topic.graphic-pageheader.height"/>
+                    &lt;fo:external-graphic content-height="1in"><co xml:id="co.topic.graphic-pageheader.height"/>
                        &lt;xsl:attribute name="src"><co xml:id="co.topic.graphic-pageheader.attribute"/>
                             &lt;xsl:call-template name="fo-external-image"><co xml:id="co.topic.graphic-pageheader.template"/>
                                 &lt;xsl:with-param name="filename" select="concat($img.src.path, $header.image.filename)"/><co xml:id="co.topic.graphic-pageheader.file"/>
@@ -110,53 +150,68 @@
         &lt;/fo:block>
     &lt;/xsl:template>
 &lt;/xsl:stylesheet></programlisting>
-        <calloutlist>
-            <callout arearefs="co.topic.graphic-pageheader.content">
-                <para>We assume that your graphic should be placed in the header
-                    of all pages except title pages.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.variables">
-                <para>The content of the necessary variables needs to be
-                    cleared.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.block">
-                <para>A <tag>block</tag>-element creates a rectangle area on a
-                    page which can contain <tag>lists</tag>, <tag>tables</tag>
-                    or <tag>graphics</tag> .</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.blank">
-                <para>Here you can place an banner like '<emphasis>This page is
-                        intentionally left blank'</emphasis> or so.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.center">
-                <para>This is a good place for the chapter title.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.right">
-                <para>This is the place where we want to place our graphic. The
-                    graphic should be visible on all pages on the right
-                    side.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.height">
-                <para>To avoid pictures which are too big for the headline, we
-                    limit its height to 25mm. When you specify only one parameter like
-                        <tag>height</tag>or<tag>width</tag>, your graphic will
-                    be scaled with the <link
-                        xlink:href="#li.fo.external-graphics">correct aspect
-                        ratio</link>.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.attribute">
-                <para>The filename is passed on the <tag class="attribute">src</tag> attribute.
-                    <emphasis>src</emphasis>.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.template">
-                <para>The template which is called to import and place the
-                    graphic.</para>
-            </callout>
-            <callout arearefs="co.topic.graphic-pageheader.file">
-                <para>Our file defined at the top of our customization
-                    layer.</para>
-            </callout>
-        </calloutlist>
+                    <calloutlist>
+                        <callout arearefs="co.topic.graphic-pageheader.content">
+                            <para>We assume that your graphic should be placed
+                                in the header of all pages except title
+                                pages.</para>
+                        </callout>
+                        <callout
+                            arearefs="co.topic.graphic-pageheader.variables">
+                            <para>The content of the necessary variables needs
+                                to be cleared.</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.block">
+                            <para>A <tag>block</tag>-element creates a rectangle
+                                area on a page which can contain
+                                    <tag>lists</tag>, <tag>tables</tag> or
+                                    <tag>graphics</tag> .</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.blank">
+                            <para>Here you can place an banner like
+                                    '<emphasis>This page is intentionally left
+                                    blank'</emphasis> or so.</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.center">
+                            <para>This is a good place for the chapter
+                                title.</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.right">
+                            <para>This is the place where we want to place our
+                                graphic. The graphic should be visible on all
+                                pages on the right side.</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.height">
+                            <para>To avoid conflicts with the body text area,
+                                we limit its height to 1 inch. When you
+                                specify only one parameter like
+                                    <tag>height</tag>or<tag>width</tag>, your
+                                graphic will be scaled with the <link
+                                    xlink:href="#li.fo.external-graphics"
+                                    >correct aspect ratio</link>.</para>
+                        </callout>
+                        <callout
+                            arearefs="co.topic.graphic-pageheader.attribute">
+                            <para>The filename is passed on the <tag
+                                    class="attribute">src</tag> attribute.
+                                    <emphasis>src</emphasis>.</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.template">
+                            <para>The template which is called to import and
+                                place the graphic.</para>
+                        </callout>
+                        <callout arearefs="co.topic.graphic-pageheader.file">
+                            <para>Our file defined at the top of our
+                                customization layer.</para>
+                        </callout>
+                    </calloutlist>
+                </example>
+            </step>
+            <step>
+                <para>Use your customization layer to transform your DocBook
+                    document into FO.</para>
+            </step>
+        </procedure>
     </section>
     <section role="discussion">
         <title>Discussion</title>
@@ -184,5 +239,11 @@
                     /></para>
             </listitem>
         </itemizedlist>
+        <para></para>
+        <para>The <emphasis>Opensource</emphasis>-Logo is a trademark which is
+            owned by <link
+                xlink:href="https://opensource.org"
+            />. This site is not affiliated with or endorsed by the Open
+            Source Initiative.</para>
     </section>
 </section>

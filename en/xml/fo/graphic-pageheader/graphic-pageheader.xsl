@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns="http://docbook.org/ns/docbook"
-    xmlns:d="http://docbook.org/ns/docbook" version="1.0">
-    <!-- Path and name of your graphic file-->
+<xsl:stylesheet version="1.0"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:d="http://docbook.org/ns/docbook">
+
+  <!-- Path and name of your graphic file-->
     <xsl:param name="img.src.path">./graphic-pageheader/</xsl:param>
     <xsl:param name="header.image.filename">Opensource.svg</xsl:param>
     <!-- Header rule yes (1) / no (0) -->

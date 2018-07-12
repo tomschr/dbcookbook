@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="20.0">
+<project version="20.1">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="20.0" xml:space="preserve">
+            <serialized version="20.1" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
                         <String>document.types</String>
@@ -1615,6 +1615,8 @@
             <folder name="fo">
                 <file name="en/xml/fo/topic.design-titlepages.xml"/>
                 <file name="en/xml/fo/topic.empty-header-and-footer.xml"/>
+                <file name="en/xml/fo/topic.graphic-pageheader.xml"/>
+                <file name="en/xml/fo/topic.graphic-titlepage.xml"/>
                 <file name="en/xml/fo/topic.hyphenating-urls.xml"/>
                 <file name="en/xml/fo/topic.initials.xml"/>
                 <file name="en/xml/fo/topic.line-height.xml"/>
