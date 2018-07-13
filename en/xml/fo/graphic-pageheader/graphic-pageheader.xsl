@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
+  xmlns:fo="http://www.w3.org/1999/XSL/Format"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook">
 
-  <!-- Path and name of your graphic file-->
-    <xsl:param name="img.src.path">graphic-pageheader/</xsl:param>
+  <!-- Path to your logo file -->
+    <xsl:param name="logo.src.path">logo/</xsl:param>
+  <!-- Name of your logo file -->
     <xsl:param name="header.image.filename">Opensource.svg</xsl:param>
     <!-- Header rule yes (1) / no (0) -->
     <xsl:param name="header.rule" select="0"/>
@@ -40,7 +42,7 @@
                     <fo:external-graphic content-height="1in">
                        <xsl:attribute name="src">
                             <xsl:call-template name="fo-external-image">
-                                <xsl:with-param name="filename" select="concat($img.src.path, $header.image.filename)"/>
+                                <xsl:with-param name="filename" select="concat($logo.src.path, $header.image.filename)"/>
                             </xsl:call-template>
                        </xsl:attribute>
                     </fo:external-graphic>

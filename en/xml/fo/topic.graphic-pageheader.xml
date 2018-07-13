@@ -68,11 +68,12 @@
                         linkend="dbc.common.dbcustomize"/>.</para>
             </step>
             <step>
-                <para>Include the stylesheet from <xref
+                <para>Include the style sheet from <xref
                         linkend="ex.fo.graphic-pageheader"/> into your
                     customization layer:</para>
                 <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?>
 &lt;xsl:stylesheet version="1.0"
+  xmlns:fo="http://www.w3.org/1999/XSL/Format"
   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
   xmlns:d="http://docbook.org/ns/docbook">
   &lt;!-- ... -->
@@ -84,85 +85,54 @@
                 <para>Include the style sheet from <xref
                         linkend="ex.fo.graphic-pageheader"/> into your
                     customization layer:</para>
-                <example xml:id="ex.fo.graphic-pageheader">
-                    <title>Logo in page header
-                            (<filename>graphic-pageheader.xsl</filename>)</title>
-                    <info>
-                        <output xmlns="urn:x-toms:docbook-ext">
-                            <filename>graphic-pageheader/graphic-pageheader.xsl</filename>
-                        </output>
-                    </info>
-                    <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?>
-&lt;xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:fo="http://www.w3.org/1999/XSL/Format" xmlns="http://docbook.org/ns/docbook"
-    xmlns:d="http://docbook.org/ns/docbook" version="1.0">
-    &lt;!-- Path to your graphic files -->
-    &lt;xsl:param name="img.src.path">graphic-pageheader/&lt;xsl:param><co xml:id="co.topic.graphic-pageheader.path"/>
-    &lt;!-- Your header logo -->
-    &lt;xsl:param name="header.image.filename">Opensource.svg&lt;/xsl:param>
-    &lt;!-- Header rule yes (1) / no (0) -->
-    &lt;xsl:param name="header.rule" select="0"/>
-
-    &lt;xsl:template name="header.content"><co xml:id="co.topic.graphic-pageheader.content"/>
-        &lt;xsl:param name="pageclass" select="''"<co xml:id="co.topic.graphic-pageheader.variables"/>
-        &lt;xsl:param name="sequence" select="''"/>
-        &lt;xsl:param name="position" select="''"/>
-        &lt;xsl:param name="gentext-key" select="''"/>
-        &lt;fo:block><co xml:id="co.topic.graphic-pageheader.block"/>
-            &lt;!-- sequence can be odd, even, first, blank -->
-            &lt;!-- position can be left, center, right -->
-            &lt;xsl:choose>
-                &lt;xsl:when test="$sequence = 'blank'">
-                    &lt;!-- nothing --><co xml:id="co.topic.graphic-pageheader.blank"/>
-                &lt;/xsl:when>
-
-                &lt;xsl:when test="$position='left'">
-                    &lt;!-- Same for odd, even, empty, and blank sequences -->
-                    &lt;!-- nothing -->
-                &lt;/xsl:when>
-
-                &lt;xsl:when test="($sequence='odd' or $sequence='even') and $position='center'">
-                    &lt;!-- nothing -->
-                &lt;/xsl:when>
-
-                &lt;xsl:when test="$position='center'"><co xml:id="co.topic.graphic-pageheader.center"/>
-                    &lt;!-- nothing for empty and blank sequences -->
-                &lt;/xsl:when>
-
-                &lt;xsl:when test="$position='right'"><co xml:id="co.topic.graphic-pageheader.right"/>
-                    &lt;!-- Same for odd, even, empty, and blank sequences -->
-                    &lt;fo:external-graphic content-height="1in"><co xml:id="co.topic.graphic-pageheader.height"/>
-                       &lt;xsl:attribute name="src"><co xml:id="co.topic.graphic-pageheader.attribute"/>
-                            &lt;xsl:call-template name="fo-external-image"><co xml:id="co.topic.graphic-pageheader.template"/>
-                                &lt;xsl:with-param name="filename" select="concat($img.src.path, $header.image.filename)"/><co xml:id="co.topic.graphic-pageheader.file"/>
-                            &lt;/xsl:call-template>
-                       &lt;/xsl:attribute>
-                    &lt;/fo:external-graphic>
-                &lt;/xsl:when>
-
-                &lt;xsl:when test="$sequence = 'first'">
-                    &lt;!-- nothing for first pages -->
-                &lt;/xsl:when>
-
-                &lt;xsl:when test="$sequence = 'blank'">
-                    &lt;!-- nothing for blank pages -->
-                &lt;/xsl:when>
-            &lt;/xsl:choose>
-        &lt;/fo:block>
-    &lt;/xsl:template>
-&lt;/xsl:stylesheet></programlisting>
+                    <example xml:id="ex.fo.graphic-pageheader">
+                        <title>Placing a logo in the right page header (<filename>graphic-pageheader.xsl</filename>)</title>
+                        <info>
+                            <output xmlns="urn:x-toms:docbook-ext">
+                                <filename>graphic-pageheader/graphic-pageheader.xsl</filename>
+                            </output>
+                        </info>
+                        <programlistingco>
+                            <areaspec>
+                                <area xml:id="co.topic.graphic-pageheader.path"
+                                    coords="8"/>
+                                <area xml:id="co.topic.graphic-pageheader.content"
+                                    coords="14"/>
+                                <area
+                                    xml:id="co.topic.graphic-pageheader.variables"
+                                    coords="15"/>
+                                <area xml:id="co.topic.graphic-pageheader.block"
+                                    coords="19"/>
+                                <area xml:id="co.topic.graphic-pageheader.blank"
+                                    coords="23"/>
+                                <area
+                                    xml:id="co.topic.graphic-pageheader.center"
+                                    coords="32"/>
+                                <area xml:id="co.topic.graphic-pageheader.right"
+                                    coords="40"/>
+                                <area
+                                    xml:id="co.topic.graphic-pageheader.height"
+                                    coords="42 64" units="linecolumn"/>
+                                <area
+                                    xml:id="co.topic.graphic-pageheader.attribute"
+                                    coords="43"/>
+                                <area
+                                    xml:id="co.topic.graphic-pageheader.template"
+                                    coords="44 75" units="linecolumn"/>
+                                <area xml:id="co.topic.graphic-pageheader.file"
+                                    coords="45 122" units="linecolumn"/>
+                            </areaspec>
+                            <programlisting language="xml" linenumbering="numbered"
+          ><xi:include href="graphic-pageheader/graphic-pageheader.xsl" parse="text"
+          /></programlisting>
+                        </programlistingco>
+                    </example>
                     <calloutlist>
                         <callout arearefs="co.topic.graphic-pageheader.path">
-                            <para>This setting is global for your pictures,
-                                logos, graphics. Keep in mind that the
-                                    <tag>imagedata</tag> command does not need a
-                                path if all files are in the same folder. You
-                                can write something like this:</para>
-                            <para>&lt;imagedata fileref="pic02.pdf"/>
-                                directly.</para>
+                            <para>This setting is unique for your logo.</para>
                         </callout>
                         <callout arearefs="co.topic.graphic-pageheader.content">
-                            <para>We assume that your graphic should be placed
+                            <para>We assume that your logo should be placed
                                 in the header of all pages except title
                                 pages.</para>
                         </callout>
@@ -201,19 +171,17 @@
                         <callout
                             arearefs="co.topic.graphic-pageheader.attribute">
                             <para>The file name is passed on the <tag
-                                    class="attribute">src</tag> attribute.
-                                    <emphasis>src</emphasis>.</para>
+                                    class="attribute">src</tag> attribute.</para>
                         </callout>
                         <callout arearefs="co.topic.graphic-pageheader.template">
                             <para>The template which is called to import and
-                                place the graphic.</para>
+                                place the logo.</para>
                         </callout>
                         <callout arearefs="co.topic.graphic-pageheader.file">
                             <para>Our file defined at the top of our
                                 customization layer.</para>
                         </callout>
                     </calloutlist>
-                </example>
             </step>
             <step>
                 <para>Use your customization layer to transform your DocBook
@@ -223,6 +191,14 @@
     </section>
     <section role="discussion">
         <title>Discussion</title>
+        <para>In line 8 of our style sheet (
+            <filename>graphic-pageheader.xsl</filename>), we defined a new
+            parameter to represent the path for our logo. The main goal was to
+            be independent of the global image source path 
+             <tag>img.src.path</tag> parameter for pictures, graphics and so 
+            on. This new parameter is used in line 45 to build the path
+             for our logo.</para>
+        <para></para>
         <para>These points will be submitted later</para>
         <itemizedlist>
             <listitem>
@@ -245,19 +221,8 @@
                         xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic"
                     /></para>
             </listitem>
-            <listitem>
-                <para>Parameter description for <tag>xsl:attribute</tag><link
-                        xlink:href="https://www.w3schools.com/xml/ref_xsl_el_attribute.asp"
-                    /></para>
-            </listitem>
-            <listitem>
-                <para>Parameter description for <tag>xsl:with-param</tag>
-                    <link
-                        xlink:href="https://www.w3schools.com/xml/ref_xsl_el_with-param.asp"
-                    /></para>
-            </listitem>
         </itemizedlist>
-        <para/>
+        <para>__________</para>
         <para>The <emphasis>Opensource</emphasis>-Logo is a trademark which is
             owned by <link xlink:href="https://opensource.org"/>. This site is
             not affiliated with or endorsed by the Open Source
