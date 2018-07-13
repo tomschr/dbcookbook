@@ -4,7 +4,7 @@
   xmlns:d="http://docbook.org/ns/docbook">
 
   <!-- Path and name of your graphic file-->
-    <xsl:param name="img.src.path">./graphic-pageheader/</xsl:param>
+    <xsl:param name="img.src.path">graphic-pageheader/</xsl:param>
     <xsl:param name="header.image.filename">Opensource.svg</xsl:param>
     <!-- Header rule yes (1) / no (0) -->
     <xsl:param name="header.rule" select="0"/>
