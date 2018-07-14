@@ -85,103 +85,92 @@
                 <para>Include the style sheet from <xref
                         linkend="ex.fo.graphic-pageheader"/> into your
                     customization layer:</para>
-                    <example xml:id="ex.fo.graphic-pageheader">
-                        <title>Placing a logo in the right page header (<filename>graphic-pageheader.xsl</filename>)</title>
-                        <info>
-                            <output xmlns="urn:x-toms:docbook-ext">
-                                <filename>graphic-pageheader/graphic-pageheader.xsl</filename>
-                            </output>
-                        </info>
-                        <programlistingco>
-                            <areaspec>
-                                <area xml:id="co.topic.graphic-pageheader.path"
-                                    coords="8"/>
-                                <area xml:id="co.topic.graphic-pageheader.content"
-                                    coords="14"/>
-                                <area
-                                    xml:id="co.topic.graphic-pageheader.variables"
-                                    coords="15"/>
-                                <area xml:id="co.topic.graphic-pageheader.block"
-                                    coords="19"/>
-                                <area xml:id="co.topic.graphic-pageheader.blank"
-                                    coords="23"/>
-                                <area
-                                    xml:id="co.topic.graphic-pageheader.center"
-                                    coords="32"/>
-                                <area xml:id="co.topic.graphic-pageheader.right"
-                                    coords="40"/>
-                                <area
-                                    xml:id="co.topic.graphic-pageheader.height"
-                                    coords="42 64" units="linecolumn"/>
-                                <area
-                                    xml:id="co.topic.graphic-pageheader.attribute"
-                                    coords="43"/>
-                                <area
-                                    xml:id="co.topic.graphic-pageheader.template"
-                                    coords="44 75" units="linecolumn"/>
-                                <area xml:id="co.topic.graphic-pageheader.file"
-                                    coords="45 122" units="linecolumn"/>
-                            </areaspec>
-                            <programlisting language="xml" linenumbering="numbered"
-          ><xi:include href="graphic-pageheader/graphic-pageheader.xsl" parse="text"
-          /></programlisting>
-                        </programlistingco>
-                    </example>
-                    <calloutlist>
-                        <callout arearefs="co.topic.graphic-pageheader.path">
-                            <para>This setting is unique for your logo.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.content">
-                            <para>We assume that your logo should be placed
-                                in the header of all pages except title
-                                pages.</para>
-                        </callout>
-                        <callout
-                            arearefs="co.topic.graphic-pageheader.variables">
-                            <para>This is the default value and will be used if
-                                no parameters are passed.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.block">
-                            <para>A <tag>fo:block</tag>-element creates a
-                                rectangle area on a page which can contain
-                                lists, tables or graphics.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.blank">
-                            <para>Here you can insert a text like <emphasis>This
-                                    page is intentionally left
-                                blank</emphasis>.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.center">
-                            <para>This is a good place for the chapter
-                                title.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.right">
-                            <para>This is the place for our logo as described at
-                                the top of our solution.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.height">
-                            <para>To avoid conflicts with the body text area, we
-                                limit its height to 1 inch. When you specify
-                                only one parameter like 
-                                    <tag>height</tag> or <tag>width</tag>, your
-                                logo will be scaled with the <link
-                                    xlink:href="#li.fo.external-graphics"
-                                    >correct aspect ratio</link>.</para>
-                        </callout>
-                        <callout
-                            arearefs="co.topic.graphic-pageheader.attribute">
-                            <para>The file name is passed on the <tag
-                                    class="attribute">src</tag> attribute.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.template">
-                            <para>The template which is called to import and
-                                place the logo.</para>
-                        </callout>
-                        <callout arearefs="co.topic.graphic-pageheader.file">
-                            <para>Our file defined at the top of our
-                                customization layer.</para>
-                        </callout>
-                    </calloutlist>
+                <example xml:id="ex.fo.graphic-pageheader">
+                    <title>Placing a Logo in the Right Page Header
+                            (<filename>graphic-pageheader.xsl</filename>)</title>
+                    <info>
+                        <output xmlns="urn:x-toms:docbook-ext">
+                            <filename>graphic-pageheader/graphic-pageheader.xsl</filename>
+                        </output>
+                    </info>
+                    <programlistingco>
+                        <areaspec>
+                            <area xml:id="co.topic.graphic-pageheader.path"
+                                coords="8"/>
+                            <area xml:id="co.topic.graphic-pageheader.content"
+                                coords="14"/>
+                            <area xml:id="co.topic.graphic-pageheader.variables"
+                                coords="15"/>
+                            <area xml:id="co.topic.graphic-pageheader.block"
+                                coords="19"/>
+                            <area xml:id="co.topic.graphic-pageheader.blank"
+                                coords="23"/>
+                            <area xml:id="co.topic.graphic-pageheader.center"
+                                coords="32"/>
+                            <area xml:id="co.topic.graphic-pageheader.right"
+                                coords="40"/>
+                            <area xml:id="co.topic.graphic-pageheader.height"
+                                coords="42 64" units="linecolumn"/>
+                            <area xml:id="co.topic.graphic-pageheader.attribute"
+                                coords="43"/>
+                            <area xml:id="co.topic.graphic-pageheader.template"
+                                coords="44 75" units="linecolumn"/>
+                            <area xml:id="co.topic.graphic-pageheader.file"
+                                coords="45 122" units="linecolumn"/>
+                        </areaspec>
+                        <programlisting language="xml" linenumbering="numbered"><xi:include href="graphic-pageheader/graphic-pageheader.xsl" parse="text"/></programlisting>
+                    </programlistingco>
+                </example>
+                <calloutlist>
+                    <callout arearefs="co.topic.graphic-pageheader.path">
+                        <para>The directory path to your logos.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.content">
+                        <para>We assume that your logo should be placed in the
+                            header of all pages except title pages.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.variables">
+                        <para>This is the default value and will be used if no
+                            parameters are passed.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.block">
+                        <para>A <tag>fo:block</tag>-element creates a rectangle
+                            area on a page which can contain lists, tables or
+                            graphics.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.blank">
+                        <para>Here you can insert a text like <emphasis>This
+                                page is intentionally left
+                            blank</emphasis>.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.center">
+                        <para>This is a good place for the chapter title.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.right">
+                        <para>This is the place for our logo as described at the
+                            top of our solution.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.height">
+                        <para>To avoid conflicts with the body text area, we
+                            limit its height to 1 inch. When you specify only
+                            one parameter like <tag>height</tag> or
+                                <tag>width</tag>, your logo will be scaled with
+                            the <link xlink:href="#li.fo.external-graphics"
+                                >correct aspect ratio</link>.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.attribute">
+                        <para>The file name is passed on the <tag
+                                class="attribute">src</tag> attribute.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.template">
+                        <para>The template which is called to import and place
+                            the logo.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.file">
+                        <para>Our file defined at the top of our customization
+                            layer.</para>
+                    </callout>
+                </calloutlist>
             </step>
             <step>
                 <para>Use your customization layer to transform your DocBook
@@ -191,14 +180,19 @@
     </section>
     <section role="discussion">
         <title>Discussion</title>
-        <para>In line 8 of our style sheet (
-            <filename>graphic-pageheader.xsl</filename>), we defined a new
-            parameter to represent the path for our logo. The main goal was to
-            be independent of the global image source path 
-             <tag>img.src.path</tag> parameter for pictures, graphics and so 
-            on. This new parameter is used in line 45 to build the path
-             for our logo.</para>
-        <para></para>
+        <para>The stylesheet <filename>graphic-pageheader.xsl</filename> creates
+            a logo in the right edge of your page and uses the parameter
+                <parameter>logo.src.path</parameter> to find the logo. By
+            default, a logo is stored in <filename>logos/</filename>. If your
+            logos are in a different location, change it with your XSLT
+            processor. For example, the following line uses the logo(s) image
+            source path <tag>logo.src.path</tag> parameter to find the logo(s).
+            This parameter is used within the position test procedure<xref
+                linkend="co.topic.graphic-pageheader.file"/> to find the right
+            logo.
+            <screen>&lt;xsl:param name="logo.src.path">logos/&lt;/xsl:param>
+            </screen></para>
+        <para/>
         <para>These points will be submitted later</para>
         <itemizedlist>
             <listitem>
