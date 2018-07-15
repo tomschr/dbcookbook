@@ -189,24 +189,9 @@
             logos are in a different location, change it with your XSLT
             processor. For example, the following line uses the logo(s) image
             source path <tag>logo.src.path</tag> parameter to find the logo(s).
-            This parameter is used within the position test procedure<xref
-                linkend="co.topic.graphic-pageheader.file"/> to find the right
-            logo.
-            <screen>&lt;xsl:param name="logo.src.path">logo/&lt;/xsl:param>
-            </screen></para>
-        <para/>
-        <para>These points will be submitted later</para>
-        <itemizedlist>
-            <listitem>
-                <para>Logo on recto/verso pages (double-sided docs)</para>
-            </listitem>
-            <listitem>
-                <para>Logo in the footer</para>
-            </listitem>
-            <listitem>
-                <para>Logo and chapter title in the page header</para>
-            </listitem>
-        </itemizedlist>
+            This parameter is used within the position test procedure<xref linkend="co.topic.graphic-pageheader.file"/> to find the right
+            logo.</para>
+            <screen>&lt;xsl:param name="logo.src.path">logo/&lt;/xsl:param></screen>
     </section>
     <section role="seealso">
         <title>See Also</title>
