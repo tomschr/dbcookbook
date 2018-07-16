@@ -506,6 +506,10 @@
                         <String>DejaVu Sans Mono,0,13</String>
                     </entry>
                     <entry>
+                        <String>editor.line.wrap</String>
+                        <Boolean>true</Boolean>
+                    </entry>
+                    <entry>
                         <String>editor.print.margin.columns</String>
                         <Integer>78</Integer>
                     </entry>
