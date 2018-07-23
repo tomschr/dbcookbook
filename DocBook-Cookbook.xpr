@@ -1577,6 +1577,8 @@
                             <String>http://www.w3.org/1998/Math/MathML</String>
                             <String>svg</String>
                             <String>http://www.w3.org/2000/svg</String>
+                            <String>fo</String>
+                            <String>http://www.w3.org/1999/XSL/Format</String>
                         </String-array>
                     </entry>
                 </serializableOrderedMap>
