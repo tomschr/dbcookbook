@@ -36,3 +36,5 @@ tmp/
 *.tar.*
 
 DocBook-Cookbook\.xpr
+
+*.xpr
