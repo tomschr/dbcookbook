@@ -1,6 +1,10 @@
 ===================================
 Welcome to "The DoCookBook"
 ===================================
+
+.. image:: https://travis-ci.org/tomschr/dbcookbook.svg?branch=develop
+    :target: https://travis-ci.org/tomschr/dbcookbook
+
 :Info: See https://github.com/tomschr/dbcookbook
 :Author: Thomas Schraitle <tom_schr AT web DOT de>
 :Description: Cookbook for DocBook and DocBook XSL stylesheets
