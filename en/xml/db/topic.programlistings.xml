@@ -86,7 +86,7 @@ def sayhello(name):
   return "Hello %s" % name
 
 sayhello("Tux")
-&lt;programlisting></programlisting>
+&lt;/programlisting></programlisting>
       <para>Line annotations are printed in italic by default:</para>
       <programlisting language="python" linenumbering="unnumbered"
 >#!/usr/bin/python <lineannotation>Shebang line</lineannotation>
