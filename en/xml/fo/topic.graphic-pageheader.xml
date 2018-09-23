@@ -19,7 +19,7 @@
     xmlns="http://docbook.org/ns/docbook"
     xmlns:xi="http://www.w3.org/2001/XInclude"
     xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Inserting Logos into Page Headers and Footers</title>
+    <title>Inserting Text and Logos into Page Headers and Footers</title>
     <info>
         <author>
             <personname>
@@ -38,24 +38,28 @@
         <subjectset>
             <subject>
                 <subjectterm>graphic</subjectterm>
+                <subjectterm>logo</subjectterm>
+                <subjectterm>text</subjectterm>
             </subject>
         </subjectset>
     </info>
 
     <section role="problem">
         <title>Problem</title>
-        <para>You need to know how to insert a logo or graphic in your page
+        <para>You need to know how to insert text and a logo in your page
             header.</para>
     </section>
 
     <section role="solution">
         <title>Solution</title>
-        <para>This example solution will place logo on top right side of a
-            single-sided document. Other placements are possible and will be
-            shown in the <emphasis>Discussion</emphasis> section. The logo is at
-            max 1 inch high to avoid conflicts with the body text area. The
-            template for our solution is obtained from 'pagesetup.xsl' style
-            sheet.</para>
+        <para>This example solution will place a logo on top right side of a
+            single-sided document or on the left/right side on a double-sided
+            document. Other placements are possible and will be shown in the
+                <emphasis>Discussion</emphasis> section. The logo is at max 1
+            inch high to avoid conflicts with the body text area. Furthermore,
+            we will place the document title on the opposite of the logo,
+            centered to the logo high. The template for our solution is obtained
+            from 'pagesetup.xsl' style sheet.</para>
         <para>A logo on every page in your document will give your work a
             personal touch or a corporate identity. Furthermore it's a way to
             protect your hard work against simple duplication through a copier
@@ -99,12 +103,15 @@
                         <areaspec>
                             <area xml:id="co.topic.graphic-pageheader.path"
                                 coords="8"/>
-                            <area xml:id="co.topic.graphic-pageheader.content"
+                            <area
+                                xml:id="co.topic.graphic-pageheader.missed_attribs"
                                 coords="14"/>
+                            <area xml:id="co.topic.graphic-pageheader.content"
+                                coords="177"/>
                             <area xml:id="co.topic.graphic-pageheader.variables"
-                                coords="15"/>
+                                coords="178"/>
                             <area xml:id="co.topic.graphic-pageheader.block"
-                                coords="19"/>
+                                coords="183"/>
                             <area xml:id="co.topic.graphic-pageheader.blank"
                                 coords="23"/>
                             <area xml:id="co.topic.graphic-pageheader.center"
@@ -126,6 +133,17 @@
                 <calloutlist>
                     <callout arearefs="co.topic.graphic-pageheader.path">
                         <para>The directory path to your logos.</para>
+                    </callout>
+                    <callout
+                        arearefs="co.topic.graphic-pageheader.missed_attribs">
+                        <para>Due to a missing attribute-set for the header or
+                            footer content, we use the
+                                <quote>header.table</quote> Template from the
+                                <emphasis>pagesetup.xsl</emphasis> and replace
+                            all <emphasis>display-align="before"</emphasis>
+                            occurrences with <emphasis role="strong"
+                                >display-align="center"</emphasis>. Add the
+                            modified Template to your customization layer.</para>
                     </callout>
                     <callout arearefs="co.topic.graphic-pageheader.content">
                         <para>We assume that your logo should be placed in the
@@ -189,9 +207,10 @@
             logos are in a different location, change it with your XSLT
             processor. For example, the following line uses the logo(s) image
             source path <tag>logo.src.path</tag> parameter to find the logo(s).
-            This parameter is used within the position test <xref linkend="co.topic.graphic-pageheader.file"/> to find the right
+            This parameter is used within the position test <xref
+                linkend="co.topic.graphic-pageheader.file"/> to find the right
             logo.</para>
-            <screen>&lt;xsl:param name="logo.src.path">logo/&lt;/xsl:param></screen>
+        <screen>&lt;xsl:param name="logo.src.path">logo/&lt;/xsl:param></screen>
     </section>
     <section role="seealso">
         <title>See Also</title>
