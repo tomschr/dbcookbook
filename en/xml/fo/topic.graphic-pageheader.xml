@@ -218,9 +218,7 @@
         <itemizedlist>
             <listitem xml:id="li.fo.external-graphics">
                 <para>Full parameter description for
-                        <tag>fo:external-graphic</tag><link
-                        xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic"
-                    /></para>
+                        <tag xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic">fo:external-graphic</tag></para>
             </listitem>
         </itemizedlist>
         <para>__________</para>
