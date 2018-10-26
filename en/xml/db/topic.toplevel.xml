@@ -46,8 +46,8 @@
     <para>A document type definition (DTD) allows
       <emphasis>every</emphasis> definied element to become a root element.
       A DTD cannot create any constraints to limit this set.
-      On the other hand, RELAX&#x00A0;NG -- the official schema language for
-      DocBook 5 and up -- can impose such constraints.</para>
+      On the other hand, RELAX&#x00A0;NG&#x2014;the official schema language for
+      DocBook 5 and up&#x2014;can impose such constraints.</para>
 
     <para>To create a valid DocBook V5 document you need:</para>
 
