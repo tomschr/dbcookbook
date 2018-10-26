@@ -30,14 +30,14 @@ which are divided into a problem, the corresponding solution, some
 discussions, and optional related information.
 It is very easy just to go to the table of contents and see if there
 is something useful that fits to your problem.
-Solutions are usually written in a procedural style which contains
+Solutions are usually written in a procedural style which contain
 several steps.
 
 
 Target Group
 ------------
 It is assumed you have a decent knowledge about XML and DocBook. It doesn't
-hurt if you know CSS and XSLT. As such, it is aimed more for DocBook 
+hurt if you know CSS and XSLT. As such, it is aimed more at DocBook 
 developers than writers.
 
 
@@ -45,12 +45,12 @@ Structure of the Book and Organization
 --------------------------------------
 
 The main file is "en/xml/DocBook-Cookbook.xml". It contains xi:include
-elements which refers to chapters, appendices and other second level
+elements which refer to chapters, appendices and other second level
 elements.
 
 ::
   
-  # Struture of Book with Main Chapters 
+  # Structure of Book with Main Chapters 
   en/xml/DocBook-Cookbook.xml
   |
   +-- 5.1/        # (1)
@@ -65,7 +65,7 @@ elements.
   |
   +-- html/       # (6)
   |
-  +--- structure/ # (7)
+  +-- structure/ # (7)
 
 ::
   
@@ -78,7 +78,7 @@ elements.
   (7) Contains topics how to manipulate DocBook's structure
 
 
-Some topics contain directories which stores XSLT, XML, or other example files.
+Some topics contain directories which store XSLT, XML, or other example files.
 In some cases these are incorporated into the XML source, sometimes they are
 just lying around for testing purposes.
 
