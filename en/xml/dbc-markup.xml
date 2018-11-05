@@ -35,10 +35,10 @@
         or <tag>link</tag>. All of these elements are well covered in
           <citetitle xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
             >The Definitive Guide</citetitle>. This chapter
-        shows more the unknown parts and how to avoid pitfalls and
+        shows more of the unknown parts and how to avoid pitfalls and
         improve consistency throughout your documentation. </para>
     </abstract>
-  </info>
+  </i
 
   <section xml:id="dbc.markup.intro">
     <title>Introduction</title>
