@@ -31,7 +31,7 @@
 
   <blockquote>
     <title>Mission</title>
-    <para><citetitle xlink:href="http://doccookbook.sourceforge.net"
+    <para><citetitle xlink:href="http://doccookbook.sf.net"
       >&projectname;</citetitle> aims to create an open source
       book about <phrase xlink:href="http://www.docbook.org/"
         >DocBook</phrase> and the <phrase
@@ -49,7 +49,7 @@
       particularly well suited to books and papers about computer
       hardware and software (though it is by no means limited to these
       applications).</quote></para>
-  <para>Although there is helpful and valuable documentation&mdash;be it as a
+  <para>Although there is helpful and valuable documentation&#x2014;be it as a
     printed book<footnote xml:id="fnt.tdg">
       <para>Like the reference <citetitle
           xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
@@ -69,7 +69,7 @@
         </personname> maintains a <link
           xlink:href="http://www.dpawson.co.uk/">DocBook FAQ</link> and
         the previous mentioned books can be found online too.</para>
-    </footnote>&mdash;I always felt there is a gap. This gap could be bridged
+    </footnote>&#x2014;I always felt there is a gap. This gap could be bridged
     with a guide that only concentrates on problems and their solution
     in a concise manner explained by step-by-step procedures. Until now,
     nobody wrote a book that combines possible problems, pitfalls,
