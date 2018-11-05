@@ -35,7 +35,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You need in your document two separate indices, a general one
+    <para>You need two separate indices in your document, a general one
       and another one for persons.</para>
   </section>
   <section role="solution">
@@ -45,15 +45,15 @@
         class="attribute">type</tag> attribute can be any value. Usually
       it is a descriptive name (in our case, <quote>persons</quote> would be fine).
     </para>
-    <para>For example, the following paragraph contains two indexterms.
-      However, Guido is marked up as a <quote>person's index</quote>:</para>
+    <para>For example, the following paragraph contains two index terms.
+      However, Guido is marked up as a <quote>persons index</quote>:</para>
     <programlisting language="xml">&lt;para> The Python&lt;indexterm>
    &lt;primary>Python&lt;/primary>&lt;/indexterm> programming
    language was designed by
    Guido van Rossum.&lt;indexterm type="persons">
    &lt;primary>van Rossum, Guido&lt;/primary>&lt;/indexterm>
 &lt;/para></programlisting>
-    <para>Use two <tag>index</tag> element at the end of your document
+    <para>Use two <tag>index</tag> elements at the end of your document
       to distinguish between the two:</para>
     <programlisting language="xml">&lt;index/> <co
       xml:id="co.idx.type.normal"/>
@@ -67,7 +67,7 @@
           <tag class="attribute">type</tag> attribute.</para>
       </callout>
       <callout arearefs="co.idx.type.persons">
-        <para>Collects only those index entries which contains a
+        <para>Collects only those index entries that contain a
           <tag class="attribute">type</tag> attribute with the value
           <tag class="attvalue">persons</tag> (as with Guido in the
           above example).</para>
@@ -77,13 +77,13 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Some documents contain two indices, a general and one for
-      persons. This is quite common thesedays as it simplifies where to
+    <para>Some documents contain two indices, one general and one for
+      persons. This is quite common these days as it simplifies where to
       find your search term.  You can add as many indices as you need,
       but more than two are normally uncommon.</para>
     <para>By default, multiple indices are turned on by the DocBook
-      stylesheets. So no special customization are needed. However, if
-      you want to collect all index terms in one index, set the
+      stylesheets. So no special customization is needed. However, if
+      you want to collect all index terms into one index, set the
       parameter <parameter
         xlink:href="http://docbook.sf.net/release/xsl/current/doc/html/index.on.type.html"
         >index.on.type</parameter> to <literal>0</literal> (zero). In
