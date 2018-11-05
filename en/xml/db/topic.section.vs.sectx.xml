@@ -98,19 +98,19 @@
       <title>Readability</title>
       <para>This issue depends on how you edit your DocBook source code.
         If you edit it manually in your editor (in other words: without
-        the aid of some kind of <quote>WYSYWYG</quote>), you can see and
+        the aid of some kind of <acronym>WYSIWYG</acronym>), you can see and
         understand the level straight from the tag name when using
           <tag>sect<replaceable>n</replaceable></tag>. Especially if you have lots of nested
-        section this makes it a lot easier than <tag>section</tag>.
+        sections this makes it a lot easier than <tag>section</tag>.
         However, modern XML editors can show the XPath where
         you are, so it may be negligible.</para>
     </formalpara>
     <formalpara>
       <title>Relocation</title>
       <para>If you have to change the structure a lot, using
-        <tag>section</tag> elements make it a lot easier. When you use a
+        <tag>section</tag> elements makes it a lot easier. If you use a
       <tag>sect2</tag> element and this should become a <tag>sect1</tag>
-      element you have to rename it. </para>
+      element you have to rename it.</para>
     </formalpara>
   </section>
   <section role="seealso">
