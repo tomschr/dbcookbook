@@ -189,7 +189,7 @@
           </row>
           <row>
             <entry>Restrictions</entry>
-            <entry>Only cross referencing to elements which contain a <tag>title</tag></entry>
+            <entry>Only cross referencing to elements that contain a <tag>title</tag></entry>
             <entry>No restrictions</entry>
           </row>
         </tbody>

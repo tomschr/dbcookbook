@@ -42,7 +42,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>DocBook provides three basic lists which are used most often:</para>
+    <para>DocBook provides three basic lists that are used most often:</para>
 
     <itemizedlist>
       <listitem>
@@ -70,7 +70,7 @@
           allowed.</para>
       </listitem>
       <listitem>
-        <para><tag>calloutlist</tag>, a usually numbered list which
+        <para><tag>calloutlist</tag>, a usually numbered list that
           points to lines in a listing</para>
       </listitem>
       <listitem>
@@ -79,7 +79,7 @@
           elements where a <tag>glossary</tag> is not allowed.</para>
       </listitem>
       <listitem>
-        <para><tag>segmentedlist</tag> is a list which can be used for items that
+        <para><tag>segmentedlist</tag> is a list that can be used for items that
           have a one-to-one correspondence to their title. A
           <tag>segmentedlist</tag> can be formatted in a number of ways
           (tabular or as a list block).

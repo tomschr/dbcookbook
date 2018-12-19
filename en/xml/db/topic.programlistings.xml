@@ -31,7 +31,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You need to add an element which is used for code listings.</para>
+    <para>You need to add an element that is used for code listings.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -102,7 +102,7 @@ sayhello("Tux")</programlisting>
         text containing line annotations. Such text usually creates
         syntax problems. In this case, use a comment symbol for the
         appropriate programming language. For Python, it is the hash
-        sign which can be combined in a <tag>programlisting</tag>
+        sign that can be combined in a <tag>programlisting</tag>
         context as follows:</para>
       <programlisting language="python" linenumbering="unnumbered"
 >&lt;programlisting> ...
@@ -242,7 +242,7 @@ sayhello("Tux")</programlisting>
             xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/html/linenumbering.extension.html"
             >linenumbering.extension</parameter></term>
           <listitem>
-            <para>Parameter which enables the line numbering extension</para>
+            <para>Parameter that enables the line numbering extension</para>
           </listitem>
         </varlistentry>
       </variablelist>

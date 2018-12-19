@@ -87,7 +87,7 @@
     </para>
     <formalpara>
       <title>Nesting Level</title>
-      <para>If you have documents which go further than level five,
+      <para>If you have documents that go further than level five,
         use the <tag>section</tag> element. This can be nested infinitely.
         On the other hand, if you want to restrict the levels to
         five, better use the <tag>sect<replaceable>n</replaceable></tag> elements. You can, however,

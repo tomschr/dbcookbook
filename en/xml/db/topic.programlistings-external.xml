@@ -59,7 +59,7 @@
     <section xml:id="sec.programlisting-external-textdata">
       <title>Incorporating External Files with <tag>textdata</tag></title>
       <para>Usually, <tag>textdata</tag> is included inside a
-          <tag>textobject</tag> which is then included inside a
+          <tag>textobject</tag> that is then included inside a
           <tag>programlisting</tag> element.</para>
       <para>To refer to a file <filename>foo.py</filename> with
         <tag>textdata</tag>, use the code in <xref linkend="ex.programlisting.textdata"

@@ -54,7 +54,7 @@
       </listitem>
       <listitem>
         <para>The empty <tag>xref</tag> element and a <tag
-          class="attribute">linkend</tag> attribute which holds the ID
+          class="attribute">linkend</tag> attribute that holds the ID
           of your target.</para>
       </listitem>
     </orderedlist>
@@ -219,7 +219,7 @@
       <section xml:id="sec.markup.xref.xrefstyle.select">
         <title>Using <literal>select</literal></title>
         <para>The <literal>select</literal> method expects several
-          self-explanatory keywords which are also replaced during
+          self-explanatory keywords that are also replaced during
           transformation. The difference is, that you cannot use free text as
           in <literal>template</literal> thus giving you less
           freedom. For instance, the first example in <xref linkend="sec.markup.xref.xrefstyle.template"

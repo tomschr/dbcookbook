@@ -70,17 +70,17 @@
       </listitem>
       <listitem>
         <para>The attribute <tag class="attribute">href</tag> inside the
-            <tag class="starttag">xi:include</tag> start tag. It is an URI which refers to
+            <tag class="starttag">xi:include</tag> start tag. It is an URI that refers to
           your included file.</para>
       </listitem>
       <listitem>
-        <para>The file which is referenced by the <tag
+        <para>The file that is referenced by the <tag
           class="attribute">href</tag> attribute. The content of the
           file will replace the <tag>xi:include</tag> element. It
           usually contains a DocBook element.</para>
       </listitem>
     </itemizedlist>
-    <para>The following example shows a book which points to a
+    <para>The following example shows a book that points to a
       substructure assuming chapters:</para>
     <example xml:id="ex.db.xincludes.book-with-3-chapters">
       <title>A Book with XIncluded Chapters</title>
@@ -221,7 +221,7 @@
         <listitem>
           <para>Version 9 contains the <option>-xi</option> option to resolve
             XIncludes (assuming you have a script <command>saxon9</command>
-            which does all the heavy Java lifting):</para>
+            that does all the heavy Java lifting):</para>
           <screen><command>saxon9</command> -xi -xsl:<replaceable
             >STYLESHEET</replaceable> -s:<replaceable
               >XMLFILE</replaceable></screen>
@@ -231,7 +231,7 @@
 
     <para>The last section showed a general method to work with
       XIncludes. In most cases this is enough. However, XIncludes offers
-      more benefits which are discovered in the following
+      more benefits that are discovered in the following
       subsections.</para>
     <section xml:id="sec.db.modularize.xifallback">
       <title>Fallbacks</title>
@@ -267,7 +267,7 @@
       <para>The previous examples dealt with included resources in XML
         only. If you need to include text, this can also be done with
         XInclude.</para>
-      <para>The most common use-case is including source code which is
+      <para>The most common use-case is including source code that is
       maintained separately. The following example points to C source
       code that needs to be included as text:</para>
       <example xml:id="ex.db.modularize.include-text">

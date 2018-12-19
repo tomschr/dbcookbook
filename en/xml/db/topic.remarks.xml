@@ -103,10 +103,10 @@ This is a text &lt;!-- Ohh, we should add more -->
           <row>
             <entry>When to use it?</entry>
             <entry>
-              <para>Comments which are only read by you</para>
+              <para>Comments that are only read by you</para>
             </entry>
             <entry>
-              <para>Comments which can and should be read by others</para>
+              <para>Comments that can and should be read by others</para>
             </entry>
           </row>
           <row>
