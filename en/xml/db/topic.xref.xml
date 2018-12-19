@@ -19,11 +19,11 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Inserting Cross References</title>
+  <title>Inserting Cross-References</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>cross references</keyword>
+      <keyword>cross-references</keyword>
       <keyword>internal link</keyword>
       <keyword>xref</keyword>
     </keywordset>
@@ -37,7 +37,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You want to create a cross reference from one part of your
+    <para>You want to create a cross-reference from one part of your
       document into another.</para>
   </section>
   <section role="solution">
@@ -69,7 +69,7 @@
     <para>As you can see, the chapter contains a title but most
       importantly, it also has a <tag class="attribute">xml:id</tag>
       attribute. This is our <quote>anchor</quote> or ID.</para>
-    <para>If you want to create a cross reference to your introduction
+    <para>If you want to create a cross-reference to your introduction
       chapter, use the <tag>xref</tag> element as follows:</para>
 
     <screen>&lt;para>Get basic information in &lt;xref linkend="intro"/>.&lt;/para></screen>
@@ -80,7 +80,7 @@
     <title>Discussion</title>
     <para>Cross referencing is important in your documents as it makes
       your text accessible for your reader. The previous section showed
-      the simplest form of a cross reference. However, there is more to
+      the simplest form of a cross-reference. However, there is more to
       find out about <tag>xref</tag>. The following subsections give
       you some useful tips and tricks:</para>
 
@@ -112,7 +112,7 @@
         the DocBook stylesheets use the <tag>title</tag> element to
         create the reference to its target.
         If you refer to an element where no title is allowed
-        (for example, a <tag>para</tag>), the cross reference cannot
+        (for example, a <tag>para</tag>), the cross-reference cannot
         be resolved correctly. Depending on the version of the DocBook
         stylesheets, you get either an error or the <tag>xref</tag> uses
         the title of its nearest ancestor (for example, the parent's <tag>section</tag>
@@ -120,11 +120,11 @@
     </section>
 
     <section xml:id="sec.markup.xref.xrefstyle">
-      <title>Fine-tuning Cross References</title>
+      <title>Fine-tuning Cross-References</title>
       <para>In cases where it is not enough to just refer to a target,
         use the <tag
           class="attribute">xrefstyle</tag> attribute to fine-tune the
-        appearance of the resolved cross reference. The <tag
+        appearance of the resolved cross-reference. The <tag
           class="attribute">xrefstyle</tag> attribute expects one of the
       following values:</para>
       <variablelist>
@@ -265,12 +265,12 @@
               </row>
               <row>
                 <entry><literal>title</literal></entry>
-                <entry><literal>Inserting Cross References</literal></entry>
+                <entry><literal>Inserting Cross-References</literal></entry>
                 <entry>title without quotes</entry>
               </row>
               <row>
                 <entry><literal>quotedtitle</literal></entry>
-                <entry><literal>“Inserting Cross References”</literal></entry>
+                <entry><literal>“Inserting Cross-References”</literal></entry>
                 <entry>title with quotes</entry>
               </row>
               <row>
@@ -350,7 +350,7 @@
       <screen>The following chapter <xref linkend="dbc.markup"/> explains...</screen>
       <para>Removing the word <quote>chapter</quote> makes it less ugly,
       but the problem still persists: how to create fluent, easy to read
-      sentences where cross references are nicely resolved?</para>
+      sentences where cross-references are nicely resolved?</para>
       <para>One solution is to rewrite the sentence and start with the
         <tag>xref</tag>:</para>
       <screen>&lt;xref linkend="dbc.markup"/> explains ...</screen>

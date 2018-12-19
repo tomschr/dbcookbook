@@ -19,11 +19,11 @@
   xmlns="http://docbook.org/ns/docbook"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Knowing the Difference Between Cross References and Links</title>
+  <title>Knowing the Difference Between Cross-References and Links</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>crossreference</keyword>
+      <keyword>cross-reference</keyword>
       <keyword>xref</keyword>
       <keyword>links</keyword>
       <keyword>localization</keyword>
@@ -48,7 +48,7 @@
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>Internal Links or Cross References</title>
+          <title>Internal Links or Cross-References</title>
           <para>Used primarily with <tag>xref</tag>.</para>
         </formalpara>
       </listitem>
@@ -67,7 +67,7 @@
       referencing another part of the document. In its simplest form,
       you only need an ID value of the object that you want to refer:</para>
     <example xml:id="ex.xref-vs-link.xref">
-      <title>A Cross Reference</title>
+      <title>A Cross-Reference</title>
       <programlisting language="xml">&lt;chapter xml:id="tea">
   &lt;title>All About Tea&lt;/title>
   &lt;section <emphasis role="bold">xml:id="about-tea"</emphasis>>
@@ -88,7 +88,7 @@
     <screen>Read an introduction in Section 1.1, “About Tea”.</screen>
     <para>The text <code>Section 1.1, “About Tea”</code> is a <quote>hot
     link</quote> and points to the respective section. Using
-      <tag>xref</tag> for cross references has several advantages:</para>
+      <tag>xref</tag> for cross-references has several advantages:</para>
     <itemizedlist>
       <listitem>
         <para>Whenever a text of a title changes, all <tag>xref</tag>s
@@ -161,7 +161,7 @@
             <entry>TDG<footnote>
               <para>The Definitive Guide, see <link xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"/></para>.
             </footnote> Definition</entry>
-            <entry>A cross reference to another part of the document</entry>
+            <entry>A cross-reference to another part of the document</entry>
             <entry>A hypertext link</entry>
           </row>
           <row>

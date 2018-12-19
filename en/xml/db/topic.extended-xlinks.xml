@@ -65,7 +65,7 @@
           <title>As Simple XLink</title>
           <para>create a single one-to-one relationship between a
             reference element and an anchor. Simple XLinks can be used
-            to create cross references or remote links. This topic is
+            to create cross-references or remote links. This topic is
             covered in <xref linkend="dbc.markup.link"/>.</para>
         </formalpara>
       </listitem>
