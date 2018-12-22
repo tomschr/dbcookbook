@@ -46,7 +46,7 @@
         >World Wide Web Consortium</alt></acronym>
       specification and defines the elements <tag>xi:include</tag> and
         <tag>xi:fallback</tag>. They are not DocBook elements (as they
-      are definied by the <acronym>W3C</acronym> and not <acronym>OASIS<alt
+      are defined by the <acronym>W3C</acronym> and not <acronym>OASIS<alt
           >Organization for the Advancement of Structured Information Standards</alt
           ></acronym>), however
       they have been integrated in version 5.x<footnote>
@@ -57,30 +57,30 @@
     <para>If you want to use XIncludes, you need these things:</para>
     <itemizedlist>
       <listitem>
-        <para>A XML parser who supports XIncludes.</para>
+        <para>An XML parser that supports XIncludes.</para>
       </listitem>
       <listitem>
         <para>The XInclude namespace <uri>http://www.w3.org/2001/XInclude</uri>, usually bound to
           the <tag class="prefix">xi</tag> prefix.</para>
       </listitem>
       <listitem>
-        <para>The element <tag>xi:include</tag>. In general, it can be placed everywhere where you
+        <para>The element <tag>xi:include</tag>. In general, it can be placed anywhere you
           can place DocBook elements. It is a placeholder for the real content and works as a
             reference. </para>
       </listitem>
       <listitem>
         <para>The attribute <tag class="attribute">href</tag> inside the
-            <tag class="starttag">xi:include</tag> start tag. It is an URI which refers to
+            <tag class="starttag">xi:include</tag> start tag. It is an URI that refers to
           your included file.</para>
       </listitem>
       <listitem>
-        <para>The file which is referenced by the <tag
+        <para>The file that is referenced by the <tag
           class="attribute">href</tag> attribute. The content of the
           file will replace the <tag>xi:include</tag> element. It
-          contains usually a DocBook element with its content.</para>
+          usually contains a DocBook element.</para>
       </listitem>
     </itemizedlist>
-    <para>The following example shows a book which points to a
+    <para>The following example shows a book that points to a
       substructure assuming chapters:</para>
     <example xml:id="ex.db.xincludes.book-with-3-chapters">
       <title>A Book with XIncluded Chapters</title>
@@ -98,7 +98,7 @@
       referenced by the XInclude´s <tag class="attribute">href</tag>
       attribute. </para>
     <para>Before you transform your document, you need to resolve your XIncludes first, either by
-      your XML parser or <quote>manually</quote> by a XSLT transformation. The following procedure
+      your XML parser or <quote>manually</quote> by an XSLT transformation. The following procedure
       shows a typical workflow:</para>
     <procedure>
       <title>Typical Workflow with XIncludes</title>
@@ -113,7 +113,7 @@
           other DocBook element.</para>
       </step>
       <step>
-        <para>Resolve your XIncludes. Use a XML parser who supports XIncludes, for example,
+        <para>Resolve your XIncludes. Use an XML parser that supports XIncludes, for example,
             <command>xmllint</command> from the <link xlink:href="http://xmlsoft.org">libxml2
             library</link>. This XML parser brings the <option>--xinclude</option> option to resolve
           all your XInclude elements in one step:</para>
@@ -151,7 +151,7 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>The previous procedure showed a book with xincluded chapters.
-      It is possible to even go deeper and include also section into a
+      It is possible to even go deeper and also include a section into a
       chapter. Actually, there is no limit. You should only be aware
       that you do not create circular references (file A includes file B
       and B includes A).</para>
@@ -174,8 +174,8 @@
         <term>Saxon 6</term>
         <listitem>
           <para>Unfortunately, Saxon 6 needs some more configuration. Most
-            Linux distribution have already a <command>saxon6</command> command.
-            However, it can be difficult to customize it correctly, so
+            Linux distribution already have a <command>saxon6</command> command.
+            However, it can be difficult to correctly customize it, so
             this is the line you need:
           </para>
           <screen><command>java</command> -Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration \
@@ -203,13 +203,13 @@
               <para>Additionally, with the <filename>xml-commons-resolver.jar</filename>
               file, Saxon&#xa0;6 is able to resolve catalogs. To tell Saxon
               you need to set the <option>-r</option>, <option>-x</option>,
-                and <option>-y</option> options the a URI resolver class, and
+                and <option>-y</option> options the URI resolver class, and
                 the specified Sax parser for source file and stylesheet.
               </para>
             </listitem>
             <listitem>
-              <para>The <replaceable>ARGS</replaceable> are the specific
-              arguments for Saxon and contains source document and stylesheet.
+              <para><replaceable>ARGS</replaceable> are the specific
+              arguments for Saxon and contain source document and stylesheet.
               To list all available options, use <option>-h</option>.
               </para>
             </listitem>
@@ -221,7 +221,7 @@
         <listitem>
           <para>Version 9 contains the <option>-xi</option> option to resolve
             XIncludes (assuming you have a script <command>saxon9</command>
-            which does all the heavy Java lifting):</para>
+            that does all the heavy Java lifting):</para>
           <screen><command>saxon9</command> -xi -xsl:<replaceable
             >STYLESHEET</replaceable> -s:<replaceable
               >XMLFILE</replaceable></screen>
@@ -231,13 +231,13 @@
 
     <para>The last section showed a general method to work with
       XIncludes. In most cases this is enough. However, XIncludes offers
-      more benefits which are discovered in the following
+      more benefits that are discovered in the following
       subsections.</para>
     <section xml:id="sec.db.modularize.xifallback">
       <title>Fallbacks</title>
       <para>If the referenced file in the <tag>xi:include</tag> element
         is not available, the XInclude step will fail. How can you avoid
-        that? The XInclude specification defines also the
+        that? The XInclude specification also defines the
           <tag>xi:fallback</tag> element. This element can be used to
         add code when a referenced resource could not be retrieved:</para>
       <example xml:id="ex.db.modularize.xifallback">
@@ -253,10 +253,10 @@
         parser tries to include the file
           <filename>revhistory.xml</filename>. If the file can not be
         retrieved, the XML parser will consider the <tag>xi:fallback</tag> element
-        and include the contents. In the above case it includes a
+        and include its contents. In the above case it includes a
         <tag>para</tag> element showing the failed attempt.</para>
-      <para>This method is useful when you want to process files which
-        cannot be expected to always be there. For example, the previous
+      <para>This method is useful when you want to process files that might
+        not permanently be available. For example, the previous
         revision history needs to be generated first. However, it is not
         always sure that the revision history can be generated from an
         possible offline version control system.</para>
@@ -267,9 +267,9 @@
       <para>The previous examples dealt with included resources in XML
         only. If you need to include text, this can also be done with
         XInclude.</para>
-      <para>Most common usecase is including source code which is
-      maintained separately. The following example points to a C source
-      code which needs to be included as text:</para>
+      <para>The most common use-case is including source code that is
+      maintained separately. The following example points to C source
+      code that needs to be included as text:</para>
       <example xml:id="ex.db.modularize.include-text">
         <title>Included Text in a Programlisting</title>
         <programlisting language="xml"

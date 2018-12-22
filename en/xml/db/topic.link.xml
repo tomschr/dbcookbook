@@ -43,7 +43,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You need some ideas how to markup links.</para>
+    <para>You need some ideas about link markup.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -53,16 +53,15 @@
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>Without Text</title>
+          <title>Empty</title>
           <para>The link element is completely empty:</para>
         </formalpara>
         <programlisting language="xml">&lt;link xlink:href="&gh.uri;"/></programlisting>
       </listitem>
       <listitem>
         <formalpara>
-          <title>With Text</title>
-          <para>The link element contains some text or even other
-          elements:</para>
+          <title>With content</title>
+          <para>The link element has text or element content:</para>
         </formalpara>
         <programlisting language="xml">&lt;link xlink:href="&gh.uri;">The DoCookBook&lt;/link></programlisting>
       </listitem>
@@ -76,18 +75,17 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>The <tag>link</tag> element has several features for creating
-      internal or external links. It is allowed to use text content or
-      leave a <tag>link</tag> completely empty. Regardless of the text
-      content, you have to choose between the attributes <tag
-        class="attribute">xlink:href</tag> or <tag class="attribute"
+      internal or external links. It optionally has content.
+      Regardless of content, you have to choose between the attributes
+      <tag class="attribute">xlink:href</tag> or <tag class="attribute"
         >linkend</tag>. </para>
 
     <section xml:id="sec.db.link.attributes">
       <title>Knowing the Properties of the <tag class="attribute">xlink:href</tag> and
           <tag class="attribute">linkend</tag> Attributes</title>
-      <para>Using <tag class="attribute">linkend</tag> leads always to
+      <para>Using <tag class="attribute">linkend</tag> always points to
         an internal link and is semantically equivalent to
-          <tag>xref</tag>. You cannot create external links with the
+          <tag>xref</tag>. You cannot create external links using the
           <tag class="attribute">linkend</tag> attribute. </para>
       <para>On the other hand, the XLink attribute <tag
           class="attribute">xlink:href</tag> can be used for both types:
@@ -138,7 +136,7 @@
 
     <section xml:id="sec.db.link.matrix">
       <title>Choosing the Needed Combination</title>
-      <para>With text content, you have several combinations which is
+      <para>With text content, you have several combinations that are
         shown in <xref linkend="tab.db.link"/>:</para>
       <table xml:id="tab.db.link">
         <title>Different Possibilities for Links</title>
@@ -212,13 +210,13 @@
             <para>This is equivalent to the following <tag>xref</tag>
               notation:</para>
             <screen>&lt;xref linkend="cha.intro"/></screen>
-            <para>Note the absense of the <literal>#</literal>
-              character. Regardless if it is an empty <tag>link</tag>
-              with <tag class="attribute">xlink:href</tag> or a
+            <para>Note the absence of the <literal>#</literal>
+              character. In both cases, an empty <tag>link</tag>
+              with <tag class="attribute">xlink:href</tag> or an
                 <tag>xref</tag> with <tag class="attribute"
-                >linkend</tag>, the ID has to exist somewhere in the
+                >linkend</tag>, the ID must exist within the
               document. Otherwise, the element cannot be resolved during
-              processing and and the link will be broken.</para>
+              processing thus causing a broken link.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
@@ -227,17 +225,17 @@
             <para>This notation is semantically equivalent to an
               <tag>xref</tag>. See also <xref linkend="dbc.markup.xref"/>:</para>
             <programlisting language="xml">&lt;link linkend="cha.intro"/></programlisting>
-            <para>The only difference of the previous example is the ID
-              <tag class="attvalue">cha.intro</tag> must be unique and
-              is checked if it is available in your document. If not, it
-            is an validation error.</para>
+            <para>The only difference of the previous example is that it
+              constitutes a validation error if the ID
+              <tag class="attvalue">cha.intro</tag> is missing
+              document.</para>
           </listitem>
         </varlistentry>
       </variablelist>
 
       <para>In most cases, it is enough to just use an empty link
         element. As such, avoid the following notation when the URL in
-          <tag class="attribute">xlink:href</tag> is the same than the
+          <tag class="attribute">xlink:href</tag> is the same as the
         text:</para>
       <programlisting language="xml">&lt;link xlink:href="&gh.uri;">&gh.uri;&lt;/link></programlisting>
       <para>This is mostly unnecessary as it is overly verbose,

@@ -45,9 +45,9 @@
     <title>Solution</title>
     <para>A document type definition (DTD) allows
       <emphasis>every</emphasis> definied element to become a root element.
-      A DTD cannot create any constraints to limit this set.
-      On the other hand, RELAX&#x00A0;NG -- the official schema language for
-      DocBook 5 and up -- can impose such constraints.</para>
+      A DTD cannot express any constraints to limit this set.
+      On the other hand, RELAX&#x00A0;NG&#x2014;the official schema language for
+      DocBook 5 and up&#x2014;can impose such constraints.</para>
 
     <para>To create a valid DocBook V5 document you need:</para>
 
@@ -122,10 +122,10 @@
       However, sometimes it is needed to include other in order to
       adhere to the XML specification. </para>
     <para>A namespace declaration consists of an (optional) namespace prefix and a
-      namespace URI. The prefix can be selected freely, however, it is
-      recommended to use the prefixes in <xref linkend="tab.prefix-and-ns"/>.
+      namespace URI. The prefix may be selected arbitrarily, however, it is
+      recommended to use the prefixes from <xref linkend="tab.prefix-and-ns"/>.
       Although they are not a <quote>standard</quote> in its strict
-      sense, but over time they have been extensively used.</para>
+      sense, over time they have been extensively used.</para>
 
     <table xml:id="tab.prefix-and-ns">
       <title>Common Prefixes and Their Namespaces</title>
@@ -187,7 +187,7 @@
     </table>
 
     <para>Usually it is a good idea to insert all the namespaces used in
-      the document in the root element. For example, <xref
+      the document into the root element. <xref
         linkend="ex.markup.rootelement.nsdecl"/>, shows three namespace
       declarations: the DocBook namespace, using no prefix; the XInclude
       namespace using the <tag class="prefix">xi</tag> prefix, and the XLink

@@ -19,11 +19,11 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Inserting Cross References</title>
+  <title>Inserting Cross-References</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>cross references</keyword>
+      <keyword>cross-references</keyword>
       <keyword>internal link</keyword>
       <keyword>xref</keyword>
     </keywordset>
@@ -37,7 +37,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You want to create a cross reference from one part of your
+    <para>You want to create a cross-reference from one part of your
       document into another.</para>
   </section>
   <section role="solution">
@@ -54,7 +54,7 @@
       </listitem>
       <listitem>
         <para>The empty <tag>xref</tag> element and a <tag
-          class="attribute">linkend</tag> attribute which holds the ID
+          class="attribute">linkend</tag> attribute that holds the ID
           of your target.</para>
       </listitem>
     </orderedlist>
@@ -69,7 +69,7 @@
     <para>As you can see, the chapter contains a title but most
       importantly, it also has a <tag class="attribute">xml:id</tag>
       attribute. This is our <quote>anchor</quote> or ID.</para>
-    <para>If you want to create a cross reference to your introduction
+    <para>If you want to create a cross-reference to your introduction
       chapter, use the <tag>xref</tag> element as follows:</para>
 
     <screen>&lt;para>Get basic information in &lt;xref linkend="intro"/>.&lt;/para></screen>
@@ -80,8 +80,8 @@
     <title>Discussion</title>
     <para>Cross referencing is important in your documents as it makes
       your text accessible for your reader. The previous section showed
-      the simplest form of a cross reference. However, there is more to
-      find out about <tag>xref</tag>. The following subsections gives
+      the simplest form of a cross-reference. However, there is more to
+      find out about <tag>xref</tag>. The following subsections give
       you some useful tips and tricks:</para>
 
     <itemizedlist>
@@ -105,33 +105,33 @@
 
     <section xml:id="sec.markup.xref.titlesonly">
       <title>Reference to Elements with Titles Only</title>
-      <para>Basically, DocBook allows you to insert a <tag class="attribute"
-        >xml:id</tag> attribute on <emphasis>every</emphasis> element if
-        you wish. However, that does not mean, you should insert one.
+      <para>Basically, DocBook allows you to insert an <tag class="attribute"
+        >xml:id</tag> attribute on <emphasis>every</emphasis> element.
+        However, that does not mean, you should insert one.
         As you could see from the previous section, when the <tag>xref</tag> is resolved,
-        the DocBook stylesheets uses the <tag>title</tag> element to
+        the DocBook stylesheets use the <tag>title</tag> element to
         create the reference to its target.
-        If you refer to a element where no title is allowed
-        (for example, a <tag>para</tag>), the cross reference cannot
-        resolved correctly. Depending on the version of the DocBook
+        If you refer to an element where no title is allowed
+        (for example, a <tag>para</tag>), the cross-reference cannot
+        be resolved correctly. Depending on the version of the DocBook
         stylesheets, you get either an error or the <tag>xref</tag> uses
-        the title of its nearest ancestor (for example, the parent's section
-        where the above child para is included).</para>
+        the title of its nearest ancestor (for example, the parent's <tag>section</tag>
+        containing the <tag>para</tag>).</para>
     </section>
 
     <section xml:id="sec.markup.xref.xrefstyle">
-      <title>Fine-tuning Cross References</title>
+      <title>Fine-tuning Cross-References</title>
       <para>In cases where it is not enough to just refer to a target,
         use the <tag
           class="attribute">xrefstyle</tag> attribute to fine-tune the
-        appearance of the resolved cross reference. The <tag
+        appearance of the resolved cross-reference. The <tag
           class="attribute">xrefstyle</tag> attribute expects one of the
       following values:</para>
       <variablelist>
         <varlistentry>
           <term><literal>template: <replaceable>TEMPLATE_KEYWORDS</replaceable></literal></term>
           <listitem>
-            <para>After the <literal>template:</literal> text, use the
+            <para>After the <literal>template:</literal>, use the
               <literal>%</literal> placeholders to define where title,
               number, etc. should appear.</para>
           </listitem>
@@ -140,17 +140,17 @@
           <term><literal>select: <replaceable>SELECT_KEYWORDS</replaceable></literal></term>
           <listitem>
             <para>After the <literal>select:</literal>, use specific
-              keywords which maps to title, number, etc.</para>
+              keywords that map to title, number, etc.</para>
           </listitem>
         </varlistentry>
         <varlistentry>
           <term><literal><replaceable>ANY_NAME</replaceable></literal></term>
           <listitem>
             <para>If the <tag class="attribute">xrefstyle</tag>
-              attribute does not start with neither
+              attribute does not start with either
                 <literal>select</literal> nor
                 <literal>template</literal>, it is interpreted as a name
-              which can be found in a language file. This solution is
+              that can be found in a language file. This solution is
               not covered in this topic.</para>
           </listitem>
         </varlistentry>
@@ -160,7 +160,7 @@
         <title>Using <literal>template</literal></title>
         <para>The <literal>template</literal> method contains an
           immutable string including placeholders. These
-          placeholders are replaced with its real values during
+          placeholders are replaced with their actual values during
           transformation. For example, if you want a different text to
           this section than the default, you could use the following
           code:</para>
@@ -171,7 +171,7 @@
         <screen>Section <xref linkend="dbc.markup.xref"
           xrefstyle="template:%t"
 /> helps you with the xref element.</screen>
-        <para>As you could see, any other string not starting with
+        <para>As you can see, any other string not starting with
           <literal>%</literal> is untouched and literally copied.
           <xref linkend="tab.markup.xref.xrefstyle.template.placeholders"
            /> gives you an overview about all
@@ -189,28 +189,28 @@
             <tbody>
               <row>
                 <entry><literal>%d</literal></entry>
-                <entry>Direction (<quote>above</quote> or
+                <entry>direction (<quote>above</quote> or
                   <quote>below</quote>)</entry>
               </row>
               <row>
                 <entry><literal>%n</literal></entry>
-                <entry>Number</entry>
+                <entry>number</entry>
               </row>
               <row>
                 <entry><literal>%o</literal></entry>
-                <entry>Document name (only for <tag>olink</tag>s)</entry>
+                <entry>document name (only for <tag>olink</tag>s)</entry>
               </row>
               <row>
                 <entry><literal>%p</literal></entry>
-                <entry>Page number, if applicable</entry>
+                <entry>page number, if applicable</entry>
               </row>
               <row>
                 <entry><literal>%s</literal></entry>
-                <entry>Subtitle, if applicable</entry>
+                <entry>subtitle, if applicable</entry>
               </row>
               <row>
                 <entry><literal>%t</literal></entry>
-                <entry>Title</entry>
+                <entry>title</entry>
               </row>
             </tbody>
           </tgroup>
@@ -219,9 +219,9 @@
       <section xml:id="sec.markup.xref.xrefstyle.select">
         <title>Using <literal>select</literal></title>
         <para>The <literal>select</literal> method expects several
-          self-explanatory keywords which are also replaced during
-          transformation. The difference is, you cannot use free text as
-          in <literal>template</literal> and as such gives you less
+          self-explanatory keywords that are also replaced during
+          transformation. The difference is, that you cannot use free text as
+          in <literal>template</literal> thus giving you less
           freedom. For instance, the first example in <xref linkend="sec.markup.xref.xrefstyle.template"
             xrefstyle="select:title"/> can also be
           expressed by using <literal>select</literal>:</para>
@@ -253,25 +253,25 @@
               <row>
                 <entry><literal>labelname</literal></entry>
                 <entry><literal>Chapter</literal></entry>
-                <entry>Name of the referencing element</entry>
+                <entry>name of the referencing element</entry>
               </row>
               <row>
                 <entry><literal>labelnumber</literal></entry>
                 <entry><literal>5</literal></entry>
-                <entry>Only the number</entry>
+                <entry>only the number</entry>
               </row>
               <row>
                 <entry namest="c1" nameend="c3">Titels</entry>
               </row>
               <row>
                 <entry><literal>title</literal></entry>
-                <entry><literal>Inserting Cross References</literal></entry>
-                <entry>Title without quotes</entry>
+                <entry><literal>Inserting Cross-References</literal></entry>
+                <entry>title without quotes</entry>
               </row>
               <row>
                 <entry><literal>quotedtitle</literal></entry>
-                <entry><literal>“Inserting Cross References”</literal></entry>
-                <entry>Title with quotes</entry>
+                <entry><literal>“Inserting Cross-References”</literal></entry>
+                <entry>title with quotes</entry>
               </row>
               <row>
                 <entry namest="c1" nameend="c3">Pagenumber</entry>
@@ -279,33 +279,33 @@
               <row>
                 <entry><literal>page</literal></entry>
                 <entry><literal>(page 100)</literal></entry>
-                <entry>Page number in brackets</entry>
+                <entry>page number in brackets</entry>
               </row>
               <row>
                 <entry><literal>Page</literal></entry>
                 <entry><literal>“Page 100”</literal></entry>
-                <entry>Uppercase <quote>page</quote></entry>
+                <entry>uppercase <quote>page</quote></entry>
               </row>
               <row>
                 <entry><literal>pageabbrev</literal></entry>
                 <entry><literal>(p. 100)</literal></entry>
-                <entry>Abbreviated page</entry>
+                <entry>abbreviated page</entry>
               </row>
               <row>
                 <entry><literal>pagenumber</literal></entry>
                 <entry><literal>100</literal></entry>
-                <entry>Only the page number</entry>
+                <entry>only the page number</entry>
               </row>
               <row>
                 <entry><literal>nopage</literal></entry>
                 <entry>n/a</entry>
-                <entry>Suppressed page number</entry>
+                <entry>suppressed page number</entry>
               </row>
             </tbody>
           </tgroup>
         </table>
         <para>The order of the keywords does not matter; a
-          <literal>select:title nopage</literal> is the same than
+          <literal>select:title nopage</literal> is the same as
           <literal>select:nopage title</literal>. The order is taken
           from the language files in <filename
             class="directory">common/</filename>. For example, the following
@@ -319,11 +319,11 @@
 
     <section xml:id="sec.markup.xref.xreflabel">
       <title>Using <tag class="attribute">xreflabel</tag> Only in Rare Cases</title>
-      <para>In rare cases, you have to reference to an element which
-        does not allow a title. For example, if you want to reference to
+      <para>In rare cases, you have to refer to an element that
+        does not allow a title. For example, if you want to refer to
         a paragraph. In such a case, use the <tag
           class="attribute">xreflabel</tag>.</para>
-      <para xml:id="_para1">For example, if you reference to this
+      <para xml:id="_para1">For example, if you refer to this
         paragraph with an ID of <tag class="attvalue">_para1</tag>, your
           <tag>xref</tag> will be resolved as follows:</para>
       <screen>&lt;xref linkend="_para1"/>: <xref linkend="_para1"/></screen>
@@ -336,7 +336,7 @@
 ...
 &lt;xref linkend="_para2"/>: <xref linkend="_para2"/></screen>
       <para>Remember, this should not be your default markup when cross
-        referencing. Always try to refer to a element which contains a title as
+        referencing. Always try to refer to an element that contains a title as
         noted in <xref linkend="sec.markup.xref.titlesonly"/>.</para>
     </section>
 
@@ -350,7 +350,7 @@
       <screen>The following chapter <xref linkend="dbc.markup"/> explains...</screen>
       <para>Removing the word <quote>chapter</quote> makes it less ugly,
       but the problem still persists: how to create fluent, easy to read
-      sentences where cross references are nicely resolved?</para>
+      sentences where cross-references are nicely resolved?</para>
       <para>One solution is to rewrite the sentence and start with the
         <tag>xref</tag>:</para>
       <screen>&lt;xref linkend="dbc.markup"/> explains ...</screen>
@@ -358,7 +358,7 @@
         voice as another solution:</para>
       <screen>The topic ABC is explained in &lt;xref linkend="dbc.markup"/>.</screen>
       <para>Sometimes passive voice is not appropriate. In cases where
-        you do not want to change the tense or grammar, use the
+        you do not want to change the grammatical voice, use the
         <literal>template</literal> or <literal>select</literal>
         methods. Applied to the first example, you can rewrite the
         <tag>xref</tag> with <tag class="attribute">xrefstyle</tag>:</para>

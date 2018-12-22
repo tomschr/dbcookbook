@@ -71,8 +71,8 @@
       mode. The stylesheet does not apply any further processing. This can be a
       disadvantage, for example, a <tag>xref</tag> pointing outside of
       the respective element. If the resulting file contains such a
-      cross reference, it will not be valid anymore.</para>
-    <para>It is possible to convert such cross references into a
+      cross-reference, it will not be valid anymore.</para>
+    <para>It is possible to convert such cross-references into a
       <quote>resolved form</quote> by using the following code:</para>
     <example xml:id="ex.rootid-resolve-xrefs.xsl">
       <title><filename>rootid-resolve-xrefs.xsl</filename></title>

@@ -165,7 +165,7 @@ h2.title > .title {
       such, they are used in other templates as well, not only for
       titles. This can lead to side effects, which you may or may not
       want. For example, the modes are used also for the table of
-      content and for resolving cross references.</para>
+      content and for resolving cross-references.</para>
     <para>To deal with this situation is two-fold:</para>
     <itemizedlist>
       <listitem>
@@ -177,8 +177,8 @@ h2.title > .title {
     </itemizedlist>
 
     <section xml:id="sec.common.splitheader.modes.xref">
-      <title>Protecting Cross References</title>
-      <para> To prevent the splitting in cross references, customize the
+      <title>Protecting Cross-References</title>
+      <para> To prevent the splitting in cross-references, customize the
           <varname>insert.title.markup</varname> and
           <varname>insert.label.markup</varname>modes as follows:</para>
       <programlisting language="xml"><![CDATA[<xsl:template match="*" mode="insert.label.markup">

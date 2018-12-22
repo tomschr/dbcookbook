@@ -19,7 +19,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Distinguish Between Section and SectX Elements</title>
+  <title>Distinguish Between <tag>section</tag> and <tag>sect<replaceable>n</replaceable></tag> Elements</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
@@ -32,22 +32,22 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You need to know what the differences and advantages are of
-      using a <tag>section</tag> over a <tag>sectX</tag> element.</para>
+    <para>You need to know the differences and advantages of
+      using a <tag>section</tag> vs. a <tag>sect<replaceable>n</replaceable></tag> element.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The differences between <tag>section</tag> against
-      <tag>sectX</tag> are depicted in <xref linkend="tab.section.vs.sectx.comparison"/>: </para>
+    <para>The differences between <tag>section</tag> vs.
+      <tag>sect<replaceable>n</replaceable></tag> are shown in <xref linkend="tab.section.vs.sectx.comparison"/>: </para>
 
     <table xml:id="tab.section.vs.sectx.comparison">
-      <title>Comparison Between <tag>section</tag> and <tag>sectX</tag> Elements</title>
+      <title>Comparison Between <tag>section</tag> and <tag>sect<replaceable>n</replaceable></tag> Elements</title>
       <tgroup cols="3">
         <thead>
           <row>
             <entry>Issue</entry>
             <entry><tag>section</tag></entry>
-            <entry><tag>sectX</tag></entry>
+            <entry><tag>sect<replaceable>n</replaceable></tag></entry>
           </row>
         </thead>
         <tbody>
@@ -82,15 +82,15 @@
     <para>Apart from technical issues, using <tag>section</tag> or
         <tag>sect1</tag> is in most cases a matter of taste. However,
       knowing some of the differences in <xref linkend="tab.section.vs.sectx.comparison"
-        xrefstyle="select:label"/> can be helpful to decide which is for
-      your document the better element.
+        xrefstyle="select:label"/> can be helpful to decide which better suits
+      your document.
     </para>
     <formalpara>
       <title>Nesting Level</title>
-      <para>If you have documents which goes further than level five,
-        use the <tag>section</tag> element. This can be indefinitely
-        nested. On the other side, if you want to restrict the level up to
-        five, better use the <tag>sectX</tag> elements. You can, however,
+      <para>If you have documents that go further than level five,
+        use the <tag>section</tag> element. This can be nested infinitely.
+        On the other hand, if you want to restrict the levels to
+        five, better use the <tag>sect<replaceable>n</replaceable></tag> elements. You can, however,
         use DocBook's RELAX NG schema to customize it further (see next
         section).</para>
     </formalpara>
@@ -98,19 +98,19 @@
       <title>Readability</title>
       <para>This issue depends on how you edit your DocBook source code.
         If you edit it manually in your editor (in other words: without
-        the aid of some kind of <quote>WYSYWYG</quote>), you can see and
+        the aid of some kind of <acronym>WYSIWYG</acronym>), you can see and
         understand the level straight from the tag name when using
-          <tag>sectX</tag>. Especially if you have lots of nested
-        section this makes it a lot easier than <tag>section</tag>.
+          <tag>sect<replaceable>n</replaceable></tag>. Especially if you have lots of nested
+        sections this makes it a lot easier than <tag>section</tag>.
         However, modern XML editors can show the XPath where
         you are, so it may be negligible.</para>
     </formalpara>
     <formalpara>
       <title>Relocation</title>
       <para>If you have to change the structure a lot, using
-        <tag>section</tag> elements make it a lot easier. When you use a
+        <tag>section</tag> elements makes it a lot easier. If you use a
       <tag>sect2</tag> element and this should become a <tag>sect1</tag>
-      element you have to rename it. </para>
+      element you have to rename it.</para>
     </formalpara>
   </section>
   <section role="seealso">

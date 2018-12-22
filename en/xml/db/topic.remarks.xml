@@ -70,22 +70,22 @@ This is a small text.&lt;remark>Add more content&lt;/remark>
     <programlisting language="xml" linenumbering="unnumbered">&lt;para>
 This is a text &lt;!-- Ohh, we should add more -->
 &lt;/para></programlisting>
-    <para>However, XML comments has one drawback: They are suppressed
+    <para>However, XML comments have one drawback: They are suppressed
       during transformation. As such, they are unavailable in your
-      output format and can not be displayed anymore. Usually, you <emphasis>do
+      output format and cannot be displayed anymore. Usually, you <emphasis>do
       not</emphasis> want them to appear in your output. </para>
     <para>On the contrary, by using the <tag>remark</tag> element,
-      comments can be shown or suppressed whenever you want them. For
-      example, if you write your document and put some remarks, you can
+      comments can be shown or suppressed whenever you want. For
+      example, if you write your document and put in some remarks, you can
       show them to your contributors for review. After the document is
-      ready to be published, leave the remark as they are but suppress
+      ready to be published, leave the remarks as they are but suppress
       the remark transformation.
     </para>
     <para>To display or suppress your remarks, use the parameter
         <parameter>show.comments</parameter>. This parameter can appear
       either on the command line of your XSLT processor or in a
       customization layer. Any non-zero value shows your remarks whereas
-      a value of zero suppress them.</para>
+      a value of zero suppresses them.</para>
     <para>When should you use XML comments and when remarks? The
       following table gives you a quick overview.</para>
 
@@ -103,10 +103,10 @@ This is a text &lt;!-- Ohh, we should add more -->
           <row>
             <entry>When to use it?</entry>
             <entry>
-              <para>Comments which are only read by you</para>
+              <para>Comments that are only read by you</para>
             </entry>
             <entry>
-              <para>Comments which can and should be read by others</para>
+              <para>Comments that can and should be read by others</para>
             </entry>
           </row>
           <row>

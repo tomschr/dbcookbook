@@ -19,11 +19,11 @@
   xmlns="http://docbook.org/ns/docbook"
   xmlns:xi="http://www.w3.org/2001/XInclude"
   xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Knowing the Difference of Cross References and Links</title>
+  <title>Knowing the Difference Between Cross-References and Links</title>
   <info>
     <definitions definitionfile="defs.xml"/>
     <keywordset>
-      <keyword>crossreference</keyword>
+      <keyword>cross-reference</keyword>
       <keyword>xref</keyword>
       <keyword>links</keyword>
       <keyword>localization</keyword>
@@ -48,27 +48,26 @@
     <itemizedlist>
       <listitem>
         <formalpara>
-          <title>Internal Links or Cross References</title>
-          <para>used primarily with <tag>xref</tag></para>
+          <title>Internal Links or Cross-References</title>
+          <para>Used primarily with <tag>xref</tag>.</para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title>External Links</title>
-          <para>used primarily with <tag>link</tag></para>
+          <para>Used primarily with <tag>link</tag>.</para>
         </formalpara>
       </listitem>
     </itemizedlist>
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>There are several difference between <tag>xref</tag> and
+    <para>There are several differences between <tag>xref</tag> and
         <tag>link</tag>. An <tag>xref</tag> is used for cross
       referencing another part of the document. In its simplest form,
-      you need only an ID value of the object where you want to link
-      to:</para>
+      you only need an ID value of the object that you want to refer:</para>
     <example xml:id="ex.xref-vs-link.xref">
-      <title>A Cross Reference</title>
+      <title>A Cross-Reference</title>
       <programlisting language="xml">&lt;chapter xml:id="tea">
   &lt;title>All About Tea&lt;/title>
   &lt;section <emphasis role="bold">xml:id="about-tea"</emphasis>>
@@ -89,34 +88,32 @@
     <screen>Read an introduction in Section 1.1, “About Tea”.</screen>
     <para>The text <code>Section 1.1, “About Tea”</code> is a <quote>hot
     link</quote> and points to the respective section. Using
-      <tag>xref</tag> for cross references has several advantages:</para>
+      <tag>xref</tag> for cross-references has several advantages:</para>
     <itemizedlist>
-      <title>Advantages of Cross References Using <tag>xref</tag></title>
       <listitem>
         <para>Whenever a text of a title changes, all <tag>xref</tag>s
-          pointing to it will automatically change too</para>
+          pointing to it will automatically change too.</para>
       </listitem>
       <listitem>
         <para>During validation, the <tag class="attribute"
-            >linkend</tag> attribute is checked, if this ID
-          exists</para>
+            >linkend</tag> attribute is checked for existence.</para>
       </listitem>
       <listitem>
-        <para>During resolution, additonal words like
+        <para>During resolution, additional words like
             <quote>Section</quote>, <quote>Chapter</quote>, or
             <quote>Figure</quote> are automatically inserted according
-          to the used document language</para>
+          to the document language.</para>
       </listitem>
       <listitem>
-        <para>You do not have to care about numbering</para>
+        <para>You do not have to care about numbering.</para>
       </listitem>
       <listitem>
         <para>For further customization, use the <tag class="attribute"
-            >xrefstyle</tag> attribute</para>
+            >xrefstyle</tag> attribute</para>.
       </listitem>
     </itemizedlist>
 
-    <para>In contrast, an <tag>link</tag> is used in most cases for
+    <para>In contrast, a <tag>link</tag> is used in most cases for
       <emphasis>external</emphasis> links.</para>
     <example xml:id="ex.xref-vs-link.link">
       <title>A Hyperlink</title>
@@ -125,21 +122,20 @@
   &lt;para>See &lt;link xlink:href="http://www.example.org/tea"/> for further information.&lt;/para>
 &lt;/section></programlisting>
     </example>
-    <para>Using an <tag>link</tag> has the following advantages:</para>
+    <para>Using <tag>link</tag> has the following advantages:</para>
     <itemizedlist>
-      <title>Advantages of External Links Using <tag>link</tag></title>
       <listitem>
-        <para>Usually no automatic resolution performed (only if you use
-            <tag class="attribute">xlink:href</tag>)</para>
+        <para>Usually no automatic resolution is performed (only if you use
+            <tag class="attribute">xlink:href</tag>).</para>
       </listitem>
       <listitem>
-        <para>No validation necessary between source and target</para>
+        <para>No validation is necessary between source and target.</para>
       </listitem>
       <listitem>
-        <para>Link content can be manually created</para>
+        <para>The link content can be created manually.</para>
       </listitem>
       <listitem>
-        <para>Additional inline elements allowed</para>
+        <para>Additional inline elements are allowed.</para>
       </listitem>
     </itemizedlist>
 
@@ -163,9 +159,9 @@
         <tbody>
           <row>
             <entry>TDG<footnote>
-              <para>The Definitive Guide, see <link xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"/></para>
+              <para>The Definitive Guide, see <link xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"/></para>.
             </footnote> Definition</entry>
-            <entry>A cross reference to another part of the document</entry>
+            <entry>A cross-reference to another part of the document</entry>
             <entry>A hypertext link</entry>
           </row>
           <row>
@@ -193,7 +189,7 @@
           </row>
           <row>
             <entry>Restrictions</entry>
-            <entry>Only cross referencing to elements which contains a <tag>title</tag></entry>
+            <entry>Only cross referencing to elements that contain a <tag>title</tag></entry>
             <entry>No restrictions</entry>
           </row>
         </tbody>

@@ -42,7 +42,7 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>DocBook provides three basic lists which are used most often:</para>
+    <para>DocBook provides three basic lists that are used most often:</para>
 
     <itemizedlist>
       <listitem>
@@ -70,8 +70,8 @@
           allowed.</para>
       </listitem>
       <listitem>
-        <para><tag>calloutlist</tag>, a usually numbered list which
-          points to a line in a listing</para>
+        <para><tag>calloutlist</tag>, a usually numbered list that
+          points to lines in a listing</para>
       </listitem>
       <listitem>
         <para><tag>glosslist</tag> is a wrapper for glossary content.
@@ -79,8 +79,8 @@
           elements where a <tag>glossary</tag> is not allowed.</para>
       </listitem>
       <listitem>
-        <para><tag>segmentedlist</tag> is a list which can be used which
-          have a one-to-one dependence with its title. A
+        <para><tag>segmentedlist</tag> is a list that can be used for items that
+          have a one-to-one correspondence to their title. A
           <tag>segmentedlist</tag> can be formatted in a number of ways
           (tabular or as a list block).
         </para>
@@ -97,7 +97,7 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>The list types <tag>orderedlist</tag> and <tag>itemizedlist</tag>
-    are structural identical (except for its initial element) as you will
+    are structurally identical (except for their enclosing element) as you will
     see in the following subsections.</para>
     <para>The <tag>variablelist</tag> is slightly different and contains
       the <tag>term</tag> element for its term.</para>
@@ -121,9 +121,9 @@
 &lt;/itemizedlist></programlisting>
       </example>
       <para>The <tag>itemizedlist</tag> list in DocBook uses by default
-        a disc symbol (• solid circle). If you nest an
-        <tag>itemizedlist</tag>, it will first start the disc (• solid
-        circle) and uses a circle (○ open circle) and finally a square
+        a bullet character (• solid circle). If you nest an
+        <tag>itemizedlist</tag>, it will start with a bullet (• solid
+        circle), then use a circle (○ open circle) and finally a square
         (■ solid square). If you nest your list deeper, the sequence is
         repeated. The hierarchy looks like this:</para>
       <informaltable>
@@ -132,7 +132,7 @@
           <thead>
             <row>
               <entry>Level</entry>
-              <entry>Shows as</entry>
+              <entry>Shown as</entry>
             </row>
           </thead>
           <tbody>
@@ -154,7 +154,7 @@
       <!--<screen>• • •         1. level
   ○ ○ ○       2. level
     ■ ■ ■     3. level</screen>-->
-      <para>The default bullet symbol can be overwritten with the <tag
+      <para>The default bullet character can be overwritten with the <tag
           class="attribute">mark</tag> attribute:</para>
       <programlisting language="xml">&lt;itemizedlist mark="circle"></programlisting>
       <para>It is even possible to deviate from its default symbol in a
@@ -189,7 +189,7 @@
   &lt;/listitem>
 &lt;/orderedlist></programlisting>
       </example>
-      <para>The <tag>orderedlist</tag> in DocBook numbers as arabic
+      <para>The <tag>orderedlist</tag> in DocBook numbers as Arabic
         numbers by default. If you nest an <tag>orderedlist</tag>, it
         will be automatically numbered as shown in the following
         sequence:</para>
@@ -232,7 +232,7 @@
       A, B, C        4. level
         I, II, III   5. level</screen>-->
       <para>The numbering style in an <tag>orderedlist</tag> can be
-        changed with the <tag class="attribute">numberation</tag>
+        changed with the <tag class="attribute">numeration</tag>
         attribute. Allowed values are <simplelist type="inline">
           <?dbchoice choice="or"?>
           <member>arabic</member>
@@ -240,13 +240,13 @@
           <member>lowerroman</member>
           <member>upperalpha</member>
           <member>upperroman</member>
-          <member>arabicindic</member>
+<!--          <member>arabicindic</member> NOT in https://tdg.docbook.org/tdg/5.1/orderedlist.html -->
         </simplelist>.</para>
     </section>
     <section xml:id="markup.lists.variablelist">
       <title>Features of <tag>variablelist</tag></title>
       <para>An <tag>variablelist</tag>, despite its confusing name,
-        holds all sort of terms and their definition. It is not limited
+        holds all sort of terms and their definitions. It is not limited
         to variables only. The following example shows how to use a
         <tag>variablelist</tag>.</para>
       <example>
@@ -267,9 +267,9 @@
 &lt;/variablelist></programlisting>
       </example>
       <para>A <tag>varlistentry</tag> can contain more than one term.
-        How the terms are displayed depends usually on the output
-        formats. Each <tag>term</tag> can be printed on a
-        separate line or on the same line separated by commas.</para>
+        How the terms are displayed usually depends on the output
+        formats. Each <tag>term</tag> can either be printed on a
+        separate line or all <tag>term</tag>s on the same line separated by commas.</para>
     </section>
   </section>
   <section role="seealso">

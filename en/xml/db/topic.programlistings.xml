@@ -31,7 +31,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You need to add an element which is used for code listings.</para>
+    <para>You need to add an element that is used for code listings.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -54,7 +54,7 @@ sayhello("Tux")&lt;/programlisting></programlisting>
     <title>Discussion</title>
     <para>In most cases, <tag>programlisting</tag> is probably enough
       for all your needs. However, the DocBook stylesheets and the DocBook
-      extension supports some convenient features you should know:</para>
+      extension support some convenient features you should know:</para>
     <itemizedlist>
       <listitem>
         <para>Annotated lines for short comments</para>
@@ -63,7 +63,7 @@ sayhello("Tux")&lt;/programlisting></programlisting>
         <para>Callouts, for more exhaustive explanations</para>
       </listitem>
       <listitem>
-        <para>Line numbering, if refering to a number is enough</para>
+        <para>Line numbering, if referring to a number is sufficient</para>
       </listitem>
       <listitem>
         <para>External code files, if you want to incorporate files from
@@ -102,7 +102,7 @@ sayhello("Tux")</programlisting>
         text containing line annotations. Such text usually creates
         syntax problems. In this case, use a comment symbol for the
         appropriate programming language. For Python, it is the hash
-        sign which can be combined in a <tag>programlisting</tag>
+        sign that can be combined in a <tag>programlisting</tag>
         context as follows:</para>
       <programlisting language="python" linenumbering="unnumbered"
 >&lt;programlisting> ...
@@ -116,7 +116,7 @@ def sayhello(name):
     <section xml:id="dbc.markup.programlistings.callout">
       <title>Using Callouts</title>
       <remark>toms, 2012-09-02: Refer to its own topic</remark>
-      <para>Callouts are little marks in your code which refers to a
+      <para>Callouts are little marks in your code that refer to a
         more exhaustive explanation, usually <emphasis>after</emphasis> the code.
         Such an explanation is marked up as a <tag>calloutlist</tag>:</para>
 
@@ -136,7 +136,7 @@ sayhello("Tux")</programlisting>
    </callout>
    <callout arearefs="co.doccomment">
      <para>A Python doc comment. Usually, written as triple quotes
-           or as triple apostrophs marks the doc comment for a function
+           or as triple apostrophes marking the doc comment for a function
            or class.</para>
    </callout>
 </calloutlist>]]></programlisting>
@@ -157,7 +157,7 @@ sayhello("Tux")</programlisting>
         </callout>
         <callout arearefs="co.doccomment">
           <para>A Python doc comment. Usually, written as triple quotes
-            or as triple apostrophs marks the doc comment for a function
+            or as triple apostrophes marking the doc comment for a function
             or class.</para>
         </callout>
       </calloutlist>
@@ -177,8 +177,8 @@ sayhello("Tux")</programlisting>
  5 | return "Hello %s" % name
  6 |
  7 | sayhello("Tux")</programlisting>
-      <para>To influence the numbering, DocBook and the DocBook
-        stylesheets has several ways:</para>
+      <para>There are several ways to influence the numbering using  DocBook and the DocBook
+        stylesheets:</para>
       <variablelist>
         <varlistentry>
           <term><tag class="attribute">startinglinenumber</tag></term>
@@ -205,7 +205,7 @@ sayhello("Tux")</programlisting>
             xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbfo_linenumbering.everyNth.html"
             >dbfo linenumbering.everyNth="<replaceable>N</replaceable>"</tag></term>
           <listitem>
-            <para>This processing instruction (PI) specifies interval
+            <para>These processing instructions (PI) specify intervals
               for line numbers. By default, every 5th line displays its
               number.</para>
           </listitem>
@@ -218,8 +218,8 @@ sayhello("Tux")</programlisting>
             xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbfo_linenumbering.separator.html"
             >dbfo linenumbering.separator="<replaceable>text</replaceable>"</tag></term>
           <listitem>
-            <para>This PI specifies separator text for line numbers. By
-              default it is a single space. This text is printed after
+            <para>These PIs specify separators for line numbers. By
+              default it is a single space. It is printed after
               the line number but before the line from the program
               listing.</para>
           </listitem>
@@ -232,7 +232,7 @@ sayhello("Tux")</programlisting>
             xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/pi/dbfo_linenumbering.width.html"
             >dbfo linenumbering.width="<replaceable>width</replaceable>"</tag></term>
           <listitem>
-            <para>This PI specifies width for line numbers. By default,
+            <para>These PIs specifiy the width for line numbers. By default,
               this value is set to three which gives you a reserved
               space of numbers up to 999. </para>
           </listitem>
@@ -242,7 +242,7 @@ sayhello("Tux")</programlisting>
             xlink:href="http://docbook.sourceforge.net/release/xsl/current/doc/html/linenumbering.extension.html"
             >linenumbering.extension</parameter></term>
           <listitem>
-            <para>Parameter which enables the line numbering extension</para>
+            <para>Parameter that enables the line numbering extension</para>
           </listitem>
         </varlistentry>
       </variablelist>

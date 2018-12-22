@@ -30,8 +30,8 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You want to use inline quotes in a consistent and language
-      independant way.</para>
+    <para>You want to use inline quotes in a consistent and language-independent
+      way.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -46,17 +46,17 @@
       view, this is wrong. There are special start and end quotation
       characters. The more elegant way is to use <quote>this</quote>.
     </para>
-    <para>However, the open and close characters are language dependent.
-      Each language has different quotation rules. German readers
+    <para>However, the opening and closing characters are language-dependent.
+      Many languages have different quotation rules. German readers
       prefer <quote xml:lang="de">this</quote>, French <quote
         xml:lang="fr">this</quote>, and the Italians use <quote
-        xml:lang="it">this</quote>. </para>
-    <para>Using quote markers directly has one disadvantages: if your
+        xml:lang="it">this</quote>.</para>
+    <para>Using quote markers directly has one disadvantage: if your
       text contains different languages you need to know how quotes are
-      displayed in the respective language. Also it is easier and more
+      displayed in the respective language. Moreover, it is easier and more
       consistent to leave this typographic detail to the DocBook
       stylesheets.</para>
-    <para>One nice thing with inserting <tag>quote</tag> is it can be
+    <para>One nice thing with inserting <tag>quote</tag> is that it can be
       adapted to a different language by using the <tag
         class="attribute">xml:lang</tag> attribute:</para>
     <programlisting language="xml"

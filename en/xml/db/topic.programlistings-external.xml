@@ -59,13 +59,13 @@
     <section xml:id="sec.programlisting-external-textdata">
       <title>Incorporating External Files with <tag>textdata</tag></title>
       <para>Usually, <tag>textdata</tag> is included inside a
-          <tag>textobject</tag> which is then included inside a
+          <tag>textobject</tag> that is then included inside a
           <tag>programlisting</tag> element.</para>
       <para>To refer to a file <filename>foo.py</filename> with
         <tag>textdata</tag>, use the code in <xref linkend="ex.programlisting.textdata"
         />.</para>
       <example xml:id="ex.programlisting.textdata">
-        <title>External File Markuped up with <tag>textdata</tag></title>
+        <title>External File Marked-Up With <tag>textdata</tag></title>
         <programlisting>&lt;programlisting><emphasis role="strong">&lt;textobject>
    &lt;textdata fileref="foo.py"/>
 &lt;/textobject></emphasis>&lt;/programlisting></programlisting>
@@ -77,7 +77,7 @@
       <para>The same code in <xref linkend="ex.programlisting.textdata"
         /> can be expressed with XInclude:</para>
       <example>
-        <title>External File Markuped up with <tag>xi:include</tag></title>
+        <title>External File Marked-Up With <tag>xi:include</tag></title>
         <programlisting>&lt;programlisting><emphasis role="strong">&lt;xi:include
   href="foo.py" parse="text"
 /></emphasis>&lt;programlisting></programlisting>
@@ -105,8 +105,8 @@
       yet, the first public release was published in 2006. Too late for
       DocBook to incorporate it into its schema.</para>
     <para>Nowadays, in the light of XInclude, the element <tag>textdata</tag>
-      can be considered as obsolete—especially for DocBook&#xa0;5
-      documents. Therefor, for new documents, prefer the XInclude element(s)
+      can be considered obsolete&#x2014;especially for DocBook&#xa0;5
+      documents. Therefore, for new documents, prefer the XInclude element(s)
       as this has more advantages (see <xref
        linkend="tab.comp.textdata-vs-xinclude"/>).</para>
 
@@ -169,11 +169,11 @@
     <para>If you still want (or have) to use <tag>textdata</tag> you
       need to transform your DocBook documents with Saxon or Xalan.
       Currently, the extension functions are only available for these
-      XSLT processor, not xsltproc.
+      XSLT processors, not xsltproc.
       Make sure the DocBook extension JAR file(s) are
-      included into your <envar>CLASSPATH</envar> variable. Furthermore,
+      included in your <envar>CLASSPATH</envar> variable. Furthermore,
       set the parameters <parameter>use.extensions</parameter> and
-      <parameter>textinsert.extension</parameter> to the value of
+      <parameter>textinsert.extension</parameter> to
       <literal>1</literal> to enable this functionality.</para>
   </section>
 

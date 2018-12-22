@@ -31,13 +31,13 @@
 
   <blockquote>
     <title>Mission</title>
-    <para><citetitle xlink:href="https://doccookbook.sf.net"
+    <para><citetitle xlink:href="http://doccookbook.sf.net"
       >&projectname;</citetitle> aims to create an open source
       book about <phrase xlink:href="http://www.docbook.org/"
         >DocBook</phrase> and the <phrase
         xlink:href="&uri.dbxsl;/doc/"
-        >DocBook XSL stylesheets</phrase> written as cookbook
-      and released under Creative Commons license.
+        >DocBook XSL stylesheets</phrase> written as a cookbook
+      and released under a Creative Commons license.
     </para>
   </blockquote>
 
@@ -49,7 +49,7 @@
       particularly well suited to books and papers about computer
       hardware and software (though it is by no means limited to these
       applications).</quote></para>
-  <para>Although there are helpful and valuable documentation―be it as a
+  <para>Although there is helpful and valuable documentation&#x2014;be it as a
     printed book<footnote xml:id="fnt.tdg">
       <para>Like the reference <citetitle
           xlink:href="http://www.docbook.org/tdg51/en/html/docbook.html"
@@ -69,11 +69,11 @@
         </personname> maintains a <link
           xlink:href="http://www.dpawson.co.uk/">DocBook FAQ</link> and
         the previous mentioned books can be found online too.</para>
-    </footnote>―I always felt there is a gap. This gap could be bridged
+    </footnote>&#x2014;I always felt there is a gap. This gap could be bridged
     with a guide that only concentrates on problems and their solution
-    in a concise manner explained by step-by-step procedures. Until now
+    in a concise manner explained by step-by-step procedures. Until now,
     nobody wrote a book that combines possible problems, pitfalls,
-      <quote>how to do this</quote>, and the benefits in a cookbook
+      how-tos, and the benefits in a cookbook
     style. My book is intented to be such a book. However, it
       <emphasis>does not</emphasis> seek to replace any other
     information, be it printed or online. It aims for
@@ -83,7 +83,7 @@
     with DocBook and the DocBook XSL stylesheets. However, it also
     includes questions and answers from other sources: from the DocBook
     mailinglists, other sites that inspired me, or questions from
-    collegues. It is the nature of such topics that there might be some
+    colleagues. It is the nature of such topics that there might be some
     overlap with other sources. When other authors inspired me, I have
     included their names. If you think your name is missing, please let
     me know. </para>
@@ -98,16 +98,16 @@
   <section xml:id="dbc.preface.audience">
     <title>Audience</title>
     <para>This book covers topics which range from very easy to pretty
-      demanding. The more challenging a problems is the more you need
+      demanding. The more challenging a problem is, the more you need
       experience from different domains (CSS, FO, XSLT, etc.) As such,
       this book does not and cannot attempt to teach you DocBook or any
       such related technology (with the exception of <xref
         linkend="dbc.markup"/>). If you want to learn DocBook or need
-      some help with XML or XSLT, search elsewhere. There are plenty of
+      some help with XML or XSLT, search elsewhere. There is plenty of
       information available either online or printed. </para>
     <para>This book is aimed at DocBook users who write
         <emphasis>and</emphasis> seek answers for their customization
-      problems. However, with some try-and-error, it can also be useful
+      problems. However, with some trial and error, it can also be useful
       for ordinary writers who want to try something out. For readers
       who want further information, links are included in the <citetitle>See
         Also</citetitle> section at the end of each topic. </para>
@@ -175,7 +175,7 @@
     <para>The following typographical conventions are used in this book:</para>
     <itemizedlist>
       <listitem>
-        <para><emphasis>Italic</emphasis> is used for definition of new
+        <para><emphasis>Italic text</emphasis> is used for definitions of new
           terms or emphasized text.</para>
       </listitem>
       <listitem>
@@ -300,7 +300,7 @@
     <para>The source code of this book is published and maintained as a
       <application xlink:href="https://git-scm.com">Git</application> repository.
       Feel free to clone it, make improvements and
-      mail me your changes to <email>&prj.mail;</email> or send me pull
+      mail your changes to <email>&prj.mail;</email> or send me pull
      requests.<!--
         or use the link <link
         xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
@@ -386,7 +386,7 @@
 
   <section xml:id="dbc.preface.ack">
     <title>Acknowledgments</title>
-    <para>Such a large project is usually not a one man show. Many
+    <para>Such a large project is usually not a one-man show. Many
     people contributed to this book:</para>
     <!--  -->
     <!--<para>Written <?dbtimestamp?></para>-->
@@ -415,7 +415,7 @@
           <firstname>Norman</firstname>
           <surname>Walsh</surname>
         </personname> for DocBook, the DocBook stylesheets, and all the
-          nice tools that makes live with DocBook so much easier.</para>
+          nice tools that make life with DocBook so much easier.</para>
       </listitem>
       <listitem>
         <para><personname>
