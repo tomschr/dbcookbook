@@ -41,7 +41,7 @@
   <section role="problem">
     <title>Problem</title>
     <para>You need to find professional fonts, preferably released under
-      an open source license which can be used for print or Web formats.</para>
+      an open source license which can be used for print or web formats.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
@@ -49,7 +49,7 @@
       fonts are even released under the <link
         xlink:href="http://scripts.sil.org/OFL">Open Font License</link>
       or other free or open licenses. The following list is a small
-      overview which is by no means complete (use also your favorite
+      overview which is by no means complete (also use your favorite
       search engine):</para>
     <variablelist>
       <varlistentry>
@@ -62,7 +62,7 @@
             <acronym>SIL</acronym> creates the Charis SIL, Doulos SIL,
             Gentium, Andika, and other typefaces. All fonts are released
             under the Open Font License (OFL). This license was specially
-            created for fonts and was initiated by SIL
+            created for fonts and was initiated by SIL.
             <remark>FIXME: Check!</remark>
             </para>
         </listitem>
@@ -71,7 +71,7 @@
         <term><link xlink:href="http://www.google.com/webfonts"/></term>
         <listitem>
           <para>Google Web Fonts is a huge collection of open source
-            fonts. They can be freely incorporated into your Web sites
+            fonts. They can be freely incorporated into your web sites
             using CSS or can be downloaded and embedded in PDF.</para>
         </listitem>
       </varlistentry>
@@ -79,9 +79,9 @@
         <term><link xlink:href="http://www.tug.org/tetex/"/></term>
         <listitem>
           <para>The TeTeX distribution and <acronym>CTAN<alt>Comprehensive
-            TeX Archive Network</alt></acronym> contains also some high quality
-            fonts, however, more aimed at the print business and not for
-          the Web.</para>
+            TeX Archive Network</alt></acronym> also contains some high quality
+            fonts, however, mainly aimed at the print business and not for
+          the web.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
@@ -95,16 +95,16 @@
             contain ligatures, true small caps, old style numbers,
             proportional or monospaced numbers, true superscript and
             subscript, and much more. A monospace variant is currently
-            designed.</para>
+            being designed.</para>
         </listitem>
       </varlistentry>
       <varlistentry>
         <term><link xlink:href="https://dejavu-fonts.github.io/"/></term>
         <listitem>
           <para>
-          The DejaVu font family are derived from the Bitstream Vera fonts.
+          The DejaVu font family is derived from the Bitstream Vera fonts.
           Due to license issues, the font has to be renamed. The fonts
-          contain now lots of glyphs and supports Latin, Greek, Cyrillic,
+          now contain lots of glyphs and support Latin, Greek, Cyrillic,
           Armenian, Georgian, and other languages.
           </para>
         </listitem>
@@ -128,7 +128,7 @@
         <formalpara>
           <title>Supported Languages and Amount of Glyphs</title>
           <para>Does your font support your language? Although modern
-            fonts use Unicode thesedays, nevertheless your language
+            fonts use Unicode these days, your language
             might not be supported. Especially if you need
               <quote>uncommon</quote> languages or rarely used glyphs.
           </para>
@@ -137,8 +137,8 @@
       <listitem>
         <formalpara>
           <title>Missing Styles</title>
-          <para>Some fonts are published in only one style, usually
-            <emphasis>regular</emphasis>. Such fonts makes it more difficult
+          <para>Some fonts are published in one style only, usually
+            <emphasis>regular</emphasis>. Such fonts make it more difficult
             to universally adopt them in different scenarios where more
             styles (bold, italic, or a combination) are needed.
           </para>
@@ -147,11 +147,11 @@
       <listitem>
         <formalpara>
           <title>Font Formats</title>
-          <para>Modern fonts are usually Unicode fonts published as <acronym>OTF<alt
+          <para>Modern fonts are usually Unicode fonts published in <acronym>OTF<alt
             >OpenType Font</alt></acronym> or <acronym>TTF<alt>TrueType</alt></acronym>
             format. Older fonts are mostly PostScript Type 1 fonts which
             have a limited amount of glphys (theoretically 256).
-            PostScript fonts cannot be used on the Web.</para>
+            PostScript fonts cannot be used on the web.</para>
         </formalpara>
       </listitem>
       <listitem>
@@ -159,19 +159,19 @@
           <title>Font Combinations</title>
           <para>For a non-designer, it is generally easier to use a
             complete font family conisting of sans serif, serif and
-            monospaced typefaces. The reason for this is these typefaces
-            are made to fit together. It is much more difficult to
-            select fonts which work aesthetically as it needs
-            experiences.</para>
+            monospaced typefaces. The reason for this is that these typefaces
+            are made to match. It is much more difficult to
+            select fonts that suit aesthetically as it needs
+            experience.</para>
         </formalpara>
       </listitem>
       <listitem>
         <formalpara>
           <title>Quality</title>
-          <para>This is a broad topic and it depends heavily where you want to
-            use the font. Is it primarily used for Web content or only
-            for print? Or both? Some fonts looks only good on a Web
-            page, other work only for printed documents. Sometimes the
+          <para>This is a broad topic and it heavily depends on where you want to
+            use the font. Is it primarily used for web content or 
+            for print only? Or both? Some fonts only look good on a web
+            page, others only go with printed documents. Sometimes the
             <emphasis>hinting</emphasis> (adjustment of a font to a
             certain resolution) may or may not be implemented.
           </para>
