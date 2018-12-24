@@ -42,9 +42,9 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>The DocBook XSL stylesheets offers the
+    <para>The DocBook XSL stylesheets offer the
       <literal>title.markup</literal> mode for this purpose. Usually,
-      insert the following code in the appropriate place:</para>
+      insert the following code into the appropriate place:</para>
     <programlisting language="xml">&lt;xsl:apply-templates select="." mode="title.markup"/></programlisting>
     <para>The <tag>xsl:apply-templates</tag> recursively finds the
       correct <tag>title</tag> node, regardless where you are. It also looks
@@ -80,12 +80,12 @@
           <para>The optional, abbreviated title is used in case the main
             title is overly verbose. Usually this element is not printed
             with the main title on the same page. However, it is used in
-            the table of content, for example.</para>
+            the table of contents, for example.</para>
         </listitem>
       </varlistentry>
     </variablelist>
 
-    <para>All of the above title elements contains a special mode to get
+    <para>All of the above title elements contain a special mode to get
       the content of this node:</para>
 
     <table xml:id="tab.common.titles.modes">
@@ -140,14 +140,14 @@
           quotation marks.</para>
       </listitem>
     </itemizedlist>
-    <para>Replacing <tag>xsl:value-of</tag> through the
+    <para>Replacing <tag>xsl:value-of</tag> with 
         <tag>xsl:apply-templates</tag> as shown in the solution section,
       ensures correct processing of child elements inside
       <tag>title</tag>.</para>
 
     <para>The same is true for <tag>subtitle</tag> and
       <tag>titleabbrev</tag>. Using the <code>subtitle.markup</code> or
-      <code>titleabbrev.markup</code> mode ensure you get always the
+      <code>titleabbrev.markup</code> mode ensures that you always get the
       correct content. </para>
     <para>To see what combination results in what string, find an
       overview in <xref linkend="tab.common.titles.results"/>.</para>
