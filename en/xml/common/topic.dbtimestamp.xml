@@ -38,7 +38,7 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You want to insert the current date, time, or both in your
+    <para>You want to insert the current date, time, or both into your
       output format (for example, to show the date of creation).</para>
   </section>
   <section role="solution">
@@ -71,9 +71,9 @@
 
     <section xml:id="dbc.common.dbtimestamp.default-format">
       <title>Changing the Default Format</title>
-      <para>Each language contains in its language files<remark>add
-          xref</remark> the context <code>datetime</code>. The following
-        code shows it for the English language file:</para>
+      <para>Each language contains the context <code>datetime</code>in its
+        language files <remark>add xref</remark>. The following
+        code is from the English language file:</para>
       <programlisting language="xml">&lt;l:context name="datetime">
   &lt;l:template name="format" text="m/d/Y"/>
 &lt;/l:context></programlisting>
@@ -95,11 +95,11 @@
               xlink:href="http://www.w3.org/TR/REC-xml/#sec-pi"
             />.</para>
         </footnote> into the <tag class="xmlpi">dbtimestamp</tag> PI.
-        For example, if you want to insert only the year, add the <tag
+        For example, if you want to insert the year only, add the <tag
           class="attribute">format</tag> pseudo-attribute: </para>
       <screen language="xml">&lt;?dbtimestamp format="Y"?></screen>
       <para>More format-letters can be found in the reference page (see
-        link at the <citetitle>See Also</citetitle> section).</para>
+        link in the <citetitle>See Also</citetitle> section).</para>
     </section>
   </section>
   <section role="seealso">
