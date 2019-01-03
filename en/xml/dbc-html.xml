@@ -100,7 +100,7 @@
           <para>Contains stylesheets for <acronym
               xlink:href="http://www.w3.org/TR/xhtml1/">XHTML&#xa0;1.0</acronym>
               (<quote>transitional XHTML</quote>). These stylesheets are
-            generated through a XSLT transformation from the HTML core
+            generated through an XSLT transformation from the HTML core
             stylesheets. </para>
         </listitem>
       </varlistentry>
@@ -111,7 +111,7 @@
           <para>Contains stylesheets for <acronym
               xlink:href="http://www.w3.org/TR/xhtml11/"
               >XHTML&#xa0;1.1</acronym>. Like the one for XHTML, they are
-            generated through a XSLT transformation. In comparison, the
+            generated through an XSLT transformation. In comparison, the
             XHTML&#xa0;1.1 omits certain attributes which were allowed in XHTML
             or HTML. The missing part must be implemented by CSS. The
             XHTML&#xa0;1.1 stylesheets are also used for EPUB creation.</para>

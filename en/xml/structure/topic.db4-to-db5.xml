@@ -58,7 +58,7 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>One disadvantage is that entities are not preserved. This is
-      not a stylesheet issue but a XML issue. The entities are already
+      not a stylesheet issue but an XML issue. The entities are already
       resolved when the XSLT processor gets its hand on the source tree. The
       stylesheet never sees the entities.
     </para>

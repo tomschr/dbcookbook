@@ -53,7 +53,7 @@
           <para>Needed to write your DocBook XML source. Basically, you
             can use whatever editor you like as XML is just text.
             However, entering your structure and text is more convenient
-            with a XML editor. It gives you a context sensitive hint
+            with an XML editor. It gives you a context sensitive hint
             what is allowed and what not. Some gives you even a tooltip
             and shows a short explanation of the element. </para>
         </listitem>

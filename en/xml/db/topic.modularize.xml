@@ -70,7 +70,7 @@
       </listitem>
       <listitem>
         <para>The attribute <tag class="attribute">href</tag> inside the
-            <tag class="starttag">xi:include</tag> start tag. It is an URI that refers to
+            <tag class="starttag">xi:include</tag> start tag. It is a URI that refers to
           your included file.</para>
       </listitem>
       <listitem>

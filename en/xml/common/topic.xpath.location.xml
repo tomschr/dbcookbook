@@ -140,7 +140,7 @@
         <listitem>
           <para>Namespace nodes are printed with the full namespace
             URL. The namespace URL is definied in the
-              <tag>namespaces</tag> element. A XPath to the first
+              <tag>namespaces</tag> element. An XPath to the first
             chapter inside a book looks like this:</para>
           <screen>/{http://docbook.org/ns/docbook}book/{http://docbook.org/ns/docbook}chapter[1]</screen>
           <note>
