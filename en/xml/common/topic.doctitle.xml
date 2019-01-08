@@ -52,10 +52,10 @@
     <title>Discussion</title>
     <para>The documentation title is the outmost title of your text.
       This can be a title from a book, glossary, set, article, or other,
-      depending on what is your root element.</para>
+      depending on the root element.</para>
     <para>The <function>get.doc.title</function> template returns a
       string. In most cases this is probably enough, for example, if you
-      want to place them as an attribute value where markup is not
+      want to use it as an attribute value where markup is not
       allowed.</para>
     <para>If you need the full markup, use the methods described in
       <xref linkend="dbc.common.titles"/>.</para>
