@@ -4,14 +4,14 @@ about: Suggest an idea for this project
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+## Feature Description
+A clear and concise description of the feature.
+Example:
+The book should contain a topic about [...]
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+## Expected Wishlist
+Describe what you would like to see in the new topic.
+Which specific problem should it solve?
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Relations
+Any additional relations to other topics?
