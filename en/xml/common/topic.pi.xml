@@ -57,16 +57,16 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Processing instructions (PIs) are usually needed for fine-tune your
-      output formats. For example, to add page break information,
+    <para>Processing instructions (PIs) are usually needed to fine-tune your
+      output formats, e.g., to add page break information,
       background color, or other stylistic hints. PIs should
         <emphasis>not</emphasis> be used to insert data which should
       normally reside inside a DocBook element! As a general rule of
-      thumb: Use PIs if you want provide layout specific information for
-      your output format if there is no other method.
+      thumb: Use PIs if you want to provide layout specific information for
+      your output format unless there is another method.
     </para>
-    <para>The following example use the PI <tag
-      class="xmlpi">toms-html</tag> which is included inside an
+    <para>The following example uses the PI <tag
+      class="xmlpi">toms-html</tag> which is included inside a
       <tag>para</tag> element to insert background color in HTML:<footnote>
         <para>Usually, such a need would be solved through CSS and not
           PIs. However, this example shows just the principle so it is a
@@ -94,7 +94,7 @@
       <step>
         <para>Customize the <tag>para</tag> template and add the
           following code to your customization layer. The customized
-          template call <function>pi-attribute</function> with the
+          template calls <function>pi-attribute</function> with the
           relevant parameters. If no PI was set, apply the original
           template:</para>
         <programlistingco>
