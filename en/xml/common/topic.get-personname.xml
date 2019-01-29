@@ -55,7 +55,7 @@
     <programlisting language="xml">&lt;xsl:call-template name="person.name">
   &lt;xsl:with-param name="node" select="$theauthor"/>
 &lt;/xsl:call-template></programlisting>
-    <para>whereas the variable <varname>theauthor</varname> points to
+    <para>where the variable <varname>theauthor</varname> points to
       the author node. The previous template returns the expected
       string:</para>
     <programlisting>Tux Penguin</programlisting>
@@ -66,9 +66,9 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>At a first glance, names seems pretty easy to format.
+    <para>At first glance, names seem pretty easy to format.
       However, it is a little bit more complicated. For example, the title
-      of a person, its lineage, or middle names can makes
+      of a person, its lineage, or middle names can make
       it sometimes harder to extract all the information. The following
       author contains a title and a lineage:</para>
     <programlisting language="xml">&lt;author>
@@ -81,7 +81,7 @@
   &lt;/personname>
 &lt;/author></programlisting>
     <para>Depending on what you need, the DocBook stylesheets can format
-    the name with different </para>
+    the name in different ways</para>
     <table xml:id="tab.get-personname">
       <title>Overview of Available Templates</title>
       <tgroup cols="2">
@@ -109,7 +109,7 @@
     </table>
 
     <para>Keep in mind, the current implementation only takes into
-      account the first occurance of <tag>honorific</tag> or
+      account the first occurrence of <tag>honorific</tag> or
       <tag>lineage</tag>.</para>
 
   </section>
