@@ -23,7 +23,7 @@
   <subtitle>Recipes for DocBook Developers</subtitle>
   <info>
     <pubdate role="currentdatetime"><?dbtimestamp ?></pubdate>
-    <releaseinfo>0.8.0</releaseinfo>
+    <releaseinfo>0.8.1</releaseinfo>
     <definitions definitionfile="defs.xml"/>
     <rdf:RDF
       xmlns="http://creativecommons.org/ns#"
