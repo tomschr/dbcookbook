@@ -166,15 +166,6 @@ h2.title > .title {
       titles. This can lead to side effects, which you may or may not
       want. For example, the modes are used also for the table of
       contents and for resolving cross-references.</para>
-    <para>To deal with this situation is two-fold:</para>
-    <itemizedlist>
-      <listitem>
-        <para>Leave it as it is and customize it at the CSS level.</para>
-      </listitem>
-      <listitem>
-        <para>Only <!-- TODO: incomplete paragraph --></para>
-      </listitem>
-    </itemizedlist>
 
     <section xml:id="sec.common.splitheader.modes.xref">
       <title>Protecting Cross-References</title>
