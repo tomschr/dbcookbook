@@ -75,7 +75,7 @@
     <title>Discussion</title>
     <para>If you have to insert text before or after your reference only,
       you can use one of the templates described above. However, if you
-      need to display a graphic, you need to insert FO or HTML specific
+      need to display a graphic, you need to insert FO- or HTML-specific
       code. For HTML, this could look like this: </para>
 
     <example xml:id="ex.common.chapter.html.xref-to-chapter.img">
