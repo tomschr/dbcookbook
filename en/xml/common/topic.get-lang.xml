@@ -87,7 +87,7 @@
       <listitem>
         <para>The above expressions do not take into account the current
           context node. For example, the language in a <tag>foreignphrase</tag>
-          element is usually different than a chapter or other parts of the
+          element is usually different from that of a chapter or other parts of the
           document. </para>
       </listitem>
       <listitem>
@@ -96,7 +96,7 @@
     </itemizedlist>
     <para>All the previous problems are considered by the
         <function>l10n.language</function> template. It searches for the
-      nearest anchestor who contains a language attribute and returns
+      nearest ancestor that contains a language attribute and returns
       its content. For example, consider the following structure:</para>
     <screen>book xml:lang="en"
   chapter

@@ -28,8 +28,8 @@
     </keywordset>
 
     <abstract>
-      <para>Some typical problems are independant from their target
-        formats. This chapter gives you some information what falls into
+      <para>Some typical problems are independent from their target
+        formats. This chapter gives you some information on what falls into
         this category.</para>
     </abstract>
   </info>
@@ -50,11 +50,11 @@
       contains all the stylesheets which are not specific to any
       formats. On the contrary, <filename class="directory"
         >fo</filename>, <filename class="directory">html</filename>,
-      etc. contain the respective customizations for their target
-      formats. </para>
-    <para>Furthermore, it is recommended to use the same file name than
-      the original from the DocBook XSL stylesheets. This makes it
-      easier to see, what changes can be expected within your files.</para>
+      etc. contain the customizations for the respective target
+      format.</para>
+    <para>Furthermore, it is recommended to use the original file name as
+      used by the DocBook XSL stylesheets. This makes it
+      easier to recognize, what your files are likely to change.</para>
   </section>
 
   <!--

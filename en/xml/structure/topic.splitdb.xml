@@ -44,7 +44,7 @@
     <para>There are three solutions to this problems:</para>
     <itemizedlist>
       <listitem>
-        <para>Apply a XSLT stylesheet which uses the extension element
+        <para>Apply an XSLT stylesheet which uses the extension element
           <function>exsl:document</function></para>
       </listitem>
       <listitem>

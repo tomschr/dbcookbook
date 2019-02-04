@@ -104,7 +104,7 @@
 
     <section xml:id="markup.lists.itemizedlist">
       <title>Features of <tag>itemizedlist</tag></title>
-      <para>An <tag>itemizedlist</tag> is a unordered list and can be
+      <para>An <tag>itemizedlist</tag> is an unordered list and can be
         written as shown in the following example:</para>
       <example>
         <title>Unordered List with Three Entries</title>

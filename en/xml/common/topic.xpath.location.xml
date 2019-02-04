@@ -108,7 +108,7 @@
         <callout arearefs="co.xpathns.method">
           <para>Defines the method how prefixes are displayed. You can
             choose between <quote>prefix</quote> and the Clark notation.
-            The latter adds the namespace in curly brackets before the
+            The latter adds the namespace in curly braces before the
             element name, but makes the whole XPath very verbose.
             </para>
         </callout>
@@ -119,7 +119,7 @@
           <para>Checks, if we are not at the root node and there is more
           than one element with the same name and the same namespace. If
           this is true, we output a predicate where the current number
-          is enclosed in squared brackets.</para>
+          is enclosed in square brackets.</para>
         </callout>
       </calloutlist>
     </example>
@@ -140,7 +140,7 @@
         <listitem>
           <para>Namespace nodes are printed with the full namespace
             URL. The namespace URL is definied in the
-              <tag>namespaces</tag> element. A XPath to the first
+              <tag>namespaces</tag> element. An XPath to the first
             chapter inside a book looks like this:</para>
           <screen>/{http://docbook.org/ns/docbook}book/{http://docbook.org/ns/docbook}chapter[1]</screen>
           <note>

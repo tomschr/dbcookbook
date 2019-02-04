@@ -57,19 +57,19 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>Processing instructions (PIs) are usually needed for fine-tune your
-      output formats. For example, to add page break information,
+    <para>Processing instructions (PIs) are usually needed to fine-tune your
+      output formats, e.g., to add page break information,
       background color, or other stylistic hints. PIs should
-        <emphasis>not</emphasis> be used to insert data which should
+        <emphasis>not</emphasis> be used to insert data that should
       normally reside inside a DocBook element! As a general rule of
-      thumb: Use PIs if you want provide layout specific information for
-      your output format if there is no other method.
+      thumb: Use PIs if you want to provide layout specific information for
+      your output format unless there is another method.
     </para>
-    <para>The following example use the PI <tag
-      class="xmlpi">toms-html</tag> which is included inside an
+    <para>The following example uses the PI <tag
+      class="xmlpi">toms-html</tag> which is included inside a
       <tag>para</tag> element to insert background color in HTML:<footnote>
-        <para>Usually, such a need would be solved through CSS and not
-          PIs. However, this example shows just the principle so it is a
+        <para>Usually, such a requirement would be satisfied by CSS and not
+          PIs. However, this example just shows the principle so it is a
           perfect use case.</para>
       </footnote></para>
     <procedure>
@@ -81,7 +81,7 @@
           distinguish it from other processing instructions.</para>
       </step>
       <step>
-        <para>Insert your PI into a para which indicates a different
+        <para>Insert your PI into a para that has a different
           background color:</para>
         <programlisting>&lt;para>&lt;?toms-html background-color="blue"?>
   ...
@@ -94,7 +94,7 @@
       <step>
         <para>Customize the <tag>para</tag> template and add the
           following code to your customization layer. The customized
-          template call <function>pi-attribute</function> with the
+          template calls <function>pi-attribute</function> with the
           relevant parameters. If no PI was set, apply the original
           template:</para>
         <programlistingco>
@@ -156,15 +156,15 @@
     </procedure>
 
     <para>The previous example recognizes a PI
-        <emphasis>inside</emphasis> a <tag>para</tag> only. If you want
-      to recognize also PIs <emphasis>before</emphasis>, use the
-      following XPath in the <tag class="attribute">select</tag>
+        <emphasis>inside</emphasis> a <tag>para</tag> only. If you also want
+      to recognize PIs <emphasis>before</emphasis>, use the
+      following XPath expression in the <tag class="attribute">select</tag>
       attribute of <function>pi-attribute</function>:</para>
     <screen>( processing-instruction('toms-html') |
   preceding-sibling::processing-instruction('toms-html')[1]
 )[last()]</screen>
     <para>If two PIs are available (one inside, another outside), the
-      one which is located inside takes precedence.</para>
+      inside one takes precedence.</para>
   </section>
   <section role="seealso">
     <title>See Also</title>

@@ -63,19 +63,19 @@
       your string contains, for example, the German lowercase letter
         <quote>ö</quote>, <function>translate</function> does not
       transform it into the uppercase letter <quote>Ö</quote>. </para>
-    <para>This solves the above templates
+    <para>This is handled by the above templates
         <function>string.lower</function> and
         <function>string.upper</function>. They use the language files
       of the DocBook stylesheets and get the lowercase and uppercase
-      letters from a so called <quote>gentext templates</quote>. The
+      letters from so-called <quote>gentext templates</quote>. The
         <property>uppercase.alpha</property> and
         <property>lowercase.alpha</property> entries are used in the
       current locale.</para>
     <para>However, this transformation is not always perfect. For
-      example, it is recommend to transform the German sharp
+      example, it is recommended to transform the German 
         <quote>ß</quote> (lowercase) into <quote>SS</quote>
       (uppercase).<footnote>
-        <para>Since 2008, Unicode contains the capital sharp ß (see
+        <para>Since 2008, Unicode contains the capital letter sz &#x1e9e; (see
             <link
             xlink:href="http://en.wikipedia.org/wiki/Capital_%E1%BA%9E"
           /> which is located at position U+1E9E. Most fonts contain
@@ -87,8 +87,8 @@
           </keycombo> to display the capital sharp ß which is printed as
             <quote>ẞ</quote>.</para>
       </footnote> This makes the <function>translate</function> function
-      unusable for such corner cases. Only XPath 2.0 support
-      local-sensitive mappings with <function
+      unusable for such corner cases. Only XPath 2.0 supports
+      locale-sensitive mappings with <function
         xlink:href="http://www.w3.org/TR/xpath-functions/#func-upper-case"
         >fn:upper-case</function>.</para>
   </section>

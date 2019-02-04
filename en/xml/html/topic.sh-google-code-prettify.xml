@@ -127,7 +127,7 @@
     <para>However, if JavaScript is disabled it won't work anymore. If
       you rely on minimal HTML without any JavaScript code, this
       solution is not for you. Use the highlighting mechanism which uses
-      a XSLT extension. <remark>Add link to highlighting extension topic
+      an XSLT extension. <remark>Add link to highlighting extension topic
         with JAR</remark></para>
 
     <section>

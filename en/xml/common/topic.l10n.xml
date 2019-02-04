@@ -53,7 +53,7 @@
         >common</filename> directory. Each file is in XML format and
       contains all your translated text as a key/value pair. For more
       complex settings and to group things, there are
-        <emphasis>contexts</emphasis>. The key is never translated, it
+        <emphasis>contexts</emphasis>. The key is never translated, it is
       a constant and is only needed to find and retrieve the translated text. </para>
     <para>To use a language file, proceed as follows:</para>
     <procedure>
@@ -85,12 +85,12 @@
     &lt;l:gentext key="lastbuilt" text="Last built: "/>
   &lt;/l:l10n>
   &lt;l:l10n language="de" english-language-name="German">
-    &lt;l:gentext key="Authors" text="Authoren"/>
+    &lt;l:gentext key="Authors" text="Autoren"/>
     &lt;l:gentext key="lastbuilt" text="Zuletzt gebaut: "/>
   &lt;/l:l10n>
 &lt;/l:i18n></programlisting>
         </informalexample>
-        <para>The above code shows two language, English and German
+        <para>The above code shows two languages, English and German
           (marked in the <tag class="attribute">language</tag>
           attribute).
           Furthermore, it contains two text entries for each language
@@ -109,7 +109,7 @@
     <title>Discussion</title>
     <para>The <quote>gentext</quote> method to insert language specific
       text is quite powerful, but not almighty. It helps you to keep
-      translateable text in one place and avoids hard-coded locations in
+      translatable text in one place and avoids hard-coded locations in
       your stylesheets. If you need the translated text not for the
       default language (usually marked in the root element), but for a
       different language, use the <tag>xsl:with-param</tag> as

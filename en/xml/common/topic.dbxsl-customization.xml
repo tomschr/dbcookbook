@@ -40,12 +40,12 @@
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>A DocBook XSL customization layer comprise the following
+    <para>A DocBook XSL customization layer comprises the following
     components:</para>
 
     <itemizedlist>
       <listitem>
-        <para>A XSLT stylesheet skeletton with the start tag <tag
+        <para>An XSLT stylesheet skeleton with the start tag <tag
           class="starttag">xsl:stylesheet</tag> and the end tag
           <tag class="endtag">xsl:stylesheet</tag></para>
       </listitem>
@@ -54,7 +54,7 @@
           output format (for example, FO or XHTML).</para>
       </listitem>
       <listitem>
-        <para>A <tag class="emptytag">xsl:import</tag> element to
+        <para>An <tag class="emptytag">xsl:import</tag> element to
           incoporate the base DocBook XSLT stylesheet.</para>
       </listitem>
       <listitem>
@@ -85,7 +85,7 @@
   <section role="discussion">
     <title>Discussion</title>
     <para>Why not modify the original stylesheets? There are some
-      profound reasons which speaks against such modifications:
+      profound reasons which speak against such modifications:
     </para>
     <itemizedlist>
       <listitem>
@@ -97,8 +97,8 @@
         in one book you need an index but in the other it is unwanted.</para>
       </listitem>
       <listitem>
-        <para>If you modify the original stylesheets directly you can
-          not go back to the former output. </para>
+        <para>If you modify the original stylesheets directly you cannot
+        go back to the former output. </para>
       </listitem>
       <listitem>
         <para>It is hard to distinguish between your customizations and
@@ -109,16 +109,16 @@
     <para>Refrain from editing the original stylesheets! Always write a
       customization layer.</para>
 
-    <para>Apart from the above, obvious reasons, the following list
+    <para>Apart from the obvious reasons above, the following list
       gives you some recommendations:</para>
 
     <itemizedlist>
       <listitem>
         <para>Insert common parameters or templates into a stylesheet
-          which is included in your different customizations.</para>
+          which is included in your customizations.</para>
       </listitem>
       <listitem>
-        <para>Structure your output formats in different directories as
+        <para>Structure your output formats into separate directories as
           shown in <xref linkend="dbc.common.intro"/>.</para>
       </listitem>
       <listitem>

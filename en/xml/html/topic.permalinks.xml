@@ -82,7 +82,7 @@
             which contains all information about the permalink.</para>
         </callout>
         <callout arearefs="ar.html.permalinks.a">
-          <para>Creates a HTML <tag>a</tag> element. The pointer in the
+          <para>Creates an HTML <tag>a</tag> element. The pointer in the
             <tag class="attribute">href</tag> attribute is used from the
           <parameter>id</parameter> parameter.</para>
         </callout>

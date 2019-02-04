@@ -380,7 +380,7 @@ chapter         --> ch01.html
           <formalpara>
             <title>Structure your IDs consistently</title>
             <para>
-              It is easier to find a HTML file if it is named consistently.
+              It is easier to find an HTML file if it is named consistently.
               For example, if you have a chapter about introduction, you could
               set the ID to <tag class="attvalue">intro</tag>. Any sections
               inside this chapter would use it as a prefix and append their

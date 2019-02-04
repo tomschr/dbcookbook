@@ -126,7 +126,7 @@
           (only if the chapter would be the root element.)</para>
       </listitem>
       <listitem>
-        <para>The simple navigation is implemented as a unordered list
+        <para>The simple navigation is implemented as an unordered list
           inside a <tag>div</tag> element. The enclosing <tag>div</tag>
           element is used to make styling with CSS easier.</para>
       </listitem>
