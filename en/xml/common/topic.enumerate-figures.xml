@@ -19,7 +19,7 @@
    xmlns="http://docbook.org/ns/docbook"
    xmlns:xi="http://www.w3.org/2001/XInclude"
    xmlns:xlink="http://www.w3.org/1999/xlink">
-  <title>Numbering Figures and the Like Consistently Through your Document</title>
+  <title>Numbering Figures and the Like Consistently Throughout your Document</title>
   <info>
     <keywordset>
       <keyword>numbering</keyword>
@@ -29,12 +29,12 @@
 
   <section role="problem">
     <title>Problem</title>
-    <para>You want to enumerate your figures, tables, programlisting or
-      examples consistently through your document.</para>
+    <para>You want to enumerate your figures, tables, program listings, or
+      examples consistently throughout your document.</para>
   </section>
   <section role="solution">
     <title>Solution</title>
-    <para>Use a customization layer and insert the following template in
+    <para>Use a customization layer and insert the following template into
       your customization layer:</para>
     <example xml:id="ex.common.enumerate">
       <title>Template to Number Figures Consistently</title>
@@ -50,7 +50,7 @@
 &lt;/xsl:template></programlisting>
       <calloutlist>
         <callout arearefs="co.common.enumerate.match">
-          <para>Matches for <tag>figure</tag> elements in
+          <para>Matches <tag>figure</tag> elements in
             <literal>label.markup</literal> mode (a special mode for
             getting or calculating numbers).</para>
         </callout>
@@ -79,7 +79,7 @@
     <para>If you need a different numbering schema, modify the
       <tag class="attribute">format</tag> attribute in the
       <tag>xsl:number</tag> start-tag. For example, if you write
-      <literal>[a]</literal> you will get consecutive numerals in
+      <literal>[a]</literal> you will get consecutive lowercase letters in
       brackets like  <literal>[a]</literal>, <literal>[b]</literal>,
       <literal>[c]</literal> etc.</para>
   </section>
