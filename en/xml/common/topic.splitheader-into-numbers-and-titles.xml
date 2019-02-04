@@ -37,7 +37,7 @@
   <section role="problem">
     <title>Problem</title>
     <para>Your header contains a consecutive number and a title. As you
-      want to style them differently, you need to split them in this two
+      want to style it differently, you need to split it into two
       pieces.</para>
   </section>
   <section role="solution">
@@ -48,7 +48,7 @@
       <varname>title.markup</varname>.</para>
 
     <para>To <quote>split</quote> the header, you need to introduce an
-      inline element for styling. For HTML this is <tag>span</tag> with
+      inline element for styling. For HTML this is <tag>span</tag> with a
         <tag class="attribute">class</tag> attribute, for XSL-FO it is
         <tag>fo:inline</tag>. The principle is the same, but this topic
       shows only HTML for better readability. </para>
@@ -58,8 +58,8 @@
       use the XSLT <tag class="emptytag">xsl:apply-imports</tag> tag.
       This allows you to call the original template without repeating it
       and to introduce your changes. Save the result from <tag
-        class="emptytag">xsl:apply-imports</tag> in a variable and and
-      output it only, if the variable is not empty. The following
+        class="emptytag">xsl:apply-imports</tag> in a variable and only
+      output it, if its value is not empty. The following
       template shows this approach for a chapter label:</para>
 
     <programlisting language="xml"
@@ -81,8 +81,8 @@
   </span>
 </xsl:template>]]></programlisting>
 
-    <para>Add the same changes for all elements that you need a
-      different styling. After you have included this changes in your
+    <para>Apply these changes for all elements that you need to restyle.
+    After you have included these changes in your
       customization layer, a chapter title in HTML is shown as follows:</para>
     <programlisting language="html"
 >&lt;h2 class="title">&lt;a id="id275730">&lt;/a>Chapter
@@ -165,14 +165,14 @@ h2.title > .title {
       such, they are used in other templates as well, not only for
       titles. This can lead to side effects, which you may or may not
       want. For example, the modes are used also for the table of
-      content and for resolving cross-references.</para>
+      contents and for resolving cross-references.</para>
     <para>To deal with this situation is two-fold:</para>
     <itemizedlist>
       <listitem>
         <para>Leave it as it is and customize it at the CSS level.</para>
       </listitem>
       <listitem>
-        <para>Only </para>
+        <para>Only <!-- TODO: incomplete paragraph --></para>
       </listitem>
     </itemizedlist>
 
@@ -180,7 +180,7 @@ h2.title > .title {
       <title>Protecting Cross-References</title>
       <para> To prevent the splitting in cross-references, customize the
           <varname>insert.title.markup</varname> and
-          <varname>insert.label.markup</varname>modes as follows:</para>
+          <varname>insert.label.markup</varname> modes as follows:</para>
       <programlisting language="xml"><![CDATA[<xsl:template match="*" mode="insert.label.markup">
   <xsl:param name="purpose"/>
   <xsl:param name="xrefstyle"/>
@@ -206,12 +206,12 @@ h2.title > .title {
       <para>The difference between the original and the above
         customization is the <tag>xsl:copy-of</tag> tag. In the above
         customization it is replaced by <tag>xsl:value-of</tag>. This
-        small change ensure only the string value is copied, not any
+        small change ensures that only the string value is copied, not any
         elements.</para>
     </section>
     <section xml:id="sec.common.splitheader.modes.toc">
       <title>Protecting the Table of Contents</title>
-      <para>To avoid the same structure in table of contents, customize
+      <para>To avoid the same structure in the table of contents, customize
         the <function>toc.line</function> template as follows:</para>
       <programlistingco>
         <areaspec units="linecolumn">
