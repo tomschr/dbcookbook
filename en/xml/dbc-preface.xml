@@ -301,10 +301,7 @@
       <application xlink:href="https://git-scm.com">Git</application> repository.
       Feel free to clone it, make improvements and
       mail your changes to <email>&prj.mail;</email> or send me pull
-     requests.<!--
-        or use the link <link
-        xlink:href="https://sourceforge.net/sendmessage.php?touser=27667"
-      />-->.
+     requests.
     </para>
     <para>
       Getting a copy takes just a few seconds.
@@ -317,7 +314,7 @@
     <para>If you do not want to change the source code, but want to
     contribute, open a ticket. Describe your bugs, grammar errors, typos,
     or other inconveniences you have found and add them to the list at
-    <link xlink:href="&gh.uri;/issues/new"/>.
+    <link xlink:href="&gh.tracker.url;/new"/>.
     </para>
   </section>
 
@@ -350,7 +347,7 @@
           is just a lack of time. If you think, you have covered or know
           some topic, I would really appreciate it if you contribute
           your ideas. Just fill out a ticket on <link
-            xlink:href="https://sourceforge.net/p/doccookbook/tickets/"/>
+            xlink:href="&gh.tracker.url;"/>
             or write me an email to <email>&mymail;</email>.
           </para>
         </answer>

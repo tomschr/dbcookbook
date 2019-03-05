@@ -1,10 +1,11 @@
 <!ENTITY projectname  "The DBCookBook Project">
 <!ENTITY prj.mail     "docbook-xml@online.ms">
 
-<!ENTITY gh.project   "tomschr/dbcookbook">
+<!ENTITY gh.project         "tomschr/dbcookbook">
 <!ENTITY gh.uri             "https://github.com/&gh.project;">
 <!ENTITY gh.git.repo.url    "git@github.com:&gh.project;.git">
 <!ENTITY gh.https.repo.url  "https://github.com/&gh.project;.git">
+<!ENTITY gh.tracker.url     "&gh.uri;/issues">
 <!ENTITY gh.www.url         "https://doccookbook.sf.net/html/en/">
 
 <!ENTITY uri.dbxsl    "http://docbook.sf.net/release/xsl/current">
