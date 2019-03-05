@@ -68,20 +68,18 @@
         xlink:href="http://sf.net/p/doccookbook/tickets/feed.atom"/>
     </extendedlink>
 
-    <author xml:id="author">
+    <authorgroup xml:id="author">
+      <xi:include href="author-toms.xml"/>
+    </authorgroup>
+
+    <!--<author xml:id="author">
       <personname>
         <firstname>Thomas</firstname>
         <surname>Schraitle</surname>
       </personname>
       <email>docbook-xml@online.ms</email>
-    </author>
-    <othercredit class="proofreader">
-      <personname>
-        <firstname>Antje</firstname>
-        <surname>Faber</surname>
-      </personname>
-      <contrib>Proofreading, suggestions, and ideas</contrib>
-    </othercredit>
+    </author>-->
+    <xi:include href="collaborators.xml"/>
     <edition>1</edition>
     <keywordset>
       <keyword>DocBook</keyword>

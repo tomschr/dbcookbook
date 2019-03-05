@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<authorgroup xmlns="http://docbook.org/ns/docbook" version="5.1">
+   <othercredit class="technicaleditor">
+      <personname>gan-ainm</personname>
+      <email>gan.ainm.riomhphost@gmail.com</email>
+   </othercredit>
+   <othercredit class="technicaleditor">
+      <personname>
+         <firstname>Thibaut</firstname>
+         <surname>Cuvelier</surname>
+      </personname>
+      <email>dourouc05@gmail.com</email>
+   </othercredit>
+   <othercredit class="technicaleditor">
+      <personname>
+         <firstname>Stefan</firstname>
+         <surname>Hinz</surname>
+      </personname>
+   </othercredit>
+   <othercredit class="proofreader">
+      <personname>
+         <firstname>Antje</firstname>
+         <surname>Faber</surname>
+      </personname>
+      <contrib>Proofreading, suggestions, and ideas</contrib>
+   </othercredit>
+   <othercredit class="technicaleditor">
+      <personname>
+         <firstname>Peter</firstname>
+         <surname>Schmelzer</surname>
+      </personname>
+      <email></email>
+   </othercredit>
+   <othercredit class="technicaleditor">
+      <personname>
+         <firstname>Takuma</firstname>
+         <surname>Yoshioka</surname>
+<!--         <othername>らりお</othername>-->
+      </personname>
+      <email>lo48576@hard-wi.red</email>
+   </othercredit>
+</authorgroup>

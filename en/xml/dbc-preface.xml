@@ -318,21 +318,6 @@
     </para>
   </section>
 
-  <section xml:id="dbc.preface.contributors">
-   <title>Contributors</title>
-   <para>Thanks to all who contribute to this book (sorted alphabetically):</para>
-   <itemizedlist>
-    <listitem>
-     <para>Antje Faber</para>
-    </listitem>
-    <listitem>
-     <para>Stefan Hinz</para>
-    </listitem>
-    <listitem>
-     <para>Peter Schmelzer</para>
-    </listitem>
-   </itemizedlist>
-  </section>
 
   <!--<section xml:id="dbc.preface.faq">
     <title>FAQ</title>
