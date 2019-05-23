@@ -81,7 +81,7 @@
   </section>
   <section role="discussion">
     <title>Discussion</title>
-    <para>There a many more possible root elements, not only <tag>book</tag>.
+    <para>There are many more possible root elements, not only <tag>book</tag>.
       Using the list from the last section, a valid DocBook V5
       element to start with can be:</para>
     <simplelist columns="4" type="vert">
