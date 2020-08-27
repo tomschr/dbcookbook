@@ -63,7 +63,6 @@
             Gentium, Andika, and other typefaces. All fonts are released
             under the Open Font License (OFL). This license was specially
             created for fonts and was initiated by SIL.
-            <remark>FIXME: Check!</remark>
             </para>
         </listitem>
       </varlistentry>
@@ -148,7 +147,7 @@
         <formalpara>
           <title>Font Formats</title>
           <para>Modern fonts are usually Unicode fonts published in <acronym>OTF<alt
-            >OpenType Font</alt></acronym> or <acronym>TTF<alt>TrueType</alt></acronym>
+            >OpenType Font</alt></acronym> or <acronym>TTF<alt>TrueType Font</alt></acronym>
             format. Older fonts are mostly PostScript Type 1 fonts which
             have a limited amount of glphys (theoretically 256).
             PostScript fonts cannot be used on the web.</para>
