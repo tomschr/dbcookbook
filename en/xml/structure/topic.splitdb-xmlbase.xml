@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<section xml:id="dbc.structure.splitdb-xmlbase" userlevel="easy"
+   remap="topic" version="5.1"
+   xmlns="http://docbook.org/ns/docbook"
+   xmlns:xi="http://www.w3.org/2001/XInclude"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Splitting DocBook 5 Documents at <tag class="attribute">xml:base</tag> Attributes</title>
+  <info>
+    <keywordset>
+      <keyword>splitting</keyword>
+      <keyword>xml:base</keyword>
+    </keywordset>
+    <subjectset>
+      <subject>
+        <subjectterm>modules</subjectterm>
+      </subject>
+    </subjectset>
+  </info>
+
+  <section role="problem">
+    <title>Problem</title>
+    <para>You have a big DocBook document, like a book, which contains
+     <tag class="attribute">xml:base</tag> attributes. You want to get files
+     that are splitted at that attribute and replaced by an XInclude element.
+    </para>
+  </section>
+  <section role="solution">
+    <title>Solution</title>
+    <para>Use the <filename linkend="li.db-xmlbase-split.xsl"
+     >db-xmlbase-split.xsl</filename> stylesheet. For example, lets assume
+     the following DocBook 5 document:</para>
+   <screen language="xml"><xi:include href="splitdb/article-xmlbase.xml" parse="text"/></screen>
+   <para>Applying the above template would lead to the following tree:</para>
+   <screen>out/
+├── a/
+│   └── index.xml
+├── b/
+│   └── index.xml
+└── index.xml</screen>
+  </section>
+  <section role="discussion">
+    <title>Discussion</title>
+    <para>TBD.</para>
+  </section>
+  <section role="seealso">
+    <title>See Also</title>
+    <itemizedlist>
+     <listitem>
+      <para><xref linkend="dbc.structure.splitdb"/></para>
+     </listitem>
+     <listitem xml:id="li.db-xmlbase-split.xsl">
+      <para><link xlink:href="https://github.com/tomschr/dbcookbook/raw/develop/en/xml/structure/splitdb/db-xmlbase-split.xsl"/></para>
+     </listitem>
+     <listitem>
+      <para><link xlink:href="https://www.w3.org/TR/xmlbase/"/></para>
+     </listitem>
+    </itemizedlist>
+  </section>
+</section>
