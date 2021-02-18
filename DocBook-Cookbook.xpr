@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project version="20.0">
+<project version="20.1">
     <meta>
         <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
         <options>
-            <serialized version="20.0" xml:space="preserve">
+            <serialized version="20.1" xml:space="preserve">
                 <serializableOrderedMap>
                     <entry>
                         <String>document.types</String>
@@ -503,7 +503,11 @@
                     </entry>
                     <entry>
                         <String>editor.font</String>
-                        <String>DejaVu Sans Mono,0,13</String>
+                        <String>Source Code Pro,0,14</String>
+                    </entry>
+                    <entry>
+                        <String>editor.line.wrap</String>
+                        <Boolean>true</Boolean>
                     </entry>
                     <entry>
                         <String>editor.print.margin.columns</String>
@@ -538,19 +542,19 @@
                     </entry>
                     <entry>
                         <String>font.for.author.v12</String>
-                        <String>Droid Serif,0,15</String>
+                        <String>Source Sans Pro,0,14</String>
                     </entry>
                     <entry>
                         <String>font.for.gui</String>
-                        <String>DejaVu Sans Condensed,0,13</String>
+                        <String>Arial,0,14</String>
                     </entry>
                     <entry>
                         <String>font.for.schema</String>
-                        <String>Droid Sans,0,15</String>
+                        <String>Source Serif Pro,0,14</String>
                     </entry>
                     <entry>
                         <String>font.for.text</String>
-                        <String>Droid Sans,0,14</String>
+                        <String>Arial,0,14</String>
                     </entry>
                     <entry>
                         <String>key.editor.document.type.association.option.pane</String>
@@ -1615,6 +1619,8 @@
             <folder name="fo">
                 <file name="en/xml/fo/topic.design-titlepages.xml"/>
                 <file name="en/xml/fo/topic.empty-header-and-footer.xml"/>
+                <file name="en/xml/fo/topic.graphic-pageheader.xml"/>
+                <file name="en/xml/fo/topic.graphic-titlepage.xml"/>
                 <file name="en/xml/fo/topic.hyphenating-urls.xml"/>
                 <file name="en/xml/fo/topic.initials.xml"/>
                 <file name="en/xml/fo/topic.line-height.xml"/>

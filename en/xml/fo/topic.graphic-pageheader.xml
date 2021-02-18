@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    License CC BY-NC-SA 3.0
+
+   This work is licensed under the
+   "Namensnennung – Keine kommerzielle Nutzung – Weitergabe unter
+    gleichen Bedingungen 3.0 Deutschland (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/de/deed.de
+
+   Read the English translation here:
+
+   "Attribution-NonCommercial-ShareAlike 3.0 Unported (CC BY-NC-SA 3.0)"
+   http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+-->
+<?xml-model href="file:../5.1/dbref.rnc" type="application/relax-ng-compact-syntax"?>
+<section xml:id="dbc.fo.graphic-pageheader" remap="topic" userlevel="easy"
+    xmlns="http://docbook.org/ns/docbook"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Inserting Text and Logos into Page Headers and Footers</title>
+    <info>
+        <author>
+            <personname>
+                <firstname>Peter</firstname>
+                <surname>Schmelzer</surname>
+            </personname>
+        </author>
+        <keywordset>
+            <keyword>page header</keyword>
+            <keyword>page footer</keyword>
+            <keyword>header</keyword>
+            <keyword>footer</keyword>
+            <keyword>format</keyword>
+            <keyword>page</keyword>
+        </keywordset>
+        <subjectset>
+            <subject>
+                <subjectterm>graphic</subjectterm>
+                <subjectterm>logo</subjectterm>
+                <subjectterm>text</subjectterm>
+            </subject>
+        </subjectset>
+    </info>
+
+    <section role="problem">
+        <title>Problem</title>
+        <para>You need to know how to insert text and a logo in your page
+            header.</para>
+    </section>
+
+    <section role="solution">
+        <title>Solution</title>
+        <para>This example solution will place a logo on top right side of a
+            single-sided document or on the left/right side on a double-sided
+            document. Other placements are possible and will be shown in the
+                <emphasis>Discussion</emphasis> section. The logo is at max 1
+            inch high to avoid conflicts with the body text area. Furthermore,
+            we will place the document title on the opposite of the logo,
+            centered to the logo high. The template for our solution is obtained
+            from 'pagesetup.xsl' style sheet.</para>
+        <para>A logo on every page in your document will give your work a
+            personal touch or a corporate identity. Furthermore it's a way to
+            protect your hard work against simple duplication through a copier
+            or a simple forwarding of parts of your document.</para>
+        <para>First of all you need to create a customization layer as described
+            in the following steps. If you have a customization layer style
+            sheet, you can skip the first step, otherwise follow the steps to
+            create your customization layer:</para>
+        <procedure>
+            <step>
+                <para>Create a customization layer as shown in <xref
+                        linkend="dbc.common.dbcustomize"/>.</para>
+            </step>
+            <step>
+                <para>Include the style sheet from <xref
+                        linkend="ex.fo.graphic-pageheader"/> into your
+                    customization layer:</para>
+                <programlisting language="xml">&lt;?xml version="1.0" encoding="UTF-8"?>
+&lt;xsl:stylesheet version="1.0"
+  xmlns:fo="http://www.w3.org/1999/XSL/Format"
+  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+  xmlns:d="http://docbook.org/ns/docbook">
+  &lt;!-- ... -->
+  <emphasis role="bold">&lt;xsl:include href="graphic-pageheader.xsl"/></emphasis>
+  &lt;!-- ... -->
+&lt;/xsl:stylesheet></programlisting>
+            </step>
+            <step>
+                <para>Due to a missing attribute-set for the header or footer
+                    content, we use the <quote>header.table</quote> Template
+                    from the <emphasis>pagesetup.xsl</emphasis> and replace all
+                        <emphasis>display-align="before"</emphasis> occurrences
+                    with <emphasis role="strong"
+                        >display-align="center"</emphasis>. Add the modified
+                    Template to your customization layer.</para>
+                <para>Because the <quote>header.table</quote> Template has more
+                    than 150 lines, we skip the printout here and focus on the
+                    logo and text placing.</para>
+                <para>If you don't want to add only the first part of our
+                    solution and later the second one, you can include the hole
+                    style sheet in the next step.</para>
+            </step>
+            <step>
+                <para>Include the style sheet <xref
+                        linkend="ex.fo.graphic-pageheader"/> into your
+                    customization layer and modify it to fit your needs.</para>
+                <para>Subsequent, we will explain the options we will focus on:</para>
+                <example xml:id="ex.fo.graphic-pageheader">
+                    <title>Placing a Logo in the Right Page Header
+                            (<filename>graphic-pageheader.xsl</filename>)</title>
+                    <info>
+                        <output xmlns="urn:x-toms:docbook-ext">
+                            <filename>graphic-pageheader/graphic-pageheader_shortened.xsl</filename>
+                        </output>
+                    </info>
+                    <programlistingco>
+                        <areaspec>
+                            <area xml:id="co.topic.graphic-pageheader.path"
+                                coords="8"/>
+                            <area xml:id="co.topic.graphic-pageheader.variables"
+                                coords="19"/>
+                            <area xml:id="co.topic.graphic-pageheader.content"
+                                coords="32"/>
+                            <area xml:id="co.topic.graphic-pageheader.block1"
+                                coords="39"/>
+                            <area xml:id="co.topic.graphic-pageheader.center"
+                                coords="42"/>
+                             <area xml:id="co.topic.graphic-pageheader.right"
+                                coords="45"/>
+                            <area xml:id="co.topic.graphic-pageheader.height"
+                                coords="47 56" units="linecolumn"/>
+                            <area xml:id="co.topic.graphic-pageheader.attribute"
+                                coords="53"/>
+                            <area xml:id="co.topic.graphic-pageheader.template"
+                                coords="50 56" units="linecolumn"/>
+                            <area xml:id="co.topic.graphic-pageheader.file"
+                                coords="53" units="linecolumn"/>
+                        </areaspec>
+                        <programlisting language="xml"
+                            linenumbering="numbered"><xi:include
+                                href="graphic-pageheader/graphic-pageheader_shortened.xsl"
+                                parse="text"/></programlisting>
+                    </programlistingco>
+                </example>
+                <calloutlist>
+                    <callout arearefs="co.topic.graphic-pageheader.path">
+                        <para>The directory path to your logos.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.variables">
+                        <para>This is the default value and will be used if no
+                            parameters are passed.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.content">
+                        <para>We assume that your logo should be placed in the
+                            header of all pages except title pages. You can
+                            switch single- or double-sided with this variable.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.block1">
+                        <para>A <tag>fo:block</tag>-element creates a rectangle
+                            area on a page which can contain lists, tables or
+                            graphics. In this demo, the document title is
+                            visible on the left side of single-sided documents.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.center">
+                        <para>In this demo, the center position has no content,
+                            but you can add a page number for example.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.right">
+                        <para>This is the place for our logo as described at the
+                            top of our solution.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.height">
+                        <para>To avoid conflicts with the body text area, we
+                            limit its height to 10mm. When you specify only
+                            one parameter like <tag>height</tag> or
+                                <tag>width</tag>, your logo will be scaled with
+                            the <link xlink:href="#li.fo.external-graphics"
+                                >correct aspect ratio</link>.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.template">
+                        <para>The template which is called to import and place
+                            the logo.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.attribute">
+                        <para>The file name is passed on the <tag
+                                class="attribute">src</tag> attribute.</para>
+                    </callout>
+                    <callout arearefs="co.topic.graphic-pageheader.file">
+                        <para>Our file defined at the top of our customization
+                            layer.</para>
+                    </callout>
+                </calloutlist>
+            </step>
+            <step>
+                <para>Use your customization layer to transform your DocBook
+                    document into FO.</para>
+            </step>
+        </procedure>
+    </section>
+    <section role="discussion">
+        <title>Discussion</title>
+        <para>The stylesheet <filename>graphic-pageheader.xsl</filename> creates
+            a logo in the right edge of your page and uses the parameter
+                <parameter>logo.src.path</parameter> to find the logo. By
+            default, a logo is stored in <filename>logo/</filename>. If your
+            logos are in a different location, change it with your XSLT
+            processor. For example, the following line uses the logo(s) image
+            source path <tag>logo.src.path</tag> parameter to find the logo(s).
+            This parameter is used within the position test <xref
+                linkend="co.topic.graphic-pageheader.file"/> to find the right
+            logo.</para>
+        <screen>&lt;xsl:param name="logo.src.path">logo/&lt;/xsl:param></screen>
+    </section>
+    <section role="seealso">
+        <title>See Also</title>
+        <itemizedlist>
+            <listitem xml:id="li.fo.external-graphics">
+                <para>Full parameter description for
+                        <tag xlink:href="http://www.w3.org/TR/xsl/#fo_external-graphic">fo:external-graphic</tag></para>
+            </listitem>
+        </itemizedlist>
+        <para>__________</para>
+        <para>The <emphasis>Opensource</emphasis>-Logo is a trademark which is
+            owned by <link xlink:href="https://opensource.org"/>. This site is
+            not affiliated with or endorsed by the Open Source
+            Initiative.</para>
+    </section>
+</section>
